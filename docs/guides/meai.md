@@ -1,6 +1,9 @@
 # Microsoft.Extensions.AI Integration
 
-The Apify SDK provides `AIFunction` tool wrappers that integrate with any `IChatClient` from the Microsoft.Extensions.AI ecosystem.
+!!! tip "Cross-SDK comparison"
+    See the [centralized MEAI documentation](https://tryagi.github.io/docs/meai/) for feature matrices and comparisons across all tryAGI SDKs.
+
+The Apify SDK provides `AIFunction` tool wrappers compatible with [Microsoft.Extensions.AI](https://learn.microsoft.com/en-us/dotnet/ai/microsoft-extensions-ai). These tools can be used with any `IChatClient` to give AI models access to Apify's web scraping actors, run management, and dataset retrieval.
 
 ## Available Tools
 
