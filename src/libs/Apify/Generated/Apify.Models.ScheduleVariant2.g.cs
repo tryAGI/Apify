@@ -1,0 +1,62 @@
+
+#nullable enable
+
+namespace Apify
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class ScheduleVariant2
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Apify.ScheduleAction> Actions { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScheduleVariant2" /> class.
+        /// </summary>
+        /// <param name="actions"></param>
+        /// <param name="description"></param>
+        /// <param name="title"></param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public ScheduleVariant2(
+            global::System.Collections.Generic.IList<global::Apify.ScheduleAction> actions,
+            string? description,
+            string? title)
+        {
+            this.Description = description;
+            this.Title = title;
+            this.Actions = actions ?? throw new global::System.ArgumentNullException(nameof(actions));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScheduleVariant2" /> class.
+        /// </summary>
+        public ScheduleVariant2()
+        {
+        }
+    }
+}
