@@ -525,6 +525,7 @@ namespace Apify
             global::Apify.GeneralAccess? generalAccess = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Apify.UpdateStoreRequest
             {
                 Name = name,
