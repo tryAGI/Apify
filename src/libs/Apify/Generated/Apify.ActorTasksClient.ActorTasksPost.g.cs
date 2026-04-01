@@ -475,7 +475,6 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.TaskResponse> ActorTasksPostAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Apify.AllOf<global::Apify.CreateTaskRequest, object>
             {
             };
