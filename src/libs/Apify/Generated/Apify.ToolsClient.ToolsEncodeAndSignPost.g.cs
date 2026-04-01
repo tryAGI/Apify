@@ -471,7 +471,6 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.EncodeAndSignResponse> ToolsEncodeAndSignPostAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new object
             {
             };

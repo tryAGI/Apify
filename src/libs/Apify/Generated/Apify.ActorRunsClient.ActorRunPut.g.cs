@@ -541,7 +541,6 @@ namespace Apify
             string runId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Apify.AllOf<global::Apify.UpdateRunRequest, object>
             {
             };

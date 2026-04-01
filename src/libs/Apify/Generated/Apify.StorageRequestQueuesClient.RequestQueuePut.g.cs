@@ -517,7 +517,6 @@ namespace Apify
             string queueId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Apify.AllOf<global::Apify.UpdateRequestQueueRequest, object>
             {
             };
