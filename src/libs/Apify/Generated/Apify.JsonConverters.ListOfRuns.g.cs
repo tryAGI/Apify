@@ -126,13 +126,13 @@ namespace Apify.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PaginationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PaginationResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PaginationResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PaginationResponse, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PaginationResponse!, typeInfo);
             }
             else if (value.IsValue2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ListOfRunsVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ListOfRunsVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ListOfRunsVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
             }
         }
     }

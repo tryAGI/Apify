@@ -77,25 +77,25 @@ namespace Apify.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PayPerEventActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PayPerEventActorPricingInfo> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PayPerEventActorPricingInfo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PayPerEvent, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PayPerEvent!.Value, typeInfo);
             }
             else if (value.IsPricePerDatasetItem)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PricePerDatasetItemActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PricePerDatasetItemActorPricingInfo> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PricePerDatasetItemActorPricingInfo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PricePerDatasetItem, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PricePerDatasetItem!.Value, typeInfo);
             }
             else if (value.IsFlatPricePerMonth)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FlatPricePerMonthActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FlatPricePerMonthActorPricingInfo> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FlatPricePerMonthActorPricingInfo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlatPricePerMonth, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FlatPricePerMonth!.Value, typeInfo);
             }
             else if (value.IsFree)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FreeActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FreeActorPricingInfo> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FreeActorPricingInfo).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Free, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Free!.Value, typeInfo);
             }
         }
     }

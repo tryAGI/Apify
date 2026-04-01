@@ -134,13 +134,13 @@ namespace Apify.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleBase?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleBase).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ScheduleBase, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ScheduleBase!, typeInfo);
             }
             else if (value.IsValue2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
             }
         }
     }

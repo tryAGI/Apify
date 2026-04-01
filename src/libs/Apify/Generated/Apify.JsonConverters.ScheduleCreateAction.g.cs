@@ -127,13 +127,13 @@ namespace Apify.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActor?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActor, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActor!, typeInfo);
             }
             else if (value.IsRunActorTask)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActorTask, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActorTask!, typeInfo);
             }
         }
     }
