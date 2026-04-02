@@ -66,6 +66,53 @@ namespace Apify
             double? waitForFinish = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ActBuildsPostAsResponseAsync(
+                actorId: actorId,
+                version: version,
+                useCache: useCache,
+                betaPackages: betaPackages,
+                tag: tag,
+                waitForFinish: waitForFinish,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Build Actor<br/>
+        /// Builds an Actor.<br/>
+        /// The response is the build object as returned by the<br/>
+        /// [Get build](#/reference/actors/build-object/get-build) endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="version">
+        /// Example: 0.0
+        /// </param>
+        /// <param name="useCache">
+        /// Example: true
+        /// </param>
+        /// <param name="betaPackages">
+        /// Example: true
+        /// </param>
+        /// <param name="tag">
+        /// Example: latest
+        /// </param>
+        /// <param name="waitForFinish">
+        /// Example: 60
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>> ActBuildsPostAsResponseAsync(
+            string actorId,
+            string version,
+            bool? useCache = default,
+            bool? betaPackages = default,
+            string? tag = default,
+            double? waitForFinish = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareActBuildsPostArguments(
@@ -386,9 +433,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.BuildResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.BuildResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -417,9 +467,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.BuildResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.BuildResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {

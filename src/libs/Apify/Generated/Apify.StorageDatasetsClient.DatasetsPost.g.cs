@@ -37,6 +37,29 @@ namespace Apify
             string? name = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await DatasetsPostAsResponseAsync(
+                name: name,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create dataset<br/>
+        /// Creates a dataset and returns its object.<br/>
+        /// Keep in mind that data stored under unnamed dataset follows [data retention period](https://docs.apify.com/platform/storage#data-retention).<br/>
+        /// It creates a dataset with the given name if the parameter name is used.<br/>
+        /// If a dataset with the given name already exists then returns its object.
+        /// </summary>
+        /// <param name="name">
+        /// Example: eshop-items
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.DatasetResponse>> DatasetsPostAsResponseAsync(
+            string? name = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareDatasetsPostArguments(
@@ -305,9 +328,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.DatasetResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.DatasetResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.DatasetResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -336,9 +362,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.DatasetResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.DatasetResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.DatasetResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {

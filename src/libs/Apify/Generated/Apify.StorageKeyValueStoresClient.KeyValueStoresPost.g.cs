@@ -41,6 +41,33 @@ namespace Apify
             string? name = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await KeyValueStoresPostAsResponseAsync(
+                name: name,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create key-value store<br/>
+        /// Creates a key-value store and returns its object. The response is the same<br/>
+        /// object as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)<br/>
+        /// endpoint.<br/>
+        /// Keep in mind that data stored under unnamed store follows [data retention<br/>
+        /// period](https://docs.apify.com/platform/storage#data-retention).<br/>
+        /// It creates a store with the given name if the parameter name is used.<br/>
+        /// If there is another store with the same name, the endpoint does not create a<br/>
+        /// new one and returns the existing object instead.
+        /// </summary>
+        /// <param name="name">
+        /// Example: eshop-values
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>> KeyValueStoresPostAsResponseAsync(
+            string? name = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareKeyValueStoresPostArguments(
@@ -309,9 +336,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.KeyValueStoreResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.KeyValueStoreResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -340,9 +370,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.KeyValueStoreResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.KeyValueStoreResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {

@@ -45,6 +45,29 @@ namespace Apify
         /// best to use the [constants from our `apify-shared-js`<br/>
         /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ActorResponse>> ActsPostAsResponseAsync(
+
+            global::Apify.CreateActorRequest request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create Actor<br/>
+        /// Creates a new Actor with settings specified in an Actor object passed as<br/>
+        /// JSON in the POST payload.<br/>
+        /// The response is the full Actor object as returned by the<br/>
+        /// [Get Actor](#/reference/actors/actor-object/get-actor) endpoint.<br/>
+        /// The HTTP request must have the `Content-Type: application/json` HTTP header!<br/>
+        /// The Actor needs to define at least one version of the source code.<br/>
+        /// For more information, see [Version object](#/reference/actors/version-object).<br/>
+        /// If you want to make your Actor<br/>
+        /// [public](https://docs.apify.com/platform/actors/publishing) using `isPublic:<br/>
+        /// true`, you will need to provide the Actor's `title` and the `categories`<br/>
+        /// under which that Actor will be classified in Apify Store. For this, it's<br/>
+        /// best to use the [constants from our `apify-shared-js`<br/>
+        /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
+        /// </summary>
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <param name="title"></param>

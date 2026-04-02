@@ -59,6 +59,50 @@ namespace Apify
             global::Apify.EnvVar request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ActVersionEnvVarsPostAsResponseAsync(
+                actorId: actorId,
+                versionNumber: versionNumber,
+
+                request: request,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create environment variable<br/>
+        /// Creates an environment variable of an Actor using values specified in a<br/>
+        /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
+        /// JSON in the POST payload.<br/>
+        /// The request must specify `name` and `value` parameters (as strings) in the<br/>
+        /// JSON payload and a `Content-Type: application/json` HTTP header.<br/>
+        /// ```<br/>
+        /// {<br/>
+        ///     "name": "ENV_VAR_NAME",<br/>
+        ///     "value": "my-env-var"<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// The response is the [EnvVar<br/>
+        /// object](#/reference/actors/environment-variable-object) as returned by the [Get environment<br/>
+        /// variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="versionNumber">
+        /// Example: 0.1
+        /// </param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.EnvVarResponse>> ActVersionEnvVarsPostAsResponseAsync(
+            string actorId,
+            string versionNumber,
+
+            global::Apify.EnvVar request,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -450,9 +494,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.EnvVarResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.EnvVarResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.EnvVarResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -481,9 +528,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.EnvVarResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.EnvVarResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.EnvVarResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {

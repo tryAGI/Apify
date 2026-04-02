@@ -29,6 +29,22 @@ namespace Apify
         /// request's `Authorization` header, rather than the URL. ([More<br/>
         /// info](#/introduction/authentication)).
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>> SchedulesPostAsResponseAsync(
+
+            global::Apify.ScheduleCreate request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Create schedule<br/>
+        /// Creates a new schedule with settings provided by the schedule object passed<br/>
+        /// as JSON in the payload. The response is the created schedule object.<br/>
+        /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
+        /// When providing your API authentication token, we recommend using the<br/>
+        /// request's `Authorization` header, rather than the URL. ([More<br/>
+        /// info](#/introduction/authentication)).
+        /// </summary>
         /// <param name="name"></param>
         /// <param name="isEnabled"></param>
         /// <param name="isExclusive"></param>
