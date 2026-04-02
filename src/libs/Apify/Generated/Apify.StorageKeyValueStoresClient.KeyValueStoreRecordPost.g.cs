@@ -50,6 +50,40 @@ namespace Apify
             global::Apify.KeyValueStoreRecordPostContentEncoding? contentEncoding = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await KeyValueStoreRecordPostAsResponseAsync(
+                storeId: storeId,
+                recordKey: recordKey,
+
+                request: request,
+                contentEncoding: contentEncoding,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Store record (POST)<br/>
+        /// Stores a value under a specific key to the key-value store.<br/>
+        /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
+        /// </summary>
+        /// <param name="storeId">
+        /// Example: WkzbQMuFYuamGv3YF
+        /// </param>
+        /// <param name="recordKey">
+        /// Example: someKey
+        /// </param>
+        /// <param name="contentEncoding"></param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> KeyValueStoreRecordPostAsResponseAsync(
+            string storeId,
+            string recordKey,
+
+            global::Apify.PutRecordRequest request,
+            global::Apify.KeyValueStoreRecordPostContentEncoding? contentEncoding = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -411,7 +445,10 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return __content;
+                    return new global::Apify.AutoSDKHttpResponse<string>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __content);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -440,7 +477,10 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return __content;
+                    return new global::Apify.AutoSDKHttpResponse<string>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __content);
                 }
                 catch (global::System.Exception __ex)
                 {

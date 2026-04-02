@@ -62,6 +62,54 @@ namespace Apify
             global::Apify.CreateOrUpdateVersionRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ActVersionsPostAsResponseAsync(
+                actorId: actorId,
+
+                request: request,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create version<br/>
+        /// Creates a version of an Actor using values specified in a [Version<br/>
+        /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
+        /// payload.<br/>
+        /// The request must specify `versionNumber` and `sourceType` parameters (as<br/>
+        /// strings) in the JSON payload and a `Content-Type: application/json` HTTP<br/>
+        /// header.<br/>
+        /// Each `sourceType` requires its own additional properties to be passed to the<br/>
+        /// JSON payload object. These are outlined in the [Version<br/>
+        /// object](#/reference/actors/version-object) table below and in more detail in<br/>
+        /// the [Apify<br/>
+        /// documentation](https://docs.apify.com/platform/actors/development/deployment/source-types).<br/>
+        /// For example, if an Actor's source code is stored in a [GitHub<br/>
+        /// repository](https://docs.apify.com/platform/actors/development/deployment/source-types#git-repository),<br/>
+        /// you will set the `sourceType` to `GIT_REPO` and pass the repository's URL in<br/>
+        /// the `gitRepoUrl` property.<br/>
+        /// ```<br/>
+        /// {<br/>
+        ///     "versionNumber": "0.1",<br/>
+        ///     "sourceType": "GIT_REPO",<br/>
+        ///     "gitRepoUrl": "https://github.com/my-github-account/actor-repo"<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// The response is the [Version object](#/reference/actors/version-object) as<br/>
+        /// returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>> ActVersionsPostAsResponseAsync(
+            string actorId,
+
+            global::Apify.CreateOrUpdateVersionRequest request,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -451,9 +499,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.VersionResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.VersionResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -482,9 +533,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.VersionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.VersionResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {

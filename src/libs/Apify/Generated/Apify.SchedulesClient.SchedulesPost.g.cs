@@ -38,6 +38,31 @@ namespace Apify
             global::Apify.ScheduleCreate request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await SchedulesPostAsResponseAsync(
+
+                request: request,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Create schedule<br/>
+        /// Creates a new schedule with settings provided by the schedule object passed<br/>
+        /// as JSON in the payload. The response is the created schedule object.<br/>
+        /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
+        /// When providing your API authentication token, we recommend using the<br/>
+        /// request's `Authorization` header, rather than the URL. ([More<br/>
+        /// info](#/introduction/authentication)).
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>> SchedulesPostAsResponseAsync(
+
+            global::Apify.ScheduleCreate request,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
@@ -463,9 +488,12 @@ namespace Apify
                 {
                     __response.EnsureSuccessStatusCode();
 
-                    return
-                        global::Apify.ScheduleResponse.FromJson(__content, JsonSerializerContext) ??
+                    var __value = global::Apify.ScheduleResponse.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -494,9 +522,12 @@ namespace Apify
 #endif
                     ).ConfigureAwait(false);
 
-                    return
-                        await global::Apify.ScheduleResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    var __value = await global::Apify.ScheduleResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>(
+                        statusCode: __response.StatusCode,
+                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                        body: __value);
                 }
                 catch (global::System.Exception __ex)
                 {
