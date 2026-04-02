@@ -73,15 +73,7 @@ namespace Apify
 
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/key-value-stores/{storeId}/records/{recordKey}",
-                baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
-            {
-                if (__authorization.Type == "ApiKey" &&
-                    __authorization.Location == "Query")
-                {
-                    __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
-                }
-            } 
+                baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("signature", signature)
                 .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant()) 

@@ -80,15 +80,7 @@ namespace Apify
 
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/key-value-stores/{storeId}/keys",
-                baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
-            {
-                if (__authorization.Type == "ApiKey" &&
-                    __authorization.Location == "Query")
-                {
-                    __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
-                }
-            } 
+                baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("exclusiveStartKey", exclusiveStartKey)
                 .AddOptionalParameter("limit", limit?.ToString())
