@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ListOfDatasetsVariant2? Value2 { get; init; }
+        public global::Apify.ListOfDatasetsVariant2? ListOfDatasetsVariant2 { get; init; }
 #else
-        public global::Apify.ListOfDatasetsVariant2? Value2 { get; }
+        public global::Apify.ListOfDatasetsVariant2? ListOfDatasetsVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfDatasetsVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsListOfDatasetsVariant2 => ListOfDatasetsVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ListOfDatasetsVariant2?(ListOfDatasets @this) => @this.Value2;
+        public static implicit operator global::Apify.ListOfDatasetsVariant2?(ListOfDatasets @this) => @this.ListOfDatasetsVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ListOfDatasets(global::Apify.ListOfDatasetsVariant2? value)
         {
-            Value2 = value;
+            ListOfDatasetsVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public ListOfDatasets(
             global::Apify.PaginationResponse? paginationResponse,
-            global::Apify.ListOfDatasetsVariant2? value2
+            global::Apify.ListOfDatasetsVariant2? listOfDatasetsVariant2
             )
         {
             PaginationResponse = paginationResponse;
-            Value2 = value2;
+            ListOfDatasetsVariant2 = listOfDatasetsVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            ListOfDatasetsVariant2 as object ??
             PaginationResponse as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            Value2?.ToString() 
+            ListOfDatasetsVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsPaginationResponse && IsValue2;
+            return IsPaginationResponse && IsListOfDatasetsVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse?, TResult>? paginationResponse = null,
-            global::System.Func<global::Apify.ListOfDatasetsVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.ListOfDatasetsVariant2?, TResult>? listOfDatasetsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return paginationResponse(PaginationResponse!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsListOfDatasetsVariant2 && listOfDatasetsVariant2 != null)
             {
-                return value2(Value2!);
+                return listOfDatasetsVariant2(ListOfDatasetsVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse?>? paginationResponse = null,
-            global::System.Action<global::Apify.ListOfDatasetsVariant2?>? value2 = null,
+            global::System.Action<global::Apify.ListOfDatasetsVariant2?>? listOfDatasetsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 paginationResponse?.Invoke(PaginationResponse!);
             }
-            else if (IsValue2)
+            else if (IsListOfDatasetsVariant2)
             {
-                value2?.Invoke(Value2!);
+                listOfDatasetsVariant2?.Invoke(ListOfDatasetsVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 PaginationResponse,
                 typeof(global::Apify.PaginationResponse),
-                Value2,
+                ListOfDatasetsVariant2,
                 typeof(global::Apify.ListOfDatasetsVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfDatasetsVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfDatasetsVariant2?>.Default.Equals(ListOfDatasetsVariant2, other.ListOfDatasetsVariant2) 
                 ;
         }
 

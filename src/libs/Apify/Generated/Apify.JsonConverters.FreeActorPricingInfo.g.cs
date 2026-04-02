@@ -41,7 +41,7 @@ namespace Apify.JsonConverters
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
             global::Apify.CommonActorPricingInfo? commonActorPricingInfo = default;
-            global::Apify.FreeActorPricingInfoVariant2? value2 = default;
+            global::Apify.FreeActorPricingInfoVariant2? freeActorPricingInfoVariant2 = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -65,7 +65,7 @@ namespace Apify.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FreeActorPricingInfoVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FreeActorPricingInfoVariant2> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FreeActorPricingInfoVariant2).Name}");
-                        value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        freeActorPricingInfoVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -76,7 +76,7 @@ namespace Apify.JsonConverters
                 }
             }
 
-            if (commonActorPricingInfo == null && value2 == null)
+            if (commonActorPricingInfo == null && freeActorPricingInfoVariant2 == null)
             {
                 try
                 {
@@ -95,7 +95,7 @@ namespace Apify.JsonConverters
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FreeActorPricingInfoVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FreeActorPricingInfoVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FreeActorPricingInfoVariant2).Name}");
-                    value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    freeActorPricingInfoVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -108,7 +108,7 @@ namespace Apify.JsonConverters
             var __value = new global::Apify.FreeActorPricingInfo(
                 commonActorPricingInfo,
 
-                value2
+                freeActorPricingInfoVariant2
                 );
 
             return __value;
@@ -129,11 +129,11 @@ namespace Apify.JsonConverters
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.CommonActorPricingInfo).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.CommonActorPricingInfo!, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsFreeActorPricingInfoVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FreeActorPricingInfoVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FreeActorPricingInfoVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FreeActorPricingInfoVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FreeActorPricingInfoVariant2!, typeInfo);
             }
         }
     }

@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ScheduleVariant2? Value2 { get; init; }
+        public global::Apify.ScheduleVariant2? ScheduleVariant2 { get; init; }
 #else
-        public global::Apify.ScheduleVariant2? Value2 { get; }
+        public global::Apify.ScheduleVariant2? ScheduleVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ScheduleVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsScheduleVariant2 => ScheduleVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ScheduleVariant2?(Schedule @this) => @this.Value2;
+        public static implicit operator global::Apify.ScheduleVariant2?(Schedule @this) => @this.ScheduleVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public Schedule(global::Apify.ScheduleVariant2? value)
         {
-            Value2 = value;
+            ScheduleVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public Schedule(
             global::Apify.ScheduleBase? scheduleBase,
-            global::Apify.ScheduleVariant2? value2
+            global::Apify.ScheduleVariant2? scheduleVariant2
             )
         {
             ScheduleBase = scheduleBase;
-            Value2 = value2;
+            ScheduleVariant2 = scheduleVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            ScheduleVariant2 as object ??
             ScheduleBase as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             ScheduleBase?.ToString() ??
-            Value2?.ToString() 
+            ScheduleVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsScheduleBase && IsValue2;
+            return IsScheduleBase && IsScheduleVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.ScheduleBase?, TResult>? scheduleBase = null,
-            global::System.Func<global::Apify.ScheduleVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.ScheduleVariant2?, TResult>? scheduleVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return scheduleBase(ScheduleBase!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsScheduleVariant2 && scheduleVariant2 != null)
             {
-                return value2(Value2!);
+                return scheduleVariant2(ScheduleVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.ScheduleBase?>? scheduleBase = null,
-            global::System.Action<global::Apify.ScheduleVariant2?>? value2 = null,
+            global::System.Action<global::Apify.ScheduleVariant2?>? scheduleVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 scheduleBase?.Invoke(ScheduleBase!);
             }
-            else if (IsValue2)
+            else if (IsScheduleVariant2)
             {
-                value2?.Invoke(Value2!);
+                scheduleVariant2?.Invoke(ScheduleVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 ScheduleBase,
                 typeof(global::Apify.ScheduleBase),
-                Value2,
+                ScheduleVariant2,
                 typeof(global::Apify.ScheduleVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleBase?>.Default.Equals(ScheduleBase, other.ScheduleBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleVariant2?>.Default.Equals(ScheduleVariant2, other.ScheduleVariant2) 
                 ;
         }
 

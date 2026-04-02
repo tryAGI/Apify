@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.RequestVariant2? Value2 { get; init; }
+        public global::Apify.RequestVariant2? RequestVariant2 { get; init; }
 #else
-        public global::Apify.RequestVariant2? Value2 { get; }
+        public global::Apify.RequestVariant2? RequestVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsRequestVariant2 => RequestVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.RequestVariant2?(Request @this) => @this.Value2;
+        public static implicit operator global::Apify.RequestVariant2?(Request @this) => @this.RequestVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public Request(global::Apify.RequestVariant2? value)
         {
-            Value2 = value;
+            RequestVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public Request(
             global::Apify.RequestBase? requestBase,
-            global::Apify.RequestVariant2? value2
+            global::Apify.RequestVariant2? requestVariant2
             )
         {
             RequestBase = requestBase;
-            Value2 = value2;
+            RequestVariant2 = requestVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            RequestVariant2 as object ??
             RequestBase as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             RequestBase?.ToString() ??
-            Value2?.ToString() 
+            RequestVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsRequestBase && IsValue2;
+            return IsRequestBase && IsRequestVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.RequestBase?, TResult>? requestBase = null,
-            global::System.Func<global::Apify.RequestVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.RequestVariant2?, TResult>? requestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return requestBase(RequestBase!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsRequestVariant2 && requestVariant2 != null)
             {
-                return value2(Value2!);
+                return requestVariant2(RequestVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.RequestBase?>? requestBase = null,
-            global::System.Action<global::Apify.RequestVariant2?>? value2 = null,
+            global::System.Action<global::Apify.RequestVariant2?>? requestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 requestBase?.Invoke(RequestBase!);
             }
-            else if (IsValue2)
+            else if (IsRequestVariant2)
             {
-                value2?.Invoke(Value2!);
+                requestVariant2?.Invoke(RequestVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 RequestBase,
                 typeof(global::Apify.RequestBase),
-                Value2,
+                RequestVariant2,
                 typeof(global::Apify.RequestVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.RequestBase?>.Default.Equals(RequestBase, other.RequestBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestVariant2?>.Default.Equals(RequestVariant2, other.RequestVariant2) 
                 ;
         }
 
