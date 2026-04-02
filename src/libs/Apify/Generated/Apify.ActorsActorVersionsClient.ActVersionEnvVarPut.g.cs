@@ -76,15 +76,7 @@ namespace Apify
 
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/acts/{actorId}/versions/{versionNumber}/env-vars/{envVarName}",
-                baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
-            {
-                if (__authorization.Type == "ApiKey" &&
-                    __authorization.Location == "Query")
-                {
-                    __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
-                }
-            } 
+                baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Put,

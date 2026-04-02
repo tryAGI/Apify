@@ -183,15 +183,7 @@ namespace Apify
 
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/datasets/{datasetId}/items",
-                baseUri: HttpClient.BaseAddress);
-            foreach (var __authorization in Authorizations)
-            {
-                if (__authorization.Type == "ApiKey" &&
-                    __authorization.Location == "Query")
-                {
-                    __pathBuilder = __pathBuilder.AddRequiredParameter(__authorization.Name, __authorization.Value);
-                }
-            } 
+                baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("format", format)
                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
