@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ListOfWebhookDispatchesVariant2? Value2 { get; init; }
+        public global::Apify.ListOfWebhookDispatchesVariant2? ListOfWebhookDispatchesVariant2 { get; init; }
 #else
-        public global::Apify.ListOfWebhookDispatchesVariant2? Value2 { get; }
+        public global::Apify.ListOfWebhookDispatchesVariant2? ListOfWebhookDispatchesVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfWebhookDispatchesVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsListOfWebhookDispatchesVariant2 => ListOfWebhookDispatchesVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ListOfWebhookDispatchesVariant2?(ListOfWebhookDispatches @this) => @this.Value2;
+        public static implicit operator global::Apify.ListOfWebhookDispatchesVariant2?(ListOfWebhookDispatches @this) => @this.ListOfWebhookDispatchesVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ListOfWebhookDispatches(global::Apify.ListOfWebhookDispatchesVariant2? value)
         {
-            Value2 = value;
+            ListOfWebhookDispatchesVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public ListOfWebhookDispatches(
             global::Apify.PaginationResponse? paginationResponse,
-            global::Apify.ListOfWebhookDispatchesVariant2? value2
+            global::Apify.ListOfWebhookDispatchesVariant2? listOfWebhookDispatchesVariant2
             )
         {
             PaginationResponse = paginationResponse;
-            Value2 = value2;
+            ListOfWebhookDispatchesVariant2 = listOfWebhookDispatchesVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            ListOfWebhookDispatchesVariant2 as object ??
             PaginationResponse as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            Value2?.ToString() 
+            ListOfWebhookDispatchesVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsPaginationResponse && IsValue2;
+            return IsPaginationResponse && IsListOfWebhookDispatchesVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse?, TResult>? paginationResponse = null,
-            global::System.Func<global::Apify.ListOfWebhookDispatchesVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.ListOfWebhookDispatchesVariant2?, TResult>? listOfWebhookDispatchesVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return paginationResponse(PaginationResponse!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsListOfWebhookDispatchesVariant2 && listOfWebhookDispatchesVariant2 != null)
             {
-                return value2(Value2!);
+                return listOfWebhookDispatchesVariant2(ListOfWebhookDispatchesVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse?>? paginationResponse = null,
-            global::System.Action<global::Apify.ListOfWebhookDispatchesVariant2?>? value2 = null,
+            global::System.Action<global::Apify.ListOfWebhookDispatchesVariant2?>? listOfWebhookDispatchesVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 paginationResponse?.Invoke(PaginationResponse!);
             }
-            else if (IsValue2)
+            else if (IsListOfWebhookDispatchesVariant2)
             {
-                value2?.Invoke(Value2!);
+                listOfWebhookDispatchesVariant2?.Invoke(ListOfWebhookDispatchesVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 PaginationResponse,
                 typeof(global::Apify.PaginationResponse),
-                Value2,
+                ListOfWebhookDispatchesVariant2,
                 typeof(global::Apify.ListOfWebhookDispatchesVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfWebhookDispatchesVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfWebhookDispatchesVariant2?>.Default.Equals(ListOfWebhookDispatchesVariant2, other.ListOfWebhookDispatchesVariant2) 
                 ;
         }
 

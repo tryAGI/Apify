@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ListOfKeyValueStoresVariant2? Value2 { get; init; }
+        public global::Apify.ListOfKeyValueStoresVariant2? ListOfKeyValueStoresVariant2 { get; init; }
 #else
-        public global::Apify.ListOfKeyValueStoresVariant2? Value2 { get; }
+        public global::Apify.ListOfKeyValueStoresVariant2? ListOfKeyValueStoresVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfKeyValueStoresVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsListOfKeyValueStoresVariant2 => ListOfKeyValueStoresVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ListOfKeyValueStoresVariant2?(ListOfKeyValueStores @this) => @this.Value2;
+        public static implicit operator global::Apify.ListOfKeyValueStoresVariant2?(ListOfKeyValueStores @this) => @this.ListOfKeyValueStoresVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ListOfKeyValueStores(global::Apify.ListOfKeyValueStoresVariant2? value)
         {
-            Value2 = value;
+            ListOfKeyValueStoresVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public ListOfKeyValueStores(
             global::Apify.PaginationResponse? paginationResponse,
-            global::Apify.ListOfKeyValueStoresVariant2? value2
+            global::Apify.ListOfKeyValueStoresVariant2? listOfKeyValueStoresVariant2
             )
         {
             PaginationResponse = paginationResponse;
-            Value2 = value2;
+            ListOfKeyValueStoresVariant2 = listOfKeyValueStoresVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            ListOfKeyValueStoresVariant2 as object ??
             PaginationResponse as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            Value2?.ToString() 
+            ListOfKeyValueStoresVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsPaginationResponse && IsValue2;
+            return IsPaginationResponse && IsListOfKeyValueStoresVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse?, TResult>? paginationResponse = null,
-            global::System.Func<global::Apify.ListOfKeyValueStoresVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.ListOfKeyValueStoresVariant2?, TResult>? listOfKeyValueStoresVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return paginationResponse(PaginationResponse!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsListOfKeyValueStoresVariant2 && listOfKeyValueStoresVariant2 != null)
             {
-                return value2(Value2!);
+                return listOfKeyValueStoresVariant2(ListOfKeyValueStoresVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse?>? paginationResponse = null,
-            global::System.Action<global::Apify.ListOfKeyValueStoresVariant2?>? value2 = null,
+            global::System.Action<global::Apify.ListOfKeyValueStoresVariant2?>? listOfKeyValueStoresVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 paginationResponse?.Invoke(PaginationResponse!);
             }
-            else if (IsValue2)
+            else if (IsListOfKeyValueStoresVariant2)
             {
-                value2?.Invoke(Value2!);
+                listOfKeyValueStoresVariant2?.Invoke(ListOfKeyValueStoresVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 PaginationResponse,
                 typeof(global::Apify.PaginationResponse),
-                Value2,
+                ListOfKeyValueStoresVariant2,
                 typeof(global::Apify.ListOfKeyValueStoresVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfKeyValueStoresVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfKeyValueStoresVariant2?>.Default.Equals(ListOfKeyValueStoresVariant2, other.ListOfKeyValueStoresVariant2) 
                 ;
         }
 

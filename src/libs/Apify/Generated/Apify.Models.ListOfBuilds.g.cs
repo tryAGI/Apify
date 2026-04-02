@@ -30,18 +30,18 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ListOfBuildsVariant2? Value2 { get; init; }
+        public global::Apify.ListOfBuildsVariant2? ListOfBuildsVariant2 { get; init; }
 #else
-        public global::Apify.ListOfBuildsVariant2? Value2 { get; }
+        public global::Apify.ListOfBuildsVariant2? ListOfBuildsVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfBuildsVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsListOfBuildsVariant2 => ListOfBuildsVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -68,14 +68,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ListOfBuildsVariant2?(ListOfBuilds @this) => @this.Value2;
+        public static implicit operator global::Apify.ListOfBuildsVariant2?(ListOfBuilds @this) => @this.ListOfBuildsVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ListOfBuilds(global::Apify.ListOfBuildsVariant2? value)
         {
-            Value2 = value;
+            ListOfBuildsVariant2 = value;
         }
 
         /// <summary>
@@ -83,18 +83,18 @@ namespace Apify
         /// </summary>
         public ListOfBuilds(
             global::Apify.PaginationResponse? paginationResponse,
-            global::Apify.ListOfBuildsVariant2? value2
+            global::Apify.ListOfBuildsVariant2? listOfBuildsVariant2
             )
         {
             PaginationResponse = paginationResponse;
-            Value2 = value2;
+            ListOfBuildsVariant2 = listOfBuildsVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
+            ListOfBuildsVariant2 as object ??
             PaginationResponse as object 
             ;
 
@@ -103,7 +103,7 @@ namespace Apify
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            Value2?.ToString() 
+            ListOfBuildsVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Apify
         /// </summary>
         public bool Validate()
         {
-            return IsPaginationResponse && IsValue2;
+            return IsPaginationResponse && IsListOfBuildsVariant2;
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Apify
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse?, TResult>? paginationResponse = null,
-            global::System.Func<global::Apify.ListOfBuildsVariant2?, TResult>? value2 = null,
+            global::System.Func<global::Apify.ListOfBuildsVariant2?, TResult>? listOfBuildsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -131,9 +131,9 @@ namespace Apify
             {
                 return paginationResponse(PaginationResponse!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsListOfBuildsVariant2 && listOfBuildsVariant2 != null)
             {
-                return value2(Value2!);
+                return listOfBuildsVariant2(ListOfBuildsVariant2!);
             }
 
             return default(TResult);
@@ -144,7 +144,7 @@ namespace Apify
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse?>? paginationResponse = null,
-            global::System.Action<global::Apify.ListOfBuildsVariant2?>? value2 = null,
+            global::System.Action<global::Apify.ListOfBuildsVariant2?>? listOfBuildsVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -156,9 +156,9 @@ namespace Apify
             {
                 paginationResponse?.Invoke(PaginationResponse!);
             }
-            else if (IsValue2)
+            else if (IsListOfBuildsVariant2)
             {
-                value2?.Invoke(Value2!);
+                listOfBuildsVariant2?.Invoke(ListOfBuildsVariant2!);
             }
         }
 
@@ -171,7 +171,7 @@ namespace Apify
             {
                 PaginationResponse,
                 typeof(global::Apify.PaginationResponse),
-                Value2,
+                ListOfBuildsVariant2,
                 typeof(global::Apify.ListOfBuildsVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -190,7 +190,7 @@ namespace Apify
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfBuildsVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfBuildsVariant2?>.Default.Equals(ListOfBuildsVariant2, other.ListOfBuildsVariant2) 
                 ;
         }
 
