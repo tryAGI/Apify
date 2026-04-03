@@ -405,7 +405,6 @@ namespace Apify
                 try
                 {
                     __response.EnsureSuccessStatusCode();
-
                     var __content = await __response.Content.ReadAsStringAsync(
 #if NET5_0_OR_GREATER
                         cancellationToken
