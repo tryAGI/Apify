@@ -20,6 +20,11 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessPostChargeRunResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
         /// Charge events in run<br/>
         /// Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).<br/>
@@ -36,7 +41,7 @@ namespace Apify
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task PostChargeRunAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.PostChargeRunResponse> PostChargeRunAsync(
             string runId,
 
             global::Apify.ChargeRunRequest request,
@@ -431,11 +436,18 @@ namespace Apify
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
+                ProcessPostChargeRunResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
 
                 try
                 {
                     __response.EnsureSuccessStatusCode();
 
+                    return
+                        global::Apify.PostChargeRunResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -457,6 +469,15 @@ namespace Apify
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Apify.PostChargeRunResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
                 {
@@ -504,7 +525,7 @@ namespace Apify
         /// <param name="count"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task PostChargeRunAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.PostChargeRunResponse> PostChargeRunAsync(
             string runId,
             string eventName,
             int count,
@@ -517,7 +538,7 @@ namespace Apify
                 Count = count,
             };
 
-            await PostChargeRunAsync(
+            return await PostChargeRunAsync(
                 runId: runId,
                 idempotencyKey: idempotencyKey,
                 request: __request,

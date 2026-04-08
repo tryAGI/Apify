@@ -20,7 +20,7 @@ namespace Apify
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task PostChargeRunAsync(
+        global::System.Threading.Tasks.Task<global::Apify.PostChargeRunResponse> PostChargeRunAsync(
             string runId,
 
             global::Apify.ChargeRunRequest request,
@@ -43,7 +43,7 @@ namespace Apify
         /// <param name="count"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        global::System.Threading.Tasks.Task PostChargeRunAsync(
+        global::System.Threading.Tasks.Task<global::Apify.PostChargeRunResponse> PostChargeRunAsync(
             string runId,
             string eventName,
             int count,

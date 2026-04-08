@@ -305,6 +305,44 @@ namespace Apify
                         h => h.Value),
                 };
             }
+            // Unsupported media type - the Content-Encoding of the request is not supported.
+            if ((int)__response.StatusCode == 415)
+            {
+                string? __content_415 = null;
+                global::System.Exception? __exception_415 = null;
+                global::Apify.ErrorResponse? __value_415 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_415 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        __content_415 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_415 = __ex;
+                }
+
+                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                    message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_415,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_415,
+                    ResponseObject = __value_415,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
             // Too many requests - rate limit exceeded.
             if ((int)__response.StatusCode == 429)
             {

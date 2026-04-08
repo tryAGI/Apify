@@ -751,14 +751,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -982,14 +975,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -1053,14 +1039,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -1154,14 +1133,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -1312,21 +1284,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ActorNotFoundError"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ActorVersionNotFoundError"
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -1704,7 +1662,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EnvVar"
+                "$ref": "#/components/schemas/EnvVarRequest"
               },
               "example": {
                 "name": "ENV_VAR_NAME",
@@ -1907,7 +1865,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EnvVar"
+                "$ref": "#/components/schemas/EnvVarRequest"
               },
               "example": {
                 "name": "MY_ENV_VAR",
@@ -2020,7 +1978,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EnvVar"
+                "$ref": "#/components/schemas/EnvVarRequest"
               },
               "example": {
                 "name": "MY_ENV_VAR",
@@ -2233,14 +2191,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -2301,14 +2252,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -2496,14 +2440,7 @@
             }
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -2552,6 +2489,9 @@
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "description": "Not found - the requested resource was not found.",
@@ -2806,14 +2746,7 @@
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorNotFoundError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -2928,6 +2861,9 @@
           },
           "401": {
             "$ref": "#/components/responses/Unauthorized"
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
@@ -3066,6 +3002,9 @@
                 }
               }
             }
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -4231,6 +4170,9 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
           },
           "413": {
             "$ref": "#/components/responses/PayloadTooLarge"
@@ -6253,7 +6195,15 @@
         },
         "responses": {
           "201": {
-            "description": "The charge was successful. Note that you still have to make sure in your Actor that the total charge for the run respects the maximum value set by the user, as the API does not check this. Above the limit, the charges reported as successful in API will not be added to your payouts, but you will still bear the associated costs. Use the Apify charge manager or SDK to avoid having to deal with this manually."
+            "description": "The charge was successful. Note that you still have to make sure in your Actor that the total charge for the run respects the maximum value set by the user, as the API does not check this. Above the limit, the charges reported as successful in API will not be added to your payouts, but you will still bear the associated costs. Use the Apify charge manager or SDK to avoid having to deal with this manually.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false
+                }
+              }
+            }
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
@@ -6765,6 +6715,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Returns the existing key-value store object if a store with the given name already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
           "201": {
             "description": "",
             "headers": {
@@ -7695,6 +7655,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Returns the existing dataset object if a dataset with the given name already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
           "201": {
             "description": "",
             "headers": {
@@ -8561,6 +8531,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Returns the existing request queue object if a queue with the given name already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
           "201": {
             "description": "",
             "headers": {
@@ -12516,8 +12496,7 @@
       "EnvVar": {
         "title": "EnvVar",
         "required": [
-          "name",
-          "value"
+          "name"
         ],
         "type": "object",
         "properties": {
@@ -12529,6 +12508,7 @@
           },
           "value": {
             "type": "string",
+            "description": "The environment variable value. This field is absent in responses when `isSecret` is `true`, as secret values are never returned by the API.",
             "examples": [
               "my-value"
             ]
@@ -13390,25 +13370,18 @@
           }
         }
       },
-      "ActorNotFoundError": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "actor-not-found"
-                ]
-              },
-              "message": {
-                "type": "string",
-                "example": "Actor was not found"
-              }
-            }
+      "EnvVarRequest": {
+        "title": "EnvVarRequest",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EnvVar"
+          },
+          {
+            "required": [
+              "value"
+            ]
           }
-        }
+        ]
       },
       "CreateOrUpdateVersionRequest": {
         "title": "CreateOrUpdateVersionRequest",
@@ -13439,7 +13412,7 @@
               "null"
             ],
             "items": {
-              "$ref": "#/components/schemas/EnvVar"
+              "$ref": "#/components/schemas/EnvVarRequest"
             },
             "description": ""
           },
@@ -13692,6 +13665,26 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/Version"
+          }
+        }
+      },
+      "ActorNotFoundError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "actor-not-found"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "example": "Actor was not found"
+              }
+            }
           }
         }
       },
@@ -14813,7 +14806,10 @@
         "type": "object",
         "properties": {
           "inputBodyLen": {
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "minimum": 0,
             "examples": [
               240
@@ -15483,7 +15479,10 @@
             }
           },
           "buildNumber": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "0.0.36"
             ],
@@ -20893,8 +20892,21 @@
           }
         }
       },
-      "NoContent": {
-        "description": "No content"
+      "PaymentRequired": {
+        "description": "Payment required - the user has exceeded their usage limit or does not have enough credits.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": {
+                "type": "actor-memory-limit-exceeded",
+                "message": "You have exceeded your usage limit. Please consider upgrading your plan."
+              }
+            }
+          }
+        }
       },
       "Conflict": {
         "description": "Conflict - the request could not be completed due to a conflict with the current state of the resource.",
@@ -20911,6 +20923,9 @@
             }
           }
         }
+      },
+      "NoContent": {
+        "description": "No content"
       }
     },
     "examples": {

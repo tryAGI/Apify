@@ -141,6 +141,44 @@ namespace Apify
                         h => h.Value),
                 };
             }
+            // Forbidden - insufficient permissions to perform this action.
+            if ((int)__response.StatusCode == 403)
+            {
+                string? __content_403 = null;
+                global::System.Exception? __exception_403 = null;
+                global::Apify.ErrorResponse? __value_403 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        __content_403 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_403 = __ex;
+                }
+
+                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_403,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_403,
+                    ResponseObject = __value_403,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
             // Not found - the requested resource was not found.
             if ((int)__response.StatusCode == 404)
             {

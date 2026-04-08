@@ -361,6 +361,44 @@ namespace Apify
                         h => h.Value),
                 };
             }
+            // Payment required - the user has exceeded their usage limit or does not have enough credits.
+            if ((int)__response.StatusCode == 402)
+            {
+                string? __content_402 = null;
+                global::System.Exception? __exception_402 = null;
+                global::Apify.ErrorResponse? __value_402 = null;
+                try
+                {
+                    if (ReadResponseAsString)
+                    {
+                        __content_402 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                    }
+                    else
+                    {
+                        __content_402 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                    }
+                }
+                catch (global::System.Exception __ex)
+                {
+                    __exception_402 = __ex;
+                }
+
+                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                    message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_402,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_402,
+                    ResponseObject = __value_402,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
             // Forbidden - insufficient permissions to perform this action.
             if ((int)__response.StatusCode == 403)
             {

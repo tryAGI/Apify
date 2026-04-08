@@ -16,11 +16,10 @@ namespace Apify
         public required string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// The environment variable value. This field is absent in responses when `isSecret` is `true`, as secret values are never returned by the API.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// 
@@ -38,18 +37,20 @@ namespace Apify
         /// Initializes a new instance of the <see cref="EnvVar" /> class.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="value"></param>
+        /// <param name="value">
+        /// The environment variable value. This field is absent in responses when `isSecret` is `true`, as secret values are never returned by the API.
+        /// </param>
         /// <param name="isSecret"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvVar(
             string name,
-            string value,
+            string? value,
             bool? isSecret)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
+            this.Value = value;
             this.IsSecret = isSecret;
         }
 

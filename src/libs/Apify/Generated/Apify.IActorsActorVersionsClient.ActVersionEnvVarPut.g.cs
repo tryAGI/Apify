@@ -37,7 +37,7 @@ namespace Apify
             string versionNumber,
             string envVarName,
 
-            global::Apify.EnvVar request,
+            global::Apify.EnvVarRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update environment variable<br/>
@@ -64,18 +64,12 @@ namespace Apify
         /// <param name="envVarName">
         /// Example: MY_ENV_VAR
         /// </param>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="isSecret"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.EnvVarResponse> ActVersionEnvVarPutAsync(
             string actorId,
             string versionNumber,
             string envVarName,
-            string name,
-            string value,
-            bool? isSecret = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
