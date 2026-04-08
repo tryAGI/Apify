@@ -619,7 +619,7 @@ namespace Apify
             string actorId,
             string? versionNumber = default,
             global::Apify.VersionSourceType? sourceType = default,
-            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars = default,
+            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars = default,
             bool? applyEnvVarsToBuild = default,
             string? buildTag = default,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles = default,

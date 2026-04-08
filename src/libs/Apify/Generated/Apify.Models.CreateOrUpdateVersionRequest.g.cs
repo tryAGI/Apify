@@ -24,7 +24,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("envVars")]
-        public global::System.Collections.Generic.IList<global::Apify.EnvVar>? EnvVars { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? EnvVars { get; set; }
 
         /// <summary>
         /// 
@@ -92,7 +92,7 @@ namespace Apify
         public CreateOrUpdateVersionRequest(
             string? versionNumber,
             global::Apify.VersionSourceType? sourceType,
-            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars,
+            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars,
             bool? applyEnvVarsToBuild,
             string? buildTag,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles,

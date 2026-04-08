@@ -9,13 +9,13 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string versionNumber,
-            global::Apify.EnvVar request);
+            global::Apify.EnvVarRequest request);
         partial void PrepareActVersionEnvVarsPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string versionNumber,
-            global::Apify.EnvVar request);
+            global::Apify.EnvVarRequest request);
         partial void ProcessActVersionEnvVarsPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -56,7 +56,7 @@ namespace Apify
             string actorId,
             string versionNumber,
 
-            global::Apify.EnvVar request,
+            global::Apify.EnvVarRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ActVersionEnvVarsPostAsResponseAsync(
@@ -100,11 +100,9 @@ namespace Apify
             string actorId,
             string versionNumber,
 
-            global::Apify.EnvVar request,
+            global::Apify.EnvVarRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareActVersionEnvVarsPostArguments(
@@ -587,24 +585,15 @@ namespace Apify
         /// <param name="versionNumber">
         /// Example: 0.1
         /// </param>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="isSecret"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.EnvVarResponse> ActVersionEnvVarsPostAsync(
             string actorId,
             string versionNumber,
-            string name,
-            string value,
-            bool? isSecret = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.EnvVar
+            var __request = new global::Apify.EnvVarRequest
             {
-                Name = name,
-                Value = value,
-                IsSecret = isSecret,
             };
 
             return await ActVersionEnvVarsPostAsync(
