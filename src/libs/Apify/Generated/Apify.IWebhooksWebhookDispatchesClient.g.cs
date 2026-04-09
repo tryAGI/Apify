@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Webhook dispatches - Introduction<br/>
+    /// Webhook dispatches - Introduction. This section describes API endpoints to get webhook dispatches.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

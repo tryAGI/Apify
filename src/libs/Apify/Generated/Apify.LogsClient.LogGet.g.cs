@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class LogsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_LogGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_LogGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_LogGetSecurityRequirement0,
+            };
         partial void PrepareLogGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string buildOrRunId,
@@ -61,6 +80,12 @@ namespace Apify
                 download: ref download,
                 raw: ref raw);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_LogGetSecurityRequirements,
+                operationName: "LogGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/logs/{buildOrRunId}",
                 baseUri: HttpClient.BaseAddress); 
@@ -68,7 +93,7 @@ namespace Apify
                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("download", download?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("raw", raw?.ToString().ToLowerInvariant()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -78,7 +103,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

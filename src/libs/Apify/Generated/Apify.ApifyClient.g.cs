@@ -404,7 +404,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.apify.com";
+        public const string DefaultBaseUrl = "https://api.apify.com/";
 
         private bool _disposeHttpClient = true;
 
@@ -429,7 +429,11 @@ namespace Apify
 
 
         /// <summary>
-        /// Actor builds - Introduction
+        /// Actor builds - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor builds.<br/>
+        /// Note that if any returned build object contains usage in dollars, your effective<br/>
+        /// unit pricing at the time of query has been used for computation of this dollar equivalent, and hence it should be<br/>
+        /// used only for informative purposes.<br/>
+        /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorBuildsClient ActorBuilds => new ActorBuildsClient(HttpClient, authorizations: Authorizations)
         {
@@ -438,7 +442,10 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actor runs - Introduction
+        /// Actor runs - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
+        /// If any returned run object contains usage in dollars, your effective unit pricing at the time of query<br/>
+        /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
+        /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, authorizations: Authorizations)
         {
@@ -447,7 +454,18 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actor tasks - Introduction
+        /// Actor tasks - Introduction. The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks.<br/>
+        /// For more information, see the [Actor tasts documentation](https://docs.apify.com/platform/actors/running/tasks).<br/>
+        /// :::note<br/>
+        /// For all the API endpoints that accept the `actorTaskId` parameter to<br/>
+        /// specify a task, you can pass either the task ID (e.g. `HG7ML7M8z78YcAPEB`) or a tilde-separated<br/>
+        /// username of the task's owner and the task's name (e.g. `janedoe~my-task`).<br/>
+        /// :::<br/>
+        /// Some of the API endpoints return run objects. If any such run object<br/>
+        /// contains usage in dollars, your effective unit pricing at the time of query<br/>
+        /// has been used for computation of this dollar equivalent, and hence it should be<br/>
+        /// used only for informative purposes.<br/>
+        /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorTasksClient ActorTasks => new ActorTasksClient(HttpClient, authorizations: Authorizations)
         {
@@ -456,7 +474,10 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actors - Introduction
+        /// Actors - Introduction. The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).<br/>
+        /// For API endpoints that require the `actorId` parameter to identify an Actor, you can provide either:<br/>
+        /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
+        /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).
         /// </summary>
         public ActorsClient Actors => new ActorsClient(HttpClient, authorizations: Authorizations)
         {
@@ -465,7 +486,7 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actor builds - Introduction
+        /// Actor builds - Introduction. The API endpoints in this section allow you to manage your Apify Actors builds.
         /// </summary>
         public ActorsActorBuildsClient ActorsActorBuilds => new ActorsActorBuildsClient(HttpClient, authorizations: Authorizations)
         {
@@ -474,7 +495,9 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actor runs - Introduction
+        /// Actor runs - Introduction. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
+        /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
+        /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, authorizations: Authorizations)
         {
@@ -483,7 +506,18 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actor versions - Introduction
+        /// Actor versions - Introduction. The API endpoints in this section allow you to manage your Apify Actors versions.<br/>
+        /// - The version object contains the source code of a specific version of an Actor.<br/>
+        /// - The `sourceType` property indicates where the source code is hosted, and based<br/>
+        /// on its value the Version object has the following additional property:<br/>
+        /// | **Value** | **Description**  |<br/>
+        /// |---|---|<br/>
+        /// | `"SOURCE_FILES"`   | Source code is comprised of multiple files specified in the `sourceFiles` array. Each item of the array is an object with the following fields:&lt;br/&gt; - `name`: File path and name&lt;br/&gt; - `format`: Format of the content, can be either `"TEXT"` or `"BASE64"`&lt;br/&gt; - `content`: File content&lt;br/&gt;&lt;br/&gt;Source files can be shown and edited in the Apify Console's Web IDE. |<br/>
+        /// | `"GIT_REPO"` | Source code is cloned from a Git repository, whose URL is specified in the `gitRepoUrl` field. |<br/>
+        /// | `"TARBALL"` | Source code is downloaded using a tarball or Zip file from a URL specified in the `tarballUrl` field.  |<br/>
+        /// |`"GITHUB_GIST"`| Source code is taken from a GitHub Gist, whose URL is specified in the `gitHubGistUrl` field. |<br/>
+        /// For more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code)<br/>
+        /// in Actors documentation.
         /// </summary>
         public ActorsActorVersionsClient ActorsActorVersions => new ActorsActorVersionsClient(HttpClient, authorizations: Authorizations)
         {
@@ -492,7 +526,7 @@ namespace Apify
         };
 
         /// <summary>
-        /// Webhook collection - Introduction
+        /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.
         /// </summary>
         public ActorsWebhookCollectionClient ActorsWebhookCollection => new ActorsWebhookCollectionClient(HttpClient, authorizations: Authorizations)
         {
@@ -501,7 +535,13 @@ namespace Apify
         };
 
         /// <summary>
-        /// Logs - Introduction
+        /// Logs - Introduction. The API endpoints described in this section are used the download the logs<br/>
+        /// generated by Actor builds and runs. Note that only the trailing 5M characters<br/>
+        /// of the log are stored, the rest is discarded.<br/>
+        /// :::note<br/>
+        /// Note that the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using a hard-to-guess ID of the Actor build or run.<br/>
+        /// :::.
         /// </summary>
         public LogsClient Logs => new LogsClient(HttpClient, authorizations: Authorizations)
         {
@@ -510,7 +550,15 @@ namespace Apify
         };
 
         /// <summary>
-        /// Schedules - Introduction
+        /// Schedules - Introduction. This section describes API endpoints for managing schedules.<br/>
+        /// Schedules are used to automatically start your Actors at certain times. Each schedule<br/>
+        /// can be associated with a number of Actors and Actor tasks. It is also possible<br/>
+        /// to override the settings of each Actor (task) similarly to when invoking the Actor<br/>
+        /// (task) using the API.<br/>
+        /// For more information, see [Schedules documentation](https://docs.apify.com/platform/schedules).<br/>
+        /// Each schedule is assigned actions for it to perform. Actions can be of two types<br/>
+        /// - `RUN_ACTOR` and `RUN_ACTOR_TASK`.<br/>
+        /// For details, see the documentation of the [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.
         /// </summary>
         public SchedulesClient Schedules => new SchedulesClient(HttpClient, authorizations: Authorizations)
         {
@@ -519,7 +567,17 @@ namespace Apify
         };
 
         /// <summary>
-        /// Datasets - Introduction
+        /// Datasets - Introduction. This section describes API endpoints to manage Datasets.<br/>
+        /// Dataset is a storage for structured data, where each record stored has the same attributes,<br/>
+        /// such as online store products or real estate offers. You can imagine it as a table,<br/>
+        /// where each object is a row and its attributes are columns. Dataset is an append-only<br/>
+        /// storage - you can only add new records to it but you cannot modify or remove existing<br/>
+        /// records. Typically it is used to store crawling results.<br/>
+        /// For more information, see the [Datasets documentation](https://docs.apify.com/platform/storage/dataset).<br/>
+        /// :::note<br/>
+        /// Some of the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using the hard-to-guess ID of the dataset.<br/>
+        /// :::.
         /// </summary>
         public StorageDatasetsClient StorageDatasets => new StorageDatasetsClient(HttpClient, authorizations: Authorizations)
         {
@@ -528,7 +586,16 @@ namespace Apify
         };
 
         /// <summary>
-        /// Key-value stores - Introduction
+        /// Key-value stores - Introduction. This section describes API endpoints to manage Key-value stores.<br/>
+        /// Key-value store is a simple storage for saving and reading data records or files.<br/>
+        /// Each data record is represented by a unique key and associated with a MIME content type.<br/>
+        /// Key-value stores are ideal for saving screenshots, Actor inputs and outputs, web pages,<br/>
+        /// PDFs or to persist the state of crawlers.<br/>
+        /// For more information, see the [Key-value store documentation](https://docs.apify.com/platform/storage/key-value-store).<br/>
+        /// :::note<br/>
+        /// Some of the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using a hard-to-guess ID of the key-value store.<br/>
+        /// :::.
         /// </summary>
         public StorageKeyValueStoresClient StorageKeyValueStores => new StorageKeyValueStoresClient(HttpClient, authorizations: Authorizations)
         {
@@ -537,7 +604,16 @@ namespace Apify
         };
 
         /// <summary>
-        /// Request queues - Introduction
+        /// Request queues - Introduction. This section describes API endpoints to create, manage, and delete request queues.<br/>
+        /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
+        /// used for deep crawling of websites where you<br/>
+        /// start with several URLs and then recursively follow links to other pages.<br/>
+        /// The storage supports both breadth-first and depth-first crawling orders.<br/>
+        /// For more information, see the [Request queue documentation](https://docs.apify.com/platform/storage/request-queue).<br/>
+        /// :::note<br/>
+        /// Some of the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using the hard-to-guess ID of the queue.<br/>
+        /// :::.
         /// </summary>
         public StorageRequestQueuesClient StorageRequestQueues => new StorageRequestQueuesClient(HttpClient, authorizations: Authorizations)
         {
@@ -546,7 +622,16 @@ namespace Apify
         };
 
         /// <summary>
-        /// Requests - Introduction
+        /// Requests - Introduction. This section describes API endpoints to create, manage, and delete requests within request queues.<br/>
+        /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
+        /// used for deep crawling of websites where you<br/>
+        /// start with several URLs and then recursively follow links to other pages.<br/>
+        /// The storage supports both breadth-first and depth-first crawling orders.<br/>
+        /// For more information, see the [Request queue documentation](https://docs.apify.com/platform/storage/request-queue).<br/>
+        /// :::note<br/>
+        /// Some of the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using the hard-to-guess ID of the queue.<br/>
+        /// :::.
         /// </summary>
         public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests => new StorageRequestQueuesRequestsClient(HttpClient, authorizations: Authorizations)
         {
@@ -555,7 +640,16 @@ namespace Apify
         };
 
         /// <summary>
-        /// Requests locks - Introduction
+        /// Requests locks - Introduction. This section describes API endpoints to create, manage, and delete request locks within request queues.<br/>
+        /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
+        /// used for deep crawling of websites where you<br/>
+        /// start with several URLs and then recursively follow links to other pages.<br/>
+        /// The storage supports both breadth-first and depth-first crawling orders.<br/>
+        /// For more information, see the [Request queue documentation](https://docs.apify.com/platform/storage/request-queue).<br/>
+        /// :::note<br/>
+        /// Some of the endpoints do not require the authentication token, the calls<br/>
+        /// are authenticated using the hard-to-guess ID of the queue.<br/>
+        /// :::.
         /// </summary>
         public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks => new StorageRequestQueuesRequestsLocksClient(HttpClient, authorizations: Authorizations)
         {
@@ -564,7 +658,12 @@ namespace Apify
         };
 
         /// <summary>
-        /// Store - Introduction
+        /// Store - Introduction. [Apify Store](https://apify.com/store) is home to thousands of public Actors available<br/>
+        /// to the Apify community.<br/>
+        /// The API endpoints described in this section are used to retrieve these Actors.<br/>
+        /// :::note<br/>
+        /// These endpoints do not require the authentication token.<br/>
+        /// :::.
         /// </summary>
         public StoreClient Store => new StoreClient(HttpClient, authorizations: Authorizations)
         {
@@ -573,7 +672,16 @@ namespace Apify
         };
 
         /// <summary>
-        /// Tools - Introduction
+        /// Tools - Introduction. The API endpoints described in this section provide utility tools for encoding,<br/>
+        /// signing, and verifying data, as well as inspecting HTTP request details.<br/>
+        /// - **Browser info** (`/v2/browser-info`) - Returns details about the incoming HTTP request,<br/>
+        ///   including the client IP address, country code, and headers. Accepts any HTTP method<br/>
+        ///   (GET, POST, PUT, DELETE) so you can use it to test proxy behavior and verify that<br/>
+        ///   client IP addresses are anonymized correctly.<br/>
+        /// - **Encode and sign** (`/v2/tools/encode-and-sign`) - Encodes and signs a JSON object,<br/>
+        ///   tying it to the authenticated user's identity.<br/>
+        /// - **Decode and verify** (`/v2/tools/decode-and-verify`) - Decodes and verifies a value<br/>
+        ///   previously created by the encode-and-sign endpoint.
         /// </summary>
         public ToolsClient Tools => new ToolsClient(HttpClient, authorizations: Authorizations)
         {
@@ -582,7 +690,7 @@ namespace Apify
         };
 
         /// <summary>
-        /// Users - Introduction
+        /// Users - Introduction. The API endpoints described in this section return information about user accounts.
         /// </summary>
         public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations)
         {
@@ -591,7 +699,7 @@ namespace Apify
         };
 
         /// <summary>
-        /// Webhook dispatches - Introduction
+        /// Webhook dispatches - Introduction. This section describes API endpoints to get webhook dispatches.
         /// </summary>
         public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches => new WebhooksWebhookDispatchesClient(HttpClient, authorizations: Authorizations)
         {
@@ -600,7 +708,13 @@ namespace Apify
         };
 
         /// <summary>
-        /// Webhooks - Introduction
+        /// Webhooks - Introduction. This section describes API endpoints to manage webhooks.<br/>
+        /// Webhooks provide an easy and reliable way to configure the Apify platform<br/>
+        /// to carry out an action (e.g. a HTTP request to another service) when a certain<br/>
+        /// system event occurs.<br/>
+        /// For example, you can use webhooks to start another Actor when an Actor run finishes<br/>
+        /// or fails.<br/>
+        /// For more information see [Webhooks documentation](https://docs.apify.com/platform/integrations/webhooks).
         /// </summary>
         public WebhooksWebhooksClient WebhooksWebhooks => new WebhooksWebhooksClient(HttpClient, authorizations: Authorizations)
         {

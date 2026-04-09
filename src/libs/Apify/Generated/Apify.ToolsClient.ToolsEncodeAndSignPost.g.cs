@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class ToolsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_ToolsEncodeAndSignPostSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ToolsEncodeAndSignPostSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_ToolsEncodeAndSignPostSecurityRequirement0,
+            };
         partial void PrepareToolsEncodeAndSignPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             object request);
@@ -45,9 +64,15 @@ namespace Apify
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ToolsEncodeAndSignPostSecurityRequirements,
+                operationName: "ToolsEncodeAndSignPostAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: "/v2/tools/encode-and-sign",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -57,7 +82,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class StorageRequestQueuesRequestsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_RequestQueueRequestsGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_RequestQueueRequestsGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_RequestQueueRequestsGetSecurityRequirement0,
+            };
         partial void PrepareRequestQueueRequestsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string queueId,
@@ -76,6 +95,12 @@ namespace Apify
                 cursor: ref cursor,
                 filter: ref filter);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_RequestQueueRequestsGetSecurityRequirements,
+                operationName: "RequestQueueRequestsGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/request-queues/{queueId}/requests",
                 baseUri: HttpClient.BaseAddress); 
@@ -85,7 +110,7 @@ namespace Apify
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("cursor", cursor)
                 .AddOptionalParameter("filter", filter?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -95,7 +120,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

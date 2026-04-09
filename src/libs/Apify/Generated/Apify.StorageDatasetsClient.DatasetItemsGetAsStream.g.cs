@@ -7,7 +7,7 @@ namespace Apify
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_DatasetItemsHeadSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_DatasetItemsGetAsStreamSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -20,11 +20,11 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_DatasetItemsHeadSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_DatasetItemsGetAsStreamSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_DatasetItemsHeadSecurityRequirement0,
+            {                s_DatasetItemsGetAsStreamSecurityRequirement0,
             };
-        partial void PrepareDatasetItemsHeadArguments(
+        partial void PrepareDatasetItemsGetAsStreamArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string datasetId,
             ref string? format,
@@ -48,7 +48,7 @@ namespace Apify
             ref string? view,
             ref bool? skipFailedPages,
             ref string? signature);
-        partial void PrepareDatasetItemsHeadRequest(
+        partial void PrepareDatasetItemsGetAsStreamRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string datasetId,
@@ -73,14 +73,136 @@ namespace Apify
             string? view,
             bool? skipFailedPages,
             string? signature);
-        partial void ProcessDatasetItemsHeadResponse(
+        partial void ProcessDatasetItemsGetAsStreamResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Get dataset items headers<br/>
-        /// Returns only the HTTP headers for the dataset items endpoint, without the response body.<br/>
-        /// This is useful to check pagination metadata or verify access without downloading the full dataset.
+        /// Get dataset items<br/>
+        /// Returns data stored in the dataset in a desired format.<br/>
+        /// ### Response format<br/>
+        /// The format of the response depends on &lt;code&gt;format&lt;/code&gt; query parameter.<br/>
+        /// The &lt;code&gt;format&lt;/code&gt; parameter can have one of the following values:<br/>
+        /// &lt;code&gt;json&lt;/code&gt;, &lt;code&gt;jsonl&lt;/code&gt;, &lt;code&gt;xml&lt;/code&gt;, &lt;code&gt;html&lt;/code&gt;,<br/>
+        /// &lt;code&gt;csv&lt;/code&gt;, &lt;code&gt;xlsx&lt;/code&gt; and &lt;code&gt;rss&lt;/code&gt;.<br/>
+        /// The following table describes how each format is treated.<br/>
+        /// &lt;table&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;th&gt;Format&lt;/th&gt;<br/>
+        ///     &lt;th&gt;Items&lt;/th&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;json&lt;/code&gt;&lt;/td&gt;<br/>
+        ///     &lt;td rowspan="3"&gt;The response is a JSON, JSONL or XML array of raw item objects.&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;jsonl&lt;/code&gt;&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;xml&lt;/code&gt;&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;html&lt;/code&gt;&lt;/td&gt;<br/>
+        ///     &lt;td rowspan="3"&gt;The response is a HTML, CSV or XLSX table, where columns correspond to the<br/>
+        ///     properties of the item and rows correspond to each dataset item.&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;csv&lt;/code&gt;&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;xlsx&lt;/code&gt;&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        ///   &lt;tr&gt;<br/>
+        ///     &lt;td&gt;&lt;code&gt;rss&lt;/code&gt;&lt;/td&gt;<br/>
+        ///     &lt;td colspan="2"&gt;The response is a RSS file. Each item is displayed as child elements of one<br/>
+        ///     &lt;code&gt;&amp;lt;item&amp;gt;&lt;/code&gt;.&lt;/td&gt;<br/>
+        ///   &lt;/tr&gt;<br/>
+        /// &lt;/table&gt;<br/>
+        /// Note that CSV, XLSX and HTML tables are limited to 2000 columns and the column names cannot be longer than 200 characters.<br/>
+        /// JSON, XML and RSS formats do not have such restrictions.<br/>
+        /// ### Hidden fields<br/>
+        /// The top-level fields starting with the `#` character are considered hidden.<br/>
+        /// These are useful to store debugging information and can be omitted from the output by providing the `skipHidden=1` or `clean=1` query parameters.<br/>
+        /// For example, if you store the following object to the dataset:<br/>
+        /// ```<br/>
+        /// {<br/>
+        ///     productName: "iPhone Xs",<br/>
+        ///     description: "Welcome to the big screens."<br/>
+        ///     #debug: {<br/>
+        ///         url: "https://www.apple.com/lae/iphone-xs/",<br/>
+        ///         crawledAt: "2019-01-21T16:06:03.683Z"<br/>
+        ///     }<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// The `#debug` field will be considered as hidden and can be omitted from the<br/>
+        /// results. This is useful to<br/>
+        /// provide nice cleaned data to end users, while keeping debugging info<br/>
+        /// available if needed. The Dataset object<br/>
+        /// returned by the API contains the number of such clean items in the`dataset.cleanItemCount` property.<br/>
+        /// ### XML format extension<br/>
+        /// When exporting results to XML or RSS formats, the names of object properties become XML tags and the corresponding values become tag's children. For example, the following JavaScript object:<br/>
+        /// ```<br/>
+        /// {<br/>
+        ///     name: "Paul Newman",<br/>
+        ///     address: [<br/>
+        ///         { type: "home", street: "21st", city: "Chicago" },<br/>
+        ///         { type: "office", street: null, city: null }<br/>
+        ///     ]<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// will be transformed to the following XML snippet:<br/>
+        /// ```<br/>
+        /// &lt;name&gt;Paul Newman&lt;/name&gt;<br/>
+        /// &lt;address&gt;<br/>
+        ///   &lt;type&gt;home&lt;/type&gt;<br/>
+        ///   &lt;street&gt;21st&lt;/street&gt;<br/>
+        ///   &lt;city&gt;Chicago&lt;/city&gt;<br/>
+        /// &lt;/address&gt;<br/>
+        /// &lt;address&gt;<br/>
+        ///   &lt;type&gt;office&lt;/type&gt;<br/>
+        ///   &lt;street/&gt;<br/>
+        ///   &lt;city/&gt;<br/>
+        /// &lt;/address&gt;<br/>
+        /// ```<br/>
+        /// If the JavaScript object contains a property named `@` then its sub-properties are exported as attributes of the parent XML<br/>
+        /// element.<br/>
+        /// If the parent XML element does not have any child elements then its value is taken from a JavaScript object property named `#`.<br/>
+        /// For example, the following JavaScript object:<br/>
+        /// ```<br/>
+        /// {<br/>
+        ///   "address": [{<br/>
+        ///     "@": {<br/>
+        ///       "type": "home"<br/>
+        ///     },<br/>
+        ///     "street": "21st",<br/>
+        ///     "city": "Chicago"<br/>
+        ///   },<br/>
+        ///   {<br/>
+        ///     "@": {<br/>
+        ///       "type": "office"<br/>
+        ///     },<br/>
+        ///     "#": 'unknown'<br/>
+        ///   }]<br/>
+        /// }<br/>
+        /// ```<br/>
+        /// will be transformed to the following XML snippet:<br/>
+        /// ```<br/>
+        /// &lt;address type="home"&gt;<br/>
+        ///   &lt;street&gt;21st&lt;/street&gt;<br/>
+        ///   &lt;city&gt;Chicago&lt;/city&gt;<br/>
+        /// &lt;/address&gt;<br/>
+        /// &lt;address type="office"&gt;unknown&lt;/address&gt;<br/>
+        /// ```<br/>
+        /// This feature is also useful to customize your RSS feeds generated for various websites.<br/>
+        /// By default the whole result is wrapped in a `&lt;items&gt;` element and each page object is wrapped in a `&lt;item&gt;` element.<br/>
+        /// You can change this using &lt;code&gt;xmlRoot&lt;/code&gt; and &lt;code&gt;xmlRow&lt;/code&gt; url parameters.<br/>
+        /// ### Pagination<br/>
+        /// The generated response supports [pagination](#/introduction/pagination).<br/>
+        /// The pagination is always performed with the granularity of a single item, regardless whether &lt;code&gt;unwind&lt;/code&gt; parameter was provided.<br/>
+        /// By default, the **Items** in the response are sorted by the time they were stored to the database, therefore you can use pagination to incrementally fetch the items as they are being added.<br/>
+        /// No limit exists to how many items can be returned in one response.<br/>
+        /// If you specify `desc=1` query parameter, the results are returned in the reverse order than they were stored (i.e. from newest to oldest items).<br/>
+        /// Note that only the order of **Items** is reversed, but not the order of the `unwind` array elements.
         /// </summary>
         /// <param name="datasetId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -148,7 +270,7 @@ namespace Apify
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task DatasetItemsHeadAsync(
+        public async global::System.Collections.Generic.IAsyncEnumerable<global::System.Collections.Generic.IList<object>> DatasetItemsGetAsStreamAsync(
             string datasetId,
             string? format = default,
             bool? clean = default,
@@ -171,11 +293,11 @@ namespace Apify
             string? view = default,
             bool? skipFailedPages = default,
             string? signature = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
+            [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareDatasetItemsHeadArguments(
+            PrepareDatasetItemsGetAsStreamArguments(
                 httpClient: HttpClient,
                 datasetId: ref datasetId,
                 format: ref format,
@@ -203,8 +325,8 @@ namespace Apify
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_DatasetItemsHeadSecurityRequirements,
-                operationName: "DatasetItemsHeadAsync");
+                securityRequirements: s_DatasetItemsGetAsStreamSecurityRequirements,
+                operationName: "DatasetItemsGetAsStreamAsync");
 
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/datasets/{datasetId}/items",
@@ -234,7 +356,7 @@ namespace Apify
                 ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Head,
+                method: global::System.Net.Http.HttpMethod.Get,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -260,7 +382,7 @@ namespace Apify
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareDatasetItemsHeadRequest(
+            PrepareDatasetItemsGetAsStreamRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 datasetId: datasetId,
@@ -288,47 +410,41 @@ namespace Apify
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
 
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessDatasetItemsHeadResponse(
+            ProcessDatasetItemsGetAsStreamResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
-            // Bad request - invalid input parameters or request body.
-            if ((int)__response.StatusCode == 400)
+
+            try
             {
-                string? __content_400 = null;
-                global::System.Exception? __exception_400 = null;
-                global::Apify.ErrorResponse? __value_400 = null;
+                __response.EnsureSuccessStatusCode();
+            }
+            catch (global::System.Net.Http.HttpRequestException __ex)
+            {
+                string? __content = null;
                 try
                 {
-                    if (ReadResponseAsString)
-                    {
-                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
-                    }
-                    else
-                    {
-                        __content_400 = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
-                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
-                    }
+                    __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
                 }
-                catch (global::System.Exception __ex)
+                catch (global::System.Exception)
                 {
-                    __exception_400 = __ex;
                 }
 
-                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
-                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __exception_400,
+                throw new global::Apify.ApiException(
+                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __ex,
                     statusCode: __response.StatusCode)
                 {
-                    ResponseBody = __content_400,
-                    ResponseObject = __value_400,
+                    ResponseBody = __content,
                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                         __response.Headers,
                         h => h.Key,
@@ -336,72 +452,35 @@ namespace Apify
                 };
             }
 
-            if (ReadResponseAsString)
-            {
-                var __content = await __response.Content.ReadAsStringAsync(
+            using var __stream = await __response.Content.ReadAsStreamAsync(
 #if NET5_0_OR_GREATER
-                    cancellationToken
+                cancellationToken
 #endif
-                ).ConfigureAwait(false);
+            ).ConfigureAwait(false);
 
-                ProcessResponseContent(
-                    client: HttpClient,
-                    response: __response,
-                    content: ref __content);
+            using var __reader = new global::System.IO.StreamReader(__stream);
 
-                try
-                {
-                    __response.EnsureSuccessStatusCode();
-
-                }
-                catch (global::System.Exception __ex)
-                {
-                    throw new global::Apify.ApiException(
-                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                        innerException: __ex,
-                        statusCode: __response.StatusCode)
-                    {
-                        ResponseBody = __content,
-                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                            __response.Headers,
-                            h => h.Key,
-                            h => h.Value),
-                    };
-                }
-            }
-            else
+            while (!__reader.EndOfStream && !cancellationToken.IsCancellationRequested)
             {
-                try
+                var __content = await __reader.ReadLineAsync().ConfigureAwait(false) ?? string.Empty;
+                if (global::System.String.IsNullOrWhiteSpace(__content))
                 {
-                    __response.EnsureSuccessStatusCode();
+                    continue;
                 }
-                catch (global::System.Exception __ex)
-                {
-                    string? __content = null;
-                    try
-                    {
-                        __content = await __response.Content.ReadAsStringAsync(
-#if NET5_0_OR_GREATER
-                            cancellationToken
-#endif
-                        ).ConfigureAwait(false);
-                    }
-                    catch (global::System.Exception)
-                    {
-                    }
 
-                    throw new global::Apify.ApiException(
-                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                        innerException: __ex,
-                        statusCode: __response.StatusCode)
-                    {
-                        ResponseBody = __content,
-                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                            __response.Headers,
-                            h => h.Key,
-                            h => h.Value),
-                    };
-                }
+                var __streamedResponse = (global::System.Collections.Generic.IList<object>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext) ??
+                                       throw new global::Apify.ApiException(
+                                           message: $"Response deserialization failed for \"{__content}\" ",
+                                           statusCode: __response.StatusCode)
+                                       {
+                                           ResponseBody = __content,
+                                           ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                               __response.Headers,
+                                               h => h.Key,
+                                               h => h.Value),
+                                       };
+
+                yield return __streamedResponse;
             }
         }
     }

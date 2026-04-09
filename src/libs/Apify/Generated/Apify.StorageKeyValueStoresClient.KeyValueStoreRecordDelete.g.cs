@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class StorageKeyValueStoresClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_KeyValueStoreRecordDeleteSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_KeyValueStoreRecordDeleteSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_KeyValueStoreRecordDeleteSecurityRequirement0,
+            };
         partial void PrepareKeyValueStoreRecordDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string storeId,
@@ -42,9 +61,15 @@ namespace Apify
                 storeId: ref storeId,
                 recordKey: ref recordKey);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_KeyValueStoreRecordDeleteSecurityRequirements,
+                operationName: "KeyValueStoreRecordDeleteAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/key-value-stores/{storeId}/records/{recordKey}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -54,7 +79,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -4,7 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// Tools - Introduction<br/>
+    /// Tools - Introduction. The API endpoints described in this section provide utility tools for encoding,<br/>
+    /// signing, and verifying data, as well as inspecting HTTP request details.<br/>
+    /// - **Browser info** (`/v2/browser-info`) - Returns details about the incoming HTTP request,<br/>
+    ///   including the client IP address, country code, and headers. Accepts any HTTP method<br/>
+    ///   (GET, POST, PUT, DELETE) so you can use it to test proxy behavior and verify that<br/>
+    ///   client IP addresses are anonymized correctly.<br/>
+    /// - **Encode and sign** (`/v2/tools/encode-and-sign`) - Encodes and signs a JSON object,<br/>
+    ///   tying it to the authenticated user's identity.<br/>
+    /// - **Decode and verify** (`/v2/tools/decode-and-verify`) - Decodes and verifies a value<br/>
+    ///   previously created by the encode-and-sign endpoint.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

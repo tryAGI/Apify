@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class StorageDatasetsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_DatasetsGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_DatasetsGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_DatasetsGetSecurityRequirement0,
+            };
         partial void PrepareDatasetsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref double? offset,
@@ -73,6 +92,12 @@ namespace Apify
                 unnamed: ref unnamed,
                 ownership: ref ownership);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DatasetsGetSecurityRequirements,
+                operationName: "DatasetsGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: "/v2/datasets",
                 baseUri: HttpClient.BaseAddress); 
@@ -82,7 +107,7 @@ namespace Apify
                 .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("unnamed", unnamed?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("ownership", ownership?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -92,7 +117,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

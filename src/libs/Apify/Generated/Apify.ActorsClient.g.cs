@@ -4,7 +4,10 @@
 namespace Apify
 {
     /// <summary>
-    /// Actors - Introduction<br/>
+    /// Actors - Introduction. The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).<br/>
+    /// For API endpoints that require the `actorId` parameter to identify an Actor, you can provide either:<br/>
+    /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
+    /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -13,7 +16,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.apify.com";
+        public const string DefaultBaseUrl = "https://api.apify.com/";
 
         private bool _disposeHttpClient = true;
 

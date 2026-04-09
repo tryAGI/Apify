@@ -4,7 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// Request queues - Introduction<br/>
+    /// Request queues - Introduction. This section describes API endpoints to create, manage, and delete request queues.<br/>
+    /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
+    /// used for deep crawling of websites where you<br/>
+    /// start with several URLs and then recursively follow links to other pages.<br/>
+    /// The storage supports both breadth-first and depth-first crawling orders.<br/>
+    /// For more information, see the [Request queue documentation](https://docs.apify.com/platform/storage/request-queue).<br/>
+    /// :::note<br/>
+    /// Some of the endpoints do not require the authentication token, the calls<br/>
+    /// are authenticated using the hard-to-guess ID of the queue.<br/>
+    /// :::.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -13,7 +22,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.apify.com";
+        public const string DefaultBaseUrl = "https://api.apify.com/";
 
         private bool _disposeHttpClient = true;
 

@@ -6,6 +6,7 @@ namespace Apify
     public sealed partial class ApifyClient
     {
         /// <inheritdoc cref="ApifyClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Apify.EndPointAuthorization}?, bool)"/>
+
         public ApifyClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

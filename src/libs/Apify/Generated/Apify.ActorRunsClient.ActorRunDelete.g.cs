@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class ActorRunsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunDeleteSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunDeleteSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_ActorRunDeleteSecurityRequirement0,
+            };
         partial void PrepareActorRunDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string runId);
@@ -36,9 +55,15 @@ namespace Apify
                 httpClient: HttpClient,
                 runId: ref runId);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ActorRunDeleteSecurityRequirements,
+                operationName: "ActorRunDeleteAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/actor-runs/{runId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -48,7 +73,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

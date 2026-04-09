@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Webhook collection - Introduction<br/>
+    /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
@@ -13,7 +13,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.apify.com";
+        public const string DefaultBaseUrl = "https://api.apify.com/";
 
         private bool _disposeHttpClient = true;
 
