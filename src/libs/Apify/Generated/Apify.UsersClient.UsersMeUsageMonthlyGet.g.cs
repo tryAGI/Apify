@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class UsersClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_UsersMeUsageMonthlyGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_UsersMeUsageMonthlyGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_UsersMeUsageMonthlyGetSecurityRequirement0,
+            };
         partial void PrepareUsersMeUsageMonthlyGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? date);
@@ -45,12 +64,18 @@ namespace Apify
                 httpClient: HttpClient,
                 date: ref date);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_UsersMeUsageMonthlyGetSecurityRequirements,
+                operationName: "UsersMeUsageMonthlyGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: "/v2/users/me/usage/monthly",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("date", date) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -60,7 +85,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

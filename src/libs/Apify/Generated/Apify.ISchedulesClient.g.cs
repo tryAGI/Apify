@@ -4,7 +4,15 @@
 namespace Apify
 {
     /// <summary>
-    /// Schedules - Introduction<br/>
+    /// Schedules - Introduction. This section describes API endpoints for managing schedules.<br/>
+    /// Schedules are used to automatically start your Actors at certain times. Each schedule<br/>
+    /// can be associated with a number of Actors and Actor tasks. It is also possible<br/>
+    /// to override the settings of each Actor (task) similarly to when invoking the Actor<br/>
+    /// (task) using the API.<br/>
+    /// For more information, see [Schedules documentation](https://docs.apify.com/platform/schedules).<br/>
+    /// Each schedule is assigned actions for it to perform. Actions can be of two types<br/>
+    /// - `RUN_ACTOR` and `RUN_ACTOR_TASK`.<br/>
+    /// For details, see the documentation of the [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

@@ -4,7 +4,9 @@
 namespace Apify
 {
     /// <summary>
-    /// Actor runs - Introduction<br/>
+    /// Actor runs - Introduction. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
+    /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
+    /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

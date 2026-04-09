@@ -4,7 +4,13 @@
 namespace Apify
 {
     /// <summary>
-    /// Webhooks - Introduction<br/>
+    /// Webhooks - Introduction. This section describes API endpoints to manage webhooks.<br/>
+    /// Webhooks provide an easy and reliable way to configure the Apify platform<br/>
+    /// to carry out an action (e.g. a HTTP request to another service) when a certain<br/>
+    /// system event occurs.<br/>
+    /// For example, you can use webhooks to start another Actor when an Actor run finishes<br/>
+    /// or fails.<br/>
+    /// For more information see [Webhooks documentation](https://docs.apify.com/platform/integrations/webhooks).<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

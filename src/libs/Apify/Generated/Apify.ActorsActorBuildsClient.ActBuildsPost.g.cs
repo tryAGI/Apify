@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class ActorsActorBuildsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActBuildsPostSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActBuildsPostSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_ActBuildsPostSecurityRequirement0,
+            };
         partial void PrepareActBuildsPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
@@ -124,6 +143,12 @@ namespace Apify
                 tag: ref tag,
                 waitForFinish: ref waitForFinish);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ActBuildsPostSecurityRequirements,
+                operationName: "ActBuildsPostAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/acts/{actorId}/builds",
                 baseUri: HttpClient.BaseAddress); 
@@ -133,7 +158,7 @@ namespace Apify
                 .AddOptionalParameter("betaPackages", betaPackages?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("tag", tag)
                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -143,7 +168,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

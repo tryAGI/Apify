@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class WebhooksWebhooksClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_WebhooksPostSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_WebhooksPostSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_WebhooksPostSecurityRequirement0,
+            };
         partial void PrepareWebhooksPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Apify.WebhookCreate request);
@@ -149,9 +168,15 @@ namespace Apify
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_WebhooksPostSecurityRequirements,
+                operationName: "WebhooksPostAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: "/v2/webhooks",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -161,7 +186,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

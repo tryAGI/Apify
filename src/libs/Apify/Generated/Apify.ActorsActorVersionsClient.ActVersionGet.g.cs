@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class ActorsActorVersionsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActVersionGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActVersionGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_ActVersionGetSecurityRequirement0,
+            };
         partial void PrepareActVersionGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
@@ -47,9 +66,15 @@ namespace Apify
                 actorId: ref actorId,
                 versionNumber: ref versionNumber);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ActVersionGetSecurityRequirements,
+                operationName: "ActVersionGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/acts/{actorId}/versions/{versionNumber}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -59,7 +84,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

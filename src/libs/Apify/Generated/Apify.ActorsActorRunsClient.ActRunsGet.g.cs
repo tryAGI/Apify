@@ -5,6 +5,25 @@ namespace Apify
 {
     public partial class ActorsActorRunsClient
     {
+
+
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActRunsGetSecurityRequirement0 =
+            new global::Apify.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
+                {                    new global::Apify.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActRunsGetSecurityRequirements =
+            new global::Apify.EndPointSecurityRequirement[]
+            {                s_ActRunsGetSecurityRequirement0,
+            };
         partial void PrepareActRunsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
@@ -90,6 +109,12 @@ namespace Apify
                 startedAfter: ref startedAfter,
                 startedBefore: ref startedBefore);
 
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ActRunsGetSecurityRequirements,
+                operationName: "ActRunsGetAsync");
+
             var __pathBuilder = new global::Apify.PathBuilder(
                 path: $"/v2/acts/{actorId}/runs",
                 baseUri: HttpClient.BaseAddress); 
@@ -100,7 +125,7 @@ namespace Apify
                 .AddOptionalParameter("status", status)
                 .AddOptionalParameter("startedAfter", startedAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("startedBefore", startedBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -110,7 +135,7 @@ namespace Apify
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

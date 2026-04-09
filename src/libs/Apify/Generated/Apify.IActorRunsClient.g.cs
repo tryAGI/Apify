@@ -4,7 +4,10 @@
 namespace Apify
 {
     /// <summary>
-    /// Actor runs - Introduction<br/>
+    /// Actor runs - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
+    /// If any returned run object contains usage in dollars, your effective unit pricing at the time of query<br/>
+    /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
+    /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
