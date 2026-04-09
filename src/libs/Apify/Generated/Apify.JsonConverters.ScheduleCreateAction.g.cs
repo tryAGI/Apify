@@ -15,97 +15,29 @@ namespace Apify.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
-            var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+
+            var readerCopy = reader;
+            var discriminatorTypeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionDiscriminator), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionDiscriminator> ??
+                            throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Apify.ScheduleCreateActionDiscriminator)}");
+            var discriminator = global::System.Text.Json.JsonSerializer.Deserialize(ref readerCopy, discriminatorTypeInfo);
+
+            global::Apify.ScheduleCreateActionRunActor? runActor = default;
+            if (discriminator?.Type == global::Apify.ScheduleCreateActionDiscriminatorType.RunActor)
             {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionRunActor> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Apify.ScheduleCreateActionRunActor)}");
+                runActor = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
-
-            var __score0 = 0;
-            if (__jsonProps.Contains("actorId")) __score0++;
-            if (__jsonProps.Contains("runInput")) __score0++;
-            if (__jsonProps.Contains("runOptions")) __score0++;
-            if (__jsonProps.Contains("type")) __score0++;
-            var __score1 = 0;
-            if (__jsonProps.Contains("actorTaskId")) __score1++;
-            if (__jsonProps.Contains("input")) __score1++;
-            if (__jsonProps.Contains("type")) __score1++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
-
-            global::Apify.ScheduleCreateActionScheduleCreateActionRunActor? runActor = default;
-            global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask? runActorTask = default;
-            if (__bestIndex >= 0)
+            global::Apify.ScheduleCreateActionRunActorTask? runActorTask = default;
+            if (discriminator?.Type == global::Apify.ScheduleCreateActionDiscriminatorType.RunActorTask)
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActor> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor).Name}");
-                        runActor = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask).Name}");
-                        runActorTask = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-            }
-
-            if (runActor == null && runActorTask == null)
-            {
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActor> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor).Name}");
-                    runActor = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-
-                try
-                {
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask).Name}");
-                    runActorTask = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionRunActorTask> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {nameof(global::Apify.ScheduleCreateActionRunActorTask)}");
+                runActorTask = global::System.Text.Json.JsonSerializer.Deserialize(ref reader, typeInfo);
             }
 
             var __value = new global::Apify.ScheduleCreateAction(
+                discriminator?.Type,
                 runActor,
 
                 runActorTask
@@ -125,14 +57,14 @@ namespace Apify.JsonConverters
 
             if (value.IsRunActor)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActor?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActor).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionRunActor), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionRunActor?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionRunActor).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActor!, typeInfo);
             }
             else if (value.IsRunActorTask)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionScheduleCreateActionRunActorTask).Name}");
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleCreateActionRunActorTask), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleCreateActionRunActorTask?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleCreateActionRunActorTask).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.RunActorTask!, typeInfo);
             }
         }

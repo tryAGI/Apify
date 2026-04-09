@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Example: {"error":{"type":"record-or-token-not-found","message":"Actor was not found or access denied"}}
     /// </summary>
     public sealed partial class RecordOrTokenNotFoundError
     {
@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Apify.RecordOrTokenNotFoundErrorError? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RecordOrTokenNotFoundErrorDetailJsonConverter))]
+        public global::Apify.RecordOrTokenNotFoundErrorDetail? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RecordOrTokenNotFoundError(
-            global::Apify.RecordOrTokenNotFoundErrorError? error)
+            global::Apify.RecordOrTokenNotFoundErrorDetail? error)
         {
             this.Error = error;
         }

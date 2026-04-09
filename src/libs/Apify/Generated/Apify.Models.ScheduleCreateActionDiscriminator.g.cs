@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ScheduleCreateActionDiscriminatorTypeJsonConverter))]
+        public global::Apify.ScheduleCreateActionDiscriminatorType? Type { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ScheduleCreateActionDiscriminator(
-            string? type)
+            global::Apify.ScheduleCreateActionDiscriminatorType? type)
         {
             this.Type = type;
         }

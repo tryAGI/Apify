@@ -1,3 +1,4 @@
+#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -6,51 +7,215 @@ namespace Apify
     /// <summary>
     /// A request that should be deleted.
     /// </summary>
-    public sealed partial class RequestDraftDelete
+    public readonly partial struct RequestDraftDelete : global::System.IEquatable<RequestDraftDelete>
     {
         /// <summary>
-        /// A unique identifier assigned to the request.
+        /// A request that should be deleted, identified by its ID.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
-        /// A unique key used for request de-duplication. Requests with the same unique key are considered identical.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uniqueKey")]
-        public string? UniqueKey { get; set; }
-
-        /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RequestDraftDelete" /> class.
-        /// </summary>
-        /// <param name="id">
-        /// A unique identifier assigned to the request.
-        /// </param>
-        /// <param name="uniqueKey">
-        /// A unique key used for request de-duplication. Requests with the same unique key are considered identical.
-        /// </param>
-#if NET7_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#if NET6_0_OR_GREATER
+        public global::Apify.RequestDraftDeleteById? RequestDraftDeleteById { get; init; }
+#else
+        public global::Apify.RequestDraftDeleteById? RequestDraftDeleteById { get; }
 #endif
-        public RequestDraftDelete(
-            string? id,
-            string? uniqueKey)
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestDraftDeleteById))]
+#endif
+        public bool IsRequestDraftDeleteById => RequestDraftDeleteById != null;
+
+        /// <summary>
+        /// A request that should be deleted, identified by its unique key.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::Apify.RequestDraftDeleteByUniqueKey? RequestDraftDeleteByUniqueKey { get; init; }
+#else
+        public global::Apify.RequestDraftDeleteByUniqueKey? RequestDraftDeleteByUniqueKey { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestDraftDeleteByUniqueKey))]
+#endif
+        public bool IsRequestDraftDeleteByUniqueKey => RequestDraftDeleteByUniqueKey != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteById value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteById?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Apify.RequestDraftDeleteById?(RequestDraftDelete @this) => @this.RequestDraftDeleteById;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RequestDraftDelete(global::Apify.RequestDraftDeleteById? value)
         {
-            this.Id = id;
-            this.UniqueKey = uniqueKey;
+            RequestDraftDeleteById = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RequestDraftDelete" /> class.
+        /// 
         /// </summary>
-        public RequestDraftDelete()
+        public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteByUniqueKey?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::Apify.RequestDraftDeleteByUniqueKey?(RequestDraftDelete @this) => @this.RequestDraftDeleteByUniqueKey;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey? value)
         {
+            RequestDraftDeleteByUniqueKey = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RequestDraftDelete(
+            global::Apify.RequestDraftDeleteById? requestDraftDeleteById,
+            global::Apify.RequestDraftDeleteByUniqueKey? requestDraftDeleteByUniqueKey
+            )
+        {
+            RequestDraftDeleteById = requestDraftDeleteById;
+            RequestDraftDeleteByUniqueKey = requestDraftDeleteByUniqueKey;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object? Object =>
+            RequestDraftDeleteByUniqueKey as object ??
+            RequestDraftDeleteById as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            RequestDraftDeleteById?.ToString() ??
+            RequestDraftDeleteByUniqueKey?.ToString() 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Validate()
+        {
+            return IsRequestDraftDeleteById || IsRequestDraftDeleteByUniqueKey;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::Apify.RequestDraftDeleteById?, TResult>? requestDraftDeleteById = null,
+            global::System.Func<global::Apify.RequestDraftDeleteByUniqueKey?, TResult>? requestDraftDeleteByUniqueKey = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRequestDraftDeleteById && requestDraftDeleteById != null)
+            {
+                return requestDraftDeleteById(RequestDraftDeleteById!);
+            }
+            else if (IsRequestDraftDeleteByUniqueKey && requestDraftDeleteByUniqueKey != null)
+            {
+                return requestDraftDeleteByUniqueKey(RequestDraftDeleteByUniqueKey!);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Match(
+            global::System.Action<global::Apify.RequestDraftDeleteById?>? requestDraftDeleteById = null,
+            global::System.Action<global::Apify.RequestDraftDeleteByUniqueKey?>? requestDraftDeleteByUniqueKey = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRequestDraftDeleteById)
+            {
+                requestDraftDeleteById?.Invoke(RequestDraftDeleteById!);
+            }
+            else if (IsRequestDraftDeleteByUniqueKey)
+            {
+                requestDraftDeleteByUniqueKey?.Invoke(RequestDraftDeleteByUniqueKey!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                RequestDraftDeleteById,
+                typeof(global::Apify.RequestDraftDeleteById),
+                RequestDraftDeleteByUniqueKey,
+                typeof(global::Apify.RequestDraftDeleteByUniqueKey),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Equals(RequestDraftDelete other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestDraftDeleteById?>.Default.Equals(RequestDraftDeleteById, other.RequestDraftDeleteById) &&
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestDraftDeleteByUniqueKey?>.Default.Equals(RequestDraftDeleteByUniqueKey, other.RequestDraftDeleteByUniqueKey) 
+                ;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator ==(RequestDraftDelete obj1, RequestDraftDelete obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<RequestDraftDelete>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator !=(RequestDraftDelete obj1, RequestDraftDelete obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is RequestDraftDelete o && Equals(o);
         }
     }
 }
