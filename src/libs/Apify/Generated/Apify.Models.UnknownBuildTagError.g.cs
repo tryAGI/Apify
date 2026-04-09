@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Example: {"error":{"type":"unknown-build-tag","message":"Build with tag \u0022latest\u0022 was not found. Has the Actor been built already?"}}
     /// </summary>
     public sealed partial class UnknownBuildTagError
     {
@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Apify.UnknownBuildTagErrorError? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.UnknownBuildTagErrorDetailJsonConverter))]
+        public global::Apify.UnknownBuildTagErrorDetail? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UnknownBuildTagError(
-            global::Apify.UnknownBuildTagErrorError? error)
+            global::Apify.UnknownBuildTagErrorDetail? error)
         {
             this.Error = error;
         }

@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public sealed partial class DeletedRequest
+    public readonly partial struct DeletedRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace Apify
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Apify.DeletedRequest),
-                jsonSerializerContext) as global::Apify.DeletedRequest;
+                jsonSerializerContext) as global::Apify.DeletedRequest?;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Apify
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Apify.DeletedRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.DeletedRequest;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.DeletedRequest?;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Example: {"error":{"type":"record-not-found","message":"Environment variable was not found"}}
     /// </summary>
     public sealed partial class EnvironmentVariableNotFoundError
     {
@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Apify.EnvironmentVariableNotFoundErrorError? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RecordNotFoundErrorDetailJsonConverter))]
+        public global::Apify.RecordNotFoundErrorDetail? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvironmentVariableNotFoundError(
-            global::Apify.EnvironmentVariableNotFoundErrorError? error)
+            global::Apify.RecordNotFoundErrorDetail? error)
         {
             this.Error = error;
         }

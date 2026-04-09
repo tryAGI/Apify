@@ -12,10 +12,15 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ScheduleActionDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ScheduleActionScheduleActionRunActor? RunActor { get; init; }
+        public global::Apify.ScheduleActionRunActor? RunActor { get; init; }
 #else
-        public global::Apify.ScheduleActionScheduleActionRunActor? RunActor { get; }
+        public global::Apify.ScheduleActionRunActor? RunActor { get; }
 #endif
 
         /// <summary>
@@ -30,9 +35,9 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ScheduleActionScheduleActionRunActorTask? RunActorTask { get; init; }
+        public global::Apify.ScheduleActionRunActorTask? RunActorTask { get; init; }
 #else
-        public global::Apify.ScheduleActionScheduleActionRunActorTask? RunActorTask { get; }
+        public global::Apify.ScheduleActionRunActorTask? RunActorTask { get; }
 #endif
 
         /// <summary>
@@ -45,17 +50,17 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ScheduleAction(global::Apify.ScheduleActionScheduleActionRunActor value) => new ScheduleAction((global::Apify.ScheduleActionScheduleActionRunActor?)value);
+        public static implicit operator ScheduleAction(global::Apify.ScheduleActionRunActor value) => new ScheduleAction((global::Apify.ScheduleActionRunActor?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ScheduleActionScheduleActionRunActor?(ScheduleAction @this) => @this.RunActor;
+        public static implicit operator global::Apify.ScheduleActionRunActor?(ScheduleAction @this) => @this.RunActor;
 
         /// <summary>
         /// 
         /// </summary>
-        public ScheduleAction(global::Apify.ScheduleActionScheduleActionRunActor? value)
+        public ScheduleAction(global::Apify.ScheduleActionRunActor? value)
         {
             RunActor = value;
         }
@@ -63,17 +68,17 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ScheduleAction(global::Apify.ScheduleActionScheduleActionRunActorTask value) => new ScheduleAction((global::Apify.ScheduleActionScheduleActionRunActorTask?)value);
+        public static implicit operator ScheduleAction(global::Apify.ScheduleActionRunActorTask value) => new ScheduleAction((global::Apify.ScheduleActionRunActorTask?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ScheduleActionScheduleActionRunActorTask?(ScheduleAction @this) => @this.RunActorTask;
+        public static implicit operator global::Apify.ScheduleActionRunActorTask?(ScheduleAction @this) => @this.RunActorTask;
 
         /// <summary>
         /// 
         /// </summary>
-        public ScheduleAction(global::Apify.ScheduleActionScheduleActionRunActorTask? value)
+        public ScheduleAction(global::Apify.ScheduleActionRunActorTask? value)
         {
             RunActorTask = value;
         }
@@ -82,10 +87,13 @@ namespace Apify
         /// 
         /// </summary>
         public ScheduleAction(
-            global::Apify.ScheduleActionScheduleActionRunActor? runActor,
-            global::Apify.ScheduleActionScheduleActionRunActorTask? runActorTask
+            global::Apify.ScheduleActionDiscriminatorType? type,
+            global::Apify.ScheduleActionRunActor? runActor,
+            global::Apify.ScheduleActionRunActorTask? runActorTask
             )
         {
+            Type = type;
+
             RunActor = runActor;
             RunActorTask = runActorTask;
         }
@@ -118,8 +126,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.ScheduleActionScheduleActionRunActor?, TResult>? runActor = null,
-            global::System.Func<global::Apify.ScheduleActionScheduleActionRunActorTask?, TResult>? runActorTask = null,
+            global::System.Func<global::Apify.ScheduleActionRunActor?, TResult>? runActor = null,
+            global::System.Func<global::Apify.ScheduleActionRunActorTask?, TResult>? runActorTask = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +151,8 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.ScheduleActionScheduleActionRunActor?>? runActor = null,
-            global::System.Action<global::Apify.ScheduleActionScheduleActionRunActorTask?>? runActorTask = null,
+            global::System.Action<global::Apify.ScheduleActionRunActor?>? runActor = null,
+            global::System.Action<global::Apify.ScheduleActionRunActorTask?>? runActorTask = null,
             bool validate = true)
         {
             if (validate)
@@ -170,9 +178,9 @@ namespace Apify
             var fields = new object?[]
             {
                 RunActor,
-                typeof(global::Apify.ScheduleActionScheduleActionRunActor),
+                typeof(global::Apify.ScheduleActionRunActor),
                 RunActorTask,
-                typeof(global::Apify.ScheduleActionScheduleActionRunActorTask),
+                typeof(global::Apify.ScheduleActionRunActorTask),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +197,8 @@ namespace Apify
         public bool Equals(ScheduleAction other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionScheduleActionRunActor?>.Default.Equals(RunActor, other.RunActor) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionScheduleActionRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionRunActor?>.Default.Equals(RunActor, other.RunActor) &&
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask) 
                 ;
         }
 

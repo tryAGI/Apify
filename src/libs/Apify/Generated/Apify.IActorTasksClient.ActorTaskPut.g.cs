@@ -54,7 +54,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.ActorTaskPutResponse> ActorTaskPutAsync(
             string actorTaskId,
             string? name = default,
-            global::Apify.OptionalRunOptions? options = default,
+            global::Apify.TaskOptions? options = default,
             global::Apify.TaskInput? input = default,
             string? title = default,
             global::Apify.ActorStandby? actorStandby = default,

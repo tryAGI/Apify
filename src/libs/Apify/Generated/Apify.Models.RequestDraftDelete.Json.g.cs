@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public sealed partial class RequestDraftDelete
+    public readonly partial struct RequestDraftDelete
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace Apify
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Apify.RequestDraftDelete),
-                jsonSerializerContext) as global::Apify.RequestDraftDelete;
+                jsonSerializerContext) as global::Apify.RequestDraftDelete?;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Apify
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Apify.RequestDraftDelete),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.RequestDraftDelete;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.RequestDraftDelete?;
         }
 
         /// <summary>

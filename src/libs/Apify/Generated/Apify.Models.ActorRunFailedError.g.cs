@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Example: {"error":{"type":"run-failed","message":"Actor run did not succeed (run ID: 55uatRrZib4xbZs, status: FAILED)"}}
     /// </summary>
     public sealed partial class ActorRunFailedError
     {
@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Apify.ActorRunFailedErrorError? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RunFailedErrorDetailJsonConverter))]
+        public global::Apify.RunFailedErrorDetail? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ActorRunFailedError(
-            global::Apify.ActorRunFailedErrorError? error)
+            global::Apify.RunFailedErrorDetail? error)
         {
             this.Error = error;
         }

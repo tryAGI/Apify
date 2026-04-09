@@ -12,10 +12,15 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ScheduleActionShortDiscriminatorType? Type { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ScheduleActionShortScheduleActionShortRunActor? RunActor { get; init; }
+        public global::Apify.ScheduleActionShortRunActor? RunActor { get; init; }
 #else
-        public global::Apify.ScheduleActionShortScheduleActionShortRunActor? RunActor { get; }
+        public global::Apify.ScheduleActionShortRunActor? RunActor { get; }
 #endif
 
         /// <summary>
@@ -30,9 +35,9 @@ namespace Apify
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::Apify.ScheduleActionShortScheduleActionShortRunActorTask? RunActorTask { get; init; }
+        public global::Apify.ScheduleActionShortRunActorTask? RunActorTask { get; init; }
 #else
-        public global::Apify.ScheduleActionShortScheduleActionShortRunActorTask? RunActorTask { get; }
+        public global::Apify.ScheduleActionShortRunActorTask? RunActorTask { get; }
 #endif
 
         /// <summary>
@@ -45,17 +50,17 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortScheduleActionShortRunActor value) => new ScheduleActionShort((global::Apify.ScheduleActionShortScheduleActionShortRunActor?)value);
+        public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortRunActor value) => new ScheduleActionShort((global::Apify.ScheduleActionShortRunActor?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ScheduleActionShortScheduleActionShortRunActor?(ScheduleActionShort @this) => @this.RunActor;
+        public static implicit operator global::Apify.ScheduleActionShortRunActor?(ScheduleActionShort @this) => @this.RunActor;
 
         /// <summary>
         /// 
         /// </summary>
-        public ScheduleActionShort(global::Apify.ScheduleActionShortScheduleActionShortRunActor? value)
+        public ScheduleActionShort(global::Apify.ScheduleActionShortRunActor? value)
         {
             RunActor = value;
         }
@@ -63,17 +68,17 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortScheduleActionShortRunActorTask value) => new ScheduleActionShort((global::Apify.ScheduleActionShortScheduleActionShortRunActorTask?)value);
+        public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortRunActorTask value) => new ScheduleActionShort((global::Apify.ScheduleActionShortRunActorTask?)value);
 
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::Apify.ScheduleActionShortScheduleActionShortRunActorTask?(ScheduleActionShort @this) => @this.RunActorTask;
+        public static implicit operator global::Apify.ScheduleActionShortRunActorTask?(ScheduleActionShort @this) => @this.RunActorTask;
 
         /// <summary>
         /// 
         /// </summary>
-        public ScheduleActionShort(global::Apify.ScheduleActionShortScheduleActionShortRunActorTask? value)
+        public ScheduleActionShort(global::Apify.ScheduleActionShortRunActorTask? value)
         {
             RunActorTask = value;
         }
@@ -82,10 +87,13 @@ namespace Apify
         /// 
         /// </summary>
         public ScheduleActionShort(
-            global::Apify.ScheduleActionShortScheduleActionShortRunActor? runActor,
-            global::Apify.ScheduleActionShortScheduleActionShortRunActorTask? runActorTask
+            global::Apify.ScheduleActionShortDiscriminatorType? type,
+            global::Apify.ScheduleActionShortRunActor? runActor,
+            global::Apify.ScheduleActionShortRunActorTask? runActorTask
             )
         {
+            Type = type;
+
             RunActor = runActor;
             RunActorTask = runActorTask;
         }
@@ -118,8 +126,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.ScheduleActionShortScheduleActionShortRunActor?, TResult>? runActor = null,
-            global::System.Func<global::Apify.ScheduleActionShortScheduleActionShortRunActorTask?, TResult>? runActorTask = null,
+            global::System.Func<global::Apify.ScheduleActionShortRunActor?, TResult>? runActor = null,
+            global::System.Func<global::Apify.ScheduleActionShortRunActorTask?, TResult>? runActorTask = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +151,8 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.ScheduleActionShortScheduleActionShortRunActor?>? runActor = null,
-            global::System.Action<global::Apify.ScheduleActionShortScheduleActionShortRunActorTask?>? runActorTask = null,
+            global::System.Action<global::Apify.ScheduleActionShortRunActor?>? runActor = null,
+            global::System.Action<global::Apify.ScheduleActionShortRunActorTask?>? runActorTask = null,
             bool validate = true)
         {
             if (validate)
@@ -170,9 +178,9 @@ namespace Apify
             var fields = new object?[]
             {
                 RunActor,
-                typeof(global::Apify.ScheduleActionShortScheduleActionShortRunActor),
+                typeof(global::Apify.ScheduleActionShortRunActor),
                 RunActorTask,
-                typeof(global::Apify.ScheduleActionShortScheduleActionShortRunActorTask),
+                typeof(global::Apify.ScheduleActionShortRunActorTask),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -189,8 +197,8 @@ namespace Apify
         public bool Equals(ScheduleActionShort other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortScheduleActionShortRunActor?>.Default.Equals(RunActor, other.RunActor) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortScheduleActionShortRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortRunActor?>.Default.Equals(RunActor, other.RunActor) &&
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask) 
                 ;
         }
 

@@ -26,7 +26,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("options")]
-        public global::Apify.OptionalRunOptions? Options { get; set; }
+        public global::Apify.TaskOptions? Options { get; set; }
 
         /// <summary>
         /// 
@@ -67,7 +67,7 @@ namespace Apify
         public CreateTaskRequest(
             string actId,
             string name,
-            global::Apify.OptionalRunOptions? options,
+            global::Apify.TaskOptions? options,
             global::Apify.TaskInput? input,
             string? title,
             global::Apify.ActorStandby? actorStandby)

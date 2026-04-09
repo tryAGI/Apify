@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.EncodeAndSignResponseData Data { get; set; }
+        public required global::Apify.EncodeAndSignData Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EncodeAndSignResponse(
-            global::Apify.EncodeAndSignResponseData data)
+            global::Apify.EncodeAndSignData data)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }

@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Example: {"error":{"type":"run-timeout-exceeded","message":"Actor run exceeded the timeout of 300 seconds for this API endpoint"}}
     /// </summary>
     public sealed partial class ActorRunTimeoutExceededError
     {
@@ -12,7 +12,8 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
-        public global::Apify.ActorRunTimeoutExceededErrorError? Error { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RunTimeoutExceededErrorDetailJsonConverter))]
+        public global::Apify.RunTimeoutExceededErrorDetail? Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ActorRunTimeoutExceededError(
-            global::Apify.ActorRunTimeoutExceededErrorError? error)
+            global::Apify.RunTimeoutExceededErrorDetail? error)
         {
             this.Error = error;
         }
