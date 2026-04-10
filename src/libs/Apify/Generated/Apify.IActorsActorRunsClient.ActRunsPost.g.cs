@@ -54,6 +54,7 @@ namespace Apify
         /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActRunsPostAsync(
@@ -69,6 +70,7 @@ namespace Apify
             double? waitForFinish = default,
             string? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run Actor<br/>
@@ -120,6 +122,7 @@ namespace Apify
         /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>> ActRunsPostAsResponseAsync(
@@ -135,6 +138,7 @@ namespace Apify
             double? waitForFinish = default,
             string? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run Actor<br/>
@@ -185,6 +189,7 @@ namespace Apify
         /// <param name="forcePermissionLevel">
         /// Example: LIMITED_PERMISSIONS
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActRunsPostAsync(
@@ -198,6 +203,7 @@ namespace Apify
             double? waitForFinish = default,
             string? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

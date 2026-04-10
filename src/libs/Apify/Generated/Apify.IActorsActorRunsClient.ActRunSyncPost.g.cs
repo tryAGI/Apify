@@ -51,6 +51,7 @@ namespace Apify
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> ActRunSyncPostAsync(
@@ -65,6 +66,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             string? webhooks = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run Actor synchronously with input and return output<br/>
@@ -112,6 +114,7 @@ namespace Apify
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<string> ActRunSyncPostAsync(
@@ -124,6 +127,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             string? webhooks = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

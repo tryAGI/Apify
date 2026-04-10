@@ -21,12 +21,14 @@ namespace Apify
         /// Example: asdLZtadYvn4mBZmm
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ScheduleResponse> SchedulePutAsync(
             string scheduleId,
 
             global::Apify.ScheduleCreate request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update schedule<br/>
@@ -52,6 +54,7 @@ namespace Apify
         /// <param name="description"></param>
         /// <param name="title"></param>
         /// <param name="actions"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ScheduleResponse> SchedulePutAsync(
@@ -64,6 +67,7 @@ namespace Apify
             string? description = default,
             string? title = default,
             global::System.Collections.Generic.IList<global::Apify.ScheduleCreateAction>? actions = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

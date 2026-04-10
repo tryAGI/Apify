@@ -53,11 +53,13 @@ namespace Apify
         /// HTTP header.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.WebhookResponse> WebhooksPostAsync(
 
             global::Apify.WebhookCreate request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create webhook<br/>
@@ -108,11 +110,13 @@ namespace Apify
         /// HTTP header.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.WebhookResponse>> WebhooksPostAsResponseAsync(
 
             global::Apify.WebhookCreate request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create webhook<br/>
@@ -173,6 +177,7 @@ namespace Apify
         /// <param name="headersTemplate"></param>
         /// <param name="description"></param>
         /// <param name="shouldInterpolateStrings"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.WebhookResponse> WebhooksPostAsync(
@@ -187,6 +192,7 @@ namespace Apify
             string? headersTemplate = default,
             string? description = default,
             bool? shouldInterpolateStrings = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

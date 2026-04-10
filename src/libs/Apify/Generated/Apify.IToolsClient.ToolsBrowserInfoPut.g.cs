@@ -14,11 +14,13 @@ namespace Apify
         /// </summary>
         /// <param name="skipHeaders"></param>
         /// <param name="rawHeaders"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.BrowserInfoResponse> ToolsBrowserInfoPutAsync(
             bool? skipHeaders = default,
             bool? rawHeaders = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

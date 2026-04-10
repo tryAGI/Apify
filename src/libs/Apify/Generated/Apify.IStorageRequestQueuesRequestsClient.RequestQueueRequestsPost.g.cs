@@ -21,6 +21,7 @@ namespace Apify
         /// Example: false
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> RequestQueueRequestsPostAsync(
@@ -29,6 +30,7 @@ namespace Apify
             global::Apify.RequestBase request,
             string? clientKey = default,
             string? forefront = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Add request<br/>
@@ -77,6 +79,7 @@ namespace Apify
         /// <param name="handledAt">
         /// The timestamp when the request was marked as handled, if applicable.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> RequestQueueRequestsPostAsync(
@@ -94,6 +97,7 @@ namespace Apify
             bool? noRetry = default,
             global::System.Collections.Generic.IList<string>? errorMessages = default,
             global::System.DateTime? handledAt = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

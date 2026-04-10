@@ -29,6 +29,7 @@ namespace Apify
         /// Example: 0.1
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.EnvVarResponse> ActVersionEnvVarsPostAsync(
@@ -36,6 +37,7 @@ namespace Apify
             string versionNumber,
 
             global::Apify.EnvVarRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create environment variable<br/>
@@ -62,6 +64,7 @@ namespace Apify
         /// Example: 0.1
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.EnvVarResponse>> ActVersionEnvVarsPostAsResponseAsync(
@@ -69,6 +72,7 @@ namespace Apify
             string versionNumber,
 
             global::Apify.EnvVarRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create environment variable<br/>
@@ -94,11 +98,13 @@ namespace Apify
         /// <param name="versionNumber">
         /// Example: 0.1
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.EnvVarResponse> ActVersionEnvVarsPostAsync(
             string actorId,
             string versionNumber,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -34,6 +34,7 @@ namespace Apify
         /// <param name="startedBefore">
         /// Example: 2025-09-17T23:59:59.000Z
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ListOfRunsResponse> ActorRunsGetAsync(
@@ -43,6 +44,7 @@ namespace Apify
             string? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
