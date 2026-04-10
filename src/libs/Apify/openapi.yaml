@@ -10770,7 +10770,7 @@
         "tags": [
           "Store"
         ],
-        "summary": "Get list of Actors in store",
+        "summary": "Get list of Actors in Store",
         "description": "Gets the list of public Actors in Apify Store. You can use `search`\nparameter to search Actors by string in title, name, description, username\nand readme.\nIf you need detailed info about a specific Actor, use the [Get\nActor](#/reference/actors/actor-object/get-actor) endpoint.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters.\nIt will not return more than 1,000 records.\n",
         "operationId": "store_get",
         "parameters": [
