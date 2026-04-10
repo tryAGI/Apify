@@ -28,6 +28,7 @@ namespace Apify
         /// <param name="waitForFinish">
         /// Example: 60
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.BuildResponse> ActBuildsPostAsync(
@@ -37,6 +38,7 @@ namespace Apify
             bool? betaPackages = default,
             string? tag = default,
             double? waitForFinish = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Build Actor<br/>
@@ -62,6 +64,7 @@ namespace Apify
         /// <param name="waitForFinish">
         /// Example: 60
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>> ActBuildsPostAsResponseAsync(
@@ -71,6 +74,7 @@ namespace Apify
             bool? betaPackages = default,
             string? tag = default,
             double? waitForFinish = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

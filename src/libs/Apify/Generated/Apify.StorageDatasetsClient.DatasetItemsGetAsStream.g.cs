@@ -14,6 +14,7 @@ namespace Apify
                 {                    new global::Apify.EndPointAuthorizationRequirement
                     {
                         Type = "Http",
+                        SchemeId = "HttpBearer",
                         Location = "Header",
                         Name = "Bearer",
                         FriendlyName = "Bearer",
@@ -268,6 +269,7 @@ namespace Apify
         /// <param name="signature">
         /// Example: 2wTI46Bg8qWQrV7tavlPI
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Collections.Generic.IAsyncEnumerable<global::System.Collections.Generic.IList<object>> DatasetItemsGetAsStreamAsync(
@@ -293,6 +295,7 @@ namespace Apify
             string? view = default,
             bool? skipFailedPages = default,
             string? signature = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             [global::System.Runtime.CompilerServices.EnumeratorCancellation] global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -328,45 +331,66 @@ namespace Apify
                 securityRequirements: s_DatasetItemsGetAsStreamSecurityRequirements,
                 operationName: "DatasetItemsGetAsStreamAsync");
 
-            var __pathBuilder = new global::Apify.PathBuilder(
-                path: $"/v2/datasets/{datasetId}/items",
-                baseUri: HttpClient.BaseAddress); 
-            __pathBuilder
-                .AddOptionalParameter("format", format)
-                .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("offset", offset?.ToString())
-                .AddOptionalParameter("limit", limit?.ToString())
-                .AddOptionalParameter("fields", fields)
-                .AddOptionalParameter("omit", omit)
-                .AddOptionalParameter("unwind", unwind)
-                .AddOptionalParameter("flatten", flatten)
-                .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("delimiter", delimiter)
-                .AddOptionalParameter("bom", bom?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("xmlRoot", xmlRoot)
-                .AddOptionalParameter("xmlRow", xmlRow)
-                .AddOptionalParameter("skipHeaderRow", skipHeaderRow?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("skipHidden", skipHidden?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("skipEmpty", skipEmpty?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("view", view)
-                .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
-                .AddOptionalParameter("signature", signature) 
-                ;
-            var __path = __pathBuilder.ToString();
-            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
-                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+            using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Apify.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Apify.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: true);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+                            var __pathBuilder = new global::Apify.PathBuilder(
+                                path: $"/v2/datasets/{datasetId}/items",
+                                baseUri: HttpClient.BaseAddress); 
+                            __pathBuilder
+                                .AddOptionalParameter("format", format)
+                                .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("offset", offset?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("fields", fields)
+                                .AddOptionalParameter("omit", omit)
+                                .AddOptionalParameter("unwind", unwind)
+                                .AddOptionalParameter("flatten", flatten)
+                                .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("delimiter", delimiter)
+                                .AddOptionalParameter("bom", bom?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("xmlRoot", xmlRoot)
+                                .AddOptionalParameter("xmlRow", xmlRow)
+                                .AddOptionalParameter("skipHeaderRow", skipHeaderRow?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipHidden", skipHidden?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipEmpty", skipEmpty?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("view", view)
+                                .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("signature", signature) 
+                                ;
+                            var __path = __pathBuilder.ToString();
+                __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Get,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
-            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
-            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
             foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
-                    __authorization.Type == "OAuth2")
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
                 {
                     __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
                         scheme: __authorization.Name,
@@ -376,111 +400,270 @@ namespace Apify
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                }
+                } 
+            }
+                global::Apify.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
+
+                PrepareRequest(
+                    client: HttpClient,
+                    request: __httpRequest);
+                PrepareDatasetItemsGetAsStreamRequest(
+                    httpClient: HttpClient,
+                    httpRequestMessage: __httpRequest,
+                    datasetId: datasetId,
+                    format: format,
+                    clean: clean,
+                    offset: offset,
+                    limit: limit,
+                    fields: fields,
+                    omit: omit,
+                    unwind: unwind,
+                    flatten: flatten,
+                    desc: desc,
+                    attachment: attachment,
+                    delimiter: delimiter,
+                    bom: bom,
+                    xmlRoot: xmlRoot,
+                    xmlRow: xmlRow,
+                    skipHeaderRow: skipHeaderRow,
+                    skipHidden: skipHidden,
+                    skipEmpty: skipEmpty,
+                    simplified: simplified,
+                    view: view,
+                    skipFailedPages: skipFailedPages,
+                    signature: signature);
+
+                return __httpRequest;
             }
 
-            PrepareRequest(
-                client: HttpClient,
-                request: __httpRequest);
-            PrepareDatasetItemsGetAsStreamRequest(
-                httpClient: HttpClient,
-                httpRequestMessage: __httpRequest,
-                datasetId: datasetId,
-                format: format,
-                clean: clean,
-                offset: offset,
-                limit: limit,
-                fields: fields,
-                omit: omit,
-                unwind: unwind,
-                flatten: flatten,
-                desc: desc,
-                attachment: attachment,
-                delimiter: delimiter,
-                bom: bom,
-                xmlRoot: xmlRoot,
-                xmlRow: xmlRow,
-                skipHeaderRow: skipHeaderRow,
-                skipHidden: skipHidden,
-                skipEmpty: skipEmpty,
-                simplified: simplified,
-                view: view,
-                skipFailedPages: skipFailedPages,
-                signature: signature);
-
-            using var __response = await HttpClient.SendAsync(
-                request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
-
-            ProcessResponse(
-                client: HttpClient,
-                response: __response);
-            ProcessDatasetItemsGetAsStreamResponse(
-                httpClient: HttpClient,
-                httpResponseMessage: __response);
-
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
             try
             {
-                __response.EnsureSuccessStatusCode();
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
+                {
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "DatasetItemsGetAsStream",
+                                methodName: "DatasetItemsGetAsStreamAsync",
+                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                    try
+                    {
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                    }
+                    catch (global::System.Net.Http.HttpRequestException __exception)
+                    {
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "DatasetItemsGetAsStream",
+                                methodName: "DatasetItemsGetAsStreamAsync",
+                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Apify.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
+                    {
+                        await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "DatasetItemsGetAsStream",
+                                methodName: "DatasetItemsGetAsStreamAsync",
+                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                using (__response)
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessDatasetItemsGetAsStreamResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "DatasetItemsGetAsStream",
+                                methodName: "DatasetItemsGetAsStreamAsync",
+                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "DatasetItemsGetAsStream",
+                                methodName: "DatasetItemsGetAsStreamAsync",
+                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+
+                            try
+                            {
+                                __response.EnsureSuccessStatusCode();
+                            }
+                            catch (global::System.Net.Http.HttpRequestException __ex)
+                            {
+                                string? __content = null;
+                                try
+                                {
+                                    __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+                                }
+                                catch (global::System.Exception)
+                                {
+                                }
+
+                                throw new global::Apify.ApiException(
+                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __ex,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+
+                            using var __stream = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                __effectiveCancellationToken
+                #endif
+                            ).ConfigureAwait(false);
+
+                            using var __reader = new global::System.IO.StreamReader(__stream);
+
+                            while (!__reader.EndOfStream && !__effectiveCancellationToken.IsCancellationRequested)
+                            {
+                                var __content = await __reader.ReadLineAsync().ConfigureAwait(false) ?? string.Empty;
+                                if (global::System.String.IsNullOrWhiteSpace(__content))
+                                {
+                                    continue;
+                                }
+
+                                var __streamedResponse = (global::System.Collections.Generic.IList<object>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext) ??
+                                                       throw new global::Apify.ApiException(
+                                                           message: $"Response deserialization failed for \"{__content}\" ",
+                                                           statusCode: __response.StatusCode)
+                                                       {
+                                                           ResponseBody = __content,
+                                                           ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                                               __response.Headers,
+                                                               h => h.Key,
+                                                               h => h.Value),
+                                                       };
+
+                                yield return __streamedResponse;
+                            }
+
+                }
             }
-            catch (global::System.Net.Http.HttpRequestException __ex)
+            finally
             {
-                string? __content = null;
-                try
-                {
-                    __content = await __response.Content.ReadAsStringAsync(
-#if NET5_0_OR_GREATER
-                        cancellationToken
-#endif
-                    ).ConfigureAwait(false);
-                }
-                catch (global::System.Exception)
-                {
-                }
-
-                throw new global::Apify.ApiException(
-                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
-                    innerException: __ex,
-                    statusCode: __response.StatusCode)
-                {
-                    ResponseBody = __content,
-                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                        __response.Headers,
-                        h => h.Key,
-                        h => h.Value),
-                };
-            }
-
-            using var __stream = await __response.Content.ReadAsStreamAsync(
-#if NET5_0_OR_GREATER
-                cancellationToken
-#endif
-            ).ConfigureAwait(false);
-
-            using var __reader = new global::System.IO.StreamReader(__stream);
-
-            while (!__reader.EndOfStream && !cancellationToken.IsCancellationRequested)
-            {
-                var __content = await __reader.ReadLineAsync().ConfigureAwait(false) ?? string.Empty;
-                if (global::System.String.IsNullOrWhiteSpace(__content))
-                {
-                    continue;
-                }
-
-                var __streamedResponse = (global::System.Collections.Generic.IList<object>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext) ??
-                                       throw new global::Apify.ApiException(
-                                           message: $"Response deserialization failed for \"{__content}\" ",
-                                           statusCode: __response.StatusCode)
-                                       {
-                                           ResponseBody = __content,
-                                           ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                               __response.Headers,
-                                               h => h.Key,
-                                               h => h.Value),
-                                       };
-
-                yield return __streamedResponse;
+                __httpRequest?.Dispose();
             }
         }
     }

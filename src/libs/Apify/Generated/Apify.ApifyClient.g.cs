@@ -422,6 +422,9 @@ namespace Apify
 #if DEBUG
             = true;
 #endif
+
+        /// <inheritdoc/>
+        public global::Apify.AutoSDKClientOptions Options { get; }
         /// <summary>
         /// 
         /// </summary>
@@ -435,7 +438,7 @@ namespace Apify
         /// used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorBuildsClient ActorBuilds => new ActorBuildsClient(HttpClient, authorizations: Authorizations)
+        public ActorBuildsClient ActorBuilds => new ActorBuildsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -447,7 +450,7 @@ namespace Apify
         /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, authorizations: Authorizations)
+        public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -467,7 +470,7 @@ namespace Apify
         /// used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorTasksClient ActorTasks => new ActorTasksClient(HttpClient, authorizations: Authorizations)
+        public ActorTasksClient ActorTasks => new ActorTasksClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -479,7 +482,7 @@ namespace Apify
         /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
         /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).
         /// </summary>
-        public ActorsClient Actors => new ActorsClient(HttpClient, authorizations: Authorizations)
+        public ActorsClient Actors => new ActorsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -488,7 +491,7 @@ namespace Apify
         /// <summary>
         /// Actor builds - Introduction. The API endpoints in this section allow you to manage your Apify Actors builds.
         /// </summary>
-        public ActorsActorBuildsClient ActorsActorBuilds => new ActorsActorBuildsClient(HttpClient, authorizations: Authorizations)
+        public ActorsActorBuildsClient ActorsActorBuilds => new ActorsActorBuildsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -499,7 +502,7 @@ namespace Apify
         /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
         /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, authorizations: Authorizations)
+        public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -519,7 +522,7 @@ namespace Apify
         /// For more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code)<br/>
         /// in Actors documentation.
         /// </summary>
-        public ActorsActorVersionsClient ActorsActorVersions => new ActorsActorVersionsClient(HttpClient, authorizations: Authorizations)
+        public ActorsActorVersionsClient ActorsActorVersions => new ActorsActorVersionsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -528,7 +531,7 @@ namespace Apify
         /// <summary>
         /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.
         /// </summary>
-        public ActorsWebhookCollectionClient ActorsWebhookCollection => new ActorsWebhookCollectionClient(HttpClient, authorizations: Authorizations)
+        public ActorsWebhookCollectionClient ActorsWebhookCollection => new ActorsWebhookCollectionClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -543,7 +546,7 @@ namespace Apify
         /// are authenticated using a hard-to-guess ID of the Actor build or run.<br/>
         /// :::.
         /// </summary>
-        public LogsClient Logs => new LogsClient(HttpClient, authorizations: Authorizations)
+        public LogsClient Logs => new LogsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -560,7 +563,7 @@ namespace Apify
         /// - `RUN_ACTOR` and `RUN_ACTOR_TASK`.<br/>
         /// For details, see the documentation of the [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.
         /// </summary>
-        public SchedulesClient Schedules => new SchedulesClient(HttpClient, authorizations: Authorizations)
+        public SchedulesClient Schedules => new SchedulesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -579,7 +582,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the dataset.<br/>
         /// :::.
         /// </summary>
-        public StorageDatasetsClient StorageDatasets => new StorageDatasetsClient(HttpClient, authorizations: Authorizations)
+        public StorageDatasetsClient StorageDatasets => new StorageDatasetsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -597,7 +600,7 @@ namespace Apify
         /// are authenticated using a hard-to-guess ID of the key-value store.<br/>
         /// :::.
         /// </summary>
-        public StorageKeyValueStoresClient StorageKeyValueStores => new StorageKeyValueStoresClient(HttpClient, authorizations: Authorizations)
+        public StorageKeyValueStoresClient StorageKeyValueStores => new StorageKeyValueStoresClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -615,7 +618,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesClient StorageRequestQueues => new StorageRequestQueuesClient(HttpClient, authorizations: Authorizations)
+        public StorageRequestQueuesClient StorageRequestQueues => new StorageRequestQueuesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -633,7 +636,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests => new StorageRequestQueuesRequestsClient(HttpClient, authorizations: Authorizations)
+        public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests => new StorageRequestQueuesRequestsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -651,7 +654,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks => new StorageRequestQueuesRequestsLocksClient(HttpClient, authorizations: Authorizations)
+        public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks => new StorageRequestQueuesRequestsLocksClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -665,7 +668,7 @@ namespace Apify
         /// These endpoints do not require the authentication token.<br/>
         /// :::.
         /// </summary>
-        public StoreClient Store => new StoreClient(HttpClient, authorizations: Authorizations)
+        public StoreClient Store => new StoreClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -683,7 +686,7 @@ namespace Apify
         /// - **Decode and verify** (`/v2/tools/decode-and-verify`) - Decodes and verifies a value<br/>
         ///   previously created by the encode-and-sign endpoint.
         /// </summary>
-        public ToolsClient Tools => new ToolsClient(HttpClient, authorizations: Authorizations)
+        public ToolsClient Tools => new ToolsClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -692,7 +695,7 @@ namespace Apify
         /// <summary>
         /// Users - Introduction. The API endpoints described in this section return information about user accounts.
         /// </summary>
-        public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations)
+        public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -701,7 +704,7 @@ namespace Apify
         /// <summary>
         /// Webhook dispatches - Introduction. This section describes API endpoints to get webhook dispatches.
         /// </summary>
-        public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches => new WebhooksWebhookDispatchesClient(HttpClient, authorizations: Authorizations)
+        public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches => new WebhooksWebhookDispatchesClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -716,7 +719,7 @@ namespace Apify
         /// or fails.<br/>
         /// For more information see [Webhooks documentation](https://docs.apify.com/platform/integrations/webhooks).
         /// </summary>
-        public WebhooksWebhooksClient WebhooksWebhooks => new WebhooksWebhooksClient(HttpClient, authorizations: Authorizations)
+        public WebhooksWebhooksClient WebhooksWebhooks => new WebhooksWebhooksClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -735,11 +738,37 @@ namespace Apify
             global::System.Net.Http.HttpClient? httpClient = null,
             global::System.Uri? baseUri = null,
             global::System.Collections.Generic.List<global::Apify.EndPointAuthorization>? authorizations = null,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri,
+                authorizations,
+                options: null,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of the ApifyClient.
+        /// If no httpClient is provided, a new one will be created.
+        /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="baseUri">The base URL for the API. If not provided, the default baseUri from OpenAPI spec will be used.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public ApifyClient(
+            global::System.Net.Http.HttpClient? httpClient = null,
+            global::System.Uri? baseUri = null,
+            global::System.Collections.Generic.List<global::Apify.EndPointAuthorization>? authorizations = null,
+            global::Apify.AutoSDKClientOptions? options = null,
             bool disposeHttpClient = true)
         {
+
             HttpClient = httpClient ?? new global::System.Net.Http.HttpClient();
             HttpClient.BaseAddress ??= baseUri ?? new global::System.Uri(DefaultBaseUrl);
             Authorizations = authorizations ?? new global::System.Collections.Generic.List<global::Apify.EndPointAuthorization>();
+            Options = options ?? new global::Apify.AutoSDKClientOptions();
             _disposeHttpClient = disposeHttpClient;
 
             Initialized(HttpClient);

@@ -17,6 +17,7 @@ namespace Apify
         /// </param>
         /// <param name="contentEncoding"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> KeyValueStoreRecordPostAsync(
@@ -25,6 +26,7 @@ namespace Apify
 
             global::Apify.PutRecordRequest request,
             global::Apify.KeyValueStoreRecordPostContentEncoding? contentEncoding = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Store record (POST)<br/>
@@ -39,6 +41,7 @@ namespace Apify
         /// </param>
         /// <param name="contentEncoding"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> KeyValueStoreRecordPostAsResponseAsync(
@@ -47,6 +50,7 @@ namespace Apify
 
             global::Apify.PutRecordRequest request,
             global::Apify.KeyValueStoreRecordPostContentEncoding? contentEncoding = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Store record (POST)<br/>
@@ -60,12 +64,14 @@ namespace Apify
         /// Example: someKey
         /// </param>
         /// <param name="contentEncoding"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<string> KeyValueStoreRecordPostAsync(
             string storeId,
             string recordKey,
             global::Apify.KeyValueStoreRecordPostContentEncoding? contentEncoding = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

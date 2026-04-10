@@ -24,6 +24,7 @@ namespace Apify
         /// Example: 0.1
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.VersionResponse> ActVersionPutAsync(
@@ -31,6 +32,7 @@ namespace Apify
             string versionNumber,
 
             global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update version<br/>
@@ -66,6 +68,7 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist when sourceType is GITHUB_GIST.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.VersionResponse> ActVersionPutAsync(
@@ -80,6 +83,7 @@ namespace Apify
             string? gitRepoUrl = default,
             string? tarballUrl = default,
             string? gitHubGistUrl = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

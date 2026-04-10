@@ -21,12 +21,14 @@ namespace Apify
         /// Example: janedoe~my-task
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ActorTaskPutResponse> ActorTaskPutAsync(
             string actorTaskId,
 
             global::Apify.UpdateTaskRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update task<br/>
@@ -49,6 +51,7 @@ namespace Apify
         /// <param name="input"></param>
         /// <param name="title"></param>
         /// <param name="actorStandby"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ActorTaskPutResponse> ActorTaskPutAsync(
@@ -58,6 +61,7 @@ namespace Apify
             global::Apify.TaskInput? input = default,
             string? title = default,
             global::Apify.ActorStandby? actorStandby = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

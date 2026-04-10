@@ -25,6 +25,7 @@ namespace Apify
             Authorizations.Add(new global::Apify.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,
