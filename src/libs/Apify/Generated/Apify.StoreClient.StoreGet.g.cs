@@ -56,7 +56,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of Actors in store<br/>
+        /// Get list of Actors in Store<br/>
         /// Gets the list of public Actors in Apify Store. You can use `search`<br/>
         /// parameter to search Actors by string in title, name, description, username<br/>
         /// and readme.<br/>
