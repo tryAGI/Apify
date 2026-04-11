@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.<br/>
+    /// Webhook collection - Introduction<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

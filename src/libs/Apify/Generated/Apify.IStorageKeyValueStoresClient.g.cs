@@ -4,16 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Key-value stores - Introduction. This section describes API endpoints to manage Key-value stores.<br/>
-    /// Key-value store is a simple storage for saving and reading data records or files.<br/>
-    /// Each data record is represented by a unique key and associated with a MIME content type.<br/>
-    /// Key-value stores are ideal for saving screenshots, Actor inputs and outputs, web pages,<br/>
-    /// PDFs or to persist the state of crawlers.<br/>
-    /// For more information, see the [Key-value store documentation](https://docs.apify.com/platform/storage/key-value-store).<br/>
-    /// :::note<br/>
-    /// Some of the endpoints do not require the authentication token, the calls<br/>
-    /// are authenticated using a hard-to-guess ID of the key-value store.<br/>
-    /// :::.<br/>
+    /// Key-value stores - Introduction<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
