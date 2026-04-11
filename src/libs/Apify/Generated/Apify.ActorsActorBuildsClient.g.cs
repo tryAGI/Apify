@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Actor builds - Introduction. The API endpoints in this section allow you to manage your Apify Actors builds.<br/>
+    /// Actor builds - Introduction<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

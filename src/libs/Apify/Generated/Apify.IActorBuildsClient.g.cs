@@ -4,11 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Actor builds - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor builds.<br/>
-    /// Note that if any returned build object contains usage in dollars, your effective<br/>
-    /// unit pricing at the time of query has been used for computation of this dollar equivalent, and hence it should be<br/>
-    /// used only for informative purposes.<br/>
-    /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).<br/>
+    /// Actor builds - Introduction<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

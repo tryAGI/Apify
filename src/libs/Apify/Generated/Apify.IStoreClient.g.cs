@@ -4,12 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Store - Introduction. [Apify Store](https://apify.com/store) is home to thousands of public Actors available<br/>
-    /// to the Apify community.<br/>
-    /// The API endpoints described in this section are used to retrieve these Actors.<br/>
-    /// :::note<br/>
-    /// These endpoints do not require the authentication token.<br/>
-    /// :::.<br/>
+    /// Store - Introduction<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>
