@@ -565,7 +565,7 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Payment required - the user has exceeded their usage limit or does not have enough credits.
+                            // Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;
