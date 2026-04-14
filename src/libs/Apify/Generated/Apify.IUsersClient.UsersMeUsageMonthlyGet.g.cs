@@ -6,11 +6,11 @@ namespace Apify
     {
         /// <summary>
         /// Get monthly usage<br/>
-        /// Returns a complete summary of your usage for the current usage cycle,<br/>
+        /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
         /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
-        /// information you will see on your account's [Billing page](https://console.apify.com/billing#/usage). The information<br/>
-        /// includes your use of storage, data transfer, and request queue usage.<br/>
-        /// Using the `date` parameter will show your usage in the usage cycle that<br/>
+        /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
+        /// includes your use of Actors, compute, data transfer, and storage.<br/>
+        /// Using the `date` parameter will show your usage in the monthly usage cycle that<br/>
         /// includes that date.
         /// </summary>
         /// <param name="date">

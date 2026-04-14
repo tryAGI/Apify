@@ -11,10 +11,9 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"PAY_PER_EVENT"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.PricingModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.PricingModel PricingModel { get; set; }
+        public string PricingModel { get; set; } = "PAY_PER_EVENT";
 
         /// <summary>
         /// 
@@ -38,16 +37,16 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="PayPerEventActorPricingInfoVariant2" /> class.
         /// </summary>
-        /// <param name="pricingModel"></param>
         /// <param name="pricingPerEvent"></param>
         /// <param name="minimalMaxTotalChargeUsd"></param>
+        /// <param name="pricingModel"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PayPerEventActorPricingInfoVariant2(
-            global::Apify.PricingModel pricingModel,
             global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent pricingPerEvent,
-            double? minimalMaxTotalChargeUsd)
+            double? minimalMaxTotalChargeUsd,
+            string pricingModel = "PAY_PER_EVENT")
         {
             this.PricingModel = pricingModel;
             this.PricingPerEvent = pricingPerEvent ?? throw new global::System.ArgumentNullException(nameof(pricingPerEvent));

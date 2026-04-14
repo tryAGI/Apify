@@ -11,10 +11,9 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"PRICE_PER_DATASET_ITEM"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.PricingModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.PricingModel PricingModel { get; set; }
+        public string PricingModel { get; set; } = "PRICE_PER_DATASET_ITEM";
 
         /// <summary>
         /// Name of the unit that is being charged
@@ -39,18 +38,18 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="PricePerDatasetItemActorPricingInfoVariant2" /> class.
         /// </summary>
-        /// <param name="pricingModel"></param>
         /// <param name="unitName">
         /// Name of the unit that is being charged
         /// </param>
         /// <param name="pricePerUnitUsd"></param>
+        /// <param name="pricingModel"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PricePerDatasetItemActorPricingInfoVariant2(
-            global::Apify.PricingModel pricingModel,
             string unitName,
-            double pricePerUnitUsd)
+            double pricePerUnitUsd,
+            string pricingModel = "PRICE_PER_DATASET_ITEM")
         {
             this.PricingModel = pricingModel;
             this.UnitName = unitName ?? throw new global::System.ArgumentNullException(nameof(unitName));

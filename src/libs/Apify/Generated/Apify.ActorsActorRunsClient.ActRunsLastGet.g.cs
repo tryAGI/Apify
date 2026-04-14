@@ -28,12 +28,14 @@ namespace Apify
         partial void PrepareActRunsLastGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
-            ref string? status);
+            ref string? status,
+            ref double? waitForFinish);
         partial void PrepareActRunsLastGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
-            string? status);
+            string? status,
+            double? waitForFinish);
         partial void ProcessActRunsLastGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -89,12 +91,16 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="waitForFinish">
+        /// Example: 60
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActRunsLastGetAsync(
             string actorId,
             string? status = default,
+            double? waitForFinish = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -103,7 +109,8 @@ namespace Apify
             PrepareActRunsLastGetArguments(
                 httpClient: HttpClient,
                 actorId: ref actorId,
-                status: ref status);
+                status: ref status,
+                waitForFinish: ref waitForFinish);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -131,7 +138,8 @@ namespace Apify
                                 path: $"/v2/acts/{actorId}/runs/last",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
-                                .AddOptionalParameter("status", status) 
+                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("waitForFinish", waitForFinish?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -174,7 +182,8 @@ namespace Apify
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     actorId: actorId,
-                    status: status);
+                    status: status,
+                    waitForFinish: waitForFinish);
 
                 return __httpRequest;
             }
@@ -449,24 +458,24 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Not found - the requested resource was not found.
+                            // Not found - the requested resource does not exist.
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>? __value_404 = null;
+                                global::Apify.ErrorResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -474,7 +483,7 @@ namespace Apify
                                     __exception_404 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>?>(
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     statusCode: __response.StatusCode)

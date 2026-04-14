@@ -31,9 +31,9 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> RequestQueueRequestsBatchDeleteAsync(
             string queueId,
-            global::Apify.RequestQueueRequestsBatchDeleteContentType contentType,
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

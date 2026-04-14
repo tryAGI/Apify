@@ -32,7 +32,7 @@ namespace Apify
             ref string? exclusiveStartId,
             ref double? limit,
             ref string? cursor,
-            ref global::Apify.RequestQueueRequestsGetFilter? filter);
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? filter);
         partial void PrepareRequestQueueRequestsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -41,7 +41,7 @@ namespace Apify
             string? exclusiveStartId,
             double? limit,
             string? cursor,
-            global::Apify.RequestQueueRequestsGetFilter? filter);
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? filter);
         partial void ProcessRequestQueueRequestsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -72,7 +72,7 @@ namespace Apify
         /// Example: eyJyZXF1ZXN0SWQiOiI2OFRqQ2RaTDNvM2hiUU0ifQ
         /// </param>
         /// <param name="filter">
-        /// Example: locked
+        /// Example: [locked]
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -83,7 +83,7 @@ namespace Apify
             string? exclusiveStartId = default,
             double? limit = default,
             string? cursor = default,
-            global::Apify.RequestQueueRequestsGetFilter? filter = default,
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? filter = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,7 +96,7 @@ namespace Apify
                 exclusiveStartId: ref exclusiveStartId,
                 limit: ref limit,
                 cursor: ref cursor,
-                filter: ref filter);
+                filter: filter);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -128,7 +128,7 @@ namespace Apify
                                 .AddOptionalParameter("exclusiveStartId", exclusiveStartId)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("cursor", cursor)
-                                .AddOptionalParameter("filter", filter?.ToValueString()) 
+                                .AddOptionalParameter("filter", filter, selector: static x => x.ToValueString(), delimiter: ",", explode: false) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -450,24 +450,24 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Not found - the requested resource was not found.
+                            // Not found - the requested resource does not exist.
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Apify.RequestQueueNotFoundError? __value_404 = null;
+                                global::Apify.ErrorResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Apify.RequestQueueNotFoundError.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Apify.RequestQueueNotFoundError.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -475,7 +475,7 @@ namespace Apify
                                     __exception_404 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.RequestQueueNotFoundError>(
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     statusCode: __response.StatusCode)

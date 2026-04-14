@@ -38,6 +38,14 @@ namespace Apify
         /// <param name="allowsAgenticUsers">
         /// Example: true
         /// </param>
+        /// <param name="responseFormat">
+        /// Default Value: full<br/>
+        /// Example: agent
+        /// </param>
+        /// <param name="includeUnrunnableActors">
+        /// Default Value: false<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -50,6 +58,8 @@ namespace Apify
             string? username = default,
             global::Apify.StoreGetPricingModel? pricingModel = default,
             bool? allowsAgenticUsers = default,
+            global::Apify.StoreGetResponseFormat? responseFormat = default,
+            bool? includeUnrunnableActors = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

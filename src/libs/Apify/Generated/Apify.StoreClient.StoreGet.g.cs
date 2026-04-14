@@ -34,7 +34,9 @@ namespace Apify
             ref string? category,
             ref string? username,
             ref global::Apify.StoreGetPricingModel? pricingModel,
-            ref bool? allowsAgenticUsers);
+            ref bool? allowsAgenticUsers,
+            ref global::Apify.StoreGetResponseFormat? responseFormat,
+            ref bool? includeUnrunnableActors);
         partial void PrepareStoreGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -45,7 +47,9 @@ namespace Apify
             string? category,
             string? username,
             global::Apify.StoreGetPricingModel? pricingModel,
-            bool? allowsAgenticUsers);
+            bool? allowsAgenticUsers,
+            global::Apify.StoreGetResponseFormat? responseFormat,
+            bool? includeUnrunnableActors);
         partial void ProcessStoreGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -89,6 +93,14 @@ namespace Apify
         /// <param name="allowsAgenticUsers">
         /// Example: true
         /// </param>
+        /// <param name="responseFormat">
+        /// Default Value: full<br/>
+        /// Example: agent
+        /// </param>
+        /// <param name="includeUnrunnableActors">
+        /// Default Value: false<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -101,6 +113,8 @@ namespace Apify
             string? username = default,
             global::Apify.StoreGetPricingModel? pricingModel = default,
             bool? allowsAgenticUsers = default,
+            global::Apify.StoreGetResponseFormat? responseFormat = default,
+            bool? includeUnrunnableActors = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -115,7 +129,9 @@ namespace Apify
                 category: ref category,
                 username: ref username,
                 pricingModel: ref pricingModel,
-                allowsAgenticUsers: ref allowsAgenticUsers);
+                allowsAgenticUsers: ref allowsAgenticUsers,
+                responseFormat: ref responseFormat,
+                includeUnrunnableActors: ref includeUnrunnableActors);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -150,7 +166,9 @@ namespace Apify
                                 .AddOptionalParameter("category", category)
                                 .AddOptionalParameter("username", username)
                                 .AddOptionalParameter("pricingModel", pricingModel?.ToValueString())
-                                .AddOptionalParameter("allowsAgenticUsers", allowsAgenticUsers?.ToString().ToLowerInvariant()) 
+                                .AddOptionalParameter("allowsAgenticUsers", allowsAgenticUsers?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("responseFormat", responseFormat?.ToValueString())
+                                .AddOptionalParameter("includeUnrunnableActors", includeUnrunnableActors?.ToString().ToLowerInvariant()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -199,7 +217,9 @@ namespace Apify
                     category: category,
                     username: username,
                     pricingModel: pricingModel,
-                    allowsAgenticUsers: allowsAgenticUsers);
+                    allowsAgenticUsers: allowsAgenticUsers,
+                    responseFormat: responseFormat,
+                    includeUnrunnableActors: includeUnrunnableActors);
 
                 return __httpRequest;
             }

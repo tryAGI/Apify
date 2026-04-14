@@ -31,7 +31,7 @@ namespace Apify
             ref double? offset,
             ref double? limit,
             ref bool? desc,
-            ref string? status,
+            global::System.Collections.Generic.IList<string>? status,
             ref global::System.DateTime? startedAfter,
             ref global::System.DateTime? startedBefore);
         partial void PrepareActRunsGetRequest(
@@ -41,7 +41,7 @@ namespace Apify
             double? offset,
             double? limit,
             bool? desc,
-            string? status,
+            global::System.Collections.Generic.IList<string>? status,
             global::System.DateTime? startedAfter,
             global::System.DateTime? startedBefore);
         partial void ProcessActRunsGetResponse(
@@ -78,7 +78,7 @@ namespace Apify
         /// Example: true
         /// </param>
         /// <param name="status">
-        /// Example: SUCCEEDED
+        /// Example: [SUCCEEDED]
         /// </param>
         /// <param name="startedAfter">
         /// Example: 2025-09-01T00:00:00.000Z
@@ -94,7 +94,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             bool? desc = default,
-            string? status = default,
+            global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -108,7 +108,7 @@ namespace Apify
                 offset: ref offset,
                 limit: ref limit,
                 desc: ref desc,
-                status: ref status,
+                status: status,
                 startedAfter: ref startedAfter,
                 startedBefore: ref startedBefore);
 
@@ -141,7 +141,7 @@ namespace Apify
                                 .AddOptionalParameter("offset", offset?.ToString())
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("status", status, delimiter: ",", explode: false)
                                 .AddOptionalParameter("startedAfter", startedAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("startedBefore", startedBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ")) 
                                 ;

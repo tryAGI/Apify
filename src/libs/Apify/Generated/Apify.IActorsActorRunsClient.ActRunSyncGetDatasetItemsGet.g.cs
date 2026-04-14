@@ -97,6 +97,9 @@ namespace Apify
         /// <param name="simplified">
         /// Example: false
         /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
@@ -130,6 +133,7 @@ namespace Apify
             bool? skipHidden = default,
             bool? skipEmpty = default,
             bool? simplified = default,
+            string? view = default,
             bool? skipFailedPages = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -226,6 +230,9 @@ namespace Apify
         /// <param name="simplified">
         /// Example: false
         /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
@@ -259,6 +266,7 @@ namespace Apify
             bool? skipHidden = default,
             bool? skipEmpty = default,
             bool? simplified = default,
+            string? view = default,
             bool? skipFailedPages = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

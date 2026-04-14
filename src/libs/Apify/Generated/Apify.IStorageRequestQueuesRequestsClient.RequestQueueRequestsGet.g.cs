@@ -25,7 +25,7 @@ namespace Apify
         /// Example: eyJyZXF1ZXN0SWQiOiI2OFRqQ2RaTDNvM2hiUU0ifQ
         /// </param>
         /// <param name="filter">
-        /// Example: locked
+        /// Example: [locked]
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -36,7 +36,7 @@ namespace Apify
             string? exclusiveStartId = default,
             double? limit = default,
             string? cursor = default,
-            global::Apify.RequestQueueRequestsGetFilter? filter = default,
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? filter = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
