@@ -31,7 +31,7 @@ namespace Apify
             ref double? offset,
             ref double? limit,
             ref bool? desc,
-            ref string? status);
+            global::System.Collections.Generic.IList<string>? status);
         partial void PrepareActorTaskRunsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -39,7 +39,7 @@ namespace Apify
             double? offset,
             double? limit,
             bool? desc,
-            string? status);
+            global::System.Collections.Generic.IList<string>? status);
         partial void ProcessActorTaskRunsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -74,7 +74,7 @@ namespace Apify
         /// Example: true
         /// </param>
         /// <param name="status">
-        /// Example: SUCCEEDED
+        /// Example: [SUCCEEDED]
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -84,7 +84,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             bool? desc = default,
-            string? status = default,
+            global::System.Collections.Generic.IList<string>? status = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -96,7 +96,7 @@ namespace Apify
                 offset: ref offset,
                 limit: ref limit,
                 desc: ref desc,
-                status: ref status);
+                status: status);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -127,7 +127,7 @@ namespace Apify
                                 .AddOptionalParameter("offset", offset?.ToString())
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("status", status) 
+                                .AddOptionalParameter("status", status, delimiter: ",", explode: false) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(

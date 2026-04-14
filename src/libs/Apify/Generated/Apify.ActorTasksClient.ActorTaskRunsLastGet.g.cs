@@ -28,12 +28,14 @@ namespace Apify
         partial void PrepareActorTaskRunsLastGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
-            ref string? status);
+            ref string? status,
+            ref double? waitForFinish);
         partial void PrepareActorTaskRunsLastGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
-            string? status);
+            string? status,
+            double? waitForFinish);
         partial void ProcessActorTaskRunsLastGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -84,12 +86,16 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="waitForFinish">
+        /// Example: 60
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.ActorTaskRunsLastGetResponse> ActorTaskRunsLastGetAsync(
             string actorTaskId,
             string? status = default,
+            double? waitForFinish = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -98,7 +104,8 @@ namespace Apify
             PrepareActorTaskRunsLastGetArguments(
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
-                status: ref status);
+                status: ref status,
+                waitForFinish: ref waitForFinish);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -126,7 +133,8 @@ namespace Apify
                                 path: $"/v2/actor-tasks/{actorTaskId}/runs/last",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
-                                .AddOptionalParameter("status", status) 
+                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("waitForFinish", waitForFinish?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -169,7 +177,8 @@ namespace Apify
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId,
-                    status: status);
+                    status: status,
+                    waitForFinish: waitForFinish);
 
                 return __httpRequest;
             }

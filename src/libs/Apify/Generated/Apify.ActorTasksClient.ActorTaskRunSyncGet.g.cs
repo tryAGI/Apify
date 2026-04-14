@@ -545,7 +545,7 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Request Timeout: the HTTP request exceeded the 300 second limit
+                            // The HTTP request exceeded the timeout limit
                             if ((int)__response.StatusCode == 408)
                             {
                                 string? __content_408 = null;

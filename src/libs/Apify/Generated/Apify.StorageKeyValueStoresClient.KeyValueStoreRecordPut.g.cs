@@ -195,10 +195,10 @@ namespace Apify
                 } 
             }
 
-                if (contentEncoding != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("Content-Encoding", contentEncoding?.ToValueString() ?? string.Empty);
-                }
+            if (contentEncoding != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Content-Encoding", contentEncoding?.ToValueString() ?? string.Empty);
+            }
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(

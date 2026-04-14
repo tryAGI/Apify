@@ -19,8 +19,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// 
@@ -66,14 +65,14 @@ namespace Apify
 #endif
         public CreateTaskRequest(
             string actId,
-            string name,
+            string? name,
             global::Apify.TaskOptions? options,
             global::Apify.TaskInput? input,
             string? title,
             global::Apify.ActorStandby? actorStandby)
         {
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Name = name;
             this.Options = options;
             this.Input = input;
             this.Title = title;

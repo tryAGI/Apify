@@ -43,7 +43,7 @@ namespace Apify
         /// The request payload, typically used with POST or PUT requests.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("payload")]
-        public object? Payload { get; set; }
+        public string? Payload { get; set; }
 
         /// <summary>
         /// HTTP headers sent with the request.
@@ -52,8 +52,10 @@ namespace Apify
         public object? Headers { get; set; }
 
         /// <summary>
-        /// Custom user data attached to the request. Can contain arbitrary fields.
+        /// Custom user data attached to the request. Can contain arbitrary fields.<br/>
+        /// Example: {"label":"DETAIL","customField":"custom-value"}
         /// </summary>
+        /// <example>{"label":"DETAIL","customField":"custom-value"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("userData")]
         public global::Apify.RequestUserData? UserData { get; set; }
 
@@ -104,7 +106,8 @@ namespace Apify
         /// HTTP headers sent with the request.
         /// </param>
         /// <param name="userData">
-        /// Custom user data attached to the request. Can contain arbitrary fields.
+        /// Custom user data attached to the request. Can contain arbitrary fields.<br/>
+        /// Example: {"label":"DETAIL","customField":"custom-value"}
         /// </param>
         /// <param name="noRetry">
         /// Indicates whether the request should not be retried if processing fails.
@@ -124,7 +127,7 @@ namespace Apify
             global::Apify.HttpMethod? method,
             int? retryCount,
             string? loadedUrl,
-            object? payload,
+            string? payload,
             object? headers,
             global::Apify.RequestUserData? userData,
             bool? noRetry,

@@ -28,14 +28,14 @@ namespace Apify
         partial void PrepareRequestQueueRequestsBatchDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string queueId,
-            ref global::Apify.RequestQueueRequestsBatchDeleteContentType contentType,
+            ref string contentType,
             ref string? clientKey,
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
         partial void PrepareRequestQueueRequestsBatchDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string queueId,
-            global::Apify.RequestQueueRequestsBatchDeleteContentType contentType,
+            string contentType,
             string? clientKey,
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
         partial void ProcessRequestQueueRequestsBatchDeleteResponse(
@@ -74,9 +74,9 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> RequestQueueRequestsBatchDeleteAsync(
             string queueId,
-            global::Apify.RequestQueueRequestsBatchDeleteContentType contentType,
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -150,7 +150,7 @@ namespace Apify
                 } 
             }
 
-                __httpRequest.Headers.TryAddWithoutValidation("Content-Type", contentType.ToValueString());
+                __httpRequest.Headers.TryAddWithoutValidation("Content-Type", contentType.ToString());
 
                             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -447,24 +447,24 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Not found - the requested resource was not found.
+                            // Not found - the requested resource does not exist.
                             if ((int)__response.StatusCode == 404)
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Apify.RequestQueueNotFoundError? __value_404 = null;
+                                global::Apify.ErrorResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Apify.RequestQueueNotFoundError.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Apify.RequestQueueNotFoundError.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -472,7 +472,7 @@ namespace Apify
                                     __exception_404 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.RequestQueueNotFoundError>(
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     statusCode: __response.StatusCode)

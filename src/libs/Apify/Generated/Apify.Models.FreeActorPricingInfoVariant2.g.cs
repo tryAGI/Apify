@@ -11,10 +11,9 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        /// <default>"FREE"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.PricingModelJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.PricingModel PricingModel { get; set; }
+        public string PricingModel { get; set; } = "FREE";
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public FreeActorPricingInfoVariant2(
-            global::Apify.PricingModel pricingModel)
+            string pricingModel = "FREE")
         {
             this.PricingModel = pricingModel;
         }

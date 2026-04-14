@@ -13,9 +13,9 @@ namespace Apify
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
-            typeof(global::Apify.JsonConverters.ErrorResponseErrorTypeJsonConverter),
+            typeof(global::Apify.JsonConverters.ErrorTypeJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ErrorResponseErrorTypeNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ErrorTypeNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.VersionSourceTypeJsonConverter),
 
@@ -25,10 +25,6 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.PricingModelJsonConverter),
-
-            typeof(global::Apify.JsonConverters.PricingModelNullableJsonConverter),
-
             typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelJsonConverter),
 
             typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelNullableJsonConverter),
@@ -36,10 +32,6 @@ namespace Apify
             typeof(global::Apify.JsonConverters.ActorPermissionLevelJsonConverter),
 
             typeof(global::Apify.JsonConverters.ActorPermissionLevelNullableJsonConverter),
-
-            typeof(global::Apify.JsonConverters.ErrorTypeJsonConverter),
-
-            typeof(global::Apify.JsonConverters.ErrorTypeNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.WebhookEventTypeJsonConverter),
 
@@ -97,17 +89,17 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.KeyValueStoreRecordPostContentEncodingNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.RequestQueueRequestsBatchDeleteContentTypeJsonConverter),
+            typeof(global::Apify.JsonConverters.RequestQueueRequestsGetFilterItemJsonConverter),
 
-            typeof(global::Apify.JsonConverters.RequestQueueRequestsBatchDeleteContentTypeNullableJsonConverter),
-
-            typeof(global::Apify.JsonConverters.RequestQueueRequestsGetFilterJsonConverter),
-
-            typeof(global::Apify.JsonConverters.RequestQueueRequestsGetFilterNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.RequestQueueRequestsGetFilterItemNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.StoreGetPricingModelJsonConverter),
 
             typeof(global::Apify.JsonConverters.StoreGetPricingModelNullableJsonConverter),
+
+            typeof(global::Apify.JsonConverters.StoreGetResponseFormatJsonConverter),
+
+            typeof(global::Apify.JsonConverters.StoreGetResponseFormatNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.ListOfActorsJsonConverter),
 
@@ -123,10 +115,6 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.EnvVarRequestJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActorNotFoundErrorDetailJsonConverter),
-
-            typeof(global::Apify.JsonConverters.RecordNotFoundErrorDetailJsonConverter),
-
             typeof(global::Apify.JsonConverters.ListOfWebhooksJsonConverter),
 
             typeof(global::Apify.JsonConverters.ListOfBuildsJsonConverter),
@@ -140,8 +128,6 @@ namespace Apify
             typeof(global::Apify.JsonConverters.RunTimeoutExceededErrorDetailJsonConverter),
 
             typeof(global::Apify.JsonConverters.ListOfTasksJsonConverter),
-
-            typeof(global::Apify.JsonConverters.RecordOrTokenNotFoundErrorDetailJsonConverter),
 
             typeof(global::Apify.JsonConverters.ListOfKeyValueStoresJsonConverter),
 
@@ -185,43 +171,9 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.UpdateRequestQueueRequest, object>),
 
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError, global::Apify.EnvironmentVariableNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError, global::Apify.EnvironmentVariableNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError, global::Apify.EnvironmentVariableNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError, global::Apify.EnvironmentVariableNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorBuildNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorBuildNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorBuildNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>),
-
             typeof(global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.PaginationResponse, global::Apify.ActorTaskWebhooksGetResponseData>),
 
             typeof(global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.PaginationResponse, global::Apify.ActorTaskRunsGetResponseData>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.ActorBuildNotFoundError, global::Apify.RecordOrTokenNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.KeyValueStoreNotFoundError, global::Apify.RecordNotFoundError>),
-
-            typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.RequestQueueNotFoundError, global::Apify.RequestNotFoundError>),
 
             typeof(global::Apify.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -238,9 +190,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorsVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorShort>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponseError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponseErrorType), TypeInfoPropertyName = "ErrorResponseErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType), TypeInfoPropertyName = "VersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVar))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat), TypeInfoPropertyName = "SourceCodeFileFormat2")]
@@ -252,7 +204,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.EnvVar>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CommonActorPricingInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PricingModel), TypeInfoPropertyName = "PricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorChargeEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PayPerEventActorPricingInfo), TypeInfoPropertyName = "PayPerEventActorPricingInfo2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PayPerEventActorPricingInfoVariant2))]
@@ -290,18 +241,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfVersions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfVersionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotFoundErrorDetail), TypeInfoPropertyName = "ActorNotFoundErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotFoundErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotFoundError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordNotFoundErrorDetail), TypeInfoPropertyName = "RecordNotFoundErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordNotFoundErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorVersionNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfEnvVars))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfEnvVarsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVarResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvironmentVariableNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookEventType), TypeInfoPropertyName = "WebhookEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookCondition))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchStatus), TypeInfoPropertyName = "WebhookDispatchStatus2")]
@@ -333,7 +275,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagErrorDetail), TypeInfoPropertyName = "UnknownBuildTagErrorDetail2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagErrorDetailVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorBuildNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunShort))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns), TypeInfoPropertyName = "ListOfRuns2")]
@@ -360,7 +301,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunTimeoutExceededErrorDetail), TypeInfoPropertyName = "RunTimeoutExceededErrorDetail2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunTimeoutExceededErrorDetailVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunTimeoutExceededError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskShort))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfTasks), TypeInfoPropertyName = "ListOfTasks2")]
@@ -376,9 +316,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Webhook))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateRunRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ChargeRunRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordOrTokenNotFoundErrorDetail), TypeInfoPropertyName = "RecordOrTokenNotFoundErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordOrTokenNotFoundErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordOrTokenNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StorageOwnership), TypeInfoPropertyName = "StorageOwnership2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStore))]
@@ -387,14 +324,12 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.KeyValueStore>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeyValueStoresResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateStoreRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreKey))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeys))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.KeyValueStoreKey>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeysResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RecordNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PutRecordRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfDatasets), TypeInfoPropertyName = "ListOfDatasets2")]
@@ -404,7 +339,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Dataset))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateDatasetRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PutItemsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ValidationError))]
@@ -426,7 +360,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateRequestQueueRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.HttpMethod), TypeInfoPropertyName = "HttpMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestUserData))]
@@ -456,7 +389,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestRegistration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AddRequestResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestNotFoundError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateRequestResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.HeadRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueHead))]
@@ -563,14 +495,11 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsPostForcePermissionLevel), TypeInfoPropertyName = "ActRunsPostForcePermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreRecordPutContentEncoding), TypeInfoPropertyName = "KeyValueStoreRecordPutContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreRecordPostContentEncoding), TypeInfoPropertyName = "KeyValueStoreRecordPostContentEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueRequestsBatchDeleteContentType), TypeInfoPropertyName = "RequestQueueRequestsBatchDeleteContentType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueRequestsGetFilter), TypeInfoPropertyName = "RequestQueueRequestsGetFilter2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueRequestsGetFilterItem), TypeInfoPropertyName = "RequestQueueRequestsGetFilterItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel), TypeInfoPropertyName = "StoreGetPricingModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError>), TypeInfoPropertyName = "OneOfActorNotFoundErrorActorVersionNotFoundError2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorVersionNotFoundError, global::Apify.EnvironmentVariableNotFoundError>), TypeInfoPropertyName = "OneOfActorNotFoundErrorActorVersionNotFoundErrorEnvironmentVariableNotFoundError2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorBuildNotFoundError>), TypeInfoPropertyName = "OneOfActorNotFoundErrorActorBuildNotFoundError2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat), TypeInfoPropertyName = "StoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.ActorNotFoundError, global::Apify.ActorRunNotFoundError>), TypeInfoPropertyName = "OneOfActorNotFoundErrorActorRunNotFoundError2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskGetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskPutResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskWebhooksGetResponse))]
@@ -583,10 +512,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsLastGetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PostChargeRunResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.ActorBuildNotFoundError, global::Apify.RecordOrTokenNotFoundError>), TypeInfoPropertyName = "OneOfActorBuildNotFoundErrorRecordOrTokenNotFoundError2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.KeyValueStoreNotFoundError, global::Apify.RecordNotFoundError>), TypeInfoPropertyName = "OneOfKeyValueStoreNotFoundErrorRecordNotFoundError2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.RequestQueueNotFoundError, global::Apify.RequestNotFoundError>), TypeInfoPropertyName = "OneOfRequestQueueNotFoundErrorRequestNotFoundError2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorShort>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVar>))]
@@ -629,6 +555,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.PutItemsRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestBase>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestDraftDelete>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestQueueRequestsGetFilterItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Webhook>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext

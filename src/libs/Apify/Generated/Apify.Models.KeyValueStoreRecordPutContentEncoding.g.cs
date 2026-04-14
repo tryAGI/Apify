@@ -20,6 +20,10 @@ namespace Apify
         /// 
         /// </summary>
         Gzip,
+        /// <summary>
+        /// 
+        /// </summary>
+        Identity,
     }
 
     /// <summary>
@@ -37,6 +41,7 @@ namespace Apify
                 KeyValueStoreRecordPutContentEncoding.Br => "br",
                 KeyValueStoreRecordPutContentEncoding.Deflate => "deflate",
                 KeyValueStoreRecordPutContentEncoding.Gzip => "gzip",
+                KeyValueStoreRecordPutContentEncoding.Identity => "identity",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +55,7 @@ namespace Apify
                 "br" => KeyValueStoreRecordPutContentEncoding.Br,
                 "deflate" => KeyValueStoreRecordPutContentEncoding.Deflate,
                 "gzip" => KeyValueStoreRecordPutContentEncoding.Gzip,
+                "identity" => KeyValueStoreRecordPutContentEncoding.Identity,
                 _ => null,
             };
         }

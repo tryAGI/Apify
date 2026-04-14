@@ -53,6 +53,7 @@ namespace Apify
             ref bool? skipHidden,
             ref bool? skipEmpty,
             ref bool? simplified,
+            ref string? view,
             ref bool? skipFailedPages,
             object request);
         partial void PrepareActorTaskRunSyncGetDatasetItemsPostRequest(
@@ -84,6 +85,7 @@ namespace Apify
             bool? skipHidden,
             bool? skipEmpty,
             bool? simplified,
+            string? view,
             bool? skipFailedPages,
             object request);
         partial void ProcessActorTaskRunSyncGetDatasetItemsPostResponse(
@@ -196,6 +198,9 @@ namespace Apify
         /// <param name="simplified">
         /// Example: false
         /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
@@ -232,6 +237,7 @@ namespace Apify
             bool? skipHidden = default,
             bool? skipEmpty = default,
             bool? simplified = default,
+            string? view = default,
             bool? skipFailedPages = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -265,6 +271,7 @@ namespace Apify
                 skipHidden: skipHidden,
                 skipEmpty: skipEmpty,
                 simplified: simplified,
+                view: view,
                 skipFailedPages: skipFailedPages,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -373,6 +380,9 @@ namespace Apify
         /// <param name="simplified">
         /// Example: false
         /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
@@ -409,6 +419,7 @@ namespace Apify
             bool? skipHidden = default,
             bool? skipEmpty = default,
             bool? simplified = default,
+            string? view = default,
             bool? skipFailedPages = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -445,6 +456,7 @@ namespace Apify
                 skipHidden: ref skipHidden,
                 skipEmpty: ref skipEmpty,
                 simplified: ref simplified,
+                view: ref view,
                 skipFailedPages: ref skipFailedPages,
                 request: request);
 
@@ -499,6 +511,7 @@ namespace Apify
                                 .AddOptionalParameter("skipHidden", skipHidden?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("skipEmpty", skipEmpty?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("view", view)
                                 .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant()) 
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -573,6 +586,7 @@ namespace Apify
                     skipHidden: skipHidden,
                     skipEmpty: skipEmpty,
                     simplified: simplified,
+                    view: view,
                     skipFailedPages: skipFailedPages,
                     request: request);
 
@@ -1234,6 +1248,9 @@ namespace Apify
         /// <param name="simplified">
         /// Example: false
         /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
@@ -1267,6 +1284,7 @@ namespace Apify
             bool? skipHidden = default,
             bool? skipEmpty = default,
             bool? simplified = default,
+            string? view = default,
             bool? skipFailedPages = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -1302,6 +1320,7 @@ namespace Apify
                 skipHidden: skipHidden,
                 skipEmpty: skipEmpty,
                 simplified: simplified,
+                view: view,
                 skipFailedPages: skipFailedPages,
                 request: __request,
                 requestOptions: requestOptions,

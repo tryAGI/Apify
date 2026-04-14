@@ -57,7 +57,9 @@ namespace Apify
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
-        /// <param name="idempotencyKey"></param>
+        /// <param name="idempotencyKey">
+        /// Optional idempotency key. When omitted, the SDK generates one for this request.
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -135,10 +137,10 @@ namespace Apify
                 } 
             }
 
-                if (idempotencyKey != default)
-                {
-                    __httpRequest.Headers.TryAddWithoutValidation("idempotency-key", idempotencyKey.ToString());
-                }
+            var __idempotencyKey = global::System.String.IsNullOrWhiteSpace(idempotencyKey)
+                ? CreateIdempotencyKey()
+                : idempotencyKey;
+            __httpRequest.Headers.TryAddWithoutValidation("idempotency-key", __idempotencyKey);
 
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -728,7 +730,9 @@ namespace Apify
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
-        /// <param name="idempotencyKey"></param>
+        /// <param name="idempotencyKey">
+        /// Optional idempotency key. When omitted, the SDK generates one for this request.
+        /// </param>
         /// <param name="eventName"></param>
         /// <param name="count"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

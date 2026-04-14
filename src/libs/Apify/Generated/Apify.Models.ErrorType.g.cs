@@ -27,6 +27,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        PageNotFound,
+        /// <summary>
+        /// 
+        /// </summary>
         PermissionDenied,
         /// <summary>
         /// 
@@ -63,6 +67,14 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        ScheduleActorNotFound,
+        /// <summary>
+        /// 
+        /// </summary>
+        ScheduleActorTaskNotFound,
+        /// <summary>
+        /// 
+        /// </summary>
         TokenNotValid,
         /// <summary>
         /// 
@@ -72,6 +84,10 @@ namespace Apify
         /// 
         /// </summary>
         UnsupportedContentEncoding,
+        /// <summary>
+        /// 
+        /// </summary>
+        UserNotFound,
     }
 
     /// <summary>
@@ -90,6 +106,7 @@ namespace Apify
                 ErrorType.ActorNotFound => "actor-not-found",
                 ErrorType.InvalidInput => "invalid-input",
                 ErrorType.MethodNotAllowed => "method-not-allowed",
+                ErrorType.PageNotFound => "page-not-found",
                 ErrorType.PermissionDenied => "permission-denied",
                 ErrorType.RateLimitExceeded => "rate-limit-exceeded",
                 ErrorType.RecordNotFound => "record-not-found",
@@ -99,9 +116,12 @@ namespace Apify
                 ErrorType.RequestTooLarge => "request-too-large",
                 ErrorType.RunFailed => "run-failed",
                 ErrorType.RunTimeoutExceeded => "run-timeout-exceeded",
+                ErrorType.ScheduleActorNotFound => "schedule-actor-not-found",
+                ErrorType.ScheduleActorTaskNotFound => "schedule-actor-task-not-found",
                 ErrorType.TokenNotValid => "token-not-valid",
                 ErrorType.UnknownBuildTag => "unknown-build-tag",
                 ErrorType.UnsupportedContentEncoding => "unsupported-content-encoding",
+                ErrorType.UserNotFound => "user-not-found",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -116,6 +136,7 @@ namespace Apify
                 "actor-not-found" => ErrorType.ActorNotFound,
                 "invalid-input" => ErrorType.InvalidInput,
                 "method-not-allowed" => ErrorType.MethodNotAllowed,
+                "page-not-found" => ErrorType.PageNotFound,
                 "permission-denied" => ErrorType.PermissionDenied,
                 "rate-limit-exceeded" => ErrorType.RateLimitExceeded,
                 "record-not-found" => ErrorType.RecordNotFound,
@@ -125,9 +146,12 @@ namespace Apify
                 "request-too-large" => ErrorType.RequestTooLarge,
                 "run-failed" => ErrorType.RunFailed,
                 "run-timeout-exceeded" => ErrorType.RunTimeoutExceeded,
+                "schedule-actor-not-found" => ErrorType.ScheduleActorNotFound,
+                "schedule-actor-task-not-found" => ErrorType.ScheduleActorTaskNotFound,
                 "token-not-valid" => ErrorType.TokenNotValid,
                 "unknown-build-tag" => ErrorType.UnknownBuildTag,
                 "unsupported-content-encoding" => ErrorType.UnsupportedContentEncoding,
+                "user-not-found" => ErrorType.UserNotFound,
                 _ => null,
             };
         }

@@ -68,7 +68,8 @@ namespace Apify
         /// HTTP headers sent with the request.
         /// </param>
         /// <param name="userData">
-        /// Custom user data attached to the request. Can contain arbitrary fields.
+        /// Custom user data attached to the request. Can contain arbitrary fields.<br/>
+        /// Example: {"label":"DETAIL","customField":"custom-value"}
         /// </param>
         /// <param name="noRetry">
         /// Indicates whether the request should not be retried if processing fails.
@@ -91,7 +92,7 @@ namespace Apify
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,
-            object? payload = default,
+            string? payload = default,
             object? headers = default,
             global::Apify.RequestUserData? userData = default,
             bool? noRetry = default,

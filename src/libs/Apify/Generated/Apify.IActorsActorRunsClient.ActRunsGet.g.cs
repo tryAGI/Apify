@@ -29,7 +29,7 @@ namespace Apify
         /// Example: true
         /// </param>
         /// <param name="status">
-        /// Example: SUCCEEDED
+        /// Example: [SUCCEEDED]
         /// </param>
         /// <param name="startedAfter">
         /// Example: 2025-09-01T00:00:00.000Z
@@ -45,7 +45,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             bool? desc = default,
-            string? status = default,
+            global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

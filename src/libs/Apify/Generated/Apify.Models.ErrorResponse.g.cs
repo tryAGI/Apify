@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.ErrorResponseError Error { get; set; }
+        public required global::Apify.ErrorDetail Error { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ErrorResponse(
-            global::Apify.ErrorResponseError error)
+            global::Apify.ErrorDetail error)
         {
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
         }
