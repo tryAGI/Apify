@@ -88,6 +88,10 @@ namespace Apify
         /// 
         /// </summary>
         UserNotFound,
+        /// <summary>
+        /// 
+        /// </summary>
+        X402PaymentRequired,
     }
 
     /// <summary>
@@ -122,6 +126,7 @@ namespace Apify
                 ErrorType.UnknownBuildTag => "unknown-build-tag",
                 ErrorType.UnsupportedContentEncoding => "unsupported-content-encoding",
                 ErrorType.UserNotFound => "user-not-found",
+                ErrorType.X402PaymentRequired => "x402-payment-required",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -152,6 +157,7 @@ namespace Apify
                 "unknown-build-tag" => ErrorType.UnknownBuildTag,
                 "unsupported-content-encoding" => ErrorType.UnsupportedContentEncoding,
                 "user-not-found" => ErrorType.UserNotFound,
+                "x402-payment-required" => ErrorType.X402PaymentRequired,
                 _ => null,
             };
         }

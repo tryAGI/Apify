@@ -2808,6 +2808,9 @@
               }
             }
           },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
@@ -3111,6 +3114,9 @@
                 }
               }
             }
+          },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -12010,7 +12016,8 @@
           "token-not-valid",
           "unknown-build-tag",
           "unsupported-content-encoding",
-          "user-not-found"
+          "user-not-found",
+          "x402-payment-required"
         ]
       },
       "ErrorDetail": {
@@ -20286,7 +20293,7 @@
         }
       },
       "PaymentRequired": {
-        "description": "Payment required - the user has exceeded their usage limit or does not have enough credits.",
+        "description": "Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.",
         "content": {
           "application/json": {
             "schema": {
@@ -20294,8 +20301,8 @@
             },
             "example": {
               "error": {
-                "type": "actor-memory-limit-exceeded",
-                "message": "You have exceeded your usage limit. Please consider upgrading your plan."
+                "type": "x402-payment-required",
+                "message": "Please provide X402-PAYMENT-SIGNATURE header with the payment. See https://x402.org."
               }
             }
           }
