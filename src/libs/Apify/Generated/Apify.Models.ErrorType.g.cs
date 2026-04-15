@@ -1219,6 +1219,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        SchemaValidationError,
+        /// <summary>
+        /// 
+        /// </summary>
         SchemaValidationFailed,
         /// <summary>
         /// 
@@ -1876,6 +1880,7 @@ namespace Apify
                 ErrorType.ScheduleActorTaskNotFound => "schedule-actor-task-not-found",
                 ErrorType.ScheduleNameNotUnique => "schedule-name-not-unique",
                 ErrorType.SchemaValidation => "schema-validation",
+                ErrorType.SchemaValidationError => "schema-validation-error",
                 ErrorType.SchemaValidationFailed => "schema-validation-failed",
                 ErrorType.SignUpMethodNotAllowed => "sign-up-method-not-allowed",
                 ErrorType.SlackIntegrationNotCustom => "slack-integration-not-custom",
@@ -2274,6 +2279,7 @@ namespace Apify
                 "schedule-actor-task-not-found" => ErrorType.ScheduleActorTaskNotFound,
                 "schedule-name-not-unique" => ErrorType.ScheduleNameNotUnique,
                 "schema-validation" => ErrorType.SchemaValidation,
+                "schema-validation-error" => ErrorType.SchemaValidationError,
                 "schema-validation-failed" => ErrorType.SchemaValidationFailed,
                 "sign-up-method-not-allowed" => ErrorType.SignUpMethodNotAllowed,
                 "slack-integration-not-custom" => ErrorType.SlackIntegrationNotCustom,

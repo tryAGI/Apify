@@ -318,11 +318,6 @@
       "x-trait": true
     },
     {
-      "name": "Tools",
-      "x-displayName": "Tools - Introduction",
-      "description": "The API endpoints described in this section provide utility tools for encoding,\nsigning, and verifying data, as well as inspecting HTTP request details.\n\n- **Browser info** (`/v2/browser-info`) - Returns details about the incoming HTTP request,\n  including the client IP address, country code, and headers. Accepts any HTTP method\n  (GET, POST, PUT, DELETE) so you can use it to test proxy behavior and verify that\n  client IP addresses are anonymized correctly.\n- **Encode and sign** (`/v2/tools/encode-and-sign`) - Encodes and signs a JSON object,\n  tying it to the authenticated user's identity.\n- **Decode and verify** (`/v2/tools/decode-and-verify`) - Decodes and verifies a value\n  previously created by the encode-and-sign endpoint.\n"
-    },
-    {
       "name": "Users",
       "x-displayName": "Users - Introduction",
       "x-legacy-doc-urls": [
@@ -339,6 +334,21 @@
       ],
       "description": "The API endpoints described in this section return information about user accounts.",
       "x-trait": true
+    },
+    {
+      "name": "Tools",
+      "x-displayName": "Tools - Introduction",
+      "description": "The API endpoints described in this section provide utility tools for encoding,\nsigning, and verifying data, as well as inspecting HTTP request details.\n"
+    },
+    {
+      "name": "Default storages",
+      "x-displayName": "Default storages - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default storages (dataset, key-value store, and request queue) without the need to resolve the storage ID first.\n"
+    },
+    {
+      "name": "Last Actor run",
+      "x-displayName": "Last Actor run - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run and all it's sub resources without the need to resolve the run ID first.\n"
     }
   ],
   "paths": {
@@ -3463,6 +3473,510 @@
         ]
       }
     },
+    "/v2/acts/{actorId}/runs/last/dataset": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last run's default dataset",
+        "description": "Returns the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
+        "operationId": "act_runs_last_dataset_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDatasetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last run's default dataset",
+        "description": "Updates the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Update dataset](/api/v2/dataset-put) endpoint.\n",
+        "operationId": "act_runs_last_dataset_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last run's default dataset",
+        "description": "Deletes the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Delete dataset](/api/v2/dataset-delete) endpoint.\n",
+        "operationId": "act_runs_last_dataset_delete"
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/dataset/items": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "X-Apify-Pagination-Offset": {
+                "description": "The offset of the first item in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "0"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Limit": {
+                "description": "The maximum number of items returned per page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Count": {
+                "description": "The number of items returned in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Total": {
+                "description": "The total number of items in the dataset.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "10204"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": [
+                    {
+                      "foo": "bar"
+                    },
+                    {
+                      "foo2": "bar2"
+                    }
+                  ]
+                }
+              },
+              "application/jsonl": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\"foo\":\"bar\"}\\n{\"foo2\":\"bar2\"}\\n"
+              },
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "foo,bar\\nfoo2,bar2\\n"
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<table><tr><th>foo</th><th>bar</th></tr><tr><td>foo</td><td>bar</td></tr><tr><td>foo2</td><td>bar2</td></tr></table>"
+              },
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/rss+xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<rss><channel><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></channel></rss>"
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<items><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></items>"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run"
+        ],
+        "summary": "Get last run's dataset items",
+        "description": "Returns data stored in the default dataset of the last Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
+        "operationId": "act_runs_last_dataset_items_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/clean"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/fields"
+          },
+          {
+            "$ref": "#/components/parameters/omit"
+          },
+          {
+            "$ref": "#/components/parameters/unwind"
+          },
+          {
+            "$ref": "#/components/parameters/flatten"
+          },
+          {
+            "$ref": "#/components/parameters/descDataset"
+          },
+          {
+            "$ref": "#/components/parameters/attachment"
+          },
+          {
+            "$ref": "#/components/parameters/delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/bom"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRoot"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHeaderRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHidden"
+          },
+          {
+            "$ref": "#/components/parameters/skipEmpty"
+          },
+          {
+            "$ref": "#/components/parameters/simplified"
+          },
+          {
+            "$ref": "#/components/parameters/view"
+          },
+          {
+            "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PutItemsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PutItemsRequest"
+                    }
+                  }
+                ],
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/datasets/WkzbQMuFYuamGv3YF/items"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/PutItemResponseError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run"
+        ],
+        "summary": "Store items in last run's dataset",
+        "description": "Appends an item or an array of items to the end of the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n",
+        "operationId": "act_runs_last_dataset_items_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/dataset/statistics": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetStatisticsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "tags": [
+          "Last Actor run"
+        ],
+        "summary": "Get last run's dataset statistics",
+        "description": "Returns statistics for the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
+        "operationId": "act_runs_last_dataset_statistics_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
     "/v2/acts/{actorId}/runs/{runId}": {
       "get": {
         "tags": [
@@ -5991,6 +6505,492 @@
         ]
       }
     },
+    "/v2/actor-runs/{runId}/dataset": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default storages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Get default dataset",
+        "description": "Returns the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
+        "operationId": "actorRun_dataset_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDatasetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default storages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Update default dataset",
+        "description": "Updates the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the\n[Put dataset](/api/v2/dataset-put) endpoint.\n",
+        "operationId": "actorRun_dataset_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default storages"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Delete default dataset",
+        "description": "Deletes default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[ Delete dataset ](/api/v2/dataset-delete) endpoint.\n",
+        "operationId": "actorRun_dataset_delete"
+      }
+    },
+    "/v2/actor-runs/{runId}/dataset/items": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "X-Apify-Pagination-Offset": {
+                "description": "The offset of the first item in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "0"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Limit": {
+                "description": "The maximum number of items returned per page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Count": {
+                "description": "The number of items returned in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Total": {
+                "description": "The total number of items in the dataset.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "10204"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": [
+                    {
+                      "foo": "bar"
+                    },
+                    {
+                      "foo2": "bar2"
+                    }
+                  ]
+                }
+              },
+              "application/jsonl": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\"foo\":\"bar\"}\\n{\"foo2\":\"bar2\"}\\n"
+              },
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "foo,bar\\nfoo2,bar2\\n"
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<table><tr><th>foo</th><th>bar</th></tr><tr><td>foo</td><td>bar</td></tr><tr><td>foo2</td><td>bar2</td></tr></table>"
+              },
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/rss+xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<rss><channel><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></channel></rss>"
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<items><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></items>"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default storages"
+        ],
+        "summary": "Get default dataset items",
+        "description": "Returns data stored in the default dataset of the Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
+        "operationId": "actorRun_dataset_items_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/clean"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/fields"
+          },
+          {
+            "$ref": "#/components/parameters/omit"
+          },
+          {
+            "$ref": "#/components/parameters/unwind"
+          },
+          {
+            "$ref": "#/components/parameters/flatten"
+          },
+          {
+            "$ref": "#/components/parameters/descDataset"
+          },
+          {
+            "$ref": "#/components/parameters/attachment"
+          },
+          {
+            "$ref": "#/components/parameters/delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/bom"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRoot"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHeaderRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHidden"
+          },
+          {
+            "$ref": "#/components/parameters/skipEmpty"
+          },
+          {
+            "$ref": "#/components/parameters/simplified"
+          },
+          {
+            "$ref": "#/components/parameters/view"
+          },
+          {
+            "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PutItemsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PutItemsRequest"
+                    }
+                  }
+                ],
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/datasets/WkzbQMuFYuamGv3YF/items"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/PutItemResponseError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default storages"
+        ],
+        "summary": "Store items",
+        "description": "Appends an item or an array of items to the end of the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n",
+        "operationId": "actorRun_dataset_items_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/dataset/statistics": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetStatisticsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "tags": [
+          "Default storages"
+        ],
+        "summary": "Get default dataset statistics",
+        "description": "Returns statistics for the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
+        "operationId": "actorRun_dataset_statistics_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ]
+      }
+    },
     "/v2/actor-builds": {
       "get": {
         "tags": [
@@ -7377,28 +8377,6 @@
     },
     "/v2/datasets/{datasetId}": {
       "get": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Get dataset",
-        "description": "Returns dataset object for given dataset ID.\n\nThis does not return dataset items, only information about the storage itself.\nTo retrieve dataset items, use the [List dataset items](/api/v2/dataset-items-get) endpoint.\n\n:::note\n\nKeep in mind that attributes `itemCount` and `cleanItemCount` are not propagated right away after data are pushed into a dataset.\n\n:::\n\nThere is a short period (up to 5 seconds) during which these counters may not match with exact counts in dataset items.\n",
-        "operationId": "dataset_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          },
-          {
-            "name": "token",
-            "in": "query",
-            "description": "API authentication token. It is required only when using the `username~dataset-name` format for `datasetId`.\n",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "soSkq9ekdmfOslopH"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -7431,6 +8409,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Datasets"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          }
+        ],
+        "summary": "Get dataset",
+        "description": "Returns dataset object for given dataset ID.\n\nThis does not return dataset items, only information about the storage itself.\nTo retrieve dataset items, use the [List dataset items](/api/v2/dataset-items-get) endpoint.\n\n:::note\n\nKeep in mind that attributes `itemCount` and `cleanItemCount` are not propagated right away after data are pushed into a dataset.\n\n:::\n\nThere is a short period (up to 5 seconds) during which these counters may not match with exact counts in dataset items.\n",
+        "operationId": "dataset_get",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/datasets/dataset/get-dataset",
           "https://docs.apify.com/api/v2#/reference/datasets/get-dataset",
@@ -7444,17 +8433,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#get"
       },
       "put": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Update dataset",
-        "description": "Updates a dataset's name and general resource access level using a value specified by a JSON object passed in the PUT payload.\nThe response is the updated dataset object, as returned by the [Get dataset](#/reference/datasets/dataset-collection/get-dataset) API endpoint.\n",
-        "operationId": "dataset_put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -7504,6 +8482,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Datasets"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          }
+        ],
+        "summary": "Update dataset",
+        "description": "Updates a dataset's name and general resource access level using a value specified by a JSON object passed in the PUT payload.\nThe response is the updated dataset object, as returned by the [Get dataset](/api/v2/dataset-get) API endpoint.\n",
+        "operationId": "dataset_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/datasets/dataset/update-dataset",
           "https://docs.apify.com/api/v2#/reference/datasets/update-dataset",
@@ -7517,17 +8506,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#update"
       },
       "delete": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Delete dataset",
-        "description": "Deletes a specific dataset.",
-        "operationId": "dataset_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          }
-        ],
         "responses": {
           "204": {
             "$ref": "#/components/responses/NoContent"
@@ -7552,6 +8530,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Datasets"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          }
+        ],
+        "summary": "Delete dataset",
+        "description": "Deletes a specific dataset.",
+        "operationId": "dataset_delete",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/datasets/dataset/delete-dataset",
           "https://docs.apify.com/api/v2#/reference/datasets/delete-dataset",
@@ -7564,80 +8553,6 @@
     },
     "/v2/datasets/{datasetId}/items": {
       "get": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Get dataset items",
-        "description": "Returns data stored in the dataset in a desired format.\n\n### Response format\n\nThe format of the response depends on <code>format</code> query parameter.\n\nThe <code>format</code> parameter can have one of the following values:\n<code>json</code>, <code>jsonl</code>, <code>xml</code>, <code>html</code>,\n<code>csv</code>, <code>xlsx</code> and <code>rss</code>.\n\nThe following table describes how each format is treated.\n\n<table>\n  <tr>\n    <th>Format</th>\n    <th>Items</th>\n  </tr>\n  <tr>\n    <td><code>json</code></td>\n    <td rowspan=\"3\">The response is a JSON, JSONL or XML array of raw item objects.</td>\n  </tr>\n  <tr>\n    <td><code>jsonl</code></td>\n  </tr>\n  <tr>\n    <td><code>xml</code></td>\n  </tr>\n  <tr>\n    <td><code>html</code></td>\n    <td rowspan=\"3\">The response is a HTML, CSV or XLSX table, where columns correspond to the\n    properties of the item and rows correspond to each dataset item.</td>\n  </tr>\n  <tr>\n    <td><code>csv</code></td>\n  </tr>\n  <tr>\n    <td><code>xlsx</code></td>\n  </tr>\n  <tr>\n    <td><code>rss</code></td>\n    <td colspan=\"2\">The response is a RSS file. Each item is displayed as child elements of one\n    <code>&lt;item&gt;</code>.</td>\n  </tr>\n</table>\n\nNote that CSV, XLSX and HTML tables are limited to 2000 columns and the column names cannot be longer than 200 characters.\nJSON, XML and RSS formats do not have such restrictions.\n\n### Hidden fields\n\nThe top-level fields starting with the `#` character are considered hidden.\nThese are useful to store debugging information and can be omitted from the output by providing the `skipHidden=1` or `clean=1` query parameters.\nFor example, if you store the following object to the dataset:\n\n```\n{\n    productName: \"iPhone Xs\",\n    description: \"Welcome to the big screens.\"\n    #debug: {\n        url: \"https://www.apple.com/lae/iphone-xs/\",\n        crawledAt: \"2019-01-21T16:06:03.683Z\"\n    }\n}\n```\n\nThe `#debug` field will be considered as hidden and can be omitted from the\nresults. This is useful to\nprovide nice cleaned data to end users, while keeping debugging info\navailable if needed. The Dataset object\nreturned by the API contains the number of such clean items in the`dataset.cleanItemCount` property.\n\n### XML format extension\n\nWhen exporting results to XML or RSS formats, the names of object properties become XML tags and the corresponding values become tag's children. For example, the following JavaScript object:\n\n```\n{\n    name: \"Paul Newman\",\n    address: [\n        { type: \"home\", street: \"21st\", city: \"Chicago\" },\n        { type: \"office\", street: null, city: null }\n    ]\n}\n```\n\nwill be transformed to the following XML snippet:\n\n```\n<name>Paul Newman</name>\n<address>\n  <type>home</type>\n  <street>21st</street>\n  <city>Chicago</city>\n</address>\n<address>\n  <type>office</type>\n  <street/>\n  <city/>\n</address>\n```\n\nIf the JavaScript object contains a property named `@` then its sub-properties are exported as attributes of the parent XML\nelement.\nIf the parent XML element does not have any child elements then its value is taken from a JavaScript object property named `#`.\n\nFor example, the following JavaScript object:\n\n```\n{\n  \"address\": [{\n    \"@\": {\n      \"type\": \"home\"\n    },\n    \"street\": \"21st\",\n    \"city\": \"Chicago\"\n  },\n  {\n    \"@\": {\n      \"type\": \"office\"\n    },\n    \"#\": 'unknown'\n  }]\n}\n```\n\nwill be transformed to the following XML snippet:\n\n```\n<address type=\"home\">\n  <street>21st</street>\n  <city>Chicago</city>\n</address>\n<address type=\"office\">unknown</address>\n```\n\nThis feature is also useful to customize your RSS feeds generated for various websites.\n\nBy default the whole result is wrapped in a `<items>` element and each page object is wrapped in a `<item>` element.\nYou can change this using <code>xmlRoot</code> and <code>xmlRow</code> url parameters.\n\n### Pagination\n\nThe generated response supports [pagination](#/introduction/pagination).\nThe pagination is always performed with the granularity of a single item, regardless whether <code>unwind</code> parameter was provided.\nBy default, the **Items** in the response are sorted by the time they were stored to the database, therefore you can use pagination to incrementally fetch the items as they are being added.\nNo limit exists to how many items can be returned in one response.\n\nIf you specify `desc=1` query parameter, the results are returned in the reverse order than they were stored (i.e. from newest to oldest items).\nNote that only the order of **Items** is reversed, but not the order of the `unwind` array elements.\n",
-        "operationId": "dataset_items_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          },
-          {
-            "$ref": "#/components/parameters/format"
-          },
-          {
-            "$ref": "#/components/parameters/clean"
-          },
-          {
-            "$ref": "#/components/parameters/offset"
-          },
-          {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
-          },
-          {
-            "$ref": "#/components/parameters/fields"
-          },
-          {
-            "$ref": "#/components/parameters/omit"
-          },
-          {
-            "$ref": "#/components/parameters/unwind"
-          },
-          {
-            "$ref": "#/components/parameters/flatten"
-          },
-          {
-            "$ref": "#/components/parameters/descDataset"
-          },
-          {
-            "$ref": "#/components/parameters/attachment"
-          },
-          {
-            "$ref": "#/components/parameters/delimiter"
-          },
-          {
-            "$ref": "#/components/parameters/bom"
-          },
-          {
-            "$ref": "#/components/parameters/xmlRoot"
-          },
-          {
-            "$ref": "#/components/parameters/xmlRow"
-          },
-          {
-            "$ref": "#/components/parameters/skipHeaderRow"
-          },
-          {
-            "$ref": "#/components/parameters/skipHidden"
-          },
-          {
-            "$ref": "#/components/parameters/skipEmpty"
-          },
-          {
-            "$ref": "#/components/parameters/simplified"
-          },
-          {
-            "$ref": "#/components/parameters/view"
-          },
-          {
-            "$ref": "#/components/parameters/skipFailedPages"
-          },
-          {
-            "$ref": "#/components/parameters/signature"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -7761,25 +8676,9 @@
           }
         },
         "deprecated": false,
-        "x-legacy-doc-urls": [
-          "https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items",
-          "https://docs.apify.com/api/v2#/reference/datasets/get-items",
-          "https://docs.apify.com/api/v2#tag/DatasetsItem-collection/operation/dataset_items_get"
-        ],
-        "x-js-parent": "DatasetClient",
-        "x-js-name": "listItems",
-        "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/DatasetClient#listItems",
-        "x-py-parent": "DatasetClientAsync",
-        "x-py-name": "stream_items",
-        "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#stream_items"
-      },
-      "head": {
         "tags": [
           "Storage/Datasets"
         ],
-        "summary": "Get dataset items headers",
-        "description": "Returns only the HTTP headers for the dataset items endpoint, without the response body.\nThis is useful to check pagination metadata or verify access without downloading the full dataset.\n",
-        "operationId": "dataset_items_head",
         "parameters": [
           {
             "$ref": "#/components/parameters/datasetId"
@@ -7848,6 +8747,93 @@
             "$ref": "#/components/parameters/signature"
           }
         ],
+        "summary": "Get dataset items",
+        "description": "Returns data stored in the dataset in a desired format.\n\n### Response format\n\nThe format of the response depends on <code>format</code> query parameter.\n\nThe <code>format</code> parameter can have one of the following values:\n<code>json</code>, <code>jsonl</code>, <code>xml</code>, <code>html</code>,\n<code>csv</code>, <code>xlsx</code> and <code>rss</code>.\n\nThe following table describes how each format is treated.\n\n<table>\n  <tr>\n    <th>Format</th>\n    <th>Items</th>\n  </tr>\n  <tr>\n    <td><code>json</code></td>\n    <td rowspan=\"3\">The response is a JSON, JSONL or XML array of raw item objects.</td>\n  </tr>\n  <tr>\n    <td><code>jsonl</code></td>\n  </tr>\n  <tr>\n    <td><code>xml</code></td>\n  </tr>\n  <tr>\n    <td><code>html</code></td>\n    <td rowspan=\"3\">The response is a HTML, CSV or XLSX table, where columns correspond to the\n    properties of the item and rows correspond to each dataset item.</td>\n  </tr>\n  <tr>\n    <td><code>csv</code></td>\n  </tr>\n  <tr>\n    <td><code>xlsx</code></td>\n  </tr>\n  <tr>\n    <td><code>rss</code></td>\n    <td colspan=\"2\">The response is a RSS file. Each item is displayed as child elements of one\n    <code>&lt;item&gt;</code>.</td>\n  </tr>\n</table>\n\nNote that CSV, XLSX and HTML tables are limited to 2000 columns and the column names cannot be longer than 200 characters.\nJSON, XML and RSS formats do not have such restrictions.\n\n### Hidden fields\n\nThe top-level fields starting with the `#` character are considered hidden.\nThese are useful to store debugging information and can be omitted from the output by providing the `skipHidden=1` or `clean=1` query parameters.\nFor example, if you store the following object to the dataset:\n\n```\n{\n    productName: \"iPhone Xs\",\n    description: \"Welcome to the big screens.\"\n    #debug: {\n        url: \"https://www.apple.com/lae/iphone-xs/\",\n        crawledAt: \"2019-01-21T16:06:03.683Z\"\n    }\n}\n```\n\nThe `#debug` field will be considered as hidden and can be omitted from the\nresults. This is useful to\nprovide nice cleaned data to end users, while keeping debugging info\navailable if needed. The Dataset object\nreturned by the API contains the number of such clean items in the`dataset.cleanItemCount` property.\n\n### XML format extension\n\nWhen exporting results to XML or RSS formats, the names of object properties become XML tags and the corresponding values become tag's children. For example, the following JavaScript object:\n\n```\n{\n    name: \"Paul Newman\",\n    address: [\n        { type: \"home\", street: \"21st\", city: \"Chicago\" },\n        { type: \"office\", street: null, city: null }\n    ]\n}\n```\n\nwill be transformed to the following XML snippet:\n\n```\n<name>Paul Newman</name>\n<address>\n  <type>home</type>\n  <street>21st</street>\n  <city>Chicago</city>\n</address>\n<address>\n  <type>office</type>\n  <street/>\n  <city/>\n</address>\n```\n\nIf the JavaScript object contains a property named `@` then its sub-properties are exported as attributes of the parent XML\nelement.\nIf the parent XML element does not have any child elements then its value is taken from a JavaScript object property named `#`.\n\nFor example, the following JavaScript object:\n\n```\n{\n  \"address\": [{\n    \"@\": {\n      \"type\": \"home\"\n    },\n    \"street\": \"21st\",\n    \"city\": \"Chicago\"\n  },\n  {\n    \"@\": {\n      \"type\": \"office\"\n    },\n    \"#\": 'unknown'\n  }]\n}\n```\n\nwill be transformed to the following XML snippet:\n\n```\n<address type=\"home\">\n  <street>21st</street>\n  <city>Chicago</city>\n</address>\n<address type=\"office\">unknown</address>\n```\n\nThis feature is also useful to customize your RSS feeds generated for various websites.\n\nBy default the whole result is wrapped in a `<items>` element and each page object is wrapped in a `<item>` element.\nYou can change this using <code>xmlRoot</code> and <code>xmlRow</code> url parameters.\n\n### Pagination\n\nThe generated response supports [pagination](#/introduction/pagination).\nThe pagination is always performed with the granularity of a single item, regardless whether <code>unwind</code> parameter was provided.\nBy default, the **Items** in the response are sorted by the time they were stored to the database, therefore you can use pagination to incrementally fetch the items as they are being added.\nNo limit exists to how many items can be returned in one response.\n\nIf you specify `desc=1` query parameter, the results are returned in the reverse order than they were stored (i.e. from newest to oldest items).\nNote that only the order of **Items** is reversed, but not the order of the `unwind` array elements.\n",
+        "operationId": "dataset_items_get",
+        "x-legacy-doc-urls": [
+          "https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items",
+          "https://docs.apify.com/api/v2#/reference/datasets/get-items",
+          "https://docs.apify.com/api/v2#tag/DatasetsItem-collection/operation/dataset_items_get"
+        ],
+        "x-js-parent": "DatasetClient",
+        "x-js-name": "listItems",
+        "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/DatasetClient#listItems",
+        "x-py-parent": "DatasetClientAsync",
+        "x-py-name": "stream_items",
+        "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#stream_items"
+      },
+      "head": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/clean"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/fields"
+          },
+          {
+            "$ref": "#/components/parameters/omit"
+          },
+          {
+            "$ref": "#/components/parameters/unwind"
+          },
+          {
+            "$ref": "#/components/parameters/flatten"
+          },
+          {
+            "$ref": "#/components/parameters/descDataset"
+          },
+          {
+            "$ref": "#/components/parameters/attachment"
+          },
+          {
+            "$ref": "#/components/parameters/delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/bom"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRoot"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHeaderRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHidden"
+          },
+          {
+            "$ref": "#/components/parameters/skipEmpty"
+          },
+          {
+            "$ref": "#/components/parameters/simplified"
+          },
+          {
+            "$ref": "#/components/parameters/view"
+          },
+          {
+            "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ],
+        "tags": [
+          "Storage/Datasets"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -7901,22 +8887,29 @@
           },
           "400": {
             "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         },
-        "deprecated": false
+        "deprecated": false,
+        "summary": "Get dataset items headers",
+        "description": "Returns only the HTTP headers for the dataset items endpoint, without the response body.\nThis is useful to check pagination metadata or verify access without downloading the full dataset.\n",
+        "operationId": "dataset_items_head"
       },
       "post": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Store items",
-        "description": "Appends an item or an array of items to the end of the dataset.\nThe POST payload is a JSON object or a JSON array of objects to save into the dataset.\n\nIf the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.\nFor more information about dataset schema validation, see [Dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation).\n\n**IMPORTANT:** The limit of request payload size for the dataset is 5 MB. If the array exceeds the size, you'll need to split it into a number of smaller arrays.\n",
-        "operationId": "dataset_items_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -7969,19 +8962,46 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PutItemResponseError"
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/PutItemResponseError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
                 }
               }
             }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Datasets"
+        ],
+        "summary": "Store items",
+        "description": "Appends an item or an array of items to the end of the dataset.\nThe POST payload is a JSON object or a JSON array of objects to save into the dataset.\n\nIf the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.\nFor more information about dataset schema validation, see [Dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation).\n\n**IMPORTANT:** The limit of request payload size for the dataset is 5 MB. If the array exceeds the size, you'll need to split it into a number of smaller arrays.\n",
+        "operationId": "dataset_items_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/datasets/item-collection/put-items",
           "https://docs.apify.com/api/v2#/reference/datasets/put-items",
@@ -7997,17 +9017,6 @@
     },
     "/v2/datasets/{datasetId}/statistics": {
       "get": {
-        "tags": [
-          "Storage/Datasets"
-        ],
-        "summary": "Get dataset statistics",
-        "description": "Returns statistics for given dataset.\n\nProvides only [field statistics](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics).\n",
-        "operationId": "dataset_statistics_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/datasetId"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -8037,7 +9046,18 @@
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
-        }
+        },
+        "tags": [
+          "Storage/Datasets"
+        ],
+        "summary": "Get dataset statistics",
+        "description": "Returns statistics for given dataset.\n\nProvides only [field statistics](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics).\n",
+        "operationId": "dataset_statistics_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/datasetId"
+          }
+        ]
       }
     },
     "/v2/request-queues": {
@@ -11584,6 +12604,17 @@
           "example": "SUCCEEDED"
         }
       },
+      "signature": {
+        "name": "signature",
+        "in": "query",
+        "description": "Signature used for the access.",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "example": "2wTI46Bg8qWQrV7tavlPI"
+        }
+      },
       "gracefully": {
         "name": "gracefully",
         "in": "query",
@@ -11662,17 +12693,6 @@
         "schema": {
           "type": "string",
           "example": "WkzbQMuFYuamGv3YF"
-        }
-      },
-      "signature": {
-        "name": "signature",
-        "in": "query",
-        "description": "Signature used for the access.",
-        "required": false,
-        "style": "form",
-        "schema": {
-          "type": "string",
-          "example": "2wTI46Bg8qWQrV7tavlPI"
         }
       },
       "recordKey": {
@@ -12299,6 +13319,7 @@
           "schedule-actor-task-not-found",
           "schedule-name-not-unique",
           "schema-validation",
+          "schema-validation-error",
           "schema-validation-failed",
           "sign-up-method-not-allowed",
           "slack-integration-not-custom",
@@ -15487,6 +16508,424 @@
           }
         }
       },
+      "DatasetStats": {
+        "title": "DatasetStats",
+        "required": [
+          "readCount",
+          "writeCount",
+          "storageBytes"
+        ],
+        "type": "object",
+        "properties": {
+          "readCount": {
+            "type": "integer",
+            "examples": [
+              22
+            ]
+          },
+          "writeCount": {
+            "type": "integer",
+            "examples": [
+              3
+            ]
+          },
+          "storageBytes": {
+            "type": "integer",
+            "examples": [
+              783
+            ]
+          }
+        }
+      },
+      "Dataset": {
+        "title": "Dataset",
+        "required": [
+          "id",
+          "userId",
+          "createdAt",
+          "modifiedAt",
+          "accessedAt",
+          "itemCount",
+          "cleanItemCount",
+          "consoleUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "WkzbQMuFYuamGv3YF"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "d7b9MDYsbtX5L7XAj"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "examples": [
+              "wRsJZtadYvn4mBZmm"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-12T07:34:14.202Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-13T08:36:13.202Z"
+            ]
+          },
+          "accessedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-14T08:36:13.202Z"
+            ]
+          },
+          "itemCount": {
+            "type": "integer",
+            "minimum": 0,
+            "examples": [
+              7
+            ]
+          },
+          "cleanItemCount": {
+            "type": "integer",
+            "minimum": 0,
+            "examples": [
+              5
+            ]
+          },
+          "actId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "actRunId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fields": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          "schema": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/platform/actors/development/actor-definition/dataset-schema)",
+            "example": {
+              "actorSpecification": 1,
+              "title": "My dataset",
+              "views": {
+                "overview": {
+                  "title": "Overview",
+                  "transformation": {
+                    "fields": [
+                      "linkUrl"
+                    ]
+                  },
+                  "display": {
+                    "component": "table",
+                    "properties": {
+                      "linkUrl": {
+                        "label": "Link URL",
+                        "format": "link"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "consoleUrl": {
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://console.apify.com/storage/datasets/27TmTznX9YPeAYhkC"
+            ]
+          },
+          "itemsPublicUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "A public link to access the dataset items directly.",
+            "examples": [
+              "https://api.apify.com/v2/datasets/WkzbQMuFYuamGv3YF/items?signature=abc123"
+            ]
+          },
+          "urlSigningSecretKey": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the dataset."
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/DatasetStats"
+          }
+        }
+      },
+      "DatasetResponse": {
+        "title": "DatasetResponse",
+        "description": "Response containing dataset metadata.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Dataset"
+          }
+        }
+      },
+      "UpdateDatasetRequest": {
+        "title": "UpdateDatasetRequest",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          }
+        },
+        "example": {
+          "name": "new-dataset-name",
+          "generalAccess": "RESTRICTED"
+        }
+      },
+      "PutItemsRequest": {
+        "title": "PutItemsRequest",
+        "description": "The request body containing the item(s) to add to the dataset. Can be a single\nobject or an array of objects. Each object represents one dataset item.\n",
+        "type": "object",
+        "additionalProperties": true,
+        "example": {
+          "title": "Example Item",
+          "url": "https://example.com",
+          "price": 19.99
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "type": "object",
+        "properties": {
+          "instancePath": {
+            "type": "string",
+            "description": "The path to the instance being validated."
+          },
+          "schemaPath": {
+            "type": "string",
+            "description": "The path to the schema that failed the validation."
+          },
+          "keyword": {
+            "type": "string",
+            "description": "The validation keyword that caused the error."
+          },
+          "message": {
+            "type": "string",
+            "description": "A message describing the validation error."
+          },
+          "params": {
+            "type": "object",
+            "description": "Additional parameters specific to the validation error."
+          }
+        }
+      },
+      "InvalidItem": {
+        "title": "InvalidItem",
+        "type": "object",
+        "properties": {
+          "itemPosition": {
+            "type": "integer",
+            "description": "The position of the invalid item in the array.",
+            "examples": [
+              2
+            ]
+          },
+          "validationErrors": {
+            "type": "array",
+            "description": "A complete list of AJV validation error objects for the invalid item.",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "SchemaValidationErrorData": {
+        "title": "SchemaValidationErrorData",
+        "required": [
+          "invalidItems"
+        ],
+        "type": "object",
+        "properties": {
+          "invalidItems": {
+            "type": "array",
+            "description": "A list of invalid items in the received array of items.",
+            "items": {
+              "$ref": "#/components/schemas/InvalidItem"
+            }
+          }
+        }
+      },
+      "DatasetSchemaValidationError": {
+        "title": "DatasetSchemaValidationError",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "The type of the error.",
+            "examples": [
+              "schema-validation-error"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "description": "A human-readable message describing the error.",
+            "examples": [
+              "Schema validation failed"
+            ]
+          },
+          "data": {
+            "$ref": "#/components/schemas/SchemaValidationErrorData"
+          }
+        }
+      },
+      "PutItemResponseError": {
+        "title": "PutItemResponseError",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/DatasetSchemaValidationError"
+          }
+        },
+        "example": {
+          "error": {
+            "type": "schema-validation-error",
+            "message": "Schema validation failed",
+            "data": {
+              "invalidItems": [
+                {
+                  "itemPosition": 2,
+                  "validationErrors": [
+                    {
+                      "instancePath": "/1/stringField",
+                      "schemaPath": "/items/properties/stringField/type",
+                      "keyword": "type",
+                      "params": {
+                        "type": "string"
+                      },
+                      "message": "must be string"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "DatasetFieldStatistics": {
+        "title": "DatasetFieldStatistics",
+        "type": "object",
+        "properties": {
+          "min": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Minimum value of the field. For numbers, this is calculated directly. For strings, this is the length of the shortest string. For arrays, this is the length of the shortest array. For objects, this is the number of keys in the smallest object."
+          },
+          "max": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Maximum value of the field. For numbers, this is calculated directly. For strings, this is the length of the longest string. For arrays, this is the length of the longest array. For objects, this is the number of keys in the largest object."
+          },
+          "nullCount": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "How many items in the dataset have a null value for this field."
+          },
+          "emptyCount": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "How many items in the dataset are `undefined`, meaning that for example empty string is not considered empty."
+          }
+        }
+      },
+      "DatasetStatistics": {
+        "title": "DatasetStatistics",
+        "type": "object",
+        "properties": {
+          "fieldStatistics": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DatasetFieldStatistics"
+            },
+            "description": "When you configure the dataset [fields schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation), we measure the statistics such as `min`, `max`, `nullCount` and `emptyCount` for each field. This property provides statistics for each field from dataset fields schema. <br/></br>See dataset field statistics [documentation](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics) for more information."
+          }
+        },
+        "example": {
+          "fieldStatistics": {
+            "name": {
+              "nullCount": 122
+            },
+            "price": {
+              "min": 59,
+              "max": 89
+            }
+          }
+        }
+      },
+      "DatasetStatisticsResponse": {
+        "title": "DatasetStatisticsResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DatasetStatistics"
+          }
+        }
+      },
       "TaskStats": {
         "title": "TaskStats",
         "type": "object",
@@ -16635,424 +18074,6 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ListOfDatasets"
-          }
-        }
-      },
-      "DatasetStats": {
-        "title": "DatasetStats",
-        "required": [
-          "readCount",
-          "writeCount",
-          "storageBytes"
-        ],
-        "type": "object",
-        "properties": {
-          "readCount": {
-            "type": "integer",
-            "examples": [
-              22
-            ]
-          },
-          "writeCount": {
-            "type": "integer",
-            "examples": [
-              3
-            ]
-          },
-          "storageBytes": {
-            "type": "integer",
-            "examples": [
-              783
-            ]
-          }
-        }
-      },
-      "Dataset": {
-        "title": "Dataset",
-        "required": [
-          "id",
-          "userId",
-          "createdAt",
-          "modifiedAt",
-          "accessedAt",
-          "itemCount",
-          "cleanItemCount",
-          "consoleUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "WkzbQMuFYuamGv3YF"
-            ]
-          },
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "d7b9MDYsbtX5L7XAj"
-            ]
-          },
-          "userId": {
-            "type": "string",
-            "examples": [
-              "wRsJZtadYvn4mBZmm"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-12T07:34:14.202Z"
-            ]
-          },
-          "modifiedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-13T08:36:13.202Z"
-            ]
-          },
-          "accessedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-14T08:36:13.202Z"
-            ]
-          },
-          "itemCount": {
-            "type": "integer",
-            "minimum": 0,
-            "examples": [
-              7
-            ]
-          },
-          "cleanItemCount": {
-            "type": "integer",
-            "minimum": 0,
-            "examples": [
-              5
-            ]
-          },
-          "actId": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "actRunId": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "fields": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "type": "string"
-            },
-            "description": ""
-          },
-          "schema": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "description": "Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/platform/actors/development/actor-definition/dataset-schema)",
-            "example": {
-              "actorSpecification": 1,
-              "title": "My dataset",
-              "views": {
-                "overview": {
-                  "title": "Overview",
-                  "transformation": {
-                    "fields": [
-                      "linkUrl"
-                    ]
-                  },
-                  "display": {
-                    "component": "table",
-                    "properties": {
-                      "linkUrl": {
-                        "label": "Link URL",
-                        "format": "link"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "consoleUrl": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://console.apify.com/storage/datasets/27TmTznX9YPeAYhkC"
-            ]
-          },
-          "itemsPublicUrl": {
-            "type": "string",
-            "format": "uri",
-            "description": "A public link to access the dataset items directly.",
-            "examples": [
-              "https://api.apify.com/v2/datasets/WkzbQMuFYuamGv3YF/items?signature=abc123"
-            ]
-          },
-          "urlSigningSecretKey": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the dataset."
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          },
-          "stats": {
-            "$ref": "#/components/schemas/DatasetStats"
-          }
-        }
-      },
-      "DatasetResponse": {
-        "title": "DatasetResponse",
-        "description": "Response containing dataset metadata.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/Dataset"
-          }
-        }
-      },
-      "UpdateDatasetRequest": {
-        "title": "UpdateDatasetRequest",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          }
-        },
-        "example": {
-          "name": "new-dataset-name",
-          "generalAccess": "RESTRICTED"
-        }
-      },
-      "PutItemsRequest": {
-        "title": "PutItemsRequest",
-        "description": "The request body containing the item(s) to add to the dataset. Can be a single\nobject or an array of objects. Each object represents one dataset item.\n",
-        "type": "object",
-        "additionalProperties": true,
-        "example": {
-          "title": "Example Item",
-          "url": "https://example.com",
-          "price": 19.99
-        }
-      },
-      "ValidationError": {
-        "title": "ValidationError",
-        "type": "object",
-        "properties": {
-          "instancePath": {
-            "type": "string",
-            "description": "The path to the instance being validated."
-          },
-          "schemaPath": {
-            "type": "string",
-            "description": "The path to the schema that failed the validation."
-          },
-          "keyword": {
-            "type": "string",
-            "description": "The validation keyword that caused the error."
-          },
-          "message": {
-            "type": "string",
-            "description": "A message describing the validation error."
-          },
-          "params": {
-            "type": "object",
-            "description": "Additional parameters specific to the validation error."
-          }
-        }
-      },
-      "InvalidItem": {
-        "title": "InvalidItem",
-        "type": "object",
-        "properties": {
-          "itemPosition": {
-            "type": "integer",
-            "description": "The position of the invalid item in the array.",
-            "examples": [
-              2
-            ]
-          },
-          "validationErrors": {
-            "type": "array",
-            "description": "A complete list of AJV validation error objects for the invalid item.",
-            "items": {
-              "$ref": "#/components/schemas/ValidationError"
-            }
-          }
-        }
-      },
-      "SchemaValidationErrorData": {
-        "title": "SchemaValidationErrorData",
-        "required": [
-          "invalidItems"
-        ],
-        "type": "object",
-        "properties": {
-          "invalidItems": {
-            "type": "array",
-            "description": "A list of invalid items in the received array of items.",
-            "items": {
-              "$ref": "#/components/schemas/InvalidItem"
-            }
-          }
-        }
-      },
-      "DatasetSchemaValidationError": {
-        "title": "DatasetSchemaValidationError",
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "The type of the error.",
-            "examples": [
-              "schema-validation-error"
-            ]
-          },
-          "message": {
-            "type": "string",
-            "description": "A human-readable message describing the error.",
-            "examples": [
-              "Schema validation failed"
-            ]
-          },
-          "data": {
-            "$ref": "#/components/schemas/SchemaValidationErrorData"
-          }
-        }
-      },
-      "PutItemResponseError": {
-        "title": "PutItemResponseError",
-        "required": [
-          "error"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/DatasetSchemaValidationError"
-          }
-        },
-        "example": {
-          "error": {
-            "type": "schema-validation-error",
-            "message": "Schema validation failed",
-            "data": {
-              "invalidItems": [
-                {
-                  "itemPosition": 2,
-                  "validationErrors": [
-                    {
-                      "instancePath": "/1/stringField",
-                      "schemaPath": "/items/properties/stringField/type",
-                      "keyword": "type",
-                      "params": {
-                        "type": "string"
-                      },
-                      "message": "must be string"
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        }
-      },
-      "DatasetFieldStatistics": {
-        "title": "DatasetFieldStatistics",
-        "type": "object",
-        "properties": {
-          "min": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "Minimum value of the field. For numbers, this is calculated directly. For strings, this is the length of the shortest string. For arrays, this is the length of the shortest array. For objects, this is the number of keys in the smallest object."
-          },
-          "max": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "Maximum value of the field. For numbers, this is calculated directly. For strings, this is the length of the longest string. For arrays, this is the length of the longest array. For objects, this is the number of keys in the largest object."
-          },
-          "nullCount": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "How many items in the dataset have a null value for this field."
-          },
-          "emptyCount": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "How many items in the dataset are `undefined`, meaning that for example empty string is not considered empty."
-          }
-        }
-      },
-      "DatasetStatistics": {
-        "title": "DatasetStatistics",
-        "type": "object",
-        "properties": {
-          "fieldStatistics": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "additionalProperties": {
-              "$ref": "#/components/schemas/DatasetFieldStatistics"
-            },
-            "description": "When you configure the dataset [fields schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation), we measure the statistics such as `min`, `max`, `nullCount` and `emptyCount` for each field. This property provides statistics for each field from dataset fields schema. <br/></br>See dataset field statistics [documentation](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics) for more information."
-          }
-        },
-        "example": {
-          "fieldStatistics": {
-            "name": {
-              "nullCount": 122
-            },
-            "price": {
-              "min": 59,
-              "max": 89
-            }
-          }
-        }
-      },
-      "DatasetStatisticsResponse": {
-        "title": "DatasetStatisticsResponse",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/DatasetStatistics"
           }
         }
       },
@@ -20675,6 +21696,9 @@
           }
         }
       },
+      "NoContent": {
+        "description": "No content"
+      },
       "Conflict": {
         "description": "Conflict - the request could not be completed due to a conflict with the current state of the resource.",
         "content": {
@@ -20706,9 +21730,6 @@
             }
           }
         }
-      },
-      "NoContent": {
-        "description": "No content"
       }
     },
     "examples": {
@@ -20836,6 +21857,13 @@
       "name": "Tools",
       "tags": [
         "Tools"
+      ]
+    },
+    {
+      "name": "Convenience endpoints",
+      "tags": [
+        "Default storages",
+        "Last Actor run"
       ]
     }
   ]

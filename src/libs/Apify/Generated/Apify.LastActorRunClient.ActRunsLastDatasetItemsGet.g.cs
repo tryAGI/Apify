@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class StorageDatasetsClient
+    public partial class LastActorRunClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_DatasetItemsHeadSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActRunsLastDatasetItemsGetSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,13 +21,14 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_DatasetItemsHeadSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActRunsLastDatasetItemsGetSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_DatasetItemsHeadSecurityRequirement0,
+            {                s_ActRunsLastDatasetItemsGetSecurityRequirement0,
             };
-        partial void PrepareDatasetItemsHeadArguments(
+        partial void PrepareActRunsLastDatasetItemsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string datasetId,
+            ref string actorId,
+            ref string? status,
             ref string? format,
             ref bool? clean,
             ref double? offset,
@@ -49,10 +50,11 @@ namespace Apify
             ref string? view,
             ref bool? skipFailedPages,
             ref string? signature);
-        partial void PrepareDatasetItemsHeadRequest(
+        partial void PrepareActRunsLastDatasetItemsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string datasetId,
+            string actorId,
+            string? status,
             string? format,
             bool? clean,
             double? offset,
@@ -74,17 +76,26 @@ namespace Apify
             string? view,
             bool? skipFailedPages,
             string? signature);
-        partial void ProcessDatasetItemsHeadResponse(
+        partial void ProcessActRunsLastDatasetItemsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
+        partial void ProcessActRunsLastDatasetItemsGetResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
         /// <summary>
-        /// Get dataset items headers<br/>
-        /// Returns only the HTTP headers for the dataset items endpoint, without the response body.<br/>
-        /// This is useful to check pagination metadata or verify access without downloading the full dataset.
+        /// Get last run's dataset items<br/>
+        /// Returns data stored in the default dataset of the last Actor run in the desired format.<br/>
+        /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
+        /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
         /// </summary>
-        /// <param name="datasetId">
-        /// Example: WkzbQMuFYuamGv3YF
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
         /// </param>
         /// <param name="format">
         /// Example: json
@@ -150,8 +161,142 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task DatasetItemsHeadAsync(
-            string datasetId,
+        public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<object>> ActRunsLastDatasetItemsGetAsync(
+            string actorId,
+            string? status = default,
+            string? format = default,
+            bool? clean = default,
+            double? offset = default,
+            double? limit = default,
+            string? fields = default,
+            string? omit = default,
+            string? unwind = default,
+            string? flatten = default,
+            bool? desc = default,
+            bool? attachment = default,
+            string? delimiter = default,
+            bool? bom = default,
+            string? xmlRoot = default,
+            string? xmlRow = default,
+            bool? skipHeaderRow = default,
+            bool? skipHidden = default,
+            bool? skipEmpty = default,
+            bool? simplified = default,
+            string? view = default,
+            bool? skipFailedPages = default,
+            string? signature = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __response = await ActRunsLastDatasetItemsGetAsResponseAsync(
+                actorId: actorId,
+                status: status,
+                format: format,
+                clean: clean,
+                offset: offset,
+                limit: limit,
+                fields: fields,
+                omit: omit,
+                unwind: unwind,
+                flatten: flatten,
+                desc: desc,
+                attachment: attachment,
+                delimiter: delimiter,
+                bom: bom,
+                xmlRoot: xmlRoot,
+                xmlRow: xmlRow,
+                skipHeaderRow: skipHeaderRow,
+                skipHidden: skipHidden,
+                skipEmpty: skipEmpty,
+                simplified: simplified,
+                view: view,
+                skipFailedPages: skipFailedPages,
+                signature: signature,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Get last run's dataset items<br/>
+        /// Returns data stored in the default dataset of the last Actor run in the desired format.<br/>
+        /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
+        /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="format">
+        /// Example: json
+        /// </param>
+        /// <param name="clean">
+        /// Example: false
+        /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit"></param>
+        /// <param name="fields">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="omit">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="unwind">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="flatten">
+        /// Example: myValue
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
+        /// </param>
+        /// <param name="attachment">
+        /// Example: true
+        /// </param>
+        /// <param name="delimiter">
+        /// Example: ;
+        /// </param>
+        /// <param name="bom">
+        /// Example: false
+        /// </param>
+        /// <param name="xmlRoot">
+        /// Example: items
+        /// </param>
+        /// <param name="xmlRow">
+        /// Example: item
+        /// </param>
+        /// <param name="skipHeaderRow">
+        /// Example: true
+        /// </param>
+        /// <param name="skipHidden">
+        /// Example: false
+        /// </param>
+        /// <param name="skipEmpty">
+        /// Example: false
+        /// </param>
+        /// <param name="simplified">
+        /// Example: false
+        /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
+        /// <param name="skipFailedPages">
+        /// Example: false
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>> ActRunsLastDatasetItemsGetAsResponseAsync(
+            string actorId,
+            string? status = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -178,9 +323,10 @@ namespace Apify
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareDatasetItemsHeadArguments(
+            PrepareActRunsLastDatasetItemsGetArguments(
                 httpClient: HttpClient,
-                datasetId: ref datasetId,
+                actorId: ref actorId,
+                status: ref status,
                 format: ref format,
                 clean: ref clean,
                 offset: ref offset,
@@ -206,8 +352,8 @@ namespace Apify
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_DatasetItemsHeadSecurityRequirements,
-                operationName: "DatasetItemsHeadAsync");
+                securityRequirements: s_ActRunsLastDatasetItemsGetSecurityRequirements,
+                operationName: "ActRunsLastDatasetItemsGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -226,9 +372,10 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/datasets/{datasetId}/items",
+                                path: $"/v2/acts/{actorId}/runs/last/dataset/items",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
+                                .AddOptionalParameter("status", status)
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("offset", offset?.ToString())
@@ -257,7 +404,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Head,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -288,10 +435,11 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareDatasetItemsHeadRequest(
+                PrepareActRunsLastDatasetItemsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    datasetId: datasetId,
+                    actorId: actorId,
+                    status: status,
                     format: format,
                     clean: clean,
                     offset: offset,
@@ -329,10 +477,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DatasetItemsHead",
-                                methodName: "DatasetItemsHeadAsync",
-                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
-                                httpMethod: "HEAD",
+                                operationId: "ActRunsLastDatasetItemsGet",
+                                methodName: "ActRunsLastDatasetItemsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -356,10 +504,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DatasetItemsHead",
-                                methodName: "DatasetItemsHeadAsync",
-                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
-                                httpMethod: "HEAD",
+                                operationId: "ActRunsLastDatasetItemsGet",
+                                methodName: "ActRunsLastDatasetItemsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -391,10 +539,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DatasetItemsHead",
-                                methodName: "DatasetItemsHeadAsync",
-                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
-                                httpMethod: "HEAD",
+                                operationId: "ActRunsLastDatasetItemsGet",
+                                methodName: "ActRunsLastDatasetItemsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -430,7 +578,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessDatasetItemsHeadResponse(
+                ProcessActRunsLastDatasetItemsGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -438,10 +586,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DatasetItemsHead",
-                                methodName: "DatasetItemsHeadAsync",
-                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
-                                httpMethod: "HEAD",
+                                operationId: "ActRunsLastDatasetItemsGet",
+                                methodName: "ActRunsLastDatasetItemsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -458,10 +606,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "DatasetItemsHead",
-                                methodName: "DatasetItemsHeadAsync",
-                                pathTemplate: "$\"/v2/datasets/{datasetId}/items\"",
-                                httpMethod: "HEAD",
+                                operationId: "ActRunsLastDatasetItemsGet",
+                                methodName: "ActRunsLastDatasetItemsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -714,11 +862,21 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
+                                ProcessActRunsLastDatasetItemsGetResponseContent(
+                                    httpClient: HttpClient,
+                                    httpResponseMessage: __response,
+                                    content: ref __content);
 
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
 
+                                    var __value = (global::System.Collections.Generic.IList<object>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -740,6 +898,18 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+
+                                    var __value = (global::System.Collections.Generic.IList<object>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

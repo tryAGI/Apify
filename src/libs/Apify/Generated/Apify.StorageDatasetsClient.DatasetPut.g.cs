@@ -46,7 +46,7 @@ namespace Apify
         /// <summary>
         /// Update dataset<br/>
         /// Updates a dataset's name and general resource access level using a value specified by a JSON object passed in the PUT payload.<br/>
-        /// The response is the updated dataset object, as returned by the [Get dataset](#/reference/datasets/dataset-collection/get-dataset) API endpoint.
+        /// The response is the updated dataset object, as returned by the [Get dataset](/api/v2/dataset-get) API endpoint.
         /// </summary>
         /// <param name="datasetId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -703,7 +703,7 @@ namespace Apify
         /// <summary>
         /// Update dataset<br/>
         /// Updates a dataset's name and general resource access level using a value specified by a JSON object passed in the PUT payload.<br/>
-        /// The response is the updated dataset object, as returned by the [Get dataset](#/reference/datasets/dataset-collection/get-dataset) API endpoint.
+        /// The response is the updated dataset object, as returned by the [Get dataset](/api/v2/dataset-get) API endpoint.
         /// </summary>
         /// <param name="datasetId">
         /// Example: WkzbQMuFYuamGv3YF
