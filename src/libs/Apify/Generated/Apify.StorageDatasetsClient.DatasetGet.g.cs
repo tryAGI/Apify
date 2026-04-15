@@ -27,13 +27,11 @@ namespace Apify
             };
         partial void PrepareDatasetGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string datasetId,
-            ref string? token);
+            ref string datasetId);
         partial void PrepareDatasetGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string datasetId,
-            string? token);
+            string datasetId);
         partial void ProcessDatasetGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -56,15 +54,11 @@ namespace Apify
         /// <param name="datasetId">
         /// Example: WkzbQMuFYuamGv3YF
         /// </param>
-        /// <param name="token">
-        /// Example: soSkq9ekdmfOslopH
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.DatasetResponse> DatasetGetAsync(
             string datasetId,
-            string? token = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -72,8 +66,7 @@ namespace Apify
                 client: HttpClient);
             PrepareDatasetGetArguments(
                 httpClient: HttpClient,
-                datasetId: ref datasetId,
-                token: ref token);
+                datasetId: ref datasetId);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -99,10 +92,7 @@ namespace Apify
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
                                 path: $"/v2/datasets/{datasetId}",
-                                baseUri: HttpClient.BaseAddress); 
-                            __pathBuilder
-                                .AddOptionalParameter("token", token) 
-                                ;
+                                baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -143,8 +133,7 @@ namespace Apify
                 PrepareDatasetGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    datasetId: datasetId,
-                    token: token);
+                    datasetId: datasetId);
 
                 return __httpRequest;
             }

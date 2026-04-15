@@ -662,6 +662,138 @@
     },
     {
       "Order": 61,
+      "Title": "Delete default dataset",
+      "Slug": "actorrun-dataset-delete",
+      "Description": "Deletes default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the last run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[ Delete dataset ](/api/v2/dataset-delete) endpoint.",
+      "Language": "http",
+      "Code": "### Delete default dataset\n# @name actorRun_dataset_delete\nDELETE {{host}}/v2/actor-runs/{{runId}}/dataset\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 204\n# Description: No content\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_delete",
+      "Setup": null
+    },
+    {
+      "Order": 62,
+      "Title": "Get default dataset",
+      "Slug": "actorrun-dataset-get",
+      "Description": "Returns the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get default dataset\n# @name actorRun_dataset_get\nGET {{host}}/v2/actor-runs/{{runId}}/dataset\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_get",
+      "Setup": null
+    },
+    {
+      "Order": 63,
+      "Title": "Get default dataset items",
+      "Slug": "actorrun-dataset-items-get",
+      "Description": "Returns data stored in the default dataset of the Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get default dataset items\n# @name actorRun_dataset_items_get\nGET {{host}}/v2/actor-runs/{{runId}}/dataset/items?format={{format}}\u0026clean={{clean}}\u0026offset={{offset}}\u0026limit={{limit}}\u0026fields={{fields}}\u0026omit={{omit}}\u0026unwind={{unwind}}\u0026flatten={{flatten}}\u0026desc={{desc}}\u0026attachment={{attachment}}\u0026delimiter={{delimiter}}\u0026bom={{bom}}\u0026xmlRoot={{xmlRoot}}\u0026xmlRow={{xmlRow}}\u0026skipHeaderRow={{skipHeaderRow}}\u0026skipHidden={{skipHidden}}\u0026skipEmpty={{skipEmpty}}\u0026simplified={{simplified}}\u0026view={{view}}\u0026skipFailedPages={{skipFailedPages}}\u0026signature={{signature}}\nAuthorization: Bearer {{token}}\nAccept: application/json, application/jsonl, application/rss\u002Bxml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/xml, text/csv, text/html\n\n## Responses\n# 200\n# Content-Type: application/json, application/jsonl, application/rss\u002Bxml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/xml, text/csv, text/html\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_items_get",
+      "Setup": null
+    },
+    {
+      "Order": 64,
+      "Title": "Store items",
+      "Slug": "actorrun-dataset-items-post",
+      "Description": "Appends an item or an array of items to the end of the Actor run\u0027s default dataset.\n\nThis endpoint is a shortcut that resolves the run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.",
+      "Language": "http",
+      "Code": "### Store items\n# @name actorRun_dataset_items_post\nPOST {{host}}/v2/actor-runs/{{runId}}/dataset/items\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022title\u0022: \u0022Example Item\u0022,\n  \u0022url\u0022: \u0022https://example.com\u0022,\n  \u0022price\u0022: 19.99\n}\n\n## Responses\n# 201\n# Content-Type: application/json\n# 400\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_items_post",
+      "Setup": null
+    },
+    {
+      "Order": 65,
+      "Title": "Update default dataset",
+      "Slug": "actorrun-dataset-put",
+      "Description": "Updates the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[Put dataset](/api/v2/dataset-put) endpoint.",
+      "Language": "http",
+      "Code": "### Update default dataset\n# @name actorRun_dataset_put\nPUT {{host}}/v2/actor-runs/{{runId}}/dataset\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022new-dataset-name\u0022,\n  \u0022generalAccess\u0022: \u0022RESTRICTED\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 413\n# Description: Payload too large - the request body exceeds the size limit.\n# Content-Type: application/json\n# 415\n# Description: Unsupported media type - the Content-Encoding of the request is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_put",
+      "Setup": null
+    },
+    {
+      "Order": 66,
+      "Title": "Get default dataset statistics",
+      "Slug": "actorrun-dataset-statistics-get",
+      "Description": "Returns statistics for the Actor run\u0027s default dataset.\n\nThis endpoint is a shortcut that resolves the run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get default dataset statistics\n# @name actorRun_dataset_statistics_get\nGET {{host}}/v2/actor-runs/{{runId}}/dataset/statistics\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "actorRun_dataset_statistics_get",
+      "Setup": null
+    },
+    {
+      "Order": 67,
+      "Title": "Delete last run\u0027s default dataset",
+      "Slug": "act-runs-last-dataset-delete",
+      "Description": "Deletes the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[Delete dataset](/api/v2/dataset-delete) endpoint.",
+      "Language": "http",
+      "Code": "### Delete last run\u0027s default dataset\n# @name act_runs_last_dataset_delete\nDELETE {{host}}/v2/acts/{{actorId}}/runs/last/dataset?status={{status}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 204\n# Description: No content\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_delete",
+      "Setup": null
+    },
+    {
+      "Order": 68,
+      "Title": "Get last run\u0027s default dataset",
+      "Slug": "act-runs-last-dataset-get",
+      "Description": "Returns the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get last run\u0027s default dataset\n# @name act_runs_last_dataset_get\nGET {{host}}/v2/acts/{{actorId}}/runs/last/dataset?status={{status}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_get",
+      "Setup": null
+    },
+    {
+      "Order": 69,
+      "Title": "Get last run\u0027s dataset items",
+      "Slug": "act-runs-last-dataset-items-get",
+      "Description": "Returns data stored in the default dataset of the last Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the last run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get last run\u0027s dataset items\n# @name act_runs_last_dataset_items_get\nGET {{host}}/v2/acts/{{actorId}}/runs/last/dataset/items?status={{status}}\u0026format={{format}}\u0026clean={{clean}}\u0026offset={{offset}}\u0026limit={{limit}}\u0026fields={{fields}}\u0026omit={{omit}}\u0026unwind={{unwind}}\u0026flatten={{flatten}}\u0026desc={{desc}}\u0026attachment={{attachment}}\u0026delimiter={{delimiter}}\u0026bom={{bom}}\u0026xmlRoot={{xmlRoot}}\u0026xmlRow={{xmlRow}}\u0026skipHeaderRow={{skipHeaderRow}}\u0026skipHidden={{skipHidden}}\u0026skipEmpty={{skipEmpty}}\u0026simplified={{simplified}}\u0026view={{view}}\u0026skipFailedPages={{skipFailedPages}}\u0026signature={{signature}}\nAuthorization: Bearer {{token}}\nAccept: application/json, application/jsonl, application/rss\u002Bxml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/xml, text/csv, text/html\n\n## Responses\n# 200\n# Content-Type: application/json, application/jsonl, application/rss\u002Bxml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/xml, text/csv, text/html\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_items_get",
+      "Setup": null
+    },
+    {
+      "Order": 70,
+      "Title": "Store items in last run\u0027s dataset",
+      "Slug": "act-runs-last-dataset-items-post",
+      "Description": "Appends an item or an array of items to the end of the last Actor run\u0027s default dataset.\n\nThis endpoint is a shortcut that resolves the last run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.",
+      "Language": "http",
+      "Code": "### Store items in last run\u0027s dataset\n# @name act_runs_last_dataset_items_post\nPOST {{host}}/v2/acts/{{actorId}}/runs/last/dataset/items?status={{status}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022title\u0022: \u0022Example Item\u0022,\n  \u0022url\u0022: \u0022https://example.com\u0022,\n  \u0022price\u0022: 19.99\n}\n\n## Responses\n# 201\n# Content-Type: application/json\n# 400\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_items_post",
+      "Setup": null
+    },
+    {
+      "Order": 71,
+      "Title": "Update last run\u0027s default dataset",
+      "Slug": "act-runs-last-dataset-put",
+      "Description": "Updates the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run\u0027s \u0060defaultDatasetId\u0060 and then using the\n[Update dataset](/api/v2/dataset-put) endpoint.",
+      "Language": "http",
+      "Code": "### Update last run\u0027s default dataset\n# @name act_runs_last_dataset_put\nPUT {{host}}/v2/acts/{{actorId}}/runs/last/dataset?status={{status}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022new-dataset-name\u0022,\n  \u0022generalAccess\u0022: \u0022RESTRICTED\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 413\n# Description: Payload too large - the request body exceeds the size limit.\n# Content-Type: application/json\n# 415\n# Description: Unsupported media type - the Content-Encoding of the request is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_put",
+      "Setup": null
+    },
+    {
+      "Order": 72,
+      "Title": "Get last run\u0027s dataset statistics",
+      "Slug": "act-runs-last-dataset-statistics-get",
+      "Description": "Returns statistics for the last Actor run\u0027s default dataset.\n\nThis endpoint is a shortcut that resolves the last run\u0027s \u0060defaultDatasetId\u0060 and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.",
+      "Language": "http",
+      "Code": "### Get last run\u0027s dataset statistics\n# @name act_runs_last_dataset_statistics_get\nGET {{host}}/v2/acts/{{actorId}}/runs/last/dataset/statistics?status={{status}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "act_runs_last_dataset_statistics_get",
+      "Setup": null
+    },
+    {
+      "Order": 73,
       "Title": "Get log",
       "Slug": "log-get",
       "Description": "Retrieves logs for a specific Actor build or run.",
@@ -672,7 +804,7 @@
       "Setup": null
     },
     {
-      "Order": 62,
+      "Order": 74,
       "Title": "Delete schedule",
       "Slug": "schedule-delete",
       "Description": "Deletes a schedule.",
@@ -683,7 +815,7 @@
       "Setup": null
     },
     {
-      "Order": 63,
+      "Order": 75,
       "Title": "Get schedule",
       "Slug": "schedule-get",
       "Description": "Gets the schedule object with all details.",
@@ -694,7 +826,7 @@
       "Setup": null
     },
     {
-      "Order": 64,
+      "Order": 76,
       "Title": "Get schedule log",
       "Slug": "schedule-log-get",
       "Description": "Gets the schedule log as a JSON array containing information about up to a\n1000 invocations of the schedule.",
@@ -705,7 +837,7 @@
       "Setup": null
     },
     {
-      "Order": 65,
+      "Order": 77,
       "Title": "Update schedule",
       "Slug": "schedule-put",
       "Description": "Updates a schedule using values specified by a schedule object passed as\nJSON in the POST payload. If the object does not define a specific property,\nits value will not be updated.\n\nThe response is the full schedule object as returned by the\n[Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.\n\n**The request needs to specify the \u0060Content-Type: application/json\u0060 HTTP\nheader!**\n\nWhen providing your API authentication token, we recommend using the\nrequest\u0027s \u0060Authorization\u0060 header, rather than the URL. ([More\ninfo](#/introduction/authentication)).",
@@ -716,7 +848,7 @@
       "Setup": null
     },
     {
-      "Order": 66,
+      "Order": 78,
       "Title": "Get list of schedules",
       "Slug": "schedules-get",
       "Description": "Gets the list of schedules that the user created.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters.\nIt will not return more than 1000 records.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060 parameter.",
@@ -727,7 +859,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 67,
+      "Order": 79,
       "Title": "Create schedule",
       "Slug": "schedules-post",
       "Description": "Creates a new schedule with settings provided by the schedule object passed\nas JSON in the payload. The response is the created schedule object.\n\nThe request needs to specify the \u0060Content-Type: application/json\u0060 HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest\u0027s \u0060Authorization\u0060 header, rather than the URL. ([More\ninfo](#/introduction/authentication)).",
@@ -738,7 +870,7 @@
       "Setup": null
     },
     {
-      "Order": 68,
+      "Order": 80,
       "Title": "Delete dataset",
       "Slug": "dataset-delete",
       "Description": "Deletes a specific dataset.",
@@ -749,18 +881,18 @@
       "Setup": null
     },
     {
-      "Order": 69,
+      "Order": 81,
       "Title": "Get dataset",
       "Slug": "dataset-get",
       "Description": "Returns dataset object for given dataset ID.\n\nThis does not return dataset items, only information about the storage itself.\nTo retrieve dataset items, use the [List dataset items](/api/v2/dataset-items-get) endpoint.\n\n:::note\n\nKeep in mind that attributes \u0060itemCount\u0060 and \u0060cleanItemCount\u0060 are not propagated right away after data are pushed into a dataset.\n\n:::\n\nThere is a short period (up to 5 seconds) during which these counters may not match with exact counts in dataset items.",
       "Language": "http",
-      "Code": "### Get dataset\n# @name dataset_get\nGET {{host}}/v2/datasets/{{datasetId}}?token={{token}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
+      "Code": "### Get dataset\n# @name dataset_get\nGET {{host}}/v2/datasets/{{datasetId}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "dataset_get",
       "Setup": null
     },
     {
-      "Order": 70,
+      "Order": 82,
       "Title": "Get dataset items",
       "Slug": "dataset-items-get",
       "Description": "Returns data stored in the dataset in a desired format.\n\n### Response format\n\nThe format of the response depends on \u003Ccode\u003Eformat\u003C/code\u003E query parameter.\n\nThe \u003Ccode\u003Eformat\u003C/code\u003E parameter can have one of the following values:\n\u003Ccode\u003Ejson\u003C/code\u003E, \u003Ccode\u003Ejsonl\u003C/code\u003E, \u003Ccode\u003Exml\u003C/code\u003E, \u003Ccode\u003Ehtml\u003C/code\u003E,\n\u003Ccode\u003Ecsv\u003C/code\u003E, \u003Ccode\u003Exlsx\u003C/code\u003E and \u003Ccode\u003Erss\u003C/code\u003E.\n\nThe following table describes how each format is treated.\n\n\u003Ctable\u003E\n  \u003Ctr\u003E\n    \u003Cth\u003EFormat\u003C/th\u003E\n    \u003Cth\u003EItems\u003C/th\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Ejson\u003C/code\u003E\u003C/td\u003E\n    \u003Ctd rowspan=\u00223\u0022\u003EThe response is a JSON, JSONL or XML array of raw item objects.\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Ejsonl\u003C/code\u003E\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Exml\u003C/code\u003E\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Ehtml\u003C/code\u003E\u003C/td\u003E\n    \u003Ctd rowspan=\u00223\u0022\u003EThe response is a HTML, CSV or XLSX table, where columns correspond to the\n    properties of the item and rows correspond to each dataset item.\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Ecsv\u003C/code\u003E\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Exlsx\u003C/code\u003E\u003C/td\u003E\n  \u003C/tr\u003E\n  \u003Ctr\u003E\n    \u003Ctd\u003E\u003Ccode\u003Erss\u003C/code\u003E\u003C/td\u003E\n    \u003Ctd colspan=\u00222\u0022\u003EThe response is a RSS file. Each item is displayed as child elements of one\n    \u003Ccode\u003E\u0026lt;item\u0026gt;\u003C/code\u003E.\u003C/td\u003E\n  \u003C/tr\u003E\n\u003C/table\u003E\n\nNote that CSV, XLSX and HTML tables are limited to 2000 columns and the column names cannot be longer than 200 characters.\nJSON, XML and RSS formats do not have such restrictions.\n\n### Hidden fields\n\nThe top-level fields starting with the \u0060#\u0060 character are considered hidden.\nThese are useful to store debugging information and can be omitted from the output by providing the \u0060skipHidden=1\u0060 or \u0060clean=1\u0060 query parameters.\nFor example, if you store the following object to the dataset:\n\n\u0060\u0060\u0060\n{\n    productName: \u0022iPhone Xs\u0022,\n    description: \u0022Welcome to the big screens.\u0022\n    #debug: {\n        url: \u0022https://www.apple.com/lae/iphone-xs/\u0022,\n        crawledAt: \u00222019-01-21T16:06:03.683Z\u0022\n    }\n}\n\u0060\u0060\u0060\n\nThe \u0060#debug\u0060 field will be considered as hidden and can be omitted from the\nresults. This is useful to\nprovide nice cleaned data to end users, while keeping debugging info\navailable if needed. The Dataset object\nreturned by the API contains the number of such clean items in the\u0060dataset.cleanItemCount\u0060 property.\n\n### XML format extension\n\nWhen exporting results to XML or RSS formats, the names of object properties become XML tags and the corresponding values become tag\u0027s children. For example, the following JavaScript object:\n\n\u0060\u0060\u0060\n{\n    name: \u0022Paul Newman\u0022,\n    address: [\n        { type: \u0022home\u0022, street: \u002221st\u0022, city: \u0022Chicago\u0022 },\n        { type: \u0022office\u0022, street: null, city: null }\n    ]\n}\n\u0060\u0060\u0060\n\nwill be transformed to the following XML snippet:\n\n\u0060\u0060\u0060\n\u003Cname\u003EPaul Newman\u003C/name\u003E\n\u003Caddress\u003E\n  \u003Ctype\u003Ehome\u003C/type\u003E\n  \u003Cstreet\u003E21st\u003C/street\u003E\n  \u003Ccity\u003EChicago\u003C/city\u003E\n\u003C/address\u003E\n\u003Caddress\u003E\n  \u003Ctype\u003Eoffice\u003C/type\u003E\n  \u003Cstreet/\u003E\n  \u003Ccity/\u003E\n\u003C/address\u003E\n\u0060\u0060\u0060\n\nIf the JavaScript object contains a property named \u0060@\u0060 then its sub-properties are exported as attributes of the parent XML\nelement.\nIf the parent XML element does not have any child elements then its value is taken from a JavaScript object property named \u0060#\u0060.\n\nFor example, the following JavaScript object:\n\n\u0060\u0060\u0060\n{\n  \u0022address\u0022: [{\n    \u0022@\u0022: {\n      \u0022type\u0022: \u0022home\u0022\n    },\n    \u0022street\u0022: \u002221st\u0022,\n    \u0022city\u0022: \u0022Chicago\u0022\n  },\n  {\n    \u0022@\u0022: {\n      \u0022type\u0022: \u0022office\u0022\n    },\n    \u0022#\u0022: \u0027unknown\u0027\n  }]\n}\n\u0060\u0060\u0060\n\nwill be transformed to the following XML snippet:\n\n\u0060\u0060\u0060\n\u003Caddress type=\u0022home\u0022\u003E\n  \u003Cstreet\u003E21st\u003C/street\u003E\n  \u003Ccity\u003EChicago\u003C/city\u003E\n\u003C/address\u003E\n\u003Caddress type=\u0022office\u0022\u003Eunknown\u003C/address\u003E\n\u0060\u0060\u0060\n\nThis feature is also useful to customize your RSS feeds generated for various websites.\n\nBy default the whole result is wrapped in a \u0060\u003Citems\u003E\u0060 element and each page object is wrapped in a \u0060\u003Citem\u003E\u0060 element.\nYou can change this using \u003Ccode\u003ExmlRoot\u003C/code\u003E and \u003Ccode\u003ExmlRow\u003C/code\u003E url parameters.\n\n### Pagination\n\nThe generated response supports [pagination](#/introduction/pagination).\nThe pagination is always performed with the granularity of a single item, regardless whether \u003Ccode\u003Eunwind\u003C/code\u003E parameter was provided.\nBy default, the **Items** in the response are sorted by the time they were stored to the database, therefore you can use pagination to incrementally fetch the items as they are being added.\nNo limit exists to how many items can be returned in one response.\n\nIf you specify \u0060desc=1\u0060 query parameter, the results are returned in the reverse order than they were stored (i.e. from newest to oldest items).\nNote that only the order of **Items** is reversed, but not the order of the \u0060unwind\u0060 array elements.",
@@ -771,32 +903,32 @@
       "Setup": null
     },
     {
-      "Order": 71,
+      "Order": 83,
       "Title": "Get dataset items headers",
       "Slug": "dataset-items-head",
       "Description": "Returns only the HTTP headers for the dataset items endpoint, without the response body.\nThis is useful to check pagination metadata or verify access without downloading the full dataset.",
       "Language": "http",
-      "Code": "### Get dataset items headers\n# @name dataset_items_head\nHEAD {{host}}/v2/datasets/{{datasetId}}/items?format={{format}}\u0026clean={{clean}}\u0026offset={{offset}}\u0026limit={{limit}}\u0026fields={{fields}}\u0026omit={{omit}}\u0026unwind={{unwind}}\u0026flatten={{flatten}}\u0026desc={{desc}}\u0026attachment={{attachment}}\u0026delimiter={{delimiter}}\u0026bom={{bom}}\u0026xmlRoot={{xmlRoot}}\u0026xmlRow={{xmlRow}}\u0026skipHeaderRow={{skipHeaderRow}}\u0026skipHidden={{skipHidden}}\u0026skipEmpty={{skipEmpty}}\u0026simplified={{simplified}}\u0026view={{view}}\u0026skipFailedPages={{skipFailedPages}}\u0026signature={{signature}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json",
+      "Code": "### Get dataset items headers\n# @name dataset_items_head\nHEAD {{host}}/v2/datasets/{{datasetId}}/items?format={{format}}\u0026clean={{clean}}\u0026offset={{offset}}\u0026limit={{limit}}\u0026fields={{fields}}\u0026omit={{omit}}\u0026unwind={{unwind}}\u0026flatten={{flatten}}\u0026desc={{desc}}\u0026attachment={{attachment}}\u0026delimiter={{delimiter}}\u0026bom={{bom}}\u0026xmlRoot={{xmlRoot}}\u0026xmlRow={{xmlRow}}\u0026skipHeaderRow={{skipHeaderRow}}\u0026skipHidden={{skipHidden}}\u0026skipEmpty={{skipEmpty}}\u0026simplified={{simplified}}\u0026view={{view}}\u0026skipFailedPages={{skipFailedPages}}\u0026signature={{signature}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "dataset_items_head",
       "Setup": null
     },
     {
-      "Order": 72,
+      "Order": 84,
       "Title": "Store items",
       "Slug": "dataset-items-post",
       "Description": "Appends an item or an array of items to the end of the dataset.\nThe POST payload is a JSON object or a JSON array of objects to save into the dataset.\n\nIf the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.\nFor more information about dataset schema validation, see [Dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation).\n\n**IMPORTANT:** The limit of request payload size for the dataset is 5 MB. If the array exceeds the size, you\u0027ll need to split it into a number of smaller arrays.",
       "Language": "http",
-      "Code": "### Store items\n# @name dataset_items_post\nPOST {{host}}/v2/datasets/{{datasetId}}/items\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022title\u0022: \u0022Example Item\u0022,\n  \u0022url\u0022: \u0022https://example.com\u0022,\n  \u0022price\u0022: 19.99\n}\n\n## Responses\n# 201\n# Content-Type: application/json\n# 400\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json",
+      "Code": "### Store items\n# @name dataset_items_post\nPOST {{host}}/v2/datasets/{{datasetId}}/items\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022title\u0022: \u0022Example Item\u0022,\n  \u0022url\u0022: \u0022https://example.com\u0022,\n  \u0022price\u0022: 19.99\n}\n\n## Responses\n# 201\n# Content-Type: application/json\n# 400\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "dataset_items_post",
       "Setup": null
     },
     {
-      "Order": 73,
+      "Order": 85,
       "Title": "Update dataset",
       "Slug": "dataset-put",
-      "Description": "Updates a dataset\u0027s name and general resource access level using a value specified by a JSON object passed in the PUT payload.\nThe response is the updated dataset object, as returned by the [Get dataset](#/reference/datasets/dataset-collection/get-dataset) API endpoint.",
+      "Description": "Updates a dataset\u0027s name and general resource access level using a value specified by a JSON object passed in the PUT payload.\nThe response is the updated dataset object, as returned by the [Get dataset](/api/v2/dataset-get) API endpoint.",
       "Language": "http",
       "Code": "### Update dataset\n# @name dataset_put\nPUT {{host}}/v2/datasets/{{datasetId}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022name\u0022: \u0022new-dataset-name\u0022,\n  \u0022generalAccess\u0022: \u0022RESTRICTED\u0022\n}\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 413\n# Description: Payload too large - the request body exceeds the size limit.\n# Content-Type: application/json\n# 415\n# Description: Unsupported media type - the Content-Encoding of the request is not supported.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
       "Format": "http",
@@ -804,7 +936,7 @@
       "Setup": null
     },
     {
-      "Order": 74,
+      "Order": 86,
       "Title": "Get dataset statistics",
       "Slug": "dataset-statistics-get",
       "Description": "Returns statistics for given dataset.\n\nProvides only [field statistics](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics).",
@@ -815,7 +947,7 @@
       "Setup": null
     },
     {
-      "Order": 75,
+      "Order": 87,
       "Title": "Get list of datasets",
       "Slug": "datasets-get",
       "Description": "Lists all of a user\u0027s datasets.\n\nThe response is a JSON array of objects,\nwhere each object contains basic information about one dataset.\n\nBy default, the objects are sorted by the \u0060createdAt\u0060 field in ascending\norder, therefore you can use pagination to incrementally fetch all datasets while new\nones are still being created. To sort them in descending order, use \u0060desc=1\u0060\nparameter. The endpoint supports pagination using \u0060limit\u0060 and \u0060offset\u0060\nparameters and it will not return more than 1000 array elements.",
@@ -826,7 +958,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 76,
+      "Order": 88,
       "Title": "Create dataset",
       "Slug": "datasets-post",
       "Description": "Creates a dataset and returns its object.\nKeep in mind that data stored under unnamed dataset follows [data retention period](https://docs.apify.com/platform/storage#data-retention).\nIt creates a dataset with the given name if the parameter name is used.\nIf a dataset with the given name already exists then returns its object.",
@@ -837,7 +969,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 77,
+      "Order": 89,
       "Title": "Delete store",
       "Slug": "keyvaluestore-delete",
       "Description": "Deletes a key-value store.",
@@ -848,7 +980,7 @@
       "Setup": null
     },
     {
-      "Order": 78,
+      "Order": 90,
       "Title": "Get store",
       "Slug": "keyvaluestore-get",
       "Description": "Gets an object that contains all the details about a specific key-value\nstore.",
@@ -859,7 +991,7 @@
       "Setup": null
     },
     {
-      "Order": 79,
+      "Order": 91,
       "Title": "Get list of keys",
       "Slug": "keyvaluestore-keys-get",
       "Description": "Returns a list of objects describing keys of a given key-value store, as\nwell as some information about the values (e.g. size).\n\nThis endpoint is paginated using \u0060exclusiveStartKey\u0060 and \u0060limit\u0060 parameters\n- see [Pagination](/api/v2#using-key) for more details.",
@@ -870,7 +1002,7 @@
       "Setup": null
     },
     {
-      "Order": 80,
+      "Order": 92,
       "Title": "Update store",
       "Slug": "keyvaluestore-put",
       "Description": "Updates a key-value store\u0027s name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated key-value store object, as returned by the [Get\nstore](#/reference/key-value-stores/store-object/get-store) API endpoint.",
@@ -881,7 +1013,7 @@
       "Setup": null
     },
     {
-      "Order": 81,
+      "Order": 93,
       "Title": "Delete record",
       "Slug": "keyvaluestore-record-delete",
       "Description": "Removes a record specified by a key from the key-value store.",
@@ -892,7 +1024,7 @@
       "Setup": null
     },
     {
-      "Order": 82,
+      "Order": 94,
       "Title": "Get record",
       "Slug": "keyvaluestore-record-get",
       "Description": "Gets a value stored in the key-value store under a specific key.\n\nThe response body has the same \u0060Content-Encoding\u0060 header as it was set in\n[Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).\n\nIf the request does not define the \u0060Accept-Encoding\u0060 HTTP header with the\nright encoding, the record will be decompressed.\n\nMost HTTP clients support decompression by default. After using the HTTP\nclient with decompression support, the \u0060Accept-Encoding\u0060 header is set by\nthe client and body is decompressed automatically.\n\nPlease note that for security reasons, Apify API can perform small modifications\nto HTML documents before they are served via this endpoint. To fetch the raw HTML\ncontent without any modifications, use the \u0060attachment\u0060 query parameter.",
@@ -903,7 +1035,7 @@
       "Setup": null
     },
     {
-      "Order": 83,
+      "Order": 95,
       "Title": "Check if a record exists",
       "Slug": "keyvaluestore-record-head",
       "Description": "Check if a value is stored in the key-value store under a specific key.",
@@ -914,7 +1046,7 @@
       "Setup": null
     },
     {
-      "Order": 84,
+      "Order": 96,
       "Title": "Store record (POST)",
       "Slug": "keyvaluestore-record-post",
       "Description": "Stores a value under a specific key to the key-value store.\nThis endpoint is an alias for the [\u0060PUT\u0060 record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.",
@@ -925,7 +1057,7 @@
       "Setup": null
     },
     {
-      "Order": 85,
+      "Order": 97,
       "Title": "Store record",
       "Slug": "keyvaluestore-record-put",
       "Description": "Stores a value under a specific key to the key-value store.\n\nThe value is passed as the PUT payload and it is stored with a MIME content\ntype defined by the \u0060Content-Type\u0060 header and with encoding defined by the\n\u0060Content-Encoding\u0060 header.\n\nTo save bandwidth, storage, and speed up your upload, send the request\npayload compressed with Gzip compression and add the \u0060Content-Encoding: gzip\u0060\nheader. It is possible to set up another compression type with \u0060Content-Encoding\u0060\nrequest header.\n\nBelow is a list of supported \u0060Content-Encoding\u0060 types.\n\n* Gzip compression: \u0060Content-Encoding: gzip\u0060\n* Deflate compression: \u0060Content-Encoding: deflate\u0060\n* Brotli compression: \u0060Content-Encoding: br\u0060",
@@ -936,7 +1068,7 @@
       "Setup": null
     },
     {
-      "Order": 86,
+      "Order": 98,
       "Title": "Download records",
       "Slug": "keyvaluestore-records-get",
       "Description": "Downloads all records from the key-value store as a ZIP archive.\nEach record is stored as a separate file in the archive, with the filename equal to the record key.\n\nYou can optionally filter the records by \u0060collection\u0060 or \u0060prefix\u0060 to download only a subset of the store.",
@@ -947,7 +1079,7 @@
       "Setup": null
     },
     {
-      "Order": 87,
+      "Order": 99,
       "Title": "Get list of key-value stores",
       "Slug": "keyvaluestores-get",
       "Description": "Gets the list of key-value stores owned by the user.\n\nThe response is a list of objects, where each objects contains a basic\ninformation about a single key-value store.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 array elements.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder, therefore you can use pagination to incrementally fetch all key-value stores\nwhile new ones are still being created. To sort the records in descending order, use\nthe \u0060desc=1\u0060 parameter.",
@@ -958,7 +1090,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 88,
+      "Order": 100,
       "Title": "Create key-value store",
       "Slug": "keyvaluestores-post",
       "Description": "Creates a key-value store and returns its object. The response is the same\nobject as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)\nendpoint.\n\nKeep in mind that data stored under unnamed store follows [data retention\nperiod](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a store with the given name if the parameter name is used.\nIf there is another store with the same name, the endpoint does not create a\nnew one and returns the existing object instead.",
@@ -969,7 +1101,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 89,
+      "Order": 101,
       "Title": "Delete request queue",
       "Slug": "requestqueue-delete",
       "Description": "Deletes given queue.",
@@ -980,7 +1112,7 @@
       "Setup": null
     },
     {
-      "Order": 90,
+      "Order": 102,
       "Title": "Get request queue",
       "Slug": "requestqueue-get",
       "Description": "Returns queue object for given queue ID.",
@@ -991,7 +1123,7 @@
       "Setup": null
     },
     {
-      "Order": 91,
+      "Order": 103,
       "Title": "Update request queue",
       "Slug": "requestqueue-put",
       "Description": "Updates a request queue\u0027s name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated request queue object, as returned by the\n[Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.",
@@ -1002,7 +1134,7 @@
       "Setup": null
     },
     {
-      "Order": 92,
+      "Order": 104,
       "Title": "Delete requests",
       "Slug": "requestqueue-requests-batch-delete",
       "Description": "Batch-deletes given requests from the queue. The number of requests in a\nbatch is limited to 25. The response contains an array of unprocessed and\nprocessed requests.\nIf any delete operation fails because the request queue rate limit is\nexceeded or an internal failure occurs,\nthe failed request is returned in the \u0060unprocessedRequests\u0060 response\nparameter.\nYou can re-send these delete requests. It is recommended to use an\nexponential backoff algorithm for these retries.\nEach request is identified by its ID or uniqueKey parameter. You can use\neither of them to identify the request.",
@@ -1013,7 +1145,7 @@
       "Setup": null
     },
     {
-      "Order": 93,
+      "Order": 105,
       "Title": "Add requests",
       "Slug": "requestqueue-requests-batch-post",
       "Description": "Adds requests to the queue in batch. The maximum requests in batch is limit\nto 25. The response contains an array of unprocessed and processed requests.\nIf any add operation fails because the request queue rate limit is exceeded\nor an internal failure occurs,\nthe failed request is returned in the unprocessedRequests response\nparameter.\nYou can resend these requests to add. It is recommended to use exponential\nbackoff algorithm for these retries.\nIf a request with the same \u0060uniqueKey\u0060 was already present in the queue,\nthen it returns an ID of the existing request.",
@@ -1024,7 +1156,7 @@
       "Setup": null
     },
     {
-      "Order": 94,
+      "Order": 106,
       "Title": "Get list of request queues",
       "Slug": "requestqueues-get",
       "Description": "Lists all of a user\u0027s request queues. The response is a JSON array of\nobjects, where each object\ncontains basic information about one queue.\n\nBy default, the objects are sorted by the \u0060createdAt\u0060 field in ascending order,\ntherefore you can use pagination to incrementally fetch all queues while new\nones are still being created. To sort them in descending order, use \u0060desc=1\u0060\nparameter. The endpoint supports pagination using \u0060limit\u0060 and \u0060offset\u0060\nparameters and it will not return more than 1000\narray elements.",
@@ -1035,7 +1167,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 95,
+      "Order": 107,
       "Title": "Create request queue",
       "Slug": "requestqueues-post",
       "Description": "Creates a request queue and returns its object.\nKeep in mind that requests stored under unnamed queue follows [data\nretention period](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a queue of given name if the parameter name is used. If a queue\nwith the given name already exists then the endpoint returns\nits object.",
@@ -1046,7 +1178,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 96,
+      "Order": 108,
       "Title": "Delete request",
       "Slug": "requestqueue-request-delete",
       "Description": "Deletes given request from queue.",
@@ -1057,7 +1189,7 @@
       "Setup": null
     },
     {
-      "Order": 97,
+      "Order": 109,
       "Title": "Get request",
       "Slug": "requestqueue-request-get",
       "Description": "Returns request from queue.",
@@ -1068,7 +1200,7 @@
       "Setup": null
     },
     {
-      "Order": 98,
+      "Order": 110,
       "Title": "Update request",
       "Slug": "requestqueue-request-put",
       "Description": "Updates a request in a queue. Mark request as handled by setting\n\u0060request.handledAt = new Date()\u0060.\nIf \u0060handledAt\u0060 is set, the request will be removed from head of the queue (and unlocked, if applicable).",
@@ -1079,7 +1211,7 @@
       "Setup": null
     },
     {
-      "Order": 99,
+      "Order": 111,
       "Title": "List requests",
       "Slug": "requestqueue-requests-get",
       "Description": "Returns a list of requests. This endpoint is paginated using\ncursor (pagination by \u0060exclusiveStartId\u0060 is deprecated) and limit parameters.",
@@ -1090,7 +1222,7 @@
       "Setup": null
     },
     {
-      "Order": 100,
+      "Order": 112,
       "Title": "Add request",
       "Slug": "requestqueue-requests-post",
       "Description": "Adds request to the queue. Response contains ID of the request and info if\nrequest was already present in the queue or handled.\n\nIf request with same \u0060uniqueKey\u0060 was already present in the queue then\nreturns an ID of existing request.",
@@ -1101,7 +1233,7 @@
       "Setup": null
     },
     {
-      "Order": 101,
+      "Order": 113,
       "Title": "Get head",
       "Slug": "requestqueue-head-get",
       "Description": "Returns given number of first requests from the queue.\n\nThe response contains the \u0060hadMultipleClients\u0060 boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n\u0060clientKey\u0060).\nThis field is used by [Apify SDK](https://sdk.apify.com) to determine\nwhether the local cache is consistent with the request queue, and thus\noptimize performance of certain operations.",
@@ -1112,7 +1244,7 @@
       "Setup": null
     },
     {
-      "Order": 102,
+      "Order": 114,
       "Title": "Get head and lock",
       "Slug": "requestqueue-head-lock-post",
       "Description": "Returns the given number of first requests from the queue and locks them for\nthe given time.\n\nIf this endpoint locks the request, no other client or run will be able to get and\nlock these requests.\n\nThe response contains the \u0060hadMultipleClients\u0060 boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n\u0060clientKey\u0060).",
@@ -1123,7 +1255,7 @@
       "Setup": null
     },
     {
-      "Order": 103,
+      "Order": 115,
       "Title": "Delete request lock",
       "Slug": "requestqueue-request-lock-delete",
       "Description": "Deletes a request lock. The request lock can be deleted only by the client\nthat has locked it using [Get and lock head\noperation](#/reference/request-queues/queue-head-with-locks).",
@@ -1134,7 +1266,7 @@
       "Setup": null
     },
     {
-      "Order": 104,
+      "Order": 116,
       "Title": "Prolong request lock",
       "Slug": "requestqueue-request-lock-put",
       "Description": "Prolongs request lock. The request lock can be prolonged only by the client\nthat has locked it using [Get and lock head\noperation](#/reference/request-queues/queue-head-with-locks).",
@@ -1145,7 +1277,7 @@
       "Setup": null
     },
     {
-      "Order": 105,
+      "Order": 117,
       "Title": "Unlock requests",
       "Slug": "requestqueue-requests-unlock-post",
       "Description": "Unlocks requests in the queue that are currently locked by the client.\n\n* If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.\n* If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.",
@@ -1156,7 +1288,7 @@
       "Setup": null
     },
     {
-      "Order": 106,
+      "Order": 118,
       "Title": "Get list of Actors in Store",
       "Slug": "store-get",
       "Description": "Gets the list of public Actors in Apify Store. You can use \u0060search\u0060\nparameter to search Actors by string in title, name, description, username\nand readme.\nIf you need detailed info about a specific Actor, use the [Get\nActor](#/reference/actors/actor-object/get-actor) endpoint.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters.\nIt will not return more than 1,000 records.",
@@ -1167,7 +1299,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 107,
+      "Order": 119,
       "Title": "Get browser info",
       "Slug": "tools-browser-info-delete",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
@@ -1178,7 +1310,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 108,
+      "Order": 120,
       "Title": "Get browser info",
       "Slug": "tools-browser-info-get",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
@@ -1189,7 +1321,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 109,
+      "Order": 121,
       "Title": "Get browser info",
       "Slug": "tools-browser-info-post",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
@@ -1200,7 +1332,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 110,
+      "Order": 122,
       "Title": "Get browser info",
       "Slug": "tools-browser-info-put",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
@@ -1211,7 +1343,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 111,
+      "Order": 123,
       "Title": "Decode and verify object",
       "Slug": "tools-decode-and-verify-post",
       "Description": "Decodes and verifies an encoded value previously created by the\nencode-and-sign endpoint. Returns the original decoded object along with\ninformation about the user who encoded it and whether that user is verified.\n\n**Important**: The request must specify the \u0060Content-Type: application/json\u0060\nHTTP header.",
@@ -1222,7 +1354,7 @@
       "Setup": null
     },
     {
-      "Order": 112,
+      "Order": 124,
       "Title": "Encode and sign object",
       "Slug": "tools-encode-and-sign-post",
       "Description": "Encodes and signs any JSON object. The encoded value includes a signature\ntied to the authenticated user\u0027s ID, which can later be verified using the\ndecode-and-verify endpoint.\n\n**Important**: The request must specify the \u0060Content-Type: application/json\u0060\nHTTP header.",
@@ -1233,7 +1365,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 113,
+      "Order": 125,
       "Title": "Get public user data",
       "Slug": "user-get",
       "Description": "Returns public information about a specific user account, similar to what\ncan be seen on public profile pages (e.g. https://apify.com/apify).\n\nThis operation requires no authentication token.",
@@ -1244,7 +1376,7 @@
       "Setup": null
     },
     {
-      "Order": 114,
+      "Order": 126,
       "Title": "Get private user data",
       "Slug": "users-me-get",
       "Description": "Returns information about the current user account, including both public\nand private information.\n\nThe user account is identified by the provided authentication token.\n\nThe fields \u0060plan\u0060, \u0060email\u0060 and \u0060profile\u0060 are omitted when this endpoint is accessed from Actor run.",
@@ -1255,7 +1387,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 115,
+      "Order": 127,
       "Title": "Get limits",
       "Slug": "users-me-limits-get",
       "Description": "Returns a complete summary of your account\u0027s limits. It is the same\ninformation you will see on your account\u0027s [Limits page](https://console.apify.com/billing#/limits). The returned data\nincludes the current usage cycle, a summary of your limits, and your current usage.",
@@ -1266,7 +1398,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 116,
+      "Order": 128,
       "Title": "Update limits",
       "Slug": "users-me-limits-put",
       "Description": "Updates the account\u0027s limits manageable on your account\u0027s [Limits page](https://console.apify.com/billing#/limits).\nSpecifically the: \u0060maxMonthlyUsageUsd\u0060 and \u0060dataRetentionDays\u0060 limits (see request body schema for more details).",
@@ -1277,7 +1409,7 @@
       "Setup": null
     },
     {
-      "Order": 117,
+      "Order": 129,
       "Title": "Get monthly usage",
       "Slug": "users-me-usage-monthly-get",
       "Description": "Returns a complete summary of your usage for the current monthly usage cycle,\nan overall sum, as well as a daily breakdown of usage. It is the same\ninformation you will see on your account\u0027s [Billing \u003E Historical usage page](https://console.apify.com/billing/historical-usage). The information\nincludes your use of Actors, compute, data transfer, and storage.\n\nUsing the \u0060date\u0060 parameter will show your usage in the monthly usage cycle that\nincludes that date.",
@@ -1288,7 +1420,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 118,
+      "Order": 130,
       "Title": "Get webhook dispatch",
       "Slug": "webhookdispatch-get",
       "Description": "Gets webhook dispatch object with all details.",
@@ -1299,7 +1431,7 @@
       "Setup": null
     },
     {
-      "Order": 119,
+      "Order": 131,
       "Title": "Get list of webhook dispatches",
       "Slug": "webhookdispatches-get",
       "Description": "Gets the list of webhook dispatches that the user have.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060\nparameter.",
@@ -1310,7 +1442,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 120,
+      "Order": 132,
       "Title": "Delete webhook",
       "Slug": "webhook-delete",
       "Description": "Deletes a webhook.",
@@ -1321,7 +1453,7 @@
       "Setup": null
     },
     {
-      "Order": 121,
+      "Order": 133,
       "Title": "Get webhook",
       "Slug": "webhook-get",
       "Description": "Gets webhook object with all details.",
@@ -1332,7 +1464,7 @@
       "Setup": null
     },
     {
-      "Order": 122,
+      "Order": 134,
       "Title": "Update webhook",
       "Slug": "webhook-put",
       "Description": "Updates a webhook using values specified by a webhook object passed as JSON\nin the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe response is the full webhook object as returned by the\n[Get webhook](#/reference/webhooks/webhook-object/get-webhook) endpoint.\n\nThe request needs to specify the \u0060Content-Type: application/json\u0060 HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest\u0027s \u0060Authorization\u0060 header, rather than the URL. ([More\ninfo](#/introduction/authentication)).",
@@ -1343,7 +1475,7 @@
       "Setup": null
     },
     {
-      "Order": 123,
+      "Order": 135,
       "Title": "Test webhook",
       "Slug": "webhook-test-post",
       "Description": "Tests a webhook. Creates a webhook dispatch with a dummy payload.",
@@ -1354,7 +1486,7 @@
       "Setup": null
     },
     {
-      "Order": 124,
+      "Order": 136,
       "Title": "Get collection",
       "Slug": "webhook-webhookdispatches-get",
       "Description": "Gets a given webhook\u0027s list of dispatches.",
@@ -1365,7 +1497,7 @@
       "Setup": null
     },
     {
-      "Order": 125,
+      "Order": 137,
       "Title": "Get list of webhooks",
       "Slug": "webhooks-get",
       "Description": "Gets the list of webhooks that the user created.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060\nparameter.",
@@ -1376,7 +1508,7 @@
       "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
     },
     {
-      "Order": 126,
+      "Order": 138,
       "Title": "Create webhook",
       "Slug": "webhooks-post",
       "Description": "Creates a new webhook with settings provided by the webhook object passed as\nJSON in the payload.\nThe response is the created webhook object.\n\nTo avoid duplicating a webhook, use the \u0060idempotencyKey\u0060 parameter in the\nrequest body.\nMultiple calls to create a webhook with the same \u0060idempotencyKey\u0060 will only\ncreate the webhook with the first call and return the existing webhook on\nsubsequent calls.\nIdempotency keys must be unique, so use a UUID or another random string with\nenough entropy.\n\nTo assign the new webhook to an Actor or task, the request body must contain\n\u0060requestUrl\u0060, \u0060eventTypes\u0060, and \u0060condition\u0060 properties.\n\n* \u0060requestUrl\u0060 is the webhook\u0027s target URL, to which data is sent as a POST\nrequest with a JSON payload.\n* \u0060eventTypes\u0060 is a list of events that will trigger the webhook, e.g. when\nthe Actor run succeeds.\n* \u0060condition\u0060 should be an object containing the ID of the Actor or task to\nwhich the webhook will be assigned.\n* \u0060payloadTemplate\u0060 is a JSON-like string, whose syntax is extended with the\nuse of variables.\n* \u0060headersTemplate\u0060 is a JSON-like string, whose syntax is extended with the\nuse of variables. Following values will be re-written to defaults: \u0022host\u0022,\n\u0022Content-Type\u0022, \u0022X-Apify-Webhook\u0022, \u0022X-Apify-Webhook-Dispatch-Id\u0022,\n\u0022X-Apify-Request-Origin\u0022\n* \u0060description\u0060 is an optional string.\n* \u0060shouldInterpolateStrings\u0060 is a boolean indicating whether to interpolate\nvariables contained inside strings in the \u0060payloadTemplate\u0060\n\n\u0060\u0060\u0060\n    \u0022isAdHoc\u0022 : false,\n    \u0022requestUrl\u0022 : \u0022https://example.com\u0022,\n    \u0022eventTypes\u0022 : [\n        \u0022ACTOR.RUN.SUCCEEDED\u0022,\n        \u0022ACTOR.RUN.ABORTED\u0022\n    ],\n    \u0022condition\u0022 : {\n        \u0022actorId\u0022: \u00225sTMwDQywwsLzKRRh\u0022,\n        \u0022actorTaskId\u0022 : \u0022W9bs9JE9v7wprjAnJ\u0022\n    },\n    \u0022payloadTemplate\u0022: \u0022\u0022,\n    \u0022headersTemplate\u0022: \u0022\u0022,\n    \u0022description\u0022: \u0022my awesome webhook\u0022,\n    \u0022shouldInterpolateStrings\u0022: false,\n\u0060\u0060\u0060\n\n**Important**: The request must specify the \u0060Content-Type: application/json\u0060\nHTTP header.",

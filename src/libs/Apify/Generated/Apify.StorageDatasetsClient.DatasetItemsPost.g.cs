@@ -342,19 +342,19 @@ namespace Apify
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Apify.PutItemResponseError? __value_400 = null;
+                                global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Apify.PutItemResponseError.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Apify.PutItemResponseError.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -362,13 +362,51 @@ namespace Apify
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.PutItemResponseError>(
+                                throw new global::Apify.ApiException<global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>?>(
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
                                     statusCode: __response.StatusCode)
                                 {
                                     ResponseBody = __content_400,
                                     ResponseObject = __value_400,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Unauthorized - authentication required or invalid token.
+                            if ((int)__response.StatusCode == 401)
+                            {
+                                string? __content_401 = null;
+                                global::System.Exception? __exception_401 = null;
+                                global::Apify.ErrorResponse? __value_401 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_401 = __ex;
+                                }
+
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_401,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_401,
+                                    ResponseObject = __value_401,
                                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -445,6 +483,82 @@ namespace Apify
                                 {
                                     ResponseBody = __content_404,
                                     ResponseObject = __value_404,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Method not allowed.
+                            if ((int)__response.StatusCode == 405)
+                            {
+                                string? __content_405 = null;
+                                global::System.Exception? __exception_405 = null;
+                                global::Apify.ErrorResponse? __value_405 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_405 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_405 = global::Apify.ErrorResponse.FromJson(__content_405, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_405 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_405 = global::Apify.ErrorResponse.FromJson(__content_405, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_405 = __ex;
+                                }
+
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                                    message: __content_405 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_405,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_405,
+                                    ResponseObject = __value_405,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Too many requests - rate limit exceeded.
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Apify.ErrorResponse? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Apify.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Apify.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_429,
+                                    ResponseObject = __value_429,
                                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
