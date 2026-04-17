@@ -6,14 +6,14 @@ namespace Apify
     {
         /// <summary>
         /// Add requests<br/>
-        /// Adds requests to the queue in batch. The maximum requests in batch is limit<br/>
+        /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
         /// to 25. The response contains an array of unprocessed and processed requests.<br/>
         /// If any add operation fails because the request queue rate limit is exceeded<br/>
         /// or an internal failure occurs,<br/>
         /// the failed request is returned in the unprocessedRequests response<br/>
         /// parameter.<br/>
-        /// You can resend these requests to add. It is recommended to use exponential<br/>
-        /// backoff algorithm for these retries.<br/>
+        /// You can resend these requests to add. It is recommended to use an<br/>
+        /// exponential backoff algorithm for these retries.<br/>
         /// If a request with the same `uniqueKey` was already present in the queue,<br/>
         /// then it returns an ID of the existing request.
         /// </summary>

@@ -2,18 +2,16 @@
 
 namespace Apify
 {
-    public partial interface IStorageRequestQueuesRequestsLocksClient
+    public partial interface IDefaultRequestQueueClient
     {
         /// <summary>
-        /// Delete request lock<br/>
-        /// Deletes a request lock. The request lock can be deleted only by the client<br/>
-        /// that has locked it using [Get and lock head<br/>
-        /// operation](#/request-queue-head-lock-post).<br/>
-        /// The clientKey identifier is used for locking and unlocking requests.<br/>
-        /// You can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.
+        /// Delete lock on request in default request queue<br/>
+        /// Deletes a request lock in the default request queue of the Actor run.<br/>
+        /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
+        /// [Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.
         /// </summary>
-        /// <param name="queueId">
-        /// Example: WkzbQMuFYuamGv3YF
+        /// <param name="runId">
+        /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
@@ -27,8 +25,8 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task RequestQueueRequestLockDeleteAsync(
-            string queueId,
+        global::System.Threading.Tasks.Task ActorRunRequestQueueRequestLockDeleteAsync(
+            string runId,
             string requestId,
             string? clientKey = default,
             string? forefront = default,

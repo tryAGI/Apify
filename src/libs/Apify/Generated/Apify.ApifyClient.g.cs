@@ -572,6 +572,17 @@ namespace Apify
         };
 
         /// <summary>
+        /// Default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
+        /// </summary>
+        public DefaultRequestQueueClient DefaultRequestQueue => new DefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
@@ -587,6 +598,17 @@ namespace Apify
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
         public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore => new LastActorRunSDefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Last Actor run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
+        /// </summary>
+        public LastActorRunSDefaultRequestQueueClient LastActorRunSDefaultRequestQueue => new LastActorRunSDefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,

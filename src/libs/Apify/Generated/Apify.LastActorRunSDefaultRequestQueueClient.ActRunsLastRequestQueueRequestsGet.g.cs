@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class StorageRequestQueuesClient
+    public partial class LastActorRunSDefaultRequestQueueClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_RequestQueueRequestsBatchPostSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActRunsLastRequestQueueRequestsGetSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,83 +21,96 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_RequestQueueRequestsBatchPostSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActRunsLastRequestQueueRequestsGetSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_RequestQueueRequestsBatchPostSecurityRequirement0,
+            {                s_ActRunsLastRequestQueueRequestsGetSecurityRequirement0,
             };
-        partial void PrepareRequestQueueRequestsBatchPostArguments(
+        partial void PrepareActRunsLastRequestQueueRequestsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string queueId,
+            ref string actorId,
+            ref string? status,
             ref string? clientKey,
-            ref string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void PrepareRequestQueueRequestsBatchPostRequest(
+            ref string? exclusiveStartId,
+            ref double? limit,
+            ref string? cursor,
+            global::System.Collections.Generic.IList<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>? filter);
+        partial void PrepareActRunsLastRequestQueueRequestsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string queueId,
+            string actorId,
+            string? status,
             string? clientKey,
-            string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void ProcessRequestQueueRequestsBatchPostResponse(
+            string? exclusiveStartId,
+            double? limit,
+            string? cursor,
+            global::System.Collections.Generic.IList<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>? filter);
+        partial void ProcessActRunsLastRequestQueueRequestsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessRequestQueueRequestsBatchPostResponseContent(
+        partial void ProcessActRunsLastRequestQueueRequestsGetResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Add requests<br/>
-        /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
-        /// to 25. The response contains an array of unprocessed and processed requests.<br/>
-        /// If any add operation fails because the request queue rate limit is exceeded<br/>
-        /// or an internal failure occurs,<br/>
-        /// the failed request is returned in the unprocessedRequests response<br/>
-        /// parameter.<br/>
-        /// You can resend these requests to add. It is recommended to use an<br/>
-        /// exponential backoff algorithm for these retries.<br/>
-        /// If a request with the same `uniqueKey` was already present in the queue,<br/>
-        /// then it returns an ID of the existing request.
+        /// List last run's default request queue's requests<br/>
+        /// Returns a list of requests from the default request queue of the last Actor run.<br/>
+        /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
+        /// [List requests](/api/v2/request-queue-requests-get) endpoint.
         /// </summary>
-        /// <param name="queueId">
-        /// Example: WkzbQMuFYuamGv3YF
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
         /// </param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
-        /// <param name="forefront">
-        /// Example: false
+        /// <param name="exclusiveStartId">
+        /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
-        /// <param name="request"></param>
+        /// <param name="limit">
+        /// Example: 100
+        /// </param>
+        /// <param name="cursor">
+        /// Example: eyJyZXF1ZXN0SWQiOiI2OFRqQ2RaTDNvM2hiUU0ifQ
+        /// </param>
+        /// <param name="filter">
+        /// Example: [locked]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> RequestQueueRequestsBatchPostAsync(
-            string queueId,
-
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+        public async global::System.Threading.Tasks.Task<global::Apify.ListOfRequestsResponse> ActRunsLastRequestQueueRequestsGetAsync(
+            string actorId,
+            string? status = default,
             string? clientKey = default,
-            string? forefront = default,
+            string? exclusiveStartId = default,
+            double? limit = default,
+            string? cursor = default,
+            global::System.Collections.Generic.IList<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>? filter = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareRequestQueueRequestsBatchPostArguments(
+            PrepareActRunsLastRequestQueueRequestsGetArguments(
                 httpClient: HttpClient,
-                queueId: ref queueId,
+                actorId: ref actorId,
+                status: ref status,
                 clientKey: ref clientKey,
-                forefront: ref forefront,
-                request: request);
+                exclusiveStartId: ref exclusiveStartId,
+                limit: ref limit,
+                cursor: ref cursor,
+                filter: filter);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_RequestQueueRequestsBatchPostSecurityRequirements,
-                operationName: "RequestQueueRequestsBatchPostAsync");
+                securityRequirements: s_ActRunsLastRequestQueueRequestsGetSecurityRequirements,
+                operationName: "ActRunsLastRequestQueueRequestsGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -116,11 +129,15 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/request-queues/{queueId}/requests/batch",
+                                path: $"/v2/acts/{actorId}/runs/last/request-queue/requests",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
+                                .AddOptionalParameter("status", status)
                                 .AddOptionalParameter("clientKey", clientKey)
-                                .AddOptionalParameter("forefront", forefront) 
+                                .AddOptionalParameter("exclusiveStartId", exclusiveStartId)
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("cursor", cursor)
+                                .AddOptionalParameter("filter", filter, selector: static x => x.ToValueString(), delimiter: ",", explode: false) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -128,7 +145,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -151,12 +168,6 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Apify.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -165,13 +176,16 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareRequestQueueRequestsBatchPostRequest(
+                PrepareActRunsLastRequestQueueRequestsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
+                    actorId: actorId,
+                    status: status,
                     clientKey: clientKey,
-                    forefront: forefront,
-                    request: request);
+                    exclusiveStartId: exclusiveStartId,
+                    limit: limit,
+                    cursor: cursor,
+                    filter: filter);
 
                 return __httpRequest;
             }
@@ -188,10 +202,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsGet",
+                                methodName: "ActRunsLastRequestQueueRequestsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -215,10 +229,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsGet",
+                                methodName: "ActRunsLastRequestQueueRequestsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -250,10 +264,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsGet",
+                                methodName: "ActRunsLastRequestQueueRequestsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -289,7 +303,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessRequestQueueRequestsBatchPostResponse(
+                ProcessActRunsLastRequestQueueRequestsGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -297,10 +311,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsGet",
+                                methodName: "ActRunsLastRequestQueueRequestsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -317,10 +331,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsGet",
+                                methodName: "ActRunsLastRequestQueueRequestsGetAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -522,82 +536,6 @@ namespace Apify
                                         h => h.Value),
                                 };
                             }
-                            // Payload too large - the request body exceeds the size limit.
-                            if ((int)__response.StatusCode == 413)
-                            {
-                                string? __content_413 = null;
-                                global::System.Exception? __exception_413 = null;
-                                global::Apify.ErrorResponse? __value_413 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_413 = __ex;
-                                }
-
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
-                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_413,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_413,
-                                    ResponseObject = __value_413,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
-                            // Unsupported media type - the Content-Encoding of the request is not supported.
-                            if ((int)__response.StatusCode == 415)
-                            {
-                                string? __content_415 = null;
-                                global::System.Exception? __exception_415 = null;
-                                global::Apify.ErrorResponse? __value_415 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_415 = __ex;
-                                }
-
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
-                                    message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_415,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_415,
-                                    ResponseObject = __value_415,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value),
-                                };
-                            }
                             // Too many requests - rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
                             {
@@ -649,7 +587,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessRequestQueueRequestsBatchPostResponseContent(
+                                ProcessActRunsLastRequestQueueRequestsGetResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -659,7 +597,7 @@ namespace Apify
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Apify.BatchAddResponse.FromJson(__content, JsonSerializerContext) ??
+                                        global::Apify.ListOfRequestsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -689,7 +627,7 @@ namespace Apify
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Apify.BatchAddResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Apify.ListOfRequestsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
