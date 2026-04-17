@@ -29,15 +29,15 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string storeId,
             ref string recordKey,
-            ref string? signature,
-            ref bool? attachment);
+            ref bool? attachment,
+            ref string? signature);
         partial void PrepareKeyValueStoreRecordGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string storeId,
             string recordKey,
-            string? signature,
-            bool? attachment);
+            bool? attachment,
+            string? signature);
         partial void ProcessKeyValueStoreRecordGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -67,11 +67,11 @@ namespace Apify
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
-        /// <param name="signature">
-        /// Example: 2wTI46Bg8qWQrV7tavlPI
-        /// </param>
         /// <param name="attachment">
         /// Example: true
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -79,8 +79,8 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.RecordResponse> KeyValueStoreRecordGetAsync(
             string storeId,
             string recordKey,
-            string? signature = default,
             bool? attachment = default,
+            string? signature = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -90,8 +90,8 @@ namespace Apify
                 httpClient: HttpClient,
                 storeId: ref storeId,
                 recordKey: ref recordKey,
-                signature: ref signature,
-                attachment: ref attachment);
+                attachment: ref attachment,
+                signature: ref signature);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -119,8 +119,8 @@ namespace Apify
                                 path: $"/v2/key-value-stores/{storeId}/records/{recordKey}",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
-                                .AddOptionalParameter("signature", signature)
-                                .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant()) 
+                                .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("signature", signature) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -164,8 +164,8 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     storeId: storeId,
                     recordKey: recordKey,
-                    signature: signature,
-                    attachment: attachment);
+                    attachment: attachment,
+                    signature: signature);
 
                 return __httpRequest;
             }

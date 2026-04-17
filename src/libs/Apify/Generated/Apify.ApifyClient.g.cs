@@ -550,9 +550,10 @@ namespace Apify
         };
 
         /// <summary>
-        /// Default storages - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default storages (dataset, key-value store, and request queue) without the need to resolve the storage ID first.
+        /// Default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
-        public DefaultStoragesClient DefaultStorages => new DefaultStoragesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DefaultDatasetClient DefaultDataset => new DefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -560,9 +561,32 @@ namespace Apify
         };
 
         /// <summary>
-        /// Last Actor run - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run and all it's sub resources without the need to resolve the run ID first.
+        /// Default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
-        public LastActorRunClient LastActorRun => new LastActorRunClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DefaultKeyValueStoreClient DefaultKeyValueStore => new DefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
+        /// </summary>
+        public LastActorRunSDefaultDatasetClient LastActorRunSDefaultDataset => new LastActorRunSDefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Last Actor run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
+        /// </summary>
+        public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore => new LastActorRunSDefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,

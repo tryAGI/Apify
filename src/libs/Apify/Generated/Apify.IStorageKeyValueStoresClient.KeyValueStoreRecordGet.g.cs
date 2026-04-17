@@ -24,11 +24,11 @@ namespace Apify
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
-        /// <param name="signature">
-        /// Example: 2wTI46Bg8qWQrV7tavlPI
-        /// </param>
         /// <param name="attachment">
         /// Example: true
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -36,8 +36,8 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.RecordResponse> KeyValueStoreRecordGetAsync(
             string storeId,
             string recordKey,
-            string? signature = default,
             bool? attachment = default,
+            string? signature = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
