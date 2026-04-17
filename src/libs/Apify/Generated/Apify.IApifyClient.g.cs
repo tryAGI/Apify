@@ -515,14 +515,28 @@ namespace Apify
         public ActorsWebhookCollectionClient ActorsWebhookCollection { get; }
 
         /// <summary>
-        /// Default storages - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default storages (dataset, key-value store, and request queue) without the need to resolve the storage ID first.
+        /// Default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
-        public DefaultStoragesClient DefaultStorages { get; }
+        public DefaultDatasetClient DefaultDataset { get; }
 
         /// <summary>
-        /// Last Actor run - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run and all it's sub resources without the need to resolve the run ID first.
+        /// Default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
-        public LastActorRunClient LastActorRun { get; }
+        public DefaultKeyValueStoreClient DefaultKeyValueStore { get; }
+
+        /// <summary>
+        /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
+        /// </summary>
+        public LastActorRunSDefaultDatasetClient LastActorRunSDefaultDataset { get; }
+
+        /// <summary>
+        /// Last Actor run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
+        /// </summary>
+        public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore { get; }
 
         /// <summary>
         /// Logs - Introduction. The API endpoints described in this section are used the download the logs<br/>

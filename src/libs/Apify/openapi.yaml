@@ -8,7 +8,7 @@
     },
     "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\n- To access the API using [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- To access the API using [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\nYou can find your API token on the\n[Integrations](https://console.apify.com/account#/integrations) page in the\nApify Console.\n\nTo use your token in a request, either:\n\n- Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\n[More info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).\n(Recommended).\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Do not share your API token or password with untrusted parties.**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run\nActor](#/reference/actors/run-collection/run-actor) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/acts/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run\nActor](#/reference/actors/run-collection/run-actor) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run\nActor](#/reference/actors/run-collection/run-actor) or [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get\nrun](#/reference/actor-runs/run-object-and-its-storages/get-run) API\nendpoint.\n3. Fetch the results from the [Get\nitems](#/reference/datasets/item-collection/get-items) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get record](#/reference/key-value-stores/record/get-record) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your\n[Actor](#/reference/actors/run-actor-synchronously) or\n[task](#/reference/actor-tasks/runs-collection/run-task-synchronously)\nsynchronously. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](#/reference/datasets/item-collection/get-items) or\nKey-value store [Get record](#/reference/key-value-stores/record/get-record)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of\nActors](#/reference/actors/actor-collection/get-list-of-actors))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: `2xx` range for success, `4xx`\nrange for errors caused by the caller\n(invalid requests) and `5xx` range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td><code>401</code></td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td><code>404</code></td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td><code>429</code></td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td><code>405</code></td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* CRUD ([get](#/reference/key-value-stores/record/get-record),\n  [put](#/reference/key-value-stores/record/put-record),\n  [delete](#/reference/key-value-stores/record/delete-record))\n  operations on key-value store records\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n* [Run Actor](#/reference/actors/run-collection/run-actor)\n* [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)\n* [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)\n* [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)\n* [Push items](#/reference/datasets/item-collection/put-items) to dataset\n* CRUD\n  ([add](#/reference/request-queues/request-collection/add-request),\n  [get](#/reference/request-queues/request-collection/get-request),\n  [update](#/reference/request-queues/request-collection/update-request),\n  [delete](#/reference/request-queues/request-collection/delete-request))\n  operations on requests in request queues\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to `429` then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
     "contact": {},
-    "version": "v2-2026-04-16T114618Z"
+    "version": "v2-2026-04-17T081312Z"
   },
   "servers": [
     {
@@ -341,14 +341,24 @@
       "description": "The API endpoints described in this section provide utility tools for encoding,\nsigning, and verifying data, as well as inspecting HTTP request details.\n"
     },
     {
-      "name": "Default storages",
-      "x-displayName": "Default storages - Introduction",
-      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default storages (dataset, key-value store, and request queue) without the need to resolve the storage ID first.\n"
+      "name": "Default dataset",
+      "x-displayName": "Default dataset - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.\n\nSubset of functionality described in: [Datasets](/api/v2/storage-datasets)\n"
     },
     {
-      "name": "Last Actor run",
-      "x-displayName": "Last Actor run - Introduction",
-      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run and all it's sub resources without the need to resolve the run ID first.\n"
+      "name": "Default key-value store",
+      "x-displayName": "Default key-value store - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.\n\nSubset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores)\n"
+    },
+    {
+      "name": "Last Actor run's default dataset",
+      "x-displayName": "Last Actor run's default dataset - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.\n\nSubset of functionality described in: [Datasets](/api/v2/storage-datasets)\n"
+    },
+    {
+      "name": "Last Actor run's default key-value store",
+      "x-displayName": "Last Actor run's default key-value store - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.\n\nSubset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores)\n"
     }
   ],
   "paths": {
@@ -2980,7 +2990,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -3195,7 +3205,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -3508,7 +3518,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "parameters": [
           {
@@ -3573,7 +3583,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "parameters": [
           {
@@ -3613,7 +3623,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "parameters": [
           {
@@ -3754,7 +3764,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "summary": "Get last run's dataset items",
         "description": "Returns data stored in the default dataset of the last Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
@@ -3776,7 +3786,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -3914,7 +3924,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "summary": "Store items in last run's dataset",
         "description": "Appends an item or an array of items to the end of the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n",
@@ -3962,7 +3972,7 @@
           }
         },
         "tags": [
-          "Last Actor run"
+          "Last Actor run's default dataset"
         ],
         "summary": "Get last run's dataset statistics",
         "description": "Returns statistics for the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
@@ -3973,6 +3983,582 @@
           },
           {
             "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/key-value-store": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last run's default store",
+        "description": "Gets an object that contains all the details about the default key-value store associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStoreRequest"
+              },
+              "example": {
+                "name": "new-store-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last run's default store",
+        "description": "Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last run's default store",
+        "description": "Deletes the last Actor run key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_delete"
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/key-value-store/keys": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfKeysResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Get last run's default store's list of keys",
+        "description": "Returns a list of keys for the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_keys_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartKey"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/collectionKeys"
+          },
+          {
+            "$ref": "#/components/parameters/prefixKeys"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/key-value-store/records": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A ZIP archive containing the requested records.",
+            "headers": {},
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Download last run's default store's records",
+        "description": "Downloads all records from the default key-value store of the last Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_records_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/collectionRecords"
+          },
+          {
+            "$ref": "#/components/parameters/prefixRecords"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordResponse"
+                }
+              },
+              "*/*": {
+                "schema": {}
+              }
+            }
+          },
+          "302": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://apifier-key-value-store-prod.s3.amazonaws.com/tqx6jeMia43gYY6eE/INPUT?AWSAccessKeyId=NKDOUN&Expires=1502720992&Signature=DKLVPI4lDDKC"
+                  }
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Get last run's default store's record",
+        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_record_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_attachment"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Store record in last run's default store",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_record_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Store record in last run's default store (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\nThis endpoint is an alias for the [`PUT` record](/api/v2/act-runs-last-key-value-store-record-put) method and behaves identically.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_record_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default key-value store"
+        ],
+        "summary": "Delete last run's default store's record",
+        "description": "Removes a record specified by a key from the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "operationId": "act_runs_last_keyValueStore_record_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
           }
         ]
       }
@@ -5395,7 +5981,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -5574,7 +6160,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -6540,7 +7126,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "parameters": [
           {
@@ -6602,7 +7188,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "parameters": [
           {
@@ -6639,7 +7225,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "parameters": [
           {
@@ -6777,7 +7363,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "summary": "Get default dataset items",
         "description": "Returns data stored in the default dataset of the Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
@@ -6796,7 +7382,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -6934,7 +7520,7 @@
         },
         "deprecated": false,
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "summary": "Store items",
         "description": "Appends an item or an array of items to the end of the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n",
@@ -6979,7 +7565,7 @@
           }
         },
         "tags": [
-          "Default storages"
+          "Default dataset"
         ],
         "summary": "Get default dataset statistics",
         "description": "Returns statistics for the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
@@ -6987,6 +7573,555 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/runId"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/key-value-store": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Get default store",
+        "description": "Gets an object that contains all the details about the default key-value\nstore.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStoreRequest"
+              },
+              "example": {
+                "name": "new-store-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Update default store",
+        "description": "Updates the default key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Delete default store",
+        "description": "Delete the default key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_delete"
+      }
+    },
+    "/v2/actor-runs/{runId}/key-value-store/keys": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfKeysResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Get default store's list of keys",
+        "description": "Returns a list of keys for the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_keys_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartKey"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/collectionKeys"
+          },
+          {
+            "$ref": "#/components/parameters/prefixKeys"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/key-value-store/records": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A ZIP archive containing the requested records.",
+            "headers": {},
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Download default store's records",
+        "description": "Downloads all records from the default key-value store of the Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_records_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/collectionRecords"
+          },
+          {
+            "$ref": "#/components/parameters/prefixRecords"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/key-value-store/records/{recordKey}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordResponse"
+                }
+              },
+              "*/*": {
+                "schema": {}
+              }
+            }
+          },
+          "302": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://apifier-key-value-store-prod.s3.amazonaws.com/tqx6jeMia43gYY6eE/INPUT?AWSAccessKeyId=NKDOUN&Expires=1502720992&Signature=DKLVPI4lDDKC"
+                  }
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Get default store's record",
+        "description": "Gets a value stored under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_record_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_attachment"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Store record in default store",
+        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_record_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Store record in default store (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\nThis endpoint is an alias for the [`PUT` record](/api/v2/key-value-store-record-put) method and behaves identically.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_record_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default key-value store"
+        ],
+        "summary": "Delete default store's record",
+        "description": "Removes a record specified by a key from the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "operationId": "actorRun_keyValueStore_record_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
           }
         ]
       }
@@ -7485,17 +8620,6 @@
     },
     "/v2/key-value-stores/{storeId}": {
       "get": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "summary": "Get store",
-        "description": "Gets an object that contains all the details about a specific key-value\nstore.\n",
-        "operationId": "keyValueStore_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -7528,6 +8652,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Key-value stores"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          }
+        ],
+        "summary": "Get store",
+        "description": "Gets an object that contains all the details about a specific key-value\nstore.\n",
+        "operationId": "keyValueStore_get",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/store-object/get-store",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/get-store",
@@ -7541,17 +8676,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#get"
       },
       "put": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "summary": "Update store",
-        "description": "Updates a key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated key-value store object, as returned by the [Get\nstore](#/reference/key-value-stores/store-object/get-store) API endpoint.\n",
-        "operationId": "keyValueStore_put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -7604,6 +8728,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Key-value stores"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          }
+        ],
+        "summary": "Update store",
+        "description": "Updates a key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated key-value store object, as returned by the [Get\nstore](#/reference/key-value-stores/store-object/get-store) API endpoint.\n",
+        "operationId": "keyValueStore_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/store-object/update-store",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/update-store",
@@ -7617,17 +8752,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#update"
       },
       "delete": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "summary": "Delete store",
-        "description": "Deletes a key-value store.",
-        "operationId": "keyValueStore_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          }
-        ],
         "responses": {
           "204": {
             "$ref": "#/components/responses/NoContent"
@@ -7652,6 +8776,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Key-value stores"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          }
+        ],
+        "summary": "Delete store",
+        "description": "Deletes a key-value store.",
+        "operationId": "keyValueStore_delete",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/store-object/delete-store",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/delete-store",
@@ -7664,61 +8799,6 @@
     },
     "/v2/key-value-stores/{storeId}/keys": {
       "get": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "summary": "Get list of keys",
-        "description": "Returns a list of objects describing keys of a given key-value store, as\nwell as some information about the values (e.g. size).\n\nThis endpoint is paginated using `exclusiveStartKey` and `limit` parameters\n- see [Pagination](/api/v2#using-key) for more details.\n",
-        "operationId": "keyValueStore_keys_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          },
-          {
-            "name": "exclusiveStartKey",
-            "in": "query",
-            "description": "All keys up to this one (including) are skipped from the result.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "Ihnsp8YrvJ8102Kj"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of keys to be returned. Maximum value is `1000`.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "format": "double",
-              "example": 100
-            }
-          },
-          {
-            "name": "collection",
-            "in": "query",
-            "description": "Limit the results to keys that belong to a specific collection from the key-value store schema. The key-value store need to have a schema defined for this parameter to work.",
-            "schema": {
-              "type": "string",
-              "example": "postImages"
-            }
-          },
-          {
-            "name": "prefix",
-            "in": "query",
-            "description": "Limit the results to keys that start with a specific prefix.",
-            "schema": {
-              "type": "string",
-              "example": "post-images-"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/signature"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -7751,6 +8831,32 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Key-value stores"
+        ],
+        "summary": "Get list of keys",
+        "description": "Returns a list of objects describing keys of a given key-value store, as\nwell as some information about the values (e.g. size).\n\nThis endpoint is paginated using `exclusiveStartKey` and `limit` parameters\n- see [Pagination](/api/v2#using-key) for more details.\n",
+        "operationId": "keyValueStore_keys_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartKey"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/collectionKeys"
+          },
+          {
+            "$ref": "#/components/parameters/prefixKeys"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/key-collection/get-list-of-keys",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/get-list-of-keys",
@@ -7766,42 +8872,6 @@
     },
     "/v2/key-value-stores/{storeId}/records": {
       "get": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "summary": "Download records",
-        "description": "Downloads all records from the key-value store as a ZIP archive.\nEach record is stored as a separate file in the archive, with the filename equal to the record key.\n\nYou can optionally filter the records by `collection` or `prefix` to download only a subset of the store.\n",
-        "operationId": "keyValueStore_records_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          },
-          {
-            "name": "collection",
-            "in": "query",
-            "description": "If specified, only records belonging to a specific collection from the key-value store schema. The key-value store need to have a schema defined for this parameter to work.\n",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string",
-              "example": "my-collection"
-            }
-          },
-          {
-            "name": "prefix",
-            "in": "query",
-            "description": "If specified, only records whose key starts with the given prefix are included in the archive.\n",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "string",
-              "example": "my-prefix/"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/signature"
-          }
-        ],
         "responses": {
           "200": {
             "description": "A ZIP archive containing the requested records.",
@@ -7834,39 +8904,31 @@
             "$ref": "#/components/responses/TooManyRequests"
           }
         },
-        "deprecated": false
-      }
-    },
-    "/v2/key-value-stores/{storeId}/records/{recordKey}": {
-      "get": {
+        "deprecated": false,
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Get record",
-        "description": "Gets a value stored in the key-value store under a specific key.\n\nThe response body has the same `Content-Encoding` header as it was set in\n[Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).\n\nIf the request does not define the `Accept-Encoding` HTTP header with the\nright encoding, the record will be decompressed.\n\nMost HTTP clients support decompression by default. After using the HTTP\nclient with decompression support, the `Accept-Encoding` header is set by\nthe client and body is decompressed automatically.\n\nPlease note that for security reasons, Apify API can perform small modifications\nto HTML documents before they are served via this endpoint. To fetch the raw HTML\ncontent without any modifications, use the `attachment` query parameter.\n",
-        "operationId": "keyValueStore_record_get",
+        "summary": "Download records",
+        "description": "Downloads all records from the key-value store as a ZIP archive.\nEach record is stored as a separate file in the archive, with the filename equal to the record key.\n\nYou can optionally filter the records by `collection` or `prefix` to download only a subset of the store.\n",
+        "operationId": "keyValueStore_records_get",
         "parameters": [
           {
             "$ref": "#/components/parameters/storeId"
           },
           {
-            "$ref": "#/components/parameters/recordKey"
+            "$ref": "#/components/parameters/collectionRecords"
+          },
+          {
+            "$ref": "#/components/parameters/prefixRecords"
           },
           {
             "$ref": "#/components/parameters/signature"
-          },
-          {
-            "name": "attachment",
-            "in": "query",
-            "description": "If `true` or `1`, the response will be served with `Content-Disposition: attachment` header,\ncausing web browsers to offer downloading HTML records instead of displaying them.\n",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "boolean",
-              "example": true
-            }
           }
-        ],
+        ]
+      }
+    },
+    "/v2/key-value-stores/{storeId}/records/{recordKey}": {
+      "get": {
         "responses": {
           "200": {
             "description": "",
@@ -7918,6 +8980,26 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Key-value stores"
+        ],
+        "summary": "Get record",
+        "description": "Gets a value stored in the key-value store under a specific key.\n\nThe response body has the same `Content-Encoding` header as it was set in\n[Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).\n\nIf the request does not define the `Accept-Encoding` HTTP header with the\nright encoding, the record will be decompressed.\n\nMost HTTP clients support decompression by default. After using the HTTP\nclient with decompression support, the `Accept-Encoding` header is set by\nthe client and body is decompressed automatically.\n\nPlease note that for security reasons, Apify API can perform small modifications\nto HTML documents before they are served via this endpoint. To fetch the raw HTML\ncontent without any modifications, use the `attachment` query parameter.\n",
+        "operationId": "keyValueStore_record_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_attachment"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/record/get-record",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/get-record",
@@ -7937,14 +9019,6 @@
         "summary": "Check if a record exists",
         "description": "Check if a value is stored in the key-value store under a specific key.\n",
         "operationId": "keyValueStore_record_head",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          },
-          {
-            "$ref": "#/components/parameters/recordKey"
-          }
-        ],
         "responses": {
           "200": {
             "description": "The record exists",
@@ -7955,6 +9029,14 @@
           }
         },
         "deprecated": false,
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          }
+        ],
         "x-js-parent": "KeyValueStoreClient",
         "x-js-name": "recordExists",
         "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#recordExists",
@@ -7963,33 +9045,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#record_exists"
       },
       "put": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          },
-          {
-            "$ref": "#/components/parameters/recordKey"
-          },
-          {
-            "name": "Content-Encoding",
-            "in": "header",
-            "description": "",
-            "required": false,
-            "style": "simple",
-            "schema": {
-              "enum": [
-                "gzip",
-                "deflate",
-                "br",
-                "identity"
-              ],
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -8037,6 +9092,9 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
@@ -8051,49 +9109,36 @@
           }
         },
         "deprecated": false,
-        "x-js-parent": "KeyValueStoreClient",
-        "x-js-name": "setRecord",
-        "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#setRecord",
-        "x-py-parent": "KeyValueStoreClientAsync",
-        "x-py-name": "set_record",
-        "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#set_record",
+        "tags": [
+          "Storage/Key-value stores"
+        ],
         "summary": "Store record",
         "description": "Stores a value under a specific key to the key-value store.\n\nThe value is passed as the PUT payload and it is stored with a MIME content\ntype defined by the `Content-Type` header and with encoding defined by the\n`Content-Encoding` header.\n\nTo save bandwidth, storage, and speed up your upload, send the request\npayload compressed with Gzip compression and add the `Content-Encoding: gzip`\nheader. It is possible to set up another compression type with `Content-Encoding`\nrequest header.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Gzip compression: `Content-Encoding: gzip`\n* Deflate compression: `Content-Encoding: deflate`\n* Brotli compression: `Content-Encoding: br`\n",
         "operationId": "keyValueStore_record_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/record/put-record",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/put-record",
           "https://docs.apify.com/api/v2#tag/Key-value-storesRecord/operation/keyValueStore_record_put"
-        ]
+        ],
+        "x-js-parent": "KeyValueStoreClient",
+        "x-js-name": "setRecord",
+        "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#setRecord",
+        "x-py-parent": "KeyValueStoreClientAsync",
+        "x-py-name": "set_record",
+        "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#set_record"
       },
       "post": {
-        "tags": [
-          "Storage/Key-value stores"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/storeId"
-          },
-          {
-            "$ref": "#/components/parameters/recordKey"
-          },
-          {
-            "name": "Content-Encoding",
-            "in": "header",
-            "description": "",
-            "required": false,
-            "style": "simple",
-            "schema": {
-              "enum": [
-                "gzip",
-                "deflate",
-                "br",
-                "identity"
-              ],
-              "type": "string"
-            }
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -8141,6 +9186,9 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
@@ -8155,15 +9203,23 @@
           }
         },
         "deprecated": false,
-        "x-js-parent": "KeyValueStoreClient",
-        "x-js-name": "setRecord",
-        "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient#setRecord",
-        "x-py-parent": "KeyValueStoreClientAsync",
-        "x-py-name": "set_record",
-        "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClientAsync#set_record",
+        "tags": [
+          "Storage/Key-value stores"
+        ],
         "summary": "Store record (POST)",
         "description": "Stores a value under a specific key to the key-value store.\nThis endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.\n",
         "operationId": "keyValueStore_record_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/storeId"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/record/put-record",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/put-record",
@@ -8171,6 +9227,30 @@
         ]
       },
       "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
         "tags": [
           "Storage/Key-value stores"
         ],
@@ -8185,27 +9265,6 @@
             "$ref": "#/components/parameters/recordKey"
           }
         ],
-        "responses": {
-          "204": {
-            "$ref": "#/components/responses/NoContent"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "405": {
-            "$ref": "#/components/responses/MethodNotAllowed"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          }
-        },
-        "deprecated": false,
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/key-value-stores/record/delete-record",
           "https://docs.apify.com/api/v2#/reference/key-value-stores/delete-record",
@@ -8693,7 +9752,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -8777,7 +9836,7 @@
             "$ref": "#/components/parameters/offset"
           },
           {
-            "$ref": "#/components/parameters/datasetItemsParameters_limit"
+            "$ref": "#/components/parameters/datasetParameters_limit"
           },
           {
             "$ref": "#/components/parameters/fields"
@@ -12351,7 +13410,7 @@
           "example": false
         }
       },
-      "datasetItemsParameters_limit": {
+      "datasetParameters_limit": {
         "name": "limit",
         "in": "query",
         "description": "Maximum number of items to return. By default there is no limit.",
@@ -12615,6 +13674,103 @@
           "example": "2wTI46Bg8qWQrV7tavlPI"
         }
       },
+      "exclusiveStartKey": {
+        "name": "exclusiveStartKey",
+        "in": "query",
+        "description": "All keys up to this one (including) are skipped from the result.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "Ihnsp8YrvJ8102Kj"
+        }
+      },
+      "keyValueStoreParameters_limit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of keys to be returned. Maximum value is `1000`.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "example": 100
+        }
+      },
+      "collectionKeys": {
+        "name": "collection",
+        "in": "query",
+        "description": "Limit the results to keys that belong to a specific collection from the key-value store schema. The key-value store need to have a schema defined for this parameter to work.",
+        "schema": {
+          "type": "string",
+          "example": "postImages"
+        }
+      },
+      "prefixKeys": {
+        "name": "prefix",
+        "in": "query",
+        "description": "Limit the results to keys that start with a specific prefix.",
+        "schema": {
+          "type": "string",
+          "example": "post-images-"
+        }
+      },
+      "collectionRecords": {
+        "name": "collection",
+        "in": "query",
+        "description": "If specified, only records belonging to a specific collection from the key-value store schema. The key-value store need to have a schema defined for this parameter to work.\n",
+        "schema": {
+          "type": "string",
+          "example": "my-collection"
+        }
+      },
+      "prefixRecords": {
+        "name": "prefix",
+        "in": "query",
+        "description": "If specified, only records whose key starts with the given prefix are included in the archive.\n",
+        "schema": {
+          "type": "string",
+          "example": "my-prefix/"
+        }
+      },
+      "recordKey": {
+        "name": "recordKey",
+        "in": "path",
+        "description": "Key of the record.",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "someKey"
+        }
+      },
+      "keyValueStoreParameters_attachment": {
+        "name": "attachment",
+        "in": "query",
+        "description": "If `true` or `1`, the response will be served with `Content-Disposition: attachment` header,\ncausing web browsers to offer downloading HTML records instead of displaying them.\n",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "boolean",
+          "example": true
+        }
+      },
+      "Content-Encoding": {
+        "name": "Content-Encoding",
+        "in": "header",
+        "description": "",
+        "required": false,
+        "style": "simple",
+        "schema": {
+          "enum": [
+            "gzip",
+            "deflate",
+            "br",
+            "identity"
+          ],
+          "type": "string"
+        }
+      },
       "gracefully": {
         "name": "gracefully",
         "in": "query",
@@ -12693,17 +13849,6 @@
         "schema": {
           "type": "string",
           "example": "WkzbQMuFYuamGv3YF"
-        }
-      },
-      "recordKey": {
-        "name": "recordKey",
-        "in": "path",
-        "description": "Key of the record.",
-        "required": true,
-        "style": "simple",
-        "schema": {
-          "type": "string",
-          "example": "someKey"
         }
       },
       "datasetId": {
@@ -16926,6 +18071,331 @@
           }
         }
       },
+      "KeyValueStoreStats": {
+        "title": "KeyValueStoreStats",
+        "required": [
+          "readCount",
+          "writeCount",
+          "deleteCount",
+          "listCount"
+        ],
+        "type": "object",
+        "properties": {
+          "readCount": {
+            "type": "integer",
+            "examples": [
+              9
+            ]
+          },
+          "writeCount": {
+            "type": "integer",
+            "examples": [
+              3
+            ]
+          },
+          "deleteCount": {
+            "type": "integer",
+            "examples": [
+              6
+            ]
+          },
+          "listCount": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "s3StorageBytes": {
+            "type": "integer",
+            "examples": [
+              18
+            ]
+          }
+        }
+      },
+      "KeyValueStore": {
+        "title": "KeyValueStore",
+        "required": [
+          "id",
+          "createdAt",
+          "modifiedAt",
+          "accessedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "WkzbQMuFYuamGv3YF"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "d7b9MDYsbtX5L7XAj"
+            ]
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "BPWDBd7Z9c746JAnF"
+            ]
+          },
+          "username": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "janedoe"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-12T07:34:14.202Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-13T08:36:13.202Z"
+            ]
+          },
+          "accessedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-14T08:36:13.202Z"
+            ]
+          },
+          "actId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "actRunId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "consoleUrl": {
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://console.apify.com/storage/key-value-stores/27TmTznX9YPeAYhkC"
+            ]
+          },
+          "keysPublicUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "A public link to access keys of the key-value store directly.",
+            "examples": [
+              "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/keys?signature=abc123"
+            ]
+          },
+          "urlSigningSecretKey": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the key-value store."
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/KeyValueStoreStats"
+          }
+        }
+      },
+      "KeyValueStoreResponse": {
+        "title": "KeyValueStoreResponse",
+        "description": "Response containing key-value store data.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/KeyValueStore"
+          }
+        }
+      },
+      "UpdateStoreRequest": {
+        "title": "UpdateStoreRequest",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          }
+        },
+        "example": {
+          "name": "new-store-name",
+          "generalAccess": "RESTRICTED"
+        }
+      },
+      "KeyValueStoreKey": {
+        "title": "KeyValueStoreKey",
+        "type": "object",
+        "required": [
+          "key",
+          "size",
+          "recordPublicUrl"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "examples": [
+              "second-key"
+            ]
+          },
+          "size": {
+            "type": "integer",
+            "examples": [
+              36
+            ]
+          },
+          "recordPublicUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "A public link to access this record directly.",
+            "examples": [
+              "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key?signature=abc123"
+            ]
+          }
+        }
+      },
+      "ListOfKeys": {
+        "title": "ListOfKeys",
+        "type": "object",
+        "required": [
+          "items",
+          "count",
+          "limit",
+          "isTruncated"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyValueStoreKey"
+            },
+            "description": ""
+          },
+          "count": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "exclusiveStartKey": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "some-key"
+            ]
+          },
+          "isTruncated": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "nextExclusiveStartKey": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "third-key"
+            ]
+          }
+        }
+      },
+      "ListOfKeysResponse": {
+        "title": "ListOfKeysResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListOfKeys"
+          }
+        },
+        "example": {
+          "data": {
+            "items": [
+              {
+                "key": "second-key",
+                "size": 36,
+                "recordPublicUrl": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/second-key?signature=abc123"
+              },
+              {
+                "key": "third-key",
+                "size": 128,
+                "recordPublicUrl": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/third-key?signature=abc123"
+              }
+            ],
+            "count": 2,
+            "limit": 2,
+            "exclusiveStartKey": "some-key",
+            "isTruncated": true,
+            "nextExclusiveStartKey": "third-key"
+          }
+        }
+      },
+      "RecordResponse": {
+        "title": "RecordResponse",
+        "description": "The response body contains the value of the record. The content type of the response\nis determined by the Content-Type header stored with the record.\n",
+        "type": "object",
+        "additionalProperties": true,
+        "example": {
+          "message": "Hello, world!",
+          "count": 42
+        }
+      },
+      "PutRecordRequest": {
+        "title": "PutRecordRequest",
+        "description": "The request body contains the value to store in the record. The content type\nshould be specified in the Content-Type header.\n",
+        "type": "object",
+        "additionalProperties": true,
+        "example": {
+          "message": "Hello, world!",
+          "count": 42
+        }
+      },
       "TaskStats": {
         "title": "TaskStats",
         "type": "object",
@@ -17599,160 +19069,6 @@
           "ownedByMe"
         ]
       },
-      "KeyValueStoreStats": {
-        "title": "KeyValueStoreStats",
-        "required": [
-          "readCount",
-          "writeCount",
-          "deleteCount",
-          "listCount"
-        ],
-        "type": "object",
-        "properties": {
-          "readCount": {
-            "type": "integer",
-            "examples": [
-              9
-            ]
-          },
-          "writeCount": {
-            "type": "integer",
-            "examples": [
-              3
-            ]
-          },
-          "deleteCount": {
-            "type": "integer",
-            "examples": [
-              6
-            ]
-          },
-          "listCount": {
-            "type": "integer",
-            "examples": [
-              2
-            ]
-          },
-          "s3StorageBytes": {
-            "type": "integer",
-            "examples": [
-              18
-            ]
-          }
-        }
-      },
-      "KeyValueStore": {
-        "title": "KeyValueStore",
-        "required": [
-          "id",
-          "createdAt",
-          "modifiedAt",
-          "accessedAt"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "WkzbQMuFYuamGv3YF"
-            ]
-          },
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "d7b9MDYsbtX5L7XAj"
-            ]
-          },
-          "userId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "BPWDBd7Z9c746JAnF"
-            ]
-          },
-          "username": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "janedoe"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-12T07:34:14.202Z"
-            ]
-          },
-          "modifiedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-13T08:36:13.202Z"
-            ]
-          },
-          "accessedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-14T08:36:13.202Z"
-            ]
-          },
-          "actId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              null
-            ]
-          },
-          "actRunId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              null
-            ]
-          },
-          "consoleUrl": {
-            "type": "string",
-            "format": "uri",
-            "examples": [
-              "https://console.apify.com/storage/key-value-stores/27TmTznX9YPeAYhkC"
-            ]
-          },
-          "keysPublicUrl": {
-            "type": "string",
-            "format": "uri",
-            "description": "A public link to access keys of the key-value store directly.",
-            "examples": [
-              "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/keys?signature=abc123"
-            ]
-          },
-          "urlSigningSecretKey": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the key-value store."
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          },
-          "stats": {
-            "$ref": "#/components/schemas/KeyValueStoreStats"
-          }
-        }
-      },
       "ListOfKeyValueStores": {
         "title": "ListOfKeyValueStores",
         "allOf": [
@@ -17785,177 +19101,6 @@
           "data": {
             "$ref": "#/components/schemas/ListOfKeyValueStores"
           }
-        }
-      },
-      "KeyValueStoreResponse": {
-        "title": "KeyValueStoreResponse",
-        "description": "Response containing key-value store data.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/KeyValueStore"
-          }
-        }
-      },
-      "UpdateStoreRequest": {
-        "title": "UpdateStoreRequest",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          }
-        },
-        "example": {
-          "name": "new-store-name",
-          "generalAccess": "RESTRICTED"
-        }
-      },
-      "KeyValueStoreKey": {
-        "title": "KeyValueStoreKey",
-        "type": "object",
-        "required": [
-          "key",
-          "size",
-          "recordPublicUrl"
-        ],
-        "properties": {
-          "key": {
-            "type": "string",
-            "examples": [
-              "second-key"
-            ]
-          },
-          "size": {
-            "type": "integer",
-            "examples": [
-              36
-            ]
-          },
-          "recordPublicUrl": {
-            "type": "string",
-            "format": "uri",
-            "description": "A public link to access this record directly.",
-            "examples": [
-              "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key?signature=abc123"
-            ]
-          }
-        }
-      },
-      "ListOfKeys": {
-        "title": "ListOfKeys",
-        "type": "object",
-        "required": [
-          "items",
-          "count",
-          "limit",
-          "isTruncated"
-        ],
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/KeyValueStoreKey"
-            },
-            "description": ""
-          },
-          "count": {
-            "type": "integer",
-            "examples": [
-              2
-            ]
-          },
-          "limit": {
-            "type": "integer",
-            "examples": [
-              2
-            ]
-          },
-          "exclusiveStartKey": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "some-key"
-            ]
-          },
-          "isTruncated": {
-            "type": "boolean",
-            "examples": [
-              true
-            ]
-          },
-          "nextExclusiveStartKey": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "third-key"
-            ]
-          }
-        }
-      },
-      "ListOfKeysResponse": {
-        "title": "ListOfKeysResponse",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ListOfKeys"
-          }
-        },
-        "example": {
-          "data": {
-            "items": [
-              {
-                "key": "second-key",
-                "size": 36,
-                "recordPublicUrl": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/second-key?signature=abc123"
-              },
-              {
-                "key": "third-key",
-                "size": 128,
-                "recordPublicUrl": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/third-key?signature=abc123"
-              }
-            ],
-            "count": 2,
-            "limit": 2,
-            "exclusiveStartKey": "some-key",
-            "isTruncated": true,
-            "nextExclusiveStartKey": "third-key"
-          }
-        }
-      },
-      "RecordResponse": {
-        "title": "RecordResponse",
-        "description": "The response body contains the value of the record. The content type of the response\nis determined by the Content-Type header stored with the record.\n",
-        "type": "object",
-        "additionalProperties": true,
-        "example": {
-          "message": "Hello, world!",
-          "count": 42
-        }
-      },
-      "PutRecordRequest": {
-        "title": "PutRecordRequest",
-        "description": "The request body contains the value to store in the record. The content type\nshould be specified in the Content-Type header.\n",
-        "type": "object",
-        "additionalProperties": true,
-        "example": {
-          "message": "Hello, world!",
-          "count": 42
         }
       },
       "DatasetListItem": {
@@ -21862,8 +23007,10 @@
     {
       "name": "Convenience endpoints",
       "tags": [
-        "Default storages",
-        "Last Actor run"
+        "Default dataset",
+        "Default key-value store",
+        "Last Actor run's default dataset",
+        "Last Actor run's default key-value store"
       ]
     }
   ]
