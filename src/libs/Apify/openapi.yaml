@@ -351,6 +351,11 @@
       "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.\n\nSubset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores)\n"
     },
     {
+      "name": "Default request queue",
+      "x-displayName": "Default request queue - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor run's default request queue without the need to resolve the request queue ID first.\n\nSubset of functionality described in: [Request queues](/api/v2/storage-request-queues)\n"
+    },
+    {
       "name": "Last Actor run's default dataset",
       "x-displayName": "Last Actor run's default dataset - Introduction",
       "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.\n\nSubset of functionality described in: [Datasets](/api/v2/storage-datasets)\n"
@@ -359,6 +364,11 @@
       "name": "Last Actor run's default key-value store",
       "x-displayName": "Last Actor run's default key-value store - Introduction",
       "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.\n\nSubset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores)\n"
+    },
+    {
+      "name": "Last Actor run's default request queue",
+      "x-displayName": "Last Actor run's default request queue - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default request queue without the need to resolve the request queue ID first.\n\nSubset of functionality described in: [Request queues](/api/v2/storage-request-queues)\n"
     }
   ],
   "paths": {
@@ -4563,6 +4573,911 @@
         ]
       }
     },
+    "/v2/acts/{actorId}/runs/last/request-queue": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last run's default request queue",
+        "description": "Returns the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateRequestQueueRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "new-request-queue-name"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "new-request-queue-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last run's default request queue",
+        "description": "Updates the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last run's default request queue",
+        "description": "Deletes the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_delete"
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/requests": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "List last run's default request queue's requests",
+        "description": "Returns a list of requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_requests_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartId"
+          },
+          {
+            "$ref": "#/components/parameters/listLimit"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Add request to last run's default request queue",
+        "description": "Adds a request to the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_requests_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/requests/batch": {
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestBase"
+                },
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchAddResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Batch add requests to last run's default request queue",
+        "description": "Adds requests to the default request queue of the last Actor run in batch.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_requests_batch_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      },
+      "delete": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestDraftDelete"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Batch delete requests from last run's default request queue",
+        "description": "Batch-deletes requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_requests_batch_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/contentTypeJson"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/requests/unlock": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Number of requests that were unlocked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnlockRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Unlock requests in last run's default request queue",
+        "description": "Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_requests_unlock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Get request from last run's default request queue",
+        "description": "Returns a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_request_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Update request in last run's default request queue",
+        "description": "Updates a request in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_request_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Delete request from last run's default request queue",
+        "description": "Deletes a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_request_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProlongRequestLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Prolong lock on request in last run's default request queue",
+        "description": "Prolongs a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_request_lock_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/lockForefront"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Delete lock on request in last run's default request queue",
+        "description": "Deletes a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_request_lock_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/deleteForefront"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/head": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Get last run's default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_head_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/headLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/acts/{actorId}/runs/last/request-queue/head/lock": {
+      "post": {
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's default request queue"
+        ],
+        "summary": "Get and lock last run's default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "operationId": "act_runs_last_requestQueue_head_lock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/headLockLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
     "/v2/acts/{actorId}/runs/{runId}": {
       "get": {
         "tags": [
@@ -8126,6 +9041,866 @@
         ]
       }
     },
+    "/v2/actor-runs/{runId}/request-queue": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Get default request queue",
+        "description": "Returns the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
+        "operationId": "actorRun_requestQueue_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateRequestQueueRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "new-request-queue-name"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "new-request-queue-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Update default request queue",
+        "description": "Updates the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
+        "operationId": "actorRun_requestQueue_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
+        "summary": "Delete default request queue",
+        "description": "Deletes the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
+        "operationId": "actorRun_requestQueue_delete"
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/requests": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "List default request queue's requests",
+        "description": "Returns a list of requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "operationId": "actorRun_requestQueue_requests_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartId"
+          },
+          {
+            "$ref": "#/components/parameters/listLimit"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Add request to default request queue",
+        "description": "Adds a request to the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "operationId": "actorRun_requestQueue_requests_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/requests/batch": {
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestBase"
+                },
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchAddResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Batch add requests to default request queue",
+        "description": "Adds requests to the default request queue of the Actor run in batch.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "operationId": "actorRun_requestQueue_requests_batch_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      },
+      "delete": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestDraftDelete"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Batch delete requests from default request queue",
+        "description": "Batch-deletes requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "operationId": "actorRun_requestQueue_requests_batch_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/contentTypeJson"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/requests/unlock": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Number of requests that were unlocked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnlockRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Unlock requests in default request queue",
+        "description": "Unlocks requests in the default request queue of the Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "operationId": "actorRun_requestQueue_requests_unlock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/requests/{requestId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Get request from default request queue",
+        "description": "Returns a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "operationId": "actorRun_requestQueue_request_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Update request in default request queue",
+        "description": "Updates a request in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "operationId": "actorRun_requestQueue_request_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Delete request from default request queue",
+        "description": "Deletes a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "operationId": "actorRun_requestQueue_request_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/requests/{requestId}/lock": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProlongRequestLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Prolong lock on request in default request queue",
+        "description": "Prolongs a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "operationId": "actorRun_requestQueue_request_lock_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/lockForefront"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Delete lock on request in default request queue",
+        "description": "Deletes a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "operationId": "actorRun_requestQueue_request_lock_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/deleteForefront"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/head": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Get default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "operationId": "actorRun_requestQueue_head_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/headLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-runs/{runId}/request-queue/head/lock": {
+      "post": {
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Default request queue"
+        ],
+        "summary": "Get and lock default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "operationId": "actorRun_requestQueue_head_lock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/headLockLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
     "/v2/actor-builds": {
       "get": {
         "tags": [
@@ -10278,17 +12053,6 @@
     },
     "/v2/request-queues/{queueId}": {
       "get": {
-        "tags": [
-          "Storage/Request queues"
-        ],
-        "summary": "Get request queue",
-        "description": "Returns queue object for given queue ID.",
-        "operationId": "requestQueue_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -10321,6 +12085,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          }
+        ],
+        "summary": "Get request queue",
+        "description": "Returns queue object for given queue ID.",
+        "operationId": "requestQueue_get",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/get-request-queue",
           "https://docs.apify.com/api/v2#/reference/request-queues/get-request-queue",
@@ -10334,17 +12109,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#get"
       },
       "put": {
-        "tags": [
-          "Storage/Request queues"
-        ],
-        "summary": "Update request queue",
-        "description": "Updates a request queue's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated request queue object, as returned by the\n[Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.\n",
-        "operationId": "requestQueue_put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -10406,6 +12170,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          }
+        ],
+        "summary": "Update request queue",
+        "description": "Updates a request queue's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated request queue object, as returned by the\n[Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.\n",
+        "operationId": "requestQueue_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/update-request-queue",
           "https://docs.apify.com/api/v2#/reference/request-queues/update-request-queue",
@@ -10419,17 +12194,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#update"
       },
       "delete": {
-        "tags": [
-          "Storage/Request queues"
-        ],
-        "summary": "Delete request queue",
-        "description": "Deletes given queue.",
-        "operationId": "requestQueue_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          }
-        ],
         "responses": {
           "204": {
             "$ref": "#/components/responses/NoContent"
@@ -10454,6 +12218,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          }
+        ],
+        "summary": "Delete request queue",
+        "description": "Deletes given queue.",
+        "operationId": "requestQueue_delete",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/delete-request-queue",
           "https://docs.apify.com/api/v2#/reference/request-queues/delete-request-queue",
@@ -10466,23 +12241,6 @@
     },
     "/v2/request-queues/{queueId}/requests/batch": {
       "post": {
-        "tags": [
-          "Storage/Request queues"
-        ],
-        "summary": "Add requests",
-        "description": "Adds requests to the queue in batch. The maximum requests in batch is limit\nto 25. The response contains an array of unprocessed and processed requests.\nIf any add operation fails because the request queue rate limit is exceeded\nor an internal failure occurs,\nthe failed request is returned in the unprocessedRequests response\nparameter.\nYou can resend these requests to add. It is recommended to use exponential\nbackoff algorithm for these retries.\nIf a request with the same `uniqueKey` was already present in the queue,\nthen it returns an ID of the existing request.\n",
-        "operationId": "requestQueue_requests_batch_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          },
-          {
-            "$ref": "#/components/parameters/forefront"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -10536,6 +12294,23 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues"
+        ],
+        "summary": "Add requests",
+        "description": "Adds requests to the queue in batch. The maximum requests in batch is limited\nto 25. The response contains an array of unprocessed and processed requests.\nIf any add operation fails because the request queue rate limit is exceeded\nor an internal failure occurs,\nthe failed request is returned in the unprocessedRequests response\nparameter.\nYou can resend these requests to add. It is recommended to use an\nexponential backoff algorithm for these retries.\nIf a request with the same `uniqueKey` was already present in the queue,\nthen it returns an ID of the existing request.\n",
+        "operationId": "requestQueue_requests_batch_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/batch-request-operations/add-requests",
           "https://docs.apify.com/api/v2#/reference/request-queues/add-requests",
@@ -10549,31 +12324,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#batch_add_requests"
       },
       "delete": {
-        "tags": [
-          "Storage/Request queues"
-        ],
-        "summary": "Delete requests",
-        "description": "Batch-deletes given requests from the queue. The number of requests in a\nbatch is limited to 25. The response contains an array of unprocessed and\nprocessed requests.\nIf any delete operation fails because the request queue rate limit is\nexceeded or an internal failure occurs,\nthe failed request is returned in the `unprocessedRequests` response\nparameter.\nYou can re-send these delete requests. It is recommended to use an\nexponential backoff algorithm for these retries.\nEach request is identified by its ID or uniqueKey parameter. You can use\neither of them to identify the request.\n",
-        "operationId": "requestQueue_requests_batch_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "description": "",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "string",
-              "const": "application/json"
-            }
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -10626,6 +12376,23 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues"
+        ],
+        "summary": "Delete requests",
+        "description": "Batch-deletes given requests from the queue. The number of requests in a\nbatch is limited to 25. The response contains an array of unprocessed and\nprocessed requests.\nIf any delete operation fails because the request queue rate limit is\nexceeded or an internal failure occurs,\nthe failed request is returned in the `unprocessedRequests` response\nparameter.\nYou can re-send these delete requests. It is recommended to use an\nexponential backoff algorithm for these retries.\nEach request is identified by its ID or uniqueKey parameter. You can use\neither of them to identify the request.\n",
+        "operationId": "requestQueue_requests_batch_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/contentTypeJson"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/batch-request-operations/delete-requests",
           "https://docs.apify.com/api/v2#/reference/request-queues/delete-requests",
@@ -10641,20 +12408,6 @@
     },
     "/v2/request-queues/{queueId}/requests/unlock": {
       "post": {
-        "tags": [
-          "Storage/Request queues/Requests locks"
-        ],
-        "summary": "Unlock requests",
-        "description": "Unlocks requests in the queue that are currently locked by the client.\n\n* If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.\n* If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.\n",
-        "operationId": "requestQueue_requests_unlock_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "responses": {
           "200": {
             "description": "Number of requests that were unlocked",
@@ -10686,6 +12439,20 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests locks"
+        ],
+        "summary": "Unlock requests",
+        "description": "Unlocks requests in the queue that are currently locked by the client.\n\n* If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.\n* If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.\n",
+        "operationId": "requestQueue_requests_unlock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-js-parent": "RequestQueueClient",
         "x-js-name": "unlockRequests",
         "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/RequestQueueClient#unlockRequests",
@@ -10696,75 +12463,6 @@
     },
     "/v2/request-queues/{queueId}/requests": {
       "get": {
-        "tags": [
-          "Storage/Request queues/Requests"
-        ],
-        "summary": "List requests",
-        "description": "Returns a list of requests. This endpoint is paginated using\ncursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.\n",
-        "operationId": "requestQueue_requests_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          },
-          {
-            "name": "exclusiveStartId",
-            "in": "query",
-            "description": "All requests up to this one (including) are skipped from the result. (Deprecated, use `cursor` instead.)",
-            "deprecated": true,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "Ihnsp8YrvJ8102Kj"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of keys to be returned. Maximum value is `10000`.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "format": "double",
-              "example": 100
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "A cursor string for pagination, returned in the previous response as `nextCursor`. Use this to retrieve the next page of requests.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "eyJyZXF1ZXN0SWQiOiI2OFRqQ2RaTDNvM2hiUU0ifQ"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "Filter requests by their state. Possible values are `locked` and `pending`. You can combine multiple values separated by commas, which will mean the union of these filters – requests matching any of the specified states will be returned. (Not compatible with deprecated `exclusiveStartId` parameter.)",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "enum": [
-                  "locked",
-                  "pending"
-                ]
-              },
-              "example": [
-                "locked"
-              ]
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -10797,6 +12495,32 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests"
+        ],
+        "summary": "List requests",
+        "description": "Returns a list of requests. This endpoint is paginated using\ncursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.\n",
+        "operationId": "requestQueue_requests_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartId"
+          },
+          {
+            "$ref": "#/components/parameters/listLimit"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/request-collection/list-requests",
           "https://docs.apify.com/api/v2#/reference/request-queues/list-requests",
@@ -10810,23 +12534,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#list_requests"
       },
       "post": {
-        "tags": [
-          "Storage/Request queues/Requests"
-        ],
-        "summary": "Add request",
-        "description": "Adds request to the queue. Response contains ID of the request and info if\nrequest was already present in the queue or handled.\n\nIf request with same `uniqueKey` was already present in the queue then\nreturns an ID of existing request.\n",
-        "operationId": "requestQueue_requests_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          },
-          {
-            "$ref": "#/components/parameters/forefront"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -10876,6 +12583,23 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests"
+        ],
+        "summary": "Add request",
+        "description": "Adds request to the queue. Response contains ID of the request and info if\nrequest was already present in the queue or handled.\n\nIf request with same `uniqueKey` was already present in the queue then\nreturns an ID of existing request.\n",
+        "operationId": "requestQueue_requests_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/request-collection/add-request",
           "https://docs.apify.com/api/v2#/reference/request-queues/add-request",
@@ -10891,20 +12615,6 @@
     },
     "/v2/request-queues/{queueId}/requests/{requestId}": {
       "get": {
-        "tags": [
-          "Storage/Request queues/Requests"
-        ],
-        "summary": "Get request",
-        "description": "Returns request from queue.",
-        "operationId": "requestQueue_request_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/requestId"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -10937,6 +12647,20 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests"
+        ],
+        "summary": "Get request",
+        "description": "Returns request from queue.",
+        "operationId": "requestQueue_request_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/get-request",
           "https://docs.apify.com/api/v2#/reference/request-queues/get-request",
@@ -10950,26 +12674,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#get"
       },
       "put": {
-        "tags": [
-          "Storage/Request queues/Requests"
-        ],
-        "summary": "Update request",
-        "description": "Updates a request in a queue. Mark request as handled by setting\n`request.handledAt = new Date()`.\nIf `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).\n",
-        "operationId": "requestQueue_request_put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/requestId"
-          },
-          {
-            "$ref": "#/components/parameters/forefront"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "requestBody": {
           "description": "",
           "content": {
@@ -11019,6 +12723,26 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests"
+        ],
+        "summary": "Update request",
+        "description": "Updates a request in a queue. Mark request as handled by setting\n`request.handledAt = new Date()`.\nIf `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).\n",
+        "operationId": "requestQueue_request_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/update-request",
           "https://docs.apify.com/api/v2#/reference/request-queues/update-request",
@@ -11032,23 +12756,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#update"
       },
       "delete": {
-        "tags": [
-          "Storage/Request queues/Requests"
-        ],
-        "summary": "Delete request",
-        "description": "Deletes given request from queue.",
-        "operationId": "requestQueue_request_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/requestId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "responses": {
           "204": {
             "$ref": "#/components/responses/NoContent"
@@ -11073,6 +12780,23 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests"
+        ],
+        "summary": "Delete request",
+        "description": "Deletes given request from queue.",
+        "operationId": "requestQueue_request_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue/delete-request",
           "https://docs.apify.com/api/v2#/reference/request-queues/delete-request",
@@ -11085,32 +12809,6 @@
     },
     "/v2/request-queues/{queueId}/head": {
       "get": {
-        "tags": [
-          "Storage/Request queues/Requests locks"
-        ],
-        "summary": "Get head",
-        "description": "Returns given number of first requests from the queue.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\nThis field is used by [Apify SDK](https://sdk.apify.com) to determine\nwhether the local cache is consistent with the request queue, and thus\noptimize performance of certain operations.\n",
-        "operationId": "requestQueue_head_get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "How many items from queue should be returned.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "format": "double",
-              "example": 100
-            }
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -11143,6 +12841,23 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests locks"
+        ],
+        "summary": "Get head",
+        "description": "Returns given number of first requests from the queue.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\nThis field is used by [Apify SDK](https://sdk.apify.com) to determine\nwhether the local cache is consistent with the request queue, and thus\noptimize performance of certain operations.\n",
+        "operationId": "requestQueue_head_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/headLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue-head/get-head",
           "https://docs.apify.com/api/v2#/reference/request-queues/get-head",
@@ -11158,36 +12873,6 @@
     },
     "/v2/request-queues/{queueId}/head/lock": {
       "post": {
-        "tags": [
-          "Storage/Request queues/Requests locks"
-        ],
-        "summary": "Get head and lock",
-        "description": "Returns the given number of first requests from the queue and locks them for\nthe given time.\n\nIf this endpoint locks the request, no other client or run will be able to get and\nlock these requests.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\n",
-        "operationId": "requestQueue_head_lock_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/lockSecs"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "How many items from the queue should be returned.",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "number",
-              "format": "double",
-              "example": 25,
-              "maximum": 25
-            }
-          },
-          {
-            "$ref": "#/components/parameters/clientKey"
-          }
-        ],
         "responses": {
           "201": {
             "description": "",
@@ -11220,6 +12905,26 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests locks"
+        ],
+        "summary": "Get head and lock",
+        "description": "Returns the given number of first requests from the queue and locks them for\nthe given time.\n\nIf this endpoint locks the request, no other client or run will be able to get and\nlock these requests.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\n",
+        "operationId": "requestQueue_head_lock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/headLockLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/queue-head-with-locks/get-head-and-lock",
           "https://docs.apify.com/api/v2#/reference/request-queues/get-head-and-lock",
@@ -11235,37 +12940,6 @@
     },
     "/v2/request-queues/{queueId}/requests/{requestId}/lock": {
       "put": {
-        "tags": [
-          "Storage/Request queues/Requests locks"
-        ],
-        "summary": "Prolong request lock",
-        "description": "Prolongs request lock. The request lock can be prolonged only by the client\nthat has locked it using [Get and lock head\noperation](#/reference/request-queues/queue-head-with-locks).\n",
-        "operationId": "requestQueue_request_lock_put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/requestId"
-          },
-          {
-            "$ref": "#/components/parameters/lockSecs"
-          },
-          {
-            "$ref": "#/components/parameters/clientKeyLock"
-          },
-          {
-            "name": "forefront",
-            "in": "query",
-            "description": "Determines if request should be added to the head of the queue or to the\nend after lock expires.\n",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "false"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -11298,6 +12972,29 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests locks"
+        ],
+        "summary": "Prolong request lock",
+        "description": "Prolongs request lock. The request lock can be prolonged only by the client\nthat has locked it using [Get and lock head\noperation](#/request-queue-head-lock-post).\n\nThe clientKey identifier is used for locking and unlocking requests.\nYou can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.\n",
+        "operationId": "requestQueue_request_lock_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/lockForefront"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/request-lock/prolong-request-lock",
           "https://docs.apify.com/api/v2#/reference/request-queues/prolong-request-lock",
@@ -11311,34 +13008,6 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#prolong_request_lock"
       },
       "delete": {
-        "tags": [
-          "Storage/Request queues/Requests locks"
-        ],
-        "summary": "Delete request lock",
-        "description": "Deletes a request lock. The request lock can be deleted only by the client\nthat has locked it using [Get and lock head\noperation](#/reference/request-queues/queue-head-with-locks).\n",
-        "operationId": "requestQueue_request_lock_delete",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/queueId"
-          },
-          {
-            "$ref": "#/components/parameters/requestId"
-          },
-          {
-            "$ref": "#/components/parameters/clientKeyLock"
-          },
-          {
-            "name": "forefront",
-            "in": "query",
-            "description": "Determines if request should be added to the head of the queue or to the\nend after lock was removed.\n",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "false"
-            }
-          }
-        ],
         "responses": {
           "204": {
             "$ref": "#/components/responses/NoContent"
@@ -11363,6 +13032,26 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Storage/Request queues/Requests locks"
+        ],
+        "summary": "Delete request lock",
+        "description": "Deletes a request lock. The request lock can be deleted only by the client\nthat has locked it using [Get and lock head\noperation](#/request-queue-head-lock-post).\n\nThe clientKey identifier is used for locking and unlocking requests.\nYou can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.\n",
+        "operationId": "requestQueue_request_lock_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/queueId"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/deleteForefront"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/request-queues/request-lock/delete-request-lock",
           "https://docs.apify.com/api/v2#/reference/request-queues/delete-request-lock",
@@ -13771,6 +15460,165 @@
           "type": "string"
         }
       },
+      "clientKey": {
+        "name": "clientKey",
+        "in": "query",
+        "description": "A unique identifier of the client accessing the request queue. It must\nbe a string between 1 and 32 characters long. This identifier is used to\ndetermine whether the queue was accessed by multiple clients. If\n`clientKey` is not provided,\nthe system considers this API call to come from a new client. For\ndetails, see the `hadMultipleClients` field returned by the [Get\nhead](#/reference/request-queues/queue-head) operation.\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "client-abc"
+        }
+      },
+      "exclusiveStartId": {
+        "name": "exclusiveStartId",
+        "in": "query",
+        "description": "All requests up to this one (including) are skipped from the result. (Deprecated, use `cursor` instead.)",
+        "deprecated": true,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "Ihnsp8YrvJ8102Kj"
+        }
+      },
+      "listLimit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Number of keys to be returned. Maximum value is `10000`.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "example": 100
+        }
+      },
+      "cursor": {
+        "name": "cursor",
+        "in": "query",
+        "description": "A cursor string for pagination, returned in the previous response as `nextCursor`. Use this to retrieve the next page of requests.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "eyJyZXF1ZXN0SWQiOiI2OFRqQ2RaTDNvM2hiUU0ifQ"
+        }
+      },
+      "filter": {
+        "name": "filter",
+        "in": "query",
+        "description": "Filter requests by their state. Possible values are `locked` and `pending`. You can combine multiple values separated by commas, which will mean the union of these filters – requests matching any of the specified states will be returned. (Not compatible with deprecated `exclusiveStartId` parameter.)",
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "locked",
+              "pending"
+            ]
+          },
+          "example": [
+            "locked"
+          ]
+        }
+      },
+      "forefront": {
+        "name": "forefront",
+        "in": "query",
+        "description": "Determines if request should be added to the head of the queue or to the\nend. Default value is `false` (end of queue).\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "false"
+        }
+      },
+      "contentTypeJson": {
+        "name": "Content-Type",
+        "in": "header",
+        "description": "",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "const": "application/json"
+        }
+      },
+      "requestId": {
+        "name": "requestId",
+        "in": "path",
+        "description": "Request ID.",
+        "required": true,
+        "style": "simple",
+        "schema": {
+          "type": "string",
+          "example": "xpsmkDlspokDSmklS"
+        }
+      },
+      "lockSecs": {
+        "name": "lockSecs",
+        "in": "query",
+        "description": "How long the requests will be locked for (in seconds).",
+        "required": true,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "example": 60
+        }
+      },
+      "lockForefront": {
+        "name": "forefront",
+        "in": "query",
+        "description": "Determines if request should be added to the head of the queue or to the\nend after lock expires.\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "false"
+        }
+      },
+      "deleteForefront": {
+        "name": "forefront",
+        "in": "query",
+        "description": "Determines if request should be added to the head of the queue or to the\nend after lock was removed.\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "false"
+        }
+      },
+      "headLimit": {
+        "name": "limit",
+        "in": "query",
+        "description": "How many items from queue should be returned.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "example": 100
+        }
+      },
+      "headLockLimit": {
+        "name": "limit",
+        "in": "query",
+        "description": "How many items from the queue should be returned.",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "number",
+          "format": "double",
+          "example": 25,
+          "maximum": 25
+        }
+      },
       "gracefully": {
         "name": "gracefully",
         "in": "query",
@@ -13871,63 +15719,6 @@
         "schema": {
           "type": "string",
           "example": "WkzbQMuFYuamGv3YF"
-        }
-      },
-      "clientKey": {
-        "name": "clientKey",
-        "in": "query",
-        "description": "A unique identifier of the client accessing the request queue. It must\nbe a string between 1 and 32 characters long. This identifier is used to\ndetermine whether the queue was accessed by multiple clients. If\n`clientKey` is not provided,\nthe system considers this API call to come from a new client. For\ndetails, see the `hadMultipleClients` field returned by the [Get\nhead](#/reference/request-queues/queue-head) operation.\n",
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "string",
-          "example": "client-abc"
-        }
-      },
-      "forefront": {
-        "name": "forefront",
-        "in": "query",
-        "description": "Determines if request should be added to the head of the queue or to the\nend. Default value is `false` (end of queue).\n",
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "string",
-          "example": "false"
-        }
-      },
-      "requestId": {
-        "name": "requestId",
-        "in": "path",
-        "description": "Request ID.",
-        "required": true,
-        "style": "simple",
-        "schema": {
-          "type": "string",
-          "example": "xpsmkDlspokDSmklS"
-        }
-      },
-      "lockSecs": {
-        "name": "lockSecs",
-        "in": "query",
-        "description": "How long the requests will be locked for (in seconds).",
-        "required": true,
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "number",
-          "format": "double",
-          "example": 60
-        }
-      },
-      "clientKeyLock": {
-        "name": "clientKey",
-        "in": "query",
-        "description": "A unique identifier of the client accessing the request queue. It must\nbe a string between 1 and 32 characters long. This identifier is used for locking\nand unlocking requests. You can delete or prolong the lock only for requests that were locked by the same\nclient key or from the same Actor run.\n",
-        "style": "form",
-        "explode": true,
-        "schema": {
-          "type": "string",
-          "example": "client-abc"
         }
       },
       "webhookId": {
@@ -18396,6 +20187,1097 @@
           "count": 42
         }
       },
+      "QueueId": {
+        "type": "string",
+        "description": "A unique identifier assigned to the request queue.",
+        "examples": [
+          "WkzbQMuFYuamGv3YF"
+        ]
+      },
+      "QueueUserId": {
+        "type": "string",
+        "description": "The ID of the user who owns the request queue.",
+        "examples": [
+          "wRsJZtadYvn4mBZmm"
+        ]
+      },
+      "QueueCreatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The timestamp when the request queue was created.",
+        "examples": [
+          "2019-12-12T07:34:14.202Z"
+        ]
+      },
+      "QueueModifiedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The timestamp when the request queue was last modified. Modifications include adding, updating, or removing requests, as well as locking or unlocking requests in the request queue.",
+        "examples": [
+          "2019-12-13T08:36:13.202Z"
+        ]
+      },
+      "QueueAccessedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The timestamp when the request queue was last accessed.",
+        "examples": [
+          "2019-12-14T08:36:13.202Z"
+        ]
+      },
+      "TotalRequestCount": {
+        "type": "integer",
+        "description": "The total number of requests in the request queue.",
+        "minimum": 0,
+        "examples": [
+          870
+        ]
+      },
+      "HandledRequestCount": {
+        "type": "integer",
+        "description": "The number of requests that have been handled.",
+        "minimum": 0,
+        "examples": [
+          100
+        ]
+      },
+      "PendingRequestCount": {
+        "type": "integer",
+        "description": "The number of requests that are pending and have not been handled yet.",
+        "minimum": 0,
+        "examples": [
+          670
+        ]
+      },
+      "HadMultipleClients": {
+        "type": "boolean",
+        "description": "Whether the request queue has been accessed by multiple different clients.",
+        "examples": [
+          true
+        ]
+      },
+      "RequestQueueStats": {
+        "title": "RequestQueueStats",
+        "description": "Statistics about request queue operations and storage.",
+        "type": "object",
+        "properties": {
+          "deleteCount": {
+            "type": "integer",
+            "description": "The number of delete operations performed on the request queue.",
+            "examples": [
+              0
+            ]
+          },
+          "headItemReadCount": {
+            "type": "integer",
+            "description": "The number of times requests from the head were read.",
+            "examples": [
+              5
+            ]
+          },
+          "readCount": {
+            "type": "integer",
+            "description": "The total number of read operations performed on the request queue.",
+            "examples": [
+              100
+            ]
+          },
+          "storageBytes": {
+            "type": "integer",
+            "description": "The total storage size in bytes used by the request queue.",
+            "examples": [
+              1024
+            ]
+          },
+          "writeCount": {
+            "type": "integer",
+            "description": "The total number of write operations performed on the request queue.",
+            "examples": [
+              10
+            ]
+          }
+        }
+      },
+      "RequestQueue": {
+        "title": "RequestQueue",
+        "description": "A request queue object containing metadata and statistics.",
+        "required": [
+          "id",
+          "userId",
+          "createdAt",
+          "modifiedAt",
+          "accessedAt",
+          "totalRequestCount",
+          "handledRequestCount",
+          "pendingRequestCount",
+          "hadMultipleClients",
+          "consoleUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/QueueId"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The name of the request queue.",
+            "examples": [
+              "some-name"
+            ]
+          },
+          "userId": {
+            "$ref": "#/components/schemas/QueueUserId"
+          },
+          "createdAt": {
+            "$ref": "#/components/schemas/QueueCreatedAt"
+          },
+          "modifiedAt": {
+            "$ref": "#/components/schemas/QueueModifiedAt"
+          },
+          "accessedAt": {
+            "$ref": "#/components/schemas/QueueAccessedAt"
+          },
+          "totalRequestCount": {
+            "$ref": "#/components/schemas/TotalRequestCount"
+          },
+          "handledRequestCount": {
+            "$ref": "#/components/schemas/HandledRequestCount"
+          },
+          "pendingRequestCount": {
+            "$ref": "#/components/schemas/PendingRequestCount"
+          },
+          "hadMultipleClients": {
+            "$ref": "#/components/schemas/HadMultipleClients"
+          },
+          "consoleUrl": {
+            "type": "string",
+            "description": "The URL to view the request queue in the Apify console.",
+            "format": "uri",
+            "examples": [
+              "https://api.apify.com/v2/request-queues/27TmTznX9YPeAYhkC"
+            ]
+          },
+          "stats": {
+            "$ref": "#/components/schemas/RequestQueueStats"
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          }
+        }
+      },
+      "RequestQueueResponse": {
+        "title": "RequestQueueResponse",
+        "description": "Response containing request queue data.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestQueue"
+          }
+        }
+      },
+      "UpdateRequestQueueRequest": {
+        "title": "UpdateRequestQueueRequest",
+        "description": "Request object for updating a request queue.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The new name for the request queue."
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          }
+        },
+        "example": {
+          "name": "new-request-queue-name",
+          "generalAccess": "RESTRICTED"
+        }
+      },
+      "UniqueKey": {
+        "type": "string",
+        "description": "A unique key used for request de-duplication. Requests with the same unique key are considered identical.",
+        "examples": [
+          "GET|60d83e70|e3b0c442|https://apify.com"
+        ]
+      },
+      "RequestUrl": {
+        "type": "string",
+        "description": "The URL of the request.",
+        "examples": [
+          "https://apify.com"
+        ]
+      },
+      "HttpMethod": {
+        "type": "string",
+        "enum": [
+          "GET",
+          "HEAD",
+          "POST",
+          "PUT",
+          "DELETE",
+          "CONNECT",
+          "OPTIONS",
+          "TRACE",
+          "PATCH"
+        ],
+        "examples": [
+          "GET"
+        ]
+      },
+      "RetryCount": {
+        "type": "integer",
+        "description": "The number of times this request has been retried.",
+        "examples": [
+          0
+        ]
+      },
+      "RequestUserData": {
+        "title": "RequestUserData",
+        "description": "Custom user data attached to the request. Can contain arbitrary fields.",
+        "type": "object",
+        "additionalProperties": true,
+        "example": {
+          "label": "DETAIL",
+          "customField": "custom-value"
+        }
+      },
+      "RequestBase": {
+        "title": "RequestBase",
+        "type": "object",
+        "properties": {
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "url": {
+            "$ref": "#/components/schemas/RequestUrl"
+          },
+          "method": {
+            "$ref": "#/components/schemas/HttpMethod"
+          },
+          "retryCount": {
+            "$ref": "#/components/schemas/RetryCount"
+          },
+          "loadedUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The final URL that was loaded, after redirects (if any).",
+            "examples": [
+              "https://apify.com/jobs"
+            ]
+          },
+          "payload": {
+            "type": [
+              "string",
+              "object",
+              "null"
+            ],
+            "description": "The request payload, typically used with POST or PUT requests.",
+            "examples": [
+              null
+            ]
+          },
+          "headers": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "HTTP headers sent with the request.",
+            "examples": [
+              null
+            ]
+          },
+          "userData": {
+            "$ref": "#/components/schemas/RequestUserData"
+          },
+          "noRetry": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Indicates whether the request should not be retried if processing fails.",
+            "examples": [
+              false
+            ]
+          },
+          "errorMessages": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Error messages recorded from failed processing attempts.",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              null
+            ]
+          },
+          "handledAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "description": "The timestamp when the request was marked as handled, if applicable.",
+            "examples": [
+              "2019-06-16T10:23:31.607Z"
+            ]
+          }
+        }
+      },
+      "RequestId": {
+        "type": "string",
+        "description": "A unique identifier assigned to the request.",
+        "examples": [
+          "sbJ7klsdf7ujN9l"
+        ]
+      },
+      "Request": {
+        "title": "Request",
+        "description": "A request stored in the request queue, including its metadata and processing state.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/RequestBase",
+            "required": [
+              "id",
+              "uniqueKey",
+              "url"
+            ]
+          },
+          {
+            "properties": {
+              "id": {
+                "$ref": "#/components/schemas/RequestId"
+              }
+            }
+          }
+        ]
+      },
+      "ListOfRequests": {
+        "title": "ListOfRequests",
+        "description": "A paginated list of requests from the request queue.",
+        "type": "object",
+        "required": [
+          "items",
+          "limit"
+        ],
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Request"
+            },
+            "description": "The array of requests."
+          },
+          "count": {
+            "type": "integer",
+            "description": "The total number of requests matching the query.",
+            "examples": [
+              2
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The maximum number of requests returned in this response.",
+            "examples": [
+              2
+            ]
+          },
+          "exclusiveStartId": {
+            "deprecated": true,
+            "type": "string",
+            "description": "The ID of the last request from the previous page, used for pagination.",
+            "examples": [
+              "Ihnsp8YrvJ8102Kj"
+            ]
+          },
+          "cursor": {
+            "type": "string",
+            "description": "A cursor string used for current page of results.",
+            "examples": [
+              "eyJyZXF1ZXN0SWQiOiI0SVlLUWFXZ2FKUUlWNlMifQ"
+            ]
+          },
+          "nextCursor": {
+            "type": "string",
+            "description": "A cursor string to be used to continue pagination.",
+            "examples": [
+              "eyJyZXF1ZXN0SWQiOiI5eFNNc1BrN1J6VUxTNXoifQ"
+            ]
+          }
+        }
+      },
+      "ListOfRequestsResponse": {
+        "title": "ListOfRequestsResponse",
+        "description": "Response containing a list of requests from the request queue.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListOfRequests"
+          }
+        },
+        "example": {
+          "data": {
+            "items": [
+              {
+                "id": "dnjkDMKLmdlkmlkmld",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com",
+                "url": "http://example.com",
+                "method": "GET",
+                "loadedUrl": "http://example.com/example-1",
+                "payload": null,
+                "noRetry": false,
+                "errorMessages": null,
+                "headers": null,
+                "userData": {
+                  "label": "DETAIL",
+                  "image": "https://picserver1.eu"
+                },
+                "handledAt": "2019-06-16T10:23:31.607Z"
+              },
+              {
+                "id": "dnjkDMKLmdlkmlkmld",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com",
+                "url": "http://example.com",
+                "method": "GET",
+                "loadedUrl": "http://example.com/example-1",
+                "payload": null,
+                "noRetry": false,
+                "errorMessages": null,
+                "headers": null,
+                "userData": {
+                  "label": "DETAIL",
+                  "image": "https://picserver1.eu"
+                },
+                "handledAt": "2019-06-16T10:23:31.607Z"
+              }
+            ],
+            "count": 2,
+            "limit": 2,
+            "exclusiveStartId": "Ihnsp8YrvJ8102Kj"
+          }
+        }
+      },
+      "WasAlreadyPresent": {
+        "type": "boolean",
+        "description": "Indicates whether a request with the same unique key already existed in the request queue. If true, no new request was created.",
+        "examples": [
+          false
+        ]
+      },
+      "WasAlreadyHandled": {
+        "type": "boolean",
+        "description": "Indicates whether a request with the same unique key has already been processed by the request queue.",
+        "examples": [
+          false
+        ]
+      },
+      "RequestRegistration": {
+        "title": "RequestRegistration",
+        "description": "Result of registering a request in the request queue, either by adding a new request or updating an existing one.",
+        "required": [
+          "requestId",
+          "wasAlreadyPresent",
+          "wasAlreadyHandled"
+        ],
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "wasAlreadyPresent": {
+            "$ref": "#/components/schemas/WasAlreadyPresent"
+          },
+          "wasAlreadyHandled": {
+            "$ref": "#/components/schemas/WasAlreadyHandled"
+          }
+        }
+      },
+      "AddRequestResponse": {
+        "title": "AddRequestResponse",
+        "description": "Response containing the result of adding a request to the request queue.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestRegistration"
+          }
+        }
+      },
+      "AddedRequest": {
+        "title": "AddedRequest",
+        "description": "Information about a request that was successfully added to a request queue.",
+        "required": [
+          "requestId",
+          "uniqueKey",
+          "wasAlreadyHandled",
+          "wasAlreadyPresent"
+        ],
+        "type": "object",
+        "properties": {
+          "requestId": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "wasAlreadyPresent": {
+            "$ref": "#/components/schemas/WasAlreadyPresent"
+          },
+          "wasAlreadyHandled": {
+            "$ref": "#/components/schemas/WasAlreadyHandled"
+          }
+        }
+      },
+      "RequestDraft": {
+        "title": "RequestDraft",
+        "description": "A request that failed to be processed during a request queue operation and can be retried.",
+        "required": [
+          "uniqueKey",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "url": {
+            "$ref": "#/components/schemas/RequestUrl"
+          },
+          "method": {
+            "$ref": "#/components/schemas/HttpMethod"
+          }
+        }
+      },
+      "BatchAddResult": {
+        "title": "BatchAddResult",
+        "description": "Result of a batch add operation containing successfully processed and failed requests.",
+        "type": "object",
+        "required": [
+          "processedRequests",
+          "unprocessedRequests"
+        ],
+        "properties": {
+          "processedRequests": {
+            "type": "array",
+            "description": "Requests that were successfully added to the request queue.",
+            "items": {
+              "$ref": "#/components/schemas/AddedRequest"
+            }
+          },
+          "unprocessedRequests": {
+            "type": "array",
+            "description": "Requests that failed to be added and can be retried.",
+            "items": {
+              "$ref": "#/components/schemas/RequestDraft"
+            }
+          }
+        }
+      },
+      "BatchAddResponse": {
+        "title": "BatchAddResponse",
+        "description": "Response containing the result of a batch add operation.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BatchAddResult"
+          }
+        },
+        "example": {
+          "data": {
+            "processedRequests": [
+              {
+                "requestId": "YiKoxjkaS9gjGTqhF",
+                "uniqueKey": "http://example.com",
+                "wasAlreadyPresent": true,
+                "wasAlreadyHandled": false
+              }
+            ],
+            "unprocessedRequests": [
+              {
+                "uniqueKey": "http://example.com/2",
+                "url": "http://example.com/2",
+                "method": "GET"
+              }
+            ]
+          }
+        }
+      },
+      "RequestDraftDeleteById": {
+        "title": "RequestDraftDeleteById",
+        "description": "A request that should be deleted, identified by its ID.",
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          }
+        }
+      },
+      "RequestDraftDeleteByUniqueKey": {
+        "title": "RequestDraftDeleteByUniqueKey",
+        "description": "A request that should be deleted, identified by its unique key.",
+        "type": "object",
+        "required": [
+          "uniqueKey"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          }
+        }
+      },
+      "RequestDraftDelete": {
+        "title": "RequestDraftDelete",
+        "description": "A request that should be deleted.",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/RequestDraftDeleteById"
+          },
+          {
+            "$ref": "#/components/schemas/RequestDraftDeleteByUniqueKey"
+          }
+        ]
+      },
+      "DeletedRequestById": {
+        "title": "DeletedRequestById",
+        "description": "Confirmation of a request that was successfully deleted, identified by its ID.",
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          }
+        }
+      },
+      "DeletedRequestByUniqueKey": {
+        "title": "DeletedRequestByUniqueKey",
+        "description": "Confirmation of a request that was successfully deleted, identified by its unique key.",
+        "type": "object",
+        "required": [
+          "uniqueKey"
+        ],
+        "properties": {
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          }
+        }
+      },
+      "DeletedRequest": {
+        "title": "DeletedRequest",
+        "description": "Confirmation of a request that was successfully deleted from a request queue.",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/DeletedRequestById"
+          },
+          {
+            "$ref": "#/components/schemas/DeletedRequestByUniqueKey"
+          }
+        ]
+      },
+      "BatchDeleteResult": {
+        "title": "BatchDeleteResult",
+        "description": "Result of a batch delete operation containing successfully deleted and failed requests.",
+        "type": "object",
+        "required": [
+          "processedRequests",
+          "unprocessedRequests"
+        ],
+        "properties": {
+          "processedRequests": {
+            "type": "array",
+            "description": "Requests that were successfully deleted from the request queue.",
+            "items": {
+              "$ref": "#/components/schemas/DeletedRequest"
+            }
+          },
+          "unprocessedRequests": {
+            "type": "array",
+            "description": "Requests that failed to be deleted and can be retried.",
+            "items": {
+              "$ref": "#/components/schemas/RequestDraft"
+            }
+          }
+        }
+      },
+      "BatchDeleteResponse": {
+        "title": "BatchDeleteResponse",
+        "description": "Response containing the result of a batch delete operation.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/BatchDeleteResult"
+          }
+        }
+      },
+      "UnlockRequestsResult": {
+        "title": "UnlockRequestsResult",
+        "description": "Result of unlocking requests in the request queue.",
+        "type": "object",
+        "required": [
+          "unlockedCount"
+        ],
+        "properties": {
+          "unlockedCount": {
+            "type": "integer",
+            "description": "Number of requests that were successfully unlocked.",
+            "examples": [
+              10
+            ]
+          }
+        }
+      },
+      "UnlockRequestsResponse": {
+        "title": "UnlockRequestsResponse",
+        "description": "Response containing the result of unlocking requests.",
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UnlockRequestsResult"
+          }
+        }
+      },
+      "RequestResponse": {
+        "title": "RequestResponse",
+        "description": "Response containing a single request from the request queue.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Request"
+          }
+        }
+      },
+      "UpdateRequestResponse": {
+        "title": "UpdateRequestResponse",
+        "description": "Response containing the result of updating a request in the request queue.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestRegistration"
+          }
+        }
+      },
+      "LockExpiresAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The timestamp when the lock on this request expires.",
+        "examples": [
+          "2022-06-14T23:00:00.000Z"
+        ]
+      },
+      "RequestLockInfo": {
+        "title": "RequestLockInfo",
+        "description": "Information about a request lock.",
+        "type": "object",
+        "required": [
+          "lockExpiresAt"
+        ],
+        "properties": {
+          "lockExpiresAt": {
+            "$ref": "#/components/schemas/LockExpiresAt"
+          }
+        }
+      },
+      "ProlongRequestLockResponse": {
+        "title": "ProlongRequestLockResponse",
+        "description": "Response containing updated lock information after prolonging a request lock.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestLockInfo"
+          }
+        }
+      },
+      "HeadLimit": {
+        "type": "integer",
+        "description": "The maximum number of requests returned.",
+        "examples": [
+          1000
+        ]
+      },
+      "HeadRequest": {
+        "title": "HeadRequest",
+        "description": "A request from the request queue head without lock information.",
+        "type": "object",
+        "required": [
+          "id",
+          "uniqueKey",
+          "url"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "url": {
+            "$ref": "#/components/schemas/RequestUrl"
+          },
+          "method": {
+            "$ref": "#/components/schemas/HttpMethod"
+          },
+          "retryCount": {
+            "$ref": "#/components/schemas/RetryCount"
+          }
+        }
+      },
+      "RequestQueueHead": {
+        "title": "RequestQueueHead",
+        "description": "A batch of requests from the request queue head without locking.",
+        "type": "object",
+        "required": [
+          "limit",
+          "queueModifiedAt",
+          "hadMultipleClients",
+          "items"
+        ],
+        "properties": {
+          "limit": {
+            "$ref": "#/components/schemas/HeadLimit"
+          },
+          "queueModifiedAt": {
+            "$ref": "#/components/schemas/QueueModifiedAt"
+          },
+          "hadMultipleClients": {
+            "$ref": "#/components/schemas/HadMultipleClients"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HeadRequest"
+            },
+            "description": "The array of requests from the request queue head."
+          }
+        }
+      },
+      "HeadResponse": {
+        "title": "HeadResponse",
+        "description": "Response containing requests from the request queue head without locking.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/RequestQueueHead"
+          }
+        },
+        "example": {
+          "data": {
+            "limit": 1000,
+            "queueModifiedAt": "2018-03-14T23:00:00.000Z",
+            "hadMultipleClients": false,
+            "items": [
+              {
+                "id": "8OamqXBCpPHxyH9",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com",
+                "url": "http://example.com",
+                "method": "GET"
+              },
+              {
+                "id": "ZJAoqlRijenMQIn",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com/a/b",
+                "url": "http://example.com/a/b",
+                "method": "GET"
+              },
+              {
+                "id": "hAhkwyk5oOBHKQC",
+                "retryCount": 1,
+                "uniqueKey": "http://example.com/c/d",
+                "url": "http://example.com/c/d",
+                "method": "GET"
+              }
+            ]
+          }
+        }
+      },
+      "LockedHeadRequest": {
+        "title": "LockedHeadRequest",
+        "description": "A request from the request queue head that has been locked for processing.",
+        "type": "object",
+        "required": [
+          "id",
+          "uniqueKey",
+          "url",
+          "lockExpiresAt"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RequestId"
+          },
+          "uniqueKey": {
+            "$ref": "#/components/schemas/UniqueKey"
+          },
+          "url": {
+            "$ref": "#/components/schemas/RequestUrl"
+          },
+          "method": {
+            "$ref": "#/components/schemas/HttpMethod"
+          },
+          "retryCount": {
+            "$ref": "#/components/schemas/RetryCount"
+          },
+          "lockExpiresAt": {
+            "$ref": "#/components/schemas/LockExpiresAt"
+          }
+        }
+      },
+      "LockedRequestQueueHead": {
+        "title": "LockedRequestQueueHead",
+        "description": "A batch of locked requests from the request queue head.",
+        "type": "object",
+        "required": [
+          "limit",
+          "queueModifiedAt",
+          "hadMultipleClients",
+          "lockSecs",
+          "items"
+        ],
+        "properties": {
+          "limit": {
+            "$ref": "#/components/schemas/HeadLimit"
+          },
+          "queueModifiedAt": {
+            "$ref": "#/components/schemas/QueueModifiedAt"
+          },
+          "queueHasLockedRequests": {
+            "type": "boolean",
+            "description": "Whether the request queue contains requests locked by any client (either the one calling the endpoint or a different one).",
+            "examples": [
+              true
+            ]
+          },
+          "clientKey": {
+            "type": "string",
+            "description": "The client key used for locking the requests.",
+            "examples": [
+              "client-one"
+            ]
+          },
+          "hadMultipleClients": {
+            "$ref": "#/components/schemas/HadMultipleClients"
+          },
+          "lockSecs": {
+            "type": "integer",
+            "description": "The number of seconds the locks will be held.",
+            "examples": [
+              60
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LockedHeadRequest"
+            },
+            "description": "The array of locked requests from the request queue head."
+          }
+        }
+      },
+      "HeadAndLockResponse": {
+        "title": "HeadAndLockResponse",
+        "description": "Response containing locked requests from the request queue head.",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/LockedRequestQueueHead"
+          }
+        },
+        "example": {
+          "data": {
+            "limit": 3,
+            "queueModifiedAt": "2018-03-14T23:00:00.000Z",
+            "hadMultipleClients": true,
+            "lockSecs": 60,
+            "items": [
+              {
+                "id": "8OamqXBCpPHxyj9",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com",
+                "url": "http://example.com",
+                "method": "GET",
+                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
+              },
+              {
+                "id": "8OamqXBCpPHxyx9",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com/a",
+                "url": "http://example.com/a",
+                "method": "GET",
+                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
+              },
+              {
+                "id": "8OamqXBCpPHxy08",
+                "retryCount": 0,
+                "uniqueKey": "http://example.com/a/b",
+                "url": "http://example.com/a/b",
+                "method": "GET",
+                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
+              }
+            ]
+          }
+        }
+      },
       "TaskStats": {
         "title": "TaskStats",
         "type": "object",
@@ -19222,75 +22104,6 @@
           }
         }
       },
-      "QueueId": {
-        "type": "string",
-        "description": "A unique identifier assigned to the request queue.",
-        "examples": [
-          "WkzbQMuFYuamGv3YF"
-        ]
-      },
-      "QueueUserId": {
-        "type": "string",
-        "description": "The ID of the user who owns the request queue.",
-        "examples": [
-          "wRsJZtadYvn4mBZmm"
-        ]
-      },
-      "QueueCreatedAt": {
-        "type": "string",
-        "format": "date-time",
-        "description": "The timestamp when the request queue was created.",
-        "examples": [
-          "2019-12-12T07:34:14.202Z"
-        ]
-      },
-      "QueueModifiedAt": {
-        "type": "string",
-        "format": "date-time",
-        "description": "The timestamp when the request queue was last modified. Modifications include adding, updating, or removing requests, as well as locking or unlocking requests in the request queue.",
-        "examples": [
-          "2019-12-13T08:36:13.202Z"
-        ]
-      },
-      "QueueAccessedAt": {
-        "type": "string",
-        "format": "date-time",
-        "description": "The timestamp when the request queue was last accessed.",
-        "examples": [
-          "2019-12-14T08:36:13.202Z"
-        ]
-      },
-      "TotalRequestCount": {
-        "type": "integer",
-        "description": "The total number of requests in the request queue.",
-        "minimum": 0,
-        "examples": [
-          870
-        ]
-      },
-      "HandledRequestCount": {
-        "type": "integer",
-        "description": "The number of requests that have been handled.",
-        "minimum": 0,
-        "examples": [
-          100
-        ]
-      },
-      "PendingRequestCount": {
-        "type": "integer",
-        "description": "The number of requests that are pending and have not been handled yet.",
-        "minimum": 0,
-        "examples": [
-          670
-        ]
-      },
-      "HadMultipleClients": {
-        "type": "boolean",
-        "description": "Whether the request queue has been accessed by multiple different clients.",
-        "examples": [
-          true
-        ]
-      },
       "RequestQueueShort": {
         "title": "RequestQueueShort",
         "description": "A shortened request queue object for list responses.",
@@ -19408,1028 +22221,6 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ListOfRequestQueues"
-          }
-        }
-      },
-      "RequestQueueStats": {
-        "title": "RequestQueueStats",
-        "description": "Statistics about request queue operations and storage.",
-        "type": "object",
-        "properties": {
-          "deleteCount": {
-            "type": "integer",
-            "description": "The number of delete operations performed on the request queue.",
-            "examples": [
-              0
-            ]
-          },
-          "headItemReadCount": {
-            "type": "integer",
-            "description": "The number of times requests from the head were read.",
-            "examples": [
-              5
-            ]
-          },
-          "readCount": {
-            "type": "integer",
-            "description": "The total number of read operations performed on the request queue.",
-            "examples": [
-              100
-            ]
-          },
-          "storageBytes": {
-            "type": "integer",
-            "description": "The total storage size in bytes used by the request queue.",
-            "examples": [
-              1024
-            ]
-          },
-          "writeCount": {
-            "type": "integer",
-            "description": "The total number of write operations performed on the request queue.",
-            "examples": [
-              10
-            ]
-          }
-        }
-      },
-      "RequestQueue": {
-        "title": "RequestQueue",
-        "description": "A request queue object containing metadata and statistics.",
-        "required": [
-          "id",
-          "userId",
-          "createdAt",
-          "modifiedAt",
-          "accessedAt",
-          "totalRequestCount",
-          "handledRequestCount",
-          "pendingRequestCount",
-          "hadMultipleClients",
-          "consoleUrl"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/QueueId"
-          },
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "The name of the request queue.",
-            "examples": [
-              "some-name"
-            ]
-          },
-          "userId": {
-            "$ref": "#/components/schemas/QueueUserId"
-          },
-          "createdAt": {
-            "$ref": "#/components/schemas/QueueCreatedAt"
-          },
-          "modifiedAt": {
-            "$ref": "#/components/schemas/QueueModifiedAt"
-          },
-          "accessedAt": {
-            "$ref": "#/components/schemas/QueueAccessedAt"
-          },
-          "totalRequestCount": {
-            "$ref": "#/components/schemas/TotalRequestCount"
-          },
-          "handledRequestCount": {
-            "$ref": "#/components/schemas/HandledRequestCount"
-          },
-          "pendingRequestCount": {
-            "$ref": "#/components/schemas/PendingRequestCount"
-          },
-          "hadMultipleClients": {
-            "$ref": "#/components/schemas/HadMultipleClients"
-          },
-          "consoleUrl": {
-            "type": "string",
-            "description": "The URL to view the request queue in the Apify console.",
-            "format": "uri",
-            "examples": [
-              "https://api.apify.com/v2/request-queues/27TmTznX9YPeAYhkC"
-            ]
-          },
-          "stats": {
-            "$ref": "#/components/schemas/RequestQueueStats"
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          }
-        }
-      },
-      "RequestQueueResponse": {
-        "title": "RequestQueueResponse",
-        "description": "Response containing request queue data.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/RequestQueue"
-          }
-        }
-      },
-      "UpdateRequestQueueRequest": {
-        "title": "UpdateRequestQueueRequest",
-        "description": "Request object for updating a request queue.",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "The new name for the request queue."
-          },
-          "generalAccess": {
-            "$ref": "#/components/schemas/GeneralAccess"
-          }
-        },
-        "example": {
-          "name": "new-request-queue-name",
-          "generalAccess": "RESTRICTED"
-        }
-      },
-      "UniqueKey": {
-        "type": "string",
-        "description": "A unique key used for request de-duplication. Requests with the same unique key are considered identical.",
-        "examples": [
-          "GET|60d83e70|e3b0c442|https://apify.com"
-        ]
-      },
-      "RequestUrl": {
-        "type": "string",
-        "description": "The URL of the request.",
-        "examples": [
-          "https://apify.com"
-        ]
-      },
-      "HttpMethod": {
-        "type": "string",
-        "enum": [
-          "GET",
-          "HEAD",
-          "POST",
-          "PUT",
-          "DELETE",
-          "CONNECT",
-          "OPTIONS",
-          "TRACE",
-          "PATCH"
-        ],
-        "examples": [
-          "GET"
-        ]
-      },
-      "RetryCount": {
-        "type": "integer",
-        "description": "The number of times this request has been retried.",
-        "examples": [
-          0
-        ]
-      },
-      "RequestUserData": {
-        "title": "RequestUserData",
-        "description": "Custom user data attached to the request. Can contain arbitrary fields.",
-        "type": "object",
-        "additionalProperties": true,
-        "example": {
-          "label": "DETAIL",
-          "customField": "custom-value"
-        }
-      },
-      "RequestBase": {
-        "title": "RequestBase",
-        "type": "object",
-        "properties": {
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "url": {
-            "$ref": "#/components/schemas/RequestUrl"
-          },
-          "method": {
-            "$ref": "#/components/schemas/HttpMethod"
-          },
-          "retryCount": {
-            "$ref": "#/components/schemas/RetryCount"
-          },
-          "loadedUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "The final URL that was loaded, after redirects (if any).",
-            "examples": [
-              "https://apify.com/jobs"
-            ]
-          },
-          "payload": {
-            "type": [
-              "string",
-              "object",
-              "null"
-            ],
-            "description": "The request payload, typically used with POST or PUT requests.",
-            "examples": [
-              null
-            ]
-          },
-          "headers": {
-            "type": [
-              "object",
-              "null"
-            ],
-            "description": "HTTP headers sent with the request.",
-            "examples": [
-              null
-            ]
-          },
-          "userData": {
-            "$ref": "#/components/schemas/RequestUserData"
-          },
-          "noRetry": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "Indicates whether the request should not be retried if processing fails.",
-            "examples": [
-              false
-            ]
-          },
-          "errorMessages": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "description": "Error messages recorded from failed processing attempts.",
-            "items": {
-              "type": "string"
-            },
-            "examples": [
-              null
-            ]
-          },
-          "handledAt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "description": "The timestamp when the request was marked as handled, if applicable.",
-            "examples": [
-              "2019-06-16T10:23:31.607Z"
-            ]
-          }
-        }
-      },
-      "RequestId": {
-        "type": "string",
-        "description": "A unique identifier assigned to the request.",
-        "examples": [
-          "sbJ7klsdf7ujN9l"
-        ]
-      },
-      "WasAlreadyPresent": {
-        "type": "boolean",
-        "description": "Indicates whether a request with the same unique key already existed in the request queue. If true, no new request was created.",
-        "examples": [
-          false
-        ]
-      },
-      "WasAlreadyHandled": {
-        "type": "boolean",
-        "description": "Indicates whether a request with the same unique key has already been processed by the request queue.",
-        "examples": [
-          false
-        ]
-      },
-      "AddedRequest": {
-        "title": "AddedRequest",
-        "description": "Information about a request that was successfully added to a request queue.",
-        "required": [
-          "requestId",
-          "uniqueKey",
-          "wasAlreadyHandled",
-          "wasAlreadyPresent"
-        ],
-        "type": "object",
-        "properties": {
-          "requestId": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "wasAlreadyPresent": {
-            "$ref": "#/components/schemas/WasAlreadyPresent"
-          },
-          "wasAlreadyHandled": {
-            "$ref": "#/components/schemas/WasAlreadyHandled"
-          }
-        }
-      },
-      "RequestDraft": {
-        "title": "RequestDraft",
-        "description": "A request that failed to be processed during a request queue operation and can be retried.",
-        "required": [
-          "uniqueKey",
-          "url"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "url": {
-            "$ref": "#/components/schemas/RequestUrl"
-          },
-          "method": {
-            "$ref": "#/components/schemas/HttpMethod"
-          }
-        }
-      },
-      "BatchAddResult": {
-        "title": "BatchAddResult",
-        "description": "Result of a batch add operation containing successfully processed and failed requests.",
-        "type": "object",
-        "required": [
-          "processedRequests",
-          "unprocessedRequests"
-        ],
-        "properties": {
-          "processedRequests": {
-            "type": "array",
-            "description": "Requests that were successfully added to the request queue.",
-            "items": {
-              "$ref": "#/components/schemas/AddedRequest"
-            }
-          },
-          "unprocessedRequests": {
-            "type": "array",
-            "description": "Requests that failed to be added and can be retried.",
-            "items": {
-              "$ref": "#/components/schemas/RequestDraft"
-            }
-          }
-        }
-      },
-      "BatchAddResponse": {
-        "title": "BatchAddResponse",
-        "description": "Response containing the result of a batch add operation.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/BatchAddResult"
-          }
-        },
-        "example": {
-          "data": {
-            "processedRequests": [
-              {
-                "requestId": "YiKoxjkaS9gjGTqhF",
-                "uniqueKey": "http://example.com",
-                "wasAlreadyPresent": true,
-                "wasAlreadyHandled": false
-              }
-            ],
-            "unprocessedRequests": [
-              {
-                "uniqueKey": "http://example.com/2",
-                "url": "http://example.com/2",
-                "method": "GET"
-              }
-            ]
-          }
-        }
-      },
-      "RequestDraftDeleteById": {
-        "title": "RequestDraftDeleteById",
-        "description": "A request that should be deleted, identified by its ID.",
-        "type": "object",
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          }
-        }
-      },
-      "RequestDraftDeleteByUniqueKey": {
-        "title": "RequestDraftDeleteByUniqueKey",
-        "description": "A request that should be deleted, identified by its unique key.",
-        "type": "object",
-        "required": [
-          "uniqueKey"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          }
-        }
-      },
-      "RequestDraftDelete": {
-        "title": "RequestDraftDelete",
-        "description": "A request that should be deleted.",
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/RequestDraftDeleteById"
-          },
-          {
-            "$ref": "#/components/schemas/RequestDraftDeleteByUniqueKey"
-          }
-        ]
-      },
-      "DeletedRequestById": {
-        "title": "DeletedRequestById",
-        "description": "Confirmation of a request that was successfully deleted, identified by its ID.",
-        "type": "object",
-        "required": [
-          "id"
-        ],
-        "properties": {
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          }
-        }
-      },
-      "DeletedRequestByUniqueKey": {
-        "title": "DeletedRequestByUniqueKey",
-        "description": "Confirmation of a request that was successfully deleted, identified by its unique key.",
-        "type": "object",
-        "required": [
-          "uniqueKey"
-        ],
-        "properties": {
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          }
-        }
-      },
-      "DeletedRequest": {
-        "title": "DeletedRequest",
-        "description": "Confirmation of a request that was successfully deleted from a request queue.",
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/DeletedRequestById"
-          },
-          {
-            "$ref": "#/components/schemas/DeletedRequestByUniqueKey"
-          }
-        ]
-      },
-      "BatchDeleteResult": {
-        "title": "BatchDeleteResult",
-        "description": "Result of a batch delete operation containing successfully deleted and failed requests.",
-        "type": "object",
-        "required": [
-          "processedRequests",
-          "unprocessedRequests"
-        ],
-        "properties": {
-          "processedRequests": {
-            "type": "array",
-            "description": "Requests that were successfully deleted from the request queue.",
-            "items": {
-              "$ref": "#/components/schemas/DeletedRequest"
-            }
-          },
-          "unprocessedRequests": {
-            "type": "array",
-            "description": "Requests that failed to be deleted and can be retried.",
-            "items": {
-              "$ref": "#/components/schemas/RequestDraft"
-            }
-          }
-        }
-      },
-      "BatchDeleteResponse": {
-        "title": "BatchDeleteResponse",
-        "description": "Response containing the result of a batch delete operation.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/BatchDeleteResult"
-          }
-        }
-      },
-      "UnlockRequestsResult": {
-        "title": "UnlockRequestsResult",
-        "description": "Result of unlocking requests in the request queue.",
-        "type": "object",
-        "required": [
-          "unlockedCount"
-        ],
-        "properties": {
-          "unlockedCount": {
-            "type": "integer",
-            "description": "Number of requests that were successfully unlocked.",
-            "examples": [
-              10
-            ]
-          }
-        }
-      },
-      "UnlockRequestsResponse": {
-        "title": "UnlockRequestsResponse",
-        "description": "Response containing the result of unlocking requests.",
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/UnlockRequestsResult"
-          }
-        }
-      },
-      "Request": {
-        "title": "Request",
-        "description": "A request stored in the request queue, including its metadata and processing state.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/RequestBase",
-            "required": [
-              "id",
-              "uniqueKey",
-              "url"
-            ]
-          },
-          {
-            "properties": {
-              "id": {
-                "$ref": "#/components/schemas/RequestId"
-              }
-            }
-          }
-        ]
-      },
-      "ListOfRequests": {
-        "title": "ListOfRequests",
-        "description": "A paginated list of requests from the request queue.",
-        "type": "object",
-        "required": [
-          "items",
-          "limit"
-        ],
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Request"
-            },
-            "description": "The array of requests."
-          },
-          "count": {
-            "type": "integer",
-            "description": "The total number of requests matching the query.",
-            "examples": [
-              2
-            ]
-          },
-          "limit": {
-            "type": "integer",
-            "description": "The maximum number of requests returned in this response.",
-            "examples": [
-              2
-            ]
-          },
-          "exclusiveStartId": {
-            "deprecated": true,
-            "type": "string",
-            "description": "The ID of the last request from the previous page, used for pagination.",
-            "examples": [
-              "Ihnsp8YrvJ8102Kj"
-            ]
-          },
-          "cursor": {
-            "type": "string",
-            "description": "A cursor string used for current page of results.",
-            "examples": [
-              "eyJyZXF1ZXN0SWQiOiI0SVlLUWFXZ2FKUUlWNlMifQ"
-            ]
-          },
-          "nextCursor": {
-            "type": "string",
-            "description": "A cursor string to be used to continue pagination.",
-            "examples": [
-              "eyJyZXF1ZXN0SWQiOiI5eFNNc1BrN1J6VUxTNXoifQ"
-            ]
-          }
-        }
-      },
-      "ListOfRequestsResponse": {
-        "title": "ListOfRequestsResponse",
-        "description": "Response containing a list of requests from the request queue.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/ListOfRequests"
-          }
-        },
-        "example": {
-          "data": {
-            "items": [
-              {
-                "id": "dnjkDMKLmdlkmlkmld",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com",
-                "url": "http://example.com",
-                "method": "GET",
-                "loadedUrl": "http://example.com/example-1",
-                "payload": null,
-                "noRetry": false,
-                "errorMessages": null,
-                "headers": null,
-                "userData": {
-                  "label": "DETAIL",
-                  "image": "https://picserver1.eu"
-                },
-                "handledAt": "2019-06-16T10:23:31.607Z"
-              },
-              {
-                "id": "dnjkDMKLmdlkmlkmld",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com",
-                "url": "http://example.com",
-                "method": "GET",
-                "loadedUrl": "http://example.com/example-1",
-                "payload": null,
-                "noRetry": false,
-                "errorMessages": null,
-                "headers": null,
-                "userData": {
-                  "label": "DETAIL",
-                  "image": "https://picserver1.eu"
-                },
-                "handledAt": "2019-06-16T10:23:31.607Z"
-              }
-            ],
-            "count": 2,
-            "limit": 2,
-            "exclusiveStartId": "Ihnsp8YrvJ8102Kj"
-          }
-        }
-      },
-      "RequestRegistration": {
-        "title": "RequestRegistration",
-        "description": "Result of registering a request in the request queue, either by adding a new request or updating an existing one.",
-        "required": [
-          "requestId",
-          "wasAlreadyPresent",
-          "wasAlreadyHandled"
-        ],
-        "type": "object",
-        "properties": {
-          "requestId": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "wasAlreadyPresent": {
-            "$ref": "#/components/schemas/WasAlreadyPresent"
-          },
-          "wasAlreadyHandled": {
-            "$ref": "#/components/schemas/WasAlreadyHandled"
-          }
-        }
-      },
-      "AddRequestResponse": {
-        "title": "AddRequestResponse",
-        "description": "Response containing the result of adding a request to the request queue.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/RequestRegistration"
-          }
-        }
-      },
-      "RequestResponse": {
-        "title": "RequestResponse",
-        "description": "Response containing a single request from the request queue.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/Request"
-          }
-        }
-      },
-      "UpdateRequestResponse": {
-        "title": "UpdateRequestResponse",
-        "description": "Response containing the result of updating a request in the request queue.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/RequestRegistration"
-          }
-        }
-      },
-      "HeadLimit": {
-        "type": "integer",
-        "description": "The maximum number of requests returned.",
-        "examples": [
-          1000
-        ]
-      },
-      "HeadRequest": {
-        "title": "HeadRequest",
-        "description": "A request from the request queue head without lock information.",
-        "type": "object",
-        "required": [
-          "id",
-          "uniqueKey",
-          "url"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "url": {
-            "$ref": "#/components/schemas/RequestUrl"
-          },
-          "method": {
-            "$ref": "#/components/schemas/HttpMethod"
-          },
-          "retryCount": {
-            "$ref": "#/components/schemas/RetryCount"
-          }
-        }
-      },
-      "RequestQueueHead": {
-        "title": "RequestQueueHead",
-        "description": "A batch of requests from the request queue head without locking.",
-        "type": "object",
-        "required": [
-          "limit",
-          "queueModifiedAt",
-          "hadMultipleClients",
-          "items"
-        ],
-        "properties": {
-          "limit": {
-            "$ref": "#/components/schemas/HeadLimit"
-          },
-          "queueModifiedAt": {
-            "$ref": "#/components/schemas/QueueModifiedAt"
-          },
-          "hadMultipleClients": {
-            "$ref": "#/components/schemas/HadMultipleClients"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/HeadRequest"
-            },
-            "description": "The array of requests from the request queue head."
-          }
-        }
-      },
-      "HeadResponse": {
-        "title": "HeadResponse",
-        "description": "Response containing requests from the request queue head without locking.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/RequestQueueHead"
-          }
-        },
-        "example": {
-          "data": {
-            "limit": 1000,
-            "queueModifiedAt": "2018-03-14T23:00:00.000Z",
-            "hadMultipleClients": false,
-            "items": [
-              {
-                "id": "8OamqXBCpPHxyH9",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com",
-                "url": "http://example.com",
-                "method": "GET"
-              },
-              {
-                "id": "ZJAoqlRijenMQIn",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com/a/b",
-                "url": "http://example.com/a/b",
-                "method": "GET"
-              },
-              {
-                "id": "hAhkwyk5oOBHKQC",
-                "retryCount": 1,
-                "uniqueKey": "http://example.com/c/d",
-                "url": "http://example.com/c/d",
-                "method": "GET"
-              }
-            ]
-          }
-        }
-      },
-      "LockExpiresAt": {
-        "type": "string",
-        "format": "date-time",
-        "description": "The timestamp when the lock on this request expires.",
-        "examples": [
-          "2022-06-14T23:00:00.000Z"
-        ]
-      },
-      "LockedHeadRequest": {
-        "title": "LockedHeadRequest",
-        "description": "A request from the request queue head that has been locked for processing.",
-        "type": "object",
-        "required": [
-          "id",
-          "uniqueKey",
-          "url",
-          "lockExpiresAt"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/RequestId"
-          },
-          "uniqueKey": {
-            "$ref": "#/components/schemas/UniqueKey"
-          },
-          "url": {
-            "$ref": "#/components/schemas/RequestUrl"
-          },
-          "method": {
-            "$ref": "#/components/schemas/HttpMethod"
-          },
-          "retryCount": {
-            "$ref": "#/components/schemas/RetryCount"
-          },
-          "lockExpiresAt": {
-            "$ref": "#/components/schemas/LockExpiresAt"
-          }
-        }
-      },
-      "LockedRequestQueueHead": {
-        "title": "LockedRequestQueueHead",
-        "description": "A batch of locked requests from the request queue head.",
-        "type": "object",
-        "required": [
-          "limit",
-          "queueModifiedAt",
-          "hadMultipleClients",
-          "lockSecs",
-          "items"
-        ],
-        "properties": {
-          "limit": {
-            "$ref": "#/components/schemas/HeadLimit"
-          },
-          "queueModifiedAt": {
-            "$ref": "#/components/schemas/QueueModifiedAt"
-          },
-          "queueHasLockedRequests": {
-            "type": "boolean",
-            "description": "Whether the request queue contains requests locked by any client (either the one calling the endpoint or a different one).",
-            "examples": [
-              true
-            ]
-          },
-          "clientKey": {
-            "type": "string",
-            "description": "The client key used for locking the requests.",
-            "examples": [
-              "client-one"
-            ]
-          },
-          "hadMultipleClients": {
-            "$ref": "#/components/schemas/HadMultipleClients"
-          },
-          "lockSecs": {
-            "type": "integer",
-            "description": "The number of seconds the locks will be held.",
-            "examples": [
-              60
-            ]
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LockedHeadRequest"
-            },
-            "description": "The array of locked requests from the request queue head."
-          }
-        }
-      },
-      "HeadAndLockResponse": {
-        "title": "HeadAndLockResponse",
-        "description": "Response containing locked requests from the request queue head.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/LockedRequestQueueHead"
-          }
-        },
-        "example": {
-          "data": {
-            "limit": 3,
-            "queueModifiedAt": "2018-03-14T23:00:00.000Z",
-            "hadMultipleClients": true,
-            "lockSecs": 60,
-            "items": [
-              {
-                "id": "8OamqXBCpPHxyj9",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com",
-                "url": "http://example.com",
-                "method": "GET",
-                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
-              },
-              {
-                "id": "8OamqXBCpPHxyx9",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com/a",
-                "url": "http://example.com/a",
-                "method": "GET",
-                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
-              },
-              {
-                "id": "8OamqXBCpPHxy08",
-                "retryCount": 0,
-                "uniqueKey": "http://example.com/a/b",
-                "url": "http://example.com/a/b",
-                "method": "GET",
-                "lockExpiresAt": "2022-06-14T23:00:00.000Z"
-              }
-            ]
-          }
-        }
-      },
-      "RequestLockInfo": {
-        "title": "RequestLockInfo",
-        "description": "Information about a request lock.",
-        "type": "object",
-        "required": [
-          "lockExpiresAt"
-        ],
-        "properties": {
-          "lockExpiresAt": {
-            "$ref": "#/components/schemas/LockExpiresAt"
-          }
-        }
-      },
-      "ProlongRequestLockResponse": {
-        "title": "ProlongRequestLockResponse",
-        "description": "Response containing updated lock information after prolonging a request lock.",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/RequestLockInfo"
           }
         }
       },
@@ -23009,8 +24800,10 @@
       "tags": [
         "Default dataset",
         "Default key-value store",
+        "Default request queue",
         "Last Actor run's default dataset",
-        "Last Actor run's default key-value store"
+        "Last Actor run's default key-value store",
+        "Last Actor run's default request queue"
       ]
     }
   ]

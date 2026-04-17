@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class StorageRequestQueuesClient
+    public partial class DefaultRequestQueueClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_RequestQueueRequestsBatchPostSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunRequestQueueRequestPutSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,83 +21,81 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_RequestQueueRequestsBatchPostSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunRequestQueueRequestPutSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_RequestQueueRequestsBatchPostSecurityRequirement0,
+            {                s_ActorRunRequestQueueRequestPutSecurityRequirement0,
             };
-        partial void PrepareRequestQueueRequestsBatchPostArguments(
+        partial void PrepareActorRunRequestQueueRequestPutArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string queueId,
-            ref string? clientKey,
+            ref string runId,
+            ref string requestId,
             ref string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void PrepareRequestQueueRequestsBatchPostRequest(
+            ref string? clientKey,
+            global::Apify.Request request);
+        partial void PrepareActorRunRequestQueueRequestPutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string queueId,
-            string? clientKey,
+            string runId,
+            string requestId,
             string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void ProcessRequestQueueRequestsBatchPostResponse(
+            string? clientKey,
+            global::Apify.Request request);
+        partial void ProcessActorRunRequestQueueRequestPutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessRequestQueueRequestsBatchPostResponseContent(
+        partial void ProcessActorRunRequestQueueRequestPutResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Add requests<br/>
-        /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
-        /// to 25. The response contains an array of unprocessed and processed requests.<br/>
-        /// If any add operation fails because the request queue rate limit is exceeded<br/>
-        /// or an internal failure occurs,<br/>
-        /// the failed request is returned in the unprocessedRequests response<br/>
-        /// parameter.<br/>
-        /// You can resend these requests to add. It is recommended to use an<br/>
-        /// exponential backoff algorithm for these retries.<br/>
-        /// If a request with the same `uniqueKey` was already present in the queue,<br/>
-        /// then it returns an ID of the existing request.
+        /// Update request in default request queue<br/>
+        /// Updates a request in the default request queue of the Actor run.<br/>
+        /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
+        /// [Update request](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
-        /// <param name="queueId">
-        /// Example: WkzbQMuFYuamGv3YF
+        /// <param name="runId">
+        /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
-        /// <param name="clientKey">
-        /// Example: client-abc
+        /// <param name="requestId">
+        /// Example: xpsmkDlspokDSmklS
         /// </param>
         /// <param name="forefront">
         /// Example: false
+        /// </param>
+        /// <param name="clientKey">
+        /// Example: client-abc
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> RequestQueueRequestsBatchPostAsync(
-            string queueId,
+        public async global::System.Threading.Tasks.Task<global::Apify.UpdateRequestResponse> ActorRunRequestQueueRequestPutAsync(
+            string runId,
+            string requestId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
-            string? clientKey = default,
+            global::Apify.Request request,
             string? forefront = default,
+            string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareRequestQueueRequestsBatchPostArguments(
+            PrepareActorRunRequestQueueRequestPutArguments(
                 httpClient: HttpClient,
-                queueId: ref queueId,
-                clientKey: ref clientKey,
+                runId: ref runId,
+                requestId: ref requestId,
                 forefront: ref forefront,
+                clientKey: ref clientKey,
                 request: request);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_RequestQueueRequestsBatchPostSecurityRequirements,
-                operationName: "RequestQueueRequestsBatchPostAsync");
+                securityRequirements: s_ActorRunRequestQueueRequestPutSecurityRequirements,
+                operationName: "ActorRunRequestQueueRequestPutAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -116,11 +114,11 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/request-queues/{queueId}/requests/batch",
+                                path: $"/v2/actor-runs/{runId}/request-queue/requests/{requestId}",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
-                                .AddOptionalParameter("clientKey", clientKey)
-                                .AddOptionalParameter("forefront", forefront) 
+                                .AddOptionalParameter("forefront", forefront)
+                                .AddOptionalParameter("clientKey", clientKey) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -128,7 +126,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Put,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -151,7 +149,7 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
                                 content: __httpRequestContentBody,
                                 encoding: global::System.Text.Encoding.UTF8,
@@ -165,12 +163,13 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareRequestQueueRequestsBatchPostRequest(
+                PrepareActorRunRequestQueueRequestPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
-                    clientKey: clientKey,
+                    runId: runId,
+                    requestId: requestId,
                     forefront: forefront,
+                    clientKey: clientKey,
                     request: request);
 
                 return __httpRequest;
@@ -188,10 +187,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActorRunRequestQueueRequestPut",
+                                methodName: "ActorRunRequestQueueRequestPutAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/requests/{requestId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -215,10 +214,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActorRunRequestQueueRequestPut",
+                                methodName: "ActorRunRequestQueueRequestPutAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/requests/{requestId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -250,10 +249,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActorRunRequestQueueRequestPut",
+                                methodName: "ActorRunRequestQueueRequestPutAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/requests/{requestId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -289,7 +288,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessRequestQueueRequestsBatchPostResponse(
+                ProcessActorRunRequestQueueRequestPutResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -297,10 +296,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActorRunRequestQueueRequestPut",
+                                methodName: "ActorRunRequestQueueRequestPutAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/requests/{requestId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -317,10 +316,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActorRunRequestQueueRequestPut",
+                                methodName: "ActorRunRequestQueueRequestPutAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/requests/{requestId}\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -649,7 +648,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessRequestQueueRequestsBatchPostResponseContent(
+                                ProcessActorRunRequestQueueRequestPutResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -659,7 +658,7 @@ namespace Apify
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Apify.BatchAddResponse.FromJson(__content, JsonSerializerContext) ??
+                                        global::Apify.UpdateRequestResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -689,7 +688,7 @@ namespace Apify
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Apify.BatchAddResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Apify.UpdateRequestResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -727,6 +726,48 @@ namespace Apify
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Update request in default request queue<br/>
+        /// Updates a request in the default request queue of the Actor run.<br/>
+        /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
+        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// </summary>
+        /// <param name="runId">
+        /// Example: 3KH8gEpp4d8uQSe8T
+        /// </param>
+        /// <param name="requestId">
+        /// Example: xpsmkDlspokDSmklS
+        /// </param>
+        /// <param name="forefront">
+        /// Example: false
+        /// </param>
+        /// <param name="clientKey">
+        /// Example: client-abc
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.UpdateRequestResponse> ActorRunRequestQueueRequestPutAsync(
+            string runId,
+            string requestId,
+            string? forefront = default,
+            string? clientKey = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Apify.Request
+            {
+            };
+
+            return await ActorRunRequestQueueRequestPutAsync(
+                runId: runId,
+                requestId: requestId,
+                forefront: forefront,
+                clientKey: clientKey,
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

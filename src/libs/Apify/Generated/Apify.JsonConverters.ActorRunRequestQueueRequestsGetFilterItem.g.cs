@@ -1,0 +1,53 @@
+#nullable enable
+
+namespace Apify.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class ActorRunRequestQueueRequestsGetFilterItemJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Apify.ActorRunRequestQueueRequestsGetFilterItem>
+    {
+        /// <inheritdoc />
+        public override global::Apify.ActorRunRequestQueueRequestsGetFilterItem Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::Apify.ActorRunRequestQueueRequestsGetFilterItemExtensions.ToEnum(stringValue) ?? default;
+                    }
+                    
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::Apify.ActorRunRequestQueueRequestsGetFilterItem)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Apify.ActorRunRequestQueueRequestsGetFilterItem);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::Apify.ActorRunRequestQueueRequestsGetFilterItem value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            writer.WriteStringValue(global::Apify.ActorRunRequestQueueRequestsGetFilterItemExtensions.ToValueString(value));
+        }
+    }
+}

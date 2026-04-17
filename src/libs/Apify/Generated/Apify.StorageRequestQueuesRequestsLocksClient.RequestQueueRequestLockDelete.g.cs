@@ -46,7 +46,9 @@ namespace Apify
         /// Delete request lock<br/>
         /// Deletes a request lock. The request lock can be deleted only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
-        /// operation](#/reference/request-queues/queue-head-with-locks).
+        /// operation](#/request-queue-head-lock-post).<br/>
+        /// The clientKey identifier is used for locking and unlocking requests.<br/>
+        /// You can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.
         /// </summary>
         /// <param name="queueId">
         /// Example: WkzbQMuFYuamGv3YF

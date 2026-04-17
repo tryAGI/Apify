@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class StorageRequestQueuesClient
+    public partial class LastActorRunSDefaultRequestQueueClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_RequestQueueRequestsBatchPostSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActRunsLastRequestQueueRequestsBatchDeleteSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,64 +21,61 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_RequestQueueRequestsBatchPostSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActRunsLastRequestQueueRequestsBatchDeleteSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_RequestQueueRequestsBatchPostSecurityRequirement0,
+            {                s_ActRunsLastRequestQueueRequestsBatchDeleteSecurityRequirement0,
             };
-        partial void PrepareRequestQueueRequestsBatchPostArguments(
+        partial void PrepareActRunsLastRequestQueueRequestsBatchDeleteArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string queueId,
+            ref string actorId,
+            ref string? status,
+            ref string contentType,
             ref string? clientKey,
-            ref string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void PrepareRequestQueueRequestsBatchPostRequest(
+            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+        partial void PrepareActRunsLastRequestQueueRequestsBatchDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string queueId,
+            string actorId,
+            string? status,
+            string contentType,
             string? clientKey,
-            string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
-        partial void ProcessRequestQueueRequestsBatchPostResponse(
+            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+        partial void ProcessActRunsLastRequestQueueRequestsBatchDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessRequestQueueRequestsBatchPostResponseContent(
+        partial void ProcessActRunsLastRequestQueueRequestsBatchDeleteResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Add requests<br/>
-        /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
-        /// to 25. The response contains an array of unprocessed and processed requests.<br/>
-        /// If any add operation fails because the request queue rate limit is exceeded<br/>
-        /// or an internal failure occurs,<br/>
-        /// the failed request is returned in the unprocessedRequests response<br/>
-        /// parameter.<br/>
-        /// You can resend these requests to add. It is recommended to use an<br/>
-        /// exponential backoff algorithm for these retries.<br/>
-        /// If a request with the same `uniqueKey` was already present in the queue,<br/>
-        /// then it returns an ID of the existing request.
+        /// Batch delete requests from last run's default request queue<br/>
+        /// Batch-deletes requests from the default request queue of the last Actor run.<br/>
+        /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
+        /// [Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
         /// </summary>
-        /// <param name="queueId">
-        /// Example: WkzbQMuFYuamGv3YF
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
         /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="contentType"></param>
         /// <param name="clientKey">
         /// Example: client-abc
-        /// </param>
-        /// <param name="forefront">
-        /// Example: false
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> RequestQueueRequestsBatchPostAsync(
-            string queueId,
+        public async global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> ActRunsLastRequestQueueRequestsBatchDeleteAsync(
+            string actorId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            string? status = default,
+            string contentType = "application/json",
             string? clientKey = default,
-            string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -86,18 +83,19 @@ namespace Apify
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareRequestQueueRequestsBatchPostArguments(
+            PrepareActRunsLastRequestQueueRequestsBatchDeleteArguments(
                 httpClient: HttpClient,
-                queueId: ref queueId,
+                actorId: ref actorId,
+                status: ref status,
+                contentType: ref contentType,
                 clientKey: ref clientKey,
-                forefront: ref forefront,
                 request: request);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_RequestQueueRequestsBatchPostSecurityRequirements,
-                operationName: "RequestQueueRequestsBatchPostAsync");
+                securityRequirements: s_ActRunsLastRequestQueueRequestsBatchDeleteSecurityRequirements,
+                operationName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -116,11 +114,11 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/request-queues/{queueId}/requests/batch",
+                                path: $"/v2/acts/{actorId}/runs/last/request-queue/requests/batch",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
-                                .AddOptionalParameter("clientKey", clientKey)
-                                .AddOptionalParameter("forefront", forefront) 
+                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("clientKey", clientKey) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -128,7 +126,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Delete,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -151,6 +149,9 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+
+                __httpRequest.Headers.TryAddWithoutValidation("Content-Type", contentType.ToString());
+
                             var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
                                 content: __httpRequestContentBody,
@@ -165,12 +166,13 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareRequestQueueRequestsBatchPostRequest(
+                PrepareActRunsLastRequestQueueRequestsBatchDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
+                    actorId: actorId,
+                    status: status,
+                    contentType: contentType,
                     clientKey: clientKey,
-                    forefront: forefront,
                     request: request);
 
                 return __httpRequest;
@@ -188,10 +190,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsBatchDelete",
+                                methodName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/batch\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -215,10 +217,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsBatchDelete",
+                                methodName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/batch\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -250,10 +252,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsBatchDelete",
+                                methodName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/batch\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -289,7 +291,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessRequestQueueRequestsBatchPostResponse(
+                ProcessActRunsLastRequestQueueRequestsBatchDeleteResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -297,10 +299,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsBatchDelete",
+                                methodName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/batch\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -317,10 +319,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "RequestQueueRequestsBatchPost",
-                                methodName: "RequestQueueRequestsBatchPostAsync",
-                                pathTemplate: "$\"/v2/request-queues/{queueId}/requests/batch\"",
-                                httpMethod: "POST",
+                                operationId: "ActRunsLastRequestQueueRequestsBatchDelete",
+                                methodName: "ActRunsLastRequestQueueRequestsBatchDeleteAsync",
+                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/batch\"",
+                                httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -649,7 +651,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessRequestQueueRequestsBatchPostResponseContent(
+                                ProcessActRunsLastRequestQueueRequestsBatchDeleteResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -659,7 +661,7 @@ namespace Apify
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Apify.BatchAddResponse.FromJson(__content, JsonSerializerContext) ??
+                                        global::Apify.BatchDeleteResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -689,7 +691,7 @@ namespace Apify
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Apify.BatchAddResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Apify.BatchDeleteResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
