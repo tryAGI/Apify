@@ -78,13 +78,13 @@ namespace Apify
         public global::Apify.BuildUsage? Usage { get; set; }
 
         /// <summary>
-        /// 
+        /// Total cost in USD for this build. Requires authentication token to access.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageTotalUsd")]
         public double? UsageTotalUsd { get; set; }
 
         /// <summary>
-        /// 
+        /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageUsd")]
         public global::Apify.BuildUsage? UsageUsd { get; set; }
@@ -138,8 +138,12 @@ namespace Apify
         /// <param name="stats"></param>
         /// <param name="options"></param>
         /// <param name="usage"></param>
-        /// <param name="usageTotalUsd"></param>
-        /// <param name="usageUsd"></param>
+        /// <param name="usageTotalUsd">
+        /// Total cost in USD for this build. Requires authentication token to access.
+        /// </param>
+        /// <param name="usageUsd">
+        /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
+        /// </param>
         /// <param name="actorDefinition"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

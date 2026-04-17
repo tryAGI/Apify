@@ -183,13 +183,13 @@ namespace Apify
         public global::Apify.RunUsage? Usage { get; set; }
 
         /// <summary>
-        /// Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for Pay-Per-Event Actors (event costs only). Not available for Pay-Per-Result Actors when you're not the Actor owner.
+        /// Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for Pay-Per-Event Actors (event costs only). Requires authentication token to access.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageTotalUsd")]
         public double? UsageTotalUsd { get; set; }
 
         /// <summary>
-        /// Platform usage costs breakdown in USD. Only present if you own the run AND are paying for platform usage (Pay-Per-Usage, Rental, or Pay-Per-Event with usage costs like standby Actors). Not available for standard Pay-Per-Event Actors or Pay-Per-Result Actors owned by others.
+        /// Platform usage costs breakdown in USD. Only present if you own the run AND are paying for platform usage (Pay-Per-Usage, Rental, or Pay-Per-Event with usage costs like standby Actors). Not available for standard Pay-Per-Event Actors. Requires authentication token to access.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageUsd")]
         public global::Apify.RunUsageUsd? UsageUsd { get; set; }
@@ -289,10 +289,10 @@ namespace Apify
         /// Resource usage statistics for the run.
         /// </param>
         /// <param name="usageTotalUsd">
-        /// Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for Pay-Per-Event Actors (event costs only). Not available for Pay-Per-Result Actors when you're not the Actor owner.
+        /// Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for Pay-Per-Event Actors (event costs only). Requires authentication token to access.
         /// </param>
         /// <param name="usageUsd">
-        /// Platform usage costs breakdown in USD. Only present if you own the run AND are paying for platform usage (Pay-Per-Usage, Rental, or Pay-Per-Event with usage costs like standby Actors). Not available for standard Pay-Per-Event Actors or Pay-Per-Result Actors owned by others.
+        /// Platform usage costs breakdown in USD. Only present if you own the run AND are paying for platform usage (Pay-Per-Usage, Rental, or Pay-Per-Event with usage costs like standby Actors). Not available for standard Pay-Per-Event Actors. Requires authentication token to access.
         /// </param>
         /// <param name="metamorphs">
         /// List of metamorph events that occurred during the run.

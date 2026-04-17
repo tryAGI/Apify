@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
     /// </summary>
     public sealed partial class BuildUsageUsd
     {
