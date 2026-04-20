@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class ActorBuildsClient
+    public partial class ActorRunsClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_ActorBuildLogGetSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunLogGetSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,37 +21,39 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorBuildLogGetSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunLogGetSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_ActorBuildLogGetSecurityRequirement0,
+            {                s_ActorRunLogGetSecurityRequirement0,
             };
-        partial void PrepareActorBuildLogGetArguments(
+        partial void PrepareActorRunLogGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string buildId,
+            ref string runId,
             ref bool? stream,
-            ref bool? download);
-        partial void PrepareActorBuildLogGetRequest(
+            ref bool? download,
+            ref bool? raw);
+        partial void PrepareActorRunLogGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string buildId,
+            string runId,
             bool? stream,
-            bool? download);
-        partial void ProcessActorBuildLogGetResponse(
+            bool? download,
+            bool? raw);
+        partial void ProcessActorRunLogGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessActorBuildLogGetResponseContent(
+        partial void ProcessActorRunLogGetResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get build's Log<br/>
-        /// Retrieves Actor build's logs.<br/>
-        /// This endpoint is a shortcut for getting the build's log. Same as [Get log](/api/v2/log-get) endpoint.
+        /// Get run's log<br/>
+        /// Retrieves Actor run's logs.<br/>
+        /// This endpoint is a shortcut for getting the run's log. Same as [Get log](/api/v2/log-get) endpoint.
         /// </summary>
-        /// <param name="buildId">
-        /// Example: soSkq9ekdmfOslopH
+        /// <param name="runId">
+        /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
         /// <param name="stream">
         /// Example: false
@@ -59,29 +61,34 @@ namespace Apify
         /// <param name="download">
         /// Example: false
         /// </param>
+        /// <param name="raw">
+        /// Example: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> ActorBuildLogGetAsync(
-            string buildId,
+        public async global::System.Threading.Tasks.Task<string> ActorRunLogGetAsync(
+            string runId,
             bool? stream = default,
             bool? download = default,
+            bool? raw = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareActorBuildLogGetArguments(
+            PrepareActorRunLogGetArguments(
                 httpClient: HttpClient,
-                buildId: ref buildId,
+                runId: ref runId,
                 stream: ref stream,
-                download: ref download);
+                download: ref download,
+                raw: ref raw);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ActorBuildLogGetSecurityRequirements,
-                operationName: "ActorBuildLogGetAsync");
+                securityRequirements: s_ActorRunLogGetSecurityRequirements,
+                operationName: "ActorRunLogGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -100,11 +107,12 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/actor-builds/{buildId}/log",
+                                path: $"/v2/actor-runs/{runId}/log",
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
                                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("download", download?.ToString().ToLowerInvariant()) 
+                                .AddOptionalParameter("download", download?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("raw", raw?.ToString().ToLowerInvariant()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -143,12 +151,13 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareActorBuildLogGetRequest(
+                PrepareActorRunLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildId: buildId,
+                    runId: runId,
                     stream: stream,
-                    download: download);
+                    download: download,
+                    raw: raw);
 
                 return __httpRequest;
             }
@@ -165,9 +174,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorBuildLogGet",
-                                methodName: "ActorBuildLogGetAsync",
-                                pathTemplate: "$\"/v2/actor-builds/{buildId}/log\"",
+                                operationId: "ActorRunLogGet",
+                                methodName: "ActorRunLogGetAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -192,9 +201,9 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorBuildLogGet",
-                                methodName: "ActorBuildLogGetAsync",
-                                pathTemplate: "$\"/v2/actor-builds/{buildId}/log\"",
+                                operationId: "ActorRunLogGet",
+                                methodName: "ActorRunLogGetAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -227,9 +236,9 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorBuildLogGet",
-                                methodName: "ActorBuildLogGetAsync",
-                                pathTemplate: "$\"/v2/actor-builds/{buildId}/log\"",
+                                operationId: "ActorRunLogGet",
+                                methodName: "ActorRunLogGetAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -266,7 +275,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessActorBuildLogGetResponse(
+                ProcessActorRunLogGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -274,9 +283,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorBuildLogGet",
-                                methodName: "ActorBuildLogGetAsync",
-                                pathTemplate: "$\"/v2/actor-builds/{buildId}/log\"",
+                                operationId: "ActorRunLogGet",
+                                methodName: "ActorRunLogGetAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -294,9 +303,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorBuildLogGet",
-                                methodName: "ActorBuildLogGetAsync",
-                                pathTemplate: "$\"/v2/actor-builds/{buildId}/log\"",
+                                operationId: "ActorRunLogGet",
+                                methodName: "ActorRunLogGetAsync",
+                                pathTemplate: "$\"/v2/actor-runs/{runId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -550,7 +559,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessActorBuildLogGetResponseContent(
+                                ProcessActorRunLogGetResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);

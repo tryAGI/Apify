@@ -52,7 +52,7 @@ namespace Apify
         /// Retrieves logs for a specific Actor build or run.
         /// </summary>
         /// <param name="buildOrRunId">
-        /// Example: HG7ML7M8z78YcAPEB
+        /// Example: HG7ML7M8z78YcAPE
         /// </param>
         /// <param name="stream">
         /// Example: false
