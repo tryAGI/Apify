@@ -5,8 +5,9 @@ namespace Apify
     public partial interface IActorBuildsClient
     {
         /// <summary>
-        /// Get log<br/>
-        /// Check out [Logs](#/reference/logs) for full reference.
+        /// Get build's Log<br/>
+        /// Retrieves Actor build's logs.<br/>
+        /// This endpoint is a shortcut for getting the build's log. Same as [Get log](/api/v2/log-get) endpoint.
         /// </summary>
         /// <param name="buildId">
         /// Example: soSkq9ekdmfOslopH

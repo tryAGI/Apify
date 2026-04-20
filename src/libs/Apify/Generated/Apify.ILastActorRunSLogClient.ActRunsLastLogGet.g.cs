@@ -2,14 +2,15 @@
 
 namespace Apify
 {
-    public partial interface ILogsClient
+    public partial interface ILastActorRunSLogClient
     {
         /// <summary>
-        /// Get log<br/>
-        /// Retrieves logs for a specific Actor build or run.
+        /// Get last Actor run's log<br/>
+        /// Retrieves last Actor run's logs.<br/>
+        /// This endpoint is a shortcut for getting last Actor run's log. Same as [Get log](/api/v2/log-get) endpoint.
         /// </summary>
-        /// <param name="buildOrRunId">
-        /// Example: HG7ML7M8z78YcAPE
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
         /// </param>
         /// <param name="stream">
         /// Example: false
@@ -23,8 +24,8 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<string> LogGetAsync(
-            string buildOrRunId,
+        global::System.Threading.Tasks.Task<string> ActRunsLastLogGetAsync(
+            string actorId,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
