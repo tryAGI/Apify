@@ -379,6 +379,21 @@
       "name": "Last Actor task run's log",
       "x-displayName": "Last Actor task run's log - Introduction",
       "description": "The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.\n\nSame as of functionality described in: [Logs](/api/v2/logs)\n"
+    },
+    {
+      "name": "Last Actor task run's default dataset",
+      "x-displayName": "Last Actor task run's default dataset - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.\n\nSubset of functionality described in: [Datasets](/api/v2/storage-datasets)\n"
+    },
+    {
+      "name": "Last Actor task run's default key-value store",
+      "x-displayName": "Last Actor task run's default key-value store - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default key-value store without the need to resolve the key-value store ID first.\n\nSubset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores)\n"
+    },
+    {
+      "name": "Last Actor task run's default request queue",
+      "x-displayName": "Last Actor task run's default request queue - Introduction",
+      "description": "The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default request queue without the need to resolve the request queue ID first.\n\nSubset of functionality described in: [Request queues](/api/v2/storage-request-queues)\n"
     }
   ],
   "paths": {
@@ -3452,7 +3467,7 @@
           "Actors/Actor runs"
         ],
         "summary": "Get last run",
-        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given Actor or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe endpoints accept the same HTTP methods and query parameters as\nthe respective storage endpoints.\nThe base path represents the last Actor run object is:\n\n`/v2/acts/{actorId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](#/reference/actors/run-object) endpoint.\n\nIn order to access the default storages of the last Actor run, i.e. log, key-value store, dataset and request queue,\nuse the following endpoints:\n\n* `/v2/acts/{actorId}/runs/last/log{?token,status}`\n* `/v2/acts/{actorId}/runs/last/key-value-store{?token,status}`\n* `/v2/acts/{actorId}/runs/last/dataset{?token,status}`\n* `/v2/acts/{actorId}/runs/last/request-queue{?token,status}`\n\nThese API endpoints have the same usage as the equivalent storage endpoints.\nFor example,\n`/v2/acts/{actorId}/runs/last/key-value-store` has the same HTTP method and parameters as the\n[Key-value store object](#/reference/key-value-stores/store-object) endpoint.\n\nAdditionally, each of the above API endpoints supports all sub-endpoints\nof the original one:\n\n#### Key-value store\n\n* `/v2/acts/{actorId}/runs/last/key-value-store/keys{?token,status}` [Key collection](#/reference/key-value-stores/key-collection)\n* `/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}{?token,status}` [Record](#/reference/key-value-stores/record)\n\n#### Dataset\n\n* `/v2/acts/{actorId}/runs/last/dataset/items{?token,status}` [Item collection](#/reference/datasets/item-collection)\n\n#### Request queue\n\n* `/v2/acts/{actorId}/runs/last/request-queue/requests{?token,status}` [Request collection](#/reference/request-queues/request-collection)\n* `/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}{?token,status}` [Request collection](#/reference/request-queues/request)\n* `/v2/acts/{actorId}/runs/last/request-queue/head{?token,status}` [Queue head](#/reference/request-queues/queue-head)\n\nFor example, to download data from a dataset of the last succeeded Actor run in XML format,\nsend HTTP GET request to the following URL:\n\n```\nhttps://api.apify.com/v2/acts/{actorId}/runs/last/dataset/items?token={yourApiToken}&format=xml&status=SUCCEEDED\n```\n\nIn order to save new items to the dataset, send HTTP POST request with JSON payload to the same URL.\n",
+        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given Actor or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last Actor run object is:\n\n`/v2/acts/{actorId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](#/reference/actors/run-object) endpoint.\n\n##### Convenience endpoints for last Actor run\n\n* [Dataset](/api/v2/last-actor-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-runs-log)\n",
         "operationId": "act_runs_last_get",
         "parameters": [
           {
@@ -4522,7 +4537,7 @@
           "Last Actor run's default key-value store"
         ],
         "summary": "Store record in last run's default store (POST)",
-        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\nThis endpoint is an alias for the [`PUT` record](/api/v2/act-runs-last-key-value-store-record-put) method and behaves identically.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
         "operationId": "act_runs_last_keyValueStore_record_post",
         "parameters": [
           {
@@ -7306,7 +7321,7 @@
           "Actor tasks"
         ],
         "summary": "Get last run",
-        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given actor task or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe endpoints accept the same HTTP methods and query parameters as\nthe respective storage endpoints.\nThe base path represents the last actor task run object is:\n\n`/v2/actor-tasks/{actorTaskId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](/api/v2/actor-run-get) endpoint.\n\nIn order to access the default storages of the last actor task run, i.e. log, key-value store, dataset and request queue,\nuse the following endpoints:\n\n* `/v2/actor-tasks/{actorTaskId}/runs/last/log{?token,status}`\n* `/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store{?token,status}`\n* `/v2/actor-tasks/{actorTaskId}/runs/last/dataset{?token,status}`\n* `/v2/actor-tasks/{actorTaskId}/runs/last/request-queue{?token,status}`\n\nThese API endpoints have the same usage as the equivalent storage endpoints.\nFor example,\n`/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store` has the same HTTP method and parameters as the\n[Key-value store object](/api/v2/storage-key-value-stores) endpoint.\n\nAdditionally, each of the above API endpoints supports all sub-endpoints\nof the original one:\n\n##### Storage endpoints\n\n* [Dataset - introduction](/api/v2/storage-datasets)\n\n* [Key-value store - introduction](/api/v2/storage-key-value-stores)\n\n* [Request queue - introduction](/api/v2/storage-request-queues)\n\nFor example, to download data from a dataset of the last succeeded actor task run in XML format,\nsend HTTP GET request to the following URL:\n\n```\nhttps://api.apify.com/v2/actor-tasks/{actorTaskId}/runs/last/dataset/items?token={yourApiToken}&format=xml&status=SUCCEEDED\n```\n\nIn order to save new items to the dataset, send HTTP POST request with JSON payload to the same URL.\n",
+        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given actor task or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last actor task run object is:\n\n`/v2/actor-tasks/{actorTaskId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](/api/v2/actor-run-get) endpoint.\n\n##### Convenience endpoints for last Actor task run\n\n* [Dataset](/api/v2/last-actor-task-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-task-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-task-runs-log)\n",
         "operationId": "actorTask_runs_last_get",
         "parameters": [
           {
@@ -7421,6 +7436,1991 @@
         ]
       }
     },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/dataset": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last task run's default dataset",
+        "description": "Returns the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDatasetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last task run's default dataset",
+        "description": "Updates the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Update dataset](/api/v2/dataset-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last task run's default dataset",
+        "description": "Deletes the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Delete dataset](/api/v2/dataset-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_delete"
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/dataset/items": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "X-Apify-Pagination-Offset": {
+                "description": "The offset of the first item in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "0"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Limit": {
+                "description": "The maximum number of items returned per page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Count": {
+                "description": "The number of items returned in the current page.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "100"
+                  }
+                }
+              },
+              "X-Apify-Pagination-Total": {
+                "description": "The total number of items in the dataset.",
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "10204"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  },
+                  "example": [
+                    {
+                      "foo": "bar"
+                    },
+                    {
+                      "foo2": "bar2"
+                    }
+                  ]
+                }
+              },
+              "application/jsonl": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\"foo\":\"bar\"}\\n{\"foo2\":\"bar2\"}\\n"
+              },
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "foo,bar\\nfoo2,bar2\\n"
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<table><tr><th>foo</th><th>bar</th></tr><tr><td>foo</td><td>bar</td></tr><tr><td>foo2</td><td>bar2</td></tr></table>"
+              },
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/rss+xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<rss><channel><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></channel></rss>"
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<items><item><foo>bar</foo></item><item><foo2>bar2</foo2></item></items>"
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "summary": "Get last task run's dataset items",
+        "description": "Returns data stored in the default dataset of the last Actor task run in the desired format.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_items_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/clean"
+          },
+          {
+            "$ref": "#/components/parameters/offset"
+          },
+          {
+            "$ref": "#/components/parameters/datasetParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/fields"
+          },
+          {
+            "$ref": "#/components/parameters/omit"
+          },
+          {
+            "$ref": "#/components/parameters/unwind"
+          },
+          {
+            "$ref": "#/components/parameters/flatten"
+          },
+          {
+            "$ref": "#/components/parameters/descDataset"
+          },
+          {
+            "$ref": "#/components/parameters/attachment"
+          },
+          {
+            "$ref": "#/components/parameters/delimiter"
+          },
+          {
+            "$ref": "#/components/parameters/bom"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRoot"
+          },
+          {
+            "$ref": "#/components/parameters/xmlRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHeaderRow"
+          },
+          {
+            "$ref": "#/components/parameters/skipHidden"
+          },
+          {
+            "$ref": "#/components/parameters/skipEmpty"
+          },
+          {
+            "$ref": "#/components/parameters/simplified"
+          },
+          {
+            "$ref": "#/components/parameters/view"
+          },
+          {
+            "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PutItemsRequest"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PutItemsRequest"
+                    }
+                  }
+                ],
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/datasets/WkzbQMuFYuamGv3YF/items"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/PutItemResponseError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "summary": "Store items in last task run's dataset",
+        "description": "Appends an item or an array of items to the end of the last Actor task run's default dataset.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_items_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/dataset/statistics": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetStatisticsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "tags": [
+          "Last Actor task run's default dataset"
+        ],
+        "summary": "Get last task run's dataset statistics",
+        "description": "Returns statistics for the last Actor task run's default dataset.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_dataset_statistics_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last task run's default store",
+        "description": "Gets an object that contains all the details about the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStoreRequest"
+              },
+              "example": {
+                "name": "new-store-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KeyValueStoreResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last task run's default store",
+        "description": "Updates the default key-value store associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last task run's default store",
+        "description": "Deletes the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_delete"
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store/keys": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfKeysResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Get last task run's default store's list of keys",
+        "description": "Returns a list of keys for the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_keys_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartKey"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_limit"
+          },
+          {
+            "$ref": "#/components/parameters/collectionKeys"
+          },
+          {
+            "$ref": "#/components/parameters/prefixKeys"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store/records": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A ZIP archive containing the requested records.",
+            "headers": {},
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Download last task run's default store's records",
+        "description": "Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_records_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/collectionRecords"
+          },
+          {
+            "$ref": "#/components/parameters/prefixRecords"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/key-value-store/records/{recordKey}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordResponse"
+                }
+              },
+              "*/*": {
+                "schema": {}
+              }
+            }
+          },
+          "302": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://apifier-key-value-store-prod.s3.amazonaws.com/tqx6jeMia43gYY6eE/INPUT?AWSAccessKeyId=NKDOUN&Expires=1502720992&Signature=DKLVPI4lDDKC"
+                  }
+                }
+              }
+            },
+            "content": {}
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Get last task run's default store's record",
+        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_record_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/signature"
+          },
+          {
+            "$ref": "#/components/parameters/keyValueStoreParameters_attachment"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Store record in last task run's default store",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_record_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutRecordRequest"
+              }
+            },
+            "*/*": {
+              "schema": {}
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records/some-key"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Store record in last task run's default store (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_record_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          },
+          {
+            "$ref": "#/components/parameters/Content-Encoding"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default key-value store"
+        ],
+        "summary": "Delete last task run's default store's record",
+        "description": "Removes a record specified by a key from the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_keyValueStore_record_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/recordKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Get last task run's default request queue",
+        "description": "Returns the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_get"
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateRequestQueueRequest"
+                  },
+                  {
+                    "example": {
+                      "name": "new-request-queue-name"
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "name": "new-request-queue-name"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestQueueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Update last task run's default request queue",
+        "description": "Updates the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_put"
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ],
+        "summary": "Delete last task run's default request queue",
+        "description": "Deletes the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_delete"
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/head": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Get last task run's default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_head_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/headLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/head/lock": {
+      "post": {
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Get and lock last task run's default request queue head",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor task run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_head_lock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/headLockLimit"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "List last task run's default request queue's requests",
+        "description": "Returns a list of requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_requests_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/exclusiveStartId"
+          },
+          {
+            "$ref": "#/components/parameters/listLimit"
+          },
+          {
+            "$ref": "#/components/parameters/cursor"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          }
+        ]
+      },
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Add request to last task run's default request queue",
+        "description": "Adds a request to the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_requests_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/batch": {
+      "post": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestBase"
+                },
+                "description": ""
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchAddResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Batch add requests to last task run's default request queue",
+        "description": "Adds requests to the default request queue of the last Actor task run in batch.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_requests_batch_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          }
+        ]
+      },
+      "delete": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequestDraftDelete"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchDeleteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Batch delete requests from last task run's default request queue",
+        "description": "Batch-deletes requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_requests_batch_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/contentTypeJson"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/unlock": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Number of requests that were unlocked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnlockRequestsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Unlock requests in last task run's default request queue",
+        "description": "Unlocks requests in the default request queue of the last Actor task run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_requests_unlock_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Get request from last task run's default request queue",
+        "description": "Returns a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_request_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          }
+        ]
+      },
+      "put": {
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateRequestResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Update request in last task run's default request queue",
+        "description": "Updates a request in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_request_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/forefront"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Delete request from last task run's default request queue",
+        "description": "Deletes a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_request_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProlongRequestLockResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Prolong lock on request in last task run's default request queue",
+        "description": "Prolongs a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_request_lock_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/lockSecs"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/lockForefront"
+          }
+        ]
+      },
+      "delete": {
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's default request queue"
+        ],
+        "summary": "Delete lock on request in last task run's default request queue",
+        "description": "Deletes a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "operationId": "actorTask_runs_last_requestQueue_request_lock_delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/requestId"
+          },
+          {
+            "$ref": "#/components/parameters/clientKey"
+          },
+          {
+            "$ref": "#/components/parameters/deleteForefront"
+          }
+        ]
+      }
+    },
     "/v2/actor-runs": {
       "get": {
         "tags": [
@@ -7500,7 +9500,7 @@
           "Actor runs"
         ],
         "summary": "Get run",
-        "description": "This is not a single endpoint, but an entire group of endpoints that lets\nyou retrieve the run or any of its default storages.\n\nThe endpoints accept the same HTTP methods and query parameters as\nthe respective storage endpoints.\n\nThe base path that represents the Actor run object is:\n\n`/v2/actor-runs/{runId}{?token}`\n\nIn order to access the default storages of the Actor run, i.e. log,\nkey-value store, dataset and request queue, use the following endpoints:\n\n* `/v2/actor-runs/{runId}/log{?token}`\n* `/v2/actor-runs/{runId}/key-value-store{?token}`\n* `/v2/actor-runs/{runId}/dataset{?token}`\n* `/v2/actor-runs/{runId}/request-queue{?token}`\n\nThese API endpoints have the same usage as the equivalent storage endpoints.\n\nFor example, `/v2/actor-runs/{runId}/key-value-store` has the same HTTP method and\nparameters as the [Key-value store object](#/reference/key-value-stores/store-object) endpoint.\n\nAdditionally, each of the above API endpoints supports all sub-endpoints\nof the original one:\n\n#### Log\n\n* `/v2/actor-runs/{runId}/log` [Log](#/reference/logs)\n\n#### Key-value store\n\n* `/v2/actor-runs/{runId}/key-value-store/keys{?token}` [Key\ncollection](#/reference/key-value-stores/key-collection)\n* `/v2/actor-runs/{runId}/key-value-store/records/{recordKey}{?token}`\n[Record](#/reference/key-value-stores/record)\n\n#### Dataset\n\n* `/v2/actor-runs/{runId}/dataset/items{?token}` [Item\ncollection](#/reference/datasets/item-collection)\n\n#### Request queue\n\n* `/v2/actor-runs/{runId}/request-queue/requests{?token}` [Request\ncollection](#/reference/request-queues/request-collection)\n* `/v2/actor-runs/{runId}/request-queue/requests/{requestId}{?token}`\n[Request collection](#/reference/request-queues/request)\n* `/v2/actor-runs/{runId}/request-queue/head{?token}` [Queue\nhead](#/reference/request-queues/queue-head)\n\nFor example, to download data from a dataset of the Actor run in XML format,\nsend HTTP GET request to the following URL:\n\n```\nhttps://api.apify.com/v2/actor-runs/{runId}/dataset/items?format=xml\n```\n\nIn order to save new items to the dataset, send HTTP POST request with JSON\npayload to the same URL.\n\nGets an object that contains all the details about a\nspecific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will synchronously wait\nfor the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
+        "description": "This is not a single endpoint, but an entire group of endpoints that lets\nyou retrieve the run or any of its default storages.\n\n##### Convenience endpoints for Actor run default storages\n\n* [Dataset](/api/v2/default-dataset)\n\n* [Key-value store](/api/v2/default-key-value-store)\n\n* [Request queue](/api/v2/default-request-queue)\n\nGets an object that contains all the details about a\nspecific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will synchronously wait\nfor the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actorRun_get",
         "parameters": [
           {
@@ -9110,7 +11110,7 @@
           "Default key-value store"
         ],
         "summary": "Store record in default store (POST)",
-        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\nThis endpoint is an alias for the [`PUT` record](/api/v2/key-value-store-record-put) method and behaves identically.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
         "operationId": "actorRun_keyValueStore_record_post",
         "parameters": [
           {
@@ -11162,7 +13162,7 @@
           "Storage/Key-value stores"
         ],
         "summary": "Store record (POST)",
-        "description": "Stores a value under a specific key to the key-value store.\nThis endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.\n",
+        "description": "Stores a value under a specific key to the key-value store.\n\nThis endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.\n",
         "operationId": "keyValueStore_record_post",
         "parameters": [
           {
@@ -25001,6 +27001,9 @@
         "Last Actor run's default key-value store",
         "Last Actor run's default request queue",
         "Last Actor run's log",
+        "Last Actor task run's default dataset",
+        "Last Actor task run's default key-value store",
+        "Last Actor task run's default request queue",
         "Last Actor task run's log"
       ]
     }

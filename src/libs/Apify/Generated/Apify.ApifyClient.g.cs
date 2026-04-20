@@ -627,6 +627,39 @@ namespace Apify
         };
 
         /// <summary>
+        /// Last Actor task run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
+        /// </summary>
+        public LastActorTaskRunSDefaultDatasetClient LastActorTaskRunSDefaultDataset => new LastActorTaskRunSDefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Last Actor task run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
+        /// </summary>
+        public LastActorTaskRunSDefaultKeyValueStoreClient LastActorTaskRunSDefaultKeyValueStore => new LastActorTaskRunSDefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// Last Actor task run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
+        /// </summary>
+        public LastActorTaskRunSDefaultRequestQueueClient LastActorTaskRunSDefaultRequestQueue => new LastActorTaskRunSDefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            CreateIdempotencyKey = CreateIdempotencyKey,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
         /// Last Actor task run's log - Introduction. The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.<br/>
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
