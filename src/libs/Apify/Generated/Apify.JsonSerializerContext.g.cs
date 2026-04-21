@@ -568,6 +568,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel), TypeInfoPropertyName = "StoreGetPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat), TypeInfoPropertyName = "StoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActValidateInputPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>), TypeInfoPropertyName = "AnyOfPutItemResponseErrorErrorResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskGetResponse))]

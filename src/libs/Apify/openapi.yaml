@@ -3394,6 +3394,91 @@
         ]
       }
     },
+    "/v2/acts/{actorId}/validate-input": {
+      "post": {
+        "tags": [
+          "Actors"
+        ],
+        "summary": "Validate Actor input",
+        "description": "Validates the provided input against the Actor's input schema for the specified build.\n\nThe endpoint checks whether the JSON payload conforms to the input schema\ndefined in the Actor's build. If no `build` query parameter is provided,\nthe `latest` build tag is used by default.\n",
+        "operationId": "act_validateInput_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "name": "build",
+            "in": "query",
+            "description": "Optional tag or number of the Actor build to use for input schema validation.\nBy default, the `latest` build tag is used.\n",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "latest"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "JSON input to validate against the Actor's input schema.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "valid"
+                  ],
+                  "properties": {
+                    "valid": {
+                      "type": "boolean",
+                      "description": "Whether the input is valid according to the Actor's input schema."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
     "/v2/acts/{actorId}/runs/{runId}/resurrect": {
       "post": {
         "tags": [

@@ -1364,59 +1364,63 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>? Type334 { get; set; }
+        public global::Apify.ActValidateInputPostResponse? Type334 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type335 { get; set; }
+        public global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>? Type335 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskGetResponse? Type336 { get; set; }
+        public byte[]? Type336 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskPutResponse? Type337 { get; set; }
+        public global::Apify.ActorTaskGetResponse? Type337 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskWebhooksGetResponse? Type338 { get; set; }
+        public global::Apify.ActorTaskPutResponse? Type338 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskWebhooksGetResponseData>? Type339 { get; set; }
+        public global::Apify.ActorTaskWebhooksGetResponse? Type339 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskWebhooksGetResponseData? Type340 { get; set; }
+        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskWebhooksGetResponseData>? Type340 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.Webhook>? Type341 { get; set; }
+        public global::Apify.ActorTaskWebhooksGetResponseData? Type341 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskRunsGetResponse? Type342 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.Webhook>? Type342 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskRunsGetResponseData>? Type343 { get; set; }
+        public global::Apify.ActorTaskRunsGetResponse? Type343 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskRunsGetResponseData? Type344 { get; set; }
+        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskRunsGetResponseData>? Type344 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskRunsPostResponse? Type345 { get; set; }
+        public global::Apify.ActorTaskRunsGetResponseData? Type345 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorTaskRunsLastGetResponse? Type346 { get; set; }
+        public global::Apify.ActorTaskRunsPostResponse? Type346 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PostChargeRunResponse? Type347 { get; set; }
+        public global::Apify.ActorTaskRunsLastGetResponse? Type347 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.PostChargeRunResponse? Type348 { get; set; }
 
         /// <summary>
         /// 
