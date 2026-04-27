@@ -22525,7 +22525,6 @@
       "PendingRequestCount": {
         "type": "integer",
         "description": "The number of requests that are pending and have not been handled yet.",
-        "minimum": 0,
         "examples": [
           670
         ]
