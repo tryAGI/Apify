@@ -65,7 +65,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -126,7 +126,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -35,7 +35,7 @@ namespace Apify
             ref bool? restartOnError,
             ref string? build,
             ref double? waitForFinish,
-            ref string? webhooks,
+            byte[]? webhooks,
             ref global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel,
             object request);
         partial void PrepareActRunsPostRequest(
@@ -49,7 +49,7 @@ namespace Apify
             bool? restartOnError,
             string? build,
             double? waitForFinish,
-            string? webhooks,
+            byte[]? webhooks,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel,
             object request);
         partial void ProcessActRunsPostResponse(
@@ -125,7 +125,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -213,7 +213,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -232,7 +232,7 @@ namespace Apify
                 restartOnError: ref restartOnError,
                 build: ref build,
                 waitForFinish: ref waitForFinish,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 forcePermissionLevel: ref forcePermissionLevel,
                 request: request);
 
@@ -269,7 +269,7 @@ namespace Apify
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
-                                .AddOptionalParameter("webhooks", webhooks)
+                                .AddOptionalParameter("webhooks", webhooks?.ToString())
                                 .AddOptionalParameter("forcePermissionLevel", forcePermissionLevel?.ToValueString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -990,7 +990,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.ActRunsPostForcePermissionLevel? forcePermissionLevel = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)

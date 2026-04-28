@@ -32,7 +32,7 @@ namespace Apify
             ref double? memory,
             ref double? maxItems,
             ref string? build,
-            ref string? webhooks,
+            byte[]? webhooks,
             ref string? format,
             ref bool? clean,
             ref double? offset,
@@ -61,7 +61,7 @@ namespace Apify
             double? memory,
             double? maxItems,
             string? build,
-            string? webhooks,
+            byte[]? webhooks,
             string? format,
             bool? clean,
             double? offset,
@@ -193,7 +193,7 @@ namespace Apify
             double? memory = default,
             double? maxItems = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -352,7 +352,7 @@ namespace Apify
             double? memory = default,
             double? maxItems = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -385,7 +385,7 @@ namespace Apify
                 memory: ref memory,
                 maxItems: ref maxItems,
                 build: ref build,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 format: ref format,
                 clean: ref clean,
                 offset: ref offset,
@@ -437,7 +437,7 @@ namespace Apify
                                 .AddOptionalParameter("memory", memory?.ToString())
                                 .AddOptionalParameter("maxItems", maxItems?.ToString())
                                 .AddOptionalParameter("build", build)
-                                .AddOptionalParameter("webhooks", webhooks)
+                                .AddOptionalParameter("webhooks", webhooks?.ToString())
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("offset", offset?.ToString())

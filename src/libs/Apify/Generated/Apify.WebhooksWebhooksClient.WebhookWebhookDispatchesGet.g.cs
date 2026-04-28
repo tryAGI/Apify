@@ -51,7 +51,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.WebhookDispatchList> WebhookWebhookDispatchesGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.ListOfWebhookDispatchesResponse> WebhookWebhookDispatchesGetAsync(
             string webhookId,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -539,7 +539,7 @@ namespace Apify
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Apify.WebhookDispatchList.FromJson(__content, JsonSerializerContext) ??
+                                        global::Apify.ListOfWebhookDispatchesResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -569,7 +569,7 @@ namespace Apify
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Apify.WebhookDispatchList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Apify.ListOfWebhookDispatchesResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
