@@ -35,7 +35,7 @@ namespace Apify
             ref bool? restartOnError,
             ref string? build,
             ref double? waitForFinish,
-            ref string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void PrepareActorTaskRunsPostRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -48,7 +48,7 @@ namespace Apify
             bool? restartOnError,
             string? build,
             double? waitForFinish,
-            string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void ProcessActorTaskRunsPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -121,7 +121,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -205,7 +205,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -223,7 +223,7 @@ namespace Apify
                 restartOnError: ref restartOnError,
                 build: ref build,
                 waitForFinish: ref waitForFinish,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 request: request);
 
 
@@ -259,7 +259,7 @@ namespace Apify
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
-                                .AddOptionalParameter("webhooks", webhooks) 
+                                .AddOptionalParameter("webhooks", webhooks?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -938,7 +938,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

@@ -35,7 +35,7 @@ namespace Apify
             ref bool? restartOnError,
             ref string? build,
             ref string? outputRecordKey,
-            ref string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void PrepareActorTaskRunSyncPostRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -48,7 +48,7 @@ namespace Apify
             bool? restartOnError,
             string? build,
             string? outputRecordKey,
-            string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void ProcessActorTaskRunSyncPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -124,7 +124,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             string? outputRecordKey = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -142,7 +142,7 @@ namespace Apify
                 restartOnError: ref restartOnError,
                 build: ref build,
                 outputRecordKey: ref outputRecordKey,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 request: request);
 
 
@@ -178,7 +178,7 @@ namespace Apify
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("outputRecordKey", outputRecordKey)
-                                .AddOptionalParameter("webhooks", webhooks) 
+                                .AddOptionalParameter("webhooks", webhooks?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -850,7 +850,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             string? outputRecordKey = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

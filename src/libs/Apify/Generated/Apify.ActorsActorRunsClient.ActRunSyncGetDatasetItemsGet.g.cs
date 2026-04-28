@@ -34,7 +34,7 @@ namespace Apify
             ref double? maxTotalChargeUsd,
             ref bool? restartOnError,
             ref string? build,
-            ref string? webhooks,
+            byte[]? webhooks,
             ref string? format,
             ref bool? clean,
             ref double? offset,
@@ -65,7 +65,7 @@ namespace Apify
             double? maxTotalChargeUsd,
             bool? restartOnError,
             string? build,
-            string? webhooks,
+            byte[]? webhooks,
             string? format,
             bool? clean,
             double? offset,
@@ -205,7 +205,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -374,7 +374,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -409,7 +409,7 @@ namespace Apify
                 maxTotalChargeUsd: ref maxTotalChargeUsd,
                 restartOnError: ref restartOnError,
                 build: ref build,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 format: ref format,
                 clean: ref clean,
                 offset: ref offset,
@@ -463,7 +463,7 @@ namespace Apify
                                 .AddOptionalParameter("maxTotalChargeUsd", maxTotalChargeUsd?.ToString())
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
-                                .AddOptionalParameter("webhooks", webhooks)
+                                .AddOptionalParameter("webhooks", webhooks?.ToString())
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("offset", offset?.ToString())

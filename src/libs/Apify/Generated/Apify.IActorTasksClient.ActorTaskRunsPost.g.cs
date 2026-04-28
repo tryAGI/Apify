@@ -66,7 +66,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -131,7 +131,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -193,7 +193,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             double? waitForFinish = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -35,7 +35,7 @@ namespace Apify
             ref double? maxTotalChargeUsd,
             ref bool? restartOnError,
             ref string? build,
-            ref string? webhooks);
+            byte[]? webhooks);
         partial void PrepareActRunSyncGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -47,7 +47,7 @@ namespace Apify
             double? maxTotalChargeUsd,
             bool? restartOnError,
             string? build,
-            string? webhooks);
+            byte[]? webhooks);
         partial void ProcessActRunSyncGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -111,7 +111,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -127,7 +127,7 @@ namespace Apify
                 maxTotalChargeUsd: ref maxTotalChargeUsd,
                 restartOnError: ref restartOnError,
                 build: ref build,
-                webhooks: ref webhooks);
+                webhooks: webhooks);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -162,7 +162,7 @@ namespace Apify
                                 .AddOptionalParameter("maxTotalChargeUsd", maxTotalChargeUsd?.ToString())
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
-                                .AddOptionalParameter("webhooks", webhooks) 
+                                .AddOptionalParameter("webhooks", webhooks?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(

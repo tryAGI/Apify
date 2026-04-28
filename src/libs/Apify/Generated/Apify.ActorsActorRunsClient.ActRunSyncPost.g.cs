@@ -35,7 +35,7 @@ namespace Apify
             ref double? maxTotalChargeUsd,
             ref bool? restartOnError,
             ref string? build,
-            ref string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void PrepareActRunSyncPostRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -48,7 +48,7 @@ namespace Apify
             double? maxTotalChargeUsd,
             bool? restartOnError,
             string? build,
-            string? webhooks,
+            byte[]? webhooks,
             object request);
         partial void ProcessActRunSyncPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -120,7 +120,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -138,7 +138,7 @@ namespace Apify
                 maxTotalChargeUsd: ref maxTotalChargeUsd,
                 restartOnError: ref restartOnError,
                 build: ref build,
-                webhooks: ref webhooks,
+                webhooks: webhooks,
                 request: request);
 
 
@@ -174,7 +174,7 @@ namespace Apify
                                 .AddOptionalParameter("maxTotalChargeUsd", maxTotalChargeUsd?.ToString())
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
-                                .AddOptionalParameter("webhooks", webhooks) 
+                                .AddOptionalParameter("webhooks", webhooks?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -766,7 +766,7 @@ namespace Apify
             double? maxTotalChargeUsd = default,
             bool? restartOnError = default,
             string? build = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

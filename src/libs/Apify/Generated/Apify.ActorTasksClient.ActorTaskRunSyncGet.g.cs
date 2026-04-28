@@ -33,7 +33,7 @@ namespace Apify
             ref double? maxItems,
             ref string? build,
             ref string? outputRecordKey,
-            ref string? webhooks);
+            byte[]? webhooks);
         partial void PrepareActorTaskRunSyncGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -43,7 +43,7 @@ namespace Apify
             double? maxItems,
             string? build,
             string? outputRecordKey,
-            string? webhooks);
+            byte[]? webhooks);
         partial void ProcessActorTaskRunSyncGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -99,7 +99,7 @@ namespace Apify
             double? maxItems = default,
             string? build = default,
             string? outputRecordKey = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -113,7 +113,7 @@ namespace Apify
                 maxItems: ref maxItems,
                 build: ref build,
                 outputRecordKey: ref outputRecordKey,
-                webhooks: ref webhooks);
+                webhooks: webhooks);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -146,7 +146,7 @@ namespace Apify
                                 .AddOptionalParameter("maxItems", maxItems?.ToString())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("outputRecordKey", outputRecordKey)
-                                .AddOptionalParameter("webhooks", webhooks) 
+                                .AddOptionalParameter("webhooks", webhooks?.ToString()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(

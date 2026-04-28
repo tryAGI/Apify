@@ -50,7 +50,7 @@ namespace Apify
             double? maxItems = default,
             string? build = default,
             string? outputRecordKey = default,
-            string? webhooks = default,
+            byte[]? webhooks = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
