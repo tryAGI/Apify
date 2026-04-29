@@ -186,7 +186,7 @@ namespace Apify
                 PrepareActRunsLastDatasetItemsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
                     request: request);
 

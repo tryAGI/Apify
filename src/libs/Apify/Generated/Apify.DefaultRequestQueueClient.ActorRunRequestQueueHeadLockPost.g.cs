@@ -156,8 +156,8 @@ namespace Apify
                 PrepareActorRunRequestQueueHeadLockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    lockSecs: lockSecs,
+                    runId: runId!,
+                    lockSecs: lockSecs!,
                     limit: limit,
                     clientKey: clientKey);
 

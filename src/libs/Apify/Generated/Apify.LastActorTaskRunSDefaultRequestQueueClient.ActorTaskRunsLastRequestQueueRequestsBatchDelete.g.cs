@@ -169,9 +169,9 @@ namespace Apify
                 PrepareActorTaskRunsLastRequestQueueRequestsBatchDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
-                    contentType: contentType,
+                    contentType: contentType!,
                     clientKey: clientKey,
                     request: request);
 

@@ -221,8 +221,8 @@ namespace Apify
                 PrepareActBuildsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    version: version,
+                    actorId: actorId!,
+                    version: version!,
                     useCache: useCache,
                     betaPackages: betaPackages,
                     tag: tag,

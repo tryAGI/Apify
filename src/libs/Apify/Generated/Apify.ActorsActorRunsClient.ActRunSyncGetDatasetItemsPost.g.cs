@@ -554,7 +554,7 @@ namespace Apify
                 PrepareActRunSyncGetDatasetItemsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     timeout: timeout,
                     memory: memory,
                     maxItems: maxItems,

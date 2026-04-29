@@ -122,7 +122,7 @@ namespace Apify
                 PrepareRequestQueueDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId);
+                    queueId: queueId!);
 
                 return __httpRequest;
             }

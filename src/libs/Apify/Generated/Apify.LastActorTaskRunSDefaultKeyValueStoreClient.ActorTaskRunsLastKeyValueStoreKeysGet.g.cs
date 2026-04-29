@@ -179,7 +179,7 @@ namespace Apify
                 PrepareActorTaskRunsLastKeyValueStoreKeysGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
                     exclusiveStartKey: exclusiveStartKey,
                     limit: limit,

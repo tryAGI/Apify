@@ -134,8 +134,8 @@ namespace Apify
                 PrepareActVersionDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    versionNumber: versionNumber);
+                    actorId: actorId!,
+                    versionNumber: versionNumber!);
 
                 return __httpRequest;
             }

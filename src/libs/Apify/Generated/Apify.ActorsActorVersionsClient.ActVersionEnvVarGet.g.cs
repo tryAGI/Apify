@@ -143,9 +143,9 @@ namespace Apify
                 PrepareActVersionEnvVarGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    versionNumber: versionNumber,
-                    envVarName: envVarName);
+                    actorId: actorId!,
+                    versionNumber: versionNumber!,
+                    envVarName: envVarName!);
 
                 return __httpRequest;
             }

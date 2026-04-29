@@ -131,8 +131,8 @@ namespace Apify
                 PrepareActorRunKeyValueStoreRecordDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    recordKey: recordKey);
+                    runId: runId!,
+                    recordKey: recordKey!);
 
                 return __httpRequest;
             }

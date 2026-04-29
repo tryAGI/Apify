@@ -134,7 +134,7 @@ namespace Apify
                 PrepareActRunsLastDatasetDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status);
 
                 return __httpRequest;

@@ -141,7 +141,7 @@ namespace Apify
                 PrepareActBuildDefaultGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     waitForFinish: waitForFinish);
 
                 return __httpRequest;

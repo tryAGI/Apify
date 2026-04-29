@@ -155,7 +155,7 @@ namespace Apify
                 PrepareActorTaskRunsLastRequestQueueHeadGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
                     limit: limit,
                     clientKey: clientKey);

@@ -171,7 +171,7 @@ namespace Apify
                 PrepareActorRunDatasetItemsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     request: request);
 
                 return __httpRequest;

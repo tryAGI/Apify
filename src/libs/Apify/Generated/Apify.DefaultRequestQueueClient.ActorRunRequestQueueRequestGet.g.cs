@@ -136,8 +136,8 @@ namespace Apify
                 PrepareActorRunRequestQueueRequestGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    requestId: requestId);
+                    runId: runId!,
+                    requestId: requestId!);
 
                 return __httpRequest;
             }

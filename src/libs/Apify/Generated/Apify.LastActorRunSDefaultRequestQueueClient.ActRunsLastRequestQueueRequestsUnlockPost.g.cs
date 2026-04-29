@@ -147,7 +147,7 @@ namespace Apify
                 PrepareActRunsLastRequestQueueRequestsUnlockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
                     clientKey: clientKey);
 

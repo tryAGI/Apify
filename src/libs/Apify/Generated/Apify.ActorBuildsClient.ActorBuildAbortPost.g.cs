@@ -130,7 +130,7 @@ namespace Apify
                 PrepareActorBuildAbortPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildId: buildId);
+                    buildId: buildId!);
 
                 return __httpRequest;
             }

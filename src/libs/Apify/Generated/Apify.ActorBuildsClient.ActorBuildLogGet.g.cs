@@ -146,7 +146,7 @@ namespace Apify
                 PrepareActorBuildLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildId: buildId,
+                    buildId: buildId!,
                     stream: stream,
                     download: download);
 

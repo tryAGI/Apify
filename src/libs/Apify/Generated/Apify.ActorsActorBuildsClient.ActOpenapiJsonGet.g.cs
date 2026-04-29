@@ -142,8 +142,8 @@ namespace Apify
                 PrepareActOpenapiJsonGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    buildId: buildId);
+                    actorId: actorId!,
+                    buildId: buildId!);
 
                 return __httpRequest;
             }

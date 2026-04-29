@@ -178,8 +178,8 @@ namespace Apify
                 PrepareActRunResurrectPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    runId: runId,
+                    actorId: actorId!,
+                    runId: runId!,
                     build: build,
                     timeout: timeout,
                     memory: memory,

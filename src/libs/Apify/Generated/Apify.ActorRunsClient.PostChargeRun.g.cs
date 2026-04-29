@@ -159,7 +159,7 @@ namespace Apify
                 PreparePostChargeRunRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     idempotencyKey: idempotencyKey,
                     request: request);
 

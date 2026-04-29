@@ -181,7 +181,7 @@ namespace Apify
                 PreparePostResurrectRunRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     build: build,
                     timeout: timeout,
                     memory: memory,

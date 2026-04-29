@@ -141,9 +141,9 @@ namespace Apify
                 PrepareActorTaskRunsLastKeyValueStoreRecordDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
-                    recordKey: recordKey);
+                    recordKey: recordKey!);
 
                 return __httpRequest;
             }

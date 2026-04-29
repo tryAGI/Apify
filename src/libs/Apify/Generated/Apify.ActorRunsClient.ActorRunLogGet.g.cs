@@ -154,7 +154,7 @@ namespace Apify
                 PrepareActorRunLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     stream: stream,
                     download: download,
                     raw: raw);

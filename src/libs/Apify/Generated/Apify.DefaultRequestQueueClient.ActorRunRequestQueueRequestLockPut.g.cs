@@ -162,9 +162,9 @@ namespace Apify
                 PrepareActorRunRequestQueueRequestLockPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    requestId: requestId,
-                    lockSecs: lockSecs,
+                    runId: runId!,
+                    requestId: requestId!,
+                    lockSecs: lockSecs!,
                     clientKey: clientKey,
                     forefront: forefront);
 

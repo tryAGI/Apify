@@ -172,7 +172,7 @@ namespace Apify
                 PrepareKeyValueStoreKeysGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    storeId: storeId,
+                    storeId: storeId!,
                     exclusiveStartKey: exclusiveStartKey,
                     limit: limit,
                     collection: collection,

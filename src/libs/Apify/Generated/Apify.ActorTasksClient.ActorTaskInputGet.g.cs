@@ -127,7 +127,7 @@ namespace Apify
                 PrepareActorTaskInputGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId);
+                    actorTaskId: actorTaskId!);
 
                 return __httpRequest;
             }

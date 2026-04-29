@@ -197,8 +197,8 @@ namespace Apify
                 PrepareKeyValueStoreRecordPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    storeId: storeId,
-                    recordKey: recordKey,
+                    storeId: storeId!,
+                    recordKey: recordKey!,
                     contentEncoding: contentEncoding,
                     request: request);
 

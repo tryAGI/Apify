@@ -144,7 +144,7 @@ namespace Apify
                 PrepareActorRunKeyValueStorePutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     request: request);
 
                 return __httpRequest;

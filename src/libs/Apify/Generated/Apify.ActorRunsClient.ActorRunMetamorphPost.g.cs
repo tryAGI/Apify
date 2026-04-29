@@ -155,8 +155,8 @@ namespace Apify
                 PrepareActorRunMetamorphPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    targetActorId: targetActorId,
+                    runId: runId!,
+                    targetActorId: targetActorId!,
                     build: build);
 
                 return __httpRequest;

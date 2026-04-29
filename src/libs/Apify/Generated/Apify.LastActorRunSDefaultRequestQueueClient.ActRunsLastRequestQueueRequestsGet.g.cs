@@ -179,7 +179,7 @@ namespace Apify
                 PrepareActRunsLastRequestQueueRequestsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
                     clientKey: clientKey,
                     exclusiveStartId: exclusiveStartId,

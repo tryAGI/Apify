@@ -292,7 +292,7 @@ namespace Apify
                 PrepareActorRunDatasetItemsGetAsStreamRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     format: format,
                     clean: clean,
                     offset: offset,

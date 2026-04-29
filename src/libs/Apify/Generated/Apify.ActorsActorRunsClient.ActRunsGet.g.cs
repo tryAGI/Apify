@@ -185,7 +185,7 @@ namespace Apify
                 PrepareActRunsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     offset: offset,
                     limit: limit,
                     desc: desc,

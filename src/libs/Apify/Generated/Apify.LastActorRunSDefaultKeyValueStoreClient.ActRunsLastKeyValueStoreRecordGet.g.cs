@@ -162,9 +162,9 @@ namespace Apify
                 PrepareActRunsLastKeyValueStoreRecordGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
-                    recordKey: recordKey,
+                    recordKey: recordKey!,
                     signature: signature,
                     attachment: attachment);
 

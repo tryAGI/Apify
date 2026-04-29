@@ -141,8 +141,8 @@ namespace Apify
                 PrepareActorRunRequestQueueRequestDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    requestId: requestId,
+                    runId: runId!,
+                    requestId: requestId!,
                     clientKey: clientKey);
 
                 return __httpRequest;

@@ -127,7 +127,7 @@ namespace Apify
                 PrepareWebhookDispatchGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    dispatchId: dispatchId);
+                    dispatchId: dispatchId!);
 
                 return __httpRequest;
             }

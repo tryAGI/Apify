@@ -222,7 +222,7 @@ namespace Apify
                 PrepareActRunSyncPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     outputRecordKey: outputRecordKey,
                     timeout: timeout,
                     memory: memory,

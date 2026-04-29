@@ -157,7 +157,7 @@ namespace Apify
                 PrepareActRunsLastGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
                     waitForFinish: waitForFinish);
 
