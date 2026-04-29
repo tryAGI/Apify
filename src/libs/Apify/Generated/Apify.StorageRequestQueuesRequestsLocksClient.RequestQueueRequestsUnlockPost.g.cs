@@ -139,7 +139,7 @@ namespace Apify
                 PrepareRequestQueueRequestsUnlockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
+                    queueId: queueId!,
                     clientKey: clientKey);
 
                 return __httpRequest;

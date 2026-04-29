@@ -131,7 +131,7 @@ namespace Apify
                 PrepareActorRunRebootPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId);
+                    runId: runId!);
 
                 return __httpRequest;
             }

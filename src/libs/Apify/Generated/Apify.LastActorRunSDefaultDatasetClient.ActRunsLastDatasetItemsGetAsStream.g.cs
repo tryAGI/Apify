@@ -300,7 +300,7 @@ namespace Apify
                 PrepareActRunsLastDatasetItemsGetAsStreamRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
                     format: format,
                     clean: clean,

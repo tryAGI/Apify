@@ -162,7 +162,7 @@ namespace Apify
                 PrepareRequestQueueRequestsPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
+                    queueId: queueId!,
                     clientKey: clientKey,
                     forefront: forefront,
                     request: request);

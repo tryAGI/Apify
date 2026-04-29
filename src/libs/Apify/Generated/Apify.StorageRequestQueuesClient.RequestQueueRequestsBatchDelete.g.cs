@@ -169,8 +169,8 @@ namespace Apify
                 PrepareRequestQueueRequestsBatchDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
-                    contentType: contentType,
+                    queueId: queueId!,
+                    contentType: contentType!,
                     clientKey: clientKey,
                     request: request);
 

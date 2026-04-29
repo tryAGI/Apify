@@ -170,7 +170,7 @@ namespace Apify
                 PrepareRequestQueueRequestsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
+                    queueId: queueId!,
                     clientKey: clientKey,
                     exclusiveStartId: exclusiveStartId,
                     limit: limit,

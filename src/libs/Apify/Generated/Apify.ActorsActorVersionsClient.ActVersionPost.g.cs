@@ -149,8 +149,8 @@ namespace Apify
                 PrepareActVersionPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
-                    versionNumber: versionNumber,
+                    actorId: actorId!,
+                    versionNumber: versionNumber!,
                     request: request);
 
                 return __httpRequest;

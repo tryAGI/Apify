@@ -124,7 +124,7 @@ namespace Apify
                 PrepareActorBuildDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildId: buildId);
+                    buildId: buildId!);
 
                 return __httpRequest;
             }

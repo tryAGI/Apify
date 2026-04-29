@@ -170,10 +170,10 @@ namespace Apify
                 PrepareActorTaskRunsLastRequestQueueRequestLockPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
-                    requestId: requestId,
-                    lockSecs: lockSecs,
+                    requestId: requestId!,
+                    lockSecs: lockSecs!,
                     clientKey: clientKey,
                     forefront: forefront);
 

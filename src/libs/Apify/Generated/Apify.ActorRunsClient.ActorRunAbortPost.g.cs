@@ -140,7 +140,7 @@ namespace Apify
                 PrepareActorRunAbortPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     gracefully: gracefully);
 
                 return __httpRequest;

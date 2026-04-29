@@ -157,9 +157,9 @@ namespace Apify
                 PrepareActRunsLastRequestQueueRequestLockDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
-                    requestId: requestId,
+                    requestId: requestId!,
                     clientKey: clientKey,
                     forefront: forefront);
 

@@ -129,7 +129,7 @@ namespace Apify
                 PrepareActVersionsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId);
+                    actorId: actorId!);
 
                 return __httpRequest;
             }

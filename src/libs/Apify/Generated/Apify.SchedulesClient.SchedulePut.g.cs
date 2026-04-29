@@ -150,7 +150,7 @@ namespace Apify
                 PrepareSchedulePutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    scheduleId: scheduleId,
+                    scheduleId: scheduleId!,
                     request: request);
 
                 return __httpRequest;

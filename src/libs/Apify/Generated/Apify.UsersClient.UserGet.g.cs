@@ -129,7 +129,7 @@ namespace Apify
                 PrepareUserGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    userId: userId);
+                    userId: userId!);
 
                 return __httpRequest;
             }

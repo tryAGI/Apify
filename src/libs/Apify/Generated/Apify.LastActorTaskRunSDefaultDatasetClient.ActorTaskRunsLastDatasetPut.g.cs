@@ -153,7 +153,7 @@ namespace Apify
                 PrepareActorTaskRunsLastDatasetPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     status: status,
                     request: request);
 

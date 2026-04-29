@@ -171,7 +171,7 @@ namespace Apify
                 PrepareActorRunRequestQueueRequestsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     clientKey: clientKey,
                     exclusiveStartId: exclusiveStartId,
                     limit: limit,

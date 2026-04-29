@@ -153,7 +153,7 @@ namespace Apify
                 PrepareLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildOrRunId: buildOrRunId,
+                    buildOrRunId: buildOrRunId!,
                     stream: stream,
                     download: download,
                     raw: raw);

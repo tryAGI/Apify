@@ -129,8 +129,8 @@ namespace Apify
                 PrepareKeyValueStoreRecordDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    storeId: storeId,
-                    recordKey: recordKey);
+                    storeId: storeId!,
+                    recordKey: recordKey!);
 
                 return __httpRequest;
             }

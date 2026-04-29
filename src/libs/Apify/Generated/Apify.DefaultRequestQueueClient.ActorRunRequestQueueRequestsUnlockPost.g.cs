@@ -139,7 +139,7 @@ namespace Apify
                 PrepareActorRunRequestQueueRequestsUnlockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
+                    runId: runId!,
                     clientKey: clientKey);
 
                 return __httpRequest;

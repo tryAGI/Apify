@@ -413,7 +413,7 @@ namespace Apify
                 PrepareDatasetItemsGetAsStreamRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    datasetId: datasetId,
+                    datasetId: datasetId!,
                     format: format,
                     clean: clean,
                     offset: offset,

@@ -143,7 +143,7 @@ namespace Apify
                 PrepareActorBuildGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    buildId: buildId,
+                    buildId: buildId!,
                     waitForFinish: waitForFinish);
 
                 return __httpRequest;

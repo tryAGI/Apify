@@ -154,8 +154,8 @@ namespace Apify
                 PrepareActorRunKeyValueStoreRecordGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId,
-                    recordKey: recordKey,
+                    runId: runId!,
+                    recordKey: recordKey!,
                     signature: signature,
                     attachment: attachment);
 

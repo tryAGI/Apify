@@ -158,7 +158,7 @@ namespace Apify
                 PrepareActorTaskWebhooksGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     offset: offset,
                     limit: limit,
                     desc: desc);

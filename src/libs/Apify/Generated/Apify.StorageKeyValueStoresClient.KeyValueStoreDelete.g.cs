@@ -122,7 +122,7 @@ namespace Apify
                 PrepareKeyValueStoreDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    storeId: storeId);
+                    storeId: storeId!);
 
                 return __httpRequest;
             }

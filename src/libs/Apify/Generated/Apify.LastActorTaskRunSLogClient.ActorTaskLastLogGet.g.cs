@@ -154,7 +154,7 @@ namespace Apify
                 PrepareActorTaskLastLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     stream: stream,
                     download: download,
                     raw: raw);

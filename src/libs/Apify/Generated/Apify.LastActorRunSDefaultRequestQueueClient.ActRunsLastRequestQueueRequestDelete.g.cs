@@ -149,9 +149,9 @@ namespace Apify
                 PrepareActRunsLastRequestQueueRequestDeleteRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     status: status,
-                    requestId: requestId,
+                    requestId: requestId!,
                     clientKey: clientKey);
 
                 return __httpRequest;

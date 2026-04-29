@@ -150,7 +150,7 @@ namespace Apify
                 PrepareActorTaskPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId,
+                    actorTaskId: actorTaskId!,
                     request: request);
 
                 return __httpRequest;

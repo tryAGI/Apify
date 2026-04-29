@@ -144,7 +144,7 @@ namespace Apify
                 PrepareKeyValueStorePutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    storeId: storeId,
+                    storeId: storeId!,
                     request: request);
 
                 return __httpRequest;

@@ -154,7 +154,7 @@ namespace Apify
                 PrepareActValidateInputPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId,
+                    actorId: actorId!,
                     build: build,
                     request: request);
 

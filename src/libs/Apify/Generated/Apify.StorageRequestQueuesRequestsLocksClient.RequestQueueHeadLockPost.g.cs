@@ -159,8 +159,8 @@ namespace Apify
                 PrepareRequestQueueHeadLockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    queueId: queueId,
-                    lockSecs: lockSecs,
+                    queueId: queueId!,
+                    lockSecs: lockSecs!,
                     limit: limit,
                     clientKey: clientKey);
 
