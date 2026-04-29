@@ -22917,13 +22917,6 @@
             },
             "description": "The array of requests."
           },
-          "count": {
-            "type": "integer",
-            "description": "The total number of requests matching the query.",
-            "examples": [
-              2
-            ]
-          },
           "limit": {
             "type": "integer",
             "description": "The maximum number of requests returned in this response.",
@@ -23005,7 +22998,6 @@
                 "handledAt": "2019-06-16T10:23:31.607Z"
               }
             ],
-            "count": 2,
             "limit": 2,
             "exclusiveStartId": "Ihnsp8YrvJ8102Kj"
           }

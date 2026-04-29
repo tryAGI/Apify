@@ -18,12 +18,6 @@ namespace Apify
         public required global::System.Collections.Generic.IList<global::Apify.Request> Items { get; set; }
 
         /// <summary>
-        /// The total number of requests matching the query.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("count")]
-        public int? Count { get; set; }
-
-        /// <summary>
         /// The maximum number of requests returned in this response.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limit")]
@@ -64,9 +58,6 @@ namespace Apify
         /// <param name="limit">
         /// The maximum number of requests returned in this response.
         /// </param>
-        /// <param name="count">
-        /// The total number of requests matching the query.
-        /// </param>
         /// <param name="cursor">
         /// A cursor string used for current page of results.
         /// </param>
@@ -79,12 +70,10 @@ namespace Apify
         public ListOfRequests(
             global::System.Collections.Generic.IList<global::Apify.Request> items,
             int limit,
-            int? count,
             string? cursor,
             string? nextCursor)
         {
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
-            this.Count = count;
             this.Limit = limit;
             this.Cursor = cursor;
             this.NextCursor = nextCursor;
