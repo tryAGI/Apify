@@ -23,6 +23,20 @@ namespace Apify
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> UsersMeLimitsPutAsResponseAsync(
+
+            global::Apify.UpdateLimitsRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update limits<br/>
+        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
+        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
+        /// </summary>
         /// <param name="maxMonthlyUsageUsd">
         /// If your platform usage in the billing period exceeds the prepaid usage, you will be charged extra. Setting this property you can update your hard limit on monthly platform usage to prevent accidental overage or to limit the extra charges.
         /// </param>

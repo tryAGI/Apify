@@ -37,6 +37,28 @@ namespace Apify
         /// <param name="versionNumber">
         /// Example: 0.1
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>> ActVersionPostAsResponseAsync(
+            string actorId,
+            string versionNumber,
+
+            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update version (POST)<br/>
+        /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
+        /// This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="versionNumber">
+        /// Example: 0.1
+        /// </param>
         /// <param name="requestVersionNumber"></param>
         /// <param name="sourceType"></param>
         /// <param name="envVars"></param>

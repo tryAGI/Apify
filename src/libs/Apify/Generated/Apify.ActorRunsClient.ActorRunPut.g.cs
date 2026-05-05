@@ -76,6 +76,49 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await ActorRunPutAsResponseAsync(
+                runId: runId,
+
+                request: request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Update run<br/>
+        /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
+        /// **Status message:**<br/>
+        /// You can set a single status message on your run that will be displayed in<br/>
+        /// the Apify Console UI. During an Actor run, you will typically do this in order<br/>
+        /// to inform users of your Actor about the Actor's progress.<br/>
+        /// The request body must contain `runId` and `statusMessage` properties. The<br/>
+        /// `isStatusMessageTerminal` property is optional and it indicates if the<br/>
+        /// status message is the very last one. In the absence of a status message, the<br/>
+        /// platform will try to substitute sensible defaults.<br/>
+        /// **General resource access:**<br/>
+        /// You can also update the run's general resource access setting, which determines who can view the run and its related data.<br/>
+        /// Allowed values:<br/>
+        /// * `FOLLOW_USER_SETTING` - The run inherits the general access setting from the account level.<br/>
+        /// * `ANYONE_WITH_ID_CAN_READ` - The run can be viewed anonymously by anyone who has its ID.<br/>
+        /// * `RESTRICTED` - Only users with explicit access to the resource can access the run.<br/>
+        /// When a run is accessible anonymously, all of the run's default storages and logs also become accessible anonymously.
+        /// </summary>
+        /// <param name="runId">
+        /// Example: 3KH8gEpp4d8uQSe8T
+        /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>> ActorRunPutAsResponseAsync(
+            string runId,
+
+            global::Apify.AllOf<global::Apify.UpdateRunRequest, object> request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareActorRunPutArguments(
@@ -105,6 +148,7 @@ namespace Apify
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Apify.PathBuilder(
                                 path: $"/v2/actor-runs/{runId}",
                                 baseUri: HttpClient.BaseAddress);
@@ -185,6 +229,8 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -195,6 +241,11 @@ namespace Apify
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -212,6 +263,8 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -221,8 +274,7 @@ namespace Apify
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -231,6 +283,11 @@ namespace Apify
                         __attempt < __maxAttempts &&
                         global::Apify.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -247,14 +304,15 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -294,6 +352,8 @@ namespace Apify
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -314,6 +374,8 @@ namespace Apify
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Bad request - invalid input parameters or request body.
@@ -642,9 +704,13 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Apify.RunResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.RunResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -672,9 +738,13 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Apify.RunResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.RunResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
