@@ -37,5 +37,38 @@ namespace Apify
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get and lock last task run's default request queue head<br/>
+        /// Returns the given number of first requests from the default request queue of the last Actor task run<br/>
+        /// and locks them for the given time.<br/>
+        /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
+        /// [Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+        /// </summary>
+        /// <param name="actorTaskId">
+        /// Example: janedoe~my-task
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="lockSecs">
+        /// Example: 60
+        /// </param>
+        /// <param name="limit">
+        /// Example: 25
+        /// </param>
+        /// <param name="clientKey">
+        /// Example: client-abc
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.HeadAndLockResponse>> ActorTaskRunsLastRequestQueueHeadLockPostAsResponseAsync(
+            string actorTaskId,
+            double lockSecs,
+            string? status = default,
+            double? limit = default,
+            string? clientKey = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

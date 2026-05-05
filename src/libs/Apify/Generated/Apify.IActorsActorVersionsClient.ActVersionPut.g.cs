@@ -53,6 +53,36 @@ namespace Apify
         /// <param name="versionNumber">
         /// Example: 0.1
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>> ActVersionPutAsResponseAsync(
+            string actorId,
+            string versionNumber,
+
+            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update version<br/>
+        /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
+        /// If the object does not define a specific property, its value will not be<br/>
+        /// updated.<br/>
+        /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
+        /// header!<br/>
+        /// When providing your API authentication token, we recommend using the<br/>
+        /// request's `Authorization` header, rather than the URL. ([More<br/>
+        /// info](#/introduction/authentication)).<br/>
+        /// The response is the [Version object](#/reference/actors/version-object) as<br/>
+        /// returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="versionNumber">
+        /// Example: 0.1
+        /// </param>
         /// <param name="requestVersionNumber"></param>
         /// <param name="sourceType"></param>
         /// <param name="envVars"></param>

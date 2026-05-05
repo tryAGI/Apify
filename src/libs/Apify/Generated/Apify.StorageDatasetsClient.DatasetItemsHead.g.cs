@@ -176,6 +176,131 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            await DatasetItemsHeadAsResponseAsync(
+                datasetId: datasetId,
+                format: format,
+                clean: clean,
+                offset: offset,
+                limit: limit,
+                fields: fields,
+                omit: omit,
+                unwind: unwind,
+                flatten: flatten,
+                desc: desc,
+                attachment: attachment,
+                delimiter: delimiter,
+                bom: bom,
+                xmlRoot: xmlRoot,
+                xmlRow: xmlRow,
+                skipHeaderRow: skipHeaderRow,
+                skipHidden: skipHidden,
+                skipEmpty: skipEmpty,
+                simplified: simplified,
+                view: view,
+                skipFailedPages: skipFailedPages,
+                signature: signature,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Get dataset items headers<br/>
+        /// Returns only the HTTP headers for the dataset items endpoint, without the response body.<br/>
+        /// This is useful to check pagination metadata or verify access without downloading the full dataset.
+        /// </summary>
+        /// <param name="datasetId">
+        /// Example: WkzbQMuFYuamGv3YF
+        /// </param>
+        /// <param name="format">
+        /// Example: json
+        /// </param>
+        /// <param name="clean">
+        /// Example: false
+        /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit"></param>
+        /// <param name="fields">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="omit">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="unwind">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="flatten">
+        /// Example: myValue
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
+        /// </param>
+        /// <param name="attachment">
+        /// Example: true
+        /// </param>
+        /// <param name="delimiter">
+        /// Example: ;
+        /// </param>
+        /// <param name="bom">
+        /// Example: false
+        /// </param>
+        /// <param name="xmlRoot">
+        /// Example: items
+        /// </param>
+        /// <param name="xmlRow">
+        /// Example: item
+        /// </param>
+        /// <param name="skipHeaderRow">
+        /// Example: true
+        /// </param>
+        /// <param name="skipHidden">
+        /// Example: false
+        /// </param>
+        /// <param name="skipEmpty">
+        /// Example: false
+        /// </param>
+        /// <param name="simplified">
+        /// Example: false
+        /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
+        /// <param name="skipFailedPages">
+        /// Example: false
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse> DatasetItemsHeadAsResponseAsync(
+            string datasetId,
+            string? format = default,
+            bool? clean = default,
+            double? offset = default,
+            double? limit = default,
+            string? fields = default,
+            string? omit = default,
+            string? unwind = default,
+            string? flatten = default,
+            bool? desc = default,
+            bool? attachment = default,
+            string? delimiter = default,
+            bool? bom = default,
+            string? xmlRoot = default,
+            string? xmlRow = default,
+            bool? skipHeaderRow = default,
+            bool? skipHidden = default,
+            bool? skipEmpty = default,
+            bool? simplified = default,
+            string? view = default,
+            bool? skipFailedPages = default,
+            string? signature = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareDatasetItemsHeadArguments(
@@ -225,9 +350,10 @@ namespace Apify
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Apify.PathBuilder(
                                 path: $"/v2/datasets/{datasetId}/items",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
@@ -249,7 +375,7 @@ namespace Apify
                                 .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("view", view)
                                 .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("signature", signature) 
+                                .AddOptionalParameter("signature", signature)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -342,6 +468,8 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -352,6 +480,11 @@ namespace Apify
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -369,6 +502,8 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -378,8 +513,7 @@ namespace Apify
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -388,6 +522,11 @@ namespace Apify
                         __attempt < __maxAttempts &&
                         global::Apify.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -404,14 +543,15 @@ namespace Apify
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -451,6 +591,8 @@ namespace Apify
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -471,6 +613,8 @@ namespace Apify
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                             // Bad request - invalid input parameters or request body.
@@ -719,6 +863,10 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
+                return new global::Apify.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -740,6 +888,10 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
+                                    return new global::Apify.AutoSDKHttpResponse(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

@@ -34,6 +34,26 @@ namespace Apify
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>> KeyValueStorePutAsResponseAsync(
+            string storeId,
+
+            global::Apify.UpdateStoreRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update store<br/>
+        /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
+        /// passed in the PUT payload.<br/>
+        /// The response is the updated key-value store object, as returned by the [Get<br/>
+        /// store](#/reference/key-value-stores/store-object/get-store) API endpoint.
+        /// </summary>
+        /// <param name="storeId">
+        /// Example: WkzbQMuFYuamGv3YF
+        /// </param>
         /// <param name="name"></param>
         /// <param name="generalAccess">
         /// Defines the general access level for the resource.

@@ -442,7 +442,7 @@ namespace Apify
         /// used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorBuildsClient ActorBuilds => new ActorBuildsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorBuildsClient ActorBuilds => new ActorBuildsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -455,7 +455,7 @@ namespace Apify
         /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -476,7 +476,7 @@ namespace Apify
         /// used only for informative purposes.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorTasksClient ActorTasks => new ActorTasksClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorTasksClient ActorTasks => new ActorTasksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -489,7 +489,7 @@ namespace Apify
         /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
         /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).
         /// </summary>
-        public ActorsClient Actors => new ActorsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorsClient Actors => new ActorsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -499,7 +499,7 @@ namespace Apify
         /// <summary>
         /// Actor builds - Introduction. The API endpoints in this section allow you to manage your Apify Actors builds.
         /// </summary>
-        public ActorsActorBuildsClient ActorsActorBuilds => new ActorsActorBuildsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorsActorBuildsClient ActorsActorBuilds => new ActorsActorBuildsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -511,7 +511,7 @@ namespace Apify
         /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
         /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
-        public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -532,7 +532,7 @@ namespace Apify
         /// For more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code)<br/>
         /// in Actors documentation.
         /// </summary>
-        public ActorsActorVersionsClient ActorsActorVersions => new ActorsActorVersionsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorsActorVersionsClient ActorsActorVersions => new ActorsActorVersionsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -542,7 +542,7 @@ namespace Apify
         /// <summary>
         /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.
         /// </summary>
-        public ActorsWebhookCollectionClient ActorsWebhookCollection => new ActorsWebhookCollectionClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActorsWebhookCollectionClient ActorsWebhookCollection => new ActorsWebhookCollectionClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -553,7 +553,7 @@ namespace Apify
         /// Default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
-        public DefaultDatasetClient DefaultDataset => new DefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DefaultDatasetClient DefaultDataset => new DefaultDatasetClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -564,7 +564,7 @@ namespace Apify
         /// Default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
-        public DefaultKeyValueStoreClient DefaultKeyValueStore => new DefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DefaultKeyValueStoreClient DefaultKeyValueStore => new DefaultKeyValueStoreClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -575,7 +575,7 @@ namespace Apify
         /// Default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
-        public DefaultRequestQueueClient DefaultRequestQueue => new DefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DefaultRequestQueueClient DefaultRequestQueue => new DefaultRequestQueueClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -586,7 +586,7 @@ namespace Apify
         /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
-        public LastActorRunSDefaultDatasetClient LastActorRunSDefaultDataset => new LastActorRunSDefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorRunSDefaultDatasetClient LastActorRunSDefaultDataset => new LastActorRunSDefaultDatasetClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -597,7 +597,7 @@ namespace Apify
         /// Last Actor run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
-        public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore => new LastActorRunSDefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore => new LastActorRunSDefaultKeyValueStoreClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -608,7 +608,7 @@ namespace Apify
         /// Last Actor run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
-        public LastActorRunSDefaultRequestQueueClient LastActorRunSDefaultRequestQueue => new LastActorRunSDefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorRunSDefaultRequestQueueClient LastActorRunSDefaultRequestQueue => new LastActorRunSDefaultRequestQueueClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -619,7 +619,7 @@ namespace Apify
         /// Last Actor run's log - Introduction. The API endpoint described in this section is convenience endpoint that provides access to last Actor run's log.<br/>
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
-        public LastActorRunSLogClient LastActorRunSLog => new LastActorRunSLogClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorRunSLogClient LastActorRunSLog => new LastActorRunSLogClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -630,7 +630,7 @@ namespace Apify
         /// Last Actor task run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
-        public LastActorTaskRunSDefaultDatasetClient LastActorTaskRunSDefaultDataset => new LastActorTaskRunSDefaultDatasetClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorTaskRunSDefaultDatasetClient LastActorTaskRunSDefaultDataset => new LastActorTaskRunSDefaultDatasetClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -641,7 +641,7 @@ namespace Apify
         /// Last Actor task run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
-        public LastActorTaskRunSDefaultKeyValueStoreClient LastActorTaskRunSDefaultKeyValueStore => new LastActorTaskRunSDefaultKeyValueStoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorTaskRunSDefaultKeyValueStoreClient LastActorTaskRunSDefaultKeyValueStore => new LastActorTaskRunSDefaultKeyValueStoreClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -652,7 +652,7 @@ namespace Apify
         /// Last Actor task run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
-        public LastActorTaskRunSDefaultRequestQueueClient LastActorTaskRunSDefaultRequestQueue => new LastActorTaskRunSDefaultRequestQueueClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorTaskRunSDefaultRequestQueueClient LastActorTaskRunSDefaultRequestQueue => new LastActorTaskRunSDefaultRequestQueueClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -663,7 +663,7 @@ namespace Apify
         /// Last Actor task run's log - Introduction. The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.<br/>
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
-        public LastActorTaskRunSLogClient LastActorTaskRunSLog => new LastActorTaskRunSLogClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LastActorTaskRunSLogClient LastActorTaskRunSLog => new LastActorTaskRunSLogClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -679,7 +679,7 @@ namespace Apify
         /// are authenticated using a hard-to-guess ID of the Actor build or run.<br/>
         /// :::.
         /// </summary>
-        public LogsClient Logs => new LogsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public LogsClient Logs => new LogsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -697,7 +697,7 @@ namespace Apify
         /// - `RUN_ACTOR` and `RUN_ACTOR_TASK`.<br/>
         /// For details, see the documentation of the [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.
         /// </summary>
-        public SchedulesClient Schedules => new SchedulesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SchedulesClient Schedules => new SchedulesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -717,7 +717,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the dataset.<br/>
         /// :::.
         /// </summary>
-        public StorageDatasetsClient StorageDatasets => new StorageDatasetsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StorageDatasetsClient StorageDatasets => new StorageDatasetsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -736,7 +736,7 @@ namespace Apify
         /// are authenticated using a hard-to-guess ID of the key-value store.<br/>
         /// :::.
         /// </summary>
-        public StorageKeyValueStoresClient StorageKeyValueStores => new StorageKeyValueStoresClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StorageKeyValueStoresClient StorageKeyValueStores => new StorageKeyValueStoresClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -755,7 +755,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesClient StorageRequestQueues => new StorageRequestQueuesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StorageRequestQueuesClient StorageRequestQueues => new StorageRequestQueuesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -774,7 +774,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests => new StorageRequestQueuesRequestsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests => new StorageRequestQueuesRequestsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -793,7 +793,7 @@ namespace Apify
         /// are authenticated using the hard-to-guess ID of the queue.<br/>
         /// :::.
         /// </summary>
-        public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks => new StorageRequestQueuesRequestsLocksClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks => new StorageRequestQueuesRequestsLocksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -808,7 +808,7 @@ namespace Apify
         /// These endpoints do not require the authentication token.<br/>
         /// :::.
         /// </summary>
-        public StoreClient Store => new StoreClient(HttpClient, authorizations: Authorizations, options: Options)
+        public StoreClient Store => new StoreClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -819,7 +819,7 @@ namespace Apify
         /// Tools - Introduction. The API endpoints described in this section provide utility tools for encoding,<br/>
         /// signing, and verifying data, as well as inspecting HTTP request details.
         /// </summary>
-        public ToolsClient Tools => new ToolsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ToolsClient Tools => new ToolsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -829,7 +829,7 @@ namespace Apify
         /// <summary>
         /// Users - Introduction. The API endpoints described in this section return information about user accounts.
         /// </summary>
-        public UsersClient Users => new UsersClient(HttpClient, authorizations: Authorizations, options: Options)
+        public UsersClient Users => new UsersClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -839,7 +839,7 @@ namespace Apify
         /// <summary>
         /// Webhook dispatches - Introduction. This section describes API endpoints to get webhook dispatches.
         /// </summary>
-        public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches => new WebhooksWebhookDispatchesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches => new WebhooksWebhookDispatchesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -855,7 +855,7 @@ namespace Apify
         /// or fails.<br/>
         /// For more information see [Webhooks documentation](https://docs.apify.com/platform/integrations/webhooks).
         /// </summary>
-        public WebhooksWebhooksClient WebhooksWebhooks => new WebhooksWebhooksClient(HttpClient, authorizations: Authorizations, options: Options)
+        public WebhooksWebhooksClient WebhooksWebhooks => new WebhooksWebhooksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             CreateIdempotencyKey = CreateIdempotencyKey,
@@ -895,10 +895,10 @@ namespace Apify
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public ApifyClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Apify.EndPointAuthorization>? authorizations = null,
-            global::Apify.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Apify.EndPointAuthorization>? authorizations,
+            global::Apify.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 

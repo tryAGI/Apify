@@ -60,6 +60,38 @@ namespace Apify
         /// <param name="actorId">
         /// Example: janedoe~my-actor
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ActorResponse>> ActPutAsResponseAsync(
+            string actorId,
+
+            global::Apify.UpdateActorRequest request,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update Actor<br/>
+        /// Updates settings of an Actor using values specified by an Actor object<br/>
+        /// passed as JSON in the POST payload.<br/>
+        /// If the object does not define a specific property, its value will not be<br/>
+        /// updated.<br/>
+        /// The response is the full Actor object as returned by the<br/>
+        /// [Get Actor](#/reference/actors/actor-object/get-actor) endpoint.<br/>
+        /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
+        /// When providing your API authentication token, we recommend using the<br/>
+        /// request's `Authorization` header, rather than the URL. ([More<br/>
+        /// info](#/introduction/authentication)).<br/>
+        /// If you want to make your Actor<br/>
+        /// [public](https://docs.apify.com/platform/actors/publishing) using `isPublic:<br/>
+        /// true`, you will need to provide the Actor's `title` and the `categories`<br/>
+        /// under which that Actor will be classified in Apify Store. For this, it's<br/>
+        /// best to use the [constants from our `apify-shared-js`<br/>
+        /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <param name="isPublic"></param>

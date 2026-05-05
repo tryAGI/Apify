@@ -48,6 +48,34 @@ namespace Apify
         /// <param name="forefront">
         /// Example: false
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.AddRequestResponse>> RequestQueueRequestsPostAsResponseAsync(
+            string queueId,
+
+            global::Apify.RequestBase request,
+            string? clientKey = default,
+            string? forefront = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Add request<br/>
+        /// Adds request to the queue. Response contains ID of the request and info if<br/>
+        /// request was already present in the queue or handled.<br/>
+        /// If request with same `uniqueKey` was already present in the queue then<br/>
+        /// returns an ID of existing request.
+        /// </summary>
+        /// <param name="queueId">
+        /// Example: WkzbQMuFYuamGv3YF
+        /// </param>
+        /// <param name="clientKey">
+        /// Example: client-abc
+        /// </param>
+        /// <param name="forefront">
+        /// Example: false
+        /// </param>
         /// <param name="uniqueKey">
         /// A unique key used for request de-duplication. Requests with the same unique key are considered identical.
         /// </param>
