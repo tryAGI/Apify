@@ -142,7 +142,7 @@ public static class ApifyClientTools
             {
                 var response = await client.ActorRuns.ActorRunsGetAsync(
                     limit: limit,
-                    status: status,
+                    status: status is { Length: > 0 } ? [status] : null,
                     desc: true,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
