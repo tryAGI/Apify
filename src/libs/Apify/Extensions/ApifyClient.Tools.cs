@@ -1,6 +1,7 @@
 #nullable enable
 
 using System.ComponentModel;
+using System.Text.Json;
 using Microsoft.Extensions.AI;
 
 namespace Apify;
@@ -21,9 +22,9 @@ public static class ApifyClientTools
                    [Description("Maximum time in seconds to wait for the run to finish (0 = don't wait)")] double? waitForFinish,
                    CancellationToken cancellationToken) =>
             {
-                object? requestBody = input != null
-                    ? System.Text.Json.JsonSerializer.Deserialize<object>(input)
-                    : new { };
+                object requestBody = input is { Length: > 0 }
+                    ? JsonDocument.Parse(input).RootElement.Clone()
+                    : JsonDocument.Parse("{}").RootElement.Clone();
 
                 var response = await client.ActorsActorRuns.ActRunsPostAsync(
                     actorId: actorId,
