@@ -27,6 +27,19 @@ namespace Apify
         public bool IsRequestDraftDeleteById => RequestDraftDeleteById != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRequestDraftDeleteById(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.RequestDraftDeleteById? value)
+        {
+            value = RequestDraftDeleteById;
+            return IsRequestDraftDeleteById;
+        }
+
+        /// <summary>
         /// A request that should be deleted, identified by its unique key.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestDraftDeleteByUniqueKey))]
 #endif
         public bool IsRequestDraftDeleteByUniqueKey => RequestDraftDeleteByUniqueKey != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRequestDraftDeleteByUniqueKey(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.RequestDraftDeleteByUniqueKey? value)
+        {
+            value = RequestDraftDeleteByUniqueKey;
+            return IsRequestDraftDeleteByUniqueKey;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.RequestDraftDeleteById?, TResult>? requestDraftDeleteById = null,
-            global::System.Func<global::Apify.RequestDraftDeleteByUniqueKey?, TResult>? requestDraftDeleteByUniqueKey = null,
+            global::System.Func<global::Apify.RequestDraftDeleteById, TResult>? requestDraftDeleteById = null,
+            global::System.Func<global::Apify.RequestDraftDeleteByUniqueKey, TResult>? requestDraftDeleteByUniqueKey = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.RequestDraftDeleteById?>? requestDraftDeleteById = null,
-            global::System.Action<global::Apify.RequestDraftDeleteByUniqueKey?>? requestDraftDeleteByUniqueKey = null,
+            global::System.Action<global::Apify.RequestDraftDeleteById>? requestDraftDeleteById = null,
+
+            global::System.Action<global::Apify.RequestDraftDeleteByUniqueKey>? requestDraftDeleteByUniqueKey = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRequestDraftDeleteById)
+            {
+                requestDraftDeleteById?.Invoke(RequestDraftDeleteById!);
+            }
+            else if (IsRequestDraftDeleteByUniqueKey)
+            {
+                requestDraftDeleteByUniqueKey?.Invoke(RequestDraftDeleteByUniqueKey!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.RequestDraftDeleteById>? requestDraftDeleteById = null,
+            global::System.Action<global::Apify.RequestDraftDeleteByUniqueKey>? requestDraftDeleteByUniqueKey = null,
             bool validate = true)
         {
             if (validate)
