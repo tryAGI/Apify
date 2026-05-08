@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPaginationResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.PaginationResponse? value)
+        {
+            value = PaginationResponse;
+            return IsPaginationResponse;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfTasksVariant2? ListOfTasksVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfTasksVariant2))]
 #endif
         public bool IsListOfTasksVariant2 => ListOfTasksVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickListOfTasksVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.ListOfTasksVariant2? value)
+        {
+            value = ListOfTasksVariant2;
+            return IsListOfTasksVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.PaginationResponse?, TResult>? paginationResponse = null,
-            global::System.Func<global::Apify.ListOfTasksVariant2?, TResult>? listOfTasksVariant2 = null,
+            global::System.Func<global::Apify.PaginationResponse, TResult>? paginationResponse = null,
+            global::System.Func<global::Apify.ListOfTasksVariant2, TResult>? listOfTasksVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.PaginationResponse?>? paginationResponse = null,
-            global::System.Action<global::Apify.ListOfTasksVariant2?>? listOfTasksVariant2 = null,
+            global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
+
+            global::System.Action<global::Apify.ListOfTasksVariant2>? listOfTasksVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPaginationResponse)
+            {
+                paginationResponse?.Invoke(PaginationResponse!);
+            }
+            else if (IsListOfTasksVariant2)
+            {
+                listOfTasksVariant2?.Invoke(ListOfTasksVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
+            global::System.Action<global::Apify.ListOfTasksVariant2>? listOfTasksVariant2 = null,
             bool validate = true)
         {
             if (validate)

@@ -34,6 +34,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPayPerEvent(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.PayPerEventActorPricingInfo? value)
+        {
+            value = PayPerEvent;
+            return IsPayPerEvent;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfo? PricePerDatasetItem { get; init; }
 #else
@@ -47,6 +60,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PricePerDatasetItem))]
 #endif
         public bool IsPricePerDatasetItem => PricePerDatasetItem != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPricePerDatasetItem(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.PricePerDatasetItemActorPricingInfo? value)
+        {
+            value = PricePerDatasetItem;
+            return IsPricePerDatasetItem;
+        }
 
         /// <summary>
         /// 
@@ -68,6 +94,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickFlatPricePerMonth(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.FlatPricePerMonthActorPricingInfo? value)
+        {
+            value = FlatPricePerMonth;
+            return IsFlatPricePerMonth;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FreeActorPricingInfo? Free { get; init; }
 #else
@@ -81,6 +120,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Free))]
 #endif
         public bool IsFree => Free != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFree(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.FreeActorPricingInfo? value)
+        {
+            value = Free;
+            return IsFree;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -239,6 +291,42 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::Apify.PayPerEventActorPricingInfo?>? payPerEvent = null,
+
+            global::System.Action<global::Apify.PricePerDatasetItemActorPricingInfo?>? pricePerDatasetItem = null,
+
+            global::System.Action<global::Apify.FlatPricePerMonthActorPricingInfo?>? flatPricePerMonth = null,
+
+            global::System.Action<global::Apify.FreeActorPricingInfo?>? free = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPayPerEvent)
+            {
+                payPerEvent?.Invoke(PayPerEvent!);
+            }
+            else if (IsPricePerDatasetItem)
+            {
+                pricePerDatasetItem?.Invoke(PricePerDatasetItem!);
+            }
+            else if (IsFlatPricePerMonth)
+            {
+                flatPricePerMonth?.Invoke(FlatPricePerMonth!);
+            }
+            else if (IsFree)
+            {
+                free?.Invoke(Free!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::Apify.PayPerEventActorPricingInfo?>? payPerEvent = null,
             global::System.Action<global::Apify.PricePerDatasetItemActorPricingInfo?>? pricePerDatasetItem = null,
             global::System.Action<global::Apify.FlatPricePerMonthActorPricingInfo?>? flatPricePerMonth = null,

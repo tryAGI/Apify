@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCommonActorPricingInfo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.CommonActorPricingInfo? value)
+        {
+            value = CommonActorPricingInfo;
+            return IsCommonActorPricingInfo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfoVariant2? PricePerDatasetItemActorPricingInfoVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PricePerDatasetItemActorPricingInfoVariant2))]
 #endif
         public bool IsPricePerDatasetItemActorPricingInfoVariant2 => PricePerDatasetItemActorPricingInfoVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPricePerDatasetItemActorPricingInfoVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.PricePerDatasetItemActorPricingInfoVariant2? value)
+        {
+            value = PricePerDatasetItemActorPricingInfoVariant2;
+            return IsPricePerDatasetItemActorPricingInfoVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.CommonActorPricingInfo?, TResult>? commonActorPricingInfo = null,
-            global::System.Func<global::Apify.PricePerDatasetItemActorPricingInfoVariant2?, TResult>? pricePerDatasetItemActorPricingInfoVariant2 = null,
+            global::System.Func<global::Apify.CommonActorPricingInfo, TResult>? commonActorPricingInfo = null,
+            global::System.Func<global::Apify.PricePerDatasetItemActorPricingInfoVariant2, TResult>? pricePerDatasetItemActorPricingInfoVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.CommonActorPricingInfo?>? commonActorPricingInfo = null,
-            global::System.Action<global::Apify.PricePerDatasetItemActorPricingInfoVariant2?>? pricePerDatasetItemActorPricingInfoVariant2 = null,
+            global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
+
+            global::System.Action<global::Apify.PricePerDatasetItemActorPricingInfoVariant2>? pricePerDatasetItemActorPricingInfoVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCommonActorPricingInfo)
+            {
+                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+            }
+            else if (IsPricePerDatasetItemActorPricingInfoVariant2)
+            {
+                pricePerDatasetItemActorPricingInfoVariant2?.Invoke(PricePerDatasetItemActorPricingInfoVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
+            global::System.Action<global::Apify.PricePerDatasetItemActorPricingInfoVariant2>? pricePerDatasetItemActorPricingInfoVariant2 = null,
             bool validate = true)
         {
             if (validate)

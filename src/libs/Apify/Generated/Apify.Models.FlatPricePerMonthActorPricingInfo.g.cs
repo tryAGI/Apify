@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCommonActorPricingInfo(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.CommonActorPricingInfo? value)
+        {
+            value = CommonActorPricingInfo;
+            return IsCommonActorPricingInfo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FlatPricePerMonthActorPricingInfoVariant2? FlatPricePerMonthActorPricingInfoVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FlatPricePerMonthActorPricingInfoVariant2))]
 #endif
         public bool IsFlatPricePerMonthActorPricingInfoVariant2 => FlatPricePerMonthActorPricingInfoVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFlatPricePerMonthActorPricingInfoVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.FlatPricePerMonthActorPricingInfoVariant2? value)
+        {
+            value = FlatPricePerMonthActorPricingInfoVariant2;
+            return IsFlatPricePerMonthActorPricingInfoVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.CommonActorPricingInfo?, TResult>? commonActorPricingInfo = null,
-            global::System.Func<global::Apify.FlatPricePerMonthActorPricingInfoVariant2?, TResult>? flatPricePerMonthActorPricingInfoVariant2 = null,
+            global::System.Func<global::Apify.CommonActorPricingInfo, TResult>? commonActorPricingInfo = null,
+            global::System.Func<global::Apify.FlatPricePerMonthActorPricingInfoVariant2, TResult>? flatPricePerMonthActorPricingInfoVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.CommonActorPricingInfo?>? commonActorPricingInfo = null,
-            global::System.Action<global::Apify.FlatPricePerMonthActorPricingInfoVariant2?>? flatPricePerMonthActorPricingInfoVariant2 = null,
+            global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
+
+            global::System.Action<global::Apify.FlatPricePerMonthActorPricingInfoVariant2>? flatPricePerMonthActorPricingInfoVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCommonActorPricingInfo)
+            {
+                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+            }
+            else if (IsFlatPricePerMonthActorPricingInfoVariant2)
+            {
+                flatPricePerMonthActorPricingInfoVariant2?.Invoke(FlatPricePerMonthActorPricingInfoVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
+            global::System.Action<global::Apify.FlatPricePerMonthActorPricingInfoVariant2>? flatPricePerMonthActorPricingInfoVariant2 = null,
             bool validate = true)
         {
             if (validate)
