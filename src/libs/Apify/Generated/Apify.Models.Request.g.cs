@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static Request FromRequestBase(global::Apify.RequestBase? value) => new Request(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Request(global::Apify.RequestVariant2 value) => new Request((global::Apify.RequestVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             RequestVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Request FromRequestVariant2(global::Apify.RequestVariant2? value) => new Request(value);
 
         /// <summary>
         /// 

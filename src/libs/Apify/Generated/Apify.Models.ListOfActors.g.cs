@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfActors FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfActors(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfActors(global::Apify.ListOfActorsVariant2 value) => new ListOfActors((global::Apify.ListOfActorsVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfActorsVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfActors FromListOfActorsVariant2(global::Apify.ListOfActorsVariant2? value) => new ListOfActors(value);
 
         /// <summary>
         /// 

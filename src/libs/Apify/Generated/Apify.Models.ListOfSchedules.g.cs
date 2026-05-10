@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfSchedules FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfSchedules(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfSchedules(global::Apify.ListOfSchedulesVariant2 value) => new ListOfSchedules((global::Apify.ListOfSchedulesVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfSchedulesVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfSchedules FromListOfSchedulesVariant2(global::Apify.ListOfSchedulesVariant2? value) => new ListOfSchedules(value);
 
         /// <summary>
         /// 

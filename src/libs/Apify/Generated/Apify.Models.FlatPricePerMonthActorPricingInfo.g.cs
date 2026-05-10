@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static FlatPricePerMonthActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new FlatPricePerMonthActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FlatPricePerMonthActorPricingInfo(global::Apify.FlatPricePerMonthActorPricingInfoVariant2 value) => new FlatPricePerMonthActorPricingInfo((global::Apify.FlatPricePerMonthActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             FlatPricePerMonthActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FlatPricePerMonthActorPricingInfo FromFlatPricePerMonthActorPricingInfoVariant2(global::Apify.FlatPricePerMonthActorPricingInfoVariant2? value) => new FlatPricePerMonthActorPricingInfo(value);
 
         /// <summary>
         /// 

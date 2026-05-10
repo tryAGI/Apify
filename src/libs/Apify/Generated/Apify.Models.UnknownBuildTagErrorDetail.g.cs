@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static UnknownBuildTagErrorDetail FromErrorDetail(global::Apify.ErrorDetail? value) => new UnknownBuildTagErrorDetail(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UnknownBuildTagErrorDetail(global::Apify.UnknownBuildTagErrorDetailVariant2 value) => new UnknownBuildTagErrorDetail((global::Apify.UnknownBuildTagErrorDetailVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             UnknownBuildTagErrorDetailVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UnknownBuildTagErrorDetail FromUnknownBuildTagErrorDetailVariant2(global::Apify.UnknownBuildTagErrorDetailVariant2? value) => new UnknownBuildTagErrorDetail(value);
 
         /// <summary>
         /// 

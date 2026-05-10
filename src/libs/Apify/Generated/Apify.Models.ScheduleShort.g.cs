@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ScheduleShort FromScheduleBase(global::Apify.ScheduleBase? value) => new ScheduleShort(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ScheduleShort(global::Apify.ScheduleShortVariant2 value) => new ScheduleShort((global::Apify.ScheduleShortVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ScheduleShortVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ScheduleShort FromScheduleShortVariant2(global::Apify.ScheduleShortVariant2? value) => new ScheduleShort(value);
 
         /// <summary>
         /// 

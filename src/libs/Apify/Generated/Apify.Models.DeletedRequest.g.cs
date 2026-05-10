@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static DeletedRequest FromDeletedRequestById(global::Apify.DeletedRequestById? value) => new DeletedRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator DeletedRequest(global::Apify.DeletedRequestByUniqueKey value) => new DeletedRequest((global::Apify.DeletedRequestByUniqueKey?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             DeletedRequestByUniqueKey = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static DeletedRequest FromDeletedRequestByUniqueKey(global::Apify.DeletedRequestByUniqueKey? value) => new DeletedRequest(value);
 
         /// <summary>
         /// 

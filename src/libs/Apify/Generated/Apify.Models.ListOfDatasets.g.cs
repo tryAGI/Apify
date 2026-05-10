@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfDatasets FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfDatasets(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfDatasets(global::Apify.ListOfDatasetsVariant2 value) => new ListOfDatasets((global::Apify.ListOfDatasetsVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfDatasetsVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfDatasets FromListOfDatasetsVariant2(global::Apify.ListOfDatasetsVariant2? value) => new ListOfDatasets(value);
 
         /// <summary>
         /// 

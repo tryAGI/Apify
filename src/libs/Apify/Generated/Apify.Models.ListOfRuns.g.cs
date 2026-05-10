@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfRuns FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfRuns(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfRuns(global::Apify.ListOfRunsVariant2 value) => new ListOfRuns((global::Apify.ListOfRunsVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfRunsVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfRuns FromListOfRunsVariant2(global::Apify.ListOfRunsVariant2? value) => new ListOfRuns(value);
 
         /// <summary>
         /// 

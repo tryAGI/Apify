@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static RunTimeoutExceededErrorDetail FromErrorDetail(global::Apify.ErrorDetail? value) => new RunTimeoutExceededErrorDetail(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RunTimeoutExceededErrorDetail(global::Apify.RunTimeoutExceededErrorDetailVariant2 value) => new RunTimeoutExceededErrorDetail((global::Apify.RunTimeoutExceededErrorDetailVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             RunTimeoutExceededErrorDetailVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RunTimeoutExceededErrorDetail FromRunTimeoutExceededErrorDetailVariant2(global::Apify.RunTimeoutExceededErrorDetailVariant2? value) => new RunTimeoutExceededErrorDetail(value);
 
         /// <summary>
         /// 
