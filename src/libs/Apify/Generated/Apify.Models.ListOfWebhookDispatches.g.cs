@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfWebhookDispatches FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfWebhookDispatches(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfWebhookDispatches(global::Apify.ListOfWebhookDispatchesVariant2 value) => new ListOfWebhookDispatches((global::Apify.ListOfWebhookDispatchesVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfWebhookDispatchesVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfWebhookDispatches FromListOfWebhookDispatchesVariant2(global::Apify.ListOfWebhookDispatchesVariant2? value) => new ListOfWebhookDispatches(value);
 
         /// <summary>
         /// 

@@ -94,6 +94,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ScheduleActionShort FromRunActor(global::Apify.ScheduleActionShortRunActor? value) => new ScheduleActionShort(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortRunActorTask value) => new ScheduleActionShort((global::Apify.ScheduleActionShortRunActorTask?)value);
 
         /// <summary>
@@ -108,6 +113,11 @@ namespace Apify
         {
             RunActorTask = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ScheduleActionShort FromRunActorTask(global::Apify.ScheduleActionShortRunActorTask? value) => new ScheduleActionShort(value);
 
         /// <summary>
         /// 

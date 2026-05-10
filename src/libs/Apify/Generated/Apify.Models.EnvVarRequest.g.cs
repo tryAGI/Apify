@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static EnvVarRequest FromEnvVar(global::Apify.EnvVar? value) => new EnvVarRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public EnvVarRequest(
             global::Apify.EnvVar? envVar,
             object? envVarRequestVariant2

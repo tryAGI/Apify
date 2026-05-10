@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static PricePerDatasetItemActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new PricePerDatasetItemActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PricePerDatasetItemActorPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfoVariant2 value) => new PricePerDatasetItemActorPricingInfo((global::Apify.PricePerDatasetItemActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             PricePerDatasetItemActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PricePerDatasetItemActorPricingInfo FromPricePerDatasetItemActorPricingInfoVariant2(global::Apify.PricePerDatasetItemActorPricingInfoVariant2? value) => new PricePerDatasetItemActorPricingInfo(value);
 
         /// <summary>
         /// 

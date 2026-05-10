@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static Schedule FromScheduleBase(global::Apify.ScheduleBase? value) => new Schedule(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Schedule(global::Apify.ScheduleVariant2 value) => new Schedule((global::Apify.ScheduleVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ScheduleVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Schedule FromScheduleVariant2(global::Apify.ScheduleVariant2? value) => new Schedule(value);
 
         /// <summary>
         /// 

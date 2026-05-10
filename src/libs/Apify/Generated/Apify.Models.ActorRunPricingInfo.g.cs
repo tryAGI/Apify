@@ -154,6 +154,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ActorRunPricingInfo FromPayPerEvent(global::Apify.PayPerEventActorPricingInfo? value) => new ActorRunPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.PricePerDatasetItemActorPricingInfo?)value);
 
         /// <summary>
@@ -168,6 +173,11 @@ namespace Apify
         {
             PricePerDatasetItem = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ActorRunPricingInfo FromPricePerDatasetItem(global::Apify.PricePerDatasetItemActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
         /// 
@@ -190,6 +200,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ActorRunPricingInfo FromFlatPricePerMonth(global::Apify.FlatPricePerMonthActorPricingInfo? value) => new ActorRunPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.FreeActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.FreeActorPricingInfo?)value);
 
         /// <summary>
@@ -204,6 +219,11 @@ namespace Apify
         {
             Free = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ActorRunPricingInfo FromFree(global::Apify.FreeActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
         /// 

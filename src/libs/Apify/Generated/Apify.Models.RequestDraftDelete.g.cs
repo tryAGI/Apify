@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static RequestDraftDelete FromRequestDraftDeleteById(global::Apify.RequestDraftDeleteById? value) => new RequestDraftDelete(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteByUniqueKey?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             RequestDraftDeleteByUniqueKey = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RequestDraftDelete FromRequestDraftDeleteByUniqueKey(global::Apify.RequestDraftDeleteByUniqueKey? value) => new RequestDraftDelete(value);
 
         /// <summary>
         /// 

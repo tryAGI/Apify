@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfKeyValueStores FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfKeyValueStores(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfKeyValueStores(global::Apify.ListOfKeyValueStoresVariant2 value) => new ListOfKeyValueStores((global::Apify.ListOfKeyValueStoresVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfKeyValueStoresVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfKeyValueStores FromListOfKeyValueStoresVariant2(global::Apify.ListOfKeyValueStoresVariant2? value) => new ListOfKeyValueStores(value);
 
         /// <summary>
         /// 

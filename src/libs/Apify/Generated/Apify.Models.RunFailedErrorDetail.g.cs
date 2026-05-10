@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static RunFailedErrorDetail FromErrorDetail(global::Apify.ErrorDetail? value) => new RunFailedErrorDetail(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RunFailedErrorDetail(global::Apify.RunFailedErrorDetailVariant2 value) => new RunFailedErrorDetail((global::Apify.RunFailedErrorDetailVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             RunFailedErrorDetailVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RunFailedErrorDetail FromRunFailedErrorDetailVariant2(global::Apify.RunFailedErrorDetailVariant2? value) => new RunFailedErrorDetail(value);
 
         /// <summary>
         /// 

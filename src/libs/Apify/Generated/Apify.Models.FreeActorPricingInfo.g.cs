@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static FreeActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new FreeActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FreeActorPricingInfo(global::Apify.FreeActorPricingInfoVariant2 value) => new FreeActorPricingInfo((global::Apify.FreeActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             FreeActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FreeActorPricingInfo FromFreeActorPricingInfoVariant2(global::Apify.FreeActorPricingInfoVariant2? value) => new FreeActorPricingInfo(value);
 
         /// <summary>
         /// 

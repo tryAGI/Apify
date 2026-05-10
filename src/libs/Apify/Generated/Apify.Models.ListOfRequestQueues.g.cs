@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfRequestQueues FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfRequestQueues(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfRequestQueues(global::Apify.ListOfRequestQueuesVariant2 value) => new ListOfRequestQueues((global::Apify.ListOfRequestQueuesVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             ListOfRequestQueuesVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfRequestQueues FromListOfRequestQueuesVariant2(global::Apify.ListOfRequestQueuesVariant2? value) => new ListOfRequestQueues(value);
 
         /// <summary>
         /// 

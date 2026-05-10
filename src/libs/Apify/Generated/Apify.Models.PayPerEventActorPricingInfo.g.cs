@@ -89,6 +89,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static PayPerEventActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new PayPerEventActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PayPerEventActorPricingInfo(global::Apify.PayPerEventActorPricingInfoVariant2 value) => new PayPerEventActorPricingInfo((global::Apify.PayPerEventActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace Apify
         {
             PayPerEventActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PayPerEventActorPricingInfo FromPayPerEventActorPricingInfoVariant2(global::Apify.PayPerEventActorPricingInfoVariant2? value) => new PayPerEventActorPricingInfo(value);
 
         /// <summary>
         /// 
