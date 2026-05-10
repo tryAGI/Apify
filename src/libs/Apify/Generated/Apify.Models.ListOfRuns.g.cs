@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfRunsVariant2? ListOfRunsVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfRunsVariant2;
             return IsListOfRunsVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfRunsVariant2 PickListOfRunsVariant2() => IsListOfRunsVariant2
+            ? ListOfRunsVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfRunsVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

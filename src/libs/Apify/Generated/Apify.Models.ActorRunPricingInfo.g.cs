@@ -47,6 +47,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PayPerEventActorPricingInfo PickPayPerEvent() => IsPayPerEvent
+            ? PayPerEvent!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEvent' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfo? PricePerDatasetItem { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Apify
             value = PricePerDatasetItem;
             return IsPricePerDatasetItem;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.PricePerDatasetItemActorPricingInfo PickPricePerDatasetItem() => IsPricePerDatasetItem
+            ? PricePerDatasetItem!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItem' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -107,6 +121,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.FlatPricePerMonthActorPricingInfo PickFlatPricePerMonth() => IsFlatPricePerMonth
+            ? FlatPricePerMonth!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FlatPricePerMonth' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FreeActorPricingInfo? Free { get; init; }
 #else
@@ -133,6 +154,13 @@ namespace Apify
             value = Free;
             return IsFree;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.FreeActorPricingInfo PickFree() => IsFree
+            ? Free!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Free' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -61,5 +61,6 @@ namespace Apify
         public DatasetSchemaValidationError()
         {
         }
+
     }
 }

@@ -69,5 +69,6 @@ namespace Apify
         public ScheduleActionRunActorTask()
         {
         }
+
     }
 }

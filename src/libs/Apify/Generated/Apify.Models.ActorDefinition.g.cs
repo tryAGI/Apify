@@ -194,5 +194,6 @@ namespace Apify
         public ActorDefinition()
         {
         }
+
     }
 }

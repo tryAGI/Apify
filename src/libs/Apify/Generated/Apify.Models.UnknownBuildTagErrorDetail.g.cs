@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ErrorDetail PickErrorDetail() => IsErrorDetail
+            ? ErrorDetail!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ErrorDetail' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.UnknownBuildTagErrorDetailVariant2? UnknownBuildTagErrorDetailVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = UnknownBuildTagErrorDetailVariant2;
             return IsUnknownBuildTagErrorDetailVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.UnknownBuildTagErrorDetailVariant2 PickUnknownBuildTagErrorDetailVariant2() => IsUnknownBuildTagErrorDetailVariant2
+            ? UnknownBuildTagErrorDetailVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UnknownBuildTagErrorDetailVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

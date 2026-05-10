@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ScheduleBase PickScheduleBase() => IsScheduleBase
+            ? ScheduleBase!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleBase' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleShortVariant2? ScheduleShortVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ScheduleShortVariant2;
             return IsScheduleShortVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ScheduleShortVariant2 PickScheduleShortVariant2() => IsScheduleShortVariant2
+            ? ScheduleShortVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleShortVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
+            ? CommonActorPricingInfo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FlatPricePerMonthActorPricingInfoVariant2? FlatPricePerMonthActorPricingInfoVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = FlatPricePerMonthActorPricingInfoVariant2;
             return IsFlatPricePerMonthActorPricingInfoVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.FlatPricePerMonthActorPricingInfoVariant2 PickFlatPricePerMonthActorPricingInfoVariant2() => IsFlatPricePerMonthActorPricingInfoVariant2
+            ? FlatPricePerMonthActorPricingInfoVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FlatPricePerMonthActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

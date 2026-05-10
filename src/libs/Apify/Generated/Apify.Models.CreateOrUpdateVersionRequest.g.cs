@@ -117,5 +117,6 @@ namespace Apify
         public CreateOrUpdateVersionRequest()
         {
         }
+
     }
 }

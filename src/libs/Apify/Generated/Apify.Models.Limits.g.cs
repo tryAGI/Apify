@@ -140,5 +140,6 @@ namespace Apify
         public Limits()
         {
         }
+
     }
 }

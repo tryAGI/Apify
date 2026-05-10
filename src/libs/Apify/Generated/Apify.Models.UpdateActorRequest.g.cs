@@ -233,5 +233,6 @@ namespace Apify
         public UpdateActorRequest()
         {
         }
+
     }
 }

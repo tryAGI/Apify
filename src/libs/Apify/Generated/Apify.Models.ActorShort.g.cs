@@ -98,5 +98,6 @@ namespace Apify
         public ActorShort()
         {
         }
+
     }
 }

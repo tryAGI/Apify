@@ -63,5 +63,6 @@ namespace Apify
         public TaggedBuildInfo()
         {
         }
+
     }
 }

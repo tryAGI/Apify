@@ -74,5 +74,6 @@ namespace Apify
         public DatasetFieldStatistics()
         {
         }
+
     }
 }

@@ -68,5 +68,18 @@ namespace Apify
         public ScheduleCreateActionRunActor()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="ScheduleCreateActionRunActor"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static ScheduleCreateActionRunActor FromActorId(string actorId)
+        {
+            return new ScheduleCreateActionRunActor
+            {
+                ActorId = actorId,
+            };
+        }
+
     }
 }

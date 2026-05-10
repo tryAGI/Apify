@@ -186,5 +186,6 @@ namespace Apify
         public RunStats()
         {
         }
+
     }
 }

@@ -156,5 +156,6 @@ namespace Apify
         public CreateActorRequest()
         {
         }
+
     }
 }

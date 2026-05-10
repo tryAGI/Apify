@@ -62,5 +62,6 @@ namespace Apify
         public PricePerDatasetItemActorPricingInfoVariant2()
         {
         }
+
     }
 }

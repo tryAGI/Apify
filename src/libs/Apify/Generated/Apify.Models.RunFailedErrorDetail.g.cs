@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ErrorDetail PickErrorDetail() => IsErrorDetail
+            ? ErrorDetail!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ErrorDetail' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RunFailedErrorDetailVariant2? RunFailedErrorDetailVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = RunFailedErrorDetailVariant2;
             return IsRunFailedErrorDetailVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.RunFailedErrorDetailVariant2 PickRunFailedErrorDetailVariant2() => IsRunFailedErrorDetailVariant2
+            ? RunFailedErrorDetailVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunFailedErrorDetailVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

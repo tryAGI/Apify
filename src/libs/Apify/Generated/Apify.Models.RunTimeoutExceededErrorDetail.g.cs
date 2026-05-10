@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ErrorDetail PickErrorDetail() => IsErrorDetail
+            ? ErrorDetail!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ErrorDetail' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RunTimeoutExceededErrorDetailVariant2? RunTimeoutExceededErrorDetailVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = RunTimeoutExceededErrorDetailVariant2;
             return IsRunTimeoutExceededErrorDetailVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.RunTimeoutExceededErrorDetailVariant2 PickRunTimeoutExceededErrorDetailVariant2() => IsRunTimeoutExceededErrorDetailVariant2
+            ? RunTimeoutExceededErrorDetailVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunTimeoutExceededErrorDetailVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

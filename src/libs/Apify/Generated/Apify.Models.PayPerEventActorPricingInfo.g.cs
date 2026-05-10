@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
+            ? CommonActorPricingInfo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PayPerEventActorPricingInfoVariant2? PayPerEventActorPricingInfoVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = PayPerEventActorPricingInfoVariant2;
             return IsPayPerEventActorPricingInfoVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.PayPerEventActorPricingInfoVariant2 PickPayPerEventActorPricingInfoVariant2() => IsPayPerEventActorPricingInfoVariant2
+            ? PayPerEventActorPricingInfoVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEventActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

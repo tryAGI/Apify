@@ -85,5 +85,6 @@ namespace Apify
         public CreateTaskRequest()
         {
         }
+
     }
 }

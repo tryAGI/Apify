@@ -49,5 +49,6 @@ namespace Apify
         public UserPublicInfo()
         {
         }
+
     }
 }
