@@ -91,6 +91,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.CommonActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.CommonActorPricingInfo> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.CommonActorPricingInfo).Name}");
                     commonActorPricingInfo = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -101,9 +102,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (commonActorPricingInfo == null && payPerEventActorPricingInfoVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PayPerEventActorPricingInfoVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PayPerEventActorPricingInfoVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PayPerEventActorPricingInfoVariant2).Name}");
                     payPerEventActorPricingInfoVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

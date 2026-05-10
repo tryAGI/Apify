@@ -78,6 +78,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestDraftDeleteById), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestDraftDeleteById> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestDraftDeleteById).Name}");
                     requestDraftDeleteById = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -88,9 +89,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (requestDraftDeleteById == null && requestDraftDeleteByUniqueKey == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestDraftDeleteByUniqueKey), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestDraftDeleteByUniqueKey> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestDraftDeleteByUniqueKey).Name}");
                     requestDraftDeleteByUniqueKey = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

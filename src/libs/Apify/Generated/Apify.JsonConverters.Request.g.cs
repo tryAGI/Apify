@@ -86,6 +86,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestBase).Name}");
                     requestBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -96,9 +97,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (requestBase == null && requestVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestVariant2).Name}");
                     requestVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
