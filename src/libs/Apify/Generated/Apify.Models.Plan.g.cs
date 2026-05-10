@@ -241,5 +241,6 @@ namespace Apify
         public Plan()
         {
         }
+
     }
 }

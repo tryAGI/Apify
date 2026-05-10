@@ -41,5 +41,6 @@ namespace Apify
         public RequestVariant2()
         {
         }
+
     }
 }

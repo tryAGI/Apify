@@ -162,5 +162,6 @@ namespace Apify
         public Task()
         {
         }
+
     }
 }

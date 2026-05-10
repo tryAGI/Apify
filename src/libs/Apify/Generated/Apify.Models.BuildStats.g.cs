@@ -58,5 +58,6 @@ namespace Apify
         public BuildStats()
         {
         }
+
     }
 }

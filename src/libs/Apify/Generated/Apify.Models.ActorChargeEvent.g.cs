@@ -60,5 +60,6 @@ namespace Apify
         public ActorChargeEvent()
         {
         }
+
     }
 }

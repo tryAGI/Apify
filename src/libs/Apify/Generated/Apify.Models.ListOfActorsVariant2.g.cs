@@ -40,5 +40,6 @@ namespace Apify
         public ListOfActorsVariant2()
         {
         }
+
     }
 }

@@ -59,5 +59,6 @@ namespace Apify
         public SourceCodeFile()
         {
         }
+
     }
 }

@@ -39,5 +39,6 @@ namespace Apify
         public BuildUsage()
         {
         }
+
     }
 }

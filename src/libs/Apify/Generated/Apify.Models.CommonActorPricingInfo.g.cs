@@ -93,5 +93,6 @@ namespace Apify
         public CommonActorPricingInfo()
         {
         }
+
     }
 }

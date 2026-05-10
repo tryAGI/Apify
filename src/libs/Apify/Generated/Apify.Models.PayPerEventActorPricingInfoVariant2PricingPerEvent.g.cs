@@ -39,5 +39,6 @@ namespace Apify
         public PayPerEventActorPricingInfoVariant2PricingPerEvent()
         {
         }
+
     }
 }

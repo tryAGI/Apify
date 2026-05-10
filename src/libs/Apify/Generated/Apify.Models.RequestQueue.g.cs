@@ -184,5 +184,6 @@ namespace Apify
         public RequestQueue()
         {
         }
+
     }
 }

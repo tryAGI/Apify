@@ -47,6 +47,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ScheduleActionRunActor PickRunActor() => IsRunActor
+            ? RunActor!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunActor' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleActionRunActorTask? RunActorTask { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Apify
             value = RunActorTask;
             return IsRunActorTask;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ScheduleActionRunActorTask PickRunActorTask() => IsRunActorTask
+            ? RunActorTask!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunActorTask' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

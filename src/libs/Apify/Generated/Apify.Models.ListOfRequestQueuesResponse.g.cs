@@ -43,5 +43,6 @@ namespace Apify
         public ListOfRequestQueuesResponse()
         {
         }
+
     }
 }

@@ -59,5 +59,18 @@ namespace Apify
         public PayPerEventActorPricingInfoVariant2()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="PayPerEventActorPricingInfoVariant2"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static PayPerEventActorPricingInfoVariant2 FromPricingPerEvent(global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent pricingPerEvent)
+        {
+            return new PayPerEventActorPricingInfoVariant2
+            {
+                PricingPerEvent = pricingPerEvent,
+            };
+        }
+
     }
 }

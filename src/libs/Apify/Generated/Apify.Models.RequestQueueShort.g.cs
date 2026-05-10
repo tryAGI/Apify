@@ -195,5 +195,6 @@ namespace Apify
         public RequestQueueShort()
         {
         }
+
     }
 }

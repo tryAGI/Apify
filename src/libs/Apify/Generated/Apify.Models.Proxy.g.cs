@@ -50,5 +50,6 @@ namespace Apify
         public Proxy()
         {
         }
+
     }
 }

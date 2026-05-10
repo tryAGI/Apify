@@ -102,5 +102,6 @@ namespace Apify
         public ActorStats()
         {
         }
+
     }
 }

@@ -120,5 +120,6 @@ namespace Apify
         public UserPrivateInfo()
         {
         }
+
     }
 }

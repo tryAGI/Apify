@@ -88,5 +88,6 @@ namespace Apify
         public RunOptions()
         {
         }
+
     }
 }

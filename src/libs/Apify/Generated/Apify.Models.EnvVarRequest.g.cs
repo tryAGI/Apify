@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.EnvVar PickEnvVar() => IsEnvVar
+            ? EnvVar!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVar' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? EnvVarRequestVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = EnvVarRequestVariant2;
             return IsEnvVarRequestVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickEnvVarRequestVariant2() => IsEnvVarRequestVariant2
+            ? EnvVarRequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVarRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

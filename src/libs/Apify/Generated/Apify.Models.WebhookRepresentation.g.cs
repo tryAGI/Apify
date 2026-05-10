@@ -76,5 +76,6 @@ namespace Apify
         public WebhookRepresentation()
         {
         }
+
     }
 }

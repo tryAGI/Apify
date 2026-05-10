@@ -180,5 +180,6 @@ namespace Apify
         public StoreListActor()
         {
         }
+
     }
 }

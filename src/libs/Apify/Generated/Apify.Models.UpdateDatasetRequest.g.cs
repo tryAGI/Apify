@@ -51,5 +51,6 @@ namespace Apify
         public UpdateDatasetRequest()
         {
         }
+
     }
 }

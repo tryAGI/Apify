@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfSchedulesVariant2? ListOfSchedulesVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfSchedulesVariant2;
             return IsListOfSchedulesVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfSchedulesVariant2 PickListOfSchedulesVariant2() => IsListOfSchedulesVariant2
+            ? ListOfSchedulesVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfSchedulesVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -77,5 +77,6 @@ namespace Apify
         public EffectivePlatformFeature()
         {
         }
+
     }
 }

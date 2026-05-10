@@ -79,5 +79,6 @@ namespace Apify
         public KeyValueStoreStats()
         {
         }
+
     }
 }

@@ -42,5 +42,6 @@ namespace Apify
         public UpdateRequestResponse()
         {
         }
+
     }
 }

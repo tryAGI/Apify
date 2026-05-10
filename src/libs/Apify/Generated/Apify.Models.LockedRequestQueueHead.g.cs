@@ -112,5 +112,6 @@ namespace Apify
         public LockedRequestQueueHead()
         {
         }
+
     }
 }

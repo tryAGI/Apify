@@ -82,5 +82,6 @@ namespace Apify
         public MonthlyUsage()
         {
         }
+
     }
 }
