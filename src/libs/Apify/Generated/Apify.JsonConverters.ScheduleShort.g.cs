@@ -86,6 +86,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleBase).Name}");
                     scheduleBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -96,9 +97,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (scheduleBase == null && scheduleShortVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleShortVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleShortVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleShortVariant2).Name}");
                     scheduleShortVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

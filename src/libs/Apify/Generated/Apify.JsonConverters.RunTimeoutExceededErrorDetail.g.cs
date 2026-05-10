@@ -77,6 +77,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ErrorDetail), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ErrorDetail> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ErrorDetail).Name}");
                     errorDetail = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -87,9 +88,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (errorDetail == null && runTimeoutExceededErrorDetailVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RunTimeoutExceededErrorDetailVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RunTimeoutExceededErrorDetailVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RunTimeoutExceededErrorDetailVariant2).Name}");
                     runTimeoutExceededErrorDetailVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

@@ -80,6 +80,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PaginationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PaginationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PaginationResponse).Name}");
                     paginationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -90,9 +91,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (paginationResponse == null && listOfTasksVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ListOfTasksVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ListOfTasksVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ListOfTasksVariant2).Name}");
                     listOfTasksVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
