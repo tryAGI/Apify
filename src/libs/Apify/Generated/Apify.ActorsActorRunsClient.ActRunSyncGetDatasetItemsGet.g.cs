@@ -40,6 +40,7 @@ namespace Apify
             ref double? offset,
             ref double? limit,
             ref string? fields,
+            ref string? outputFields,
             ref string? omit,
             ref string? unwind,
             ref string? flatten,
@@ -54,7 +55,9 @@ namespace Apify
             ref bool? skipEmpty,
             ref bool? simplified,
             ref string? view,
-            ref bool? skipFailedPages);
+            ref bool? skipFailedPages,
+            ref string? feedTitle,
+            ref string? feedDescription);
         partial void PrepareActRunSyncGetDatasetItemsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -71,6 +74,7 @@ namespace Apify
             double? offset,
             double? limit,
             string? fields,
+            string? outputFields,
             string? omit,
             string? unwind,
             string? flatten,
@@ -85,7 +89,9 @@ namespace Apify
             bool? skipEmpty,
             bool? simplified,
             string? view,
-            bool? skipFailedPages);
+            bool? skipFailedPages,
+            string? feedTitle,
+            string? feedDescription);
         partial void ProcessActRunSyncGetDatasetItemsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -149,6 +155,9 @@ namespace Apify
         /// <param name="fields">
         /// Example: myValue,myOtherValue
         /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
         /// <param name="omit">
         /// Example: myValue,myOtherValue
         /// </param>
@@ -194,6 +203,12 @@ namespace Apify
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -211,6 +226,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             string? fields = default,
+            string? outputFields = default,
             string? omit = default,
             string? unwind = default,
             string? flatten = default,
@@ -226,6 +242,8 @@ namespace Apify
             bool? simplified = default,
             string? view = default,
             bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -243,6 +261,7 @@ namespace Apify
                 offset: offset,
                 limit: limit,
                 fields: fields,
+                outputFields: outputFields,
                 omit: omit,
                 unwind: unwind,
                 flatten: flatten,
@@ -258,6 +277,8 @@ namespace Apify
                 simplified: simplified,
                 view: view,
                 skipFailedPages: skipFailedPages,
+                feedTitle: feedTitle,
+                feedDescription: feedDescription,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -318,6 +339,9 @@ namespace Apify
         /// <param name="fields">
         /// Example: myValue,myOtherValue
         /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
         /// <param name="omit">
         /// Example: myValue,myOtherValue
         /// </param>
@@ -363,6 +387,12 @@ namespace Apify
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -380,6 +410,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             string? fields = default,
+            string? outputFields = default,
             string? omit = default,
             string? unwind = default,
             string? flatten = default,
@@ -395,6 +426,8 @@ namespace Apify
             bool? simplified = default,
             string? view = default,
             bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -415,6 +448,7 @@ namespace Apify
                 offset: ref offset,
                 limit: ref limit,
                 fields: ref fields,
+                outputFields: ref outputFields,
                 omit: ref omit,
                 unwind: ref unwind,
                 flatten: ref flatten,
@@ -429,7 +463,9 @@ namespace Apify
                 skipEmpty: ref skipEmpty,
                 simplified: ref simplified,
                 view: ref view,
-                skipFailedPages: ref skipFailedPages);
+                skipFailedPages: ref skipFailedPages,
+                feedTitle: ref feedTitle,
+                feedDescription: ref feedDescription);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -470,6 +506,7 @@ namespace Apify
                                 .AddOptionalParameter("offset", offset?.ToString())
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("fields", fields)
+                                .AddOptionalParameter("outputFields", outputFields)
                                 .AddOptionalParameter("omit", omit)
                                 .AddOptionalParameter("unwind", unwind)
                                 .AddOptionalParameter("flatten", flatten)
@@ -485,6 +522,8 @@ namespace Apify
                                 .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("view", view)
                                 .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("feedTitle", feedTitle)
+                                .AddOptionalParameter("feedDescription", feedDescription)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -539,6 +578,7 @@ namespace Apify
                     offset: offset,
                     limit: limit,
                     fields: fields,
+                    outputFields: outputFields,
                     omit: omit,
                     unwind: unwind,
                     flatten: flatten,
@@ -553,7 +593,9 @@ namespace Apify
                     skipEmpty: skipEmpty,
                     simplified: simplified,
                     view: view,
-                    skipFailedPages: skipFailedPages);
+                    skipFailedPages: skipFailedPages,
+                    feedTitle: feedTitle,
+                    feedDescription: feedDescription);
 
                 return __httpRequest;
             }

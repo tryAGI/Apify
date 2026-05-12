@@ -58,6 +58,9 @@ namespace Apify
         /// <param name="fields">
         /// Example: myValue,myOtherValue
         /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
         /// <param name="omit">
         /// Example: myValue,myOtherValue
         /// </param>
@@ -103,6 +106,12 @@ namespace Apify
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -120,6 +129,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             string? fields = default,
+            string? outputFields = default,
             string? omit = default,
             string? unwind = default,
             string? flatten = default,
@@ -135,6 +145,8 @@ namespace Apify
             bool? simplified = default,
             string? view = default,
             bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -191,6 +203,9 @@ namespace Apify
         /// <param name="fields">
         /// Example: myValue,myOtherValue
         /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
         /// <param name="omit">
         /// Example: myValue,myOtherValue
         /// </param>
@@ -236,6 +251,12 @@ namespace Apify
         /// <param name="skipFailedPages">
         /// Example: false
         /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -253,6 +274,7 @@ namespace Apify
             double? offset = default,
             double? limit = default,
             string? fields = default,
+            string? outputFields = default,
             string? omit = default,
             string? unwind = default,
             string? flatten = default,
@@ -268,6 +290,8 @@ namespace Apify
             bool? simplified = default,
             string? view = default,
             bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
