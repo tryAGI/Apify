@@ -65,6 +65,7 @@ namespace Apify
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
         /// <param name="limit">
+        /// Default Value: 1000<br/>
         /// Example: 100
         /// </param>
         /// <param name="collection">
@@ -116,6 +117,7 @@ namespace Apify
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
         /// <param name="limit">
+        /// Default Value: 1000<br/>
         /// Example: 100
         /// </param>
         /// <param name="collection">
