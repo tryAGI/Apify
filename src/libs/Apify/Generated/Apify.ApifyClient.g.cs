@@ -453,6 +453,7 @@ namespace Apify
         /// Actor runs - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
         /// If any returned run object contains usage in dollars, your effective unit pricing at the time of query<br/>
         /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
+        /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorRunsClient ActorRuns => new ActorRunsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
@@ -509,6 +510,7 @@ namespace Apify
         /// <summary>
         /// Actor runs - Introduction. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
         /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
+        /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
         /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorsActorRunsClient ActorsActorRuns => new ActorsActorRunsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
