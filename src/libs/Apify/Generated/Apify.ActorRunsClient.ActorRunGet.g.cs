@@ -55,6 +55,8 @@ namespace Apify
         /// specific run of an Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will synchronously wait<br/>
         /// for the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.<br/>
+        /// Note that the first response after completion can still show preliminary `stats`, costs, and event counts.<br/>
+        /// For stable figures, wait about 10 seconds and call the endpoint again.<br/>
         /// This endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,<br/>
         /// if you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.
         /// </summary>
@@ -94,6 +96,8 @@ namespace Apify
         /// specific run of an Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will synchronously wait<br/>
         /// for the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.<br/>
+        /// Note that the first response after completion can still show preliminary `stats`, costs, and event counts.<br/>
+        /// For stable figures, wait about 10 seconds and call the endpoint again.<br/>
         /// This endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,<br/>
         /// if you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.
         /// </summary>
