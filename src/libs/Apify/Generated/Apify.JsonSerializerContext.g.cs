@@ -155,8 +155,6 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.ListOfBuildsJsonConverter),
 
-            typeof(global::Apify.JsonConverters.UnknownBuildTagErrorDetailJsonConverter),
-
             typeof(global::Apify.JsonConverters.ListOfRunsJsonConverter),
 
             typeof(global::Apify.JsonConverters.RunFailedErrorDetailJsonConverter),
@@ -328,9 +326,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, long?>), TypeInfoPropertyName = "OneOfStringInt642")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Build))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagErrorDetail), TypeInfoPropertyName = "UnknownBuildTagErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UnknownBuildTagError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunShort))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns), TypeInfoPropertyName = "ListOfRuns2")]
