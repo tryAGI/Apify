@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class ActorsActorBuildsClient
+    public partial class LastActorTaskRunSMetamorphClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_ActBuildDefaultGetSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorTaskRunsLastMetamorphPostSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,54 +21,67 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActBuildDefaultGetSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorTaskRunsLastMetamorphPostSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_ActBuildDefaultGetSecurityRequirement0,
+            {                s_ActorTaskRunsLastMetamorphPostSecurityRequirement0,
             };
-        partial void PrepareActBuildDefaultGetArguments(
+        partial void PrepareActorTaskRunsLastMetamorphPostArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string actorId,
-            ref double? waitForFinish);
-        partial void PrepareActBuildDefaultGetRequest(
+            ref string actorTaskId,
+            ref string? status,
+            ref string targetActorId,
+            ref string? build);
+        partial void PrepareActorTaskRunsLastMetamorphPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string actorId,
-            double? waitForFinish);
-        partial void ProcessActBuildDefaultGetResponse(
+            string actorTaskId,
+            string? status,
+            string targetActorId,
+            string? build);
+        partial void ProcessActorTaskRunsLastMetamorphPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessActBuildDefaultGetResponseContent(
+        partial void ProcessActorTaskRunsLastMetamorphPostResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get default build<br/>
-        /// Get the default build for an Actor.<br/>
-        /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
-        /// This avoids the need for periodic polling when waiting for the build to complete.<br/>
-        /// This endpoint does not require an authentication token. Instead, calls are authenticated using the Actor's unique ID.<br/>
-        /// However, if you access the endpoint without a token, certain attributes (e.g., `usageUsd` and `usageTotalUsd`) will be hidden.
+        /// Metamorph Actor task's last run<br/>
+        /// Transforms the last run of the specified Actor task into a run of another Actor with<br/>
+        /// a new input.<br/>
+        /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>
+        /// on the Actor task's last run.
         /// </summary>
-        /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// <param name="actorTaskId">
+        /// Example: janedoe~my-task
         /// </param>
-        /// <param name="waitForFinish">
-        /// Example: 60
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="targetActorId">
+        /// Example: HDSasDasz78YcAPEB
+        /// </param>
+        /// <param name="build">
+        /// Example: beta
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.BuildResponse> ActBuildDefaultGetAsync(
-            string actorId,
-            double? waitForFinish = default,
+        public async global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActorTaskRunsLastMetamorphPostAsync(
+            string actorTaskId,
+            string targetActorId,
+            string? status = default,
+            string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ActBuildDefaultGetAsResponseAsync(
-                actorId: actorId,
-                waitForFinish: waitForFinish,
+            var __response = await ActorTaskRunsLastMetamorphPostAsResponseAsync(
+                actorTaskId: actorTaskId,
+                targetActorId: targetActorId,
+                status: status,
+                build: build,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -76,40 +89,49 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default build<br/>
-        /// Get the default build for an Actor.<br/>
-        /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
-        /// This avoids the need for periodic polling when waiting for the build to complete.<br/>
-        /// This endpoint does not require an authentication token. Instead, calls are authenticated using the Actor's unique ID.<br/>
-        /// However, if you access the endpoint without a token, certain attributes (e.g., `usageUsd` and `usageTotalUsd`) will be hidden.
+        /// Metamorph Actor task's last run<br/>
+        /// Transforms the last run of the specified Actor task into a run of another Actor with<br/>
+        /// a new input.<br/>
+        /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>
+        /// on the Actor task's last run.
         /// </summary>
-        /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// <param name="actorTaskId">
+        /// Example: janedoe~my-task
         /// </param>
-        /// <param name="waitForFinish">
-        /// Example: 60
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="targetActorId">
+        /// Example: HDSasDasz78YcAPEB
+        /// </param>
+        /// <param name="build">
+        /// Example: beta
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>> ActBuildDefaultGetAsResponseAsync(
-            string actorId,
-            double? waitForFinish = default,
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>> ActorTaskRunsLastMetamorphPostAsResponseAsync(
+            string actorTaskId,
+            string targetActorId,
+            string? status = default,
+            string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareActBuildDefaultGetArguments(
+            PrepareActorTaskRunsLastMetamorphPostArguments(
                 httpClient: HttpClient,
-                actorId: ref actorId,
-                waitForFinish: ref waitForFinish);
+                actorTaskId: ref actorTaskId,
+                status: ref status,
+                targetActorId: ref targetActorId,
+                build: ref build);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ActBuildDefaultGetSecurityRequirements,
-                operationName: "ActBuildDefaultGetAsync");
+                securityRequirements: s_ActorTaskRunsLastMetamorphPostSecurityRequirements,
+                operationName: "ActorTaskRunsLastMetamorphPostAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -129,10 +151,12 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/builds/default",
+                                path: $"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
+                                .AddOptionalParameter("status", status)
+                                .AddRequiredParameter("targetActorId", targetActorId)
+                                .AddOptionalParameter("build", build)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -140,7 +164,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -171,11 +195,13 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareActBuildDefaultGetRequest(
+                PrepareActorTaskRunsLastMetamorphPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorId: actorId!,
-                    waitForFinish: waitForFinish);
+                    actorTaskId: actorTaskId!,
+                    status: status,
+                    targetActorId: targetActorId!,
+                    build: build);
 
                 return __httpRequest;
             }
@@ -192,10 +218,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActBuildDefaultGet",
-                                methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
-                                httpMethod: "GET",
+                                operationId: "ActorTaskRunsLastMetamorphPost",
+                                methodName: "ActorTaskRunsLastMetamorphPostAsync",
+                                pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -226,10 +252,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActBuildDefaultGet",
-                                methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
-                                httpMethod: "GET",
+                                operationId: "ActorTaskRunsLastMetamorphPost",
+                                methodName: "ActorTaskRunsLastMetamorphPostAsync",
+                                pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -267,10 +293,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActBuildDefaultGet",
-                                methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
-                                httpMethod: "GET",
+                                operationId: "ActorTaskRunsLastMetamorphPost",
+                                methodName: "ActorTaskRunsLastMetamorphPostAsync",
+                                pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -307,7 +333,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessActBuildDefaultGetResponse(
+                ProcessActorTaskRunsLastMetamorphPostResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -315,10 +341,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActBuildDefaultGet",
-                                methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
-                                httpMethod: "GET",
+                                operationId: "ActorTaskRunsLastMetamorphPost",
+                                methodName: "ActorTaskRunsLastMetamorphPostAsync",
+                                pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -337,10 +363,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActBuildDefaultGet",
-                                methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
-                                httpMethod: "GET",
+                                operationId: "ActorTaskRunsLastMetamorphPost",
+                                methodName: "ActorTaskRunsLastMetamorphPostAsync",
+                                pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/metamorph\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -386,6 +412,44 @@ namespace Apify
                                 {
                                     ResponseBody = __content_400,
                                     ResponseObject = __value_400,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Unauthorized - authentication required or invalid token.
+                            if ((int)__response.StatusCode == 401)
+                            {
+                                string? __content_401 = null;
+                                global::System.Exception? __exception_401 = null;
+                                global::Apify.ErrorResponse? __value_401 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_401 = __ex;
+                                }
+
+                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_401,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_401,
+                                    ResponseObject = __value_401,
                                     ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -557,7 +621,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessActBuildDefaultGetResponseContent(
+                                ProcessActorTaskRunsLastMetamorphPostResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -566,9 +630,9 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.BuildResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.RunResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -600,9 +664,9 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.BuildResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.RunResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.BuildResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

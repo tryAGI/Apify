@@ -507,6 +507,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        FullPermissionActorNotApproved,
+        /// <summary>
+        /// 
+        /// </summary>
         GithubBranchEmpty,
         /// <summary>
         /// 
@@ -1191,6 +1195,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        RunInputBodyNotValidJson,
+        /// <summary>
+        /// 
+        /// </summary>
         RunTimeoutExceeded,
         /// <summary>
         /// 
@@ -1702,6 +1710,7 @@ namespace Apify
                 ErrorType.ExpiredConferenceToken => "expired-conference-token",
                 ErrorType.FailedToChargeUser => "failed-to-charge-user",
                 ErrorType.FinalInvoiceNegative => "final-invoice-negative",
+                ErrorType.FullPermissionActorNotApproved => "full-permission-actor-not-approved",
                 ErrorType.GithubBranchEmpty => "github-branch-empty",
                 ErrorType.GithubIssueAlreadyExists => "github-issue-already-exists",
                 ErrorType.GithubPublicKeyNotFound => "github-public-key-not-found",
@@ -1873,6 +1882,7 @@ namespace Apify
                 ErrorType.RequestedDatasetViewDoesNotExist => "requested-dataset-view-does-not-exist",
                 ErrorType.ResumeTokenExpired => "resume-token-expired",
                 ErrorType.RunFailed => "run-failed",
+                ErrorType.RunInputBodyNotValidJson => "run-input-body-not-valid-json",
                 ErrorType.RunTimeoutExceeded => "run-timeout-exceeded",
                 ErrorType.RussiaIsEvil => "russia-is-evil",
                 ErrorType.SameUser => "same-user",
@@ -2101,6 +2111,7 @@ namespace Apify
                 "expired-conference-token" => ErrorType.ExpiredConferenceToken,
                 "failed-to-charge-user" => ErrorType.FailedToChargeUser,
                 "final-invoice-negative" => ErrorType.FinalInvoiceNegative,
+                "full-permission-actor-not-approved" => ErrorType.FullPermissionActorNotApproved,
                 "github-branch-empty" => ErrorType.GithubBranchEmpty,
                 "github-issue-already-exists" => ErrorType.GithubIssueAlreadyExists,
                 "github-public-key-not-found" => ErrorType.GithubPublicKeyNotFound,
@@ -2272,6 +2283,7 @@ namespace Apify
                 "requested-dataset-view-does-not-exist" => ErrorType.RequestedDatasetViewDoesNotExist,
                 "resume-token-expired" => ErrorType.ResumeTokenExpired,
                 "run-failed" => ErrorType.RunFailed,
+                "run-input-body-not-valid-json" => ErrorType.RunInputBodyNotValidJson,
                 "run-timeout-exceeded" => ErrorType.RunTimeoutExceeded,
                 "russia-is-evil" => ErrorType.RussiaIsEvil,
                 "same-user" => ErrorType.SameUser,

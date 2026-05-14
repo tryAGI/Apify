@@ -535,6 +535,12 @@ namespace Apify
         public DefaultRequestQueueClient DefaultRequestQueue { get; }
 
         /// <summary>
+        /// Last Actor run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.<br/>
+        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// </summary>
+        public LastActorRunSAbortClient LastActorRunSAbort { get; }
+
+        /// <summary>
         /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
@@ -559,6 +565,24 @@ namespace Apify
         public LastActorRunSLogClient LastActorRunSLog { get; }
 
         /// <summary>
+        /// Last Actor run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.<br/>
+        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// </summary>
+        public LastActorRunSMetamorphClient LastActorRunSMetamorph { get; }
+
+        /// <summary>
+        /// Last Actor run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.<br/>
+        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// </summary>
+        public LastActorRunSRebootClient LastActorRunSReboot { get; }
+
+        /// <summary>
+        /// Last Actor task run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.<br/>
+        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// </summary>
+        public LastActorTaskRunSAbortClient LastActorTaskRunSAbort { get; }
+
+        /// <summary>
         /// Last Actor task run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
@@ -581,6 +605,18 @@ namespace Apify
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
         public LastActorTaskRunSLogClient LastActorTaskRunSLog { get; }
+
+        /// <summary>
+        /// Last Actor task run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.<br/>
+        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// </summary>
+        public LastActorTaskRunSMetamorphClient LastActorTaskRunSMetamorph { get; }
+
+        /// <summary>
+        /// Last Actor task run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.<br/>
+        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// </summary>
+        public LastActorTaskRunSRebootClient LastActorTaskRunSReboot { get; }
 
         /// <summary>
         /// Logs - Introduction. The API endpoints described in this section are used the download the logs<br/>
