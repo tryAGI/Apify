@@ -104,7 +104,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
@@ -298,7 +298,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
@@ -1095,7 +1095,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
