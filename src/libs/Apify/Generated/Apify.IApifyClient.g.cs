@@ -25,9 +25,9 @@ namespace Apify
     /// :::<br/>
     /// ## Authentication<br/>
     /// &lt;span id="/introduction/authentication"&gt;&lt;/span&gt;<br/>
-    /// You can find your API token on the<br/>
-    /// [Integrations](https://console.apify.com/account#/integrations) page in the<br/>
-    /// Apify Console.<br/>
+    /// **You can find your API token on the<br/>
+    /// [Integrations](https://console.apify.com/settings/integrations) page in the<br/>
+    /// Apify Console.**<br/>
     /// To use your token in a request, either:<br/>
     /// - Add the token to your request's `Authorization` header as `Bearer &lt;token&gt;`.<br/>
     /// E.g., `Authorization: Bearer xxxxxxx`.<br/>
@@ -38,7 +38,7 @@ namespace Apify
     /// parameter because URLs are often stored<br/>
     /// in browser history and server logs. This creates a chance for someone<br/>
     /// unauthorized to access your API token.<br/>
-    /// **Do not share your API token or password with untrusted parties.**<br/>
+    /// **Never share your API token or password with untrusted parties!**<br/>
     /// For more information, see our<br/>
     /// [integrations](https://docs.apify.com/platform/integrations) documentation.<br/>
     /// ## Basic usage<br/>

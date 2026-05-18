@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorRunsClient
     {
         /// <summary>
-        /// Without input<br/>
+        /// Run Actor synchronously without input<br/>
         /// Runs a specific Actor and returns its output.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
@@ -62,7 +62,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Without input<br/>
+        /// Run Actor synchronously without input<br/>
         /// Runs a specific Actor and returns its output.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>

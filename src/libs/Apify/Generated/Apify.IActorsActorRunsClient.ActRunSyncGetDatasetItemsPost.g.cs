@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorRunsClient
     {
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
@@ -158,7 +158,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
@@ -311,7 +311,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run Actor synchronously with input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually `application/json`).<br/>
