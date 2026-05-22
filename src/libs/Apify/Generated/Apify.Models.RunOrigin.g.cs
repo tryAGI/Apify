@@ -19,6 +19,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        Ci,
+        /// <summary>
+        /// 
+        /// </summary>
         Cli,
         /// <summary>
         /// 
@@ -60,6 +64,7 @@ namespace Apify
             {
                 RunOrigin.Actor => "ACTOR",
                 RunOrigin.Api => "API",
+                RunOrigin.Ci => "CI",
                 RunOrigin.Cli => "CLI",
                 RunOrigin.Development => "DEVELOPMENT",
                 RunOrigin.Scheduler => "SCHEDULER",
@@ -79,6 +84,7 @@ namespace Apify
             {
                 "ACTOR" => RunOrigin.Actor,
                 "API" => RunOrigin.Api,
+                "CI" => RunOrigin.Ci,
                 "CLI" => RunOrigin.Cli,
                 "DEVELOPMENT" => RunOrigin.Development,
                 "SCHEDULER" => RunOrigin.Scheduler,
