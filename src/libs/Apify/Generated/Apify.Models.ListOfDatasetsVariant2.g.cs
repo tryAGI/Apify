@@ -9,6 +9,12 @@ namespace Apify
     public sealed partial class ListOfDatasetsVariant2
     {
         /// <summary>
+        /// Whether the listing was filtered to only unnamed datasets.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unnamed")]
+        public bool? Unnamed { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
@@ -25,12 +31,17 @@ namespace Apify
         /// Initializes a new instance of the <see cref="ListOfDatasetsVariant2" /> class.
         /// </summary>
         /// <param name="items"></param>
+        /// <param name="unnamed">
+        /// Whether the listing was filtered to only unnamed datasets.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfDatasetsVariant2(
-            global::System.Collections.Generic.IList<global::Apify.DatasetListItem> items)
+            global::System.Collections.Generic.IList<global::Apify.DatasetListItem> items,
+            bool? unnamed)
         {
+            this.Unnamed = unnamed;
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }
 

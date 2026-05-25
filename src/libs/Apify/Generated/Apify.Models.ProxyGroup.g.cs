@@ -19,8 +19,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// 
@@ -39,18 +38,18 @@ namespace Apify
         /// Initializes a new instance of the <see cref="ProxyGroup" /> class.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="description"></param>
         /// <param name="availableCount"></param>
+        /// <param name="description"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ProxyGroup(
             string name,
-            string description,
-            int availableCount)
+            int availableCount,
+            string? description)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.Description = description;
             this.AvailableCount = availableCount;
         }
 

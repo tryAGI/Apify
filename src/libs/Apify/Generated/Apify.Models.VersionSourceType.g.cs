@@ -19,6 +19,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        SourceCode,
+        /// <summary>
+        /// 
+        /// </summary>
         SourceFiles,
         /// <summary>
         /// 
@@ -40,6 +44,7 @@ namespace Apify
             {
                 VersionSourceType.GithubGist => "GITHUB_GIST",
                 VersionSourceType.GitRepo => "GIT_REPO",
+                VersionSourceType.SourceCode => "SOURCE_CODE",
                 VersionSourceType.SourceFiles => "SOURCE_FILES",
                 VersionSourceType.Tarball => "TARBALL",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -54,6 +59,7 @@ namespace Apify
             {
                 "GITHUB_GIST" => VersionSourceType.GithubGist,
                 "GIT_REPO" => VersionSourceType.GitRepo,
+                "SOURCE_CODE" => VersionSourceType.SourceCode,
                 "SOURCE_FILES" => VersionSourceType.SourceFiles,
                 "TARBALL" => VersionSourceType.Tarball,
                 _ => null,

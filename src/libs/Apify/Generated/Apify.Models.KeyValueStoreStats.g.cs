@@ -43,6 +43,12 @@ namespace Apify
         public long? S3StorageBytes { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("storageBytes")]
+        public long? StorageBytes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,6 +62,7 @@ namespace Apify
         /// <param name="deleteCount"></param>
         /// <param name="listCount"></param>
         /// <param name="s3StorageBytes"></param>
+        /// <param name="storageBytes"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -64,13 +71,15 @@ namespace Apify
             int writeCount,
             int deleteCount,
             int listCount,
-            long? s3StorageBytes)
+            long? s3StorageBytes,
+            long? storageBytes)
         {
             this.ReadCount = readCount;
             this.WriteCount = writeCount;
             this.DeleteCount = deleteCount;
             this.ListCount = listCount;
             this.S3StorageBytes = s3StorageBytes;
+            this.StorageBytes = storageBytes;
         }
 
         /// <summary>

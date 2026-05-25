@@ -61,6 +61,12 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webhook")]
+        public global::Apify.WebhookDispatchWebhookSummary? Webhook { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("calls")]
         public global::System.Collections.Generic.IList<global::Apify.WebhookDispatchCall>? Calls { get; set; }
 
@@ -84,6 +90,7 @@ namespace Apify
         /// Type of event that triggers the webhook.
         /// </param>
         /// <param name="eventData"></param>
+        /// <param name="webhook"></param>
         /// <param name="calls"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -96,6 +103,7 @@ namespace Apify
             global::Apify.WebhookDispatchStatus status,
             global::Apify.WebhookEventType eventType,
             global::Apify.WebhookDispatchEventData? eventData,
+            global::Apify.WebhookDispatchWebhookSummary? webhook,
             global::System.Collections.Generic.IList<global::Apify.WebhookDispatchCall>? calls)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -105,6 +113,7 @@ namespace Apify
             this.Status = status;
             this.EventType = eventType;
             this.EventData = eventData;
+            this.Webhook = webhook;
             this.Calls = calls;
         }
 

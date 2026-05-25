@@ -149,6 +149,66 @@ namespace Apify
         public string? ReadmeSummary { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seoTitle")]
+        public string? SeoTitle { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("seoDescription")]
+        public string? SeoDescription { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pictureUrl")]
+        public string? PictureUrl { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standbyUrl")]
+        public string? StandbyUrl { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notice")]
+        public string? Notice { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
+        public global::System.Collections.Generic.IList<string>? Categories { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isCritical")]
+        public bool? IsCritical { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isGeneric")]
+        public bool? IsGeneric { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isSourceCodeHidden")]
+        public bool? IsSourceCodeHidden { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hasNoDataset")]
+        public bool? HasNoDataset { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -181,6 +241,16 @@ namespace Apify
         /// <param name="readmeSummary">
         /// A brief, LLM-generated readme summary
         /// </param>
+        /// <param name="seoTitle"></param>
+        /// <param name="seoDescription"></param>
+        /// <param name="pictureUrl"></param>
+        /// <param name="standbyUrl"></param>
+        /// <param name="notice"></param>
+        /// <param name="categories"></param>
+        /// <param name="isCritical"></param>
+        /// <param name="isGeneric"></param>
+        /// <param name="isSourceCodeHidden"></param>
+        /// <param name="hasNoDataset"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -204,7 +274,17 @@ namespace Apify
             string? title,
             global::Apify.TaggedBuilds? taggedBuilds,
             global::Apify.ActorStandby? actorStandby,
-            string? readmeSummary)
+            string? readmeSummary,
+            string? seoTitle,
+            string? seoDescription,
+            string? pictureUrl,
+            string? standbyUrl,
+            string? notice,
+            global::System.Collections.Generic.IList<string>? categories,
+            bool? isCritical,
+            bool? isGeneric,
+            bool? isSourceCodeHidden,
+            bool? hasNoDataset)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
@@ -226,6 +306,16 @@ namespace Apify
             this.TaggedBuilds = taggedBuilds;
             this.ActorStandby = actorStandby;
             this.ReadmeSummary = readmeSummary;
+            this.SeoTitle = seoTitle;
+            this.SeoDescription = seoDescription;
+            this.PictureUrl = pictureUrl;
+            this.StandbyUrl = standbyUrl;
+            this.Notice = notice;
+            this.Categories = categories;
+            this.IsCritical = isCritical;
+            this.IsGeneric = isGeneric;
+            this.IsSourceCodeHidden = isSourceCodeHidden;
+            this.HasNoDataset = hasNoDataset;
         }
 
         /// <summary>

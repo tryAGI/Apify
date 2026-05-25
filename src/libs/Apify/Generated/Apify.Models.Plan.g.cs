@@ -153,6 +153,36 @@ namespace Apify
         public required global::System.Collections.Generic.IList<string> AvailableAddOns { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tier")]
+        public string? Tier { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("apiRateLimitBoosts")]
+        public int? ApiRateLimitBoosts { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxScheduleCount")]
+        public int? MaxScheduleCount { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxConcurrentActorRuns")]
+        public int? MaxConcurrentActorRuns { get; set; }
+
+        /// <summary>
+        /// Pricing details for this plan.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("planPricing")]
+        public object? PlanPricing { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -188,6 +218,13 @@ namespace Apify
         /// <param name="supportLevel"></param>
         /// <param name="availableAddOns"></param>
         /// <param name="usageDiscountPercent"></param>
+        /// <param name="tier"></param>
+        /// <param name="apiRateLimitBoosts"></param>
+        /// <param name="maxScheduleCount"></param>
+        /// <param name="maxConcurrentActorRuns"></param>
+        /// <param name="planPricing">
+        /// Pricing details for this plan.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -211,7 +248,12 @@ namespace Apify
             int teamAccountSeatCount,
             string supportLevel,
             global::System.Collections.Generic.IList<string> availableAddOns,
-            double? usageDiscountPercent)
+            double? usageDiscountPercent,
+            string? tier,
+            int? apiRateLimitBoosts,
+            int? maxScheduleCount,
+            int? maxConcurrentActorRuns,
+            object? planPricing)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
@@ -233,6 +275,11 @@ namespace Apify
             this.TeamAccountSeatCount = teamAccountSeatCount;
             this.SupportLevel = supportLevel ?? throw new global::System.ArgumentNullException(nameof(supportLevel));
             this.AvailableAddOns = availableAddOns ?? throw new global::System.ArgumentNullException(nameof(availableAddOns));
+            this.Tier = tier;
+            this.ApiRateLimitBoosts = apiRateLimitBoosts;
+            this.MaxScheduleCount = maxScheduleCount;
+            this.MaxConcurrentActorRuns = maxConcurrentActorRuns;
+            this.PlanPricing = planPricing;
         }
 
         /// <summary>

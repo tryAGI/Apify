@@ -79,6 +79,12 @@ namespace Apify
         public required int TeamAccountSeatCount { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduleCount")]
+        public int? ScheduleCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,6 +103,7 @@ namespace Apify
         /// <param name="actorTaskCount"></param>
         /// <param name="activeActorJobCount"></param>
         /// <param name="teamAccountSeatCount"></param>
+        /// <param name="scheduleCount"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -110,7 +117,8 @@ namespace Apify
             int actorCount,
             int actorTaskCount,
             int activeActorJobCount,
-            int teamAccountSeatCount)
+            int teamAccountSeatCount,
+            int? scheduleCount)
         {
             this.MonthlyUsageUsd = monthlyUsageUsd;
             this.MonthlyActorComputeUnits = monthlyActorComputeUnits;
@@ -122,6 +130,7 @@ namespace Apify
             this.ActorTaskCount = actorTaskCount;
             this.ActiveActorJobCount = activeActorJobCount;
             this.TeamAccountSeatCount = teamAccountSeatCount;
+            this.ScheduleCount = scheduleCount;
         }
 
         /// <summary>

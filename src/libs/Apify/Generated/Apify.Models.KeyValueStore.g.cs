@@ -79,6 +79,18 @@ namespace Apify
         public string? KeysPublicUrl { get; set; }
 
         /// <summary>
+        /// A public link to access records of the key-value store directly.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("recordsPublicUrl")]
+        public string? RecordsPublicUrl { get; set; }
+
+        /// <summary>
+        /// Optional JSON schema describing the keys stored in the key-value store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("schema")]
+        public object? Schema { get; set; }
+
+        /// <summary>
         /// A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the key-value store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("urlSigningSecretKey")]
@@ -119,6 +131,12 @@ namespace Apify
         /// <param name="keysPublicUrl">
         /// A public link to access keys of the key-value store directly.
         /// </param>
+        /// <param name="recordsPublicUrl">
+        /// A public link to access records of the key-value store directly.
+        /// </param>
+        /// <param name="schema">
+        /// Optional JSON schema describing the keys stored in the key-value store.
+        /// </param>
         /// <param name="urlSigningSecretKey">
         /// A secret key for generating signed public URLs. It is only provided to clients with WRITE permission for the key-value store.
         /// </param>
@@ -141,6 +159,8 @@ namespace Apify
             string? actRunId,
             string? consoleUrl,
             string? keysPublicUrl,
+            string? recordsPublicUrl,
+            object? schema,
             string? urlSigningSecretKey,
             global::Apify.GeneralAccess? generalAccess,
             global::Apify.KeyValueStoreStats? stats)
@@ -156,6 +176,8 @@ namespace Apify
             this.ActRunId = actRunId;
             this.ConsoleUrl = consoleUrl;
             this.KeysPublicUrl = keysPublicUrl;
+            this.RecordsPublicUrl = recordsPublicUrl;
+            this.Schema = schema;
             this.UrlSigningSecretKey = urlSigningSecretKey;
             this.GeneralAccess = generalAccess;
             this.Stats = stats;
