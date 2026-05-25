@@ -21,6 +21,12 @@ namespace Apify
         public string? Title { get; set; }
 
         /// <summary>
+        /// Notification settings for this schedule.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notifications")]
+        public global::Apify.ScheduleVariant2Notifications? Notifications { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
@@ -39,16 +45,21 @@ namespace Apify
         /// <param name="actions"></param>
         /// <param name="description"></param>
         /// <param name="title"></param>
+        /// <param name="notifications">
+        /// Notification settings for this schedule.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ScheduleVariant2(
             global::System.Collections.Generic.IList<global::Apify.ScheduleAction> actions,
             string? description,
-            string? title)
+            string? title,
+            global::Apify.ScheduleVariant2Notifications? notifications)
         {
             this.Description = description;
             this.Title = title;
+            this.Notifications = notifications;
             this.Actions = actions ?? throw new global::System.ArgumentNullException(nameof(actions));
         }
 

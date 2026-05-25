@@ -49,12 +49,11 @@ namespace Apify
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -86,12 +85,11 @@ namespace Apify
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -766,12 +764,11 @@ namespace Apify
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

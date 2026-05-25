@@ -21,6 +21,12 @@ namespace Apify
         public string? BuildNumber { get; set; }
 
         /// <summary>
+        /// The build number encoded as a single integer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buildNumberInt")]
+        public int? BuildNumberInt { get; set; }
+
+        /// <summary>
         /// The timestamp when the build finished.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finishedAt")]
@@ -41,6 +47,9 @@ namespace Apify
         /// <param name="buildNumber">
         /// The build number/version string.
         /// </param>
+        /// <param name="buildNumberInt">
+        /// The build number encoded as a single integer.
+        /// </param>
         /// <param name="finishedAt">
         /// The timestamp when the build finished.
         /// </param>
@@ -50,10 +59,12 @@ namespace Apify
         public TaggedBuildInfo(
             string? buildId,
             string? buildNumber,
+            int? buildNumberInt,
             global::System.DateTime? finishedAt)
         {
             this.BuildId = buildId;
             this.BuildNumber = buildNumber;
+            this.BuildNumberInt = buildNumberInt;
             this.FinishedAt = finishedAt;
         }
 

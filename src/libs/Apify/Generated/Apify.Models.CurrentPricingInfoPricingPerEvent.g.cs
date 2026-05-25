@@ -4,10 +4,9 @@
 namespace Apify
 {
     /// <summary>
-    /// A dictionary mapping build tag names (e.g., "latest", "beta") to their build information.<br/>
-    /// Example: {"latest":{"buildId":"z2EryhbfhgSyqj6Hn","buildNumber":"0.0.2","finishedAt":"2019-06-10T11:15:49.286Z"},"beta":{"buildId":"abc123def456","buildNumber":"1.0.5","finishedAt":"2019-07-15T14:30:00.000Z"}}
+    /// Per-event pricing configuration for pay-per-event Actors.
     /// </summary>
-    public sealed partial class TaggedBuilds
+    public sealed partial class CurrentPricingInfoPricingPerEvent
     {
 
         /// <summary>

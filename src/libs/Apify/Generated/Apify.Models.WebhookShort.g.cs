@@ -45,6 +45,24 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isApifyIntegration")]
+        public bool? IsApifyIntegration { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isEnabled")]
+        public bool? IsEnabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actionType")]
+        public string? ActionType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shouldInterpolateStrings")]
         public bool? ShouldInterpolateStrings { get; set; }
 
@@ -114,6 +132,9 @@ namespace Apify
         /// <param name="doNotRetry"></param>
         /// <param name="requestUrl"></param>
         /// <param name="isAdHoc"></param>
+        /// <param name="isApifyIntegration"></param>
+        /// <param name="isEnabled"></param>
+        /// <param name="actionType"></param>
         /// <param name="shouldInterpolateStrings"></param>
         /// <param name="lastDispatch"></param>
         /// <param name="stats"></param>
@@ -131,6 +152,9 @@ namespace Apify
             bool doNotRetry,
             string requestUrl,
             bool? isAdHoc,
+            bool? isApifyIntegration,
+            bool? isEnabled,
+            string? actionType,
             bool? shouldInterpolateStrings,
             global::Apify.ExampleWebhookDispatch? lastDispatch,
             global::Apify.WebhookStats? stats)
@@ -140,6 +164,9 @@ namespace Apify
             this.ModifiedAt = modifiedAt;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.IsAdHoc = isAdHoc;
+            this.IsApifyIntegration = isApifyIntegration;
+            this.IsEnabled = isEnabled;
+            this.ActionType = actionType;
             this.ShouldInterpolateStrings = shouldInterpolateStrings;
             this.EventTypes = eventTypes ?? throw new global::System.ArgumentNullException(nameof(eventTypes));
             this.Condition = condition ?? throw new global::System.ArgumentNullException(nameof(condition));

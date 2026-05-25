@@ -22,6 +22,12 @@ namespace Apify
         public string? ActId { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
+        public string? UserId { get; set; }
+
+        /// <summary>
         /// Status of an Actor job (run or build).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
@@ -52,6 +58,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buildNumber")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string BuildNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buildNumberInt")]
+        public int? BuildNumberInt { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("meta")]
         public global::Apify.BuildsMeta? Meta { get; set; }
 
@@ -70,8 +89,11 @@ namespace Apify
         /// </param>
         /// <param name="startedAt"></param>
         /// <param name="usageTotalUsd"></param>
+        /// <param name="buildNumber"></param>
         /// <param name="actId"></param>
+        /// <param name="userId"></param>
         /// <param name="finishedAt"></param>
+        /// <param name="buildNumberInt"></param>
         /// <param name="meta"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -81,16 +103,22 @@ namespace Apify
             global::Apify.ActorJobStatus status,
             global::System.DateTime startedAt,
             double usageTotalUsd,
+            string buildNumber,
             string? actId,
+            string? userId,
             global::System.DateTime? finishedAt,
+            int? buildNumberInt,
             global::Apify.BuildsMeta? meta)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ActId = actId;
+            this.UserId = userId;
             this.Status = status;
             this.StartedAt = startedAt;
             this.FinishedAt = finishedAt;
             this.UsageTotalUsd = usageTotalUsd;
+            this.BuildNumber = buildNumber ?? throw new global::System.ArgumentNullException(nameof(buildNumber));
+            this.BuildNumberInt = buildNumberInt;
             this.Meta = meta;
         }
 

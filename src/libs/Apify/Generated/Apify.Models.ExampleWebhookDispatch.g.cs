@@ -23,6 +23,12 @@ namespace Apify
         public global::System.DateTime? FinishedAt { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("removedAt")]
+        public global::System.DateTime? RemovedAt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,15 +41,18 @@ namespace Apify
         /// Status of the webhook dispatch indicating whether the HTTP request was successful.
         /// </param>
         /// <param name="finishedAt"></param>
+        /// <param name="removedAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ExampleWebhookDispatch(
             global::Apify.WebhookDispatchStatus status,
-            global::System.DateTime? finishedAt)
+            global::System.DateTime? finishedAt,
+            global::System.DateTime? removedAt)
         {
             this.Status = status;
             this.FinishedAt = finishedAt;
+            this.RemovedAt = removedAt;
         }
 
         /// <summary>

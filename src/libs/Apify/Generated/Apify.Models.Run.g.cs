@@ -201,6 +201,12 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.Metamorph>? Metamorphs { get; set; }
 
         /// <summary>
+        /// Indicates which party covers platform usage costs for this run.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("platformUsageBillingModel")]
+        public string? PlatformUsageBillingModel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -297,6 +303,9 @@ namespace Apify
         /// <param name="metamorphs">
         /// List of metamorph events that occurred during the run.
         /// </param>
+        /// <param name="platformUsageBillingModel">
+        /// Indicates which party covers platform usage costs for this run.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -329,7 +338,8 @@ namespace Apify
             global::Apify.RunUsage? usage,
             double? usageTotalUsd,
             global::Apify.RunUsageUsd? usageUsd,
-            global::System.Collections.Generic.IList<global::Apify.Metamorph>? metamorphs)
+            global::System.Collections.Generic.IList<global::Apify.Metamorph>? metamorphs,
+            string? platformUsageBillingModel)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
@@ -360,6 +370,7 @@ namespace Apify
             this.UsageTotalUsd = usageTotalUsd;
             this.UsageUsd = usageUsd;
             this.Metamorphs = metamorphs;
+            this.PlatformUsageBillingModel = platformUsageBillingModel;
         }
 
         /// <summary>

@@ -28,6 +28,12 @@ namespace Apify
         public required double ComputeUnits { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("imageSizeBytes")]
+        public long? ImageSizeBytes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,17 +45,20 @@ namespace Apify
         /// <param name="computeUnits"></param>
         /// <param name="durationMillis"></param>
         /// <param name="runTimeSecs"></param>
+        /// <param name="imageSizeBytes"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BuildStats(
             double computeUnits,
             int? durationMillis,
-            double? runTimeSecs)
+            double? runTimeSecs,
+            long? imageSizeBytes)
         {
             this.DurationMillis = durationMillis;
             this.RunTimeSecs = runTimeSecs;
             this.ComputeUnits = computeUnits;
+            this.ImageSizeBytes = imageSizeBytes;
         }
 
         /// <summary>
