@@ -4,9 +4,9 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Optional JSON schema describing the keys stored in the key-value store.
     /// </summary>
-    public sealed partial class UnknownBuildTagErrorDetailVariant2Type
+    public sealed partial class KeyValueStoreSchema
     {
 
         /// <summary>
@@ -14,5 +14,6 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
     }
 }

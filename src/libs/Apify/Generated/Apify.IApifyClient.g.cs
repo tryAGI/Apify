@@ -25,9 +25,9 @@ namespace Apify
     /// :::<br/>
     /// ## Authentication<br/>
     /// &lt;span id="/introduction/authentication"&gt;&lt;/span&gt;<br/>
-    /// You can find your API token on the<br/>
-    /// [Integrations](https://console.apify.com/account#/integrations) page in the<br/>
-    /// Apify Console.<br/>
+    /// **You can find your API token on the<br/>
+    /// [Integrations](https://console.apify.com/settings/integrations) page in the<br/>
+    /// Apify Console.**<br/>
     /// To use your token in a request, either:<br/>
     /// - Add the token to your request's `Authorization` header as `Bearer &lt;token&gt;`.<br/>
     /// E.g., `Authorization: Bearer xxxxxxx`.<br/>
@@ -38,7 +38,7 @@ namespace Apify
     /// parameter because URLs are often stored<br/>
     /// in browser history and server logs. This creates a chance for someone<br/>
     /// unauthorized to access your API token.<br/>
-    /// **Do not share your API token or password with untrusted parties.**<br/>
+    /// **Never share your API token or password with untrusted parties!**<br/>
     /// For more information, see our<br/>
     /// [integrations](https://docs.apify.com/platform/integrations) documentation.<br/>
     /// ## Basic usage<br/>
@@ -47,7 +47,7 @@ namespace Apify
     /// Actor](#/reference/actors/run-collection/run-actor) endpoint using either the<br/>
     /// Actor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.<br/>
     /// `janedoe~my-actor`):<br/>
-    /// `https://api.apify.com/v2/acts/[actor_id]/runs`<br/>
+    /// `https://api.apify.com/v2/actors/[actor_id]/runs`<br/>
     /// If the Actor is not runnable anonymously, you will receive a 401 or 403<br/>
     /// [response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).<br/>
     /// This means you need to add your [secret API<br/>
@@ -84,6 +84,12 @@ namespace Apify
     /// synchronously. This will ensure that the request waits for 300 seconds (5<br/>
     /// minutes) for the run to finish and returns its output. If the run takes<br/>
     /// longer, the request will time out and throw an error.<br/>
+    /// ## Legacy `/v2/acts/` URL prefix<br/>
+    /// &lt;span id="/introduction/legacy-acts-prefix"&gt;&lt;/span&gt;<br/>
+    /// The `/v2/acts/` prefix is deprecated but still fully functional, and <br/>
+    /// such endpoint routes to the same handler as its `/v2/actors/...` counterpart. <br/>
+    /// New integrations should use the canonical /v2/actors/ prefix, <br/>
+    /// but existing clients keep working without changes.<br/>
     /// ## Response structure<br/>
     /// &lt;span id="/introduction/response-structure"&gt;&lt;/span&gt;<br/>
     /// Most API endpoints return a JSON object with the `data` property:<br/>
@@ -453,6 +459,7 @@ namespace Apify
         /// Actor runs - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
         /// If any returned run object contains usage in dollars, your effective unit pricing at the time of query<br/>
         /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
+        /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
         /// You can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorRunsClient ActorRuns { get; }
@@ -489,6 +496,7 @@ namespace Apify
         /// <summary>
         /// Actor runs - Introduction. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
         /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
+        /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
         /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
         /// </summary>
         public ActorsActorRunsClient ActorsActorRuns { get; }
@@ -533,6 +541,12 @@ namespace Apify
         public DefaultRequestQueueClient DefaultRequestQueue { get; }
 
         /// <summary>
+        /// Last Actor run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.<br/>
+        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// </summary>
+        public LastActorRunSAbortClient LastActorRunSAbort { get; }
+
+        /// <summary>
         /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
@@ -557,6 +571,24 @@ namespace Apify
         public LastActorRunSLogClient LastActorRunSLog { get; }
 
         /// <summary>
+        /// Last Actor run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.<br/>
+        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// </summary>
+        public LastActorRunSMetamorphClient LastActorRunSMetamorph { get; }
+
+        /// <summary>
+        /// Last Actor run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.<br/>
+        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// </summary>
+        public LastActorRunSRebootClient LastActorRunSReboot { get; }
+
+        /// <summary>
+        /// Last Actor task run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.<br/>
+        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// </summary>
+        public LastActorTaskRunSAbortClient LastActorTaskRunSAbort { get; }
+
+        /// <summary>
         /// Last Actor task run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
@@ -579,6 +611,18 @@ namespace Apify
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
         public LastActorTaskRunSLogClient LastActorTaskRunSLog { get; }
+
+        /// <summary>
+        /// Last Actor task run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.<br/>
+        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// </summary>
+        public LastActorTaskRunSMetamorphClient LastActorTaskRunSMetamorph { get; }
+
+        /// <summary>
+        /// Last Actor task run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.<br/>
+        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// </summary>
+        public LastActorTaskRunSRebootClient LastActorTaskRunSReboot { get; }
 
         /// <summary>
         /// Logs - Introduction. The API endpoints described in this section are used the download the logs<br/>

@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfWebhookDispatchesVariant2? ListOfWebhookDispatchesVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfWebhookDispatchesVariant2;
             return IsListOfWebhookDispatchesVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfWebhookDispatchesVariant2 PickListOfWebhookDispatchesVariant2() => IsListOfWebhookDispatchesVariant2
+            ? ListOfWebhookDispatchesVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfWebhookDispatchesVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfWebhookDispatches FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfWebhookDispatches(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfWebhookDispatches(global::Apify.ListOfWebhookDispatchesVariant2 value) => new ListOfWebhookDispatches((global::Apify.ListOfWebhookDispatchesVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfWebhookDispatchesVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfWebhookDispatches FromListOfWebhookDispatchesVariant2(global::Apify.ListOfWebhookDispatchesVariant2? value) => new ListOfWebhookDispatches(value);
 
         /// <summary>
         /// 

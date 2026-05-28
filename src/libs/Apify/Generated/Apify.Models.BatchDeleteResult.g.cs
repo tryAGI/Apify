@@ -54,5 +54,6 @@ namespace Apify
         public BatchDeleteResult()
         {
         }
+
     }
 }

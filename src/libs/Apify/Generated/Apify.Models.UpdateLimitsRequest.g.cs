@@ -52,5 +52,6 @@ namespace Apify
         public UpdateLimitsRequest()
         {
         }
+
     }
 }

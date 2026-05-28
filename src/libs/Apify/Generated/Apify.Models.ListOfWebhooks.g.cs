@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfWebhooksVariant2? ListOfWebhooksVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfWebhooksVariant2;
             return IsListOfWebhooksVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfWebhooksVariant2 PickListOfWebhooksVariant2() => IsListOfWebhooksVariant2
+            ? ListOfWebhooksVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfWebhooksVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfWebhooks FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfWebhooks(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfWebhooks(global::Apify.ListOfWebhooksVariant2 value) => new ListOfWebhooks((global::Apify.ListOfWebhooksVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfWebhooksVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfWebhooks FromListOfWebhooksVariant2(global::Apify.ListOfWebhooksVariant2? value) => new ListOfWebhooks(value);
 
         /// <summary>
         /// 

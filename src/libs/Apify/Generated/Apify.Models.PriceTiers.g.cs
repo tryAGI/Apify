@@ -80,5 +80,6 @@ namespace Apify
         public PriceTiers()
         {
         }
+
     }
 }

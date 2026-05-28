@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfTasksVariant2? ListOfTasksVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfTasksVariant2;
             return IsListOfTasksVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfTasksVariant2 PickListOfTasksVariant2() => IsListOfTasksVariant2
+            ? ListOfTasksVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfTasksVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfTasks FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfTasks(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfTasks(global::Apify.ListOfTasksVariant2 value) => new ListOfTasks((global::Apify.ListOfTasksVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfTasksVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfTasks FromListOfTasksVariant2(global::Apify.ListOfTasksVariant2? value) => new ListOfTasks(value);
 
         /// <summary>
         /// 

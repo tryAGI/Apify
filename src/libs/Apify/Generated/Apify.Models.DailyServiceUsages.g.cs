@@ -65,5 +65,6 @@ namespace Apify
         public DailyServiceUsages()
         {
         }
+
     }
 }

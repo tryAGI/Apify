@@ -126,5 +126,6 @@ namespace Apify
         public TaskShort()
         {
         }
+
     }
 }

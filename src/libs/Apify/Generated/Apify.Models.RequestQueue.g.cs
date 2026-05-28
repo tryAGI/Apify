@@ -29,6 +29,18 @@ namespace Apify
         public required string UserId { get; set; }
 
         /// <summary>
+        /// The ID of the Actor that created this request queue.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actId")]
+        public string? ActId { get; set; }
+
+        /// <summary>
+        /// The ID of the Actor run that created this request queue.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actRunId")]
+        public string? ActRunId { get; set; }
+
+        /// <summary>
         /// The timestamp when the request queue was created.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdAt")]
@@ -139,6 +151,12 @@ namespace Apify
         /// <param name="name">
         /// The name of the request queue.
         /// </param>
+        /// <param name="actId">
+        /// The ID of the Actor that created this request queue.
+        /// </param>
+        /// <param name="actRunId">
+        /// The ID of the Actor run that created this request queue.
+        /// </param>
         /// <param name="stats">
         /// Statistics about request queue operations and storage.
         /// </param>
@@ -160,12 +178,16 @@ namespace Apify
             bool hadMultipleClients,
             string consoleUrl,
             string? name,
+            string? actId,
+            string? actRunId,
             global::Apify.RequestQueueStats? stats,
             global::Apify.GeneralAccess? generalAccess)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
+            this.ActId = actId;
+            this.ActRunId = actRunId;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
             this.AccessedAt = accessedAt;
@@ -184,5 +206,6 @@ namespace Apify
         public RequestQueue()
         {
         }
+
     }
 }

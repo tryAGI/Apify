@@ -111,6 +111,12 @@ namespace Apify
         public required string BuildNumber { get; set; }
 
         /// <summary>
+        /// Snapshot of the Actor version that this build was created from.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actVersion")]
+        public global::Apify.BuildActVersion? ActVersion { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorDefinition")]
@@ -144,6 +150,9 @@ namespace Apify
         /// <param name="usageUsd">
         /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
         /// </param>
+        /// <param name="actVersion">
+        /// Snapshot of the Actor version that this build was created from.
+        /// </param>
         /// <param name="actorDefinition"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -162,6 +171,7 @@ namespace Apify
             global::Apify.BuildUsage? usage,
             double? usageTotalUsd,
             global::Apify.BuildUsage? usageUsd,
+            global::Apify.BuildActVersion? actVersion,
             global::Apify.ActorDefinition? actorDefinition)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -177,6 +187,7 @@ namespace Apify
             this.UsageTotalUsd = usageTotalUsd;
             this.UsageUsd = usageUsd;
             this.BuildNumber = buildNumber ?? throw new global::System.ArgumentNullException(nameof(buildNumber));
+            this.ActVersion = actVersion;
             this.ActorDefinition = actorDefinition;
         }
 
@@ -186,5 +197,6 @@ namespace Apify
         public Build()
         {
         }
+
     }
 }

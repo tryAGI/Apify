@@ -25,6 +25,12 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
+        public string? UserId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorTaskId")]
         public string? ActorTaskId { get; set; }
 
@@ -61,6 +67,12 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildNumber")]
         public string? BuildNumber { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buildNumberInt")]
+        public int? BuildNumberInt { get; set; }
 
         /// <summary>
         /// 
@@ -118,9 +130,11 @@ namespace Apify
         /// <param name="defaultKeyValueStoreId"></param>
         /// <param name="defaultDatasetId"></param>
         /// <param name="defaultRequestQueueId"></param>
+        /// <param name="userId"></param>
         /// <param name="actorTaskId"></param>
         /// <param name="finishedAt"></param>
         /// <param name="buildNumber"></param>
+        /// <param name="buildNumberInt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -135,18 +149,22 @@ namespace Apify
             string defaultKeyValueStoreId,
             string defaultDatasetId,
             string defaultRequestQueueId,
+            string? userId,
             string? actorTaskId,
             global::System.DateTime? finishedAt,
-            string? buildNumber)
+            string? buildNumber,
+            int? buildNumberInt)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
+            this.UserId = userId;
             this.ActorTaskId = actorTaskId;
             this.Status = status;
             this.StartedAt = startedAt;
             this.FinishedAt = finishedAt;
             this.BuildId = buildId ?? throw new global::System.ArgumentNullException(nameof(buildId));
             this.BuildNumber = buildNumber;
+            this.BuildNumberInt = buildNumberInt;
             this.Meta = meta ?? throw new global::System.ArgumentNullException(nameof(meta));
             this.UsageTotalUsd = usageTotalUsd;
             this.DefaultKeyValueStoreId = defaultKeyValueStoreId ?? throw new global::System.ArgumentNullException(nameof(defaultKeyValueStoreId));
@@ -160,5 +178,6 @@ namespace Apify
         public RunShort()
         {
         }
+
     }
 }

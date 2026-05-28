@@ -98,8 +98,32 @@ namespace Apify
         /// <summary>
         /// Whether the Actor is whitelisted for agentic payment processing.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("isWhiteListedForAgenticPayment")]
-        public bool? IsWhiteListedForAgenticPayment { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("isWhiteListedForAgenticPayments")]
+        public bool? IsWhiteListedForAgenticPayments { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewCount")]
+        public int? ActorReviewCount { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewRating")]
+        public double? ActorReviewRating { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bookmarkCount")]
+        public int? BookmarkCount { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("badge")]
+        public string? Badge { get; set; }
 
         /// <summary>
         /// A brief, LLM-generated readme summary
@@ -131,9 +155,13 @@ namespace Apify
         /// <param name="pictureUrl"></param>
         /// <param name="userPictureUrl"></param>
         /// <param name="url"></param>
-        /// <param name="isWhiteListedForAgenticPayment">
+        /// <param name="isWhiteListedForAgenticPayments">
         /// Whether the Actor is whitelisted for agentic payment processing.
         /// </param>
+        /// <param name="actorReviewCount"></param>
+        /// <param name="actorReviewRating"></param>
+        /// <param name="bookmarkCount"></param>
+        /// <param name="badge"></param>
         /// <param name="readmeSummary">
         /// A brief, LLM-generated readme summary
         /// </param>
@@ -154,7 +182,11 @@ namespace Apify
             string? pictureUrl,
             string? userPictureUrl,
             string? url,
-            bool? isWhiteListedForAgenticPayment,
+            bool? isWhiteListedForAgenticPayments,
+            int? actorReviewCount,
+            double? actorReviewRating,
+            int? bookmarkCount,
+            string? badge,
             string? readmeSummary)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
@@ -170,7 +202,11 @@ namespace Apify
             this.Url = url;
             this.Stats = stats ?? throw new global::System.ArgumentNullException(nameof(stats));
             this.CurrentPricingInfo = currentPricingInfo ?? throw new global::System.ArgumentNullException(nameof(currentPricingInfo));
-            this.IsWhiteListedForAgenticPayment = isWhiteListedForAgenticPayment;
+            this.IsWhiteListedForAgenticPayments = isWhiteListedForAgenticPayments;
+            this.ActorReviewCount = actorReviewCount;
+            this.ActorReviewRating = actorReviewRating;
+            this.BookmarkCount = bookmarkCount;
+            this.Badge = badge;
             this.ReadmeSummary = readmeSummary;
         }
 
@@ -180,5 +216,6 @@ namespace Apify
         public StoreListActor()
         {
         }
+
     }
 }

@@ -35,6 +35,7 @@ namespace Apify.JsonConverters
             if (__jsonProps.Contains("total")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("items")) __score1++;
+            if (__jsonProps.Contains("unnamed")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -80,6 +81,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.PaginationResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.PaginationResponse> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.PaginationResponse).Name}");
                     paginationResponse = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -90,9 +92,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (paginationResponse == null && listOfKeyValueStoresVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ListOfKeyValueStoresVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ListOfKeyValueStoresVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ListOfKeyValueStoresVariant2).Name}");
                     listOfKeyValueStoresVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

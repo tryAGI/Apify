@@ -46,11 +46,10 @@ namespace Apify
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -76,11 +75,10 @@ namespace Apify
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -374,18 +372,17 @@ namespace Apify
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Unauthorized - authentication required or invalid token.
                             if ((int)__response.StatusCode == 401)
@@ -412,18 +409,17 @@ namespace Apify
                                     __exception_401 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_401,
-                                    ResponseObject = __value_401,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Forbidden - insufficient permissions to perform this action.
                             if ((int)__response.StatusCode == 403)
@@ -450,18 +446,17 @@ namespace Apify
                                     __exception_403 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_403,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_403,
-                                    ResponseObject = __value_403,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Method not allowed.
                             if ((int)__response.StatusCode == 405)
@@ -488,18 +483,17 @@ namespace Apify
                                     __exception_405 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_405 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_405,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_405,
-                                    ResponseObject = __value_405,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_405,
+                                    responseObject: __value_405,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Conflict - the request could not be completed due to a conflict with the current state of the resource.
                             if ((int)__response.StatusCode == 409)
@@ -526,18 +520,17 @@ namespace Apify
                                     __exception_409 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_409,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_409,
-                                    ResponseObject = __value_409,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_409,
+                                    responseObject: __value_409,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Payload too large - the request body exceeds the size limit.
                             if ((int)__response.StatusCode == 413)
@@ -564,18 +557,17 @@ namespace Apify
                                     __exception_413 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_413,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_413,
-                                    ResponseObject = __value_413,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_413,
+                                    responseObject: __value_413,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Unsupported media type - the Content-Encoding of the request is not supported.
                             if ((int)__response.StatusCode == 415)
@@ -602,18 +594,17 @@ namespace Apify
                                     __exception_415 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_415,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_415,
-                                    ResponseObject = __value_415,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_415,
+                                    responseObject: __value_415,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Too many requests - rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
@@ -640,18 +631,17 @@ namespace Apify
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_429,
-                                    ResponseObject = __value_429,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -685,17 +675,15 @@ namespace Apify
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::Apify.ApiException(
+                                    throw global::Apify.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -732,17 +720,15 @@ namespace Apify
                                     {
                                     }
 
-                                    throw new global::Apify.ApiException(
+                                    throw global::Apify.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 
@@ -758,11 +744,10 @@ namespace Apify
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](#/reference/tasks/task-object/get-task) endpoint.<br/>
+        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

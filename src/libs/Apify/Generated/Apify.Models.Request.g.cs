@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.RequestBase PickRequestBase() => IsRequestBase
+            ? RequestBase!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RequestBase' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RequestVariant2? RequestVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = RequestVariant2;
             return IsRequestVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.RequestVariant2 PickRequestVariant2() => IsRequestVariant2
+            ? RequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static Request FromRequestBase(global::Apify.RequestBase? value) => new Request(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Request(global::Apify.RequestVariant2 value) => new Request((global::Apify.RequestVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             RequestVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Request FromRequestVariant2(global::Apify.RequestVariant2? value) => new Request(value);
 
         /// <summary>
         /// 

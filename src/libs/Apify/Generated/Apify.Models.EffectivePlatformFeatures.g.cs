@@ -130,5 +130,6 @@ namespace Apify
         public EffectivePlatformFeatures()
         {
         }
+
     }
 }

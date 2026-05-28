@@ -9,6 +9,12 @@ namespace Apify
     public sealed partial class ListOfRequestQueuesVariant2
     {
         /// <summary>
+        /// Whether the listing was filtered to only unnamed request queues.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unnamed")]
+        public bool? Unnamed { get; set; }
+
+        /// <summary>
         /// The array of request queues.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
@@ -27,12 +33,17 @@ namespace Apify
         /// <param name="items">
         /// The array of request queues.
         /// </param>
+        /// <param name="unnamed">
+        /// Whether the listing was filtered to only unnamed request queues.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfRequestQueuesVariant2(
-            global::System.Collections.Generic.IList<global::Apify.RequestQueueShort> items)
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueShort> items,
+            bool? unnamed)
         {
+            this.Unnamed = unnamed;
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }
 
@@ -42,5 +53,6 @@ namespace Apify
         public ListOfRequestQueuesVariant2()
         {
         }
+
     }
 }

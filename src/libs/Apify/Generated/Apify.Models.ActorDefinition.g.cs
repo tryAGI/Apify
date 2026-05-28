@@ -21,7 +21,7 @@ namespace Apify
         public string? Name { get; set; }
 
         /// <summary>
-        /// The version of the Actor, specified in the format [Number].[Number], e.g., 0.1, 1.0.
+        /// The version of the Actor, typically a dot-separated sequence of numbers (e.g., `0.1`, `1.0`, or `0.0.1`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
         public string? Version { get; set; }
@@ -115,7 +115,7 @@ namespace Apify
         /// The name of the Actor.
         /// </param>
         /// <param name="version">
-        /// The version of the Actor, specified in the format [Number].[Number], e.g., 0.1, 1.0.
+        /// The version of the Actor, typically a dot-separated sequence of numbers (e.g., `0.1`, `1.0`, or `0.0.1`).
         /// </param>
         /// <param name="buildTag">
         /// The tag name to be applied to a successful build of the Actor. Defaults to 'latest' if not specified.
@@ -194,5 +194,6 @@ namespace Apify
         public ActorDefinition()
         {
         }
+
     }
 }

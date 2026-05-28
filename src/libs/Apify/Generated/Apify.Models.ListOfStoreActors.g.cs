@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfStoreActorsVariant2? ListOfStoreActorsVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfStoreActorsVariant2;
             return IsListOfStoreActorsVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfStoreActorsVariant2 PickListOfStoreActorsVariant2() => IsListOfStoreActorsVariant2
+            ? ListOfStoreActorsVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfStoreActorsVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfStoreActors FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfStoreActors(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfStoreActors(global::Apify.ListOfStoreActorsVariant2 value) => new ListOfStoreActors((global::Apify.ListOfStoreActorsVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfStoreActorsVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfStoreActors FromListOfStoreActorsVariant2(global::Apify.ListOfStoreActorsVariant2? value) => new ListOfStoreActors(value);
 
         /// <summary>
         /// 

@@ -90,5 +90,6 @@ namespace Apify
         public PaginationResponse()
         {
         }
+
     }
 }

@@ -99,5 +99,6 @@ namespace Apify
         public LockedHeadRequest()
         {
         }
+
     }
 }

@@ -53,5 +53,6 @@ namespace Apify
         public ErrorDetail()
         {
         }
+
     }
 }

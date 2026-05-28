@@ -4,15 +4,15 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Notification settings for this schedule.
     /// </summary>
-    public sealed partial class UnknownBuildTagErrorDetailVariant2
+    public sealed partial class ScheduleVariant2Notifications
     {
         /// <summary>
         /// 
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
-        public string? Type { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("email")]
+        public bool? Email { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -21,23 +21,24 @@ namespace Apify
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnknownBuildTagErrorDetailVariant2" /> class.
+        /// Initializes a new instance of the <see cref="ScheduleVariant2Notifications" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="email"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UnknownBuildTagErrorDetailVariant2(
-            string? type)
+        public ScheduleVariant2Notifications(
+            bool? email)
         {
-            this.Type = type;
+            this.Email = email;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnknownBuildTagErrorDetailVariant2" /> class.
+        /// Initializes a new instance of the <see cref="ScheduleVariant2Notifications" /> class.
         /// </summary>
-        public UnknownBuildTagErrorDetailVariant2()
+        public ScheduleVariant2Notifications()
         {
         }
+
     }
 }

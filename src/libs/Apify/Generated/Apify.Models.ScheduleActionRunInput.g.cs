@@ -48,5 +48,6 @@ namespace Apify
         public ScheduleActionRunInput()
         {
         }
+
     }
 }

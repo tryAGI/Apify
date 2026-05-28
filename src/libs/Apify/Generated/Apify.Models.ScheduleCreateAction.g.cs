@@ -47,6 +47,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.ScheduleCreateActionRunActor PickRunActor() => IsRunActor
+            ? RunActor!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunActor' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleCreateActionRunActorTask? RunActorTask { get; init; }
 #else
@@ -73,6 +80,13 @@ namespace Apify
             value = RunActorTask;
             return IsRunActorTask;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ScheduleCreateActionRunActorTask PickRunActorTask() => IsRunActorTask
+            ? RunActorTask!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RunActorTask' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -94,6 +108,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ScheduleCreateAction FromRunActor(global::Apify.ScheduleCreateActionRunActor? value) => new ScheduleCreateAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ScheduleCreateAction(global::Apify.ScheduleCreateActionRunActorTask value) => new ScheduleCreateAction((global::Apify.ScheduleCreateActionRunActorTask?)value);
 
         /// <summary>
@@ -108,6 +127,11 @@ namespace Apify
         {
             RunActorTask = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ScheduleCreateAction FromRunActorTask(global::Apify.ScheduleCreateActionRunActorTask? value) => new ScheduleCreateAction(value);
 
         /// <summary>
         /// 

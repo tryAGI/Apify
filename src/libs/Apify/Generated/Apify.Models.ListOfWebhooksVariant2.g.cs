@@ -40,5 +40,6 @@ namespace Apify
         public ListOfWebhooksVariant2()
         {
         }
+
     }
 }

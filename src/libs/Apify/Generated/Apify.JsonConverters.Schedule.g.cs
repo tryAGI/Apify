@@ -23,6 +23,13 @@ namespace Apify.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
 
                 }
             }
@@ -42,6 +49,8 @@ namespace Apify.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("actions")) __score1++;
             if (__jsonProps.Contains("description")) __score1++;
+            if (__jsonProps.Contains("notifications")) __score1++;
+            if (__jsonProps.Contains("notifications.email")) __score1++;
             if (__jsonProps.Contains("title")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
@@ -88,6 +97,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleBase).Name}");
                     scheduleBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -98,9 +108,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (scheduleBase == null && scheduleVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.ScheduleVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.ScheduleVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.ScheduleVariant2).Name}");
                     scheduleVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

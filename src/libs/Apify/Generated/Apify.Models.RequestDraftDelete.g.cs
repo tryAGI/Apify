@@ -40,6 +40,13 @@ namespace Apify
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.RequestDraftDeleteById PickRequestDraftDeleteById() => IsRequestDraftDeleteById
+            ? RequestDraftDeleteById!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RequestDraftDeleteById' but the value was {ToString()}.");
+
+        /// <summary>
         /// A request that should be deleted, identified by its unique key.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace Apify
             value = RequestDraftDeleteByUniqueKey;
             return IsRequestDraftDeleteByUniqueKey;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.RequestDraftDeleteByUniqueKey PickRequestDraftDeleteByUniqueKey() => IsRequestDraftDeleteByUniqueKey
+            ? RequestDraftDeleteByUniqueKey!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RequestDraftDeleteByUniqueKey' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static RequestDraftDelete FromRequestDraftDeleteById(global::Apify.RequestDraftDeleteById? value) => new RequestDraftDelete(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteByUniqueKey?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             RequestDraftDeleteByUniqueKey = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RequestDraftDelete FromRequestDraftDeleteByUniqueKey(global::Apify.RequestDraftDeleteByUniqueKey? value) => new RequestDraftDelete(value);
 
         /// <summary>
         /// 

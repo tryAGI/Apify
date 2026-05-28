@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
+            ? CommonActorPricingInfo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfoVariant2? PricePerDatasetItemActorPricingInfoVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = PricePerDatasetItemActorPricingInfoVariant2;
             return IsPricePerDatasetItemActorPricingInfoVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.PricePerDatasetItemActorPricingInfoVariant2 PickPricePerDatasetItemActorPricingInfoVariant2() => IsPricePerDatasetItemActorPricingInfoVariant2
+            ? PricePerDatasetItemActorPricingInfoVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItemActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static PricePerDatasetItemActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new PricePerDatasetItemActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PricePerDatasetItemActorPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfoVariant2 value) => new PricePerDatasetItemActorPricingInfo((global::Apify.PricePerDatasetItemActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             PricePerDatasetItemActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PricePerDatasetItemActorPricingInfo FromPricePerDatasetItemActorPricingInfoVariant2(global::Apify.PricePerDatasetItemActorPricingInfoVariant2? value) => new PricePerDatasetItemActorPricingInfo(value);
 
         /// <summary>
         /// 

@@ -30,6 +30,8 @@ namespace Apify.JsonConverters
             var __score0 = 0;
             if (__jsonProps.Contains("apifyMarginPercentage")) __score0++;
             if (__jsonProps.Contains("createdAt")) __score0++;
+            if (__jsonProps.Contains("forceContainsSignificantPriceChange")) __score0++;
+            if (__jsonProps.Contains("isPriceChangeNotificationSuppressed")) __score0++;
             if (__jsonProps.Contains("notifiedAboutChangeAt")) __score0++;
             if (__jsonProps.Contains("notifiedAboutFutureChangeAt")) __score0++;
             if (__jsonProps.Contains("reasonForChange")) __score0++;
@@ -83,6 +85,7 @@ namespace Apify.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.CommonActorPricingInfo), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.CommonActorPricingInfo> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.CommonActorPricingInfo).Name}");
                     commonActorPricingInfo = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -93,9 +96,13 @@ namespace Apify.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (commonActorPricingInfo == null && flatPricePerMonthActorPricingInfoVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.FlatPricePerMonthActorPricingInfoVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.FlatPricePerMonthActorPricingInfoVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.FlatPricePerMonthActorPricingInfoVariant2).Name}");
                     flatPricePerMonthActorPricingInfoVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

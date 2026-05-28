@@ -84,5 +84,6 @@ namespace Apify
         public Profile()
         {
         }
+
     }
 }

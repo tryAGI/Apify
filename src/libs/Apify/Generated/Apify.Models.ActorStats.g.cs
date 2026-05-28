@@ -57,6 +57,30 @@ namespace Apify
         public global::System.DateTime? LastRunStartedAt { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewCount")]
+        public int? ActorReviewCount { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewRating")]
+        public double? ActorReviewRating { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bookmarkCount")]
+        public int? BookmarkCount { get; set; }
+
+        /// <summary>
+        /// Run status counts over the past 30 days.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("publicActorRunStats30Days")]
+        public global::Apify.ActorStatsPublicActorRunStats30Days? PublicActorRunStats30Days { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -73,6 +97,12 @@ namespace Apify
         /// <param name="totalUsers90Days"></param>
         /// <param name="totalMetamorphs"></param>
         /// <param name="lastRunStartedAt"></param>
+        /// <param name="actorReviewCount"></param>
+        /// <param name="actorReviewRating"></param>
+        /// <param name="bookmarkCount"></param>
+        /// <param name="publicActorRunStats30Days">
+        /// Run status counts over the past 30 days.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -84,7 +114,11 @@ namespace Apify
             int? totalUsers30Days,
             int? totalUsers90Days,
             int? totalMetamorphs,
-            global::System.DateTime? lastRunStartedAt)
+            global::System.DateTime? lastRunStartedAt,
+            int? actorReviewCount,
+            double? actorReviewRating,
+            int? bookmarkCount,
+            global::Apify.ActorStatsPublicActorRunStats30Days? publicActorRunStats30Days)
         {
             this.TotalBuilds = totalBuilds;
             this.TotalRuns = totalRuns;
@@ -94,6 +128,10 @@ namespace Apify
             this.TotalUsers90Days = totalUsers90Days;
             this.TotalMetamorphs = totalMetamorphs;
             this.LastRunStartedAt = lastRunStartedAt;
+            this.ActorReviewCount = actorReviewCount;
+            this.ActorReviewRating = actorReviewRating;
+            this.BookmarkCount = bookmarkCount;
+            this.PublicActorRunStats30Days = publicActorRunStats30Days;
         }
 
         /// <summary>
@@ -102,5 +140,6 @@ namespace Apify
         public ActorStats()
         {
         }
+
     }
 }

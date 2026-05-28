@@ -104,6 +104,19 @@ namespace Apify
         public required bool HadMultipleClients { get; set; }
 
         /// <summary>
+        /// Defines the general access level for the resource.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generalAccess")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.GeneralAccessJsonConverter))]
+        public global::Apify.GeneralAccess? GeneralAccess { get; set; }
+
+        /// <summary>
+        /// Statistics about request queue operations and storage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
+        public global::Apify.RequestQueueStats? Stats { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -154,6 +167,12 @@ namespace Apify
         /// <param name="actRunId">
         /// The ID of the Actor run that created this request queue.
         /// </param>
+        /// <param name="generalAccess">
+        /// Defines the general access level for the resource.
+        /// </param>
+        /// <param name="stats">
+        /// Statistics about request queue operations and storage.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -171,7 +190,9 @@ namespace Apify
             bool hadMultipleClients,
             global::System.DateTime? expireAt,
             string? actId,
-            string? actRunId)
+            string? actRunId,
+            global::Apify.GeneralAccess? generalAccess,
+            global::Apify.RequestQueueStats? stats)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -187,6 +208,8 @@ namespace Apify
             this.ActId = actId;
             this.ActRunId = actRunId;
             this.HadMultipleClients = hadMultipleClients;
+            this.GeneralAccess = generalAccess;
+            this.Stats = stats;
         }
 
         /// <summary>
@@ -195,5 +218,6 @@ namespace Apify
         public RequestQueueShort()
         {
         }
+
     }
 }

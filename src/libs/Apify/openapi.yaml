@@ -6,9 +6,9 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\n- To access the API using [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- To access the API using [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\nYou can find your API token on the\n[Integrations](https://console.apify.com/account#/integrations) page in the\nApify Console.\n\nTo use your token in a request, either:\n\n- Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\n[More info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).\n(Recommended).\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Do not share your API token or password with untrusted parties.**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run\nActor](#/reference/actors/run-collection/run-actor) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/acts/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run\nActor](#/reference/actors/run-collection/run-actor) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run\nActor](#/reference/actors/run-collection/run-actor) or [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get\nrun](#/reference/actor-runs/run-object-and-its-storages/get-run) API\nendpoint.\n3. Fetch the results from the [Get\nitems](#/reference/datasets/item-collection/get-items) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get record](#/reference/key-value-stores/record/get-record) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your\n[Actor](#/reference/actors/run-actor-synchronously) or\n[task](#/reference/actor-tasks/runs-collection/run-task-synchronously)\nsynchronously. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](#/reference/datasets/item-collection/get-items) or\nKey-value store [Get record](#/reference/key-value-stores/record/get-record)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of\nActors](#/reference/actors/actor-collection/get-list-of-actors))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: `2xx` range for success, `4xx`\nrange for errors caused by the caller\n(invalid requests) and `5xx` range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td><code>401</code></td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td><code>404</code></td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td><code>429</code></td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td><code>405</code></td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* CRUD ([get](#/reference/key-value-stores/record/get-record),\n  [put](#/reference/key-value-stores/record/put-record),\n  [delete](#/reference/key-value-stores/record/delete-record))\n  operations on key-value store records\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n* [Run Actor](#/reference/actors/run-collection/run-actor)\n* [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)\n* [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)\n* [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)\n* [Push items](#/reference/datasets/item-collection/put-items) to dataset\n* CRUD\n  ([add](#/reference/request-queues/request-collection/add-request),\n  [get](#/reference/request-queues/request-collection/get-request),\n  [update](#/reference/request-queues/request-collection/update-request),\n  [delete](#/reference/request-queues/request-collection/delete-request))\n  operations on requests in request queues\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to `429` then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
+    "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\n- To access the API using [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- To access the API using [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\n**You can find your API token on the\n[Integrations](https://console.apify.com/settings/integrations) page in the\nApify Console.**\n\nTo use your token in a request, either:\n\n- Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\n[More info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).\n(Recommended).\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Never share your API token or password with untrusted parties!**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run\nActor](#/reference/actors/run-collection/run-actor) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/actors/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run\nActor](#/reference/actors/run-collection/run-actor) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run\nActor](#/reference/actors/run-collection/run-actor) or [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get\nrun](#/reference/actor-runs/run-object-and-its-storages/get-run) API\nendpoint.\n3. Fetch the results from the [Get\nitems](#/reference/datasets/item-collection/get-items) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get record](#/reference/key-value-stores/record/get-record) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your\n[Actor](#/reference/actors/run-actor-synchronously) or\n[task](#/reference/actor-tasks/runs-collection/run-task-synchronously)\nsynchronously. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Legacy `/v2/acts/` URL prefix\n<span id=\"/introduction/legacy-acts-prefix\"></span>\n\nThe `/v2/acts/` prefix is deprecated but still fully functional, and \nsuch endpoint routes to the same handler as its `/v2/actors/...` counterpart. \nNew integrations should use the canonical /v2/actors/ prefix, \nbut existing clients keep working without changes.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](#/reference/datasets/item-collection/get-items) or\nKey-value store [Get record](#/reference/key-value-stores/record/get-record)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of\nActors](#/reference/actors/actor-collection/get-list-of-actors))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: `2xx` range for success, `4xx`\nrange for errors caused by the caller\n(invalid requests) and `5xx` range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td><code>401</code></td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td><code>404</code></td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td><code>429</code></td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td><code>405</code></td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* CRUD ([get](#/reference/key-value-stores/record/get-record),\n  [put](#/reference/key-value-stores/record/put-record),\n  [delete](#/reference/key-value-stores/record/delete-record))\n  operations on key-value store records\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n* [Run Actor](#/reference/actors/run-collection/run-actor)\n* [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)\n* [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)\n* [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)\n* [Push items](#/reference/datasets/item-collection/put-items) to dataset\n* CRUD\n  ([add](#/reference/request-queues/request-collection/add-request),\n  [get](#/reference/request-queues/request-collection/get-request),\n  [update](#/reference/request-queues/request-collection/update-request),\n  [delete](#/reference/request-queues/request-collection/delete-request))\n  operations on requests in request queues\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to `429` then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
     "contact": {},
-    "version": "v2-2026-04-29T071435Z"
+    "version": "v2-2026-05-28T120425Z"
   },
   "servers": [
     {
@@ -88,7 +88,7 @@
         "#/reference/actors/last-run-object-and-its-storages",
         "#tag/ActorsLast-run-object-and-its-storages"
       ],
-      "description": "The API endpoints in this section allow you to manage your Apify Actors runs.\n\nSome API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.\n\nFor more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).\n",
+      "description": "The API endpoints in this section allow you to manage your Apify Actors runs.\n\nSome API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.\n\nFor completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.\n\nFor more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).\n",
       "x-trait": "true"
     },
     {
@@ -130,7 +130,7 @@
         "#/reference/actor-runs/run-object-and-its-storages",
         "#tag/Actor-runsRun-object-and-its-storages"
       ],
-      "description": "The API endpoints described in this section enable you to manage, and delete Apify Actor runs.\n\nIf any returned run object contains usage in dollars, your effective unit pricing at the time of query\nhas been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.\n\nYou can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).\n"
+      "description": "The API endpoints described in this section enable you to manage, and delete Apify Actor runs.\n\nIf any returned run object contains usage in dollars, your effective unit pricing at the time of query\nhas been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.\n\nFor completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.\n\nYou can learn more about platform usage in the [documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).\n"
     },
     {
       "name": "Actor tasks",
@@ -376,9 +376,39 @@
       "description": "The API endpoint described in this section is convenience endpoint that provides access to last Actor run's log.\n\nSame as of functionality described in: [Logs](/api/v2/logs)\n"
     },
     {
+      "name": "Last Actor run's abort",
+      "x-displayName": "Last Actor run's abort - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.\n\nSame as of functionality described in: [Abort run](/api/v2/actor-run-abort-post)\n"
+    },
+    {
+      "name": "Last Actor run's metamorph",
+      "x-displayName": "Last Actor run's metamorph - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post)\n"
+    },
+    {
+      "name": "Last Actor run's reboot",
+      "x-displayName": "Last Actor run's reboot - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.\n\nSame as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post)\n"
+    },
+    {
       "name": "Last Actor task run's log",
       "x-displayName": "Last Actor task run's log - Introduction",
       "description": "The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.\n\nSame as of functionality described in: [Logs](/api/v2/logs)\n"
+    },
+    {
+      "name": "Last Actor task run's abort",
+      "x-displayName": "Last Actor task run's abort - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.\n\nSame as of functionality described in: [Abort run](/api/v2/actor-run-abort-post)\n"
+    },
+    {
+      "name": "Last Actor task run's metamorph",
+      "x-displayName": "Last Actor task run's metamorph - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post)\n"
+    },
+    {
+      "name": "Last Actor task run's reboot",
+      "x-displayName": "Last Actor task run's reboot - Introduction",
+      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.\n\nSame as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post)\n"
     },
     {
       "name": "Last Actor task run's default dataset",
@@ -397,7 +427,7 @@
     }
   ],
   "paths": {
-    "/v2/acts": {
+    "/v2/actors": {
       "get": {
         "tags": [
           "Actors"
@@ -570,7 +600,7 @@
                     "schema": {
                       "type": "string"
                     },
-                    "example": "https://api.apify.com/v2/acts/zdc3Pyhyz3m8vjDeM"
+                    "example": "https://api.apify.com/v2/actors/zdc3Pyhyz3m8vjDeM"
                   }
                 }
               }
@@ -695,7 +725,7 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorCollectionClientAsync#create"
       }
     },
-    "/v2/acts/{actorId}": {
+    "/v2/actors/{actorId}": {
       "get": {
         "tags": [
           "Actors"
@@ -1114,7 +1144,7 @@
         "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/ActorClient#delete"
       }
     },
-    "/v2/acts/{actorId}/versions": {
+    "/v2/actors/{actorId}/versions": {
       "get": {
         "tags": [
           "Actors/Actor versions"
@@ -1245,7 +1275,7 @@
                     "schema": {
                       "type": "string"
                     },
-                    "example": "https://api.apify.com/v2/acts/zdc3Pyhyz3m8vjDeM/versions/0.0"
+                    "example": "https://api.apify.com/v2/actors/zdc3Pyhyz3m8vjDeM/versions/0.0"
                   }
                 }
               }
@@ -1294,7 +1324,7 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorVersionCollectionClientAsync#create"
       }
     },
-    "/v2/acts/{actorId}/versions/{versionNumber}": {
+    "/v2/actors/{actorId}/versions/{versionNumber}": {
       "get": {
         "tags": [
           "Actors/Actor versions"
@@ -1591,7 +1621,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/versions/{versionNumber}/env-vars": {
+    "/v2/actors/{actorId}/versions/{versionNumber}/env-vars": {
       "get": {
         "tags": [
           "Actors/Actor versions"
@@ -1688,7 +1718,7 @@
                     "schema": {
                       "type": "string"
                     },
-                    "example": "https://api.apify.com/v2/acts/zdc3Pyhyz3m8vjDeM/versions/1.0/env-vars/ENV_VAR_NAME"
+                    "example": "https://api.apify.com/v2/actors/zdc3Pyhyz3m8vjDeM/versions/1.0/env-vars/ENV_VAR_NAME"
                   }
                 }
               }
@@ -1744,7 +1774,7 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorEnvVarCollectionClientAsync#create"
       }
     },
-    "/v2/acts/{actorId}/versions/{versionNumber}/env-vars/{envVarName}": {
+    "/v2/actors/{actorId}/versions/{versionNumber}/env-vars/{envVarName}": {
       "get": {
         "tags": [
           "Actors/Actor versions"
@@ -2078,7 +2108,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/webhooks": {
+    "/v2/actors/{actorId}/webhooks": {
       "get": {
         "tags": [
           "Actors/Webhook collection"
@@ -2139,7 +2169,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/builds": {
+    "/v2/actors/{actorId}/builds": {
       "get": {
         "tags": [
           "Actors/Actor builds"
@@ -2275,7 +2305,7 @@
                     "schema": {
                       "type": "string"
                     },
-                    "example": "https://api.apify.com/v2/acts/zdc3Pyhyz3m8vjDeM/runs/HG7ML7M8z78YcAPEB"
+                    "example": "https://api.apify.com/v2/actors/zdc3Pyhyz3m8vjDeM/runs/HG7ML7M8z78YcAPEB"
                   }
                 }
               }
@@ -2321,7 +2351,7 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorClientAsync#build"
       }
     },
-    "/v2/acts/{actorId}/builds/default": {
+    "/v2/actors/{actorId}/builds/default": {
       "get": {
         "tags": [
           "Actors/Actor builds"
@@ -2354,14 +2384,7 @@
             "$ref": "#/components/responses/BadRequest"
           },
           "403": {
-            "description": "Not found - the requested resource was not found.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnknownBuildTagError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
@@ -2381,7 +2404,7 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorClient#default_build"
       }
     },
-    "/v2/acts/{actorId}/builds/{buildId}/openapi.json": {
+    "/v2/actors/{actorId}/builds/{buildId}/openapi.json": {
       "get": {
         "tags": [
           "Actors/Actor builds"
@@ -2429,7 +2452,7 @@
         }
       }
     },
-    "/v2/acts/{actorId}/builds/{buildId}": {
+    "/v2/actors/{actorId}/builds/{buildId}": {
       "get": {
         "tags": [
           "Actors/Actor builds"
@@ -2483,7 +2506,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/builds/{buildId}/abort": {
+    "/v2/actors/{actorId}/builds/{buildId}/abort": {
       "post": {
         "tags": [
           "Actors/Actor builds"
@@ -2570,7 +2593,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs": {
+    "/v2/actors/{actorId}/runs": {
       "get": {
         "tags": [
           "Actors/Actor runs"
@@ -2728,7 +2751,7 @@
                     "schema": {
                       "type": "string"
                     },
-                    "example": "https://api.apify.com/v2/acts/zdc3Pyhyz3m8vjDeM/runs/HG7ML7M8z78YcAPEB"
+                    "example": "https://api.apify.com/v2/actors/zdc3Pyhyz3m8vjDeM/runs/HG7ML7M8z78YcAPEB"
                   }
                 }
               }
@@ -2783,12 +2806,12 @@
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorClientAsync#call"
       }
     },
-    "/v2/acts/{actorId}/run-sync": {
+    "/v2/actors/{actorId}/run-sync": {
       "post": {
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Run Actor synchronously with input and return output",
+        "summary": "Run Actor synchronously and return output",
         "description": "Runs a specific Actor and returns its output.\n\nThe POST payload including its `Content-Type` header is passed as `INPUT` to\nthe Actor (usually <code>application/json</code>).\nThe HTTP response contains Actors `OUTPUT` record from its default\nkey-value store.\n\nThe Actor is started with the default options; you can override them using\nvarious URL query parameters.\nIf the Actor run exceeds 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds,\nthe HTTP response will have status 408 (Request Timeout).\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "act_runSync_post",
         "parameters": [
@@ -2898,7 +2921,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Without input",
+        "summary": "Run Actor synchronously without input",
         "description": "Runs a specific Actor and returns its output.\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the API endpoint returns a timeout error.\nThe Actor is not passed any input.\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time,\ndue to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "act_runSync_get",
         "parameters": [
@@ -2982,12 +3005,12 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/run-sync-get-dataset-items": {
+    "/v2/actors/{actorId}/run-sync-get-dataset-items": {
       "post": {
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Run Actor synchronously with input and get dataset items",
+        "summary": "Run Actor synchronously and get dataset items",
         "description": "Runs a specific Actor and returns its dataset items.\n\nThe POST payload including its `Content-Type` header is passed as `INPUT` to\nthe Actor (usually `application/json`).\nThe HTTP response contains the Actors dataset items, while the format of\nitems depends on specifying dataset items' `format` parameter.\n\nYou can send all the same options in parameters as the [Get Dataset\nItems](#/reference/datasets/item-collection/get-items) API endpoint.\n\nThe Actor is started with the default options; you can override them using\nURL query parameters.\nIf the Actor run exceeds 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds,\nthe HTTP response will return the 408 status code (Request Timeout).\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time,\ndue to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "act_runSyncGetDatasetItems_post",
         "parameters": [
@@ -3029,6 +3052,9 @@
           },
           {
             "$ref": "#/components/parameters/fields"
+          },
+          {
+            "$ref": "#/components/parameters/outputFields"
           },
           {
             "$ref": "#/components/parameters/omit"
@@ -3074,6 +3100,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           }
         ],
         "requestBody": {
@@ -3246,6 +3278,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -3289,6 +3324,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           }
         ],
         "responses": {
@@ -3394,7 +3435,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/validate-input": {
+    "/v2/actors/{actorId}/validate-input": {
       "post": {
         "tags": [
           "Actors"
@@ -3479,8 +3520,44 @@
         "deprecated": false
       }
     },
-    "/v2/acts/{actorId}/runs/{runId}/resurrect": {
+    "/v2/actors/{actorId}/runs/{runId}/resurrect": {
       "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/RunResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
         "tags": [
           "Actors/Actor runs"
         ],
@@ -3507,38 +3584,6 @@
             "$ref": "#/components/parameters/restartOnErrorResurrect"
           }
         ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RunResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "405": {
-            "$ref": "#/components/responses/MethodNotAllowed"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          }
-        },
-        "deprecated": false,
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actors/resurrect-run/resurrect-run",
           "https://docs.apify.com/api/v2#/reference/actors/resurrect-run",
@@ -3546,13 +3591,13 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last": {
+    "/v2/actors/{actorId}/runs/last": {
       "get": {
         "tags": [
           "Actors/Actor runs"
         ],
         "summary": "Get last run",
-        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given Actor or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last Actor run object is:\n\n`/v2/acts/{actorId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](#/reference/actors/run-object) endpoint.\n\n##### Convenience endpoints for last Actor run\n\n* [Dataset](/api/v2/last-actor-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-runs-log)\n",
+        "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given Actor or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last Actor run object is:\n\n`/v2/actors/{actorId}/runs/last{?token,status}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters\nare the same as in the [Run object](#/reference/actors/run-object) endpoint.\n\n##### Convenience endpoints for last Actor run\n\n* [Dataset](/api/v2/last-actor-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-runs-log)\n",
         "operationId": "act_runs_last_get",
         "parameters": [
           {
@@ -3603,7 +3648,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/dataset": {
+    "/v2/actors/{actorId}/runs/last/dataset": {
       "get": {
         "responses": {
           "200": {
@@ -3758,7 +3803,7 @@
         "operationId": "act_runs_last_dataset_delete"
       }
     },
-    "/v2/acts/{actorId}/runs/last/dataset/items": {
+    "/v2/actors/{actorId}/runs/last/dataset/items": {
       "get": {
         "responses": {
           "200": {
@@ -3912,6 +3957,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -3955,6 +4003,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           },
           {
             "$ref": "#/components/parameters/signature"
@@ -4059,7 +4113,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/dataset/statistics": {
+    "/v2/actors/{actorId}/runs/last/dataset/statistics": {
       "get": {
         "responses": {
           "200": {
@@ -4107,7 +4161,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/key-value-store": {
+    "/v2/actors/{actorId}/runs/last/key-value-store": {
       "get": {
         "responses": {
           "200": {
@@ -4265,7 +4319,7 @@
         "operationId": "act_runs_last_keyValueStore_delete"
       }
     },
-    "/v2/acts/{actorId}/runs/last/key-value-store/keys": {
+    "/v2/actors/{actorId}/runs/last/key-value-store/keys": {
       "get": {
         "responses": {
           "200": {
@@ -4330,7 +4384,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/key-value-store/records": {
+    "/v2/actors/{actorId}/runs/last/key-value-store/records": {
       "get": {
         "responses": {
           "200": {
@@ -4390,7 +4444,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}": {
+    "/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}": {
       "get": {
         "responses": {
           "200": {
@@ -4683,7 +4737,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue": {
+    "/v2/actors/{actorId}/runs/last/request-queue": {
       "get": {
         "responses": {
           "200": {
@@ -4850,7 +4904,7 @@
         "operationId": "act_runs_last_requestQueue_delete"
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/requests": {
+    "/v2/actors/{actorId}/runs/last/request-queue/requests": {
       "get": {
         "responses": {
           "200": {
@@ -4986,7 +5040,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/requests/batch": {
+    "/v2/actors/{actorId}/runs/last/request-queue/requests/batch": {
       "post": {
         "requestBody": {
           "description": "",
@@ -5137,7 +5191,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/requests/unlock": {
+    "/v2/actors/{actorId}/runs/last/request-queue/requests/unlock": {
       "post": {
         "responses": {
           "200": {
@@ -5189,7 +5243,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}": {
+    "/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}": {
       "get": {
         "responses": {
           "200": {
@@ -5362,7 +5416,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock": {
+    "/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock": {
       "put": {
         "responses": {
           "200": {
@@ -5473,7 +5527,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/head": {
+    "/v2/actors/{actorId}/runs/last/request-queue/head": {
       "get": {
         "responses": {
           "200": {
@@ -5529,7 +5583,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/request-queue/head/lock": {
+    "/v2/actors/{actorId}/runs/last/request-queue/head/lock": {
       "post": {
         "responses": {
           "201": {
@@ -5588,7 +5642,7 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/last/log": {
+    "/v2/actors/{actorId}/runs/last/log": {
       "get": {
         "responses": {
           "200": {
@@ -5645,7 +5699,264 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/{runId}": {
+    "/v2/actors/{actorId}/runs/last/abort": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "HG7ML7M8z78YcAPEB",
+                    "actId": "janedoe~my-actor",
+                    "userId": "BPWZBd7Z9c746JAng",
+                    "actorTaskId": "rANaydYhUxjsnA3oz",
+                    "startedAt": "2019-11-30T07:34:24.202Z",
+                    "finishedAt": "2019-12-12T09:30:12.202Z",
+                    "status": "ABORTED",
+                    "statusMessage": "Actor was aborted",
+                    "isStatusMessageTerminal": true,
+                    "meta": {
+                      "origin": "WEB",
+                      "clientIp": "172.234.12.34",
+                      "userAgent": "Mozilla/5.0 (iPad)"
+                    },
+                    "stats": {
+                      "inputBodyLen": 240,
+                      "migrationCount": 0,
+                      "restartCount": 0,
+                      "resurrectCount": 1,
+                      "memAvgBytes": 35914228.4,
+                      "memMaxBytes": 38244352,
+                      "memCurrentBytes": 0,
+                      "cpuAvgUsage": 0.00955965,
+                      "cpuMaxUsage": 3.1546,
+                      "cpuCurrentUsage": 0,
+                      "netRxBytes": 2652,
+                      "netTxBytes": 1338,
+                      "durationMillis": 26239,
+                      "runTimeSecs": 26.239,
+                      "metamorph": 0,
+                      "computeUnits": 0.0072886
+                    },
+                    "options": {
+                      "build": "latest",
+                      "timeoutSecs": 300,
+                      "memoryMbytes": 1024,
+                      "diskMbytes": 2048
+                    },
+                    "buildId": "7sT5jcggjjA9fNcxF",
+                    "exitCode": 0,
+                    "generalAccess": "RESTRICTED",
+                    "defaultKeyValueStoreId": "eJNzqsbPiopwJcgGQ",
+                    "defaultDatasetId": "wmKPijuyDnPZAPRMk",
+                    "defaultRequestQueueId": "FL35cSF7jrxr3BY39",
+                    "storageIds": {
+                      "datasets": {
+                        "default": "wmKPijuyDnPZAPRMk"
+                      },
+                      "keyValueStores": {
+                        "default": "eJNzqsbPiopwJcgGQ"
+                      },
+                      "requestQueues": {
+                        "default": "FL35cSF7jrxr3BY39"
+                      }
+                    },
+                    "isContainerServerReady": false,
+                    "gitBranchName": "master",
+                    "usage": {
+                      "ACTOR_COMPUTE_UNITS": 3,
+                      "DATASET_READS": 4,
+                      "DATASET_WRITES": 4,
+                      "KEY_VALUE_STORE_READS": 5,
+                      "KEY_VALUE_STORE_WRITES": 3,
+                      "KEY_VALUE_STORE_LISTS": 5,
+                      "REQUEST_QUEUE_READS": 2,
+                      "REQUEST_QUEUE_WRITES": 1,
+                      "DATA_TRANSFER_INTERNAL_GBYTES": 1,
+                      "DATA_TRANSFER_EXTERNAL_GBYTES": 3,
+                      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 34,
+                      "PROXY_SERPS": 3
+                    },
+                    "usageTotalUsd": 0.2654,
+                    "usageUsd": {
+                      "ACTOR_COMPUTE_UNITS": 0.072,
+                      "DATASET_READS": 0.0004,
+                      "DATASET_WRITES": 0.0002,
+                      "KEY_VALUE_STORE_READS": 0.0006,
+                      "KEY_VALUE_STORE_WRITES": 0.002,
+                      "KEY_VALUE_STORE_LISTS": 0.004,
+                      "REQUEST_QUEUE_READS": 0.005,
+                      "REQUEST_QUEUE_WRITES": 0.02,
+                      "DATA_TRANSFER_INTERNAL_GBYTES": 0.0004,
+                      "DATA_TRANSFER_EXTERNAL_GBYTES": 0.0002,
+                      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0.16,
+                      "PROXY_SERPS": 0.0006
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's abort"
+        ],
+        "summary": "Abort Actor's last run",
+        "description": "Aborts the last run of the specified Actor and returns an object that\ncontains all the details about the run.\n\nThis endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)\non the Actor's last run. Only runs that are starting or running are aborted.\nFor runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call\ndoes nothing.\n",
+        "operationId": "act_runs_last_abort_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/gracefully"
+          }
+        ]
+      }
+    },
+    "/v2/actors/{actorId}/runs/last/metamorph": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's metamorph"
+        ],
+        "summary": "Metamorph Actor's last run",
+        "description": "Transforms the last run of the specified Actor into a run of another Actor with\na new input.\n\nThis endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)\non the Actor's last run.\n",
+        "operationId": "act_runs_last_metamorph_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/targetActorId"
+          },
+          {
+            "name": "build",
+            "in": "query",
+            "description": "Optional build of the target Actor.\n\nIt can be either a build tag or build number. By default, the run uses\nthe build specified in the default run configuration for the target\nActor (typically `latest`).\n",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "beta"
+            }
+          }
+        ]
+      }
+    },
+    "/v2/actors/{actorId}/runs/last/reboot": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor run's reboot"
+        ],
+        "summary": "Reboot Actor's last run",
+        "description": "Reboots the last run of the specified Actor and returns an object that\ncontains all the details about the rebooted run.\n\nThis endpoint is a shortcut for [Reboot run](#/reference/actor-runs/reboot-run/reboot-run)\non the Actor's last run. Only runs with status `RUNNING` can be rebooted. The run's\ncontainer will be restarted, so any data not persisted in the key-value store, dataset,\nor request queue will be lost.\n",
+        "operationId": "act_runs_last_reboot_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          }
+        ]
+      }
+    },
+    "/v2/actors/{actorId}/runs/{runId}": {
       "get": {
         "tags": [
           "Actors/Actor runs"
@@ -5703,25 +6014,8 @@
         ]
       }
     },
-    "/v2/acts/{actorId}/runs/{runId}/abort": {
+    "/v2/actors/{actorId}/runs/{runId}/abort": {
       "post": {
-        "tags": [
-          "Actors/Actor runs"
-        ],
-        "summary": "Abort run",
-        "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs). Aborts an Actor run and\nreturns an object that contains all the details about the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
-        "operationId": "act_run_abort_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/actorId"
-          },
-          {
-            "$ref": "#/components/parameters/runId"
-          },
-          {
-            "$ref": "#/components/parameters/gracefully"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -5844,21 +6138,12 @@
           }
         },
         "deprecated": true,
-        "x-legacy-doc-urls": [
-          "https://docs.apify.com/api/v2#/reference/actors/abort-run/abort-run",
-          "https://docs.apify.com/api/v2#/reference/actors/abort-run",
-          "https://docs.apify.com/api/v2#tag/ActorsAbort-run/operation/act_run_abort_post"
-        ]
-      }
-    },
-    "/v2/acts/{actorId}/runs/{runId}/metamorph": {
-      "post": {
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Metamorph run",
-        "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs).Transforms an Actor run\ninto a run of another Actor with a new input.\n\nThis is useful if you want to use another Actor to finish the work\nof your current Actor run, without the need to create a completely new run\nand waiting for its finish.\nFor the users of your Actors, the metamorph operation is transparent, they\nwill just see your Actor got the work done.\n\nThere is a limit on how many times you can metamorph a single run. You can\ncheck the limit in [the Actor runtime limits](https://docs.apify.com/platform/limits#actor-limits).\n\nInternally, the system stops the Docker container corresponding to the Actor\nrun and starts a new container using a different Docker image.\nAll the default storages are preserved and the new input is stored under the\n`INPUT-METAMORPH-1` key in the same default key-value store.\n\nFor more information, see the [Actor\ndocs](https://docs.apify.com/platform/actors/development/programming-interface/metamorph).\n",
-        "operationId": "act_run_metamorph_post",
+        "summary": "Abort run",
+        "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs). Aborts an Actor run and\nreturns an object that contains all the details about the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
+        "operationId": "act_run_abort_post",
         "parameters": [
           {
             "$ref": "#/components/parameters/actorId"
@@ -5867,20 +6152,18 @@
             "$ref": "#/components/parameters/runId"
           },
           {
-            "$ref": "#/components/parameters/targetActorId"
-          },
-          {
-            "name": "build",
-            "in": "query",
-            "description": "Optional build of the target Actor.\n\nIt can be either a build tag or build number. By default, the run uses\nthe build specified in the default run configuration for the target\nActor (typically `latest`).\n",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "example": "beta"
-            }
+            "$ref": "#/components/parameters/gracefully"
           }
         ],
+        "x-legacy-doc-urls": [
+          "https://docs.apify.com/api/v2#/reference/actors/abort-run/abort-run",
+          "https://docs.apify.com/api/v2#/reference/actors/abort-run",
+          "https://docs.apify.com/api/v2#tag/ActorsAbort-run/operation/act_run_abort_post"
+        ]
+      }
+    },
+    "/v2/actors/{actorId}/runs/{runId}/metamorph": {
+      "post": {
         "responses": {
           "200": {
             "description": "",
@@ -5913,6 +6196,34 @@
           }
         },
         "deprecated": true,
+        "tags": [
+          "Actors/Actor runs"
+        ],
+        "summary": "Metamorph run",
+        "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs). Transforms an Actor run\ninto a run of another Actor with a new input.\n\nThis is useful if you want to use another Actor to finish the work\nof your current Actor run, without the need to create a completely new run\nand waiting for its finish.\nFor the users of your Actors, the metamorph operation is transparent, they\nwill just see your Actor got the work done.\n\nThere is a limit on how many times you can metamorph a single run. You can\ncheck the limit in [the Actor runtime limits](https://docs.apify.com/platform/limits#actor-limits).\n\nInternally, the system stops the Docker container corresponding to the Actor\nrun and starts a new container using a different Docker image.\nAll the default storages are preserved and the new input is stored under the\n`INPUT-METAMORPH-1` key in the same default key-value store.\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/development/programming-interface/metamorph).\n",
+        "operationId": "act_run_metamorph_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/targetActorId"
+          },
+          {
+            "name": "build",
+            "in": "query",
+            "description": "Optional build of the target Actor.\n\nIt can be either a build tag or build number. By default, the run uses\nthe build specified in the default run configuration for the target\nActor (typically `latest`).\n",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "beta"
+            }
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actors/metamorph-run/metamorph-run",
           "https://docs.apify.com/api/v2#/reference/actors/metamorph-run",
@@ -6024,7 +6335,7 @@
           "Actor tasks"
         ],
         "summary": "Create task",
-        "description": "Create a new task with settings specified by the object passed as JSON in\nthe POST payload.\n\nThe response is the full task object as returned by the\n[Get task](#/reference/tasks/task-object/get-task) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL. ([More\ninfo](#/introduction/authentication)).\n",
+        "description": "Create a new task with settings specified by the object passed as JSON in\nthe POST payload.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
         "operationId": "actorTasks_post",
         "requestBody": {
           "description": "",
@@ -6196,7 +6507,7 @@
           "Actor tasks"
         ],
         "summary": "Update task",
-        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task object as returned by the\n[Get task](#/reference/tasks/task-object/get-task) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL. ([More\ninfo](#/introduction/authentication)).\n",
+        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
         "operationId": "actorTask_put",
         "parameters": [
           {
@@ -7069,6 +7380,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -7112,6 +7426,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           }
         ],
         "responses": {
@@ -7248,6 +7568,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -7291,6 +7614,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           }
         ],
         "requestBody": {
@@ -7517,6 +7846,263 @@
           },
           {
             "$ref": "#/components/parameters/raw"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/abort": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                },
+                "example": {
+                  "data": {
+                    "id": "HG7ML7M8z78YcAPEB",
+                    "actId": "janedoe~my-actor",
+                    "userId": "BPWZBd7Z9c746JAng",
+                    "actorTaskId": "rANaydYhUxjsnA3oz",
+                    "startedAt": "2019-11-30T07:34:24.202Z",
+                    "finishedAt": "2019-12-12T09:30:12.202Z",
+                    "status": "ABORTED",
+                    "statusMessage": "Actor was aborted",
+                    "isStatusMessageTerminal": true,
+                    "meta": {
+                      "origin": "WEB",
+                      "clientIp": "172.234.12.34",
+                      "userAgent": "Mozilla/5.0 (iPad)"
+                    },
+                    "stats": {
+                      "inputBodyLen": 240,
+                      "migrationCount": 0,
+                      "restartCount": 0,
+                      "resurrectCount": 1,
+                      "memAvgBytes": 35914228.4,
+                      "memMaxBytes": 38244352,
+                      "memCurrentBytes": 0,
+                      "cpuAvgUsage": 0.00955965,
+                      "cpuMaxUsage": 3.1546,
+                      "cpuCurrentUsage": 0,
+                      "netRxBytes": 2652,
+                      "netTxBytes": 1338,
+                      "durationMillis": 26239,
+                      "runTimeSecs": 26.239,
+                      "metamorph": 0,
+                      "computeUnits": 0.0072886
+                    },
+                    "options": {
+                      "build": "latest",
+                      "timeoutSecs": 300,
+                      "memoryMbytes": 1024,
+                      "diskMbytes": 2048
+                    },
+                    "buildId": "7sT5jcggjjA9fNcxF",
+                    "exitCode": 0,
+                    "generalAccess": "RESTRICTED",
+                    "defaultKeyValueStoreId": "eJNzqsbPiopwJcgGQ",
+                    "defaultDatasetId": "wmKPijuyDnPZAPRMk",
+                    "defaultRequestQueueId": "FL35cSF7jrxr3BY39",
+                    "storageIds": {
+                      "datasets": {
+                        "default": "wmKPijuyDnPZAPRMk"
+                      },
+                      "keyValueStores": {
+                        "default": "eJNzqsbPiopwJcgGQ"
+                      },
+                      "requestQueues": {
+                        "default": "FL35cSF7jrxr3BY39"
+                      }
+                    },
+                    "isContainerServerReady": false,
+                    "gitBranchName": "master",
+                    "usage": {
+                      "ACTOR_COMPUTE_UNITS": 3,
+                      "DATASET_READS": 4,
+                      "DATASET_WRITES": 4,
+                      "KEY_VALUE_STORE_READS": 5,
+                      "KEY_VALUE_STORE_WRITES": 3,
+                      "KEY_VALUE_STORE_LISTS": 5,
+                      "REQUEST_QUEUE_READS": 2,
+                      "REQUEST_QUEUE_WRITES": 1,
+                      "DATA_TRANSFER_INTERNAL_GBYTES": 1,
+                      "DATA_TRANSFER_EXTERNAL_GBYTES": 3,
+                      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 34,
+                      "PROXY_SERPS": 3
+                    },
+                    "usageTotalUsd": 0.2654,
+                    "usageUsd": {
+                      "ACTOR_COMPUTE_UNITS": 0.072,
+                      "DATASET_READS": 0.0004,
+                      "DATASET_WRITES": 0.0002,
+                      "KEY_VALUE_STORE_READS": 0.0006,
+                      "KEY_VALUE_STORE_WRITES": 0.002,
+                      "KEY_VALUE_STORE_LISTS": 0.004,
+                      "REQUEST_QUEUE_READS": 0.005,
+                      "REQUEST_QUEUE_WRITES": 0.02,
+                      "DATA_TRANSFER_INTERNAL_GBYTES": 0.0004,
+                      "DATA_TRANSFER_EXTERNAL_GBYTES": 0.0002,
+                      "PROXY_RESIDENTIAL_TRANSFER_GBYTES": 0.16,
+                      "PROXY_SERPS": 0.0006
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's abort"
+        ],
+        "summary": "Abort Actor task's last run",
+        "description": "Aborts the last run of the specified Actor task and returns an object that\ncontains all the details about the run.\n\nThis endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)\non the Actor task's last run. Only runs that are starting or running are aborted.\nFor runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call\ndoes nothing.\n",
+        "operationId": "actorTask_runs_last_abort_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/gracefully"
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/metamorph": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's metamorph"
+        ],
+        "summary": "Metamorph Actor task's last run",
+        "description": "Transforms the last run of the specified Actor task into a run of another Actor with\na new input.\n\nThis endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)\non the Actor task's last run.\n",
+        "operationId": "actorTask_runs_last_metamorph_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
+            "$ref": "#/components/parameters/targetActorId"
+          },
+          {
+            "name": "build",
+            "in": "query",
+            "description": "Optional build of the target Actor.\n\nIt can be either a build tag or build number. By default, the run uses\nthe build specified in the default run configuration for the target\nActor (typically `latest`).\n",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "beta"
+            }
+          }
+        ]
+      }
+    },
+    "/v2/actor-tasks/{actorTaskId}/runs/last/reboot": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Last Actor task run's reboot"
+        ],
+        "summary": "Reboot Actor task's last run",
+        "description": "Reboots the last run of the specified Actor task and returns an object that\ncontains all the details about the rebooted run.\n\nThis endpoint is a shortcut for [Reboot run](#/reference/actor-runs/reboot-run/reboot-run)\non the Actor task's last run. Only runs with status `RUNNING` can be rebooted. The run's\ncontainer will be restarted, so any data not persisted in the key-value store, dataset,\nor request queue will be lost.\n",
+        "operationId": "actorTask_runs_last_reboot_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorTaskId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
           }
         ]
       }
@@ -7830,6 +8416,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -7873,6 +8462,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           },
           {
             "$ref": "#/components/parameters/signature"
@@ -9585,7 +10180,7 @@
           "Actor runs"
         ],
         "summary": "Get run",
-        "description": "This is not a single endpoint, but an entire group of endpoints that lets\nyou retrieve the run or any of its default storages.\n\n##### Convenience endpoints for Actor run default storages\n\n* [Dataset](/api/v2/default-dataset)\n\n* [Key-value store](/api/v2/default-key-value-store)\n\n* [Request queue](/api/v2/default-request-queue)\n\nGets an object that contains all the details about a\nspecific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will synchronously wait\nfor the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
+        "description": "This is not a single endpoint, but an entire group of endpoints that lets\nyou retrieve the run or any of its default storages.\n\n##### Convenience endpoints for Actor run default storages\n\n* [Dataset](/api/v2/default-dataset)\n\n* [Key-value store](/api/v2/default-key-value-store)\n\n* [Request queue](/api/v2/default-request-queue)\n\nGets an object that contains all the details about a\nspecific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will synchronously wait\nfor the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.\nNote that the first response after completion can still show preliminary `stats`, costs, and event counts.\nFor stable figures, wait about 10 seconds and call the endpoint again.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actorRun_get",
         "parameters": [
           {
@@ -9768,20 +10363,6 @@
     },
     "/v2/actor-runs/{runId}/abort": {
       "post": {
-        "tags": [
-          "Actor runs"
-        ],
-        "summary": "Abort run",
-        "description": "Aborts an Actor run and returns an object that contains all the details\nabout the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
-        "operationId": "actorRun_abort_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/runId"
-          },
-          {
-            "$ref": "#/components/parameters/gracefully"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -9904,6 +10485,20 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Actor runs"
+        ],
+        "summary": "Abort run",
+        "description": "Aborts an Actor run and returns an object that contains all the details\nabout the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
+        "operationId": "actorRun_abort_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/gracefully"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actor-runs/abort-run/abort-run",
           "https://docs.apify.com/api/v2#/reference/actor-runs/abort-run",
@@ -9919,6 +10514,38 @@
     },
     "/v2/actor-runs/{runId}/metamorph": {
       "post": {
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false,
         "tags": [
           "Actor runs"
         ],
@@ -9944,38 +10571,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RunResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "405": {
-            "$ref": "#/components/responses/MethodNotAllowed"
-          },
-          "429": {
-            "$ref": "#/components/responses/TooManyRequests"
-          }
-        },
-        "deprecated": false,
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actor-runs/metamorph-run/metamorph-run",
           "https://docs.apify.com/api/v2#/reference/actor-runs/metamorph-run",
@@ -9991,17 +10586,6 @@
     },
     "/v2/actor-runs/{runId}/reboot": {
       "post": {
-        "tags": [
-          "Actor runs"
-        ],
-        "summary": "Reboot run",
-        "description": "Reboots an Actor run and returns an object that contains all the details\nabout the rebooted run.\n\nOnly runs that are running, i.e. runs with status `RUNNING` can be rebooted.\n\nThe run's container will be restarted, so any data not persisted in the\nkey-value store, dataset, or request queue will be lost.\n",
-        "operationId": "actorRun_reboot_post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/runId"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -10034,6 +10618,17 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Actor runs"
+        ],
+        "summary": "Reboot run",
+        "description": "Reboots an Actor run and returns an object that contains all the details\nabout the rebooted run.\n\nOnly runs that are running, i.e. runs with status `RUNNING` can be rebooted.\n\nThe run's container will be restarted, so any data not persisted in the\nkey-value store, dataset, or request queue will be lost.\n",
+        "operationId": "actorRun_reboot_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actor-runs/reboot-run/reboot-run",
           "https://docs.apify.com/api/v2#/reference/actor-runs/reboot-run",
@@ -10049,35 +10644,6 @@
     },
     "/v2/actor-runs/{runId}/resurrect": {
       "post": {
-        "tags": [
-          "Actor runs"
-        ],
-        "summary": "Resurrect run",
-        "description": "Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.\nOnly finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.\nRun status will be updated to RUNNING and its container will be restarted with the same storages\n(the same behaviour as when the run gets migrated to the new server).\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).\n",
-        "operationId": "PostResurrectRun",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/runId"
-          },
-          {
-            "$ref": "#/components/parameters/buildResurrect"
-          },
-          {
-            "$ref": "#/components/parameters/timeoutResurrect"
-          },
-          {
-            "$ref": "#/components/parameters/memoryResurrect"
-          },
-          {
-            "$ref": "#/components/parameters/maxItems"
-          },
-          {
-            "$ref": "#/components/parameters/maxTotalChargeUsd"
-          },
-          {
-            "$ref": "#/components/parameters/restartOnErrorResurrect"
-          }
-        ],
         "responses": {
           "200": {
             "description": "",
@@ -10114,6 +10680,35 @@
           }
         },
         "deprecated": false,
+        "tags": [
+          "Actor runs"
+        ],
+        "summary": "Resurrect run",
+        "description": "Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.\nOnly finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.\nRun status will be updated to RUNNING and its container will be restarted with the same storages\n(the same behaviour as when the run gets migrated to the new server).\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).\n",
+        "operationId": "PostResurrectRun",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/runId"
+          },
+          {
+            "$ref": "#/components/parameters/buildResurrect"
+          },
+          {
+            "$ref": "#/components/parameters/timeoutResurrect"
+          },
+          {
+            "$ref": "#/components/parameters/memoryResurrect"
+          },
+          {
+            "$ref": "#/components/parameters/maxItems"
+          },
+          {
+            "$ref": "#/components/parameters/maxTotalChargeUsd"
+          },
+          {
+            "$ref": "#/components/parameters/restartOnErrorResurrect"
+          }
+        ],
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actor-runs/resurrect-run/resurrect-run",
           "https://docs.apify.com/api/v2#/reference/actor-runs/resurrect-run",
@@ -10512,6 +11107,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -10555,6 +11153,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           },
           {
             "$ref": "#/components/parameters/signature"
@@ -13798,6 +14402,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -13841,6 +14448,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           },
           {
             "$ref": "#/components/parameters/signature"
@@ -13882,6 +14495,9 @@
             "$ref": "#/components/parameters/fields"
           },
           {
+            "$ref": "#/components/parameters/outputFields"
+          },
+          {
             "$ref": "#/components/parameters/omit"
           },
           {
@@ -13925,6 +14541,12 @@
           },
           {
             "$ref": "#/components/parameters/skipFailedPages"
+          },
+          {
+            "$ref": "#/components/parameters/feedTitle"
+          },
+          {
+            "$ref": "#/components/parameters/feedDescription"
           },
           {
             "$ref": "#/components/parameters/signature"
@@ -17385,6 +18007,17 @@
           "example": "myValue,myOtherValue"
         }
       },
+      "outputFields": {
+        "name": "outputFields",
+        "in": "query",
+        "description": "A comma-separated list of output field names that positionally rename the fields specified in the `fields` parameter.\nFor example, `?fields=headline,url&outputFields=title,link` renames `headline` to `title` and `url` to `link` in the output.\nThe number of names in `outputFields` must match the number of names in `fields`.\nRequires the `fields` parameter to be specified as well.\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "title,link"
+        }
+      },
       "omit": {
         "name": "omit",
         "in": "query",
@@ -17548,6 +18181,28 @@
           "example": false
         }
       },
+      "feedTitle": {
+        "name": "feedTitle",
+        "in": "query",
+        "description": "Overrides the auto-generated RSS channel `<title>` element.\nOnly used when `format=rss`. If not provided, the title defaults to `Dataset <label>`.\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "Latest posts from r/pasta"
+        }
+      },
+      "feedDescription": {
+        "name": "feedDescription",
+        "in": "query",
+        "description": "Overrides the auto-generated RSS channel `<description>` element.\nOnly used when `format=rss`. If not provided, the description defaults to `Items in dataset with id \"<datasetId>\".`\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "example": "Scraped forum posts"
+        }
+      },
       "runId": {
         "name": "runId",
         "in": "path",
@@ -17631,8 +18286,6 @@
         "name": "exclusiveStartKey",
         "in": "query",
         "description": "All keys up to this one (including) are skipped from the result.",
-        "style": "form",
-        "explode": true,
         "schema": {
           "type": "string",
           "example": "Ihnsp8YrvJ8102Kj"
@@ -17641,12 +18294,13 @@
       "keyValueStoreParameters_limit": {
         "name": "limit",
         "in": "query",
-        "description": "Number of keys to be returned. Maximum value is `1000`.",
-        "style": "form",
-        "explode": true,
+        "description": "Number of keys to be returned.",
         "schema": {
           "type": "number",
-          "format": "double",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 1000,
           "example": 100
         }
       },
@@ -17702,7 +18356,6 @@
         "in": "query",
         "description": "If `true` or `1`, the response will be served with `Content-Disposition: attachment` header,\ncausing web browsers to offer downloading HTML records instead of displaying them.\n",
         "required": false,
-        "style": "form",
         "schema": {
           "type": "boolean",
           "example": true
@@ -18137,6 +18790,60 @@
             "examples": [
               "2019-07-08T14:01:05.546Z"
             ]
+          },
+          "actorReviewCount": {
+            "type": "integer",
+            "examples": [
+              69
+            ]
+          },
+          "actorReviewRating": {
+            "type": "number",
+            "examples": [
+              4.7
+            ]
+          },
+          "bookmarkCount": {
+            "type": "integer",
+            "examples": [
+              1269
+            ]
+          },
+          "publicActorRunStats30Days": {
+            "type": "object",
+            "description": "Run status counts over the past 30 days.",
+            "properties": {
+              "ABORTED": {
+                "type": "integer",
+                "examples": [
+                  2542
+                ]
+              },
+              "FAILED": {
+                "type": "integer",
+                "examples": [
+                  1234
+                ]
+              },
+              "SUCCEEDED": {
+                "type": "integer",
+                "examples": [
+                  732805
+                ]
+              },
+              "TIMED-OUT": {
+                "type": "integer",
+                "examples": [
+                  12556
+                ]
+              },
+              "TOTAL": {
+                "type": "integer",
+                "examples": [
+                  749137
+                ]
+              }
+            }
           }
         }
       },
@@ -18364,6 +19071,7 @@
           "expired-conference-token",
           "failed-to-charge-user",
           "final-invoice-negative",
+          "full-permission-actor-not-approved",
           "github-branch-empty",
           "github-issue-already-exists",
           "github-public-key-not-found",
@@ -18535,6 +19243,7 @@
           "requested-dataset-view-does-not-exist",
           "resume-token-expired",
           "run-failed",
+          "run-input-body-not-valid-json",
           "run-timeout-exceeded",
           "russia-is-evil",
           "same-user",
@@ -18662,7 +19371,8 @@
           "SOURCE_FILES",
           "GIT_REPO",
           "TARBALL",
-          "GITHUB_GIST"
+          "GITHUB_GIST",
+          "SOURCE_CODE"
         ],
         "type": "string"
       },
@@ -18780,6 +19490,7 @@
         "properties": {
           "versionNumber": {
             "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
             "examples": [
               "0.0"
             ]
@@ -18890,26 +19601,70 @@
               "null"
             ],
             "x-internal": true
+          },
+          "isPriceChangeNotificationSuppressed": {
+            "type": "boolean",
+            "x-internal": true
+          },
+          "forceContainsSignificantPriceChange": {
+            "type": "boolean",
+            "x-internal": true
           }
+        }
+      },
+      "TieredPricingPerEventEntry": {
+        "title": "TieredPricingPerEventEntry",
+        "description": "A single tier's price-per-event entry.",
+        "type": "object",
+        "required": [
+          "tieredEventPriceUsd"
+        ],
+        "properties": {
+          "tieredEventPriceUsd": {
+            "type": "number",
+            "description": "Price per event in USD for this tier."
+          }
+        }
+      },
+      "TieredPricingPerEvent": {
+        "title": "TieredPricingPerEvent",
+        "description": "Tiered price-per-event pricing for a single charge event, keyed by subscription tier (e.g. `FREE`, `BRONZE`,\n`SILVER`, `GOLD`, `PLATINUM`, `DIAMOND`). The actual price applied is resolved from the user's tier.\n",
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/TieredPricingPerEventEntry"
         }
       },
       "ActorChargeEvent": {
         "title": "ActorChargeEvent",
+        "description": "Definition of a single chargeable event for a pay-per-event Actor. Each event is either flat-priced\n(`eventPriceUsd` is set) or tier-priced (`eventTieredPricingUsd` is set); the two are mutually exclusive.\n",
         "type": "object",
         "required": [
-          "eventPriceUsd",
           "eventTitle",
           "eventDescription"
         ],
         "properties": {
-          "eventPriceUsd": {
-            "type": "number"
-          },
           "eventTitle": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable title shown to users in the billing UI."
           },
           "eventDescription": {
-            "type": "string"
+            "type": "string",
+            "description": "Human-readable description of what triggers this event."
+          },
+          "eventPriceUsd": {
+            "type": "number",
+            "description": "Flat price per event in USD. Present only for non-tiered events. Mutually exclusive with `eventTieredPricingUsd`.\n"
+          },
+          "eventTieredPricingUsd": {
+            "$ref": "#/components/schemas/TieredPricingPerEvent"
+          },
+          "isPrimaryEvent": {
+            "type": "boolean",
+            "description": "Whether this event is the Actor's primary chargeable event."
+          },
+          "isOneTimeEvent": {
+            "type": "boolean",
+            "description": "Whether this event can only be charged once per Actor run."
           }
         }
       },
@@ -18951,6 +19706,28 @@
           }
         ]
       },
+      "TieredPricingPerDatasetItemEntry": {
+        "title": "TieredPricingPerDatasetItemEntry",
+        "description": "A single tier's price-per-dataset-item entry.",
+        "type": "object",
+        "required": [
+          "tieredPricePerUnitUsd"
+        ],
+        "properties": {
+          "tieredPricePerUnitUsd": {
+            "type": "number",
+            "description": "Price per unit in USD for this tier."
+          }
+        }
+      },
+      "TieredPricingPerDatasetItem": {
+        "title": "TieredPricingPerDatasetItem",
+        "description": "Tiered price-per-dataset-item pricing, keyed by subscription tier (e.g. `FREE`, `BRONZE`, `SILVER`, `GOLD`,\n`PLATINUM`, `DIAMOND`). The actual price applied to a run is resolved from the user's tier.\n",
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/TieredPricingPerDatasetItemEntry"
+        }
+      },
       "PricePerDatasetItemActorPricingInfo": {
         "title": "PricePerDatasetItemActorPricingInfo",
         "allOf": [
@@ -18961,7 +19738,6 @@
             "type": "object",
             "required": [
               "pricingModel",
-              "pricePerUnitUsd",
               "unitName"
             ],
             "properties": {
@@ -18974,7 +19750,11 @@
                 "description": "Name of the unit that is being charged"
               },
               "pricePerUnitUsd": {
-                "type": "number"
+                "type": "number",
+                "description": "Price per unit in USD. Mutually exclusive with `tieredPricing` - exactly one of the two is present\non a pricing record.\n"
+              },
+              "tieredPricing": {
+                "$ref": "#/components/schemas/TieredPricingPerDatasetItem"
               }
             }
           }
@@ -19319,9 +20099,17 @@
           },
           "buildNumber": {
             "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
             "description": "The build number/version string.",
             "examples": [
               "0.0.2"
+            ]
+          },
+          "buildNumberInt": {
+            "type": "integer",
+            "description": "The build number encoded as a single integer.",
+            "examples": [
+              42
             ]
           },
           "finishedAt": {
@@ -19359,7 +20147,7 @@
           },
           "beta": {
             "buildId": "abc123def456",
-            "buildNumber": "1.0.0-beta",
+            "buildNumber": "1.0.5",
             "finishedAt": "2019-07-15T14:30:00.000Z"
           }
         }
@@ -19519,6 +20307,84 @@
           "readmeSummary": {
             "type": "string",
             "description": "A brief, LLM-generated readme summary"
+          },
+          "seoTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Web Scraper"
+            ]
+          },
+          "seoDescription": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Crawls websites using Chrome and extracts data from pages using JavaScript."
+            ]
+          },
+          "pictureUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "https://apify-image-uploads-prod.s3.amazonaws.com/.../actor-picture.png"
+            ]
+          },
+          "standbyUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "https://my-actor.apify.actor"
+            ]
+          },
+          "notice": {
+            "type": "string",
+            "examples": [
+              "NONE"
+            ]
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "DEVELOPER_TOOLS",
+                "OPEN_SOURCE"
+              ]
+            ]
+          },
+          "isCritical": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "isGeneric": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "isSourceCodeHidden": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "hasNoDataset": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
           }
         }
       },
@@ -19557,6 +20423,7 @@
               "string",
               "null"
             ],
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
             "examples": [
               "0.0"
             ]
@@ -19961,6 +20828,16 @@
             "examples": [
               "2019-12-13T08:36:13.202Z"
             ]
+          },
+          "removedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              null
+            ]
           }
         }
       },
@@ -20027,6 +20904,24 @@
             ],
             "examples": [
               false
+            ]
+          },
+          "isApifyIntegration": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "isEnabled": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "actionType": {
+            "type": "string",
+            "examples": [
+              "HTTP_REQUEST"
             ]
           },
           "shouldInterpolateStrings": {
@@ -20154,6 +21049,7 @@
           "WEBHOOK",
           "ACTOR",
           "CLI",
+          "CI",
           "STANDBY"
         ]
       },
@@ -20193,7 +21089,8 @@
           "id",
           "status",
           "startedAt",
-          "usageTotalUsd"
+          "usageTotalUsd",
+          "buildNumber"
         ],
         "type": "object",
         "properties": {
@@ -20207,6 +21104,12 @@
             "type": "string",
             "examples": [
               "janedoe~my-actor"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "examples": [
+              "klmdEpoiojmdEMlk3"
             ]
           },
           "status": {
@@ -20233,6 +21136,19 @@
             "type": "number",
             "examples": [
               0.02
+            ]
+          },
+          "buildNumber": {
+            "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
+            "examples": [
+              "0.1.1"
+            ]
+          },
+          "buildNumberInt": {
+            "type": "integer",
+            "examples": [
+              10000
             ]
           },
           "meta": {
@@ -20297,6 +21213,12 @@
             "type": "number",
             "examples": [
               0.0126994444444444
+            ]
+          },
+          "imageSizeBytes": {
+            "type": "integer",
+            "examples": [
+              975770223
             ]
           }
         }
@@ -20374,8 +21296,8 @@
           },
           "version": {
             "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+$",
-            "description": "The version of the Actor, specified in the format [Number].[Number], e.g., 0.1, 1.0."
+            "pattern": "^[0-9]+(\\.[0-9]+)+$",
+            "description": "The version of the Actor, typically a dot-separated sequence of numbers (e.g., `0.1`, `1.0`, or `0.0.1`)."
           },
           "buildTag": {
             "type": "string",
@@ -20438,12 +21360,12 @@
           },
           "minMemoryMbytes": {
             "type": "integer",
-            "minimum": 256,
+            "minimum": 128,
             "description": "Specifies the minimum amount of memory in megabytes required by the Actor."
           },
           "maxMemoryMbytes": {
             "type": "integer",
-            "minimum": 256,
+            "minimum": 128,
             "description": "Specifies the maximum amount of memory in megabytes required by the Actor."
           },
           "usesStandbyMode": {
@@ -20579,9 +21501,47 @@
           },
           "buildNumber": {
             "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
             "examples": [
               "0.1.1"
             ]
+          },
+          "actVersion": {
+            "title": "BuildActVersion",
+            "type": "object",
+            "description": "Snapshot of the Actor version that this build was created from.",
+            "properties": {
+              "sourceType": {
+                "$ref": "#/components/schemas/VersionSourceType"
+              },
+              "buildTag": {
+                "type": "string",
+                "examples": [
+                  "experimental"
+                ]
+              },
+              "versionNumber": {
+                "type": "string",
+                "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
+                "examples": [
+                  "0.0"
+                ]
+              },
+              "gitRepoUrl": {
+                "type": "string",
+                "description": "URL of the git repository, present when sourceType is GIT_REPO.",
+                "examples": [
+                  "https://github.com/apifytech/actor-crawler.git#experimental:web-scraper"
+                ]
+              },
+              "sourceFiles": {
+                "type": "array",
+                "description": "Inline source files, present when sourceType is SOURCE_FILES.",
+                "items": {
+                  "$ref": "#/components/schemas/SourceCodeFile"
+                }
+              }
+            }
           },
           "actorDefinition": {
             "anyOf": [
@@ -20690,35 +21650,6 @@
           }
         }
       },
-      "UnknownBuildTagErrorDetail": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ErrorDetail"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "const": "unknown-build-tag"
-              }
-            }
-          }
-        ]
-      },
-      "UnknownBuildTagError": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/UnknownBuildTagErrorDetail"
-          }
-        },
-        "example": {
-          "error": {
-            "type": "unknown-build-tag",
-            "message": "Build with tag \"latest\" was not found. Has the Actor been built already?"
-          }
-        }
-      },
       "RunMeta": {
         "title": "RunMeta",
         "required": [
@@ -20788,6 +21719,12 @@
               "HDSasDasz78YcAPEB"
             ]
           },
+          "userId": {
+            "type": "string",
+            "examples": [
+              "7sT5jcggjjA9fNcxF"
+            ]
+          },
           "actorTaskId": {
             "type": [
               "string",
@@ -20825,8 +21762,15 @@
           },
           "buildNumber": {
             "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
             "examples": [
               "0.0.2"
+            ]
+          },
+          "buildNumberInt": {
+            "type": "integer",
+            "examples": [
+              10000
             ]
           },
           "meta": {
@@ -21631,6 +22575,7 @@
               "string",
               "null"
             ],
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
             "examples": [
               "0.0.36"
             ],
@@ -21709,6 +22654,13 @@
                 "type": "null"
               }
             ]
+          },
+          "platformUsageBillingModel": {
+            "type": "string",
+            "description": "Indicates which party covers platform usage costs for this run.",
+            "examples": [
+              "USER"
+            ]
           }
         }
       },
@@ -21784,11 +22736,6 @@
       },
       "DatasetStats": {
         "title": "DatasetStats",
-        "required": [
-          "readCount",
-          "writeCount",
-          "storageBytes"
-        ],
         "type": "object",
         "properties": {
           "readCount": {
@@ -21805,8 +22752,16 @@
           },
           "storageBytes": {
             "type": "integer",
+            "description": "Total storage size in bytes. Only returned by the single-dataset endpoint.",
             "examples": [
               783
+            ]
+          },
+          "inflatedBytes": {
+            "type": "integer",
+            "description": "Uncompressed size in bytes. Only returned by the dataset list endpoint.",
+            "examples": [
+              0
             ]
           }
         }
@@ -22239,6 +23194,12 @@
             "examples": [
               18
             ]
+          },
+          "storageBytes": {
+            "type": "integer",
+            "examples": [
+              457225
+            ]
           }
         }
       },
@@ -22338,6 +23299,21 @@
             "examples": [
               "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/keys?signature=abc123"
             ]
+          },
+          "recordsPublicUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "A public link to access records of the key-value store directly.",
+            "examples": [
+              "https://api.apify.com/v2/key-value-stores/WkzbQMuFYuamGv3YF/records"
+            ]
+          },
+          "schema": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "Optional JSON schema describing the keys stored in the key-value store."
           },
           "urlSigningSecretKey": {
             "type": [
@@ -22667,6 +23643,20 @@
           },
           "userId": {
             "$ref": "#/components/schemas/QueueUserId"
+          },
+          "actId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The ID of the Actor that created this request queue."
+          },
+          "actRunId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The ID of the Actor run that created this request queue."
           },
           "createdAt": {
             "$ref": "#/components/schemas/QueueCreatedAt"
@@ -24292,6 +25282,13 @@
               "items"
             ],
             "properties": {
+              "unnamed": {
+                "type": "boolean",
+                "description": "Whether the listing was filtered to only unnamed key-value stores.",
+                "examples": [
+                  false
+                ]
+              },
               "items": {
                 "type": "array",
                 "items": {
@@ -24396,6 +25393,27 @@
             "examples": [
               "HG7ML7M8z78YcAPEB"
             ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "My Dataset"
+            ]
+          },
+          "username": {
+            "type": "string",
+            "examples": [
+              "janedoe"
+            ]
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/DatasetStats"
           }
         }
       },
@@ -24411,6 +25429,13 @@
               "items"
             ],
             "properties": {
+              "unnamed": {
+                "type": "boolean",
+                "description": "Whether the listing was filtered to only unnamed datasets.",
+                "examples": [
+                  false
+                ]
+              },
               "items": {
                 "type": "array",
                 "items": {
@@ -24513,6 +25538,12 @@
           },
           "hadMultipleClients": {
             "$ref": "#/components/schemas/HadMultipleClients"
+          },
+          "generalAccess": {
+            "$ref": "#/components/schemas/GeneralAccess"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/RequestQueueStats"
           }
         }
       },
@@ -24529,6 +25560,13 @@
               "items"
             ],
             "properties": {
+              "unnamed": {
+                "type": "boolean",
+                "description": "Whether the listing was filtered to only unnamed request queues.",
+                "examples": [
+                  false
+                ]
+              },
               "items": {
                 "type": "array",
                 "description": "The array of request queues.",
@@ -24773,6 +25811,35 @@
           }
         }
       },
+      "WebhookDispatchWebhookSummary": {
+        "title": "WebhookDispatchWebhookSummary",
+        "description": "A summary of the webhook that triggered this dispatch.",
+        "type": "object",
+        "properties": {
+          "actionType": {
+            "type": "string",
+            "examples": [
+              "HTTP_REQUEST"
+            ]
+          },
+          "condition": {
+            "$ref": "#/components/schemas/WebhookCondition"
+          },
+          "requestUrl": {
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://example.com/webhook"
+            ]
+          },
+          "isAdHoc": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          }
+        }
+      },
       "WebhookDispatch": {
         "title": "WebhookDispatch",
         "required": [
@@ -24840,6 +25907,16 @@
                 ]
               }
             }
+          },
+          "webhook": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebhookDispatchWebhookSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "calls": {
             "title": "calls",
@@ -25488,6 +26565,19 @@
                   "null"
                 ]
               },
+              "notifications": {
+                "title": "ScheduleNotifications",
+                "type": "object",
+                "description": "Notification settings for this schedule.",
+                "properties": {
+                  "email": {
+                    "type": "boolean",
+                    "examples": [
+                      true
+                    ]
+                  }
+                }
+              },
               "actions": {
                 "type": "array",
                 "items": {
@@ -25569,6 +26659,117 @@
             "examples": [
               "FREE"
             ]
+          },
+          "apifyMarginPercentage": {
+            "type": "number",
+            "examples": [
+              0.2
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2023-01-01T00:00:00.000Z"
+            ]
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2023-01-01T00:00:00.000Z"
+            ]
+          },
+          "notifiedAboutChangeAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              null
+            ]
+          },
+          "notifiedAboutFutureChangeAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              null
+            ]
+          },
+          "isPriceChangeNotificationSuppressed": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "forceContainsSignificantPriceChange": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "isPPEPlatformUsagePaidByUser": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "reasonForChange": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "trialMinutes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "unitName": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "pricePerUnitUsd": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "minimalMaxTotalChargeUsd": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "examples": [
+              0.5
+            ]
+          },
+          "pricingPerEvent": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "Per-event pricing configuration for pay-per-event Actors.",
+            "additionalProperties": true
           }
         }
       },
@@ -25671,12 +26872,39 @@
           "currentPricingInfo": {
             "$ref": "#/components/schemas/CurrentPricingInfo"
           },
-          "isWhiteListedForAgenticPayment": {
+          "isWhiteListedForAgenticPayments": {
             "type": [
               "boolean",
               "null"
             ],
             "description": "Whether the Actor is whitelisted for agentic payment processing."
+          },
+          "actorReviewCount": {
+            "type": "integer",
+            "examples": [
+              69
+            ]
+          },
+          "actorReviewRating": {
+            "type": "number",
+            "examples": [
+              4.7
+            ]
+          },
+          "bookmarkCount": {
+            "type": "integer",
+            "examples": [
+              1269
+            ]
+          },
+          "badge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
           },
           "readmeSummary": {
             "type": "string",
@@ -25748,7 +26976,7 @@
                 "currentPricingInfo": {
                   "pricingModel": "FREE"
                 },
-                "isWhiteListedForAgenticPayment": true
+                "isWhiteListedForAgenticPayments": true
               },
               {
                 "id": "zdc3Pyhyz3m8vjDeM",
@@ -25777,7 +27005,7 @@
                 "currentPricingInfo": {
                   "pricingModel": "FREE"
                 },
-                "isWhiteListedForAgenticPayment": false
+                "isWhiteListedForAgenticPayments": false
               }
             ]
           }
@@ -25873,7 +27101,10 @@
             ]
           },
           "description": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "Group1 description"
             ]
@@ -26073,6 +27304,35 @@
             "examples": [
               []
             ]
+          },
+          "tier": {
+            "type": "string",
+            "examples": [
+              "FREE"
+            ]
+          },
+          "apiRateLimitBoosts": {
+            "type": "integer",
+            "examples": [
+              0
+            ]
+          },
+          "maxScheduleCount": {
+            "type": "integer",
+            "examples": [
+              100
+            ]
+          },
+          "maxConcurrentActorRuns": {
+            "type": "integer",
+            "examples": [
+              25
+            ]
+          },
+          "planPricing": {
+            "type": "object",
+            "description": "Pricing details for this plan.",
+            "additionalProperties": true
           }
         }
       },
@@ -26541,6 +27801,12 @@
             "examples": [
               90
             ]
+          },
+          "maxScheduleCount": {
+            "type": "integer",
+            "examples": [
+              100
+            ]
           }
         }
       },
@@ -26618,6 +27884,12 @@
             "type": "integer",
             "examples": [
               5
+            ]
+          },
+          "scheduleCount": {
+            "type": "integer",
+            "examples": [
+              77
             ]
           }
         }
@@ -27137,10 +28409,16 @@
         "Last Actor run's default key-value store",
         "Last Actor run's default request queue",
         "Last Actor run's log",
+        "Last Actor run's abort",
+        "Last Actor run's metamorph",
+        "Last Actor run's reboot",
         "Last Actor task run's default dataset",
         "Last Actor task run's default key-value store",
         "Last Actor task run's default request queue",
-        "Last Actor task run's log"
+        "Last Actor task run's log",
+        "Last Actor task run's abort",
+        "Last Actor task run's metamorph",
+        "Last Actor task run's reboot"
       ]
     }
   ]

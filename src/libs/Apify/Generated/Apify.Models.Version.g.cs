@@ -118,5 +118,6 @@ namespace Apify
         public Version()
         {
         }
+
     }
 }

@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfRequestQueuesVariant2? ListOfRequestQueuesVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfRequestQueuesVariant2;
             return IsListOfRequestQueuesVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfRequestQueuesVariant2 PickListOfRequestQueuesVariant2() => IsListOfRequestQueuesVariant2
+            ? ListOfRequestQueuesVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfRequestQueuesVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfRequestQueues FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfRequestQueues(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfRequestQueues(global::Apify.ListOfRequestQueuesVariant2 value) => new ListOfRequestQueues((global::Apify.ListOfRequestQueuesVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfRequestQueuesVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfRequestQueues FromListOfRequestQueuesVariant2(global::Apify.ListOfRequestQueuesVariant2? value) => new ListOfRequestQueues(value);
 
         /// <summary>
         /// 

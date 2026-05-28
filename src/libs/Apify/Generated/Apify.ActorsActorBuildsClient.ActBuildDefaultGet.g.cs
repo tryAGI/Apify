@@ -129,7 +129,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/builds/default",
+                                path: $"/v2/actors/{actorId}/builds/default",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
@@ -194,7 +194,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -228,7 +228,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -269,7 +269,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -317,7 +317,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -339,7 +339,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -379,37 +379,36 @@ namespace Apify
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
-                            // Not found - the requested resource was not found.
+                            // Forbidden - insufficient permissions to perform this action.
                             if ((int)__response.StatusCode == 403)
                             {
                                 string? __content_403 = null;
                                 global::System.Exception? __exception_403 = null;
-                                global::Apify.UnknownBuildTagError? __value_403 = null;
+                                global::Apify.ErrorResponse? __value_403 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_403 = global::Apify.UnknownBuildTagError.FromJson(__content_403, JsonSerializerContext);
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_403 = global::Apify.UnknownBuildTagError.FromJson(__content_403, JsonSerializerContext);
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -417,18 +416,17 @@ namespace Apify
                                     __exception_403 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.UnknownBuildTagError>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_403,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_403,
-                                    ResponseObject = __value_403,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Not found - the requested resource does not exist.
                             if ((int)__response.StatusCode == 404)
@@ -455,18 +453,17 @@ namespace Apify
                                     __exception_404 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_404,
-                                    ResponseObject = __value_404,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Method not allowed.
                             if ((int)__response.StatusCode == 405)
@@ -493,18 +490,17 @@ namespace Apify
                                     __exception_405 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_405 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_405,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_405,
-                                    ResponseObject = __value_405,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_405,
+                                    responseObject: __value_405,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Too many requests - rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
@@ -531,18 +527,17 @@ namespace Apify
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::Apify.ApiException<global::Apify.ErrorResponse>(
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_429,
-                                    ResponseObject = __value_429,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -576,17 +571,15 @@ namespace Apify
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::Apify.ApiException(
+                                    throw global::Apify.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -623,17 +616,15 @@ namespace Apify
                                     {
                                     }
 
-                                    throw new global::Apify.ApiException(
+                                    throw global::Apify.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 

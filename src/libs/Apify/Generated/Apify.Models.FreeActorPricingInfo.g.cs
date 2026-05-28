@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
+            ? CommonActorPricingInfo!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FreeActorPricingInfoVariant2? FreeActorPricingInfoVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = FreeActorPricingInfoVariant2;
             return IsFreeActorPricingInfoVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.FreeActorPricingInfoVariant2 PickFreeActorPricingInfoVariant2() => IsFreeActorPricingInfoVariant2
+            ? FreeActorPricingInfoVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FreeActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static FreeActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new FreeActorPricingInfo(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FreeActorPricingInfo(global::Apify.FreeActorPricingInfoVariant2 value) => new FreeActorPricingInfo((global::Apify.FreeActorPricingInfoVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             FreeActorPricingInfoVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FreeActorPricingInfo FromFreeActorPricingInfoVariant2(global::Apify.FreeActorPricingInfoVariant2? value) => new FreeActorPricingInfo(value);
 
         /// <summary>
         /// 

@@ -48,6 +48,18 @@ namespace Apify
         public string? ReasonForChange { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isPriceChangeNotificationSuppressed")]
+        public bool? IsPriceChangeNotificationSuppressed { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("forceContainsSignificantPriceChange")]
+        public bool? ForceContainsSignificantPriceChange { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -68,6 +80,8 @@ namespace Apify
         /// <param name="notifiedAboutFutureChangeAt"></param>
         /// <param name="notifiedAboutChangeAt"></param>
         /// <param name="reasonForChange"></param>
+        /// <param name="isPriceChangeNotificationSuppressed"></param>
+        /// <param name="forceContainsSignificantPriceChange"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -77,7 +91,9 @@ namespace Apify
             global::System.DateTime startedAt,
             global::System.DateTime? notifiedAboutFutureChangeAt,
             global::System.DateTime? notifiedAboutChangeAt,
-            string? reasonForChange)
+            string? reasonForChange,
+            bool? isPriceChangeNotificationSuppressed,
+            bool? forceContainsSignificantPriceChange)
         {
             this.ApifyMarginPercentage = apifyMarginPercentage;
             this.CreatedAt = createdAt;
@@ -85,6 +101,8 @@ namespace Apify
             this.NotifiedAboutFutureChangeAt = notifiedAboutFutureChangeAt;
             this.NotifiedAboutChangeAt = notifiedAboutChangeAt;
             this.ReasonForChange = reasonForChange;
+            this.IsPriceChangeNotificationSuppressed = isPriceChangeNotificationSuppressed;
+            this.ForceContainsSignificantPriceChange = forceContainsSignificantPriceChange;
         }
 
         /// <summary>
@@ -93,5 +111,6 @@ namespace Apify
         public CommonActorPricingInfo()
         {
         }
+
     }
 }

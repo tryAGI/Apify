@@ -42,6 +42,13 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
+            ? PaginationResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfKeyValueStoresVariant2? ListOfKeyValueStoresVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Apify
             value = ListOfKeyValueStoresVariant2;
             return IsListOfKeyValueStoresVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.ListOfKeyValueStoresVariant2 PickListOfKeyValueStoresVariant2() => IsListOfKeyValueStoresVariant2
+            ? ListOfKeyValueStoresVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfKeyValueStoresVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static ListOfKeyValueStores FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfKeyValueStores(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ListOfKeyValueStores(global::Apify.ListOfKeyValueStoresVariant2 value) => new ListOfKeyValueStores((global::Apify.ListOfKeyValueStoresVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             ListOfKeyValueStoresVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ListOfKeyValueStores FromListOfKeyValueStoresVariant2(global::Apify.ListOfKeyValueStoresVariant2? value) => new ListOfKeyValueStores(value);
 
         /// <summary>
         /// 

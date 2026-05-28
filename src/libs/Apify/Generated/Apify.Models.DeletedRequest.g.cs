@@ -40,6 +40,13 @@ namespace Apify
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.DeletedRequestById PickDeletedRequestById() => IsDeletedRequestById
+            ? DeletedRequestById!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DeletedRequestById' but the value was {ToString()}.");
+
+        /// <summary>
         /// Confirmation of a request that was successfully deleted, identified by its unique key.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace Apify
             value = DeletedRequestByUniqueKey;
             return IsDeletedRequestByUniqueKey;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Apify.DeletedRequestByUniqueKey PickDeletedRequestByUniqueKey() => IsDeletedRequestByUniqueKey
+            ? DeletedRequestByUniqueKey!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'DeletedRequestByUniqueKey' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public static DeletedRequest FromDeletedRequestById(global::Apify.DeletedRequestById? value) => new DeletedRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator DeletedRequest(global::Apify.DeletedRequestByUniqueKey value) => new DeletedRequest((global::Apify.DeletedRequestByUniqueKey?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Apify
         {
             DeletedRequestByUniqueKey = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static DeletedRequest FromDeletedRequestByUniqueKey(global::Apify.DeletedRequestByUniqueKey? value) => new DeletedRequest(value);
 
         /// <summary>
         /// 

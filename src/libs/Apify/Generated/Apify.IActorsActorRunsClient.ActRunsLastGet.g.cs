@@ -10,7 +10,7 @@ namespace Apify
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last Actor run object is:<br/>
-        /// `/v2/acts/{actorId}/runs/last{?token,status}`<br/>
+        /// `/v2/actors/{actorId}/runs/last{?token,status}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
         /// are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>
@@ -44,7 +44,7 @@ namespace Apify
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last Actor run object is:<br/>
-        /// `/v2/acts/{actorId}/runs/last{?token,status}`<br/>
+        /// `/v2/actors/{actorId}/runs/last{?token,status}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
         /// are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>

@@ -64,5 +64,6 @@ namespace Apify
         public FlatPricePerMonthActorPricingInfoVariant2()
         {
         }
+
     }
 }
