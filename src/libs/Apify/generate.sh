@@ -7,4 +7,6 @@ autosdk generate openapi.yaml \
   --targetFramework net10.0 \
   --output Generated \
   --security-scheme Http:Header:Bearer \
+  --auth-env-var APIFY_API_KEY \
+  --generate-prediction-workflow-helpers \
   --exclude-deprecated-operations

@@ -61,10 +61,10 @@
       "Slug": "actorbuilds-get",
       "Description": "Gets a list of all builds for a user. The response is a JSON array of\nobjects, where each object contains basic information about a single build.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\n\nBy default, the records are sorted by the \u0060startedAt\u0060 field in ascending\norder. Therefore, you can use pagination to incrementally fetch all builds while\nnew ones are still being started. To sort the records in descending order, use\nthe \u0060desc=1\u0060 parameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.ActorBuilds.ActorBuildsGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.ActorBuilds.ActorBuildsGetAsync();",
       "Format": "sdk",
       "OperationId": "actorBuilds_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 7,
@@ -149,10 +149,10 @@
       "Slug": "actorruns-get",
       "Description": "Gets a list of all runs for a user. The response is a list of objects, where\neach object contains basic information about a single Actor run.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 array elements.\n\nBy default, the records are sorted by the \u0060startedAt\u0060 field in ascending\norder. Therefore, you can use pagination to incrementally fetch all records while\nnew ones are still being created. To sort the records in descending order, use\n\u0060desc=1\u0060 parameter. You can also filter runs by \u0060startedAt\u0060\u0060 and \u0060status\u0060\u0060 fields ([available\nstatuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.ActorRuns.ActorRunsGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 2,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022actId\u0022: \u0022HDSasDasz78YcAPEB\u0022,\n//         \u0022actorTaskId\u0022: \u0022KJHSKHausidyaJKHs\u0022,\n//         \u0022status\u0022: \u0022SUCCEEDED\u0022,\n//         \u0022startedAt\u0022: \u00222019-11-30T07:34:24.202Z\u0022,\n//         \u0022finishedAt\u0022: \u00222019-12-12T09:30:12.202Z\u0022,\n//         \u0022buildId\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022buildNumber\u0022: \u00220.0.2\u0022,\n//         \u0022meta\u0022: {\n//           \u0022origin\u0022: \u0022WEB\u0022\n//         },\n//         \u0022usageTotalUsd\u0022: 0.2,\n//         \u0022defaultKeyValueStoreId\u0022: \u0022sfAjeR4QmeJCQzTfe\u0022,\n//         \u0022defaultDatasetId\u0022: \u00223ZojQDdFTsyE7Moy4\u0022,\n//         \u0022defaultRequestQueueId\u0022: \u0022so93g2shcDzK3pA85\u0022\n//       },\n//       {\n//         \u0022id\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022actId\u0022: \u0022HDSasDasz78YcAPEB\u0022,\n//         \u0022actorTaskId\u0022: \u0022KJHSKHausidyaJKHs\u0022,\n//         \u0022status\u0022: \u0022FAILED\u0022,\n//         \u0022startedAt\u0022: \u00222019-12-12T07:34:14.202Z\u0022,\n//         \u0022finishedAt\u0022: \u00222019-12-13T08:36:13.202Z\u0022,\n//         \u0022buildId\u0022: \u0022u78dML7M8z78YcAPEB\u0022,\n//         \u0022buildNumber\u0022: \u00220.2.2\u0022,\n//         \u0022meta\u0022: {\n//           \u0022origin\u0022: \u0022DEVELOPMENT\u0022\n//         },\n//         \u0022usageTotalUsd\u0022: 0.6,\n//         \u0022defaultKeyValueStoreId\u0022: \u0022sffsouqlseJCQzTfe\u0022,\n//         \u0022defaultDatasetId\u0022: \u0022CFGggdjQDsyE7Moyw\u0022,\n//         \u0022defaultRequestQueueId\u0022: \u0022soowucklrmDzKpA8x\u0022\n//       }\n//     ]\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.ActorRuns.ActorRunsGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 2,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022actId\u0022: \u0022HDSasDasz78YcAPEB\u0022,\n//         \u0022actorTaskId\u0022: \u0022KJHSKHausidyaJKHs\u0022,\n//         \u0022status\u0022: \u0022SUCCEEDED\u0022,\n//         \u0022startedAt\u0022: \u00222019-11-30T07:34:24.202Z\u0022,\n//         \u0022finishedAt\u0022: \u00222019-12-12T09:30:12.202Z\u0022,\n//         \u0022buildId\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022buildNumber\u0022: \u00220.0.2\u0022,\n//         \u0022meta\u0022: {\n//           \u0022origin\u0022: \u0022WEB\u0022\n//         },\n//         \u0022usageTotalUsd\u0022: 0.2,\n//         \u0022defaultKeyValueStoreId\u0022: \u0022sfAjeR4QmeJCQzTfe\u0022,\n//         \u0022defaultDatasetId\u0022: \u00223ZojQDdFTsyE7Moy4\u0022,\n//         \u0022defaultRequestQueueId\u0022: \u0022so93g2shcDzK3pA85\u0022\n//       },\n//       {\n//         \u0022id\u0022: \u0022HG7ML7M8z78YcAPEB\u0022,\n//         \u0022actId\u0022: \u0022HDSasDasz78YcAPEB\u0022,\n//         \u0022actorTaskId\u0022: \u0022KJHSKHausidyaJKHs\u0022,\n//         \u0022status\u0022: \u0022FAILED\u0022,\n//         \u0022startedAt\u0022: \u00222019-12-12T07:34:14.202Z\u0022,\n//         \u0022finishedAt\u0022: \u00222019-12-13T08:36:13.202Z\u0022,\n//         \u0022buildId\u0022: \u0022u78dML7M8z78YcAPEB\u0022,\n//         \u0022buildNumber\u0022: \u00220.2.2\u0022,\n//         \u0022meta\u0022: {\n//           \u0022origin\u0022: \u0022DEVELOPMENT\u0022\n//         },\n//         \u0022usageTotalUsd\u0022: 0.6,\n//         \u0022defaultKeyValueStoreId\u0022: \u0022sffsouqlseJCQzTfe\u0022,\n//         \u0022defaultDatasetId\u0022: \u0022CFGggdjQDsyE7Moyw\u0022,\n//         \u0022defaultRequestQueueId\u0022: \u0022soowucklrmDzKpA8x\u0022\n//       }\n//     ]\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "actorRuns_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 15,
@@ -325,10 +325,10 @@
       "Slug": "actortasks-get",
       "Description": "Gets the complete list of tasks that a user has created or used.\n\nThe response is a list of objects in which each object contains essential\ninformation about a single task.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters,\nand it does not return more than a 1000 records.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder; therefore you can use pagination to incrementally fetch all tasks while new\nones are still being created. To sort the records in descending order, use\nthe \u0060desc=1\u0060 parameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.ActorTasks.ActorTasksGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 2,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//         \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//         \u0022actName\u0022: \u0022my-actor\u0022,\n//         \u0022name\u0022: \u0022my-task\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022,\n//         \u0022actUsername\u0022: \u0022janedoe\u0022,\n//         \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalRuns\u0022: 15\n//         }\n//       },\n//       {\n//         \u0022id\u0022: \u0022aWE3asdas3m8vjDeM\u0022,\n//         \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//         \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//         \u0022actName\u0022: \u0022my-actor\u0022,\n//         \u0022actUsername\u0022: \u0022janedoe\u0022,\n//         \u0022name\u0022: \u0022my-task-2\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022,\n//         \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalRuns\u0022: 4\n//         }\n//       }\n//     ]\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.ActorTasks.ActorTasksGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 2,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//         \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//         \u0022actName\u0022: \u0022my-actor\u0022,\n//         \u0022name\u0022: \u0022my-task\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022,\n//         \u0022actUsername\u0022: \u0022janedoe\u0022,\n//         \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalRuns\u0022: 15\n//         }\n//       },\n//       {\n//         \u0022id\u0022: \u0022aWE3asdas3m8vjDeM\u0022,\n//         \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//         \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//         \u0022actName\u0022: \u0022my-actor\u0022,\n//         \u0022actUsername\u0022: \u0022janedoe\u0022,\n//         \u0022name\u0022: \u0022my-task-2\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022,\n//         \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalRuns\u0022: 4\n//         }\n//       }\n//     ]\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "actorTasks_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 31,
@@ -336,10 +336,10 @@
       "Slug": "actortasks-post",
       "Description": "Create a new task with settings specified by the object passed as JSON in\nthe POST payload.\n\nThe response is the full task object as returned by the\n[Get task](#/reference/tasks/task-object/get-task) endpoint.\n\nThe request needs to specify the \u0060Content-Type: application/json\u0060 HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest\u0027s \u0060Authorization\u0060 header, rather than the URL. ([More\ninfo](#/introduction/authentication)).",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Apify.AllOf\u003Cglobal::Apify.CreateTaskRequest, object\u003E\u003E(\n    @\u0022{\n  \u0022\u0022actId\u0022\u0022: \u0022\u0022asADASadYvn4mBZmm\u0022\u0022,\n  \u0022\u0022name\u0022\u0022: \u0022\u0022my-task\u0022\u0022,\n  \u0022\u0022options\u0022\u0022: {\n    \u0022\u0022build\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n    \u0022\u0022timeoutSecs\u0022\u0022: 300,\n    \u0022\u0022memoryMbytes\u0022\u0022: 128\n  }\n}\u0022)!;\n\nvar response = await client.ActorTasks.ActorTasksPostAsync(\n    request: request\n);\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//     \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//     \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//     \u0022name\u0022: \u0022my-task\u0022,\n//     \u0022username\u0022: \u0022janedoe\u0022,\n//     \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//     \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//     \u0022removedAt\u0022: null,\n//     \u0022stats\u0022: {\n//       \u0022totalRuns\u0022: 15\n//     },\n//     \u0022options\u0022: {\n//       \u0022build\u0022: \u0022latest\u0022,\n//       \u0022timeoutSecs\u0022: 300,\n//       \u0022memoryMbytes\u0022: 128\n//     },\n//     \u0022input\u0022: {\n//       \u0022hello\u0022: \u0022world\u0022\n//     }\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Apify.AllOf\u003Cglobal::Apify.CreateTaskRequest, object\u003E\u003E(\n    @\u0022{\n  \u0022\u0022actId\u0022\u0022: \u0022\u0022asADASadYvn4mBZmm\u0022\u0022,\n  \u0022\u0022name\u0022\u0022: \u0022\u0022my-task\u0022\u0022,\n  \u0022\u0022options\u0022\u0022: {\n    \u0022\u0022build\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n    \u0022\u0022timeoutSecs\u0022\u0022: 300,\n    \u0022\u0022memoryMbytes\u0022\u0022: 128\n  }\n}\u0022)!;\n\nvar response = await client.ActorTasks.ActorTasksPostAsync(\n    request: request\n);\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//     \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//     \u0022actId\u0022: \u0022asADASadYvn4mBZmm\u0022,\n//     \u0022name\u0022: \u0022my-task\u0022,\n//     \u0022username\u0022: \u0022janedoe\u0022,\n//     \u0022createdAt\u0022: \u00222018-10-26T07:23:14.855Z\u0022,\n//     \u0022modifiedAt\u0022: \u00222018-10-26T13:30:49.578Z\u0022,\n//     \u0022removedAt\u0022: null,\n//     \u0022stats\u0022: {\n//       \u0022totalRuns\u0022: 15\n//     },\n//     \u0022options\u0022: {\n//       \u0022build\u0022: \u0022latest\u0022,\n//       \u0022timeoutSecs\u0022: 300,\n//       \u0022memoryMbytes\u0022: 128\n//     },\n//     \u0022input\u0022: {\n//       \u0022hello\u0022: \u0022world\u0022\n//     }\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "actorTasks_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 32,
@@ -391,10 +391,10 @@
       "Slug": "acts-get",
       "Description": "Gets the list of all Actors that the user created or used. The response is a\nlist of objects, where each object contains a basic information about a single Actor.\n\nTo only get Actors created by the user, add the \u0060my=1\u0060 query parameter.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder, therefore you can use pagination to incrementally fetch all Actors while new\nones are still being created. To sort the records in descending order, use the \u0060desc=1\u0060 parameter.\n\nYou can also sort by your last run by using the \u0060sortBy=stats.lastRunStartedAt\u0060 query parameter.\nIn this case, descending order means the most recently run Actor appears first.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Actors.ActsGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022count\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022br9CKmk457\u0022,\n//         \u0022createdAt\u0022: \u00222019-10-29T07:34:24.202Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222019-10-30T07:34:24.202Z\u0022,\n//         \u0022name\u0022: \u0022MyAct\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022\n//       },\n//       {\n//         \u0022id\u0022: \u0022ksiEKo23pz\u0022,\n//         \u0022createdAt\u0022: \u00222019-11-30T07:34:24.202Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222019-12-12T07:34:24.202Z\u0022,\n//         \u0022name\u0022: \u0022MySecondAct\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022\n//       }\n//     ]\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Actors.ActsGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 2,\n//     \u0022count\u0022: 2,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022br9CKmk457\u0022,\n//         \u0022createdAt\u0022: \u00222019-10-29T07:34:24.202Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222019-10-30T07:34:24.202Z\u0022,\n//         \u0022name\u0022: \u0022MyAct\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022\n//       },\n//       {\n//         \u0022id\u0022: \u0022ksiEKo23pz\u0022,\n//         \u0022createdAt\u0022: \u00222019-11-30T07:34:24.202Z\u0022,\n//         \u0022modifiedAt\u0022: \u00222019-12-12T07:34:24.202Z\u0022,\n//         \u0022name\u0022: \u0022MySecondAct\u0022,\n//         \u0022username\u0022: \u0022janedoe\u0022\n//       }\n//     ]\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "acts_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 37,
@@ -402,10 +402,10 @@
       "Slug": "acts-post",
       "Description": "Creates a new Actor with settings specified in an Actor object passed as\nJSON in the POST payload.\nThe response is the full Actor object as returned by the\n[Get Actor](#/reference/actors/actor-object/get-actor) endpoint.\n\nThe HTTP request must have the \u0060Content-Type: application/json\u0060 HTTP header!\n\nThe Actor needs to define at least one version of the source code.\nFor more information, see [Version object](#/reference/actors/version-object).\n\nIf you want to make your Actor\n[public](https://docs.apify.com/platform/actors/publishing) using \u0060isPublic:\ntrue\u0060, you will need to provide the Actor\u0027s \u0060title\u0060 and the \u0060categories\u0060\nunder which that Actor will be classified in Apify Store. For this, it\u0027s\nbest to use the [constants from our \u0060apify-shared-js\u0060\npackage](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Apify.CreateActorRequest\u003E(\n    @\u0022{\n  \u0022\u0022name\u0022\u0022: \u0022\u0022MyActor\u0022\u0022,\n  \u0022\u0022description\u0022\u0022: \u0022\u0022My favourite Actor!\u0022\u0022,\n  \u0022\u0022title\u0022\u0022: \u0022\u0022My Actor\u0022\u0022,\n  \u0022\u0022isPublic\u0022\u0022: false,\n  \u0022\u0022seoTitle\u0022\u0022: \u0022\u0022My Actor\u0022\u0022,\n  \u0022\u0022seoDescription\u0022\u0022: \u0022\u0022My Actor is the best\u0022\u0022,\n  \u0022\u0022versions\u0022\u0022: [\n    {\n      \u0022\u0022versionNumber\u0022\u0022: \u0022\u00220.0\u0022\u0022,\n      \u0022\u0022sourceType\u0022\u0022: \u0022\u0022SOURCE_FILES\u0022\u0022,\n      \u0022\u0022envVars\u0022\u0022: [\n        {\n          \u0022\u0022name\u0022\u0022: \u0022\u0022DOMAIN\u0022\u0022,\n          \u0022\u0022value\u0022\u0022: \u0022\u0022http://example.com\u0022\u0022,\n          \u0022\u0022isSecret\u0022\u0022: false\n        },\n        {\n          \u0022\u0022name\u0022\u0022: \u0022\u0022SECRET_PASSWORD\u0022\u0022,\n          \u0022\u0022value\u0022\u0022: \u0022\u0022MyTopSecretPassword123\u0022\u0022,\n          \u0022\u0022isSecret\u0022\u0022: true\n        }\n      ],\n      \u0022\u0022applyEnvVarsToBuild\u0022\u0022: false,\n      \u0022\u0022buildTag\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n      \u0022\u0022sourceFiles\u0022\u0022: []\n    }\n  ],\n  \u0022\u0022categories\u0022\u0022: [],\n  \u0022\u0022defaultRunOptions\u0022\u0022: {\n    \u0022\u0022build\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n    \u0022\u0022timeoutSecs\u0022\u0022: 3600,\n    \u0022\u0022memoryMbytes\u0022\u0022: 2048,\n    \u0022\u0022restartOnError\u0022\u0022: false\n  }\n}\u0022)!;\n\nvar response = await client.Actors.ActsPostAsync(\n    request: request\n);\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//     \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//     \u0022name\u0022: \u0022MyActor\u0022,\n//     \u0022username\u0022: \u0022jane35\u0022,\n//     \u0022description\u0022: \u0022My favourite Actor!\u0022,\n//     \u0022isPublic\u0022: false,\n//     \u0022createdAt\u0022: \u00222019-07-08T11:27:57.401Z\u0022,\n//     \u0022modifiedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022,\n//     \u0022stats\u0022: {\n//       \u0022totalBuilds\u0022: 9,\n//       \u0022totalRuns\u0022: 16,\n//       \u0022totalUsers\u0022: 6,\n//       \u0022totalUsers7Days\u0022: 2,\n//       \u0022totalUsers30Days\u0022: 6,\n//       \u0022totalUsers90Days\u0022: 6,\n//       \u0022totalMetamorphs\u0022: 2,\n//       \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//     },\n//     \u0022versions\u0022: [\n//       {\n//         \u0022versionNumber\u0022: \u00220.1\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022sourceType\u0022: \u0022SOURCE_FILES\u0022,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022sourceFiles\u0022: []\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.2\u0022,\n//         \u0022sourceType\u0022: \u0022GIT_REPO\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022gitRepoUrl\u0022: \u0022https://github.com/jane35/my-actor\u0022\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.3\u0022,\n//         \u0022sourceType\u0022: \u0022TARBALL\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022tarballUrl\u0022: \u0022https://github.com/jane35/my-actor/archive/master.zip\u0022\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.4\u0022,\n//         \u0022sourceType\u0022: \u0022GITHUB_GIST\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022gitHubGistUrl\u0022: \u0022https://gist.github.com/jane35/e51feb784yu89\u0022\n//       }\n//     ],\n//     \u0022defaultRunOptions\u0022: {\n//       \u0022build\u0022: \u0022latest\u0022,\n//       \u0022timeoutSecs\u0022: 3600,\n//       \u0022memoryMbytes\u0022: 2048,\n//       \u0022restartOnError\u0022: false\n//     },\n//     \u0022exampleRunInput\u0022: {\n//       \u0022body\u0022: \u0022{ \\u0022helloWorld\\u0022: 123 }\u0022,\n//       \u0022contentType\u0022: \u0022application/json; charset=utf-8\u0022\n//     },\n//     \u0022isDeprecated\u0022: false,\n//     \u0022deploymentKey\u0022: \u0022ssh-rsa AAAA ...\u0022,\n//     \u0022title\u0022: \u0022My Actor\u0022,\n//     \u0022taggedBuilds\u0022: {\n//       \u0022latest\u0022: {\n//         \u0022buildId\u0022: \u0022z2EryhbfhgSyqj6Hn\u0022,\n//         \u0022buildNumber\u0022: \u00220.0.2\u0022,\n//         \u0022finishedAt\u0022: \u00222019-06-10T11:15:49.286Z\u0022\n//       }\n//     }\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::Apify.CreateActorRequest\u003E(\n    @\u0022{\n  \u0022\u0022name\u0022\u0022: \u0022\u0022MyActor\u0022\u0022,\n  \u0022\u0022description\u0022\u0022: \u0022\u0022My favourite Actor!\u0022\u0022,\n  \u0022\u0022title\u0022\u0022: \u0022\u0022My Actor\u0022\u0022,\n  \u0022\u0022isPublic\u0022\u0022: false,\n  \u0022\u0022seoTitle\u0022\u0022: \u0022\u0022My Actor\u0022\u0022,\n  \u0022\u0022seoDescription\u0022\u0022: \u0022\u0022My Actor is the best\u0022\u0022,\n  \u0022\u0022versions\u0022\u0022: [\n    {\n      \u0022\u0022versionNumber\u0022\u0022: \u0022\u00220.0\u0022\u0022,\n      \u0022\u0022sourceType\u0022\u0022: \u0022\u0022SOURCE_FILES\u0022\u0022,\n      \u0022\u0022envVars\u0022\u0022: [\n        {\n          \u0022\u0022name\u0022\u0022: \u0022\u0022DOMAIN\u0022\u0022,\n          \u0022\u0022value\u0022\u0022: \u0022\u0022http://example.com\u0022\u0022,\n          \u0022\u0022isSecret\u0022\u0022: false\n        },\n        {\n          \u0022\u0022name\u0022\u0022: \u0022\u0022SECRET_PASSWORD\u0022\u0022,\n          \u0022\u0022value\u0022\u0022: \u0022\u0022MyTopSecretPassword123\u0022\u0022,\n          \u0022\u0022isSecret\u0022\u0022: true\n        }\n      ],\n      \u0022\u0022applyEnvVarsToBuild\u0022\u0022: false,\n      \u0022\u0022buildTag\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n      \u0022\u0022sourceFiles\u0022\u0022: []\n    }\n  ],\n  \u0022\u0022categories\u0022\u0022: [],\n  \u0022\u0022defaultRunOptions\u0022\u0022: {\n    \u0022\u0022build\u0022\u0022: \u0022\u0022latest\u0022\u0022,\n    \u0022\u0022timeoutSecs\u0022\u0022: 3600,\n    \u0022\u0022memoryMbytes\u0022\u0022: 2048,\n    \u0022\u0022restartOnError\u0022\u0022: false\n  }\n}\u0022)!;\n\nvar response = await client.Actors.ActsPostAsync(\n    request: request\n);\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//     \u0022userId\u0022: \u0022wRsJZtadYvn4mBZmm\u0022,\n//     \u0022name\u0022: \u0022MyActor\u0022,\n//     \u0022username\u0022: \u0022jane35\u0022,\n//     \u0022description\u0022: \u0022My favourite Actor!\u0022,\n//     \u0022isPublic\u0022: false,\n//     \u0022createdAt\u0022: \u00222019-07-08T11:27:57.401Z\u0022,\n//     \u0022modifiedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022,\n//     \u0022stats\u0022: {\n//       \u0022totalBuilds\u0022: 9,\n//       \u0022totalRuns\u0022: 16,\n//       \u0022totalUsers\u0022: 6,\n//       \u0022totalUsers7Days\u0022: 2,\n//       \u0022totalUsers30Days\u0022: 6,\n//       \u0022totalUsers90Days\u0022: 6,\n//       \u0022totalMetamorphs\u0022: 2,\n//       \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//     },\n//     \u0022versions\u0022: [\n//       {\n//         \u0022versionNumber\u0022: \u00220.1\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022sourceType\u0022: \u0022SOURCE_FILES\u0022,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022sourceFiles\u0022: []\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.2\u0022,\n//         \u0022sourceType\u0022: \u0022GIT_REPO\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022gitRepoUrl\u0022: \u0022https://github.com/jane35/my-actor\u0022\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.3\u0022,\n//         \u0022sourceType\u0022: \u0022TARBALL\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022tarballUrl\u0022: \u0022https://github.com/jane35/my-actor/archive/master.zip\u0022\n//       },\n//       {\n//         \u0022versionNumber\u0022: \u00220.4\u0022,\n//         \u0022sourceType\u0022: \u0022GITHUB_GIST\u0022,\n//         \u0022envVars\u0022: null,\n//         \u0022applyEnvVarsToBuild\u0022: false,\n//         \u0022buildTag\u0022: \u0022latest\u0022,\n//         \u0022gitHubGistUrl\u0022: \u0022https://gist.github.com/jane35/e51feb784yu89\u0022\n//       }\n//     ],\n//     \u0022defaultRunOptions\u0022: {\n//       \u0022build\u0022: \u0022latest\u0022,\n//       \u0022timeoutSecs\u0022: 3600,\n//       \u0022memoryMbytes\u0022: 2048,\n//       \u0022restartOnError\u0022: false\n//     },\n//     \u0022exampleRunInput\u0022: {\n//       \u0022body\u0022: \u0022{ \\u0022helloWorld\\u0022: 123 }\u0022,\n//       \u0022contentType\u0022: \u0022application/json; charset=utf-8\u0022\n//     },\n//     \u0022isDeprecated\u0022: false,\n//     \u0022deploymentKey\u0022: \u0022ssh-rsa AAAA ...\u0022,\n//     \u0022title\u0022: \u0022My Actor\u0022,\n//     \u0022taggedBuilds\u0022: {\n//       \u0022latest\u0022: {\n//         \u0022buildId\u0022: \u0022z2EryhbfhgSyqj6Hn\u0022,\n//         \u0022buildNumber\u0022: \u00220.0.2\u0022,\n//         \u0022finishedAt\u0022: \u00222019-06-10T11:15:49.286Z\u0022\n//       }\n//     }\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "acts_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 38,
@@ -1755,10 +1755,10 @@
       "Slug": "schedules-get",
       "Description": "Gets the list of schedules that the user created.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters.\nIt will not return more than 1000 records.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060 parameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Schedules.SchedulesGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Schedules.SchedulesGetAsync();",
       "Format": "sdk",
       "OperationId": "schedules_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 161,
@@ -1854,10 +1854,10 @@
       "Slug": "datasets-get",
       "Description": "Lists all of a user\u0027s datasets.\n\nThe response is a JSON array of objects,\nwhere each object contains basic information about one dataset.\n\nBy default, the objects are sorted by the \u0060createdAt\u0060 field in ascending\norder, therefore you can use pagination to incrementally fetch all datasets while new\nones are still being created. To sort them in descending order, use \u0060desc=1\u0060\nparameter. The endpoint supports pagination using \u0060limit\u0060 and \u0060offset\u0060\nparameters and it will not return more than 1000 array elements.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageDatasets.DatasetsGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageDatasets.DatasetsGetAsync();",
       "Format": "sdk",
       "OperationId": "datasets_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 170,
@@ -1865,10 +1865,10 @@
       "Slug": "datasets-post",
       "Description": "Creates a dataset and returns its object.\nKeep in mind that data stored under unnamed dataset follows [data retention period](https://docs.apify.com/platform/storage#data-retention).\nIt creates a dataset with the given name if the parameter name is used.\nIf a dataset with the given name already exists then returns its object.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageDatasets.DatasetsPostAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageDatasets.DatasetsPostAsync();",
       "Format": "sdk",
       "OperationId": "datasets_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 171,
@@ -1986,10 +1986,10 @@
       "Slug": "keyvaluestores-get",
       "Description": "Gets the list of key-value stores owned by the user.\n\nThe response is a list of objects, where each objects contains a basic\ninformation about a single key-value store.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 array elements.\n\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder, therefore you can use pagination to incrementally fetch all key-value stores\nwhile new ones are still being created. To sort the records in descending order, use\nthe \u0060desc=1\u0060 parameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageKeyValueStores.KeyValueStoresGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageKeyValueStores.KeyValueStoresGetAsync();",
       "Format": "sdk",
       "OperationId": "keyValueStores_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 182,
@@ -1997,10 +1997,10 @@
       "Slug": "keyvaluestores-post",
       "Description": "Creates a key-value store and returns its object. The response is the same\nobject as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)\nendpoint.\n\nKeep in mind that data stored under unnamed store follows [data retention\nperiod](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a store with the given name if the parameter name is used.\nIf there is another store with the same name, the endpoint does not create a\nnew one and returns the existing object instead.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageKeyValueStores.KeyValueStoresPostAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageKeyValueStores.KeyValueStoresPostAsync();",
       "Format": "sdk",
       "OperationId": "keyValueStores_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 183,
@@ -2063,10 +2063,10 @@
       "Slug": "requestqueues-get",
       "Description": "Lists all of a user\u0027s request queues. The response is a JSON array of\nobjects, where each object\ncontains basic information about one queue.\n\nBy default, the objects are sorted by the \u0060createdAt\u0060 field in ascending order,\ntherefore you can use pagination to incrementally fetch all queues while new\nones are still being created. To sort them in descending order, use \u0060desc=1\u0060\nparameter. The endpoint supports pagination using \u0060limit\u0060 and \u0060offset\u0060\nparameters and it will not return more than 1000\narray elements.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageRequestQueues.RequestQueuesGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageRequestQueues.RequestQueuesGetAsync();",
       "Format": "sdk",
       "OperationId": "requestQueues_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 189,
@@ -2074,10 +2074,10 @@
       "Slug": "requestqueues-post",
       "Description": "Creates a request queue and returns its object.\nKeep in mind that requests stored under unnamed queue follows [data\nretention period](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a queue of given name if the parameter name is used. If a queue\nwith the given name already exists then the endpoint returns\nits object.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.StorageRequestQueues.RequestQueuesPostAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.StorageRequestQueues.RequestQueuesPostAsync();",
       "Format": "sdk",
       "OperationId": "requestQueues_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 190,
@@ -2195,10 +2195,10 @@
       "Slug": "store-get",
       "Description": "Gets the list of public Actors in Apify Store. You can use \u0060search\u0060\nparameter to search Actors by string in title, name, description, username\nand readme.\nIf you need detailed info about a specific Actor, use the [Get\nActor](#/reference/actors/actor-object/get-actor) endpoint.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters.\nIt will not return more than 1,000 records.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Store.StoreGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 100,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 1,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022title\u0022: \u0022My Public Actor\u0022,\n//         \u0022name\u0022: \u0022my-public-actor\u0022,\n//         \u0022username\u0022: \u0022jane35\u0022,\n//         \u0022userFullName\u0022: \u0022Jane Doe\u0022,\n//         \u0022description\u0022: \u0022My public Actor!\u0022,\n//         \u0022pictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022userPictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022url\u0022: \u0022https://...\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalBuilds\u0022: 9,\n//           \u0022totalRuns\u0022: 16,\n//           \u0022totalUsers\u0022: 6,\n//           \u0022totalUsers7Days\u0022: 2,\n//           \u0022totalUsers30Days\u0022: 6,\n//           \u0022totalUsers90Days\u0022: 6,\n//           \u0022totalMetamorphs\u0022: 2,\n//           \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//         },\n//         \u0022currentPricingInfo\u0022: {\n//           \u0022pricingModel\u0022: \u0022FREE\u0022\n//         },\n//         \u0022isWhiteListedForAgenticPayment\u0022: true\n//       },\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022title\u0022: \u0022My Public Actor\u0022,\n//         \u0022name\u0022: \u0022my-public-actor\u0022,\n//         \u0022username\u0022: \u0022jane35\u0022,\n//         \u0022userFullName\u0022: \u0022Jane H. Doe\u0022,\n//         \u0022categories\u0022: [\n//           \u0022MARKETING\u0022,\n//           \u0022LEAD_GENERATION\u0022\n//         ],\n//         \u0022description\u0022: \u0022My public Actor!\u0022,\n//         \u0022pictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022userPictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022url\u0022: \u0022https://...\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalBuilds\u0022: 9,\n//           \u0022totalRuns\u0022: 16,\n//           \u0022totalUsers\u0022: 6,\n//           \u0022totalUsers7Days\u0022: 2,\n//           \u0022totalUsers30Days\u0022: 6,\n//           \u0022totalUsers90Days\u0022: 6,\n//           \u0022totalMetamorphs\u0022: 2,\n//           \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//         },\n//         \u0022currentPricingInfo\u0022: {\n//           \u0022pricingModel\u0022: \u0022FREE\u0022\n//         },\n//         \u0022isWhiteListedForAgenticPayment\u0022: false\n//       }\n//     ]\n//   }\n// }",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Store.StoreGetAsync();\n\n// Example response:\n// {\n//   \u0022data\u0022: {\n//     \u0022total\u0022: 100,\n//     \u0022offset\u0022: 0,\n//     \u0022limit\u0022: 1000,\n//     \u0022desc\u0022: false,\n//     \u0022count\u0022: 1,\n//     \u0022items\u0022: [\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022title\u0022: \u0022My Public Actor\u0022,\n//         \u0022name\u0022: \u0022my-public-actor\u0022,\n//         \u0022username\u0022: \u0022jane35\u0022,\n//         \u0022userFullName\u0022: \u0022Jane Doe\u0022,\n//         \u0022description\u0022: \u0022My public Actor!\u0022,\n//         \u0022pictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022userPictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022url\u0022: \u0022https://...\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalBuilds\u0022: 9,\n//           \u0022totalRuns\u0022: 16,\n//           \u0022totalUsers\u0022: 6,\n//           \u0022totalUsers7Days\u0022: 2,\n//           \u0022totalUsers30Days\u0022: 6,\n//           \u0022totalUsers90Days\u0022: 6,\n//           \u0022totalMetamorphs\u0022: 2,\n//           \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//         },\n//         \u0022currentPricingInfo\u0022: {\n//           \u0022pricingModel\u0022: \u0022FREE\u0022\n//         },\n//         \u0022isWhiteListedForAgenticPayment\u0022: true\n//       },\n//       {\n//         \u0022id\u0022: \u0022zdc3Pyhyz3m8vjDeM\u0022,\n//         \u0022title\u0022: \u0022My Public Actor\u0022,\n//         \u0022name\u0022: \u0022my-public-actor\u0022,\n//         \u0022username\u0022: \u0022jane35\u0022,\n//         \u0022userFullName\u0022: \u0022Jane H. Doe\u0022,\n//         \u0022categories\u0022: [\n//           \u0022MARKETING\u0022,\n//           \u0022LEAD_GENERATION\u0022\n//         ],\n//         \u0022description\u0022: \u0022My public Actor!\u0022,\n//         \u0022pictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022userPictureUrl\u0022: \u0022https://...\u0022,\n//         \u0022url\u0022: \u0022https://...\u0022,\n//         \u0022stats\u0022: {\n//           \u0022totalBuilds\u0022: 9,\n//           \u0022totalRuns\u0022: 16,\n//           \u0022totalUsers\u0022: 6,\n//           \u0022totalUsers7Days\u0022: 2,\n//           \u0022totalUsers30Days\u0022: 6,\n//           \u0022totalUsers90Days\u0022: 6,\n//           \u0022totalMetamorphs\u0022: 2,\n//           \u0022lastRunStartedAt\u0022: \u00222019-07-08T14:01:05.546Z\u0022\n//         },\n//         \u0022currentPricingInfo\u0022: {\n//           \u0022pricingModel\u0022: \u0022FREE\u0022\n//         },\n//         \u0022isWhiteListedForAgenticPayment\u0022: false\n//       }\n//     ]\n//   }\n// }",
       "Format": "sdk",
       "OperationId": "store_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 201,
@@ -2206,10 +2206,10 @@
       "Slug": "tools-browser-info-delete",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Tools.ToolsBrowserInfoDeleteAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Tools.ToolsBrowserInfoDeleteAsync();",
       "Format": "sdk",
       "OperationId": "tools_browser_info_delete",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 202,
@@ -2217,10 +2217,10 @@
       "Slug": "tools-browser-info-get",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Tools.ToolsBrowserInfoGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Tools.ToolsBrowserInfoGetAsync();",
       "Format": "sdk",
       "OperationId": "tools_browser_info_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 203,
@@ -2228,10 +2228,10 @@
       "Slug": "tools-browser-info-post",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Tools.ToolsBrowserInfoPostAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Tools.ToolsBrowserInfoPostAsync();",
       "Format": "sdk",
       "OperationId": "tools_browser_info_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 204,
@@ -2239,10 +2239,10 @@
       "Slug": "tools-browser-info-put",
       "Description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Tools.ToolsBrowserInfoPutAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Tools.ToolsBrowserInfoPutAsync();",
       "Format": "sdk",
       "OperationId": "tools_browser_info_put",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 205,
@@ -2261,10 +2261,10 @@
       "Slug": "tools-encode-and-sign-post",
       "Description": "Encodes and signs any JSON object. The encoded value includes a signature\ntied to the authenticated user\u0027s ID, which can later be verified using the\ndecode-and-verify endpoint.\n\n**Important**: The request must specify the \u0060Content-Type: application/json\u0060\nHTTP header.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cobject\u003E(\n    @\u0022{\n  \u0022\u0022key\u0022\u0022: \u0022\u0022value\u0022\u0022\n}\u0022)!;\n\nvar response = await client.Tools.ToolsEncodeAndSignPostAsync(\n    request: request\n);",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cobject\u003E(\n    @\u0022{\n  \u0022\u0022key\u0022\u0022: \u0022\u0022value\u0022\u0022\n}\u0022)!;\n\nvar response = await client.Tools.ToolsEncodeAndSignPostAsync(\n    request: request\n);",
       "Format": "sdk",
       "OperationId": "tools_encode_and_sign_post",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 207,
@@ -2283,10 +2283,10 @@
       "Slug": "users-me-get",
       "Description": "Returns information about the current user account, including both public\nand private information.\n\nThe user account is identified by the provided authentication token.\n\nThe fields \u0060plan\u0060, \u0060email\u0060 and \u0060profile\u0060 are omitted when this endpoint is accessed from Actor run.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Users.UsersMeGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Users.UsersMeGetAsync();",
       "Format": "sdk",
       "OperationId": "users_me_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 209,
@@ -2294,10 +2294,10 @@
       "Slug": "users-me-limits-get",
       "Description": "Returns a complete summary of your account\u0027s limits. It is the same\ninformation you will see on your account\u0027s [Limits page](https://console.apify.com/billing#/limits). The returned data\nincludes the current usage cycle, a summary of your limits, and your current usage.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Users.UsersMeLimitsGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Users.UsersMeLimitsGetAsync();",
       "Format": "sdk",
       "OperationId": "users_me_limits_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 210,
@@ -2316,10 +2316,10 @@
       "Slug": "users-me-usage-monthly-get",
       "Description": "Returns a complete summary of your usage for the current monthly usage cycle,\nan overall sum, as well as a daily breakdown of usage. It is the same\ninformation you will see on your account\u0027s [Billing \u003E Historical usage page](https://console.apify.com/billing/historical-usage). The information\nincludes your use of Actors, compute, data transfer, and storage.\n\nUsing the \u0060date\u0060 parameter will show your usage in the monthly usage cycle that\nincludes that date.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.Users.UsersMeUsageMonthlyGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.Users.UsersMeUsageMonthlyGetAsync();",
       "Format": "sdk",
       "OperationId": "users_me_usage_monthly_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 212,
@@ -2338,10 +2338,10 @@
       "Slug": "webhookdispatches-get",
       "Description": "Gets the list of webhook dispatches that the user have.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060\nparameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.WebhooksWebhookDispatches.WebhookDispatchesGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.WebhooksWebhookDispatches.WebhookDispatchesGetAsync();",
       "Format": "sdk",
       "OperationId": "webhookDispatches_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 214,
@@ -2404,10 +2404,10 @@
       "Slug": "webhooks-get",
       "Description": "Gets the list of webhooks that the user created.\n\nThe endpoint supports pagination using the \u0060limit\u0060 and \u0060offset\u0060 parameters\nand it will not return more than 1000 records.\nBy default, the records are sorted by the \u0060createdAt\u0060 field in ascending\norder. To sort the records in descending order, use the \u0060desc=1\u0060\nparameter.",
       "Language": "csharp",
-      "Code": "using var client = new ApifyClient(apiKey);\nvar response = await client.WebhooksWebhooks.WebhooksGetAsync();",
+      "Code": "using var client = ApifyClient.CreateFromEnvironment();\nvar response = await client.WebhooksWebhooks.WebhooksGetAsync();",
       "Format": "sdk",
       "OperationId": "webhooks_get",
-      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+      "Setup": "This example assumes \u0060using Apify;\u0060 is in scope and a configured credential environment variable is set: \u0060APIFY_API_KEY\u0060."
     },
     {
       "Order": 220,

@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickErrorDetail(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.ErrorDetail? value)
+        {
+            value = ErrorDetail;
+            return IsErrorDetail;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RunTimeoutExceededErrorDetailVariant2? RunTimeoutExceededErrorDetailVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunTimeoutExceededErrorDetailVariant2))]
 #endif
         public bool IsRunTimeoutExceededErrorDetailVariant2 => RunTimeoutExceededErrorDetailVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRunTimeoutExceededErrorDetailVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.RunTimeoutExceededErrorDetailVariant2? value)
+        {
+            value = RunTimeoutExceededErrorDetailVariant2;
+            return IsRunTimeoutExceededErrorDetailVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.ErrorDetail?, TResult>? errorDetail = null,
-            global::System.Func<global::Apify.RunTimeoutExceededErrorDetailVariant2?, TResult>? runTimeoutExceededErrorDetailVariant2 = null,
+            global::System.Func<global::Apify.ErrorDetail, TResult>? errorDetail = null,
+            global::System.Func<global::Apify.RunTimeoutExceededErrorDetailVariant2, TResult>? runTimeoutExceededErrorDetailVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.ErrorDetail?>? errorDetail = null,
-            global::System.Action<global::Apify.RunTimeoutExceededErrorDetailVariant2?>? runTimeoutExceededErrorDetailVariant2 = null,
+            global::System.Action<global::Apify.ErrorDetail>? errorDetail = null,
+
+            global::System.Action<global::Apify.RunTimeoutExceededErrorDetailVariant2>? runTimeoutExceededErrorDetailVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsErrorDetail)
+            {
+                errorDetail?.Invoke(ErrorDetail!);
+            }
+            else if (IsRunTimeoutExceededErrorDetailVariant2)
+            {
+                runTimeoutExceededErrorDetailVariant2?.Invoke(RunTimeoutExceededErrorDetailVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.ErrorDetail>? errorDetail = null,
+            global::System.Action<global::Apify.RunTimeoutExceededErrorDetailVariant2>? runTimeoutExceededErrorDetailVariant2 = null,
             bool validate = true)
         {
             if (validate)

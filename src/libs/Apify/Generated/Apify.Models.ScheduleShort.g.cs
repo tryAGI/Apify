@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickScheduleBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.ScheduleBase? value)
+        {
+            value = ScheduleBase;
+            return IsScheduleBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleShortVariant2? ScheduleShortVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ScheduleShortVariant2))]
 #endif
         public bool IsScheduleShortVariant2 => ScheduleShortVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickScheduleShortVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.ScheduleShortVariant2? value)
+        {
+            value = ScheduleShortVariant2;
+            return IsScheduleShortVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.ScheduleBase?, TResult>? scheduleBase = null,
-            global::System.Func<global::Apify.ScheduleShortVariant2?, TResult>? scheduleShortVariant2 = null,
+            global::System.Func<global::Apify.ScheduleBase, TResult>? scheduleBase = null,
+            global::System.Func<global::Apify.ScheduleShortVariant2, TResult>? scheduleShortVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.ScheduleBase?>? scheduleBase = null,
-            global::System.Action<global::Apify.ScheduleShortVariant2?>? scheduleShortVariant2 = null,
+            global::System.Action<global::Apify.ScheduleBase>? scheduleBase = null,
+
+            global::System.Action<global::Apify.ScheduleShortVariant2>? scheduleShortVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsScheduleBase)
+            {
+                scheduleBase?.Invoke(ScheduleBase!);
+            }
+            else if (IsScheduleShortVariant2)
+            {
+                scheduleShortVariant2?.Invoke(ScheduleShortVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.ScheduleBase>? scheduleBase = null,
+            global::System.Action<global::Apify.ScheduleShortVariant2>? scheduleShortVariant2 = null,
             bool validate = true)
         {
             if (validate)

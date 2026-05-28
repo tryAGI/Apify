@@ -29,6 +29,19 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickRequestBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.RequestBase? value)
+        {
+            value = RequestBase;
+            return IsRequestBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RequestVariant2? RequestVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestVariant2))]
 #endif
         public bool IsRequestVariant2 => RequestVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRequestVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Apify.RequestVariant2? value)
+        {
+            value = RequestVariant2;
+            return IsRequestVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Apify
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Apify.RequestBase?, TResult>? requestBase = null,
-            global::System.Func<global::Apify.RequestVariant2?, TResult>? requestVariant2 = null,
+            global::System.Func<global::Apify.RequestBase, TResult>? requestBase = null,
+            global::System.Func<global::Apify.RequestVariant2, TResult>? requestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Apify
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Apify.RequestBase?>? requestBase = null,
-            global::System.Action<global::Apify.RequestVariant2?>? requestVariant2 = null,
+            global::System.Action<global::Apify.RequestBase>? requestBase = null,
+
+            global::System.Action<global::Apify.RequestVariant2>? requestVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRequestBase)
+            {
+                requestBase?.Invoke(RequestBase!);
+            }
+            else if (IsRequestVariant2)
+            {
+                requestVariant2?.Invoke(RequestVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Apify.RequestBase>? requestBase = null,
+            global::System.Action<global::Apify.RequestVariant2>? requestVariant2 = null,
             bool validate = true)
         {
             if (validate)
