@@ -51,7 +51,7 @@ namespace Apify
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last Actor run object is:<br/>
-        /// `/v2/acts/{actorId}/runs/last{?token,status}`<br/>
+        /// `/v2/actors/{actorId}/runs/last{?token,status}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
         /// are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>
@@ -96,7 +96,7 @@ namespace Apify
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last Actor run object is:<br/>
-        /// `/v2/acts/{actorId}/runs/last{?token,status}`<br/>
+        /// `/v2/actors/{actorId}/runs/last{?token,status}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
         /// are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>
@@ -157,7 +157,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last",
+                                path: $"/v2/actors/{actorId}/runs/last",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -224,7 +224,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastGet",
                                 methodName: "ActRunsLastGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -258,7 +258,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastGet",
                                 methodName: "ActRunsLastGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -299,7 +299,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastGet",
                                 methodName: "ActRunsLastGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -347,7 +347,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastGet",
                                 methodName: "ActRunsLastGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -369,7 +369,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastGet",
                                 methodName: "ActRunsLastGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

@@ -147,7 +147,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/log",
+                                path: $"/v2/actors/{actorId}/runs/last/log",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
@@ -216,7 +216,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastLogGet",
                                 methodName: "ActRunsLastLogGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/log\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -250,7 +250,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastLogGet",
                                 methodName: "ActRunsLastLogGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/log\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -291,7 +291,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastLogGet",
                                 methodName: "ActRunsLastLogGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/log\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -339,7 +339,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastLogGet",
                                 methodName: "ActRunsLastLogGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/log\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -361,7 +361,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastLogGet",
                                 methodName: "ActRunsLastLogGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/log\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

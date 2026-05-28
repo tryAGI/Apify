@@ -175,7 +175,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: "/v2/acts",
+                                path: "/v2/actors",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("my", my?.ToString().ToLowerInvariant())
@@ -247,7 +247,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActsGet",
                                 methodName: "ActsGetAsync",
-                                pathTemplate: "\"/v2/acts\"",
+                                pathTemplate: "\"/v2/actors\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -281,7 +281,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActsGet",
                                 methodName: "ActsGetAsync",
-                                pathTemplate: "\"/v2/acts\"",
+                                pathTemplate: "\"/v2/actors\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -322,7 +322,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActsGet",
                                 methodName: "ActsGetAsync",
-                                pathTemplate: "\"/v2/acts\"",
+                                pathTemplate: "\"/v2/actors\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -370,7 +370,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActsGet",
                                 methodName: "ActsGetAsync",
-                                pathTemplate: "\"/v2/acts\"",
+                                pathTemplate: "\"/v2/actors\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -392,7 +392,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActsGet",
                                 methodName: "ActsGetAsync",
-                                pathTemplate: "\"/v2/acts\"",
+                                pathTemplate: "\"/v2/actors\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

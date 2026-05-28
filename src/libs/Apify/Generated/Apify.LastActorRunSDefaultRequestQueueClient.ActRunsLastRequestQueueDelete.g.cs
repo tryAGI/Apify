@@ -118,7 +118,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/request-queue",
+                                path: $"/v2/actors/{actorId}/runs/last/request-queue",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -183,7 +183,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueDelete",
                                 methodName: "ActRunsLastRequestQueueDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -217,7 +217,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueDelete",
                                 methodName: "ActRunsLastRequestQueueDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -258,7 +258,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueDelete",
                                 methodName: "ActRunsLastRequestQueueDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -306,7 +306,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueDelete",
                                 methodName: "ActRunsLastRequestQueueDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -328,7 +328,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueDelete",
                                 methodName: "ActRunsLastRequestQueueDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

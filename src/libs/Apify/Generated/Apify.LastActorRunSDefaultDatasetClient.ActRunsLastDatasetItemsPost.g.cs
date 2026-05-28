@@ -136,7 +136,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/dataset/items",
+                                path: $"/v2/actors/{actorId}/runs/last/dataset/items",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -208,7 +208,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetItemsPost",
                                 methodName: "ActRunsLastDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -242,7 +242,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetItemsPost",
                                 methodName: "ActRunsLastDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -283,7 +283,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetItemsPost",
                                 methodName: "ActRunsLastDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -331,7 +331,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetItemsPost",
                                 methodName: "ActRunsLastDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -353,7 +353,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetItemsPost",
                                 methodName: "ActRunsLastDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset/items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

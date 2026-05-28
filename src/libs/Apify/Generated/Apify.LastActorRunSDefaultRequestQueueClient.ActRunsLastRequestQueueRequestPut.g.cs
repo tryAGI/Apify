@@ -172,7 +172,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}",
+                                path: $"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -249,7 +249,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestPut",
                                 methodName: "ActRunsLastRequestQueueRequestPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -283,7 +283,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestPut",
                                 methodName: "ActRunsLastRequestQueueRequestPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -324,7 +324,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestPut",
                                 methodName: "ActRunsLastRequestQueueRequestPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -372,7 +372,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestPut",
                                 methodName: "ActRunsLastRequestQueueRequestPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -394,7 +394,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestPut",
                                 methodName: "ActRunsLastRequestQueueRequestPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

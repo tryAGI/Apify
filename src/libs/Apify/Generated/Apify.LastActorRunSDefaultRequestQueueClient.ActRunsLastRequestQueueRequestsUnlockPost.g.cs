@@ -137,7 +137,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock",
+                                path: $"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -204,7 +204,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestsUnlockPost",
                                 methodName: "ActRunsLastRequestQueueRequestsUnlockPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -238,7 +238,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestsUnlockPost",
                                 methodName: "ActRunsLastRequestQueueRequestsUnlockPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -279,7 +279,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestsUnlockPost",
                                 methodName: "ActRunsLastRequestQueueRequestsUnlockPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -327,7 +327,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestsUnlockPost",
                                 methodName: "ActRunsLastRequestQueueRequestsUnlockPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -349,7 +349,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestsUnlockPost",
                                 methodName: "ActRunsLastRequestQueueRequestsUnlockPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/unlock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/unlock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

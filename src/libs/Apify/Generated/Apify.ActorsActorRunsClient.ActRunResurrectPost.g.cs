@@ -189,7 +189,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/{runId}/resurrect",
+                                path: $"/v2/actors/{actorId}/runs/{runId}/resurrect",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("build", build)
@@ -261,7 +261,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunResurrectPost",
                                 methodName: "ActRunResurrectPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/{runId}/resurrect\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/{runId}/resurrect\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -295,7 +295,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunResurrectPost",
                                 methodName: "ActRunResurrectPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/{runId}/resurrect\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/{runId}/resurrect\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -336,7 +336,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunResurrectPost",
                                 methodName: "ActRunResurrectPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/{runId}/resurrect\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/{runId}/resurrect\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -384,7 +384,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunResurrectPost",
                                 methodName: "ActRunResurrectPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/{runId}/resurrect\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/{runId}/resurrect\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -406,7 +406,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunResurrectPost",
                                 methodName: "ActRunResurrectPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/{runId}/resurrect\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/{runId}/resurrect\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

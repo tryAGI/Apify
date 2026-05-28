@@ -154,7 +154,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}",
+                                path: $"/v2/actors/{actorId}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -222,7 +222,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActPut",
                                 methodName: "ActPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -256,7 +256,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActPut",
                                 methodName: "ActPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -297,7 +297,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActPut",
                                 methodName: "ActPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -345,7 +345,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActPut",
                                 methodName: "ActPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -367,7 +367,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActPut",
                                 methodName: "ActPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

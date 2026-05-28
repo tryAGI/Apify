@@ -137,7 +137,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/builds/{buildId}/openapi.json",
+                                path: $"/v2/actors/{actorId}/builds/{buildId}/openapi.json",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -199,7 +199,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActOpenapiJsonGet",
                                 methodName: "ActOpenapiJsonGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/{buildId}/openapi.json\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/{buildId}/openapi.json\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -233,7 +233,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActOpenapiJsonGet",
                                 methodName: "ActOpenapiJsonGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/{buildId}/openapi.json\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/{buildId}/openapi.json\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -274,7 +274,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActOpenapiJsonGet",
                                 methodName: "ActOpenapiJsonGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/{buildId}/openapi.json\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/{buildId}/openapi.json\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -322,7 +322,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActOpenapiJsonGet",
                                 methodName: "ActOpenapiJsonGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/{buildId}/openapi.json\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/{buildId}/openapi.json\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -344,7 +344,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActOpenapiJsonGet",
                                 methodName: "ActOpenapiJsonGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/{buildId}/openapi.json\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/{buildId}/openapi.json\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

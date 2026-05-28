@@ -248,7 +248,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/run-sync",
+                                path: $"/v2/actors/{actorId}/run-sync",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("outputRecordKey", outputRecordKey)
@@ -334,7 +334,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncPost",
                                 methodName: "ActRunSyncPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -368,7 +368,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncPost",
                                 methodName: "ActRunSyncPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -409,7 +409,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncPost",
                                 methodName: "ActRunSyncPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -457,7 +457,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncPost",
                                 methodName: "ActRunSyncPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -479,7 +479,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncPost",
                                 methodName: "ActRunSyncPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

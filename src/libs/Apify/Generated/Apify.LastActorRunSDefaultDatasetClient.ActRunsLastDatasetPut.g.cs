@@ -138,7 +138,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/dataset",
+                                path: $"/v2/actors/{actorId}/runs/last/dataset",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -210,7 +210,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetPut",
                                 methodName: "ActRunsLastDatasetPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -244,7 +244,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetPut",
                                 methodName: "ActRunsLastDatasetPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -285,7 +285,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetPut",
                                 methodName: "ActRunsLastDatasetPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -333,7 +333,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetPut",
                                 methodName: "ActRunsLastDatasetPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -355,7 +355,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastDatasetPut",
                                 methodName: "ActRunsLastDatasetPutAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/dataset\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

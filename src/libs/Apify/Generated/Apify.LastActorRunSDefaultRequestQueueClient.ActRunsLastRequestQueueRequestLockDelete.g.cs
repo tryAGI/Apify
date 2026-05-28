@@ -154,7 +154,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock",
+                                path: $"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -224,7 +224,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestLockDelete",
                                 methodName: "ActRunsLastRequestQueueRequestLockDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -258,7 +258,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestLockDelete",
                                 methodName: "ActRunsLastRequestQueueRequestLockDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -299,7 +299,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestLockDelete",
                                 methodName: "ActRunsLastRequestQueueRequestLockDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -347,7 +347,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestLockDelete",
                                 methodName: "ActRunsLastRequestQueueRequestLockDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -369,7 +369,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastRequestQueueRequestLockDelete",
                                 methodName: "ActRunsLastRequestQueueRequestLockDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
