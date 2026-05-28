@@ -129,7 +129,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/builds/default",
+                                path: $"/v2/actors/{actorId}/builds/default",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
@@ -194,7 +194,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -228,7 +228,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -269,7 +269,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -317,7 +317,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -339,7 +339,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActBuildDefaultGet",
                                 methodName: "ActBuildDefaultGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/builds/default\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/builds/default\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

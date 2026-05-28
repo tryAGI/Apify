@@ -140,7 +140,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/validate-input",
+                                path: $"/v2/actors/{actorId}/validate-input",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("build", build)
@@ -212,7 +212,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActValidateInputPost",
                                 methodName: "ActValidateInputPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/validate-input\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/validate-input\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -246,7 +246,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActValidateInputPost",
                                 methodName: "ActValidateInputPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/validate-input\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/validate-input\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -287,7 +287,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActValidateInputPost",
                                 methodName: "ActValidateInputPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/validate-input\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/validate-input\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -335,7 +335,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActValidateInputPost",
                                 methodName: "ActValidateInputPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/validate-input\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/validate-input\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -357,7 +357,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActValidateInputPost",
                                 methodName: "ActValidateInputPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/validate-input\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/validate-input\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

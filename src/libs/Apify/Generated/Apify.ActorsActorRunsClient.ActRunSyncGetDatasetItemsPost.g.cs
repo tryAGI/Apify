@@ -514,7 +514,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/run-sync-get-dataset-items",
+                                path: $"/v2/actors/{actorId}/run-sync-get-dataset-items",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("timeout", timeout?.ToString())
@@ -644,7 +644,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncGetDatasetItemsPost",
                                 methodName: "ActRunSyncGetDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync-get-dataset-items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync-get-dataset-items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -678,7 +678,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncGetDatasetItemsPost",
                                 methodName: "ActRunSyncGetDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync-get-dataset-items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync-get-dataset-items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -719,7 +719,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncGetDatasetItemsPost",
                                 methodName: "ActRunSyncGetDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync-get-dataset-items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync-get-dataset-items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -767,7 +767,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncGetDatasetItemsPost",
                                 methodName: "ActRunSyncGetDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync-get-dataset-items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync-get-dataset-items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -789,7 +789,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunSyncGetDatasetItemsPost",
                                 methodName: "ActRunSyncGetDatasetItemsPostAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/run-sync-get-dataset-items\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/run-sync-get-dataset-items\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

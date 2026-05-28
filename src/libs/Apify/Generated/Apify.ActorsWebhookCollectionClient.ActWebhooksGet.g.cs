@@ -155,7 +155,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/webhooks",
+                                path: $"/v2/actors/{actorId}/webhooks",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("offset", offset?.ToString())
@@ -224,7 +224,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActWebhooksGet",
                                 methodName: "ActWebhooksGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/webhooks\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/webhooks\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -258,7 +258,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActWebhooksGet",
                                 methodName: "ActWebhooksGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/webhooks\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/webhooks\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -299,7 +299,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActWebhooksGet",
                                 methodName: "ActWebhooksGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/webhooks\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/webhooks\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -347,7 +347,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActWebhooksGet",
                                 methodName: "ActWebhooksGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/webhooks\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/webhooks\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -369,7 +369,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActWebhooksGet",
                                 methodName: "ActWebhooksGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/webhooks\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/webhooks\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

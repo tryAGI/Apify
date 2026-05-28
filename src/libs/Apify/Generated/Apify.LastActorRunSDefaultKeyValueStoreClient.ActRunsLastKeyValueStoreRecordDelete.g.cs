@@ -130,7 +130,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}",
+                                path: $"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -196,7 +196,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordDelete",
                                 methodName: "ActRunsLastKeyValueStoreRecordDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -230,7 +230,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordDelete",
                                 methodName: "ActRunsLastKeyValueStoreRecordDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -271,7 +271,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordDelete",
                                 methodName: "ActRunsLastKeyValueStoreRecordDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -319,7 +319,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordDelete",
                                 methodName: "ActRunsLastKeyValueStoreRecordDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -341,7 +341,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordDelete",
                                 methodName: "ActRunsLastKeyValueStoreRecordDeleteAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records/{recordKey}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

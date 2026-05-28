@@ -161,7 +161,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/key-value-store/records",
+                                path: $"/v2/actors/{actorId}/runs/last/key-value-store/records",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -232,7 +232,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -266,7 +266,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -307,7 +307,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -355,7 +355,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -377,7 +377,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -732,7 +732,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/runs/last/key-value-store/records",
+                                path: $"/v2/actors/{actorId}/runs/last/key-value-store/records",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
@@ -803,7 +803,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -837,7 +837,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -878,7 +878,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -926,7 +926,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -948,7 +948,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActRunsLastKeyValueStoreRecordsGet",
                                 methodName: "ActRunsLastKeyValueStoreRecordsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/runs/last/key-value-store/records\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/key-value-store/records\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,

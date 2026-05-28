@@ -47,7 +47,7 @@ namespace Apify
     /// Actor](#/reference/actors/run-collection/run-actor) endpoint using either the<br/>
     /// Actor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.<br/>
     /// `janedoe~my-actor`):<br/>
-    /// `https://api.apify.com/v2/acts/[actor_id]/runs`<br/>
+    /// `https://api.apify.com/v2/actors/[actor_id]/runs`<br/>
     /// If the Actor is not runnable anonymously, you will receive a 401 or 403<br/>
     /// [response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).<br/>
     /// This means you need to add your [secret API<br/>
@@ -84,6 +84,12 @@ namespace Apify
     /// synchronously. This will ensure that the request waits for 300 seconds (5<br/>
     /// minutes) for the run to finish and returns its output. If the run takes<br/>
     /// longer, the request will time out and throw an error.<br/>
+    /// ## Legacy `/v2/acts/` URL prefix<br/>
+    /// &lt;span id="/introduction/legacy-acts-prefix"&gt;&lt;/span&gt;<br/>
+    /// The `/v2/acts/` prefix is deprecated but still fully functional, and <br/>
+    /// such endpoint routes to the same handler as its `/v2/actors/...` counterpart. <br/>
+    /// New integrations should use the canonical /v2/actors/ prefix, <br/>
+    /// but existing clients keep working without changes.<br/>
     /// ## Response structure<br/>
     /// &lt;span id="/introduction/response-structure"&gt;&lt;/span&gt;<br/>
     /// Most API endpoints return a JSON object with the `data` property:<br/>

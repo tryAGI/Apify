@@ -123,7 +123,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/acts/{actorId}/versions/{versionNumber}/env-vars",
+                                path: $"/v2/actors/{actorId}/versions/{versionNumber}/env-vars",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -185,7 +185,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActVersionEnvVarsGet",
                                 methodName: "ActVersionEnvVarsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/versions/{versionNumber}/env-vars\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/versions/{versionNumber}/env-vars\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -219,7 +219,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActVersionEnvVarsGet",
                                 methodName: "ActVersionEnvVarsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/versions/{versionNumber}/env-vars\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/versions/{versionNumber}/env-vars\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -260,7 +260,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActVersionEnvVarsGet",
                                 methodName: "ActVersionEnvVarsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/versions/{versionNumber}/env-vars\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/versions/{versionNumber}/env-vars\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -308,7 +308,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActVersionEnvVarsGet",
                                 methodName: "ActVersionEnvVarsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/versions/{versionNumber}/env-vars\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/versions/{versionNumber}/env-vars\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -330,7 +330,7 @@ namespace Apify
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
                                 operationId: "ActVersionEnvVarsGet",
                                 methodName: "ActVersionEnvVarsGetAsync",
-                                pathTemplate: "$\"/v2/acts/{actorId}/versions/{versionNumber}/env-vars\"",
+                                pathTemplate: "$\"/v2/actors/{actorId}/versions/{versionNumber}/env-vars\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
