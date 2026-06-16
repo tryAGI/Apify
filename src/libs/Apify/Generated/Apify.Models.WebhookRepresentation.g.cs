@@ -37,6 +37,30 @@ namespace Apify
         public string? HeadersTemplate { get; set; }
 
         /// <summary>
+        /// Flag to also interpolate `{{...}}` variables inside string values of the payload and headers templates.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("shouldInterpolateStrings")]
+        public bool? ShouldInterpolateStrings { get; set; }
+
+        /// <summary>
+        /// Key that prevents creating duplicate webhooks, e.g. when the run-starting request is retried.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("idempotencyKey")]
+        public string? IdempotencyKey { get; set; }
+
+        /// <summary>
+        /// Flag to ignore SSL errors when the webhook sends the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignoreSslErrors")]
+        public bool? IgnoreSslErrors { get; set; }
+
+        /// <summary>
+        /// Flag to skip retrying the webhook request on failure.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("doNotRetry")]
+        public bool? DoNotRetry { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +79,18 @@ namespace Apify
         /// <param name="headersTemplate">
         /// Optional template for the HTTP headers sent by the webhook.
         /// </param>
+        /// <param name="shouldInterpolateStrings">
+        /// Flag to also interpolate `{{...}}` variables inside string values of the payload and headers templates.
+        /// </param>
+        /// <param name="idempotencyKey">
+        /// Key that prevents creating duplicate webhooks, e.g. when the run-starting request is retried.
+        /// </param>
+        /// <param name="ignoreSslErrors">
+        /// Flag to ignore SSL errors when the webhook sends the request.
+        /// </param>
+        /// <param name="doNotRetry">
+        /// Flag to skip retrying the webhook request on failure.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -62,12 +98,20 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.WebhookEventType> eventTypes,
             string requestUrl,
             string? payloadTemplate,
-            string? headersTemplate)
+            string? headersTemplate,
+            bool? shouldInterpolateStrings,
+            string? idempotencyKey,
+            bool? ignoreSslErrors,
+            bool? doNotRetry)
         {
             this.EventTypes = eventTypes ?? throw new global::System.ArgumentNullException(nameof(eventTypes));
             this.RequestUrl = requestUrl ?? throw new global::System.ArgumentNullException(nameof(requestUrl));
             this.PayloadTemplate = payloadTemplate;
             this.HeadersTemplate = headersTemplate;
+            this.ShouldInterpolateStrings = shouldInterpolateStrings;
+            this.IdempotencyKey = idempotencyKey;
+            this.IgnoreSslErrors = ignoreSslErrors;
+            this.DoNotRetry = doNotRetry;
         }
 
         /// <summary>
