@@ -22,3 +22,21 @@ autosdk generate openapi.yaml \
   --auth-env-var APIFY_API_KEY \
   --generate-prediction-workflow-helpers \
   --exclude-deprecated-operations
+
+rm -rf ../../cli/Apify.CLI
+
+autosdk cli-project openapi.yaml \
+  --output ../../cli/Apify.CLI \
+  --sdk-project ../../libs/Apify/Apify.csproj \
+  --targetFramework net10.0 \
+  --namespace Apify \
+  --clientClassName ApifyClient \
+  --package-id Apify.CLI \
+  --tool-command-name apify \
+  --user-secrets-id Apify.CLI \
+  --api-key-env-var APIFY_API_KEY \
+  --base-url-env-var APIFY_BASE_URL \
+  --cli-credential-file \
+  --cli-keep-api-group \
+  --exclude-deprecated-operations \
+  --security-scheme Http:Header:Bearer

@@ -1,0 +1,339 @@
+#nullable enable
+#pragma warning disable CS0618
+
+using System.CommandLine;
+
+namespace Apify.CLI.Commands;
+
+internal static partial class ActorsActPutCommandApiCommand
+{
+    private static Argument<string> ActorId { get; } = new(
+        name: @"actor-id")
+    {
+        Description = @"Actor ID or a tilde-separated owner's username and Actor name.",
+    };
+
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"",
+    };
+
+    private static Option<string?> DescriptionOption { get; } = new(
+        name: @"--description")
+    {
+        Description = @"",
+    };
+
+    private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-public",
+        description: @"");
+
+    private static Option<global::Apify.ActorPermissionLevel?> ActorPermissionLevel { get; } = new(
+        name: @"--actor-permission-level")
+    {
+        Description = @"",
+    };
+
+    private static Option<string?> SeoTitle { get; } = new(
+        name: @"--seo-title")
+    {
+        Description = @"",
+    };
+
+    private static Option<string?> SeoDescription { get; } = new(
+        name: @"--seo-description")
+    {
+        Description = @"",
+    };
+
+    private static Option<string?> Title { get; } = new(
+        name: @"--title")
+    {
+        Description = @"",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>?> Versions { get; } = new(
+        name: @"--versions")
+    {
+        Description = @"",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>?> PricingInfos { get; } = new(
+        name: @"--pricing-infos")
+    {
+        Description = @"",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> Categories { get; } = new(
+        name: @"--categories")
+    {
+        Description = @"",
+    };
+
+    private static Option<global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>?> TaggedBuilds { get; } = new(
+        name: @"--tagged-builds")
+    {
+        Description = @"An object to modify tags on the Actor's builds. The key is the tag name (e.g., _latest_), and the value is either an object with a `buildId` or `null`.
+
+This operation is a patch; any existing tags that you omit from this object will be preserved.
+
+- **To create or reassign a tag**, provide the tag name with a `buildId`. e.g., to assign the _latest_ tag:
+
+  &nbsp;
+
+  ```json
+  {
+    ""latest"": {
+      ""buildId"": ""z2EryhbfhgSyqj6Hn""
+    }
+  }
+  ```
+
+- **To remove a tag**, provide the tag name with a `null` value. e.g., to remove the _beta_ tag:
+
+  &nbsp;
+
+  ```json
+  {
+    ""beta"": null
+  }
+  ```
+
+- **To perform multiple operations**, combine them. The following reassigns _latest_ and removes _beta_, while preserving any other existing tags.
+
+  &nbsp;
+
+  ```json
+  {
+    ""latest"": {
+      ""buildId"": ""z2EryhbfhgSyqj6Hn""
+    },
+    ""beta"": null
+  }
+  ```
+",
+    };
+
+    private static Option<bool?> IsDeprecated { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-deprecated",
+        description: @"");
+    private static readonly DefaultRunOptionsOptionSet DefaultRunOptionsOptions = DefaultRunOptionsOptionSet.Create(@"default-run");
+
+    private static readonly ActorStandbyOptionSet ActorStandbyOptions = ActorStandbyOptionSet.Create(@"actor-standby");
+
+    private static readonly ExampleRunInputOptionSet ExampleRunInputOptions = ExampleRunInputOptionSet.Create(@"example-run-input");
+      private static Option<string?> Input { get; } = new(@"--input")
+      {
+          Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
+      };
+
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      {
+          Description = "Request body as JSON.",
+          Hidden = true,
+      };
+
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      {
+          Description = "Path to a JSON request file, or '-' for stdin.",
+          Hidden = true,
+      };
+
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.ActorResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    {
+                        string? text = null;
+                        CustomizeResponseText(parseResult, value, ref text);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            return text;
+                        }
+
+                        var hints = new Dictionary<string, CliFormatHint>(StringComparer.OrdinalIgnoreCase)
+                        {
+                        };
+                        CustomizeResponseFormatHints(hints);
+                        return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
+                    }
+
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.ActorResponse value, ref string? text);
+                    static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
+
+
+    public static Command Create()
+    {
+        var command = new Command(@"act-put", @"Update Actor
+Updates settings of an Actor using values specified by an Actor object
+passed as JSON in the POST payload.
+If the object does not define a specific property, its value will not be
+updated.
+
+The response is the full Actor object as returned by the
+[Get Actor](#/reference/actors/actor-object/get-actor) endpoint.
+
+The request needs to specify the `Content-Type: application/json` HTTP header!
+
+When providing your API authentication token, we recommend using the
+request's `Authorization` header, rather than the URL. ([More
+info](#/introduction/authentication)).
+
+If you want to make your Actor
+[public](https://docs.apify.com/platform/actors/publishing) using `isPublic:
+true`, you will need to provide the Actor's `title` and the `categories`
+under which that Actor will be classified in Apify Store. For this, it's
+best to use the [constants from our `apify-shared-js`
+package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
+");
+                        command.Arguments.Add(ActorId);
+                        command.Options.Add(NameOption);
+                        command.Options.Add(DescriptionOption);
+                        command.Options.Add(IsPublic);
+                        command.Options.Add(ActorPermissionLevel);
+                        command.Options.Add(SeoTitle);
+                        command.Options.Add(SeoDescription);
+                        command.Options.Add(Title);
+                        command.Options.Add(Versions);
+                        command.Options.Add(PricingInfos);
+                        command.Options.Add(Categories);
+                        command.Options.Add(TaggedBuilds);
+                        command.Options.Add(IsDeprecated);                        command.Options.Add(DefaultRunOptionsOptions.Build);
+                        command.Options.Add(DefaultRunOptionsOptions.TimeoutSecs);
+                        command.Options.Add(DefaultRunOptionsOptions.MemoryMbytes);
+                        command.Options.Add(DefaultRunOptionsOptions.RestartOnError);
+                        command.Options.Add(DefaultRunOptionsOptions.MaxItems);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
+                        command.Options.Add(ActorStandbyOptions.DesiredRequestsPerActorRun);
+                        command.Options.Add(ActorStandbyOptions.MaxRequestsPerActorRun);
+                        command.Options.Add(ActorStandbyOptions.IdleTimeoutSecs);
+                        command.Options.Add(ActorStandbyOptions.Build);
+                        command.Options.Add(ActorStandbyOptions.MemoryMbytes);
+                        command.Options.Add(ActorStandbyOptions.DisableStandbyFieldsOverride);
+                        command.Options.Add(ActorStandbyOptions.ShouldPassActorInput);                        command.Options.Add(ExampleRunInputOptions.Body);
+                        command.Options.Add(ExampleRunInputOptions.ContentType);
+          command.Options.Add(Input);
+          command.Options.Add(RequestJson);
+          command.Options.Add(RequestFile);
+          command.Validators.Add(result =>
+          {
+              var hasInput = result.GetResult(Input) is not null;
+              var hasRequestJson = result.GetResult(RequestJson) is not null;
+              var hasRequestFile = result.GetResult(RequestFile) is not null;
+              var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
+              if (specifiedCount > 1)
+              {
+                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
+              }
+          });
+
+        command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+            await CliRuntime.RunAsync(async () =>
+            {
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateActorRequest>(
+                            parseResult,
+                            Input,
+                            RequestJson,
+                            RequestFile,
+                            global::Apify.SourceGenerationContext.Default,
+                            cancellationToken).ConfigureAwait(false);
+                        var actorId = parseResult.GetRequiredValue(ActorId);
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
+                        var actorPermissionLevel = CliRuntime.WasSpecified(parseResult, ActorPermissionLevel) ? parseResult.GetValue(ActorPermissionLevel) : (__requestBase is { } __ActorPermissionLevelBaseValue ? __ActorPermissionLevelBaseValue.ActorPermissionLevel : default);
+                        var seoTitle = CliRuntime.WasSpecified(parseResult, SeoTitle) ? parseResult.GetValue(SeoTitle) : (__requestBase is { } __SeoTitleBaseValue ? __SeoTitleBaseValue.SeoTitle : default);
+                        var seoDescription = CliRuntime.WasSpecified(parseResult, SeoDescription) ? parseResult.GetValue(SeoDescription) : (__requestBase is { } __SeoDescriptionBaseValue ? __SeoDescriptionBaseValue.SeoDescription : default);
+                        var title = CliRuntime.WasSpecified(parseResult, Title) ? parseResult.GetValue(Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
+                        var versions = CliRuntime.WasSpecified(parseResult, Versions) ? parseResult.GetValue(Versions) : (__requestBase is { } __VersionsBaseValue ? __VersionsBaseValue.Versions : default);
+                        var pricingInfos = CliRuntime.WasSpecified(parseResult, PricingInfos) ? parseResult.GetValue(PricingInfos) : (__requestBase is { } __PricingInfosBaseValue ? __PricingInfosBaseValue.PricingInfos : default);
+                        var categories = CliRuntime.WasSpecified(parseResult, Categories) ? parseResult.GetValue(Categories) : (__requestBase is { } __CategoriesBaseValue ? __CategoriesBaseValue.Categories : default);
+                        var taggedBuilds = CliRuntime.WasSpecified(parseResult, TaggedBuilds) ? parseResult.GetValue(TaggedBuilds) : (__requestBase is { } __TaggedBuildsBaseValue ? __TaggedBuildsBaseValue.TaggedBuilds : default);
+                        var isDeprecated = CliRuntime.WasSpecified(parseResult, IsDeprecated) ? parseResult.GetValue(IsDeprecated) : (__requestBase is { } __IsDeprecatedBaseValue ? __IsDeprecatedBaseValue.IsDeprecated : default);
+
+                        var __DefaultRunOptionsBase = __requestBase is { } __DefaultRunOptionsBaseValue ? __DefaultRunOptionsBaseValue.DefaultRunOptions : default;                        var defaultRunOptionsBuild = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.Build) ? parseResult.GetValue(DefaultRunOptionsOptions.Build) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsbuildBaseValue ? __DefaultRunOptionsbuildBaseValue.Build : default);
+                        var defaultRunOptionsTimeoutSecs = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.TimeoutSecs) ? parseResult.GetValue(DefaultRunOptionsOptions.TimeoutSecs) : (__DefaultRunOptionsBase is { } __DefaultRunOptionstimeoutSecsBaseValue ? __DefaultRunOptionstimeoutSecsBaseValue.TimeoutSecs : default);
+                        var defaultRunOptionsMemoryMbytes = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MemoryMbytes) ? parseResult.GetValue(DefaultRunOptionsOptions.MemoryMbytes) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsmemoryMbytesBaseValue ? __DefaultRunOptionsmemoryMbytesBaseValue.MemoryMbytes : default);
+                        var defaultRunOptionsRestartOnError = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.RestartOnError) ? parseResult.GetValue(DefaultRunOptionsOptions.RestartOnError) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsrestartOnErrorBaseValue ? __DefaultRunOptionsrestartOnErrorBaseValue.RestartOnError : default);
+                        var defaultRunOptionsMaxItems = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxItems) ? parseResult.GetValue(DefaultRunOptionsOptions.MaxItems) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsmaxItemsBaseValue ? __DefaultRunOptionsmaxItemsBaseValue.MaxItems : default);
+                        var __DefaultRunOptionsSpecified = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.Build) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.TimeoutSecs) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.RestartOnError) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxItems);
+                        var defaultRunOptions =
+                            __DefaultRunOptionsSpecified || __DefaultRunOptionsBase is not null
+                                ? new global::Apify.DefaultRunOptions
+                                {
+	                                Build = defaultRunOptionsBuild,
+                                TimeoutSecs = defaultRunOptionsTimeoutSecs,
+                                MemoryMbytes = defaultRunOptionsMemoryMbytes,
+                                RestartOnError = defaultRunOptionsRestartOnError,
+                                MaxItems = defaultRunOptionsMaxItems,
+
+                                }
+                                : __DefaultRunOptionsBase;
+
+                        var __ActorStandbyBase = __requestBase is { } __ActorStandbyBaseValue ? __ActorStandbyBaseValue.ActorStandby : default;                        var actorStandbyIsEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsEnabled) : (__ActorStandbyBase is { } __ActorStandbyisEnabledBaseValue ? __ActorStandbyisEnabledBaseValue.IsEnabled : default);
+                        var actorStandbyDesiredRequestsPerActorRun = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) ? parseResult.GetValue(ActorStandbyOptions.DesiredRequestsPerActorRun) : (__ActorStandbyBase is { } __ActorStandbydesiredRequestsPerActorRunBaseValue ? __ActorStandbydesiredRequestsPerActorRunBaseValue.DesiredRequestsPerActorRun : default);
+                        var actorStandbyMaxRequestsPerActorRun = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) ? parseResult.GetValue(ActorStandbyOptions.MaxRequestsPerActorRun) : (__ActorStandbyBase is { } __ActorStandbymaxRequestsPerActorRunBaseValue ? __ActorStandbymaxRequestsPerActorRunBaseValue.MaxRequestsPerActorRun : default);
+                        var actorStandbyIdleTimeoutSecs = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) ? parseResult.GetValue(ActorStandbyOptions.IdleTimeoutSecs) : (__ActorStandbyBase is { } __ActorStandbyidleTimeoutSecsBaseValue ? __ActorStandbyidleTimeoutSecsBaseValue.IdleTimeoutSecs : default);
+                        var actorStandbyBuild = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) ? parseResult.GetValue(ActorStandbyOptions.Build) : (__ActorStandbyBase is { } __ActorStandbybuildBaseValue ? __ActorStandbybuildBaseValue.Build : default);
+                        var actorStandbyMemoryMbytes = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) ? parseResult.GetValue(ActorStandbyOptions.MemoryMbytes) : (__ActorStandbyBase is { } __ActorStandbymemoryMbytesBaseValue ? __ActorStandbymemoryMbytesBaseValue.MemoryMbytes : default);
+                        var actorStandbyDisableStandbyFieldsOverride = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) ? parseResult.GetValue(ActorStandbyOptions.DisableStandbyFieldsOverride) : (__ActorStandbyBase is { } __ActorStandbydisableStandbyFieldsOverrideBaseValue ? __ActorStandbydisableStandbyFieldsOverrideBaseValue.DisableStandbyFieldsOverride : default);
+                        var actorStandbyShouldPassActorInput = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput) ? parseResult.GetValue(ActorStandbyOptions.ShouldPassActorInput) : (__ActorStandbyBase is { } __ActorStandbyshouldPassActorInputBaseValue ? __ActorStandbyshouldPassActorInputBaseValue.ShouldPassActorInput : default);
+                        var __ActorStandbySpecified = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput);
+                        var actorStandby =
+                            __ActorStandbySpecified || __ActorStandbyBase is not null
+                                ? new global::Apify.ActorStandby
+                                {
+	                                IsEnabled = actorStandbyIsEnabled,
+                                DesiredRequestsPerActorRun = actorStandbyDesiredRequestsPerActorRun,
+                                MaxRequestsPerActorRun = actorStandbyMaxRequestsPerActorRun,
+                                IdleTimeoutSecs = actorStandbyIdleTimeoutSecs,
+                                Build = actorStandbyBuild,
+                                MemoryMbytes = actorStandbyMemoryMbytes,
+                                DisableStandbyFieldsOverride = actorStandbyDisableStandbyFieldsOverride,
+                                ShouldPassActorInput = actorStandbyShouldPassActorInput,
+
+                                }
+                                : __ActorStandbyBase;
+
+                        var __ExampleRunInputBase = __requestBase is { } __ExampleRunInputBaseValue ? __ExampleRunInputBaseValue.ExampleRunInput : default;                        var exampleRunInputBody = CliRuntime.WasSpecified(parseResult, ExampleRunInputOptions.Body) ? parseResult.GetValue(ExampleRunInputOptions.Body) : (__ExampleRunInputBase is { } __ExampleRunInputbodyBaseValue ? __ExampleRunInputbodyBaseValue.Body : default);
+                        var exampleRunInputContentType = CliRuntime.WasSpecified(parseResult, ExampleRunInputOptions.ContentType) ? parseResult.GetValue(ExampleRunInputOptions.ContentType) : (__ExampleRunInputBase is { } __ExampleRunInputcontentTypeBaseValue ? __ExampleRunInputcontentTypeBaseValue.ContentType : default);
+                        var __ExampleRunInputSpecified = CliRuntime.WasSpecified(parseResult, ExampleRunInputOptions.Body) || CliRuntime.WasSpecified(parseResult, ExampleRunInputOptions.ContentType);
+                        var exampleRunInput =
+                            __ExampleRunInputSpecified || __ExampleRunInputBase is not null
+                                ? new global::Apify.ExampleRunInput
+                                {
+	                                Body = exampleRunInputBody,
+                                ContentType = exampleRunInputContentType,
+
+                                }
+                                : __ExampleRunInputBase;
+                using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
+
+
+                                var response = await client.Actors.ActPutAsync(
+                                    actorId: actorId,
+                                    name: name,
+                                    description: description,
+                                    isPublic: isPublic,
+                                    actorPermissionLevel: actorPermissionLevel,
+                                    seoTitle: seoTitle,
+                                    seoDescription: seoDescription,
+                                    title: title,
+                                    versions: versions,
+                                    pricingInfos: pricingInfos,
+                                    categories: categories,
+                                    taggedBuilds: taggedBuilds,
+                                    isDeprecated: isDeprecated,
+                                    defaultRunOptions: defaultRunOptions,
+                                    actorStandby: actorStandby,
+                                    exampleRunInput: exampleRunInput,
+                                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+
+                                await CliRuntime.WriteResponseAsync(
+                                    parseResult,
+                                    response,
+                                    global::Apify.SourceGenerationContext.Default,
+                                    FormatResponse,
+                                    cancellationToken).ConfigureAwait(false);
+            }, cancellationToken).ConfigureAwait(false));
+        return command;
+    }
+}

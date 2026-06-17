@@ -19,6 +19,13 @@ using Apify;
 using var client = new ApifyClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Apify.CLI --prerelease
+apify api --help
+```
+
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
 
