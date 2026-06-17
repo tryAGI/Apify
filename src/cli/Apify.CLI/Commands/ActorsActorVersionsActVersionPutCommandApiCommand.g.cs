@@ -19,12 +19,6 @@ internal static partial class ActorsActorVersionsActVersionPutCommandApiCommand
         Description = @"Actor version.",
     };
 
-    private static Option<string?> RequestVersionNumber { get; } = new(
-        name: @"--version-number")
-    {
-        Description = @"",
-    };
-
     private static Option<global::Apify.VersionSourceType?> SourceType { get; } = new(
         name: @"--source-type")
     {
@@ -100,10 +94,10 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);
-                        command.Options.Add(RequestVersionNumber);
                         command.Options.Add(SourceType);
                         command.Options.Add(EnvVars);
-                        command.Options.Add(SourceFiles);                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild);
+                        command.Options.Add(SourceFiles);                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber);
+                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild);
                         command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.BuildTag);
                         command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl);
                         command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl);
@@ -135,10 +129,10 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
                             cancellationToken).ConfigureAwait(false);
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var versionNumber = parseResult.GetRequiredValue(VersionNumber);
-                        var requestVersionNumber = CliRuntime.WasSpecified(parseResult, RequestVersionNumber) ? parseResult.GetValue(RequestVersionNumber) : (__requestBase is { } __RequestVersionNumberBaseValue ? __RequestVersionNumberBaseValue.VersionNumber : default);
                         var sourceType = CliRuntime.WasSpecified(parseResult, SourceType) ? parseResult.GetValue(SourceType) : (__requestBase is { } __SourceTypeBaseValue ? __SourceTypeBaseValue.SourceType : default);
                         var envVars = CliRuntime.WasSpecified(parseResult, EnvVars) ? parseResult.GetValue(EnvVars) : (__requestBase is { } __EnvVarsBaseValue ? __EnvVarsBaseValue.EnvVars : default);
-                        var sourceFiles = CliRuntime.WasSpecified(parseResult, SourceFiles) ? parseResult.GetValue(SourceFiles) : (__requestBase is { } __SourceFilesBaseValue ? __SourceFilesBaseValue.SourceFiles : default);                        var applyEnvVarsToBuild = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) : (__requestBase is { } __ApplyEnvVarsToBuildBaseValue ? __ApplyEnvVarsToBuildBaseValue.ApplyEnvVarsToBuild : default);
+                        var sourceFiles = CliRuntime.WasSpecified(parseResult, SourceFiles) ? parseResult.GetValue(SourceFiles) : (__requestBase is { } __SourceFilesBaseValue ? __SourceFilesBaseValue.SourceFiles : default);                        var requestVersionNumber = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber) : (__requestBase is { } __RequestVersionNumberBaseValue ? __RequestVersionNumberBaseValue.VersionNumber : default);
+                        var applyEnvVarsToBuild = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) : (__requestBase is { } __ApplyEnvVarsToBuildBaseValue ? __ApplyEnvVarsToBuildBaseValue.ApplyEnvVarsToBuild : default);
                         var buildTag = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.BuildTag) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.BuildTag) : (__requestBase is { } __BuildTagBaseValue ? __BuildTagBaseValue.BuildTag : default);
                         var gitRepoUrl = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl) : (__requestBase is { } __GitRepoUrlBaseValue ? __GitRepoUrlBaseValue.GitRepoUrl : default);
                         var tarballUrl = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl) : (__requestBase is { } __TarballUrlBaseValue ? __TarballUrlBaseValue.TarballUrl : default);
@@ -149,10 +143,10 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
                                 var response = await client.ActorsActorVersions.ActVersionPutAsync(
                                     actorId: actorId,
                                     versionNumber: versionNumber,
-                                    requestVersionNumber: requestVersionNumber,
                                     sourceType: sourceType,
                                     envVars: envVars,
                                     sourceFiles: sourceFiles,
+                                    requestVersionNumber: requestVersionNumber,
                                     applyEnvVarsToBuild: applyEnvVarsToBuild,
                                     buildTag: buildTag,
                                     gitRepoUrl: gitRepoUrl,
