@@ -41,6 +41,14 @@ namespace Apify
     /// **Never share your API token or password with untrusted parties!**<br/>
     /// For more information, see our<br/>
     /// [integrations](https://docs.apify.com/platform/integrations) documentation.<br/>
+    /// ### Agentic payments<br/>
+    /// AI agents can authenticate and pay for Actor runs without an Apify account<br/>
+    /// using agentic payments. Instead of an API token, the request carries a<br/>
+    /// payment credential that both authorizes and pays for the call. Apify supports<br/>
+    /// the [x402 protocol](https://docs.apify.com/platform/integrations/x402)<br/>
+    /// (`PAYMENT-SIGNATURE` header) and<br/>
+    /// [Skyfire](https://docs.apify.com/platform/integrations/skyfire)<br/>
+    /// (`skyfire-pay-id` header).<br/>
     /// ## Basic usage<br/>
     /// &lt;span id="/introduction/basic-usage"&gt;&lt;/span&gt;<br/>
     /// To run an Actor, send a POST request to the [Run<br/>
