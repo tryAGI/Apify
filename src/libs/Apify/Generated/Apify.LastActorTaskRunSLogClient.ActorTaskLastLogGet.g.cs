@@ -28,6 +28,7 @@ namespace Apify
         partial void PrepareActorTaskLastLogGetArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
+            ref string? status,
             ref bool? stream,
             ref bool? download,
             ref bool? raw);
@@ -35,6 +36,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
+            string? status,
             bool? stream,
             bool? download,
             bool? raw);
@@ -55,6 +57,9 @@ namespace Apify
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
         /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -69,6 +74,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> ActorTaskLastLogGetAsync(
             string actorTaskId,
+            string? status = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -77,6 +83,7 @@ namespace Apify
         {
             var __response = await ActorTaskLastLogGetAsResponseAsync(
                 actorTaskId: actorTaskId,
+                status: status,
                 stream: stream,
                 download: download,
                 raw: raw,
@@ -94,6 +101,9 @@ namespace Apify
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
         /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -108,6 +118,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActorTaskLastLogGetAsResponseAsync(
             string actorTaskId,
+            string? status = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -119,6 +130,7 @@ namespace Apify
             PrepareActorTaskLastLogGetArguments(
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
+                status: ref status,
                 stream: ref stream,
                 download: ref download,
                 raw: ref raw);
@@ -150,6 +162,7 @@ namespace Apify
                                 path: $"/v2/actor-tasks/{actorTaskId}/runs/last/log",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("status", status)
                                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("download", download?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("raw", raw?.ToString().ToLowerInvariant())
@@ -195,6 +208,7 @@ namespace Apify
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
+                    status: status,
                     stream: stream,
                     download: download,
                     raw: raw);

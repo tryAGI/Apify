@@ -5301,7 +5301,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Request"
+                "$ref": "#/components/schemas/RequestBase"
               }
             }
           },
@@ -5686,6 +5686,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/statusLastRun"
           },
           {
             "$ref": "#/components/parameters/stream"
@@ -7839,6 +7842,9 @@
             "$ref": "#/components/parameters/actorTaskId"
           },
           {
+            "$ref": "#/components/parameters/statusLastRun"
+          },
+          {
             "$ref": "#/components/parameters/stream"
           },
           {
@@ -9875,7 +9881,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Request"
+                "$ref": "#/components/schemas/RequestBase"
               }
             }
           },
@@ -12391,7 +12397,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Request"
+                "$ref": "#/components/schemas/RequestBase"
               }
             }
           },
@@ -15566,7 +15572,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Request"
+                "$ref": "#/components/schemas/RequestBase"
               }
             }
           },
@@ -19253,6 +19259,7 @@
           "schema-validation",
           "schema-validation-error",
           "schema-validation-failed",
+          "service-worker-registration-not-allowed",
           "sign-up-method-not-allowed",
           "slack-integration-not-custom",
           "socket-closed",

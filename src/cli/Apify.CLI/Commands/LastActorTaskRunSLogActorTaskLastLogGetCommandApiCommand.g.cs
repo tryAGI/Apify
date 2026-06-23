@@ -13,6 +13,12 @@ internal static partial class LastActorTaskRunSLogActorTaskLastLogGetCommandApiC
         Description = @"Task ID or a tilde-separated owner's username and task's name.",
     };
 
+    private static Option<string?> Status { get; } = new(
+        name: @"--status")
+    {
+        Description = @"Filter for the run status.",
+    };
+
     private static Option<bool?> Stream { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--stream",
         description: @"If `true` or `1` then the logs will be streamed as long as the run or build is running.
@@ -57,6 +63,7 @@ Retrieves last Actor task run's logs.
 This endpoint is a shortcut for getting last Actor task run's log. Same as [Get log](/api/v2/log-get) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
+                        command.Options.Add(Status);
                         command.Options.Add(Stream);
                         command.Options.Add(Download);
                         command.Options.Add(Raw);
@@ -66,6 +73,7 @@ This endpoint is a shortcut for getting last Actor task run's log. Same as [Get 
             await CliRuntime.RunAsync(async () =>
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
+                        var status = parseResult.GetValue(Status);
                         var stream = parseResult.GetValue(Stream);
                         var download = parseResult.GetValue(Download);
                         var raw = parseResult.GetValue(Raw);
@@ -74,6 +82,7 @@ This endpoint is a shortcut for getting last Actor task run's log. Same as [Get 
 
                                 var response = await client.LastActorTaskRunSLog.ActorTaskLastLogGetAsync(
                                     actorTaskId: actorTaskId,
+                                    status: status,
                                     stream: stream,
                                     download: download,
                                     raw: raw,

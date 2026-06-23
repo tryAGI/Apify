@@ -12,6 +12,9 @@ namespace Apify
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
         /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -26,6 +29,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> ActorTaskLastLogGetAsync(
             string actorTaskId,
+            string? status = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -38,6 +42,9 @@ namespace Apify
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
         /// </param>
         /// <param name="stream">
         /// Example: false
@@ -53,6 +60,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActorTaskLastLogGetAsResponseAsync(
             string actorTaskId,
+            string? status = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
