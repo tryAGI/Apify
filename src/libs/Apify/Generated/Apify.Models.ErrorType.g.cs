@@ -1235,6 +1235,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        ServiceWorkerRegistrationNotAllowed,
+        /// <summary>
+        /// 
+        /// </summary>
         SignUpMethodNotAllowed,
         /// <summary>
         /// 
@@ -1892,6 +1896,7 @@ namespace Apify
                 ErrorType.SchemaValidation => "schema-validation",
                 ErrorType.SchemaValidationError => "schema-validation-error",
                 ErrorType.SchemaValidationFailed => "schema-validation-failed",
+                ErrorType.ServiceWorkerRegistrationNotAllowed => "service-worker-registration-not-allowed",
                 ErrorType.SignUpMethodNotAllowed => "sign-up-method-not-allowed",
                 ErrorType.SlackIntegrationNotCustom => "slack-integration-not-custom",
                 ErrorType.SocketClosed => "socket-closed",
@@ -2293,6 +2298,7 @@ namespace Apify
                 "schema-validation" => ErrorType.SchemaValidation,
                 "schema-validation-error" => ErrorType.SchemaValidationError,
                 "schema-validation-failed" => ErrorType.SchemaValidationFailed,
+                "service-worker-registration-not-allowed" => ErrorType.ServiceWorkerRegistrationNotAllowed,
                 "sign-up-method-not-allowed" => ErrorType.SignUpMethodNotAllowed,
                 "slack-integration-not-custom" => ErrorType.SlackIntegrationNotCustom,
                 "socket-closed" => ErrorType.SocketClosed,
