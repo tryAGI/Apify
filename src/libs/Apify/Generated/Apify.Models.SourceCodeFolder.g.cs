@@ -10,14 +10,14 @@ namespace Apify
     public sealed partial class SourceCodeFolder
     {
         /// <summary>
-        /// The folder path relative to the Actor's root directory.
+        /// The path of the folder relative to the Actor's root directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
 
         /// <summary>
-        /// Always `true` for folders. Used to distinguish folders from files.
+        /// Whether it's a folder. Distinguishes folders from files.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("folder")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -33,10 +33,10 @@ namespace Apify
         /// Initializes a new instance of the <see cref="SourceCodeFolder" /> class.
         /// </summary>
         /// <param name="name">
-        /// The folder path relative to the Actor's root directory.
+        /// The path of the folder relative to the Actor's root directory.
         /// </param>
         /// <param name="folder">
-        /// Always `true` for folders. Used to distinguish folders from files.
+        /// Whether it's a folder. Distinguishes folders from files.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

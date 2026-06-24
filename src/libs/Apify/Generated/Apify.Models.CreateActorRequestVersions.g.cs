@@ -4,9 +4,9 @@
 namespace Apify
 {
     /// <summary>
-    /// Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided.
+    /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
     /// </summary>
-    public sealed partial class CreateActorRequestExampleRunInput
+    public sealed partial class CreateActorRequestVersions
     {
 
         /// <summary>

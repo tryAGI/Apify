@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// Where the source code of the version lives.
     /// </summary>
     public sealed partial class VersionSourceType2
     {

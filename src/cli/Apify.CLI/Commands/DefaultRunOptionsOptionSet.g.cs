@@ -19,20 +19,20 @@ internal sealed record DefaultRunOptionsOptionSet(
         return new DefaultRunOptionsOptionSet(
                         Build: new Option<string?>($"--{normalizedPrefix}build")
                 {
-                    Description = @"",
+                    Description = @"Which build to run. Either a build tag or a version number.",
                 },
                 TimeoutSecs: new Option<int?>($"--{normalizedPrefix}timeout-secs")
                 {
-                    Description = @"",
+                    Description = @"Timeout in seconds. 0 if no timeout.",
                 },
                 MemoryMbytes: new Option<long?>($"--{normalizedPrefix}memory-mbytes")
                 {
-                    Description = @"",
+                    Description = @"In MB, the amount of memory allocated to the run.",
                 },
-                RestartOnError: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}restart-on-error", description: @""),
+                RestartOnError: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}restart-on-error", description: @"Whether to automatically restart the run if it fails."),
                 MaxItems: new Option<int?>($"--{normalizedPrefix}max-items")
                 {
-                    Description = @"",
+                    Description = @"Maximum number of items the run might produce.",
                 }
         );
     }

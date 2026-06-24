@@ -10,41 +10,41 @@ internal static partial class ActorsActsPostCommandApiCommand
     private static Option<string?> NameOption { get; } = new(
         name: @"--name")
     {
-        Description = @"",
+        Description = @"The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account.",
     };
 
     private static Option<string?> DescriptionOption { get; } = new(
         name: @"--description")
     {
-        Description = @"",
+        Description = @"Short description of the Actor, displayed in Apify Store and Console.",
     };
 
     private static Option<string?> Title { get; } = new(
         name: @"--title")
     {
-        Description = @"",
+        Description = @"Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO.",
     };
 
     private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-public",
-        description: @"");
+        description: @"Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.");
 
     private static Option<string?> SeoTitle { get; } = new(
         name: @"--seo-title")
     {
-        Description = @"",
+        Description = @"Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.",
     };
 
     private static Option<string?> SeoDescription { get; } = new(
         name: @"--seo-description")
     {
-        Description = @"",
+        Description = @"Description of the Actor to display by search engines such as Google. Recommended length is 140-156 characters.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Apify.Version>?> Versions { get; } = new(
         name: @"--versions")
     {
-        Description = @"",
+        Description = @"An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>?> PricingInfos { get; } = new(
@@ -56,12 +56,12 @@ internal static partial class ActorsActsPostCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<string>?> Categories { get; } = new(
         name: @"--categories")
     {
-        Description = @"",
+        Description = @"A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.",
     };
 
     private static Option<bool?> IsDeprecated { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-deprecated",
-        description: @"");
+        description: @"Whether the Actor is deprecated.");
     private static readonly DefaultRunOptionsOptionSet DefaultRunOptionsOptions = DefaultRunOptionsOptionSet.Create(@"default-run");
 
     private static readonly ActorStandbyOptionSet ActorStandbyOptions = ActorStandbyOptionSet.Create(@"actor-standby");
@@ -107,22 +107,25 @@ internal static partial class ActorsActsPostCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"acts-post", @"Create Actor
-Creates a new Actor with settings specified in an Actor object passed as
+Creates an Actor with the settings specified in an `Actor` object passed as
 JSON in the POST payload.
-The response is the full Actor object as returned by the
-[Get Actor](#/reference/actors/actor-object/get-actor) endpoint.
 
-The HTTP request must have the `Content-Type: application/json` HTTP header!
+Returns the full `Actor` object, the same as the
+[Get Actor](/api/v2/act-get) endpoint.
 
-The Actor needs to define at least one version of the source code.
-For more information, see [Version object](#/reference/actors/version-object).
+In the HTTP request, set the `Content-Type` header to `application/json`.
 
-If you want to make your Actor
-[public](https://docs.apify.com/platform/actors/publishing) using `isPublic:
-true`, you will need to provide the Actor's `title` and the `categories`
-under which that Actor will be classified in Apify Store. For this, it's
-best to use the [constants from our `apify-shared-js`
-package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
+### Define a source code version
+
+An Actor must specify at least one version of the source code.
+For details, see [Actor versions](/api/v2/actors-actor-versions).
+
+### Create a public Actor
+
+To make your Actor [public](https://docs.apify.com/platform/actors/publishing):
+- Set `isPublic` to `true`.
+- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`
+package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
 ");
                         command.Options.Add(NameOption);
                         command.Options.Add(DescriptionOption);
