@@ -4,9 +4,9 @@
 namespace Apify
 {
     /// <summary>
-    /// Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided.
+    /// Environment variables for the version.
     /// </summary>
-    public sealed partial class CreateActorRequestExampleRunInput
+    public sealed partial class VersionEnvVars
     {
 
         /// <summary>

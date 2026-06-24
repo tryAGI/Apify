@@ -16,11 +16,11 @@ internal sealed record ExampleRunInputOptionSet(
         return new ExampleRunInputOptionSet(
                         Body: new Option<string?>($"--{normalizedPrefix}body")
                 {
-                    Description = @"",
+                    Description = @"Sample input, serialized as a string.",
                 },
                 ContentType: new Option<string?>($"--{normalizedPrefix}content-type")
                 {
-                    Description = @"",
+                    Description = @"MIME type of `body`.",
                 }
         );
     }

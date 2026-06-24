@@ -59,7 +59,7 @@ namespace Apify
         public required bool IsPublic { get; set; }
 
         /// <summary>
-        /// Determines permissions that the Actor requires to run. For more information, see the [Actor permissions documentation](https://docs.apify.com/platform/actors/development/permissions).
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorPermissionLevel")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorPermissionLevelJsonConverter))]
@@ -100,7 +100,7 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }
 
         /// <summary>
-        /// 
+        /// The default settings applied to an Actor run. Can be overridden elsewhere.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultRunOptions")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -226,10 +226,12 @@ namespace Apify
         /// <param name="modifiedAt"></param>
         /// <param name="stats"></param>
         /// <param name="versions"></param>
-        /// <param name="defaultRunOptions"></param>
+        /// <param name="defaultRunOptions">
+        /// The default settings applied to an Actor run. Can be overridden elsewhere.
+        /// </param>
         /// <param name="description"></param>
         /// <param name="actorPermissionLevel">
-        /// Determines permissions that the Actor requires to run. For more information, see the [Actor permissions documentation](https://docs.apify.com/platform/actors/development/permissions).
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </param>
         /// <param name="pricingInfos"></param>
         /// <param name="exampleRunInput"></param>

@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Determines permissions that the Actor requires to run. For more information, see the [Actor permissions documentation](https://docs.apify.com/platform/actors/development/permissions).
+    /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
     /// </summary>
     public enum ActorPermissionLevel
     {
