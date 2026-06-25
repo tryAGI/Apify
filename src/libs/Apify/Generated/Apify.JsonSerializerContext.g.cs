@@ -157,10 +157,6 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.ListOfRunsJsonConverter),
 
-            typeof(global::Apify.JsonConverters.RunFailedErrorDetailJsonConverter),
-
-            typeof(global::Apify.JsonConverters.RunTimeoutExceededErrorDetailJsonConverter),
-
             typeof(global::Apify.JsonConverters.RequestJsonConverter),
 
             typeof(global::Apify.JsonConverters.RequestDraftDeleteJsonConverter),
@@ -354,12 +350,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsRequestQueues))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Metamorph>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunFailedErrorDetail), TypeInfoPropertyName = "RunFailedErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunFailedErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunFailedError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunTimeoutExceededErrorDetail), TypeInfoPropertyName = "RunTimeoutExceededErrorDetail2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunTimeoutExceededErrorDetailVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunTimeoutExceededError))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Dataset))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetResponse))]
