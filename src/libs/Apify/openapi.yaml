@@ -2333,6 +2333,9 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -2391,6 +2394,9 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -2492,6 +2498,9 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -2782,6 +2791,9 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
+          },
           "413": {
             "$ref": "#/components/responses/PayloadTooLarge"
           },
@@ -2876,32 +2888,22 @@
             }
           },
           "400": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunFailedError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "402": {
             "$ref": "#/components/responses/PaymentRequired"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
           "408": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunTimeoutExceededError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Timeout"
           },
           "415": {
             "$ref": "#/components/responses/UnsupportedMediaType"
@@ -2969,29 +2971,22 @@
             }
           },
           "400": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunFailedError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
           "408": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunTimeoutExceededError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -3192,32 +3187,19 @@
             }
           },
           "400": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunFailedError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
           },
           "402": {
             "$ref": "#/components/responses/PaymentRequired"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
           "408": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunTimeoutExceededError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -3399,29 +3381,22 @@
             }
           },
           "400": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunFailedError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
           },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
           "408": {
-            "description": "",
-            "headers": {},
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ActorRunTimeoutExceededError"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -7226,7 +7201,7 @@
             "$ref": "#/components/responses/MethodNotAllowed"
           },
           "408": {
-            "$ref": "#/components/responses/RunTimeout"
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -7510,7 +7485,7 @@
             "$ref": "#/components/responses/MethodNotAllowed"
           },
           "408": {
-            "$ref": "#/components/responses/RunTimeout"
+            "$ref": "#/components/responses/Timeout"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -10227,6 +10202,9 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -12880,6 +12858,9 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "408": {
+            "$ref": "#/components/responses/Timeout"
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -13674,8 +13655,23 @@
             "description": "The record exists",
             "headers": {}
           },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
           }
         },
         "deprecated": false,
@@ -16067,6 +16063,9 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
@@ -22772,64 +22771,6 @@
           }
         }
       },
-      "RunFailedErrorDetail": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ErrorDetail"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "const": "run-failed"
-              }
-            }
-          }
-        ]
-      },
-      "ActorRunFailedError": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/RunFailedErrorDetail"
-          }
-        },
-        "example": {
-          "error": {
-            "type": "run-failed",
-            "message": "Actor run did not succeed (run ID: 55uatRrZib4xbZs, status: FAILED)"
-          }
-        }
-      },
-      "RunTimeoutExceededErrorDetail": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ErrorDetail"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "const": "run-timeout-exceeded"
-              }
-            }
-          }
-        ]
-      },
-      "ActorRunTimeoutExceededError": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "$ref": "#/components/schemas/RunTimeoutExceededErrorDetail"
-          }
-        },
-        "example": {
-          "error": {
-            "type": "run-timeout-exceeded",
-            "message": "Actor run exceeded the timeout of 300 seconds for this API endpoint"
-          }
-        }
-      },
       "DatasetStats": {
         "title": "DatasetStats",
         "type": "object",
@@ -28316,6 +28257,22 @@
           }
         }
       },
+      "Timeout": {
+        "description": "The HTTP request exceeded the timeout limit",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": {
+                "type": "run-timeout-exceeded",
+                "message": "Actor run exceeded the timeout of 300 seconds for this API endpoint"
+              }
+            }
+          }
+        }
+      },
       "PaymentRequired": {
         "description": "Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.",
         "content": {
@@ -28346,22 +28303,6 @@
               "error": {
                 "type": "actor-name-not-unique",
                 "message": "Record with the given name already exists."
-              }
-            }
-          }
-        }
-      },
-      "RunTimeout": {
-        "description": "The HTTP request exceeded the timeout limit",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "example": {
-              "error": {
-                "type": "run-timeout-exceeded",
-                "message": "Actor run exceeded the timeout of 300 seconds for this API endpoint"
               }
             }
           }

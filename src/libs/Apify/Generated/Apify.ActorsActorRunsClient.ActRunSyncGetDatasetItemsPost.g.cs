@@ -804,24 +804,24 @@ namespace Apify
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // 
+                            // Bad request - invalid input parameters or request body.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Apify.ActorRunFailedError? __value_400 = null;
+                                global::Apify.ErrorResponse? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Apify.ActorRunFailedError.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Apify.ActorRunFailedError.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -830,7 +830,7 @@ namespace Apify
                                 }
 
 
-                                throw global::Apify.ApiException<global::Apify.ActorRunFailedError>.Create(
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -878,6 +878,43 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Forbidden - insufficient permissions to perform this action.
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                global::Apify.ErrorResponse? __value_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Not found - the requested resource does not exist.
                             if ((int)__response.StatusCode == 404)
                             {
@@ -915,24 +952,24 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // 
+                            // The HTTP request exceeded the timeout limit
                             if ((int)__response.StatusCode == 408)
                             {
                                 string? __content_408 = null;
                                 global::System.Exception? __exception_408 = null;
-                                global::Apify.ActorRunTimeoutExceededError? __value_408 = null;
+                                global::Apify.ErrorResponse? __value_408 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_408 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_408 = global::Apify.ActorRunTimeoutExceededError.FromJson(__content_408, JsonSerializerContext);
+                                        __value_408 = global::Apify.ErrorResponse.FromJson(__content_408, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_408 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_408 = global::Apify.ActorRunTimeoutExceededError.FromJson(__content_408, JsonSerializerContext);
+                                        __value_408 = global::Apify.ErrorResponse.FromJson(__content_408, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -941,7 +978,7 @@ namespace Apify
                                 }
 
 
-                                throw global::Apify.ApiException<global::Apify.ActorRunTimeoutExceededError>.Create(
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_408 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_408,
