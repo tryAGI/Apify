@@ -16,8 +16,9 @@ internal static partial class ActorsActorRunsActRunSyncGetCommandApiCommand
     private static Option<string?> OutputRecordKey { get; } = new(
         name: @"--output-record-key")
     {
-        Description = @"Key of the record from run's default key-value store to be returned
-in the response. By default, it is `OUTPUT`.
+        Description = @"Key of the record from the run's default key-value store to return in the
+response. Defaults to `OUTPUT`. Actors aren't required to store a record
+under this key, so if it doesn't exist the response contains no data.
 ",
     };
 
@@ -103,7 +104,12 @@ the WebhookRepresentation schema. For more information, see
     public static Command Create()
     {
         var command = new Command(@"act-run-sync-get", @"Run Actor synchronously without input
-Runs a specific Actor and returns its output.
+Runs a specific Actor and returns a key-value store record. The response contains the
+record stored under the `OUTPUT` key in the run's default key-value store.
+This is a legacy approach that has been replaced by the Actor
+[output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);
+the record may not exist, in which case the response contains no data. Use the
+`outputRecordKey` query parameter to return a different record.
 The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds
 otherwise the API endpoint returns a timeout error.
 The Actor is not passed any input.

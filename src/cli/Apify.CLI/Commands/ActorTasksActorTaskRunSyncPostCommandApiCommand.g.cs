@@ -65,8 +65,9 @@ By default, the run uses the build from its configuration (typically `latest`).
     private static Option<string?> OutputRecordKey { get; } = new(
         name: @"--output-record-key")
     {
-        Description = @"Key of the record from run's default key-value store to be returned
-in the response. By default, it is `OUTPUT`.
+        Description = @"Key of the record from the run's default key-value store to return in the
+response. Defaults to `OUTPUT`. Actors aren't required to store a record
+under this key, so if it doesn't exist the response contains no data.
 ",
     };
 
@@ -119,7 +120,14 @@ the WebhookRepresentation schema. For more information, see
     public static Command Create()
     {
         var command = new Command(@"run-sync-post", @"Run task synchronously
-Runs an Actor task and synchronously returns its output.
+Runs an Actor task and synchronously returns a key-value store record.
+
+The response contains the record stored under the `OUTPUT` key in the run's
+default key-value store. This is a legacy approach that has been replaced by
+the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);
+Actors aren't required to store a record under this key, so the response may
+not contain any data. Use the `outputRecordKey` query parameter to return a
+different record.
 
 The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds
 otherwise the HTTP request fails with a timeout error (this won't abort

@@ -60,12 +60,16 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run Actor synchronously and return output<br/>
-        /// Runs a specific Actor and returns its output.<br/>
+        /// Run Actor synchronously and return key-value store record<br/>
+        /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>
-        /// The HTTP response contains Actors `OUTPUT` record from its default<br/>
-        /// key-value store.<br/>
+        /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
+        /// default key-value store. This is a legacy approach that has been replaced by<br/>
+        /// the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// Actors aren't required to store a record under this key, so the response may<br/>
+        /// not contain any data. Use the `outputRecordKey` query parameter to return a<br/>
+        /// different record.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// various URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>
@@ -143,12 +147,16 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run Actor synchronously and return output<br/>
-        /// Runs a specific Actor and returns its output.<br/>
+        /// Run Actor synchronously and return key-value store record<br/>
+        /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>
-        /// The HTTP response contains Actors `OUTPUT` record from its default<br/>
-        /// key-value store.<br/>
+        /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
+        /// default key-value store. This is a legacy approach that has been replaced by<br/>
+        /// the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// Actors aren't required to store a record under this key, so the response may<br/>
+        /// not contain any data. Use the `outputRecordKey` query parameter to return a<br/>
+        /// different record.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// various URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>
@@ -883,12 +891,16 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Run Actor synchronously and return output<br/>
-        /// Runs a specific Actor and returns its output.<br/>
+        /// Run Actor synchronously and return key-value store record<br/>
+        /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>
-        /// The HTTP response contains Actors `OUTPUT` record from its default<br/>
-        /// key-value store.<br/>
+        /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
+        /// default key-value store. This is a legacy approach that has been replaced by<br/>
+        /// the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// Actors aren't required to store a record under this key, so the response may<br/>
+        /// not contain any data. Use the `outputRecordKey` query parameter to return a<br/>
+        /// different record.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// various URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>

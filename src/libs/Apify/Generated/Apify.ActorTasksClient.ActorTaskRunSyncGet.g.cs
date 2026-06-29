@@ -55,7 +55,13 @@ namespace Apify
 
         /// <summary>
         /// Run task synchronously<br/>
-        /// Run a specific task and return its output.<br/>
+        /// Runs an Actor task and synchronously returns a key-value store record.<br/>
+        /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
+        /// default key-value store. This is a legacy approach that has been replaced by<br/>
+        /// the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// Actors aren't required to store a record under this key, so the response may<br/>
+        /// not contain any data. Use the `outputRecordKey` query parameter to return a<br/>
+        /// different record.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
         /// the run itself).<br/>
@@ -119,7 +125,13 @@ namespace Apify
         }
         /// <summary>
         /// Run task synchronously<br/>
-        /// Run a specific task and return its output.<br/>
+        /// Runs an Actor task and synchronously returns a key-value store record.<br/>
+        /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
+        /// default key-value store. This is a legacy approach that has been replaced by<br/>
+        /// the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// Actors aren't required to store a record under this key, so the response may<br/>
+        /// not contain any data. Use the `outputRecordKey` query parameter to return a<br/>
+        /// different record.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
         /// the run itself).<br/>
