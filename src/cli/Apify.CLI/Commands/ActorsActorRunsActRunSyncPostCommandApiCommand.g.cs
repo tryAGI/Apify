@@ -16,8 +16,9 @@ internal static partial class ActorsActorRunsActRunSyncPostCommandApiCommand
     private static Option<string?> OutputRecordKey { get; } = new(
         name: @"--output-record-key")
     {
-        Description = @"Key of the record from run's default key-value store to be returned
-in the response. By default, it is `OUTPUT`.
+        Description = @"Key of the record from the run's default key-value store to return in the
+response. Defaults to `OUTPUT`. Actors aren't required to store a record
+under this key, so if it doesn't exist the response contains no data.
 ",
     };
 
@@ -118,13 +119,18 @@ the WebhookRepresentation schema. For more information, see
 
     public static Command Create()
     {
-        var command = new Command(@"act-run-sync-post", @"Run Actor synchronously and return output
-Runs a specific Actor and returns its output.
+        var command = new Command(@"act-run-sync-post", @"Run Actor synchronously and return key-value store record
+Runs a specific Actor and returns a key-value store record.
 
 The POST payload including its `Content-Type` header is passed as `INPUT` to
 the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).
-The HTTP response contains Actors `OUTPUT` record from its default
-key-value store.
+
+The response contains the record stored under the `OUTPUT` key in the run's
+default key-value store. This is a legacy approach that has been replaced by
+the Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);
+Actors aren't required to store a record under this key, so the response may
+not contain any data. Use the `outputRecordKey` query parameter to return a
+different record.
 
 The Actor is started with the default options; you can override them using
 various URL query parameters.

@@ -59,7 +59,12 @@ namespace Apify
 
         /// <summary>
         /// Run Actor synchronously without input<br/>
-        /// Runs a specific Actor and returns its output.<br/>
+        /// Runs a specific Actor and returns a key-value store record. The response contains the<br/>
+        /// record stored under the `OUTPUT` key in the run's default key-value store.<br/>
+        /// This is a legacy approach that has been replaced by the Actor<br/>
+        /// [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// the record may not exist, in which case the response contains no data. Use the<br/>
+        /// `outputRecordKey` query parameter to return a different record.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
         /// The Actor is not passed any input.<br/>
@@ -133,7 +138,12 @@ namespace Apify
         }
         /// <summary>
         /// Run Actor synchronously without input<br/>
-        /// Runs a specific Actor and returns its output.<br/>
+        /// Runs a specific Actor and returns a key-value store record. The response contains the<br/>
+        /// record stored under the `OUTPUT` key in the run's default key-value store.<br/>
+        /// This is a legacy approach that has been replaced by the Actor<br/>
+        /// [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);<br/>
+        /// the record may not exist, in which case the response contains no data. Use the<br/>
+        /// `outputRecordKey` query parameter to return a different record.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
         /// The Actor is not passed any input.<br/>
