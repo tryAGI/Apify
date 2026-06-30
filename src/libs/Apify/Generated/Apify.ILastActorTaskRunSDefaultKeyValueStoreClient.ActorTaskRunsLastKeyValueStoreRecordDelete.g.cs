@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -26,6 +27,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -40,6 +42,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -50,6 +53,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

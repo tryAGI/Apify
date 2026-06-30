@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -92,6 +93,7 @@ namespace Apify
         global::System.Collections.Generic.IAsyncEnumerable<global::System.Collections.Generic.IList<object>> ActRunsLastDatasetItemsGetAsStreamAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,

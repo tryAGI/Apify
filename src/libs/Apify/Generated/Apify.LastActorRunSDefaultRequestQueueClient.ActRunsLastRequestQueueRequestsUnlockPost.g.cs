@@ -29,12 +29,14 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string? clientKey);
         partial void PrepareActRunsLastRequestQueueRequestsUnlockPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string? clientKey);
         partial void ProcessActRunsLastRequestQueueRequestsUnlockPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -57,6 +59,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -66,6 +69,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.UnlockRequestsResponse> ActRunsLastRequestQueueRequestsUnlockPostAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -73,6 +77,7 @@ namespace Apify
             var __response = await ActRunsLastRequestQueueRequestsUnlockPostAsResponseAsync(
                 actorId: actorId,
                 status: status,
+                origin: origin,
                 clientKey: clientKey,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -92,6 +97,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -101,6 +107,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.UnlockRequestsResponse>> ActRunsLastRequestQueueRequestsUnlockPostAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -111,6 +118,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 clientKey: ref clientKey);
 
 
@@ -141,6 +149,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("clientKey", clientKey)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -185,6 +194,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     clientKey: clientKey);
 
                 return __httpRequest;

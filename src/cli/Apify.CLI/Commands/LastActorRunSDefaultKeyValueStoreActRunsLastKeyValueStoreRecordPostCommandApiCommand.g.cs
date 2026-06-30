@@ -25,6 +25,12 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActRunsLastKeyVal
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<global::Apify.ActRunsLastKeyValueStoreRecordPostContentEncoding?> ContentEncoding { get; } = new(
         name: @"--content-encoding")
     {
@@ -78,6 +84,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RecordKey);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(ContentEncoding);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -100,6 +107,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var recordKey = parseResult.GetRequiredValue(RecordKey);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var contentEncoding = parseResult.GetValue(ContentEncoding);
                         var request = await CliRuntime.ReadRequestAsync<global::Apify.PutRecordRequest>(
                             parseResult,
@@ -115,6 +123,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
                                     actorId: actorId,
                                     recordKey: recordKey,
                                     status: status,
+                                    origin: origin,
                                     contentEncoding: contentEncoding,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

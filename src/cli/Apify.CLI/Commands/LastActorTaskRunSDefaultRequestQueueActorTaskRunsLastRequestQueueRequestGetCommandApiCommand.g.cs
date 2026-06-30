@@ -25,6 +25,12 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Apify.RequestResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -56,6 +62,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                         command.Arguments.Add(ActorTaskId);
                         command.Arguments.Add(RequestId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -64,6 +71,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var requestId = parseResult.GetRequiredValue(RequestId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -71,6 +79,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                                     actorTaskId: actorTaskId,
                                     requestId: requestId,
                                     status: status,
+                                    origin: origin,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

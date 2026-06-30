@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSAbortActorTaskRunsLastAbortPostCo
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<bool?> Gracefully { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--gracefully",
         description: @"If true passed, the Actor run will abort gracefully.
@@ -59,6 +65,7 @@ does nothing.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(Gracefully);
 
 
@@ -67,6 +74,7 @@ does nothing.
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var gracefully = parseResult.GetValue(Gracefully);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -74,6 +82,7 @@ does nothing.
                                 var response = await client.LastActorTaskRunSAbort.ActorTaskRunsLastAbortPostAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     gracefully: gracefully,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

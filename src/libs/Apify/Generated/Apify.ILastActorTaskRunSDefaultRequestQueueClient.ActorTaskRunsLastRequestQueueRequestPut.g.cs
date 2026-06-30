@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -35,6 +36,7 @@ namespace Apify
 
             global::Apify.RequestBase request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -51,6 +53,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -70,6 +73,7 @@ namespace Apify
 
             global::Apify.RequestBase request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -86,6 +90,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -134,6 +139,7 @@ namespace Apify
             string actorTaskId,
             string requestId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? forefront = default,
             string? clientKey = default,
             string? uniqueKey = default,

@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref bool? stream,
             ref bool? download,
             ref bool? raw);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             bool? stream,
             bool? download,
             bool? raw);
@@ -60,6 +62,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -75,6 +78,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<string> ActorTaskLastLogGetAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -84,6 +88,7 @@ namespace Apify
             var __response = await ActorTaskLastLogGetAsResponseAsync(
                 actorTaskId: actorTaskId,
                 status: status,
+                origin: origin,
                 stream: stream,
                 download: download,
                 raw: raw,
@@ -104,6 +109,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -119,6 +125,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActorTaskLastLogGetAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -131,6 +138,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 stream: ref stream,
                 download: ref download,
                 raw: ref raw);
@@ -163,6 +171,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("stream", stream?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("download", download?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("raw", raw?.ToString().ToLowerInvariant())
@@ -209,6 +218,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     stream: stream,
                     download: download,
                     raw: raw);

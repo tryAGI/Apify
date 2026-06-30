@@ -25,6 +25,12 @@ internal static partial class LastActorRunSDefaultRequestQueueActRunsLastRequest
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<double> LockSecs { get; } = new(
         name: @"--lock-secs")
     {
@@ -84,6 +90,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RequestId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(LockSecs);
                         command.Options.Add(ClientKey);
                         command.Options.Add(Forefront);
@@ -95,6 +102,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var requestId = parseResult.GetRequiredValue(RequestId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var lockSecs = parseResult.GetRequiredValue(LockSecs);
                         var clientKey = parseResult.GetValue(ClientKey);
                         var forefront = parseResult.GetValue(Forefront);
@@ -105,6 +113,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                                     actorId: actorId,
                                     requestId: requestId,
                                     status: status,
+                                    origin: origin,
                                     lockSecs: lockSecs,
                                     clientKey: clientKey,
                                     forefront: forefront,

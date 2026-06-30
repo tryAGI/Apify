@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="contentType"></param>
         /// <param name="clientKey">
         /// Example: client-abc
@@ -29,6 +30,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -45,6 +47,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="contentType"></param>
         /// <param name="clientKey">
         /// Example: client-abc
@@ -58,6 +61,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

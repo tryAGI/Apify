@@ -25,6 +25,12 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-key-value-store-record-delete", @"Delete last task run's default store's record
@@ -36,6 +42,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                         command.Arguments.Add(ActorTaskId);
                         command.Arguments.Add(RecordKey);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -44,6 +51,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var recordKey = parseResult.GetRequiredValue(RecordKey);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -51,6 +59,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                                     actorTaskId: actorTaskId,
                                     recordKey: recordKey,
                                     status: status,
+                                    origin: origin,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);

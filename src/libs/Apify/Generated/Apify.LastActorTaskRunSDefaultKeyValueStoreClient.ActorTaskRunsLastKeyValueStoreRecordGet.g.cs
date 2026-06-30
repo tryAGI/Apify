@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string recordKey,
             ref string? signature,
             ref bool? attachment);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string recordKey,
             string? signature,
             bool? attachment);
@@ -61,6 +63,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -77,6 +80,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? signature = default,
             bool? attachment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -86,6 +90,7 @@ namespace Apify
                 actorTaskId: actorTaskId,
                 recordKey: recordKey,
                 status: status,
+                origin: origin,
                 signature: signature,
                 attachment: attachment,
                 requestOptions: requestOptions,
@@ -106,6 +111,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -122,6 +128,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? signature = default,
             bool? attachment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -133,6 +140,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 recordKey: ref recordKey,
                 signature: ref signature,
                 attachment: ref attachment);
@@ -165,6 +173,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("signature", signature)
                                 .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
                                 ;
@@ -210,6 +219,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     recordKey: recordKey!,
                     signature: signature,
                     attachment: attachment);

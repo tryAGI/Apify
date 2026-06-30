@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSLogActorTaskLastLogGetCommandApiC
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<bool?> Stream { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--stream",
         description: @"If `true` or `1` then the logs will be streamed as long as the run or build is running.
@@ -64,6 +70,7 @@ This endpoint is a shortcut for getting last Actor task run's log. Same as [Get 
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(Stream);
                         command.Options.Add(Download);
                         command.Options.Add(Raw);
@@ -74,6 +81,7 @@ This endpoint is a shortcut for getting last Actor task run's log. Same as [Get 
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var stream = parseResult.GetValue(Stream);
                         var download = parseResult.GetValue(Download);
                         var raw = parseResult.GetValue(Raw);
@@ -83,6 +91,7 @@ This endpoint is a shortcut for getting last Actor task run's log. Same as [Get 
                                 var response = await client.LastActorTaskRunSLog.ActorTaskLastLogGetAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     stream: stream,
                                     download: download,
                                     raw: raw,

@@ -28,12 +28,14 @@ namespace Apify
         partial void PrepareActorTaskRunsLastRebootPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
-            ref string? status);
+            ref string? status,
+            ref global::Apify.RunOrigin? origin);
         partial void PrepareActorTaskRunsLastRebootPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
-            string? status);
+            string? status,
+            global::Apify.RunOrigin? origin);
         partial void ProcessActorTaskRunsLastRebootPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -58,18 +60,21 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActorTaskRunsLastRebootPostAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ActorTaskRunsLastRebootPostAsResponseAsync(
                 actorTaskId: actorTaskId,
                 status: status,
+                origin: origin,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -91,12 +96,14 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>> ActorTaskRunsLastRebootPostAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -105,7 +112,8 @@ namespace Apify
             PrepareActorTaskRunsLastRebootPostArguments(
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
-                status: ref status);
+                status: ref status,
+                origin: ref origin);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -135,6 +143,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -177,7 +186,8 @@ namespace Apify
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
-                    status: status);
+                    status: status,
+                    origin: origin);
 
                 return __httpRequest;
             }

@@ -29,12 +29,14 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             global::Apify.UpdateStoreRequest request);
         partial void PrepareActorTaskRunsLastKeyValueStorePutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             global::Apify.UpdateStoreRequest request);
         partial void ProcessActorTaskRunsLastKeyValueStorePutResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -57,6 +59,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -66,6 +69,7 @@ namespace Apify
 
             global::Apify.UpdateStoreRequest request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -74,6 +78,7 @@ namespace Apify
 
                 request: request,
                 status: status,
+                origin: origin,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -92,6 +97,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -101,6 +107,7 @@ namespace Apify
 
             global::Apify.UpdateStoreRequest request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -112,6 +119,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 request: request);
 
 
@@ -142,6 +150,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -191,6 +200,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     request: request);
 
                 return __httpRequest;
@@ -774,6 +784,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="name"></param>
         /// <param name="generalAccess">
         /// Defines the general access level for the resource.
@@ -784,6 +795,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.KeyValueStoreResponse> ActorTaskRunsLastKeyValueStorePutAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? name = default,
             global::Apify.GeneralAccess? generalAccess = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -798,6 +810,7 @@ namespace Apify
             return await ActorTaskRunsLastKeyValueStorePutAsync(
                 actorTaskId: actorTaskId,
                 status: status,
+                origin: origin,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

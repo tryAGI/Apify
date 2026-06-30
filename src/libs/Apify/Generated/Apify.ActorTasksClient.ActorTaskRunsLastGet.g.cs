@@ -29,12 +29,14 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref double? waitForFinish);
         partial void PrepareActorTaskRunsLastGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             double? waitForFinish);
         partial void ProcessActorTaskRunsLastGetResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -51,10 +53,11 @@ namespace Apify
         /// retrieve and manage the last run of given actor task or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last actor task run object is:<br/>
-        /// `/v2/actor-tasks/{actorTaskId}/runs/last{?token,status}`<br/>
+        /// `/v2/actor-tasks/{actorTaskId}/runs/last{?token,status,origin}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
-        /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
-        /// are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
+        /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
+        /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
+        /// parameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor task run<br/>
         /// * [Dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
         /// * [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
@@ -67,6 +70,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="waitForFinish">
         /// Example: 60
         /// </param>
@@ -76,6 +80,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.ActorTaskRunsLastGetResponse> ActorTaskRunsLastGetAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? waitForFinish = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -83,6 +88,7 @@ namespace Apify
             var __response = await ActorTaskRunsLastGetAsResponseAsync(
                 actorTaskId: actorTaskId,
                 status: status,
+                origin: origin,
                 waitForFinish: waitForFinish,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -96,10 +102,11 @@ namespace Apify
         /// retrieve and manage the last run of given actor task or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
         /// The base path represents the last actor task run object is:<br/>
-        /// `/v2/actor-tasks/{actorTaskId}/runs/last{?token,status}`<br/>
+        /// `/v2/actor-tasks/{actorTaskId}/runs/last{?token,status,origin}`<br/>
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
-        /// (e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters<br/>
-        /// are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
+        /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
+        /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
+        /// parameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor task run<br/>
         /// * [Dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
         /// * [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
@@ -112,6 +119,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="waitForFinish">
         /// Example: 60
         /// </param>
@@ -121,6 +129,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ActorTaskRunsLastGetResponse>> ActorTaskRunsLastGetAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? waitForFinish = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -131,6 +140,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 waitForFinish: ref waitForFinish);
 
 
@@ -161,6 +171,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("waitForFinish", waitForFinish?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -205,6 +216,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     waitForFinish: waitForFinish);
 
                 return __httpRequest;

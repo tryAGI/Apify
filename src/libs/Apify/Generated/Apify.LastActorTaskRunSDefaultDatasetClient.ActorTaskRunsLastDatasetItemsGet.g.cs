@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string? format,
             ref bool? clean,
             ref double? offset,
@@ -58,6 +59,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string? format,
             bool? clean,
             double? offset,
@@ -103,6 +105,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -179,6 +182,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<object>> ActorTaskRunsLastDatasetItemsGetAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -209,6 +213,7 @@ namespace Apify
             var __response = await ActorTaskRunsLastDatasetItemsGetAsResponseAsync(
                 actorTaskId: actorTaskId,
                 status: status,
+                origin: origin,
                 format: format,
                 clean: clean,
                 offset: offset,
@@ -251,6 +256,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -327,6 +333,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>> ActorTaskRunsLastDatasetItemsGetAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -360,6 +367,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 format: ref format,
                 clean: ref clean,
                 offset: ref offset,
@@ -413,6 +421,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("offset", offset?.ToString())
@@ -480,6 +489,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     format: format,
                     clean: clean,
                     offset: offset,

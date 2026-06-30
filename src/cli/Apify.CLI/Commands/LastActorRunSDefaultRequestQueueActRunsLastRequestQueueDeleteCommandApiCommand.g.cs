@@ -19,6 +19,12 @@ internal static partial class LastActorRunSDefaultRequestQueueActRunsLastRequest
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     public static Command Create()
     {
         var command = new Command(@"act-runs-last-request-queue-delete", @"Delete last run's default request queue
@@ -29,6 +35,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -36,12 +43,14 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 await client.LastActorRunSDefaultRequestQueue.ActRunsLastRequestQueueDeleteAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);

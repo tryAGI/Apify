@@ -19,6 +19,12 @@ internal static partial class LastActorRunSMetamorphActRunsLastMetamorphPostComm
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<string> TargetActorId { get; } = new(
         name: @"--target-actor-id")
     {
@@ -68,6 +74,7 @@ on the Actor's last run.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(TargetActorId);
                         command.Options.Add(Build);
 
@@ -77,6 +84,7 @@ on the Actor's last run.
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var targetActorId = parseResult.GetRequiredValue(TargetActorId);
                         var build = parseResult.GetValue(Build);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -85,6 +93,7 @@ on the Actor's last run.
                                 var response = await client.LastActorRunSMetamorph.ActRunsLastMetamorphPostAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     targetActorId: targetActorId,
                                     build: build,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

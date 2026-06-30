@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref double lockSecs,
             ref double? limit,
             ref string? clientKey);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             double lockSecs,
             double? limit,
             string? clientKey);
@@ -62,6 +64,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="lockSecs">
         /// Example: 60
         /// </param>
@@ -78,6 +81,7 @@ namespace Apify
             string actorTaskId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? limit = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -87,6 +91,7 @@ namespace Apify
                 actorTaskId: actorTaskId,
                 lockSecs: lockSecs,
                 status: status,
+                origin: origin,
                 limit: limit,
                 clientKey: clientKey,
                 requestOptions: requestOptions,
@@ -108,6 +113,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="lockSecs">
         /// Example: 60
         /// </param>
@@ -124,6 +130,7 @@ namespace Apify
             string actorTaskId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? limit = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -135,6 +142,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 lockSecs: ref lockSecs,
                 limit: ref limit,
                 clientKey: ref clientKey);
@@ -167,6 +175,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddRequiredParameter("lockSecs", lockSecs.ToString()!)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("clientKey", clientKey)
@@ -213,6 +222,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     lockSecs: lockSecs!,
                     limit: limit,
                     clientKey: clientKey);

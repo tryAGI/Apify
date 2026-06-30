@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string? collection,
             ref string? prefix,
             ref string? signature);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string? collection,
             string? prefix,
             string? signature);
@@ -61,6 +63,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -76,6 +79,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<byte[]> ActRunsLastKeyValueStoreRecordsGetAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,
@@ -85,6 +89,7 @@ namespace Apify
             var __response = await ActRunsLastKeyValueStoreRecordsGetAsResponseAsync(
                 actorId: actorId,
                 status: status,
+                origin: origin,
                 collection: collection,
                 prefix: prefix,
                 signature: signature,
@@ -106,6 +111,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -121,6 +127,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::System.IO.Stream> ActRunsLastKeyValueStoreRecordsGetAsStreamAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,
@@ -133,6 +140,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 collection: ref collection,
                 prefix: ref prefix,
                 signature: ref signature);
@@ -165,6 +173,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("collection", collection)
                                 .AddOptionalParameter("prefix", prefix)
                                 .AddOptionalParameter("signature", signature)
@@ -211,6 +220,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     collection: collection,
                     prefix: prefix,
                     signature: signature);
@@ -677,6 +687,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -692,6 +703,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<byte[]>> ActRunsLastKeyValueStoreRecordsGetAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,
@@ -704,6 +716,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 collection: ref collection,
                 prefix: ref prefix,
                 signature: ref signature);
@@ -736,6 +749,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("collection", collection)
                                 .AddOptionalParameter("prefix", prefix)
                                 .AddOptionalParameter("signature", signature)
@@ -782,6 +796,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     collection: collection,
                     prefix: prefix,
                     signature: signature);

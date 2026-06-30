@@ -19,6 +19,12 @@ internal static partial class LastActorRunSDefaultDatasetActRunsLastDatasetDelet
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     public static Command Create()
     {
         var command = new Command(@"act-runs-last-dataset-delete", @"Delete last run's default dataset
@@ -29,6 +35,7 @@ This endpoint is a shortcut for getting the last run's `defaultDatasetId` and th
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -36,12 +43,14 @@ This endpoint is a shortcut for getting the last run's `defaultDatasetId` and th
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 await client.LastActorRunSDefaultDataset.ActRunsLastDatasetDeleteAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);

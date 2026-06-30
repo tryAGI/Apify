@@ -18,6 +18,12 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
     {
         Description = @"Filter for the run status.",
     };
+
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
     private static readonly UpdateStoreRequestOptionSet UpdateStoreRequestOptionSetOptions = UpdateStoreRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -65,7 +71,8 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
 [Update store](/api/v2/key-value-store-put) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
-                        command.Options.Add(Status);                        command.Options.Add(UpdateStoreRequestOptionSetOptions.NameOption);
+                        command.Options.Add(Status);
+                        command.Options.Add(Origin);                        command.Options.Add(UpdateStoreRequestOptionSetOptions.NameOption);
                         command.Options.Add(UpdateStoreRequestOptionSetOptions.GeneralAccess);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -93,7 +100,8 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                             global::Apify.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
-                        var status = parseResult.GetValue(Status);                        var name = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);                        var name = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -101,6 +109,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                                 var response = await client.LastActorTaskRunSDefaultKeyValueStore.ActorTaskRunsLastKeyValueStorePutAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     name: name,
                                     generalAccess: generalAccess,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

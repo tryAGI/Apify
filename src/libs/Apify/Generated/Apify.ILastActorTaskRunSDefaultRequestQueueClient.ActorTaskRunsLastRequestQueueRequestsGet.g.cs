@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -37,6 +38,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.ListOfRequestsResponse> ActorTaskRunsLastRequestQueueRequestsGetAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? exclusiveStartId = default,
             double? limit = default,
@@ -56,6 +58,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -77,6 +80,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfRequestsResponse>> ActorTaskRunsLastRequestQueueRequestsGetAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? exclusiveStartId = default,
             double? limit = default,

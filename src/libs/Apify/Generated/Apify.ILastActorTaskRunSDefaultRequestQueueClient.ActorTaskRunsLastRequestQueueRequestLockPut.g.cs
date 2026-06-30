@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -36,6 +37,7 @@ namespace Apify
             string requestId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -52,6 +54,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -72,6 +75,7 @@ namespace Apify
             string requestId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

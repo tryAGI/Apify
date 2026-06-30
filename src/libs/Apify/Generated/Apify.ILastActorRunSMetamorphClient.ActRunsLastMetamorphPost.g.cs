@@ -17,6 +17,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="targetActorId">
         /// Example: HDSasDasz78YcAPEB
         /// </param>
@@ -30,6 +31,7 @@ namespace Apify
             string actorId,
             string targetActorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -46,6 +48,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="targetActorId">
         /// Example: HDSasDasz78YcAPEB
         /// </param>
@@ -59,6 +62,7 @@ namespace Apify
             string actorId,
             string targetActorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

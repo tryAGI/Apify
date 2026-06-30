@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="exclusiveStartKey">
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
@@ -38,6 +39,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.ListOfKeysResponse> ActRunsLastKeyValueStoreKeysGetAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? exclusiveStartKey = default,
             double? limit = default,
             string? collection = default,
@@ -57,6 +59,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="exclusiveStartKey">
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
@@ -79,6 +82,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfKeysResponse>> ActRunsLastKeyValueStoreKeysGetAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? exclusiveStartKey = default,
             double? limit = default,
             string? collection = default,
