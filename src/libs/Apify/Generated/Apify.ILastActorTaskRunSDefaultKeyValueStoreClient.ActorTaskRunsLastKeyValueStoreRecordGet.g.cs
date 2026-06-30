@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -32,6 +33,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? signature = default,
             bool? attachment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -48,6 +50,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="recordKey">
         /// Example: someKey
         /// </param>
@@ -64,6 +67,7 @@ namespace Apify
             string actorTaskId,
             string recordKey,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? signature = default,
             bool? attachment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

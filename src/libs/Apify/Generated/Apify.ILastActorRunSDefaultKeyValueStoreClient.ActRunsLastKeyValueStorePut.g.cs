@@ -17,6 +17,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -26,6 +27,7 @@ namespace Apify
 
             global::Apify.UpdateStoreRequest request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -41,6 +43,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -50,6 +53,7 @@ namespace Apify
 
             global::Apify.UpdateStoreRequest request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -65,6 +69,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="name"></param>
         /// <param name="generalAccess">
         /// Defines the general access level for the resource.
@@ -75,6 +80,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.KeyValueStoreResponse> ActRunsLastKeyValueStorePutAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? name = default,
             global::Apify.GeneralAccess? generalAccess = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

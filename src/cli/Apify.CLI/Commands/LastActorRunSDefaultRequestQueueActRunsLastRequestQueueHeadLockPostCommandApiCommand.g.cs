@@ -19,6 +19,12 @@ internal static partial class LastActorRunSDefaultRequestQueueActRunsLastRequest
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<double> LockSecs { get; } = new(
         name: @"--lock-secs")
     {
@@ -76,6 +82,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(LockSecs);
                         command.Options.Add(Limit);
                         command.Options.Add(ClientKey);
@@ -86,6 +93,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var lockSecs = parseResult.GetRequiredValue(LockSecs);
                         var limit = parseResult.GetValue(Limit);
                         var clientKey = parseResult.GetValue(ClientKey);
@@ -95,6 +103,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                                 var response = await client.LastActorRunSDefaultRequestQueue.ActRunsLastRequestQueueHeadLockPostAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     lockSecs: lockSecs,
                                     limit: limit,
                                     clientKey: clientKey,

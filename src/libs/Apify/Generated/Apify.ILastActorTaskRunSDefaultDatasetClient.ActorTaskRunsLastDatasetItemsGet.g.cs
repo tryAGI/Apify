@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -92,6 +93,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<object>> ActorTaskRunsLastDatasetItemsGetAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -130,6 +132,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -206,6 +209,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>> ActorTaskRunsLastDatasetItemsGetAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,

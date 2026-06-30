@@ -15,6 +15,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -30,6 +31,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<string> ActRunsLastLogGetAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,
@@ -46,6 +48,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="stream">
         /// Example: false
         /// </param>
@@ -61,6 +64,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActRunsLastLogGetAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? stream = default,
             bool? download = default,
             bool? raw = default,

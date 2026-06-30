@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string targetActorId,
             ref string? build);
         partial void PrepareActRunsLastMetamorphPostRequest(
@@ -36,6 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string targetActorId,
             string? build);
         partial void ProcessActRunsLastMetamorphPostResponse(
@@ -60,6 +62,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="targetActorId">
         /// Example: HDSasDasz78YcAPEB
         /// </param>
@@ -73,6 +76,7 @@ namespace Apify
             string actorId,
             string targetActorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -81,6 +85,7 @@ namespace Apify
                 actorId: actorId,
                 targetActorId: targetActorId,
                 status: status,
+                origin: origin,
                 build: build,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -101,6 +106,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="targetActorId">
         /// Example: HDSasDasz78YcAPEB
         /// </param>
@@ -114,6 +120,7 @@ namespace Apify
             string actorId,
             string targetActorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? build = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -124,6 +131,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 targetActorId: ref targetActorId,
                 build: ref build);
 
@@ -155,6 +163,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddRequiredParameter("targetActorId", targetActorId)
                                 .AddOptionalParameter("build", build)
                                 ;
@@ -200,6 +209,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     targetActorId: targetActorId!,
                     build: build);
 

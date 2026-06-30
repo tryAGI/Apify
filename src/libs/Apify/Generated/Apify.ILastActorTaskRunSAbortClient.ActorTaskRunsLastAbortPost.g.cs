@@ -19,6 +19,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="gracefully">
         /// Example: true
         /// </param>
@@ -28,6 +29,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.RunResponse> ActorTaskRunsLastAbortPostAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? gracefully = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -46,6 +48,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="gracefully">
         /// Example: true
         /// </param>
@@ -55,6 +58,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RunResponse>> ActorTaskRunsLastAbortPostAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             bool? gracefully = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

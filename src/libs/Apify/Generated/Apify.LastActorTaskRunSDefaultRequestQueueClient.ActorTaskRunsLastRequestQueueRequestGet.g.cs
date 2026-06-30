@@ -29,12 +29,14 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorTaskId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string requestId);
         partial void PrepareActorTaskRunsLastRequestQueueRequestGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorTaskId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string requestId);
         partial void ProcessActorTaskRunsLastRequestQueueRequestGetResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -57,6 +59,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -67,6 +70,7 @@ namespace Apify
             string actorTaskId,
             string requestId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -74,6 +78,7 @@ namespace Apify
                 actorTaskId: actorTaskId,
                 requestId: requestId,
                 status: status,
+                origin: origin,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -92,6 +97,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="requestId">
         /// Example: xpsmkDlspokDSmklS
         /// </param>
@@ -102,6 +108,7 @@ namespace Apify
             string actorTaskId,
             string requestId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -111,6 +118,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorTaskId: ref actorTaskId,
                 status: ref status,
+                origin: ref origin,
                 requestId: ref requestId);
 
 
@@ -141,6 +149,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -184,6 +193,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorTaskId: actorTaskId!,
                     status: status,
+                    origin: origin,
                     requestId: requestId!);
 
                 return __httpRequest;

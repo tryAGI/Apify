@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<string?> ClientKey { get; } = new(
         name: @"--client-key")
     {
@@ -62,6 +68,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(ClientKey);
 
 
@@ -70,6 +77,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var clientKey = parseResult.GetValue(ClientKey);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -77,6 +85,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                                 var response = await client.LastActorTaskRunSDefaultRequestQueue.ActorTaskRunsLastRequestQueueRequestsUnlockPostAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     clientKey: clientKey,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

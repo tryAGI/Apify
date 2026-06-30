@@ -19,6 +19,12 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActRunsLastKeyVal
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<string?> ExclusiveStartKey { get; } = new(
         name: @"--exclusive-start-key")
     {
@@ -79,6 +85,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(ExclusiveStartKey);
                         command.Options.Add(Limit);
                         command.Options.Add(Collection);
@@ -91,6 +98,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var exclusiveStartKey = parseResult.GetValue(ExclusiveStartKey);
                         var limit = parseResult.GetValue(Limit);
                         var collection = parseResult.GetValue(Collection);
@@ -102,6 +110,7 @@ This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` 
                                 var response = await client.LastActorRunSDefaultKeyValueStore.ActRunsLastKeyValueStoreKeysGetAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     exclusiveStartKey: exclusiveStartKey,
                                     limit: limit,
                                     collection: collection,

@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -31,6 +32,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<byte[]> ActRunsLastKeyValueStoreRecordsGetAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,
@@ -48,6 +50,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -63,6 +66,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::System.IO.Stream> ActRunsLastKeyValueStoreRecordsGetAsStreamAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,
@@ -80,6 +84,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="collection">
         /// Example: my-collection
         /// </param>
@@ -95,6 +100,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<byte[]>> ActRunsLastKeyValueStoreRecordsGetAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? collection = default,
             string? prefix = default,
             string? signature = default,

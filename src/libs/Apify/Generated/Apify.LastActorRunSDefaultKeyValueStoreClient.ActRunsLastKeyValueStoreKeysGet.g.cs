@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string? exclusiveStartKey,
             ref double? limit,
             ref string? collection,
@@ -39,6 +40,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string? exclusiveStartKey,
             double? limit,
             string? collection,
@@ -65,6 +67,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="exclusiveStartKey">
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
@@ -87,6 +90,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.ListOfKeysResponse> ActRunsLastKeyValueStoreKeysGetAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? exclusiveStartKey = default,
             double? limit = default,
             string? collection = default,
@@ -98,6 +102,7 @@ namespace Apify
             var __response = await ActRunsLastKeyValueStoreKeysGetAsResponseAsync(
                 actorId: actorId,
                 status: status,
+                origin: origin,
                 exclusiveStartKey: exclusiveStartKey,
                 limit: limit,
                 collection: collection,
@@ -121,6 +126,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="exclusiveStartKey">
         /// Example: Ihnsp8YrvJ8102Kj
         /// </param>
@@ -143,6 +149,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfKeysResponse>> ActRunsLastKeyValueStoreKeysGetAsResponseAsync(
             string actorId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? exclusiveStartKey = default,
             double? limit = default,
             string? collection = default,
@@ -157,6 +164,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 exclusiveStartKey: ref exclusiveStartKey,
                 limit: ref limit,
                 collection: ref collection,
@@ -191,6 +199,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("exclusiveStartKey", exclusiveStartKey)
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("collection", collection)
@@ -239,6 +248,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     exclusiveStartKey: exclusiveStartKey,
                     limit: limit,
                     collection: collection,

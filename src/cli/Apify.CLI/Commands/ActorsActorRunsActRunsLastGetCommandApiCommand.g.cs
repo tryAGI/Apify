@@ -19,6 +19,12 @@ internal static partial class ActorsActorRunsActRunsLastGetCommandApiCommand
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<double?> WaitForFinish { get; } = new(
         name: @"--wait-for-finish")
     {
@@ -58,11 +64,12 @@ All the endpoints require an authentication token.
 
 The base path represents the last Actor run object is:
 
-`/v2/actors/{actorId}/runs/last{?token,status}`
+`/v2/actors/{actorId}/runs/last{?token,status,origin}`
 
 Using the `status` query parameter you can ensure to only get a run with a certain status
-(e.g. `status=SUCCEEDED`). The output of this endpoint and other query parameters
-are the same as in the [Run object](#/reference/actors/run-object) endpoint.
+(e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means
+by which they were started (e.g. `origin=API`). The output of this endpoint and other query
+parameters are the same as in the [Run object](#/reference/actors/run-object) endpoint.
 
 ##### Convenience endpoints for last Actor run
 
@@ -76,6 +83,7 @@ are the same as in the [Run object](#/reference/actors/run-object) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(WaitForFinish);
 
 
@@ -84,6 +92,7 @@ are the same as in the [Run object](#/reference/actors/run-object) endpoint.
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var waitForFinish = parseResult.GetValue(WaitForFinish);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -91,6 +100,7 @@ are the same as in the [Run object](#/reference/actors/run-object) endpoint.
                                 var response = await client.ActorsActorRuns.ActRunsLastGetAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     waitForFinish: waitForFinish,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

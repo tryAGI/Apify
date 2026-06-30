@@ -18,6 +18,12 @@ internal static partial class LastActorRunSDefaultRequestQueueActRunsLastRequest
     {
         Description = @"Filter for the run status.",
     };
+
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -65,6 +71,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -85,6 +92,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
             {
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var request = await CliRuntime.ReadRequestAsync<global::Apify.AllOf<global::Apify.UpdateRequestQueueRequest, object>>(
                             parseResult,
                             Input,
@@ -98,6 +106,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                                 var response = await client.LastActorRunSDefaultRequestQueue.ActRunsLastRequestQueuePutAsync(
                                     actorId: actorId,
                                     status: status,
+                                    origin: origin,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

@@ -18,6 +18,12 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
     {
         Description = @"Filter for the run status.",
     };
+
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -65,6 +71,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -85,6 +92,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var request = await CliRuntime.ReadRequestAsync<global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>>(
                             parseResult,
                             Input,
@@ -98,6 +106,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
                                 var response = await client.LastActorTaskRunSDefaultDataset.ActorTaskRunsLastDatasetItemsPostAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

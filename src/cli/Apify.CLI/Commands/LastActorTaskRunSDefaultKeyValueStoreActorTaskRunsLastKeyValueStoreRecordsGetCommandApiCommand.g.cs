@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<string?> Collection { get; } = new(
         name: @"--collection")
     {
@@ -49,6 +55,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(Collection);
                         command.Options.Add(Prefix);
                         command.Options.Add(Signature);
@@ -59,6 +66,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var collection = parseResult.GetValue(Collection);
                         var prefix = parseResult.GetValue(Prefix);
                         var signature = parseResult.GetValue(Signature);
@@ -68,6 +76,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                                 var response = await client.LastActorTaskRunSDefaultKeyValueStore.ActorTaskRunsLastKeyValueStoreRecordsGetAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     collection: collection,
                                     prefix: prefix,
                                     signature: signature,

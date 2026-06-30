@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string contentType,
             ref string? clientKey,
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string contentType,
             string? clientKey,
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
@@ -61,6 +63,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="contentType"></param>
         /// <param name="clientKey">
         /// Example: client-abc
@@ -74,6 +77,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -84,6 +88,7 @@ namespace Apify
 
                 request: request,
                 status: status,
+                origin: origin,
                 contentType: contentType,
                 clientKey: clientKey,
                 requestOptions: requestOptions,
@@ -104,6 +109,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="contentType"></param>
         /// <param name="clientKey">
         /// Example: client-abc
@@ -117,6 +123,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -130,6 +137,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 contentType: ref contentType,
                 clientKey: ref clientKey,
                 request: request);
@@ -162,6 +170,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("clientKey", clientKey)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -215,6 +224,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     contentType: contentType!,
                     clientKey: clientKey,
                     request: request);

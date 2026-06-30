@@ -29,6 +29,7 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
+            ref global::Apify.RunOrigin? origin,
             ref string? clientKey,
             ref string? forefront,
             global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
@@ -37,6 +38,7 @@ namespace Apify
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string? status,
+            global::Apify.RunOrigin? origin,
             string? clientKey,
             string? forefront,
             global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
@@ -61,6 +63,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -76,6 +79,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -86,6 +90,7 @@ namespace Apify
 
                 request: request,
                 status: status,
+                origin: origin,
                 clientKey: clientKey,
                 forefront: forefront,
                 requestOptions: requestOptions,
@@ -106,6 +111,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -121,6 +127,7 @@ namespace Apify
 
             global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -134,6 +141,7 @@ namespace Apify
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
+                origin: ref origin,
                 clientKey: ref clientKey,
                 forefront: ref forefront,
                 request: request);
@@ -166,6 +174,7 @@ namespace Apify
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
                                 .AddOptionalParameter("clientKey", clientKey)
                                 .AddOptionalParameter("forefront", forefront)
                                 ;
@@ -217,6 +226,7 @@ namespace Apify
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
                     status: status,
+                    origin: origin,
                     clientKey: clientKey,
                     forefront: forefront,
                     request: request);

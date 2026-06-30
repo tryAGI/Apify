@@ -16,6 +16,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -25,6 +26,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.UnlockRequestsResponse> ActorTaskRunsLastRequestQueueRequestsUnlockPostAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -40,6 +42,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="clientKey">
         /// Example: client-abc
         /// </param>
@@ -49,6 +52,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.UnlockRequestsResponse>> ActorTaskRunsLastRequestQueueRequestsUnlockPostAsResponseAsync(
             string actorTaskId,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

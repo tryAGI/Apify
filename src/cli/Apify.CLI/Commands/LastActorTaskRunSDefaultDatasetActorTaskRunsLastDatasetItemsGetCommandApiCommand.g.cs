@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<string?> Format { get; } = new(
         name: @"--format")
     {
@@ -228,6 +234,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(Format);
                         command.Options.Add(Clean);
                         command.Options.Add(Offset);
@@ -259,6 +266,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var format = parseResult.GetValue(Format);
                         var clean = parseResult.GetValue(Clean);
                         var offset = parseResult.GetValue(Offset);
@@ -289,6 +297,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
                                 var response = await client.LastActorTaskRunSDefaultDataset.ActorTaskRunsLastDatasetItemsGetAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     format: format,
                                     clean: clean,
                                     offset: offset,

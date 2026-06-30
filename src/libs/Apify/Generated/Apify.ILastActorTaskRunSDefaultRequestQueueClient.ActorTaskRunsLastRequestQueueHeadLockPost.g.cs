@@ -17,6 +17,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="lockSecs">
         /// Example: 60
         /// </param>
@@ -33,6 +34,7 @@ namespace Apify
             string actorTaskId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? limit = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -50,6 +52,7 @@ namespace Apify
         /// <param name="status">
         /// Example: SUCCEEDED
         /// </param>
+        /// <param name="origin"></param>
         /// <param name="lockSecs">
         /// Example: 60
         /// </param>
@@ -66,6 +69,7 @@ namespace Apify
             string actorTaskId,
             double lockSecs,
             string? status = default,
+            global::Apify.RunOrigin? origin = default,
             double? limit = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

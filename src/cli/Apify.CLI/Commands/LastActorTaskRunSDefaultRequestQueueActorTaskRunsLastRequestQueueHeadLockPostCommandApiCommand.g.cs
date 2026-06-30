@@ -19,6 +19,12 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
         Description = @"Filter for the run status.",
     };
 
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
     private static Option<double> LockSecs { get; } = new(
         name: @"--lock-secs")
     {
@@ -76,6 +82,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
+                        command.Options.Add(Origin);
                         command.Options.Add(LockSecs);
                         command.Options.Add(Limit);
                         command.Options.Add(ClientKey);
@@ -86,6 +93,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
             {
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
                         var lockSecs = parseResult.GetRequiredValue(LockSecs);
                         var limit = parseResult.GetValue(Limit);
                         var clientKey = parseResult.GetValue(ClientKey);
@@ -95,6 +103,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                                 var response = await client.LastActorTaskRunSDefaultRequestQueue.ActorTaskRunsLastRequestQueueHeadLockPostAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     lockSecs: lockSecs,
                                     limit: limit,
                                     clientKey: clientKey,

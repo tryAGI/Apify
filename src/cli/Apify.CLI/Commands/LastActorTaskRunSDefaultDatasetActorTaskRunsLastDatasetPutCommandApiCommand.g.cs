@@ -18,6 +18,12 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
     {
         Description = @"Filter for the run status.",
     };
+
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
     private static readonly UpdateDatasetRequestOptionSet UpdateDatasetRequestOptionSetOptions = UpdateDatasetRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -65,7 +71,8 @@ This endpoint is a shortcut for getting the last task run's `defaultDatasetId` a
 [Update dataset](/api/v2/dataset-put) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
-                        command.Options.Add(Status);                        command.Options.Add(UpdateDatasetRequestOptionSetOptions.NameOption);
+                        command.Options.Add(Status);
+                        command.Options.Add(Origin);                        command.Options.Add(UpdateDatasetRequestOptionSetOptions.NameOption);
                         command.Options.Add(UpdateDatasetRequestOptionSetOptions.GeneralAccess);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -93,7 +100,8 @@ This endpoint is a shortcut for getting the last task run's `defaultDatasetId` a
                             global::Apify.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
-                        var status = parseResult.GetValue(Status);                        var name = CliRuntime.WasSpecified(parseResult, UpdateDatasetRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateDatasetRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);                        var name = CliRuntime.WasSpecified(parseResult, UpdateDatasetRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateDatasetRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                         var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateDatasetRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateDatasetRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
@@ -101,6 +109,7 @@ This endpoint is a shortcut for getting the last task run's `defaultDatasetId` a
                                 var response = await client.LastActorTaskRunSDefaultDataset.ActorTaskRunsLastDatasetPutAsync(
                                     actorTaskId: actorTaskId,
                                     status: status,
+                                    origin: origin,
                                     name: name,
                                     generalAccess: generalAccess,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
