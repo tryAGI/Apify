@@ -17,7 +17,7 @@ internal static partial class UsersUsersMeLimitsPutCommandApiCommand
     private static Option<int?> DataRetentionDays { get; } = new(
         name: @"--data-retention-days")
     {
-        Description = @"Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/storage#data-retention).
+        Description = @"Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/platform/storage/usage#data-retention).
 ",
     };
       private static Option<string?> Input { get; } = new(@"--input")
