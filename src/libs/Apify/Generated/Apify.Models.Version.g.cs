@@ -34,7 +34,7 @@ namespace Apify
         public bool? ApplyEnvVarsToBuild { get; set; }
 
         /// <summary>
-        /// The tag name to apply to a successful build of this version.
+        /// The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildTag")]
         public string? BuildTag { get; set; }
@@ -85,7 +85,7 @@ namespace Apify
         /// Whether to inject the environment variables at build time.
         /// </param>
         /// <param name="buildTag">
-        /// The tag name to apply to a successful build of this version.
+        /// The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.
         /// </param>
         /// <param name="sourceFiles">
         /// Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.

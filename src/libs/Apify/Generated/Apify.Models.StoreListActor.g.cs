@@ -40,15 +40,13 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userFullName")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string UserFullName { get; set; }
+        public string? UserFullName { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Example: [MARKETING, LEAD_GENERATION]
@@ -144,10 +142,10 @@ namespace Apify
         /// <param name="title"></param>
         /// <param name="name"></param>
         /// <param name="username"></param>
-        /// <param name="userFullName"></param>
-        /// <param name="description"></param>
         /// <param name="stats"></param>
         /// <param name="currentPricingInfo"></param>
+        /// <param name="userFullName"></param>
+        /// <param name="description"></param>
         /// <param name="categories">
         /// Example: [MARKETING, LEAD_GENERATION]
         /// </param>
@@ -173,10 +171,10 @@ namespace Apify
             string title,
             string name,
             string username,
-            string userFullName,
-            string description,
             global::Apify.ActorStats stats,
             global::Apify.CurrentPricingInfo currentPricingInfo,
+            string? userFullName,
+            string? description,
             global::System.Collections.Generic.IList<string>? categories,
             string? notice,
             string? pictureUrl,
@@ -193,8 +191,8 @@ namespace Apify
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
-            this.UserFullName = userFullName ?? throw new global::System.ArgumentNullException(nameof(userFullName));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.UserFullName = userFullName;
+            this.Description = description;
             this.Categories = categories;
             this.Notice = notice;
             this.PictureUrl = pictureUrl;

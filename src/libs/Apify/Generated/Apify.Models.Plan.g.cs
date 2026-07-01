@@ -12,36 +12,31 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isEnabled")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool IsEnabled { get; set; }
+        public bool? IsEnabled { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyBasePriceUsd")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MonthlyBasePriceUsd { get; set; }
+        public double? MonthlyBasePriceUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyUsageCreditsUsd")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MonthlyUsageCreditsUsd { get; set; }
+        public double? MonthlyUsageCreditsUsd { get; set; }
 
         /// <summary>
         /// 
@@ -54,71 +49,61 @@ namespace Apify
         /// </summary>
         /// <example>[ACTORS, STORAGE, PROXY_SERPS, SCHEDULER, WEBHOOKS]</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("enabledPlatformFeatures")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> EnabledPlatformFeatures { get; set; }
+        public global::System.Collections.Generic.IList<string>? EnabledPlatformFeatures { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyUsageUsd")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MaxMonthlyUsageUsd { get; set; }
+        public double? MaxMonthlyUsageUsd { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorMemoryGbytes")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MaxActorMemoryGbytes { get; set; }
+        public double? MaxActorMemoryGbytes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyActorComputeUnits")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MaxMonthlyActorComputeUnits { get; set; }
+        public double? MaxMonthlyActorComputeUnits { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyResidentialProxyGbytes")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MaxMonthlyResidentialProxyGbytes { get; set; }
+        public double? MaxMonthlyResidentialProxyGbytes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyProxySerps")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxMonthlyProxySerps { get; set; }
+        public int? MaxMonthlyProxySerps { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyExternalDataTransferGbytes")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double MaxMonthlyExternalDataTransferGbytes { get; set; }
+        public double? MaxMonthlyExternalDataTransferGbytes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxActorCount { get; set; }
+        public int? MaxActorCount { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorTaskCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int MaxActorTaskCount { get; set; }
+        public int? MaxActorTaskCount { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dataRetentionDays")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int DataRetentionDays { get; set; }
+        public int? DataRetentionDays { get; set; }
 
         /// <summary>
         /// A dictionary mapping proxy group names to the number of available proxies in each group.<br/>
@@ -135,22 +120,19 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("teamAccountSeatCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TeamAccountSeatCount { get; set; }
+        public int? TeamAccountSeatCount { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("supportLevel")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string SupportLevel { get; set; }
+        public string? SupportLevel { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availableAddOns")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> AvailableAddOns { get; set; }
+        public global::System.Collections.Generic.IList<string>? AvailableAddOns { get; set; }
 
         /// <summary>
         /// 
@@ -191,11 +173,18 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="Plan" /> class.
         /// </summary>
+        /// <param name="availableProxyGroups">
+        /// A dictionary mapping proxy group names to the number of available proxies in each group.<br/>
+        /// The keys are proxy group names (e.g., "RESIDENTIAL", "DATACENTER") and values are<br/>
+        /// the count of available proxies.<br/>
+        /// Example: {"RESIDENTIAL":1000,"DATACENTER":500,"GOOGLE_SERP":200}
+        /// </param>
         /// <param name="id"></param>
         /// <param name="description"></param>
         /// <param name="isEnabled"></param>
         /// <param name="monthlyBasePriceUsd"></param>
         /// <param name="monthlyUsageCreditsUsd"></param>
+        /// <param name="usageDiscountPercent"></param>
         /// <param name="enabledPlatformFeatures">
         /// Example: [ACTORS, STORAGE, PROXY_SERPS, SCHEDULER, WEBHOOKS]
         /// </param>
@@ -208,16 +197,9 @@ namespace Apify
         /// <param name="maxActorCount"></param>
         /// <param name="maxActorTaskCount"></param>
         /// <param name="dataRetentionDays"></param>
-        /// <param name="availableProxyGroups">
-        /// A dictionary mapping proxy group names to the number of available proxies in each group.<br/>
-        /// The keys are proxy group names (e.g., "RESIDENTIAL", "DATACENTER") and values are<br/>
-        /// the count of available proxies.<br/>
-        /// Example: {"RESIDENTIAL":1000,"DATACENTER":500,"GOOGLE_SERP":200}
-        /// </param>
         /// <param name="teamAccountSeatCount"></param>
         /// <param name="supportLevel"></param>
         /// <param name="availableAddOns"></param>
-        /// <param name="usageDiscountPercent"></param>
         /// <param name="tier"></param>
         /// <param name="apiRateLimitBoosts"></param>
         /// <param name="maxScheduleCount"></param>
@@ -229,39 +211,39 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Plan(
-            string id,
-            string description,
-            bool isEnabled,
-            double monthlyBasePriceUsd,
-            double monthlyUsageCreditsUsd,
-            global::System.Collections.Generic.IList<string> enabledPlatformFeatures,
-            double maxMonthlyUsageUsd,
-            double maxActorMemoryGbytes,
-            double maxMonthlyActorComputeUnits,
-            double maxMonthlyResidentialProxyGbytes,
-            int maxMonthlyProxySerps,
-            double maxMonthlyExternalDataTransferGbytes,
-            int maxActorCount,
-            int maxActorTaskCount,
-            int dataRetentionDays,
             global::System.Collections.Generic.Dictionary<string, int> availableProxyGroups,
-            int teamAccountSeatCount,
-            string supportLevel,
-            global::System.Collections.Generic.IList<string> availableAddOns,
+            string? id,
+            string? description,
+            bool? isEnabled,
+            double? monthlyBasePriceUsd,
+            double? monthlyUsageCreditsUsd,
             double? usageDiscountPercent,
+            global::System.Collections.Generic.IList<string>? enabledPlatformFeatures,
+            double? maxMonthlyUsageUsd,
+            double? maxActorMemoryGbytes,
+            double? maxMonthlyActorComputeUnits,
+            double? maxMonthlyResidentialProxyGbytes,
+            int? maxMonthlyProxySerps,
+            double? maxMonthlyExternalDataTransferGbytes,
+            int? maxActorCount,
+            int? maxActorTaskCount,
+            int? dataRetentionDays,
+            int? teamAccountSeatCount,
+            string? supportLevel,
+            global::System.Collections.Generic.IList<string>? availableAddOns,
             string? tier,
             int? apiRateLimitBoosts,
             int? maxScheduleCount,
             int? maxConcurrentActorRuns,
             object? planPricing)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
+            this.Id = id;
+            this.Description = description;
             this.IsEnabled = isEnabled;
             this.MonthlyBasePriceUsd = monthlyBasePriceUsd;
             this.MonthlyUsageCreditsUsd = monthlyUsageCreditsUsd;
             this.UsageDiscountPercent = usageDiscountPercent;
-            this.EnabledPlatformFeatures = enabledPlatformFeatures ?? throw new global::System.ArgumentNullException(nameof(enabledPlatformFeatures));
+            this.EnabledPlatformFeatures = enabledPlatformFeatures;
             this.MaxMonthlyUsageUsd = maxMonthlyUsageUsd;
             this.MaxActorMemoryGbytes = maxActorMemoryGbytes;
             this.MaxMonthlyActorComputeUnits = maxMonthlyActorComputeUnits;
@@ -273,8 +255,8 @@ namespace Apify
             this.DataRetentionDays = dataRetentionDays;
             this.AvailableProxyGroups = availableProxyGroups ?? throw new global::System.ArgumentNullException(nameof(availableProxyGroups));
             this.TeamAccountSeatCount = teamAccountSeatCount;
-            this.SupportLevel = supportLevel ?? throw new global::System.ArgumentNullException(nameof(supportLevel));
-            this.AvailableAddOns = availableAddOns ?? throw new global::System.ArgumentNullException(nameof(availableAddOns));
+            this.SupportLevel = supportLevel;
+            this.AvailableAddOns = availableAddOns;
             this.Tier = tier;
             this.ApiRateLimitBoosts = apiRateLimitBoosts;
             this.MaxScheduleCount = maxScheduleCount;
