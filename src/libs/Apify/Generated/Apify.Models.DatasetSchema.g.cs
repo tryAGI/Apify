@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/platform/actors/development/actor-definition/dataset-schema)<br/>
+    /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/actors/development/actor-definition/dataset-schema)<br/>
     /// Example: {"actorSpecification":1,"title":"My dataset","views":{"overview":{"title":"Overview","transformation":{"fields":["linkUrl"]},"display":{"component":"table","properties":{"linkUrl":{"label":"Link URL","format":"link"}}}}}}
     /// </summary>
     public sealed partial class DatasetSchema

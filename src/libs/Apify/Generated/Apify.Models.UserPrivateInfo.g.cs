@@ -12,8 +12,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// 
@@ -26,15 +25,13 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Profile Profile { get; set; }
+        public global::Apify.Profile? Profile { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// 
@@ -61,8 +58,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdAt")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime CreatedAt { get; set; }
+        public global::System.DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// 
@@ -80,33 +76,33 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="UserPrivateInfo" /> class.
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="username"></param>
-        /// <param name="profile"></param>
-        /// <param name="email"></param>
         /// <param name="proxy"></param>
         /// <param name="plan"></param>
         /// <param name="effectivePlatformFeatures"></param>
-        /// <param name="createdAt"></param>
         /// <param name="isPaying"></param>
+        /// <param name="id"></param>
+        /// <param name="profile"></param>
+        /// <param name="email"></param>
+        /// <param name="createdAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UserPrivateInfo(
-            string id,
             string username,
-            global::Apify.Profile profile,
-            string email,
             global::Apify.Proxy proxy,
             global::Apify.Plan plan,
             global::Apify.EffectivePlatformFeatures effectivePlatformFeatures,
-            global::System.DateTime createdAt,
-            bool isPaying)
+            bool isPaying,
+            string? id,
+            global::Apify.Profile? profile,
+            string? email,
+            global::System.DateTime? createdAt)
         {
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Id = id;
             this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
-            this.Profile = profile ?? throw new global::System.ArgumentNullException(nameof(profile));
-            this.Email = email ?? throw new global::System.ArgumentNullException(nameof(email));
+            this.Profile = profile;
+            this.Email = email;
             this.Proxy = proxy ?? throw new global::System.ArgumentNullException(nameof(proxy));
             this.Plan = plan ?? throw new global::System.ArgumentNullException(nameof(plan));
             this.EffectivePlatformFeatures = effectivePlatformFeatures ?? throw new global::System.ArgumentNullException(nameof(effectivePlatformFeatures));
