@@ -563,6 +563,80 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Payload too large - the request body exceeds the size limit.
+                            if ((int)__response.StatusCode == 413)
+                            {
+                                string? __content_413 = null;
+                                global::System.Exception? __exception_413 = null;
+                                global::Apify.ErrorResponse? __value_413 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_413 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_413,
+                                    responseBody: __content_413,
+                                    responseObject: __value_413,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Unsupported media type - the Content-Encoding of the request is not supported.
+                            if ((int)__response.StatusCode == 415)
+                            {
+                                string? __content_415 = null;
+                                global::System.Exception? __exception_415 = null;
+                                global::Apify.ErrorResponse? __value_415 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_415 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_415,
+                                    responseBody: __content_415,
+                                    responseObject: __value_415,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Too many requests - rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
                             {

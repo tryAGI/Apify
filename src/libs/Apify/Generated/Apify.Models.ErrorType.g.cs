@@ -507,6 +507,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        FullPermissionActorBlockedForAdmin,
+        /// <summary>
+        /// 
+        /// </summary>
         FullPermissionActorNotApproved,
         /// <summary>
         /// 
@@ -1714,6 +1718,7 @@ namespace Apify
                 ErrorType.ExpiredConferenceToken => "expired-conference-token",
                 ErrorType.FailedToChargeUser => "failed-to-charge-user",
                 ErrorType.FinalInvoiceNegative => "final-invoice-negative",
+                ErrorType.FullPermissionActorBlockedForAdmin => "full-permission-actor-blocked-for-admin",
                 ErrorType.FullPermissionActorNotApproved => "full-permission-actor-not-approved",
                 ErrorType.GithubBranchEmpty => "github-branch-empty",
                 ErrorType.GithubIssueAlreadyExists => "github-issue-already-exists",
@@ -2116,6 +2121,7 @@ namespace Apify
                 "expired-conference-token" => ErrorType.ExpiredConferenceToken,
                 "failed-to-charge-user" => ErrorType.FailedToChargeUser,
                 "final-invoice-negative" => ErrorType.FinalInvoiceNegative,
+                "full-permission-actor-blocked-for-admin" => ErrorType.FullPermissionActorBlockedForAdmin,
                 "full-permission-actor-not-approved" => ErrorType.FullPermissionActorNotApproved,
                 "github-branch-empty" => ErrorType.GithubBranchEmpty,
                 "github-issue-already-exists" => ErrorType.GithubIssueAlreadyExists,
