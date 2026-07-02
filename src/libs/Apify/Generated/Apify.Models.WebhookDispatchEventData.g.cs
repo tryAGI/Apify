@@ -19,8 +19,19 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorRunId")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ActorRunId { get; set; }
+        public string? ActorRunId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorBuildId")]
+        public string? ActorBuildId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorTaskId")]
+        public string? ActorTaskId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,15 +44,21 @@ namespace Apify
         /// </summary>
         /// <param name="actorId"></param>
         /// <param name="actorRunId"></param>
+        /// <param name="actorBuildId"></param>
+        /// <param name="actorTaskId"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WebhookDispatchEventData(
             string actorId,
-            string actorRunId)
+            string? actorRunId,
+            string? actorBuildId,
+            string? actorTaskId)
         {
             this.ActorId = actorId ?? throw new global::System.ArgumentNullException(nameof(actorId));
-            this.ActorRunId = actorRunId ?? throw new global::System.ArgumentNullException(nameof(actorRunId));
+            this.ActorRunId = actorRunId;
+            this.ActorBuildId = actorBuildId;
+            this.ActorTaskId = actorTaskId;
         }
 
         /// <summary>

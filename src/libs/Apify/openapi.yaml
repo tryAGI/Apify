@@ -4082,6 +4082,12 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -8664,6 +8670,12 @@
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
           }
@@ -11435,6 +11447,12 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -14918,6 +14936,12 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
           },
           "429": {
             "$ref": "#/components/responses/TooManyRequests"
@@ -19296,6 +19320,7 @@
           "expired-conference-token",
           "failed-to-charge-user",
           "final-invoice-negative",
+          "full-permission-actor-blocked-for-admin",
           "full-permission-actor-not-approved",
           "github-branch-empty",
           "github-issue-already-exists",
@@ -21494,7 +21519,10 @@
             ]
           },
           "imageSizeBytes": {
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "examples": [
               975770223
             ]
@@ -26150,8 +26178,7 @@
               "null"
             ],
             "required": [
-              "actorId",
-              "actorRunId"
+              "actorId"
             ],
             "properties": {
               "actorId": {
@@ -26164,6 +26191,21 @@
                 "type": "string",
                 "examples": [
                   "JgwXN9BdwxGcu9MMF"
+                ]
+              },
+              "actorBuildId": {
+                "type": "string",
+                "examples": [
+                  "HG7ML7M8z78YcAPEB"
+                ]
+              },
+              "actorTaskId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "examples": [
+                  "zRLp8SDOZz2NyLg7K"
                 ]
               }
             }
@@ -27280,7 +27322,10 @@
         "type": "object",
         "properties": {
           "bio": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "I started web scraping in 1985 using Altair BASIC."
             ]
@@ -27292,27 +27337,39 @@
             ]
           },
           "pictureUrl": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uri",
             "examples": [
               "https://apify.com/img/anonymous_user_picture.png"
             ]
           },
           "githubUsername": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "torvalds."
             ]
           },
           "websiteUrl": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uri",
             "examples": [
               "http://www.example.com"
             ]
           },
           "twitterUsername": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "@BillGates"
             ]
