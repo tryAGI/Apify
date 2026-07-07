@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class Version
     {
         /// <summary>
-        /// The version number of the Actor. Must be a dot-separated sequence of numbers.
+        /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versionNumber")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -73,7 +73,7 @@ namespace Apify
         /// Initializes a new instance of the <see cref="Version" /> class.
         /// </summary>
         /// <param name="versionNumber">
-        /// The version number of the Actor. Must be a dot-separated sequence of numbers.
+        /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
         /// </param>
         /// <param name="sourceType">
         /// Where the source code of the version lives.

@@ -9,55 +9,55 @@ namespace Apify
     public sealed partial class CreateOrUpdateVersionRequest
     {
         /// <summary>
-        /// 
+        /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versionNumber")]
         public string? VersionNumber { get; set; }
 
         /// <summary>
-        /// 
+        /// Where the source code of the version lives.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceType")]
         public global::Apify.VersionSourceType? SourceType { get; set; }
 
         /// <summary>
-        /// 
+        /// Environment variables for the version.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("envVars")]
-        public global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? EnvVars { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.EnvVar>? EnvVars { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether to inject the environment variables at build time.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("applyEnvVarsToBuild")]
         public bool? ApplyEnvVarsToBuild { get; set; }
 
         /// <summary>
-        /// 
+        /// The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildTag")]
         public string? BuildTag { get; set; }
 
         /// <summary>
-        /// 
+        /// Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceFiles")]
         public global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? SourceFiles { get; set; }
 
         /// <summary>
-        /// URL of the Git repository when sourceType is GIT_REPO.
+        /// URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gitRepoUrl")]
         public string? GitRepoUrl { get; set; }
 
         /// <summary>
-        /// URL of the tarball when sourceType is TARBALL.
+        /// URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tarballUrl")]
         public string? TarballUrl { get; set; }
 
         /// <summary>
-        /// URL of the GitHub Gist when sourceType is GITHUB_GIST.
+        /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("gitHubGistUrl")]
         public string? GitHubGistUrl { get; set; }
@@ -71,20 +71,32 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOrUpdateVersionRequest" /> class.
         /// </summary>
-        /// <param name="versionNumber"></param>
-        /// <param name="sourceType"></param>
-        /// <param name="envVars"></param>
-        /// <param name="applyEnvVarsToBuild"></param>
-        /// <param name="buildTag"></param>
-        /// <param name="sourceFiles"></param>
+        /// <param name="versionNumber">
+        /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
+        /// </param>
+        /// <param name="sourceType">
+        /// Where the source code of the version lives.
+        /// </param>
+        /// <param name="envVars">
+        /// Environment variables for the version.
+        /// </param>
+        /// <param name="applyEnvVarsToBuild">
+        /// Whether to inject the environment variables at build time.
+        /// </param>
+        /// <param name="buildTag">
+        /// The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.
+        /// </param>
+        /// <param name="sourceFiles">
+        /// Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.
+        /// </param>
         /// <param name="gitRepoUrl">
-        /// URL of the Git repository when sourceType is GIT_REPO.
+        /// URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`.
         /// </param>
         /// <param name="tarballUrl">
-        /// URL of the tarball when sourceType is TARBALL.
+        /// URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.
         /// </param>
         /// <param name="gitHubGistUrl">
-        /// URL of the GitHub Gist when sourceType is GITHUB_GIST.
+        /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -92,7 +104,7 @@ namespace Apify
         public CreateOrUpdateVersionRequest(
             string? versionNumber,
             global::Apify.VersionSourceType? sourceType,
-            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars,
+            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars,
             bool? applyEnvVarsToBuild,
             string? buildTag,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles,

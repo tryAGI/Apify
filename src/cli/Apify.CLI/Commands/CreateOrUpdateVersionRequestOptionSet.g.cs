@@ -20,24 +20,24 @@ internal sealed record CreateOrUpdateVersionRequestOptionSet(
         return new CreateOrUpdateVersionRequestOptionSet(
                         VersionNumber: new Option<string?>($"--{normalizedPrefix}version-number")
                 {
-                    Description = @"",
+                    Description = @"The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.",
                 },
-                ApplyEnvVarsToBuild: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}apply-env-vars-to-build", description: @""),
+                ApplyEnvVarsToBuild: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}apply-env-vars-to-build", description: @"Whether to inject the environment variables at build time."),
                 BuildTag: new Option<string?>($"--{normalizedPrefix}build-tag")
                 {
-                    Description = @"",
+                    Description = @"The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.",
                 },
                 GitRepoUrl: new Option<string?>($"--{normalizedPrefix}git-repo-url")
                 {
-                    Description = @"URL of the Git repository when sourceType is GIT_REPO.",
+                    Description = @"URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`.",
                 },
                 TarballUrl: new Option<string?>($"--{normalizedPrefix}tarball-url")
                 {
-                    Description = @"URL of the tarball when sourceType is TARBALL.",
+                    Description = @"URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.",
                 },
                 GitHubGistUrl: new Option<string?>($"--{normalizedPrefix}git-hub-gist-url")
                 {
-                    Description = @"URL of the GitHub Gist when sourceType is GITHUB_GIST.",
+                    Description = @"URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.",
                 }
         );
     }

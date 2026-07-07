@@ -39,6 +39,16 @@ Value can be accessed in the actor run using `ACTOR_MAX_PAID_DATASET_ITEMS` envi
 ",
     };
 
+    private static Option<double?> MaxTotalChargeUsd { get; } = new(
+        name: @"--max-total-charge-usd")
+    {
+        Description = @"Specifies the maximum total cost of the run.
+Use it to cap the total amount charged for all pricing models.
+You can access the maximum cost in your Actor
+by using the `ACTOR_MAX_TOTAL_CHARGE_USD` environment variable.
+",
+    };
+
     private static Option<string?> Build { get; } = new(
         name: @"--build")
     {
@@ -117,6 +127,7 @@ endpoint instead.
                         command.Options.Add(Timeout);
                         command.Options.Add(Memory);
                         command.Options.Add(MaxItems);
+                        command.Options.Add(MaxTotalChargeUsd);
                         command.Options.Add(Build);
                         command.Options.Add(OutputRecordKey);
                         command.Options.Add(Webhooks);
@@ -129,6 +140,7 @@ endpoint instead.
                         var timeout = parseResult.GetValue(Timeout);
                         var memory = parseResult.GetValue(Memory);
                         var maxItems = parseResult.GetValue(MaxItems);
+                        var maxTotalChargeUsd = parseResult.GetValue(MaxTotalChargeUsd);
                         var build = parseResult.GetValue(Build);
                         var outputRecordKey = parseResult.GetValue(OutputRecordKey);
                         var webhooks = parseResult.GetValue(Webhooks);
@@ -140,6 +152,7 @@ endpoint instead.
                                     timeout: timeout,
                                     memory: memory,
                                     maxItems: maxItems,
+                                    maxTotalChargeUsd: maxTotalChargeUsd,
                                     build: build,
                                     outputRecordKey: outputRecordKey,
                                     webhooks: webhooks,

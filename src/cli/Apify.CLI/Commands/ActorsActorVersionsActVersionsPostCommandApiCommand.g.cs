@@ -16,19 +16,19 @@ internal static partial class ActorsActorVersionsActVersionsPostCommandApiComman
     private static Option<global::Apify.VersionSourceType?> SourceType { get; } = new(
         name: @"--source-type")
     {
-        Description = @"",
+        Description = @"Where the source code of the version lives.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>?> EnvVars { get; } = new(
+    private static Option<global::System.Collections.Generic.IList<global::Apify.EnvVar>?> EnvVars { get; } = new(
         name: @"--env-vars")
     {
-        Description = @"",
+        Description = @"Environment variables for the version.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>?> SourceFiles { get; } = new(
         name: @"--source-files")
     {
-        Description = @"",
+        Description = @"Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.",
     };
     private static readonly CreateOrUpdateVersionRequestOptionSet CreateOrUpdateVersionRequestOptionSetOptions = CreateOrUpdateVersionRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")

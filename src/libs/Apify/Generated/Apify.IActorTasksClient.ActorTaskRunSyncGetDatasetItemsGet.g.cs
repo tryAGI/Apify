@@ -33,6 +33,9 @@ namespace Apify
         /// <param name="maxItems">
         /// Example: 1000
         /// </param>
+        /// <param name="maxTotalChargeUsd">
+        /// Example: 5
+        /// </param>
         /// <param name="build">
         /// Example: 0.1.234
         /// </param>
@@ -114,6 +117,7 @@ namespace Apify
             double? timeout = default,
             double? memory = default,
             double? maxItems = default,
+            double? maxTotalChargeUsd = default,
             string? build = default,
             byte[]? webhooks = default,
             string? format = default,
@@ -169,6 +173,9 @@ namespace Apify
         /// </param>
         /// <param name="maxItems">
         /// Example: 1000
+        /// </param>
+        /// <param name="maxTotalChargeUsd">
+        /// Example: 5
         /// </param>
         /// <param name="build">
         /// Example: 0.1.234
@@ -251,6 +258,7 @@ namespace Apify
             double? timeout = default,
             double? memory = default,
             double? maxItems = default,
+            double? maxTotalChargeUsd = default,
             string? build = default,
             byte[]? webhooks = default,
             string? format = default,

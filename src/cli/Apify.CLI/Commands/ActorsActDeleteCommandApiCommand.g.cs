@@ -36,7 +36,7 @@ internal static partial class ActorsActDeleteCommandApiCommand
     public static Command Create()
     {
         var command = new Command(@"act-delete", @"Delete Actor
-Deletes an Actor.");
+Deletes an Actor with the specified ID.");
                         command.Arguments.Add(ActorId);
 
 

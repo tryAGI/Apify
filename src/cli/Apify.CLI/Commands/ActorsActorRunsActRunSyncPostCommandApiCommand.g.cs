@@ -51,9 +51,9 @@ Value can be accessed in the actor run using `ACTOR_MAX_PAID_DATASET_ITEMS` envi
     private static Option<double?> MaxTotalChargeUsd { get; } = new(
         name: @"--max-total-charge-usd")
     {
-        Description = @"Specifies the maximum cost of the run. This parameter is
-useful for pay-per-event Actors, as it allows you to limit the amount
-charged to your subscription. You can access the maximum cost in your Actor
+        Description = @"Specifies the maximum total cost of the run.
+Use it to cap the total amount charged for all pricing models.
+You can access the maximum cost in your Actor
 by using the `ACTOR_MAX_TOTAL_CHARGE_USD` environment variable.
 ",
     };

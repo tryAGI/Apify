@@ -16,18 +16,18 @@ internal static partial class ActorsActPutCommandApiCommand
     private static Option<string?> NameOption { get; } = new(
         name: @"--name")
     {
-        Description = @"",
+        Description = @"The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account.",
     };
 
     private static Option<string?> DescriptionOption { get; } = new(
         name: @"--description")
     {
-        Description = @"",
+        Description = @"Short description of the Actor, displayed in Apify Store and Console.",
     };
 
     private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-public",
-        description: @"");
+        description: @"Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.");
 
     private static Option<global::Apify.ActorPermissionLevel?> ActorPermissionLevel { get; } = new(
         name: @"--actor-permission-level")
@@ -38,25 +38,25 @@ internal static partial class ActorsActPutCommandApiCommand
     private static Option<string?> SeoTitle { get; } = new(
         name: @"--seo-title")
     {
-        Description = @"",
+        Description = @"Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.",
     };
 
     private static Option<string?> SeoDescription { get; } = new(
         name: @"--seo-description")
     {
-        Description = @"",
+        Description = @"Description of the Actor to display by search engines such as Google. Recommended length is 140-156 characters.",
     };
 
     private static Option<string?> Title { get; } = new(
         name: @"--title")
     {
-        Description = @"",
+        Description = @"Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>?> Versions { get; } = new(
         name: @"--versions")
     {
-        Description = @"",
+        Description = @"An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.",
     };
 
     private static Option<global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>?> PricingInfos { get; } = new(
@@ -68,56 +68,18 @@ internal static partial class ActorsActPutCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<string>?> Categories { get; } = new(
         name: @"--categories")
     {
-        Description = @"",
+        Description = @"A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.",
     };
 
     private static Option<global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>?> TaggedBuilds { get; } = new(
         name: @"--tagged-builds")
     {
-        Description = @"An object to modify tags on the Actor's builds. The key is the tag name (e.g., _latest_), and the value is either an object with a `buildId` or `null`.
-
-This operation is a patch; any existing tags that you omit from this object will be preserved.
-
-- **To create or reassign a tag**, provide the tag name with a `buildId`. e.g., to assign the _latest_ tag:
-
-  &nbsp;
-
-  ```json
-  {
-    ""latest"": {
-      ""buildId"": ""z2EryhbfhgSyqj6Hn""
-    }
-  }
-  ```
-
-- **To remove a tag**, provide the tag name with a `null` value. e.g., to remove the _beta_ tag:
-
-  &nbsp;
-
-  ```json
-  {
-    ""beta"": null
-  }
-  ```
-
-- **To perform multiple operations**, combine them. The following reassigns _latest_ and removes _beta_, while preserving any other existing tags.
-
-  &nbsp;
-
-  ```json
-  {
-    ""latest"": {
-      ""buildId"": ""z2EryhbfhgSyqj6Hn""
-    },
-    ""beta"": null
-  }
-  ```
-",
+        Description = @"A dictionary that maps tag names to specific builds. For details, see [Update build tags](#update-build-tags).",
     };
 
     private static Option<bool?> IsDeprecated { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-deprecated",
-        description: @"");
+        description: @"Whether the Actor is deprecated.");
     private static readonly DefaultRunOptionsOptionSet DefaultRunOptionsOptions = DefaultRunOptionsOptionSet.Create(@"default-run");
 
     private static readonly ActorStandbyOptionSet ActorStandbyOptions = ActorStandbyOptionSet.Create(@"actor-standby");
@@ -163,26 +125,64 @@ This operation is a patch; any existing tags that you omit from this object will
     public static Command Create()
     {
         var command = new Command(@"act-put", @"Update Actor
-Updates settings of an Actor using values specified by an Actor object
-passed as JSON in the POST payload.
-If the object does not define a specific property, its value will not be
-updated.
+Updates an Actor's settings with the values specified in an `Actor` object
+passed as JSON in the POST payload. Only the fields specified in the request body are updated.
 
-The response is the full Actor object as returned by the
-[Get Actor](#/reference/actors/actor-object/get-actor) endpoint.
+Returns the full `Actor` object, the same as the
+[Get Actor](/api/v2/act-get) endpoint.
 
-The request needs to specify the `Content-Type: application/json` HTTP header!
+In the HTTP request, set the `Content-Type` header to `application/json`.
 
-When providing your API authentication token, we recommend using the
-request's `Authorization` header, rather than the URL. ([More
-info](#/introduction/authentication)).
+### Authentication
 
-If you want to make your Actor
-[public](https://docs.apify.com/platform/actors/publishing) using `isPublic:
-true`, you will need to provide the Actor's `title` and the `categories`
-under which that Actor will be classified in Apify Store. For this, it's
-best to use the [constants from our `apify-shared-js`
-package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471).
+To provide the authentication token, we recommend using the request's
+`Authorization` header, rather than the URL. For details,
+see [Authentication](/api/v2/getting-started#authentication).
+
+### Make an Actor public
+
+To make your Actor [public](https://docs.apify.com/platform/actors/publishing):
+- Set `isPublic` to `true`.
+- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`
+package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
+
+### Update build tags
+
+To change tags assigned to Actor builds, use the `taggedBuilds` object. It's a dictionary that maps tag names
+to specific builds, where:
+- the key is the tag name, for example `latest` or `beta`
+- the value is either `null` or an object with a build ID
+
+Changing tags is a patch operation. Only the tags that you provide in this object are updated.
+
+Note that you can assign multiple tags to a single build, but you can't assign the same tag to multiple builds.
+
+- To create or reassign a tag, provide the tag name with a build ID. For example, to assign
+the `latest` tag to a build, use:
+
+```json
+{
+  ""latest"": { ""buildId"": ""z2EryhbfhgSyqj6Hn"" }
+}
+```
+
+- To remove a tag from a build, provide the tag name with a `null` value. For example, to remove the `beta` tag, use:
+
+```json
+{
+  ""beta"": null
+}
+```
+
+- You can perform multiple actions at once. The following example reassigns `latest`
+and removes `beta`, while preserving other existing tags:
+
+```json
+{
+  ""latest"": { ""buildId"": ""z2EryhbfhgSyqj6Hn"" },
+  ""beta"": null
+}
+```
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(NameOption);

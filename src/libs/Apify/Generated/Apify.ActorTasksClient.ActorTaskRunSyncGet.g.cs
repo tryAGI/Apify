@@ -31,6 +31,7 @@ namespace Apify
             ref double? timeout,
             ref double? memory,
             ref double? maxItems,
+            ref double? maxTotalChargeUsd,
             ref string? build,
             ref string? outputRecordKey,
             byte[]? webhooks);
@@ -41,6 +42,7 @@ namespace Apify
             double? timeout,
             double? memory,
             double? maxItems,
+            double? maxTotalChargeUsd,
             string? build,
             string? outputRecordKey,
             byte[]? webhooks);
@@ -86,6 +88,9 @@ namespace Apify
         /// <param name="maxItems">
         /// Example: 1000
         /// </param>
+        /// <param name="maxTotalChargeUsd">
+        /// Example: 5
+        /// </param>
         /// <param name="build">
         /// Example: 0.1.234
         /// </param>
@@ -103,6 +108,7 @@ namespace Apify
             double? timeout = default,
             double? memory = default,
             double? maxItems = default,
+            double? maxTotalChargeUsd = default,
             string? build = default,
             string? outputRecordKey = default,
             byte[]? webhooks = default,
@@ -114,6 +120,7 @@ namespace Apify
                 timeout: timeout,
                 memory: memory,
                 maxItems: maxItems,
+                maxTotalChargeUsd: maxTotalChargeUsd,
                 build: build,
                 outputRecordKey: outputRecordKey,
                 webhooks: webhooks,
@@ -156,6 +163,9 @@ namespace Apify
         /// <param name="maxItems">
         /// Example: 1000
         /// </param>
+        /// <param name="maxTotalChargeUsd">
+        /// Example: 5
+        /// </param>
         /// <param name="build">
         /// Example: 0.1.234
         /// </param>
@@ -173,6 +183,7 @@ namespace Apify
             double? timeout = default,
             double? memory = default,
             double? maxItems = default,
+            double? maxTotalChargeUsd = default,
             string? build = default,
             string? outputRecordKey = default,
             byte[]? webhooks = default,
@@ -187,6 +198,7 @@ namespace Apify
                 timeout: ref timeout,
                 memory: ref memory,
                 maxItems: ref maxItems,
+                maxTotalChargeUsd: ref maxTotalChargeUsd,
                 build: ref build,
                 outputRecordKey: ref outputRecordKey,
                 webhooks: webhooks);
@@ -221,6 +233,7 @@ namespace Apify
                                 .AddOptionalParameter("timeout", timeout?.ToString())
                                 .AddOptionalParameter("memory", memory?.ToString())
                                 .AddOptionalParameter("maxItems", maxItems?.ToString())
+                                .AddOptionalParameter("maxTotalChargeUsd", maxTotalChargeUsd?.ToString())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("outputRecordKey", outputRecordKey)
                                 .AddOptionalParameter("webhooks", webhooks?.ToString())
@@ -269,6 +282,7 @@ namespace Apify
                     timeout: timeout,
                     memory: memory,
                     maxItems: maxItems,
+                    maxTotalChargeUsd: maxTotalChargeUsd,
                     build: build,
                     outputRecordKey: outputRecordKey,
                     webhooks: webhooks);
