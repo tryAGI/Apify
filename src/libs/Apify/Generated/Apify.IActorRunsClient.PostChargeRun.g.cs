@@ -10,7 +10,7 @@ namespace Apify
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>
         /// :::info Learn more about pay-per-event pricing<br/>
-        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/platform/actors/publishing/monetize/pay-per-event).<br/>
+        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/actors/publishing/monetize/pay-per-event).<br/>
         /// :::
         /// </summary>
         /// <param name="runId">
@@ -36,7 +36,7 @@ namespace Apify
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>
         /// :::info Learn more about pay-per-event pricing<br/>
-        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/platform/actors/publishing/monetize/pay-per-event).<br/>
+        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/actors/publishing/monetize/pay-per-event).<br/>
         /// :::
         /// </summary>
         /// <param name="runId">
@@ -62,7 +62,7 @@ namespace Apify
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>
         /// :::info Learn more about pay-per-event pricing<br/>
-        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/platform/actors/publishing/monetize/pay-per-event).<br/>
+        /// For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/actors/publishing/monetize/pay-per-event).<br/>
         /// :::
         /// </summary>
         /// <param name="runId">
