@@ -114,20 +114,32 @@ namespace Apify
         /// <param name="actorId">
         /// Example: janedoe~my-actor
         /// </param>
-        /// <param name="versionNumber"></param>
-        /// <param name="sourceType"></param>
-        /// <param name="envVars"></param>
-        /// <param name="applyEnvVarsToBuild"></param>
-        /// <param name="buildTag"></param>
-        /// <param name="sourceFiles"></param>
+        /// <param name="versionNumber">
+        /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
+        /// </param>
+        /// <param name="sourceType">
+        /// Where the source code of the version lives.
+        /// </param>
+        /// <param name="envVars">
+        /// Environment variables for the version.
+        /// </param>
+        /// <param name="applyEnvVarsToBuild">
+        /// Whether to inject the environment variables at build time.
+        /// </param>
+        /// <param name="buildTag">
+        /// The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag.
+        /// </param>
+        /// <param name="sourceFiles">
+        /// Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.
+        /// </param>
         /// <param name="gitRepoUrl">
-        /// URL of the Git repository when sourceType is GIT_REPO.
+        /// URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`.
         /// </param>
         /// <param name="tarballUrl">
-        /// URL of the tarball when sourceType is TARBALL.
+        /// URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.
         /// </param>
         /// <param name="gitHubGistUrl">
-        /// URL of the GitHub Gist when sourceType is GITHUB_GIST.
+        /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -136,7 +148,7 @@ namespace Apify
             string actorId,
             string? versionNumber = default,
             global::Apify.VersionSourceType? sourceType = default,
-            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars = default,
+            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars = default,
             bool? applyEnvVarsToBuild = default,
             string? buildTag = default,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles = default,

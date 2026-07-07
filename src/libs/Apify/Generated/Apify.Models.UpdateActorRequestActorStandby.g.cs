@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
     /// </summary>
     public sealed partial class UpdateActorRequestActorStandby
     {

@@ -43,7 +43,7 @@ namespace Apify
 
         /// <summary>
         /// Delete Actor<br/>
-        /// Deletes an Actor.
+        /// Deletes an Actor with the specified ID.
         /// </summary>
         /// <param name="actorId">
         /// Example: janedoe~my-actor
@@ -66,7 +66,7 @@ namespace Apify
         }
         /// <summary>
         /// Delete Actor<br/>
-        /// Deletes an Actor.
+        /// Deletes an Actor with the specified ID.
         /// </summary>
         /// <param name="actorId">
         /// Example: janedoe~my-actor

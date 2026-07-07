@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    /// The default settings applied to an Actor run. Can be overridden by the user.
     /// </summary>
     public sealed partial class UpdateActorRequestDefaultRunOptions
     {
