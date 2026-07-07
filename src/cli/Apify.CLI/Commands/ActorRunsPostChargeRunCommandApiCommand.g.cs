@@ -62,7 +62,7 @@ the endpoint will return an error. The endpoint must be called from the Actor ru
 
 :::info Learn more about pay-per-event pricing
 
-For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/platform/actors/publishing/monetize/pay-per-event).
+For more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/actors/publishing/monetize/pay-per-event).
 
 :::
 ");

@@ -75,7 +75,7 @@ namespace Apify
         public global::Apify.ActorDefinitionStorages? Storages { get; set; }
 
         /// <summary>
-        /// Specifies the default amount of memory in megabytes to be used when the Actor is started. Can be an integer or a [dynamic memory expression](/platform/actors/development/actor-definition/dynamic-actor-memory).
+        /// Specifies the default amount of memory in megabytes to be used when the Actor is started. Can be an integer or a [dynamic memory expression](/actors/development/actor-definition/dynamic-actor-memory).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("defaultMemoryMbytes")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.OneOfJsonConverter<string, long?>))]
@@ -140,7 +140,7 @@ namespace Apify
         /// </param>
         /// <param name="storages"></param>
         /// <param name="defaultMemoryMbytes">
-        /// Specifies the default amount of memory in megabytes to be used when the Actor is started. Can be an integer or a [dynamic memory expression](/platform/actors/development/actor-definition/dynamic-actor-memory).
+        /// Specifies the default amount of memory in megabytes to be used when the Actor is started. Can be an integer or a [dynamic memory expression](/actors/development/actor-definition/dynamic-actor-memory).
         /// </param>
         /// <param name="minMemoryMbytes">
         /// Specifies the minimum amount of memory in megabytes required by the Actor.

@@ -82,7 +82,7 @@ namespace Apify
         public global::System.Collections.Generic.IList<string>? Fields { get; set; }
 
         /// <summary>
-        /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/platform/actors/development/actor-definition/dataset-schema)<br/>
+        /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/actors/development/actor-definition/dataset-schema)<br/>
         /// Example: {"actorSpecification":1,"title":"My dataset","views":{"overview":{"title":"Overview","transformation":{"fields":["linkUrl"]},"display":{"component":"table","properties":{"linkUrl":{"label":"Link URL","format":"link"}}}}}}
         /// </summary>
         /// <example>{"actorSpecification":1,"title":"My dataset","views":{"overview":{"title":"Overview","transformation":{"fields":["linkUrl"]},"display":{"component":"table","properties":{"linkUrl":{"label":"Link URL","format":"link"}}}}}}</example>
@@ -143,7 +143,7 @@ namespace Apify
         /// <param name="actRunId"></param>
         /// <param name="fields"></param>
         /// <param name="schema">
-        /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/platform/actors/development/actor-definition/dataset-schema)<br/>
+        /// Defines the schema of items in your dataset, the full specification can be found in [Apify docs](/actors/development/actor-definition/dataset-schema)<br/>
         /// Example: {"actorSpecification":1,"title":"My dataset","views":{"overview":{"title":"Overview","transformation":{"fields":["linkUrl"]},"display":{"component":"table","properties":{"linkUrl":{"label":"Link URL","format":"link"}}}}}}
         /// </param>
         /// <param name="itemsPublicUrl">
