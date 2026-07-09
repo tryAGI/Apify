@@ -22,7 +22,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPostComman
     private static Option<global::Apify.KeyValueStoreRecordPostContentEncoding?> ContentEncoding { get; } = new(
         name: @"--content-encoding")
     {
-        Description = @"",
+        Description = @"Compression encoding of the request body.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

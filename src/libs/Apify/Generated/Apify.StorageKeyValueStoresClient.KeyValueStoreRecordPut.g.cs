@@ -58,9 +58,9 @@ namespace Apify
         /// header. It is possible to set up another compression type with `Content-Encoding`<br/>
         /// request header.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
-        /// * Deflate compression: `Content-Encoding: deflate`<br/>
-        /// * Brotli compression: `Content-Encoding: br`
+        /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -105,9 +105,9 @@ namespace Apify
         /// header. It is possible to set up another compression type with `Content-Encoding`<br/>
         /// request header.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
-        /// * Deflate compression: `Content-Encoding: deflate`<br/>
-        /// * Brotli compression: `Content-Encoding: br`
+        /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -799,9 +799,9 @@ namespace Apify
         /// header. It is possible to set up another compression type with `Content-Encoding`<br/>
         /// request header.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
-        /// * Deflate compression: `Content-Encoding: deflate`<br/>
-        /// * Brotli compression: `Content-Encoding: br`
+        /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF

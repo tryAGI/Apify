@@ -34,7 +34,7 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
     private static Option<global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding?> ContentEncoding { get; } = new(
         name: @"--content-encoding")
     {
-        Description = @"",
+        Description = @"Compression encoding of the request body.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

@@ -31,6 +31,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        Mcp,
+        /// <summary>
+        /// 
+        /// </summary>
         Scheduler,
         /// <summary>
         /// 
@@ -67,6 +71,7 @@ namespace Apify
                 RunOrigin.Ci => "CI",
                 RunOrigin.Cli => "CLI",
                 RunOrigin.Development => "DEVELOPMENT",
+                RunOrigin.Mcp => "MCP",
                 RunOrigin.Scheduler => "SCHEDULER",
                 RunOrigin.Standby => "STANDBY",
                 RunOrigin.Test => "TEST",
@@ -87,6 +92,7 @@ namespace Apify
                 "CI" => RunOrigin.Ci,
                 "CLI" => RunOrigin.Cli,
                 "DEVELOPMENT" => RunOrigin.Development,
+                "MCP" => RunOrigin.Mcp,
                 "SCHEDULER" => RunOrigin.Scheduler,
                 "STANDBY" => RunOrigin.Standby,
                 "TEST" => RunOrigin.Test,
