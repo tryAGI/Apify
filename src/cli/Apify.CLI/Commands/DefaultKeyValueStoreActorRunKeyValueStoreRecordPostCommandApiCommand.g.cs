@@ -22,7 +22,7 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordPos
     private static Option<global::Apify.ActorRunKeyValueStoreRecordPostContentEncoding?> ContentEncoding { get; } = new(
         name: @"--content-encoding")
     {
-        Description = @"",
+        Description = @"Compression encoding of the request body.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

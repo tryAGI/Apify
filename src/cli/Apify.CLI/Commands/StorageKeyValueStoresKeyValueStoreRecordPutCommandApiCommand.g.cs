@@ -22,7 +22,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPutCommand
     private static Option<global::Apify.KeyValueStoreRecordPutContentEncoding?> ContentEncoding { get; } = new(
         name: @"--content-encoding")
     {
-        Description = @"",
+        Description = @"Compression encoding of the request body.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -77,9 +77,9 @@ request header.
 
 Below is a list of supported `Content-Encoding` types.
 
+* Brotli compression: `Content-Encoding: br`
 * Gzip compression: `Content-Encoding: gzip`
 * Deflate compression: `Content-Encoding: deflate`
-* Brotli compression: `Content-Encoding: br`
 ");
                         command.Arguments.Add(StoreId);
                         command.Arguments.Add(RecordKey);

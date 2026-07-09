@@ -24,6 +24,12 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
     {
         Description = @"Filter for the run origin, i.e. the means by which the run was started.",
     };
+
+    private static Option<global::Apify.ActorTaskRunsLastDatasetItemsPostContentEncoding?> ContentEncoding { get; } = new(
+        name: @"--content-encoding")
+    {
+        Description = @"Compression encoding of the request body.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -68,10 +74,19 @@ Appends an item or an array of items to the end of the last Actor task run's def
 
 This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the
 [Store items](/api/v2/dataset-items-post) endpoint.
+
+To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.
+
+Below is a list of supported `Content-Encoding` types.
+
+* Brotli: `Content-Encoding: br`
+* Gzip: `Content-Encoding: gzip`
+* Deflate: `Content-Encoding: deflate`
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);
                         command.Options.Add(Origin);
+                        command.Options.Add(ContentEncoding);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -93,6 +108,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
                         var actorTaskId = parseResult.GetRequiredValue(ActorTaskId);
                         var status = parseResult.GetValue(Status);
                         var origin = parseResult.GetValue(Origin);
+                        var contentEncoding = parseResult.GetValue(ContentEncoding);
                         var request = await CliRuntime.ReadRequestAsync<global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>>(
                             parseResult,
                             Input,
@@ -107,6 +123,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
                                     actorTaskId: actorTaskId,
                                     status: status,
                                     origin: origin,
+                                    contentEncoding: contentEncoding,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

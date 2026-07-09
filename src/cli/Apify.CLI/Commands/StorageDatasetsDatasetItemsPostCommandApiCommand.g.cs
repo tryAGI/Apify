@@ -12,6 +12,12 @@ internal static partial class StorageDatasetsDatasetItemsPostCommandApiCommand
     {
         Description = @"Dataset ID or `username~dataset-name`.",
     };
+
+    private static Option<global::Apify.DatasetItemsPostContentEncoding?> ContentEncoding { get; } = new(
+        name: @"--content-encoding")
+    {
+        Description = @"Compression encoding of the request body.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -59,8 +65,17 @@ If the data you attempt to store in the dataset is invalid (meaning any of the i
 For more information about dataset schema validation, see [Dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation).
 
 **IMPORTANT:** The limit of request payload size for the dataset is 5 MB. If the array exceeds the size, you'll need to split it into a number of smaller arrays.
+
+To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.
+
+Below is a list of supported `Content-Encoding` types.
+
+* Brotli: `Content-Encoding: br`
+* Gzip: `Content-Encoding: gzip`
+* Deflate: `Content-Encoding: deflate`
 ");
                         command.Arguments.Add(DatasetId);
+                        command.Options.Add(ContentEncoding);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -80,6 +95,7 @@ For more information about dataset schema validation, see [Dataset schema](https
             await CliRuntime.RunAsync(async () =>
             {
                         var datasetId = parseResult.GetRequiredValue(DatasetId);
+                        var contentEncoding = parseResult.GetValue(ContentEncoding);
                         var request = await CliRuntime.ReadRequestAsync<global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>>(
                             parseResult,
                             Input,
@@ -92,6 +108,7 @@ For more information about dataset schema validation, see [Dataset schema](https
 
                                 var response = await client.StorageDatasets.DatasetItemsPostAsync(
                                     datasetId: datasetId,
+                                    contentEncoding: contentEncoding,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

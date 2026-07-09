@@ -28,11 +28,13 @@ namespace Apify
         partial void PrepareActorRunDatasetItemsPostArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string runId,
+            ref global::Apify.ActorRunDatasetItemsPostContentEncoding? contentEncoding,
             global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>> request);
         partial void PrepareActorRunDatasetItemsPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string runId,
+            global::Apify.ActorRunDatasetItemsPostContentEncoding? contentEncoding,
             global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>> request);
         partial void ProcessActorRunDatasetItemsPostResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -47,11 +49,17 @@ namespace Apify
         /// Store items<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.
+        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
+        /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli: `Content-Encoding: br`<br/>
+        /// * Gzip: `Content-Encoding: gzip`<br/>
+        /// * Deflate: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
+        /// <param name="contentEncoding"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -60,6 +68,7 @@ namespace Apify
             string runId,
 
             global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>> request,
+            global::Apify.ActorRunDatasetItemsPostContentEncoding? contentEncoding = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -67,6 +76,7 @@ namespace Apify
                 runId: runId,
 
                 request: request,
+                contentEncoding: contentEncoding,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -77,11 +87,17 @@ namespace Apify
         /// Store items<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.
+        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
+        /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli: `Content-Encoding: br`<br/>
+        /// * Gzip: `Content-Encoding: gzip`<br/>
+        /// * Deflate: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
+        /// <param name="contentEncoding"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -90,6 +106,7 @@ namespace Apify
             string runId,
 
             global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>> request,
+            global::Apify.ActorRunDatasetItemsPostContentEncoding? contentEncoding = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -98,6 +115,7 @@ namespace Apify
             PrepareActorRunDatasetItemsPostArguments(
                 httpClient: HttpClient,
                 runId: ref runId,
+                contentEncoding: ref contentEncoding,
                 request: request);
 
 
@@ -155,6 +173,12 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+
+            if (contentEncoding != default)
+            {
+                __httpRequest.Headers.TryAddWithoutValidation("Content-Encoding", contentEncoding?.ToValueString() ?? string.Empty);
+            }
+
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
                                 content: __httpRequestContentBody,
@@ -173,6 +197,7 @@ namespace Apify
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     runId: runId!,
+                    contentEncoding: contentEncoding,
                     request: request);
 
                 return __httpRequest;
@@ -744,16 +769,23 @@ namespace Apify
         /// Store items<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.
+        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
+        /// Below is a list of supported `Content-Encoding` types.<br/>
+        /// * Brotli: `Content-Encoding: br`<br/>
+        /// * Gzip: `Content-Encoding: gzip`<br/>
+        /// * Deflate: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
         /// </param>
+        /// <param name="contentEncoding"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<string> ActorRunDatasetItemsPostAsync(
             string runId,
+            global::Apify.ActorRunDatasetItemsPostContentEncoding? contentEncoding = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -763,6 +795,7 @@ namespace Apify
 
             return await ActorRunDatasetItemsPostAsync(
                 runId: runId,
+                contentEncoding: contentEncoding,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
