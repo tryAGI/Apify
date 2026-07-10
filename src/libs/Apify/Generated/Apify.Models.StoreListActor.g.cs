@@ -90,8 +90,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("currentPricingInfo")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.CurrentPricingInfo CurrentPricingInfo { get; set; }
+        public global::Apify.CurrentPricingInfo? CurrentPricingInfo { get; set; }
 
         /// <summary>
         /// Whether the Actor is whitelisted for agentic payment processing.
@@ -143,7 +142,6 @@ namespace Apify
         /// <param name="name"></param>
         /// <param name="username"></param>
         /// <param name="stats"></param>
-        /// <param name="currentPricingInfo"></param>
         /// <param name="userFullName"></param>
         /// <param name="description"></param>
         /// <param name="categories">
@@ -153,6 +151,7 @@ namespace Apify
         /// <param name="pictureUrl"></param>
         /// <param name="userPictureUrl"></param>
         /// <param name="url"></param>
+        /// <param name="currentPricingInfo"></param>
         /// <param name="isWhiteListedForAgenticPayments">
         /// Whether the Actor is whitelisted for agentic payment processing.
         /// </param>
@@ -172,7 +171,6 @@ namespace Apify
             string name,
             string username,
             global::Apify.ActorStats stats,
-            global::Apify.CurrentPricingInfo currentPricingInfo,
             string? userFullName,
             string? description,
             global::System.Collections.Generic.IList<string>? categories,
@@ -180,6 +178,7 @@ namespace Apify
             string? pictureUrl,
             string? userPictureUrl,
             string? url,
+            global::Apify.CurrentPricingInfo? currentPricingInfo,
             bool? isWhiteListedForAgenticPayments,
             int? actorReviewCount,
             double? actorReviewRating,
@@ -199,7 +198,7 @@ namespace Apify
             this.UserPictureUrl = userPictureUrl;
             this.Url = url;
             this.Stats = stats ?? throw new global::System.ArgumentNullException(nameof(stats));
-            this.CurrentPricingInfo = currentPricingInfo ?? throw new global::System.ArgumentNullException(nameof(currentPricingInfo));
+            this.CurrentPricingInfo = currentPricingInfo;
             this.IsWhiteListedForAgenticPayments = isWhiteListedForAgenticPayments;
             this.ActorReviewCount = actorReviewCount;
             this.ActorReviewRating = actorReviewRating;

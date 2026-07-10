@@ -79,8 +79,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requestUrl")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string RequestUrl { get; set; }
+        public string? RequestUrl { get; set; }
 
         /// <summary>
         /// 
@@ -128,10 +127,10 @@ namespace Apify
         /// <param name="eventTypes"></param>
         /// <param name="condition"></param>
         /// <param name="ignoreSslErrors"></param>
-        /// <param name="requestUrl"></param>
         /// <param name="isAdHoc"></param>
         /// <param name="shouldInterpolateStrings"></param>
         /// <param name="doNotRetry"></param>
+        /// <param name="requestUrl"></param>
         /// <param name="payloadTemplate"></param>
         /// <param name="headersTemplate"></param>
         /// <param name="description"></param>
@@ -148,10 +147,10 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.WebhookEventType> eventTypes,
             global::Apify.WebhookCondition condition,
             bool ignoreSslErrors,
-            string requestUrl,
             bool? isAdHoc,
             bool? shouldInterpolateStrings,
             bool? doNotRetry,
+            string? requestUrl,
             string? payloadTemplate,
             string? headersTemplate,
             string? description,
@@ -168,7 +167,7 @@ namespace Apify
             this.Condition = condition ?? throw new global::System.ArgumentNullException(nameof(condition));
             this.IgnoreSslErrors = ignoreSslErrors;
             this.DoNotRetry = doNotRetry;
-            this.RequestUrl = requestUrl ?? throw new global::System.ArgumentNullException(nameof(requestUrl));
+            this.RequestUrl = requestUrl;
             this.PayloadTemplate = payloadTemplate;
             this.HeadersTemplate = headersTemplate;
             this.Description = description;

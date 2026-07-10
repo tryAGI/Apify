@@ -37,8 +37,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxy")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Proxy Proxy { get; set; }
+        public global::Apify.Proxy? Proxy { get; set; }
 
         /// <summary>
         /// 
@@ -77,33 +76,33 @@ namespace Apify
         /// Initializes a new instance of the <see cref="UserPrivateInfo" /> class.
         /// </summary>
         /// <param name="username"></param>
-        /// <param name="proxy"></param>
         /// <param name="plan"></param>
         /// <param name="effectivePlatformFeatures"></param>
         /// <param name="isPaying"></param>
         /// <param name="id"></param>
         /// <param name="profile"></param>
         /// <param name="email"></param>
+        /// <param name="proxy"></param>
         /// <param name="createdAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UserPrivateInfo(
             string username,
-            global::Apify.Proxy proxy,
             global::Apify.Plan plan,
             global::Apify.EffectivePlatformFeatures effectivePlatformFeatures,
             bool isPaying,
             string? id,
             global::Apify.Profile? profile,
             string? email,
+            global::Apify.Proxy? proxy,
             global::System.DateTime? createdAt)
         {
             this.Id = id;
             this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
             this.Profile = profile;
             this.Email = email;
-            this.Proxy = proxy ?? throw new global::System.ArgumentNullException(nameof(proxy));
+            this.Proxy = proxy;
             this.Plan = plan ?? throw new global::System.ArgumentNullException(nameof(plan));
             this.EffectivePlatformFeatures = effectivePlatformFeatures ?? throw new global::System.ArgumentNullException(nameof(effectivePlatformFeatures));
             this.CreatedAt = createdAt;
