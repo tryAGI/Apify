@@ -12,10 +12,18 @@ namespace Apify
     /// All requests and responses (including errors) are encoded in<br/>
     /// [JSON](http://www.json.org/) format with UTF-8 encoding,<br/>
     /// with a few exceptions that are explicitly described in the reference.<br/>
-    /// - To access the API using [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM<br/>
+    /// To access the API, we recommend using one of our API clients:<br/>
+    /// Stable API clients:<br/>
+    /// - For [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM<br/>
     /// package](https://www.npmjs.com/package/apify-client).<br/>
-    /// - To access the API using [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI<br/>
+    /// - For [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI<br/>
     /// package](https://pypi.org/project/apify-client/).<br/>
+    /// Experimental API clients:<br/>
+    /// - For [Java](https://www.java.com/), we recommend the `apify-client` [Maven central component](https://central.sonatype.com/artifact/com.apify/apify-client).<br/>
+    /// - For [Rust](https://rust-lang.org/), we recommend the `apify-client` [crate](https://crates.io/crates/apify-client).<br/>
+    /// - For [.NET](https://dotnet.microsoft.com/), we recommend the `apify-client` [Nuget package](https://www.nuget.org/packages/Apify.Client).<br/>
+    /// - For [PHP](https://www.php.net/), we recommend the `apify-client` [Packagist package](https://packagist.org/packages/apify/apify-client).<br/>
+    /// - For [Go](https://go.dev/), we recommend the `apify-client` [package](https://github.com/apify/apify-client-go/releases).<br/>
     /// The clients' functions correspond to the API endpoints and have the same<br/>
     /// parameters. This simplifies development of apps that depend on the Apify<br/>
     /// platform.<br/>

@@ -213,7 +213,7 @@ legacy Apify Crawler product and it's not recommended to use it in new integrati
     {
         Description = @"Defines the view configuration for dataset items based on the schema definition.
 This parameter determines how the data will be filtered and presented.
-For complete specification details, see the [dataset schema documentation](/actors/development/actor-definition/dataset-schema).
+For complete specification details, see the [dataset schema documentation](/storage/dataset-schema).
 ",
     };
 

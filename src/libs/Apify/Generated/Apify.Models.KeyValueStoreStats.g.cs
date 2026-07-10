@@ -26,15 +26,13 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deleteCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int DeleteCount { get; set; }
+        public int? DeleteCount { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("listCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ListCount { get; set; }
+        public int? ListCount { get; set; }
 
         /// <summary>
         /// 
@@ -69,8 +67,8 @@ namespace Apify
         public KeyValueStoreStats(
             int readCount,
             int writeCount,
-            int deleteCount,
-            int listCount,
+            int? deleteCount,
+            int? listCount,
             long? s3StorageBytes,
             long? storageBytes)
         {
