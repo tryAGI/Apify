@@ -24,8 +24,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computeUnits")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double ComputeUnits { get; set; }
+        public double? ComputeUnits { get; set; }
 
         /// <summary>
         /// 
@@ -42,17 +41,17 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="BuildStats" /> class.
         /// </summary>
-        /// <param name="computeUnits"></param>
         /// <param name="durationMillis"></param>
         /// <param name="runTimeSecs"></param>
+        /// <param name="computeUnits"></param>
         /// <param name="imageSizeBytes"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BuildStats(
-            double computeUnits,
             int? durationMillis,
             double? runTimeSecs,
+            double? computeUnits,
             long? imageSizeBytes)
         {
             this.DurationMillis = durationMillis;
