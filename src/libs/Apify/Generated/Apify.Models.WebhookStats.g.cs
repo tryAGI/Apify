@@ -12,8 +12,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalDispatches")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TotalDispatches { get; set; }
+        public int? TotalDispatches { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +28,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public WebhookStats(
-            int totalDispatches)
+            int? totalDispatches)
         {
             this.TotalDispatches = totalDispatches;
         }

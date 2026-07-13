@@ -30,15 +30,13 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("restartCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int RestartCount { get; set; }
+        public int? RestartCount { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("resurrectCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ResurrectCount { get; set; }
+        public int? ResurrectCount { get; set; }
 
         /// <summary>
         /// 
@@ -110,8 +108,7 @@ namespace Apify
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("computeUnits")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double ComputeUnits { get; set; }
+        public double? ComputeUnits { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -122,12 +119,11 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="RunStats" /> class.
         /// </summary>
-        /// <param name="restartCount"></param>
-        /// <param name="resurrectCount"></param>
-        /// <param name="computeUnits"></param>
         /// <param name="inputBodyLen"></param>
         /// <param name="migrationCount"></param>
         /// <param name="rebootCount"></param>
+        /// <param name="restartCount"></param>
+        /// <param name="resurrectCount"></param>
         /// <param name="memAvgBytes"></param>
         /// <param name="memMaxBytes"></param>
         /// <param name="memCurrentBytes"></param>
@@ -139,16 +135,16 @@ namespace Apify
         /// <param name="durationMillis"></param>
         /// <param name="runTimeSecs"></param>
         /// <param name="metamorph"></param>
+        /// <param name="computeUnits"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RunStats(
-            int restartCount,
-            int resurrectCount,
-            double computeUnits,
             int? inputBodyLen,
             int? migrationCount,
             int? rebootCount,
+            int? restartCount,
+            int? resurrectCount,
             double? memAvgBytes,
             long? memMaxBytes,
             long? memCurrentBytes,
@@ -159,7 +155,8 @@ namespace Apify
             long? netTxBytes,
             int? durationMillis,
             double? runTimeSecs,
-            int? metamorph)
+            int? metamorph,
+            double? computeUnits)
         {
             this.InputBodyLen = inputBodyLen;
             this.MigrationCount = migrationCount;
