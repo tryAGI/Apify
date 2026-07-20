@@ -263,6 +263,10 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
+        CannotMonetizeWithoutPayoutBillingInfo,
+        /// <summary>
+        /// 
+        /// </summary>
         CannotOverridePaidActorTrial,
         /// <summary>
         /// 
@@ -1657,6 +1661,7 @@ namespace Apify
                 ErrorType.CannotMetamorphToPayPerResultActor => "cannot-metamorph-to-pay-per-result-actor",
                 ErrorType.CannotModifyActorPricingTooFrequently => "cannot-modify-actor-pricing-too-frequently",
                 ErrorType.CannotModifyActorPricingWithImmediateEffect => "cannot-modify-actor-pricing-with-immediate-effect",
+                ErrorType.CannotMonetizeWithoutPayoutBillingInfo => "cannot-monetize-without-payout-billing-info",
                 ErrorType.CannotOverridePaidActorTrial => "cannot-override-paid-actor-trial",
                 ErrorType.CannotPermanentlyDeleteSubscription => "cannot-permanently-delete-subscription",
                 ErrorType.CannotPublishActor => "cannot-publish-actor",
@@ -2060,6 +2065,7 @@ namespace Apify
                 "cannot-metamorph-to-pay-per-result-actor" => ErrorType.CannotMetamorphToPayPerResultActor,
                 "cannot-modify-actor-pricing-too-frequently" => ErrorType.CannotModifyActorPricingTooFrequently,
                 "cannot-modify-actor-pricing-with-immediate-effect" => ErrorType.CannotModifyActorPricingWithImmediateEffect,
+                "cannot-monetize-without-payout-billing-info" => ErrorType.CannotMonetizeWithoutPayoutBillingInfo,
                 "cannot-override-paid-actor-trial" => ErrorType.CannotOverridePaidActorTrial,
                 "cannot-permanently-delete-subscription" => ErrorType.CannotPermanentlyDeleteSubscription,
                 "cannot-publish-actor" => ErrorType.CannotPublishActor,

@@ -2324,6 +2324,9 @@
           "401": {
             "$ref": "#/components/responses/Unauthorized"
           },
+          "402": {
+            "$ref": "#/components/responses/PaymentRequired"
+          },
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
@@ -6541,6 +6544,9 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
           },
@@ -6704,6 +6710,9 @@
           },
           "405": {
             "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
           },
           "413": {
             "$ref": "#/components/responses/PayloadTooLarge"
@@ -19427,6 +19436,7 @@
           "cannot-metamorph-to-pay-per-result-actor",
           "cannot-modify-actor-pricing-too-frequently",
           "cannot-modify-actor-pricing-with-immediate-effect",
+          "cannot-monetize-without-payout-billing-info",
           "cannot-override-paid-actor-trial",
           "cannot-permanently-delete-subscription",
           "cannot-publish-actor",
@@ -20569,9 +20579,12 @@
             ]
           },
           "buildNumber": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
-            "description": "The build number/version string.",
+            "description": "The build number/version string. Can be `null` for legacy builds that lack a valid build number.",
             "examples": [
               "0.0.2"
             ]
@@ -28707,22 +28720,6 @@
           }
         }
       },
-      "Timeout": {
-        "description": "The HTTP request exceeded the timeout limit",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/ErrorResponse"
-            },
-            "example": {
-              "error": {
-                "type": "run-timeout-exceeded",
-                "message": "Actor run exceeded the timeout of 300 seconds for this API endpoint"
-              }
-            }
-          }
-        }
-      },
       "PaymentRequired": {
         "description": "Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.",
         "content": {
@@ -28734,6 +28731,22 @@
               "error": {
                 "type": "x402-payment-required",
                 "message": "Please provide X402-PAYMENT-SIGNATURE header with the payment. See https://x402.org."
+              }
+            }
+          }
+        }
+      },
+      "Timeout": {
+        "description": "The HTTP request exceeded the timeout limit",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": {
+                "type": "run-timeout-exceeded",
+                "message": "Actor run exceeded the timeout of 300 seconds for this API endpoint"
               }
             }
           }
