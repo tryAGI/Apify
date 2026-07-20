@@ -15,7 +15,7 @@ namespace Apify
         public string? BuildId { get; set; }
 
         /// <summary>
-        /// The build number/version string.
+        /// The build number/version string. Can be `null` for legacy builds that lack a valid build number.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildNumber")]
         public string? BuildNumber { get; set; }
@@ -45,7 +45,7 @@ namespace Apify
         /// The ID of the build associated with this tag.
         /// </param>
         /// <param name="buildNumber">
-        /// The build number/version string.
+        /// The build number/version string. Can be `null` for legacy builds that lack a valid build number.
         /// </param>
         /// <param name="buildNumberInt">
         /// The build number encoded as a single integer.
