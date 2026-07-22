@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static partial class UsersUsersMeLimitsGetCommandApiCommand
+internal static partial class UsersUsageUsersMeLimitsGetCommandApiCommand
 {
 
 
@@ -31,7 +31,7 @@ internal static partial class UsersUsersMeLimitsGetCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"me-limits-get", @"Get limits
+        var command = new Command(@"users-me-limits-get", @"Get limits
 Returns a complete summary of your account's limits. It is the same
 information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data
 includes the current usage cycle, a summary of your limits, and your current usage.
@@ -46,7 +46,7 @@ includes the current usage cycle, a summary of your limits, and your current usa
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.Users.UsersMeLimitsGetAsync(
+                                var response = await client.UsersUsage.UsersMeLimitsGetAsync(
 
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

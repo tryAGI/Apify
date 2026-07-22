@@ -11,9 +11,6 @@ internal static class UsersApiGroupCommand
         var command = new Command(@"users", @"Users endpoint commands.");
                          command.Subcommands.Add(UsersUserGetCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUsersMeGetCommandApiCommand.Create());
-                         command.Subcommands.Add(UsersUsersMeLimitsGetCommandApiCommand.Create());
-                         command.Subcommands.Add(UsersUsersMeLimitsPutCommandApiCommand.Create());
-                         command.Subcommands.Add(UsersUsersMeUsageMonthlyGetCommandApiCommand.Create());
         return command;
     }
 }

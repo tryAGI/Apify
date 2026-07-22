@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Last Actor task run's default dataset - Introduction<br/>
+    /// Last Actor task run's default dataset<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

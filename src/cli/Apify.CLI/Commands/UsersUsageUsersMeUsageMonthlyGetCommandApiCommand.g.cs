@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static partial class UsersUsersMeUsageMonthlyGetCommandApiCommand
+internal static partial class UsersUsageUsersMeUsageMonthlyGetCommandApiCommand
 {
     private static Option<string?> Date { get; } = new(
         name: @"--date")
@@ -35,7 +35,7 @@ internal static partial class UsersUsersMeUsageMonthlyGetCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"me-usage-monthly-get", @"Get monthly usage
+        var command = new Command(@"users-me-usage-monthly-get", @"Get monthly usage
 Returns a complete summary of your usage for the current monthly usage cycle,
 an overall sum, as well as a daily breakdown of usage. It is the same
 information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information
@@ -54,7 +54,7 @@ includes that date.
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.Users.UsersMeUsageMonthlyGetAsync(
+                                var response = await client.UsersUsage.UsersMeUsageMonthlyGetAsync(
                                     date: date,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

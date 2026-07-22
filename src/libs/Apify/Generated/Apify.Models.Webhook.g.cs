@@ -76,7 +76,7 @@ namespace Apify
         public bool? DoNotRetry { get; set; }
 
         /// <summary>
-        /// 
+        /// URL of the HTTP request sent by the webhook. It is omitted or `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requestUrl")]
         public string? RequestUrl { get; set; }
@@ -130,7 +130,9 @@ namespace Apify
         /// <param name="isAdHoc"></param>
         /// <param name="shouldInterpolateStrings"></param>
         /// <param name="doNotRetry"></param>
-        /// <param name="requestUrl"></param>
+        /// <param name="requestUrl">
+        /// URL of the HTTP request sent by the webhook. It is omitted or `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).
+        /// </param>
         /// <param name="payloadTemplate"></param>
         /// <param name="headersTemplate"></param>
         /// <param name="description"></param>

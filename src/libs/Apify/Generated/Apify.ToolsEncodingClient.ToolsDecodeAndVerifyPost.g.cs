@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class UsersClient
+    public partial class ToolsEncodingClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_UsersMeUsageMonthlyGetSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ToolsDecodeAndVerifyPostSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,48 +21,47 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_UsersMeUsageMonthlyGetSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ToolsDecodeAndVerifyPostSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_UsersMeUsageMonthlyGetSecurityRequirement0,
+            {                s_ToolsDecodeAndVerifyPostSecurityRequirement0,
             };
-        partial void PrepareUsersMeUsageMonthlyGetArguments(
+        partial void PrepareToolsDecodeAndVerifyPostArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? date);
-        partial void PrepareUsersMeUsageMonthlyGetRequest(
+            global::Apify.DecodeAndVerifyRequest request);
+        partial void PrepareToolsDecodeAndVerifyPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? date);
-        partial void ProcessUsersMeUsageMonthlyGetResponse(
+            global::Apify.DecodeAndVerifyRequest request);
+        partial void ProcessToolsDecodeAndVerifyPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUsersMeUsageMonthlyGetResponseContent(
+        partial void ProcessToolsDecodeAndVerifyPostResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get monthly usage<br/>
-        /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
-        /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
-        /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
-        /// includes your use of Actors, compute, data transfer, and storage.<br/>
-        /// Using the `date` parameter will show your usage in the monthly usage cycle that<br/>
-        /// includes that date.
+        /// Decode and verify object<br/>
+        /// Decodes and verifies an encoded value previously created by the<br/>
+        /// encode-and-sign endpoint. Returns the original decoded object along with<br/>
+        /// information about the user who encoded it and whether that user is verified.<br/>
+        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
+        /// HTTP header.
         /// </summary>
-        /// <param name="date">
-        /// Example: 2020-06-14
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.MonthlyUsageResponse> UsersMeUsageMonthlyGetAsync(
-            string? date = default,
+        public async global::System.Threading.Tasks.Task<global::Apify.DecodeAndVerifyResponse> ToolsDecodeAndVerifyPostAsync(
+
+            global::Apify.DecodeAndVerifyRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await UsersMeUsageMonthlyGetAsResponseAsync(
-                date: date,
+            var __response = await ToolsDecodeAndVerifyPostAsResponseAsync(
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -70,36 +69,36 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get monthly usage<br/>
-        /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
-        /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
-        /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
-        /// includes your use of Actors, compute, data transfer, and storage.<br/>
-        /// Using the `date` parameter will show your usage in the monthly usage cycle that<br/>
-        /// includes that date.
+        /// Decode and verify object<br/>
+        /// Decodes and verifies an encoded value previously created by the<br/>
+        /// encode-and-sign endpoint. Returns the original decoded object along with<br/>
+        /// information about the user who encoded it and whether that user is verified.<br/>
+        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
+        /// HTTP header.
         /// </summary>
-        /// <param name="date">
-        /// Example: 2020-06-14
-        /// </param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>> UsersMeUsageMonthlyGetAsResponseAsync(
-            string? date = default,
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.DecodeAndVerifyResponse>> ToolsDecodeAndVerifyPostAsResponseAsync(
+
+            global::Apify.DecodeAndVerifyRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareUsersMeUsageMonthlyGetArguments(
+            PrepareToolsDecodeAndVerifyPostArguments(
                 httpClient: HttpClient,
-                date: ref date);
+                request: request);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_UsersMeUsageMonthlyGetSecurityRequirements,
-                operationName: "UsersMeUsageMonthlyGetAsync");
+                securityRequirements: s_ToolsDecodeAndVerifyPostSecurityRequirements,
+                operationName: "ToolsDecodeAndVerifyPostAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -119,18 +118,15 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: "/v2/users/me/usage/monthly",
+                                path: "/v2/tools/decode-and-verify",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("date", date)
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Get,
+                    method: global::System.Net.Http.HttpMethod.Post,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -153,6 +149,12 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Apify.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -161,10 +163,10 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareUsersMeUsageMonthlyGetRequest(
+                PrepareToolsDecodeAndVerifyPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    date: date);
+                    request: request);
 
                 return __httpRequest;
             }
@@ -181,10 +183,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeUsageMonthlyGet",
-                                methodName: "UsersMeUsageMonthlyGetAsync",
-                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
-                                httpMethod: "GET",
+                                operationId: "ToolsDecodeAndVerifyPost",
+                                methodName: "ToolsDecodeAndVerifyPostAsync",
+                                pathTemplate: "\"/v2/tools/decode-and-verify\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -215,10 +217,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeUsageMonthlyGet",
-                                methodName: "UsersMeUsageMonthlyGetAsync",
-                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
-                                httpMethod: "GET",
+                                operationId: "ToolsDecodeAndVerifyPost",
+                                methodName: "ToolsDecodeAndVerifyPostAsync",
+                                pathTemplate: "\"/v2/tools/decode-and-verify\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -256,10 +258,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeUsageMonthlyGet",
-                                methodName: "UsersMeUsageMonthlyGetAsync",
-                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
-                                httpMethod: "GET",
+                                operationId: "ToolsDecodeAndVerifyPost",
+                                methodName: "ToolsDecodeAndVerifyPostAsync",
+                                pathTemplate: "\"/v2/tools/decode-and-verify\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -296,7 +298,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessUsersMeUsageMonthlyGetResponse(
+                ProcessToolsDecodeAndVerifyPostResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -304,10 +306,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeUsageMonthlyGet",
-                                methodName: "UsersMeUsageMonthlyGetAsync",
-                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
-                                httpMethod: "GET",
+                                operationId: "ToolsDecodeAndVerifyPost",
+                                methodName: "ToolsDecodeAndVerifyPostAsync",
+                                pathTemplate: "\"/v2/tools/decode-and-verify\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -326,10 +328,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeUsageMonthlyGet",
-                                methodName: "UsersMeUsageMonthlyGetAsync",
-                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
-                                httpMethod: "GET",
+                                operationId: "ToolsDecodeAndVerifyPost",
+                                methodName: "ToolsDecodeAndVerifyPostAsync",
+                                pathTemplate: "\"/v2/tools/decode-and-verify\"",
+                                httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -380,80 +382,6 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unauthorized - authentication required or invalid token.
-                            if ((int)__response.StatusCode == 401)
-                            {
-                                string? __content_401 = null;
-                                global::System.Exception? __exception_401 = null;
-                                global::Apify.ErrorResponse? __value_401 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_401 = __ex;
-                                }
-
-
-                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_401,
-                                    responseBody: __content_401,
-                                    responseObject: __value_401,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Forbidden - insufficient permissions to perform this action.
-                            if ((int)__response.StatusCode == 403)
-                            {
-                                string? __content_403 = null;
-                                global::System.Exception? __exception_403 = null;
-                                global::Apify.ErrorResponse? __value_403 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_403 = __ex;
-                                }
-
-
-                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_403,
-                                    responseBody: __content_403,
-                                    responseObject: __value_403,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
                             // Method not allowed.
                             if ((int)__response.StatusCode == 405)
                             {
@@ -486,6 +414,80 @@ namespace Apify
                                     innerException: __exception_405,
                                     responseBody: __content_405,
                                     responseObject: __value_405,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Payload too large - the request body exceeds the size limit.
+                            if ((int)__response.StatusCode == 413)
+                            {
+                                string? __content_413 = null;
+                                global::System.Exception? __exception_413 = null;
+                                global::Apify.ErrorResponse? __value_413 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_413 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_413,
+                                    responseBody: __content_413,
+                                    responseObject: __value_413,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Unsupported media type - the Content-Encoding of the request is not supported.
+                            if ((int)__response.StatusCode == 415)
+                            {
+                                string? __content_415 = null;
+                                global::System.Exception? __exception_415 = null;
+                                global::Apify.ErrorResponse? __value_415 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_415 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_415,
+                                    responseBody: __content_415,
+                                    responseObject: __value_415,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -541,7 +543,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessUsersMeUsageMonthlyGetResponseContent(
+                                ProcessToolsDecodeAndVerifyPostResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -550,9 +552,9 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.MonthlyUsageResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.DecodeAndVerifyResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.DecodeAndVerifyResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -582,9 +584,9 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.MonthlyUsageResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.DecodeAndVerifyResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.DecodeAndVerifyResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -623,6 +625,33 @@ namespace Apify
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Decode and verify object<br/>
+        /// Decodes and verifies an encoded value previously created by the<br/>
+        /// encode-and-sign endpoint. Returns the original decoded object along with<br/>
+        /// information about the user who encoded it and whether that user is verified.<br/>
+        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
+        /// HTTP header.
+        /// </summary>
+        /// <param name="encoded"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.DecodeAndVerifyResponse> ToolsDecodeAndVerifyPostAsync(
+            string encoded,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Apify.DecodeAndVerifyRequest
+            {
+                Encoded = encoded,
+            };
+
+            return await ToolsDecodeAndVerifyPostAsync(
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -44,7 +44,9 @@ internal static class ApiCommand
                          command.Subcommands.Add(StorageRequestQueuesRequestsLocksApiGroupCommand.Create());
                          command.Subcommands.Add(StoreApiGroupCommand.Create());
                          command.Subcommands.Add(ToolsApiGroupCommand.Create());
+                         command.Subcommands.Add(ToolsEncodingApiGroupCommand.Create());
                          command.Subcommands.Add(UsersApiGroupCommand.Create());
+                         command.Subcommands.Add(UsersUsageApiGroupCommand.Create());
                          command.Subcommands.Add(WebhooksWebhookDispatchesApiGroupCommand.Create());
                          command.Subcommands.Add(WebhooksWebhooksApiGroupCommand.Create());
         return command;

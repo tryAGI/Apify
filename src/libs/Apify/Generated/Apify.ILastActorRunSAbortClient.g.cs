@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Last Actor run's abort - Introduction<br/>
+    /// Last Actor run's abort<br/>
     /// If no httpClient is provided, a new one will be created.<br/>
     /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
     /// </summary>

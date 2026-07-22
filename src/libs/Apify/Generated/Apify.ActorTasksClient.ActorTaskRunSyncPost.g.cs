@@ -588,6 +588,43 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.
+                            if ((int)__response.StatusCode == 402)
+                            {
+                                string? __content_402 = null;
+                                global::System.Exception? __exception_402 = null;
+                                global::Apify.ErrorResponse? __value_402 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_402 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_402,
+                                    responseBody: __content_402,
+                                    responseObject: __value_402,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Forbidden - insufficient permissions to perform this action.
                             if ((int)__response.StatusCode == 403)
                             {
@@ -694,6 +731,43 @@ namespace Apify
                                     innerException: __exception_405,
                                     responseBody: __content_405,
                                     responseObject: __value_405,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // The HTTP request exceeded the timeout limit
+                            if ((int)__response.StatusCode == 408)
+                            {
+                                string? __content_408 = null;
+                                global::System.Exception? __exception_408 = null;
+                                global::Apify.ErrorResponse? __value_408 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_408 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_408 = global::Apify.ErrorResponse.FromJson(__content_408, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_408 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_408 = global::Apify.ErrorResponse.FromJson(__content_408, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_408 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_408 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_408,
+                                    responseBody: __content_408,
+                                    responseObject: __value_408,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
