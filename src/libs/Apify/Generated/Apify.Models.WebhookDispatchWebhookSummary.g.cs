@@ -21,7 +21,7 @@ namespace Apify
         public global::Apify.WebhookCondition? Condition { get; set; }
 
         /// <summary>
-        /// 
+        /// URL of the HTTP request sent by the webhook. It is `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requestUrl")]
         public string? RequestUrl { get; set; }
@@ -43,7 +43,9 @@ namespace Apify
         /// </summary>
         /// <param name="actionType"></param>
         /// <param name="condition"></param>
-        /// <param name="requestUrl"></param>
+        /// <param name="requestUrl">
+        /// URL of the HTTP request sent by the webhook. It is `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).
+        /// </param>
         /// <param name="isAdHoc"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

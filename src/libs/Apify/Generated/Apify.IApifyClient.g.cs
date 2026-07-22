@@ -463,7 +463,7 @@ namespace Apify
 
 
         /// <summary>
-        /// Actor builds - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor builds.<br/>
+        /// Manage Actor builds. The API endpoints described in this section enable you to manage, and delete Apify Actor builds.<br/>
         /// Note that if any returned build object contains usage in dollars, your effective<br/>
         /// unit pricing at the time of query has been used for computation of this dollar equivalent, and hence it should be<br/>
         /// used only for informative purposes.<br/>
@@ -472,7 +472,7 @@ namespace Apify
         public ActorBuildsClient ActorBuilds { get; }
 
         /// <summary>
-        /// Actor runs - Introduction. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
+        /// Manage Actor runs. The API endpoints described in this section enable you to manage, and delete Apify Actor runs.<br/>
         /// If any returned run object contains usage in dollars, your effective unit pricing at the time of query<br/>
         /// has been used for computation of this dollar equivalent, and hence it should be used only for informative purposes.<br/>
         /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
@@ -481,7 +481,7 @@ namespace Apify
         public ActorRunsClient ActorRuns { get; }
 
         /// <summary>
-        /// Actor tasks - Introduction. The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks.<br/>
+        /// Manage Actor tasks. The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks.<br/>
         /// For more information, see the [Actor tasts documentation](https://docs.apify.com/platform/actors/running/tasks).<br/>
         /// :::note<br/>
         /// For all the API endpoints that accept the `actorTaskId` parameter to<br/>
@@ -497,7 +497,7 @@ namespace Apify
         public ActorTasksClient ActorTasks { get; }
 
         /// <summary>
-        /// Actors - Introduction. The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).<br/>
+        /// Actors. The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).<br/>
         /// For API endpoints that require the `actorId` parameter to identify an Actor, you can provide either:<br/>
         /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
         /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).
@@ -505,12 +505,12 @@ namespace Apify
         public ActorsClient Actors { get; }
 
         /// <summary>
-        /// Actor builds - Introduction. The API endpoints in this section allow you to manage your Apify Actors builds.
+        /// Actor builds. The API endpoints in this section allow you to manage your Apify Actors builds.
         /// </summary>
         public ActorsActorBuildsClient ActorsActorBuilds { get; }
 
         /// <summary>
-        /// Actor runs - Introduction. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
+        /// Actor runs. The API endpoints in this section allow you to manage your Apify Actors runs.<br/>
         /// Some API endpoints return run objects. If a run object includes usage costs in dollars, note that these values are calculated based on your effective unit pricing at the time of the query. As a result, the dollar amounts should be treated as informational only and not as exact figures.<br/>
         /// For completed runs, aggregated fields such as `stats` or dollar usage totals are eventually consistent and update within a few seconds. For values that must match finalized totals, wait about 10 seconds after the run completed, then fetch the run again.<br/>
         /// For more information about platform usage and resource calculations, see the [Usage and Resources documentation](https://docs.apify.com/platform/actors/running/usage-and-resources#usage).
@@ -518,7 +518,7 @@ namespace Apify
         public ActorsActorRunsClient ActorsActorRuns { get; }
 
         /// <summary>
-        /// Actor versions - Introduction. The API endpoints in this section allow you to manage your Apify Actors versions.<br/>
+        /// Actor versions. The API endpoints in this section allow you to manage your Apify Actors versions.<br/>
         /// - The version object contains the source code of a specific version of an Actor.<br/>
         /// - The `sourceType` property indicates where the source code is hosted, and based<br/>
         /// on its value the Version object has the following additional property:<br/>
@@ -534,114 +534,114 @@ namespace Apify
         public ActorsActorVersionsClient ActorsActorVersions { get; }
 
         /// <summary>
-        /// Webhook collection - Introduction. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.
+        /// Webhook collections. The API endpoint in this section allows you to get a list of webhooks of a specific Actor.
         /// </summary>
         public ActorsWebhookCollectionClient ActorsWebhookCollection { get; }
 
         /// <summary>
-        /// Default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Default dataset. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
         public DefaultDatasetClient DefaultDataset { get; }
 
         /// <summary>
-        /// Default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Default key-value store. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
         public DefaultKeyValueStoreClient DefaultKeyValueStore { get; }
 
         /// <summary>
-        /// Default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Default request queue. The API endpoints described in this section are convenience endpoints that provide access to Actor run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
         public DefaultRequestQueueClient DefaultRequestQueue { get; }
 
         /// <summary>
-        /// Last Actor run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.<br/>
+        /// Last Actor run's abort. The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.<br/>
         /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
         /// </summary>
         public LastActorRunSAbortClient LastActorRunSAbort { get; }
 
         /// <summary>
-        /// Last Actor run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Last Actor run's default dataset. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
         public LastActorRunSDefaultDatasetClient LastActorRunSDefaultDataset { get; }
 
         /// <summary>
-        /// Last Actor run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Last Actor run's default key-value store. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
         public LastActorRunSDefaultKeyValueStoreClient LastActorRunSDefaultKeyValueStore { get; }
 
         /// <summary>
-        /// Last Actor run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Last Actor run's default request queue. The API endpoints described in this section are convenience endpoints that provide access to Actor's last run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
         public LastActorRunSDefaultRequestQueueClient LastActorRunSDefaultRequestQueue { get; }
 
         /// <summary>
-        /// Last Actor run's log - Introduction. The API endpoint described in this section is convenience endpoint that provides access to last Actor run's log.<br/>
+        /// Last Actor run's log. The API endpoint described in this section is convenience endpoint that provides access to last Actor run's log.<br/>
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
         public LastActorRunSLogClient LastActorRunSLog { get; }
 
         /// <summary>
-        /// Last Actor run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.<br/>
+        /// Last Actor run's metamorph. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.<br/>
         /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
         /// </summary>
         public LastActorRunSMetamorphClient LastActorRunSMetamorph { get; }
 
         /// <summary>
-        /// Last Actor run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.<br/>
+        /// Last Actor run's reboot. The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.<br/>
         /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
         /// </summary>
         public LastActorRunSRebootClient LastActorRunSReboot { get; }
 
         /// <summary>
-        /// Last Actor task run's abort - Introduction. The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.<br/>
+        /// Last Actor task run's abort. The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.<br/>
         /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
         /// </summary>
         public LastActorTaskRunSAbortClient LastActorTaskRunSAbort { get; }
 
         /// <summary>
-        /// Last Actor task run's default dataset - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
+        /// Last Actor task run's default dataset. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default dataset without the need to resolve the dataset ID first.<br/>
         /// Subset of functionality described in: [Datasets](/api/v2/storage-datasets).
         /// </summary>
         public LastActorTaskRunSDefaultDatasetClient LastActorTaskRunSDefaultDataset { get; }
 
         /// <summary>
-        /// Last Actor task run's default key-value store - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
+        /// Last Actor task run's default key-value store. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default key-value store without the need to resolve the key-value store ID first.<br/>
         /// Subset of functionality described in: [Key-value stores](/api/v2/storage-key-value-stores).
         /// </summary>
         public LastActorTaskRunSDefaultKeyValueStoreClient LastActorTaskRunSDefaultKeyValueStore { get; }
 
         /// <summary>
-        /// Last Actor task run's default request queue - Introduction. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default request queue without the need to resolve the request queue ID first.<br/>
+        /// Last Actor task run's default request queue. The API endpoints described in this section are convenience endpoints that provide access to Actor task's last run's default request queue without the need to resolve the request queue ID first.<br/>
         /// Subset of functionality described in: [Request queues](/api/v2/storage-request-queues).
         /// </summary>
         public LastActorTaskRunSDefaultRequestQueueClient LastActorTaskRunSDefaultRequestQueue { get; }
 
         /// <summary>
-        /// Last Actor task run's log - Introduction. The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.<br/>
+        /// Last Actor task run's log. The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.<br/>
         /// Same as of functionality described in: [Logs](/api/v2/logs).
         /// </summary>
         public LastActorTaskRunSLogClient LastActorTaskRunSLog { get; }
 
         /// <summary>
-        /// Last Actor task run's metamorph - Introduction. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.<br/>
+        /// Last Actor task run's metamorph. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.<br/>
         /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
         /// </summary>
         public LastActorTaskRunSMetamorphClient LastActorTaskRunSMetamorph { get; }
 
         /// <summary>
-        /// Last Actor task run's reboot - Introduction. The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.<br/>
+        /// Last Actor task run's reboot. The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.<br/>
         /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
         /// </summary>
         public LastActorTaskRunSRebootClient LastActorTaskRunSReboot { get; }
 
         /// <summary>
-        /// Logs - Introduction. The API endpoints described in this section are used the download the logs<br/>
+        /// Get build and run logs. The API endpoints described in this section are used the download the logs<br/>
         /// generated by Actor builds and runs. Note that only the trailing 5M characters<br/>
         /// of the log are stored, the rest is discarded.<br/>
         /// :::note<br/>
@@ -652,7 +652,7 @@ namespace Apify
         public LogsClient Logs { get; }
 
         /// <summary>
-        /// Schedules - Introduction. This section describes API endpoints for managing schedules.<br/>
+        /// Manage schedules. This section describes API endpoints for managing schedules.<br/>
         /// Schedules are used to automatically start your Actors at certain times. Each schedule<br/>
         /// can be associated with a number of Actors and Actor tasks. It is also possible<br/>
         /// to override the settings of each Actor (task) similarly to when invoking the Actor<br/>
@@ -665,7 +665,7 @@ namespace Apify
         public SchedulesClient Schedules { get; }
 
         /// <summary>
-        /// Datasets - Introduction. This section describes API endpoints to manage Datasets.<br/>
+        /// Datasets. This section describes API endpoints to manage Datasets.<br/>
         /// Dataset is a storage for structured data, where each record stored has the same attributes,<br/>
         /// such as online store products or real estate offers. You can imagine it as a table,<br/>
         /// where each object is a row and its attributes are columns. Dataset is an append-only<br/>
@@ -680,7 +680,7 @@ namespace Apify
         public StorageDatasetsClient StorageDatasets { get; }
 
         /// <summary>
-        /// Key-value stores - Introduction. This section describes API endpoints to manage Key-value stores.<br/>
+        /// Key-value stores. This section describes API endpoints to manage Key-value stores.<br/>
         /// Key-value store is a simple storage for saving and reading data records or files.<br/>
         /// Each data record is represented by a unique key and associated with a MIME content type.<br/>
         /// Key-value stores are ideal for saving screenshots, Actor inputs and outputs, web pages,<br/>
@@ -694,7 +694,7 @@ namespace Apify
         public StorageKeyValueStoresClient StorageKeyValueStores { get; }
 
         /// <summary>
-        /// Request queues - Introduction. This section describes API endpoints to create, manage, and delete request queues.<br/>
+        /// Request queues. This section describes API endpoints to create, manage, and delete request queues.<br/>
         /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
         /// used for deep crawling of websites where you<br/>
         /// start with several URLs and then recursively follow links to other pages.<br/>
@@ -708,7 +708,7 @@ namespace Apify
         public StorageRequestQueuesClient StorageRequestQueues { get; }
 
         /// <summary>
-        /// Requests - Introduction. This section describes API endpoints to create, manage, and delete requests within request queues.<br/>
+        /// Requests. This section describes API endpoints to create, manage, and delete requests within request queues.<br/>
         /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
         /// used for deep crawling of websites where you<br/>
         /// start with several URLs and then recursively follow links to other pages.<br/>
@@ -722,7 +722,7 @@ namespace Apify
         public StorageRequestQueuesRequestsClient StorageRequestQueuesRequests { get; }
 
         /// <summary>
-        /// Requests locks - Introduction. This section describes API endpoints to create, manage, and delete request locks within request queues.<br/>
+        /// Requests locks. This section describes API endpoints to create, manage, and delete request locks within request queues.<br/>
         /// Request queue is a storage for a queue of HTTP URLs to crawl, which is typically<br/>
         /// used for deep crawling of websites where you<br/>
         /// start with several URLs and then recursively follow links to other pages.<br/>
@@ -736,7 +736,7 @@ namespace Apify
         public StorageRequestQueuesRequestsLocksClient StorageRequestQueuesRequestsLocks { get; }
 
         /// <summary>
-        /// Store - Introduction. [Apify Store](https://apify.com/store) is home to thousands of public Actors available<br/>
+        /// Get data from Apify Store. [Apify Store](https://apify.com/store) is home to thousands of public Actors available<br/>
         /// to the Apify community.<br/>
         /// The API endpoints described in this section are used to retrieve these Actors.<br/>
         /// :::note<br/>
@@ -746,23 +746,36 @@ namespace Apify
         public StoreClient Store { get; }
 
         /// <summary>
-        /// Tools - Introduction. The API endpoints described in this section provide utility tools for encoding,<br/>
-        /// signing, and verifying data, as well as inspecting HTTP request details.
+        /// Test proxy. The API endpoints described in this section let you test your proxy connection.<br/>
+        /// For details, see the [Apify Proxy](https://docs.apify.com/platform/proxy).
         /// </summary>
         public ToolsClient Tools { get; }
 
         /// <summary>
-        /// Users - Introduction. The API endpoints described in this section return information about user accounts.
+        /// Sign and verify objects. The API endpoints described in this section provide utility tools for encoding and decoding data.
+        /// </summary>
+        public ToolsEncodingClient ToolsEncoding { get; }
+
+        /// <summary>
+        /// Get user data. The API endpoints described in this section return information about<br/>
+        /// user accounts.
         /// </summary>
         public UsersClient Users { get; }
 
         /// <summary>
-        /// Webhook dispatches - Introduction. This section describes API endpoints to get webhook dispatches.
+        /// Manage usage and limits. The API endpoints described in this section return your account's usage for the<br/>
+        /// current monthly cycle and let you view and update your account limits.<br/>
+        /// For details, see the [Limits](https://docs.apify.com/account/limits).
+        /// </summary>
+        public UsersUsageClient UsersUsage { get; }
+
+        /// <summary>
+        /// Webhook dispatches. This section describes API endpoints to get webhook dispatches.
         /// </summary>
         public WebhooksWebhookDispatchesClient WebhooksWebhookDispatches { get; }
 
         /// <summary>
-        /// Webhooks - Introduction. This section describes API endpoints to manage webhooks.<br/>
+        /// Webhooks. This section describes API endpoints to manage webhooks.<br/>
         /// Webhooks provide an easy and reliable way to configure the Apify platform<br/>
         /// to carry out an action (e.g. a HTTP request to another service) when a certain<br/>
         /// system event occurs.<br/>

@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public partial interface IToolsClient
+    public partial interface IToolsEncodingClient
     {
         /// <summary>
         /// Encode and sign object<br/>

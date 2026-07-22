@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class ToolsClient
+    public partial class UsersUsageClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_ToolsEncodeAndSignPostSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_UsersMeLimitsPutSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,45 +21,42 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_ToolsEncodeAndSignPostSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_UsersMeLimitsPutSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_ToolsEncodeAndSignPostSecurityRequirement0,
+            {                s_UsersMeLimitsPutSecurityRequirement0,
             };
-        partial void PrepareToolsEncodeAndSignPostArguments(
+        partial void PrepareUsersMeLimitsPutArguments(
             global::System.Net.Http.HttpClient httpClient,
-            object request);
-        partial void PrepareToolsEncodeAndSignPostRequest(
+            global::Apify.UpdateLimitsRequest request);
+        partial void PrepareUsersMeLimitsPutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            object request);
-        partial void ProcessToolsEncodeAndSignPostResponse(
+            global::Apify.UpdateLimitsRequest request);
+        partial void ProcessUsersMeLimitsPutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessToolsEncodeAndSignPostResponseContent(
+        partial void ProcessUsersMeLimitsPutResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Encode and sign object<br/>
-        /// Encodes and signs any JSON object. The encoded value includes a signature<br/>
-        /// tied to the authenticated user's ID, which can later be verified using the<br/>
-        /// decode-and-verify endpoint.<br/>
-        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
-        /// HTTP header.
+        /// Update limits<br/>
+        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
+        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.EncodeAndSignResponse> ToolsEncodeAndSignPostAsync(
+        public async global::System.Threading.Tasks.Task<string> UsersMeLimitsPutAsync(
 
-            object request,
+            global::Apify.UpdateLimitsRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ToolsEncodeAndSignPostAsResponseAsync(
+            var __response = await UsersMeLimitsPutAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -69,20 +66,17 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Encode and sign object<br/>
-        /// Encodes and signs any JSON object. The encoded value includes a signature<br/>
-        /// tied to the authenticated user's ID, which can later be verified using the<br/>
-        /// decode-and-verify endpoint.<br/>
-        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
-        /// HTTP header.
+        /// Update limits<br/>
+        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
+        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.EncodeAndSignResponse>> ToolsEncodeAndSignPostAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> UsersMeLimitsPutAsResponseAsync(
 
-            object request,
+            global::Apify.UpdateLimitsRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -90,15 +84,15 @@ namespace Apify
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareToolsEncodeAndSignPostArguments(
+            PrepareUsersMeLimitsPutArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ToolsEncodeAndSignPostSecurityRequirements,
-                operationName: "ToolsEncodeAndSignPostAsync");
+                securityRequirements: s_UsersMeLimitsPutSecurityRequirements,
+                operationName: "UsersMeLimitsPutAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -118,7 +112,7 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: "/v2/tools/encode-and-sign",
+                                path: "/v2/users/me/limits",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -126,7 +120,7 @@ namespace Apify
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Put,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -149,7 +143,7 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
                                 content: __httpRequestContentBody,
                                 encoding: global::System.Text.Encoding.UTF8,
@@ -163,7 +157,7 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareToolsEncodeAndSignPostRequest(
+                PrepareUsersMeLimitsPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -183,10 +177,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ToolsEncodeAndSignPost",
-                                methodName: "ToolsEncodeAndSignPostAsync",
-                                pathTemplate: "\"/v2/tools/encode-and-sign\"",
-                                httpMethod: "POST",
+                                operationId: "UsersMeLimitsPut",
+                                methodName: "UsersMeLimitsPutAsync",
+                                pathTemplate: "\"/v2/users/me/limits\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -217,10 +211,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ToolsEncodeAndSignPost",
-                                methodName: "ToolsEncodeAndSignPostAsync",
-                                pathTemplate: "\"/v2/tools/encode-and-sign\"",
-                                httpMethod: "POST",
+                                operationId: "UsersMeLimitsPut",
+                                methodName: "UsersMeLimitsPutAsync",
+                                pathTemplate: "\"/v2/users/me/limits\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -258,10 +252,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ToolsEncodeAndSignPost",
-                                methodName: "ToolsEncodeAndSignPostAsync",
-                                pathTemplate: "\"/v2/tools/encode-and-sign\"",
-                                httpMethod: "POST",
+                                operationId: "UsersMeLimitsPut",
+                                methodName: "UsersMeLimitsPutAsync",
+                                pathTemplate: "\"/v2/users/me/limits\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -298,7 +292,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessToolsEncodeAndSignPostResponse(
+                ProcessUsersMeLimitsPutResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -306,10 +300,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ToolsEncodeAndSignPost",
-                                methodName: "ToolsEncodeAndSignPostAsync",
-                                pathTemplate: "\"/v2/tools/encode-and-sign\"",
-                                httpMethod: "POST",
+                                operationId: "UsersMeLimitsPut",
+                                methodName: "UsersMeLimitsPutAsync",
+                                pathTemplate: "\"/v2/users/me/limits\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -328,10 +322,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ToolsEncodeAndSignPost",
-                                methodName: "ToolsEncodeAndSignPostAsync",
-                                pathTemplate: "\"/v2/tools/encode-and-sign\"",
-                                httpMethod: "POST",
+                                operationId: "UsersMeLimitsPut",
+                                methodName: "UsersMeLimitsPutAsync",
+                                pathTemplate: "\"/v2/users/me/limits\"",
+                                httpMethod: "PUT",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -617,7 +611,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessToolsEncodeAndSignPostResponseContent(
+                                ProcessUsersMeLimitsPutResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -626,13 +620,11 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.EncodeAndSignResponse.FromJson(__content, JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.EncodeAndSignResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -652,19 +644,17 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                                    var __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.EncodeAndSignResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.EncodeAndSignResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -701,25 +691,32 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Encode and sign object<br/>
-        /// Encodes and signs any JSON object. The encoded value includes a signature<br/>
-        /// tied to the authenticated user's ID, which can later be verified using the<br/>
-        /// decode-and-verify endpoint.<br/>
-        /// **Important**: The request must specify the `Content-Type: application/json`<br/>
-        /// HTTP header.
+        /// Update limits<br/>
+        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
+        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
+        /// <param name="maxMonthlyUsageUsd">
+        /// If your platform usage in the billing period exceeds the prepaid usage, you will be charged extra. Setting this property you can update your hard limit on monthly platform usage to prevent accidental overage or to limit the extra charges.
+        /// </param>
+        /// <param name="dataRetentionDays">
+        /// Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/storage#data-retention).
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.EncodeAndSignResponse> ToolsEncodeAndSignPostAsync(
+        public async global::System.Threading.Tasks.Task<string> UsersMeLimitsPutAsync(
+            double? maxMonthlyUsageUsd = default,
+            int? dataRetentionDays = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new object
+            var __request = new global::Apify.UpdateLimitsRequest
             {
+                MaxMonthlyUsageUsd = maxMonthlyUsageUsd,
+                DataRetentionDays = dataRetentionDays,
             };
 
-            return await ToolsEncodeAndSignPostAsync(
+            return await UsersMeLimitsPutAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

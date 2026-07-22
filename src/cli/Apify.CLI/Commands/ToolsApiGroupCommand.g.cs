@@ -13,8 +13,6 @@ internal static class ToolsApiGroupCommand
                          command.Subcommands.Add(ToolsToolsBrowserInfoGetCommandApiCommand.Create());
                          command.Subcommands.Add(ToolsToolsBrowserInfoPostCommandApiCommand.Create());
                          command.Subcommands.Add(ToolsToolsBrowserInfoPutCommandApiCommand.Create());
-                         command.Subcommands.Add(ToolsToolsDecodeAndVerifyPostCommandApiCommand.Create());
-                         command.Subcommands.Add(ToolsToolsEncodeAndSignPostCommandApiCommand.Create());
         return command;
     }
 }

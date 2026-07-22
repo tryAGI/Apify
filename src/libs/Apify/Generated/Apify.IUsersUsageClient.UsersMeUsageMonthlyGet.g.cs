@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public partial interface IUsersClient
+    public partial interface IUsersUsageClient
     {
         /// <summary>
         /// Get monthly usage<br/>

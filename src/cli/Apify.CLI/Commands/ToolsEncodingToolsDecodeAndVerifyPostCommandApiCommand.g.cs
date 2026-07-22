@@ -5,7 +5,7 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static partial class ToolsToolsDecodeAndVerifyPostCommandApiCommand
+internal static partial class ToolsEncodingToolsDecodeAndVerifyPostCommandApiCommand
 {
     private static Option<string> Encoded { get; } = new(
         name: @"--encoded")
@@ -36,7 +36,7 @@ internal static partial class ToolsToolsDecodeAndVerifyPostCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"decode-and-verify-post", @"Decode and verify object
+        var command = new Command(@"tools-decode-and-verify-post", @"Decode and verify object
 Decodes and verifies an encoded value previously created by the
 encode-and-sign endpoint. Returns the original decoded object along with
 information about the user who encoded it and whether that user is verified.
@@ -54,7 +54,7 @@ HTTP header.
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.Tools.ToolsDecodeAndVerifyPostAsync(
+                                var response = await client.ToolsEncoding.ToolsDecodeAndVerifyPostAsync(
                                     encoded: encoded,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

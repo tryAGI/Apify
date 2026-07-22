@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class UsersClient
+    public partial class UsersUsageClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_UsersMeLimitsPutSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_UsersMeUsageMonthlyGetSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,44 +21,48 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_UsersMeLimitsPutSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_UsersMeUsageMonthlyGetSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_UsersMeLimitsPutSecurityRequirement0,
+            {                s_UsersMeUsageMonthlyGetSecurityRequirement0,
             };
-        partial void PrepareUsersMeLimitsPutArguments(
+        partial void PrepareUsersMeUsageMonthlyGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Apify.UpdateLimitsRequest request);
-        partial void PrepareUsersMeLimitsPutRequest(
+            ref string? date);
+        partial void PrepareUsersMeUsageMonthlyGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Apify.UpdateLimitsRequest request);
-        partial void ProcessUsersMeLimitsPutResponse(
+            string? date);
+        partial void ProcessUsersMeUsageMonthlyGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessUsersMeLimitsPutResponseContent(
+        partial void ProcessUsersMeUsageMonthlyGetResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Update limits<br/>
-        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
-        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
+        /// Get monthly usage<br/>
+        /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
+        /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
+        /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
+        /// includes your use of Actors, compute, data transfer, and storage.<br/>
+        /// Using the `date` parameter will show your usage in the monthly usage cycle that<br/>
+        /// includes that date.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="date">
+        /// Example: 2020-06-14
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<string> UsersMeLimitsPutAsync(
-
-            global::Apify.UpdateLimitsRequest request,
+        public async global::System.Threading.Tasks.Task<global::Apify.MonthlyUsageResponse> UsersMeUsageMonthlyGetAsync(
+            string? date = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await UsersMeLimitsPutAsResponseAsync(
-
-                request: request,
+            var __response = await UsersMeUsageMonthlyGetAsResponseAsync(
+                date: date,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -66,33 +70,36 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update limits<br/>
-        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
-        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
+        /// Get monthly usage<br/>
+        /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
+        /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
+        /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
+        /// includes your use of Actors, compute, data transfer, and storage.<br/>
+        /// Using the `date` parameter will show your usage in the monthly usage cycle that<br/>
+        /// includes that date.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="date">
+        /// Example: 2020-06-14
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> UsersMeLimitsPutAsResponseAsync(
-
-            global::Apify.UpdateLimitsRequest request,
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>> UsersMeUsageMonthlyGetAsResponseAsync(
+            string? date = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareUsersMeLimitsPutArguments(
+            PrepareUsersMeUsageMonthlyGetArguments(
                 httpClient: HttpClient,
-                request: request);
+                date: ref date);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_UsersMeLimitsPutSecurityRequirements,
-                operationName: "UsersMeLimitsPutAsync");
+                securityRequirements: s_UsersMeUsageMonthlyGetSecurityRequirements,
+                operationName: "UsersMeUsageMonthlyGetAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -112,15 +119,18 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: "/v2/users/me/limits",
+                                path: "/v2/users/me/usage/monthly",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("date", date)
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Put,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -143,12 +153,6 @@ namespace Apify
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Apify.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -157,10 +161,10 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareUsersMeLimitsPutRequest(
+                PrepareUsersMeUsageMonthlyGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    date: date);
 
                 return __httpRequest;
             }
@@ -177,10 +181,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeLimitsPut",
-                                methodName: "UsersMeLimitsPutAsync",
-                                pathTemplate: "\"/v2/users/me/limits\"",
-                                httpMethod: "PUT",
+                                operationId: "UsersMeUsageMonthlyGet",
+                                methodName: "UsersMeUsageMonthlyGetAsync",
+                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -211,10 +215,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeLimitsPut",
-                                methodName: "UsersMeLimitsPutAsync",
-                                pathTemplate: "\"/v2/users/me/limits\"",
-                                httpMethod: "PUT",
+                                operationId: "UsersMeUsageMonthlyGet",
+                                methodName: "UsersMeUsageMonthlyGetAsync",
+                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -252,10 +256,10 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeLimitsPut",
-                                methodName: "UsersMeLimitsPutAsync",
-                                pathTemplate: "\"/v2/users/me/limits\"",
-                                httpMethod: "PUT",
+                                operationId: "UsersMeUsageMonthlyGet",
+                                methodName: "UsersMeUsageMonthlyGetAsync",
+                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -292,7 +296,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessUsersMeLimitsPutResponse(
+                ProcessUsersMeUsageMonthlyGetResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -300,10 +304,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeLimitsPut",
-                                methodName: "UsersMeLimitsPutAsync",
-                                pathTemplate: "\"/v2/users/me/limits\"",
-                                httpMethod: "PUT",
+                                operationId: "UsersMeUsageMonthlyGet",
+                                methodName: "UsersMeUsageMonthlyGetAsync",
+                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -322,10 +326,10 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "UsersMeLimitsPut",
-                                methodName: "UsersMeLimitsPutAsync",
-                                pathTemplate: "\"/v2/users/me/limits\"",
-                                httpMethod: "PUT",
+                                operationId: "UsersMeUsageMonthlyGet",
+                                methodName: "UsersMeUsageMonthlyGetAsync",
+                                pathTemplate: "\"/v2/users/me/usage/monthly\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -487,80 +491,6 @@ namespace Apify
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Payload too large - the request body exceeds the size limit.
-                            if ((int)__response.StatusCode == 413)
-                            {
-                                string? __content_413 = null;
-                                global::System.Exception? __exception_413 = null;
-                                global::Apify.ErrorResponse? __value_413 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_413 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_413 = global::Apify.ErrorResponse.FromJson(__content_413, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_413 = __ex;
-                                }
-
-
-                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_413 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_413,
-                                    responseBody: __content_413,
-                                    responseObject: __value_413,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
-                            // Unsupported media type - the Content-Encoding of the request is not supported.
-                            if ((int)__response.StatusCode == 415)
-                            {
-                                string? __content_415 = null;
-                                global::System.Exception? __exception_415 = null;
-                                global::Apify.ErrorResponse? __value_415 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_415 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_415 = global::Apify.ErrorResponse.FromJson(__content_415, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_415 = __ex;
-                                }
-
-
-                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_415 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_415,
-                                    responseBody: __content_415,
-                                    responseObject: __value_415,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
                             // Too many requests - rate limit exceeded.
                             if ((int)__response.StatusCode == 429)
                             {
@@ -611,7 +541,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessUsersMeLimitsPutResponseContent(
+                                ProcessUsersMeUsageMonthlyGetResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -620,11 +550,13 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return new global::Apify.AutoSDKHttpResponse<string>(
+                                    var __value = global::Apify.MonthlyUsageResponse.FromJson(__content, JsonSerializerContext) ??
+                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -644,17 +576,19 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    var __content = await __response.Content.ReadAsStringAsync(
+                                    using var __content = await __response.Content.ReadAsStreamAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return new global::Apify.AutoSDKHttpResponse<string>(
+                                    var __value = await global::Apify.MonthlyUsageResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.MonthlyUsageResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __content);
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -689,37 +623,6 @@ namespace Apify
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Update limits<br/>
-        /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
-        /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
-        /// </summary>
-        /// <param name="maxMonthlyUsageUsd">
-        /// If your platform usage in the billing period exceeds the prepaid usage, you will be charged extra. Setting this property you can update your hard limit on monthly platform usage to prevent accidental overage or to limit the extra charges.
-        /// </param>
-        /// <param name="dataRetentionDays">
-        /// Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/storage#data-retention).
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<string> UsersMeLimitsPutAsync(
-            double? maxMonthlyUsageUsd = default,
-            int? dataRetentionDays = default,
-            global::Apify.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Apify.UpdateLimitsRequest
-            {
-                MaxMonthlyUsageUsd = maxMonthlyUsageUsd,
-                DataRetentionDays = dataRetentionDays,
-            };
-
-            return await UsersMeLimitsPutAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
