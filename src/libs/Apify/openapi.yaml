@@ -18297,7 +18297,7 @@
       "memory": {
         "name": "memory",
         "in": "query",
-        "description": "Memory limit for the run, in megabytes. The amount of memory can be set to a power of 2 with a minimum of 128.\nBy default, the run uses the memory limit from its configuration.\n",
+        "description": "Memory limit for the run, in megabytes. You can set the amount of memory to a power of 2 with a minimum of 128.\nBy default, the run uses the memory limit from its configuration. Don't change this value unless the Actor's\ndocumentation recommends it or you're aware of the consequences.\n",
         "style": "form",
         "explode": true,
         "schema": {
