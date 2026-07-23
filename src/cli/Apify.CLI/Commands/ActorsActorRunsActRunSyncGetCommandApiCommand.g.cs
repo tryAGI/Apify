@@ -32,8 +32,9 @@ under this key, so if it doesn't exist the response contains no data.
     private static Option<double?> Memory { get; } = new(
         name: @"--memory")
     {
-        Description = @"Memory limit for the run, in megabytes. The amount of memory can be set to a power of 2 with a minimum of 128.
-By default, the run uses the memory limit from its configuration.
+        Description = @"Memory limit for the run, in megabytes. You can set the amount of memory to a power of 2 with a minimum of 128.
+By default, the run uses the memory limit from its configuration. Don't change this value unless the Actor's
+documentation recommends it or you're aware of the consequences.
 ",
     };
 
