@@ -40,7 +40,7 @@ Use the special value `default` to get the OpenAPI schema for the Actor's defaul
         var command = new Command(@"openapi-json-get", @"Get OpenAPI definition
 Get the OpenAPI definition for Actor builds. Two similar endpoints are available:
 
-- [First endpoint](/api/v2/act-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.
+- [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.
 - [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.
 
 Get the OpenAPI definition for a specific Actor build.
@@ -48,7 +48,7 @@ Authentication is based on the build's unique ID. No authentication token is req
 
 :::note
 
-You can also use the [`/api/v2/act-openapi-json-get`](/api/v2/act-openapi-json-get) endpoint to get the OpenAPI definition for a build.
+You can also use the [`/api/v2/actor-openapi-json-get`](/api/v2/actor-openapi-json-get) endpoint to get the OpenAPI definition for a build.
 
 :::
 ");

@@ -9,12 +9,12 @@ internal static class ActorsApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"actors", @"Actors endpoint commands.");
-                         command.Subcommands.Add(ActorsActDeleteCommandApiCommand.Create());
-                         command.Subcommands.Add(ActorsActGetCommandApiCommand.Create());
-                         command.Subcommands.Add(ActorsActPutCommandApiCommand.Create());
-                         command.Subcommands.Add(ActorsActValidateInputPostCommandApiCommand.Create());
-                         command.Subcommands.Add(ActorsActsGetCommandApiCommand.Create());
-                         command.Subcommands.Add(ActorsActsPostCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorPutCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorValidateInputPostCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorsPostCommandApiCommand.Create());
         return command;
     }
 }

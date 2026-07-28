@@ -9,7 +9,7 @@ internal static class LastActorRunSRebootApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"last-actor-run-s-reboot", @"Last Actor run's reboot endpoint commands.");
-                         command.Subcommands.Add(LastActorRunSRebootActRunsLastRebootPostCommandApiCommand.Create());
+                         command.Subcommands.Add(LastActorRunSRebootActorRunsLastRebootPostCommandApiCommand.Create());
         return command;
     }
 }

@@ -1280,7 +1280,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActsGetSortBy? Type313 { get; set; }
+        public global::Apify.ActorsGetSortBy? Type313 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1288,27 +1288,27 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActRunsPostForcePermissionLevel? Type315 { get; set; }
+        public global::Apify.ActorsRunsPostForcePermissionLevel? Type315 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActRunsLastDatasetItemsPostContentEncoding? Type316 { get; set; }
+        public global::Apify.ActorRunsLastDatasetItemsPostContentEncoding? Type316 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActRunsLastKeyValueStoreRecordPutContentEncoding? Type317 { get; set; }
+        public global::Apify.ActorRunsLastKeyValueStoreRecordPutContentEncoding? Type317 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActRunsLastKeyValueStoreRecordPostContentEncoding? Type318 { get; set; }
+        public global::Apify.ActorRunsLastKeyValueStoreRecordPostContentEncoding? Type318 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>? Type319 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>? Type319 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem? Type320 { get; set; }
+        public global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem? Type320 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1384,7 +1384,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActValidateInputPostResponse? Type339 { get; set; }
+        public global::Apify.ActorValidateInputPostResponse? Type339 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1609,7 +1609,7 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>? ListType42 { get; set; }
+        public global::System.Collections.Generic.List<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>? ListType42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
