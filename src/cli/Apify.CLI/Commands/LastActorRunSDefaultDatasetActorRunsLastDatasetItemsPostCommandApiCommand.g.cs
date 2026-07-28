@@ -1,0 +1,140 @@
+#nullable enable
+#pragma warning disable CS0618
+
+using System.CommandLine;
+
+namespace Apify.CLI.Commands;
+
+internal static partial class LastActorRunSDefaultDatasetActorRunsLastDatasetItemsPostCommandApiCommand
+{
+    private static Argument<string> ActorId { get; } = new(
+        name: @"actor-id")
+    {
+        Description = @"Actor ID or a tilde-separated owner's username and Actor name.",
+    };
+
+    private static Option<string?> Status { get; } = new(
+        name: @"--status")
+    {
+        Description = @"Filter for the run status.",
+    };
+
+    private static Option<global::Apify.RunOrigin?> Origin { get; } = new(
+        name: @"--origin")
+    {
+        Description = @"Filter for the run origin, i.e. the means by which the run was started.",
+    };
+
+    private static Option<global::Apify.ActorRunsLastDatasetItemsPostContentEncoding?> ContentEncoding { get; } = new(
+        name: @"--content-encoding")
+    {
+        Description = @"Compression encoding of the request body.",
+    };
+      private static Option<string?> Input { get; } = new(@"--input")
+      {
+          Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
+      };
+
+      private static Option<string?> RequestJson { get; } = new(@"--request-json")
+      {
+          Description = "Request body as JSON.",
+          Hidden = true,
+      };
+
+      private static Option<string?> RequestFile { get; } = new(@"--request-file")
+      {
+          Description = "Path to a JSON request file, or '-' for stdin.",
+          Hidden = true,
+      };
+
+                    private static string FormatResponse(ParseResult parseResult, string value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    {
+                        string? text = null;
+                        CustomizeResponseText(parseResult, value, ref text);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            return text;
+                        }
+
+                        var hints = new Dictionary<string, CliFormatHint>(StringComparer.OrdinalIgnoreCase)
+                        {
+                        };
+                        CustomizeResponseFormatHints(hints);
+                        return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
+                    }
+
+                    static partial void CustomizeResponseText(ParseResult parseResult, string value, ref string? text);
+                    static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
+
+
+    public static Command Create()
+    {
+        var command = new Command(@"actor-runs-last-dataset-items-post", @"Store items in last run's dataset
+Appends an item or an array of items to the end of the last Actor run's default dataset.
+
+This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the
+[Store items](/api/v2/dataset-items-post) endpoint.
+
+To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.
+
+Below is a list of supported `Content-Encoding` types.
+
+* Brotli: `Content-Encoding: br`
+* Gzip: `Content-Encoding: gzip`
+* Deflate: `Content-Encoding: deflate`
+");
+                        command.Arguments.Add(ActorId);
+                        command.Options.Add(Status);
+                        command.Options.Add(Origin);
+                        command.Options.Add(ContentEncoding);
+          command.Options.Add(Input);
+          command.Options.Add(RequestJson);
+          command.Options.Add(RequestFile);
+          command.Validators.Add(result =>
+          {
+              var hasInput = result.GetResult(Input) is not null;
+              var hasRequestJson = result.GetResult(RequestJson) is not null;
+              var hasRequestFile = result.GetResult(RequestFile) is not null;
+              var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
+              if (specifiedCount != 1)
+              {
+                  result.AddError(@"Specify exactly one of --input, --request-json, or --request-file.");
+              }
+          });
+
+        command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+            await CliRuntime.RunAsync(async () =>
+            {
+                        var actorId = parseResult.GetRequiredValue(ActorId);
+                        var status = parseResult.GetValue(Status);
+                        var origin = parseResult.GetValue(Origin);
+                        var contentEncoding = parseResult.GetValue(ContentEncoding);
+                        var request = await CliRuntime.ReadRequestAsync<global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>>(
+                            parseResult,
+                            Input,
+                            RequestJson,
+                            RequestFile,
+                            global::Apify.SourceGenerationContext.Default,
+                            cancellationToken).ConfigureAwait(false);
+                using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
+
+
+                                var response = await client.LastActorRunSDefaultDataset.ActorRunsLastDatasetItemsPostAsync(
+                                    actorId: actorId,
+                                    status: status,
+                                    origin: origin,
+                                    contentEncoding: contentEncoding,
+                                    request: request,
+                                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+
+                                await CliRuntime.WriteResponseAsync(
+                                    parseResult,
+                                    response,
+                                    global::Apify.SourceGenerationContext.Default,
+                                    FormatResponse,
+                                    cancellationToken).ConfigureAwait(false);
+            }, cancellationToken).ConfigureAwait(false));
+        return command;
+    }
+}

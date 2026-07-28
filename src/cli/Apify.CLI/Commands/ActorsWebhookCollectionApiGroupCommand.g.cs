@@ -9,7 +9,7 @@ internal static class ActorsWebhookCollectionApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"actors-webhook-collection", @"Actors/Webhook collection endpoint commands.");
-                         command.Subcommands.Add(ActorsWebhookCollectionActWebhooksGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsWebhookCollectionActorWebhooksGetCommandApiCommand.Create());
         return command;
     }
 }

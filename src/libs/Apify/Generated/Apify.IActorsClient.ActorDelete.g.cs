@@ -1,0 +1,36 @@
+#nullable enable
+
+namespace Apify
+{
+    public partial interface IActorsClient
+    {
+        /// <summary>
+        /// Delete Actor<br/>
+        /// Deletes an Actor with the specified ID.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<string> ActorDeleteAsync(
+            string actorId,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Delete Actor<br/>
+        /// Deletes an Actor with the specified ID.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: janedoe~my-actor
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActorDeleteAsResponseAsync(
+            string actorId,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

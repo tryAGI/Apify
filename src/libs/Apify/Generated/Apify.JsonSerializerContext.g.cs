@@ -73,29 +73,29 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.ScheduleActionDiscriminatorTypeNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActsGetSortByJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorsGetSortByJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActsGetSortByNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorsGetSortByNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsPostForcePermissionLevelJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorsRunsPostForcePermissionLevelJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsPostForcePermissionLevelNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorsRunsPostForcePermissionLevelNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastDatasetItemsPostContentEncodingJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastDatasetItemsPostContentEncodingJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastDatasetItemsPostContentEncodingNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastDatasetItemsPostContentEncodingNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastKeyValueStoreRecordPutContentEncodingJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastKeyValueStoreRecordPutContentEncodingJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastKeyValueStoreRecordPutContentEncodingNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastKeyValueStoreRecordPutContentEncodingNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastKeyValueStoreRecordPostContentEncodingJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastKeyValueStoreRecordPostContentEncodingJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastKeyValueStoreRecordPostContentEncodingNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastKeyValueStoreRecordPostContentEncodingNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastRequestQueueRequestsGetFilterItemJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastRequestQueueRequestsGetFilterItemJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActRunsLastRequestQueueRequestsGetFilterItemNullableJsonConverter),
+            typeof(global::Apify.JsonConverters.ActorRunsLastRequestQueueRequestsGetFilterItemNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.ActorTaskRunsLastDatasetItemsPostContentEncodingJsonConverter),
 
@@ -557,14 +557,14 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AllOf<global::Apify.CreateTaskRequest, object>), TypeInfoPropertyName = "AllOfCreateTaskRequestObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AllOf<global::Apify.UpdateRunRequest, object>), TypeInfoPropertyName = "AllOfUpdateRunRequestObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActsGetSortBy), TypeInfoPropertyName = "ActsGetSortBy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsGetSortBy), TypeInfoPropertyName = "ActorsGetSortBy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsPostForcePermissionLevel), TypeInfoPropertyName = "ActRunsPostForcePermissionLevel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsLastDatasetItemsPostContentEncoding), TypeInfoPropertyName = "ActRunsLastDatasetItemsPostContentEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsLastKeyValueStoreRecordPutContentEncoding), TypeInfoPropertyName = "ActRunsLastKeyValueStoreRecordPutContentEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsLastKeyValueStoreRecordPostContentEncoding), TypeInfoPropertyName = "ActRunsLastKeyValueStoreRecordPostContentEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem), TypeInfoPropertyName = "ActRunsLastRequestQueueRequestsGetFilterItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsRunsPostForcePermissionLevel), TypeInfoPropertyName = "ActorsRunsPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastDatasetItemsPostContentEncoding), TypeInfoPropertyName = "ActorRunsLastDatasetItemsPostContentEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastKeyValueStoreRecordPutContentEncoding), TypeInfoPropertyName = "ActorRunsLastKeyValueStoreRecordPutContentEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastKeyValueStoreRecordPostContentEncoding), TypeInfoPropertyName = "ActorRunsLastKeyValueStoreRecordPostContentEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem), TypeInfoPropertyName = "ActorRunsLastRequestQueueRequestsGetFilterItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsLastDatasetItemsPostContentEncoding), TypeInfoPropertyName = "ActorTaskRunsLastDatasetItemsPostContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding), TypeInfoPropertyName = "ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding), TypeInfoPropertyName = "ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding2")]
@@ -583,7 +583,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel), TypeInfoPropertyName = "StoreGetPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat), TypeInfoPropertyName = "StoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActValidateInputPostResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorValidateInputPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>), TypeInfoPropertyName = "AnyOfPutItemResponseErrorErrorResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskGetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskPutResponse))]
@@ -639,7 +639,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.PutItemsRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestBase>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestDraftDelete>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActRunsLastRequestQueueRequestsGetFilterItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunRequestQueueRequestsGetFilterItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestQueueRequestsGetFilterItem>))]
