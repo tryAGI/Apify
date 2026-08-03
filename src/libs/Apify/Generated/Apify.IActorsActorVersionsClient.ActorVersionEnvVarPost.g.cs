@@ -12,7 +12,7 @@ namespace Apify
         /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -40,7 +40,7 @@ namespace Apify
         /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -68,7 +68,7 @@ namespace Apify
         /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1

@@ -13,7 +13,7 @@ namespace Apify
         /// However, if you access the endpoint without a token, certain attributes (e.g., `usageUsd` and `usageTotalUsd`) will be hidden.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="waitForFinish">
         /// Example: 60
@@ -35,7 +35,7 @@ namespace Apify
         /// However, if you access the endpoint without a token, certain attributes (e.g., `usageUsd` and `usageTotalUsd`) will be hidden.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="waitForFinish">
         /// Example: 60

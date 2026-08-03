@@ -11,7 +11,7 @@ namespace Apify
         /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -44,7 +44,7 @@ namespace Apify
         /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED

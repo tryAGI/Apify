@@ -36,7 +36,7 @@
         "#/reference/actors/actor-object",
         "#tag/ActorsActor-object"
       ],
-      "description": "The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).\n\nFor API endpoints that require the `actorId` parameter to identify an Actor, you can provide either:\n- The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or\n- A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).\n"
+      "description": "The API endpoints in this section allow you to manage [Apify Actors](https://docs.apify.com/platform/actors).\n\n## Identify an Actor\n\nFor API endpoints that require the `actorId` parameter, provide one of the following:\n- The Actor ID. It's part of the Actor's URL in Apify Console: `https://console.apify.com/actors/<ACTOR_ID>`. For example, `reGe1ST3OBgYZSsZJ`.\n- The username of the Actor owner plus the Actor name, separated by a tilde (`~`). For example, `apify~instagram-scraper`.\n"
     },
     {
       "name": "Actors/Actor versions",
@@ -742,7 +742,7 @@
           "Actors"
         ],
         "summary": "Get Actor",
-        "description": "Gets an object that contains all the details about a specific Actor.",
+        "description": "Gets an object that contains all the details about the Actor with the specified ID.",
         "operationId": "actor_get",
         "parameters": [
           {
@@ -762,9 +762,9 @@
                   "data": {
                     "id": "zdc3Pyhyz3m8vjDeM",
                     "userId": "wRsJZtadYvn4mBZmm",
-                    "name": "MyActor",
+                    "name": "instagram-scraper",
                     "username": "jane35",
-                    "description": "My favourite Actor!",
+                    "description": "Extract data from Instagram.",
                     "isPublic": false,
                     "createdAt": "2019-07-08T11:27:57.401Z",
                     "modifiedAt": "2019-07-08T14:01:05.546Z",
@@ -824,7 +824,7 @@
                     },
                     "isDeprecated": false,
                     "deploymentKey": "ssh-rsa AAAA ...",
-                    "title": "My Actor",
+                    "title": "Instagram Scraper",
                     "taggedBuilds": {
                       "latest": {
                         "buildId": "z2EryhbfhgSyqj6Hn",
@@ -18176,12 +18176,12 @@
       "actorId": {
         "name": "actorId",
         "in": "path",
-        "description": "Actor ID or a tilde-separated owner's username and Actor name.",
+        "description": "Actor ID or the username of the Actor owner and the Actor name, separated by a tilde (`~`).",
         "required": true,
         "style": "simple",
         "schema": {
           "type": "string",
-          "example": "janedoe~my-actor"
+          "example": "compass~google-maps-extractor"
         }
       },
       "versionNumber": {
@@ -19184,107 +19184,124 @@
       "ActorStats": {
         "title": "ActorStats",
         "type": "object",
+        "description": "Usage statistics and Apify Store metrics for the Actor.",
         "properties": {
           "totalBuilds": {
             "type": "integer",
             "examples": [
               9
-            ]
+            ],
+            "description": "The total number of builds of the Actor."
           },
           "totalRuns": {
             "type": "integer",
             "examples": [
               16
-            ]
+            ],
+            "description": "The total number of runs of the Actor."
           },
           "totalUsers": {
             "type": "integer",
             "examples": [
               6
-            ]
+            ],
+            "description": "The total number of Actor users, including its owner."
           },
           "totalUsers7Days": {
             "type": "integer",
             "examples": [
               2
-            ]
+            ],
+            "description": "The number of active users of the Actor in the last 7 days."
           },
           "totalUsers30Days": {
             "type": "integer",
             "examples": [
               6
-            ]
+            ],
+            "description": "The number of active users of the Actor in the last 30 days."
           },
           "totalUsers90Days": {
             "type": "integer",
             "examples": [
               6
-            ]
+            ],
+            "description": "The number of active users of the Actor in the last 90 days."
           },
           "totalMetamorphs": {
             "type": "integer",
             "examples": [
               2
-            ]
+            ],
+            "description": "The total number of times a run of another Actor was [metamorphed](https://docs.apify.com/platform/actors/development/programming-interface/metamorph) into this Actor."
           },
           "lastRunStartedAt": {
             "type": "string",
             "format": "date-time",
             "examples": [
               "2019-07-08T14:01:05.546Z"
-            ]
+            ],
+            "description": "The date and time the most recent run of the Actor started."
           },
           "actorReviewCount": {
             "type": "integer",
             "examples": [
               69
-            ]
+            ],
+            "description": "The number of reviews the Actor has received in Apify Store."
           },
           "actorReviewRating": {
             "type": "number",
             "examples": [
               4.7
-            ]
+            ],
+            "description": "The average rating of the Actor in Apify Store."
           },
           "bookmarkCount": {
             "type": "integer",
             "examples": [
               1269
-            ]
+            ],
+            "description": "The number of users who bookmarked the Actor in Apify Store."
           },
           "publicActorRunStats30Days": {
             "type": "object",
-            "description": "Run status counts over the past 30 days.",
+            "description": "Run status counts from the last 30 days. Only for public Actors.\nExcludes runs started by the Actor's owner.\n",
             "properties": {
               "ABORTED": {
                 "type": "integer",
                 "examples": [
                   2542
-                ]
+                ],
+                "description": "The number of runs that were aborted."
               },
               "FAILED": {
                 "type": "integer",
                 "examples": [
                   1234
-                ]
+                ],
+                "description": "The number of runs that failed."
               },
               "SUCCEEDED": {
                 "type": "integer",
                 "examples": [
                   732805
-                ]
+                ],
+                "description": "The number of runs that succeeded."
               },
               "TIMED-OUT": {
                 "type": "integer",
                 "examples": [
                   12556
-                ]
+                ],
+                "description": "The number of runs that timed out."
               },
               "TOTAL": {
                 "type": "integer",
                 "examples": [
                   749137
-                ]
+                ],
+                "description": "The total number of runs."
               }
             }
           }
@@ -20653,6 +20670,22 @@
           }
         }
       },
+      "ActorNotice": {
+        "title": "ActorNotice",
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.",
+        "enum": [
+          "NONE",
+          "RESIDENTIAL_PROXY_REQUIRED",
+          "UNDER_MAINTENANCE"
+        ],
+        "examples": [
+          "UNDER_MAINTENANCE"
+        ]
+      },
       "Actor": {
         "title": "Actor",
         "required": [
@@ -20673,25 +20706,29 @@
             "type": "string",
             "examples": [
               "zdc3Pyhyz3m8vjDeM"
-            ]
+            ],
+            "description": "The ID of the Actor."
           },
           "userId": {
             "type": "string",
             "examples": [
               "wRsJZtadYvn4mBZmm"
-            ]
+            ],
+            "description": "The ID of the user who owns the Actor."
           },
           "name": {
             "type": "string",
             "examples": [
-              "MyActor"
-            ]
+              "google-search-extractor"
+            ],
+            "description": "The name of the Actor."
           },
           "username": {
             "type": "string",
             "examples": [
-              "jane35"
-            ]
+              "compass"
+            ],
+            "description": "The username of the Actor owner."
           },
           "description": {
             "type": [
@@ -20699,8 +20736,9 @@
               "null"
             ],
             "examples": [
-              "My favourite actor!"
-            ]
+              "Extract data from hundreds of places fast."
+            ],
+            "description": "Short description of the Actor, displayed in Apify Store and Console."
           },
           "restartOnError": {
             "type": "boolean",
@@ -20713,7 +20751,8 @@
             "type": "boolean",
             "examples": [
               false
-            ]
+            ],
+            "description": "Whether the Actor is available to users in Apify Store."
           },
           "actorPermissionLevel": {
             "$ref": "#/components/schemas/ActorPermissionLevel"
@@ -20723,14 +20762,16 @@
             "format": "date-time",
             "examples": [
               "2019-07-08T11:27:57.401Z"
-            ]
+            ],
+            "description": "The date and time the Actor was created. Follows the ISO 8601 format."
           },
           "modifiedAt": {
             "type": "string",
             "format": "date-time",
             "examples": [
               "2019-07-08T14:01:05.546Z"
-            ]
+            ],
+            "description": "The date and time the Actor was last modified. Follows the ISO 8601 format."
           },
           "stats": {
             "$ref": "#/components/schemas/ActorStats"
@@ -20740,7 +20781,7 @@
             "items": {
               "$ref": "#/components/schemas/Version"
             },
-            "description": ""
+            "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
           },
           "pricingInfos": {
             "type": "array",
@@ -20768,13 +20809,15 @@
             ],
             "examples": [
               false
-            ]
+            ],
+            "description": "Whether the Actor is deprecated."
           },
           "deploymentKey": {
             "type": "string",
             "examples": [
               "ssh-rsa AAAA ..."
-            ]
+            ],
+            "description": "The Actor's public SSH key, used as a deployment key for private Git repositories."
           },
           "title": {
             "type": [
@@ -20782,8 +20825,9 @@
               "null"
             ],
             "examples": [
-              "My Actor"
-            ]
+              "Google Search Extractor"
+            ],
+            "description": "Human-readable name of the Actor, displayed in Apify Store and Console."
           },
           "taggedBuilds": {
             "anyOf": [
@@ -20807,7 +20851,7 @@
           },
           "readmeSummary": {
             "type": "string",
-            "description": "A brief, LLM-generated readme summary"
+            "description": "An AI-generated Markdown summary of the Actor's README, optimized for search and AI agents. Contains an overview and a list of use cases. Generated only for public Actors."
           },
           "seoTitle": {
             "type": [
@@ -20816,7 +20860,8 @@
             ],
             "examples": [
               "Web Scraper"
-            ]
+            ],
+            "description": "Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console."
           },
           "seoDescription": {
             "type": [
@@ -20825,7 +20870,8 @@
             ],
             "examples": [
               "Crawls websites using Chrome and extracts data from pages using JavaScript."
-            ]
+            ],
+            "description": "Description of the Actor to display by search engines such as Google."
           },
           "pictureUrl": {
             "type": [
@@ -20834,7 +20880,8 @@
             ],
             "examples": [
               "https://apify-image-uploads-prod.s3.amazonaws.com/.../actor-picture.png"
-            ]
+            ],
+            "description": "URL of the Actor's icon, displayed on the Actor's page in Apify Store and Console."
           },
           "standbyUrl": {
             "type": [
@@ -20842,17 +20889,12 @@
               "null"
             ],
             "examples": [
-              "https://my-actor.apify.actor"
-            ]
+              "https://jane35--my-actor.apify.actor"
+            ],
+            "description": "URL for sending requests to the Actor in Standby mode.\n`null` if the Standby mode isn't enabled.\n"
           },
           "notice": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "NONE"
-            ]
+            "$ref": "#/components/schemas/ActorNotice"
           },
           "categories": {
             "type": "array",
@@ -20864,31 +20906,37 @@
                 "DEVELOPER_TOOLS",
                 "OPEN_SOURCE"
               ]
-            ]
+            ],
+            "description": "A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options."
           },
           "isCritical": {
             "type": "boolean",
             "examples": [
               false
-            ]
+            ],
+            "description": "Whether the Actor is maintained by Apify."
           },
           "isGeneric": {
             "type": "boolean",
             "examples": [
               false
-            ]
+            ],
+            "description": "Whether the Actor is intended for developers. Set by Apify."
           },
           "isSourceCodeHidden": {
             "type": "boolean",
+            "default": true,
             "examples": [
-              false
-            ]
+              true
+            ],
+            "description": "Whether the Actor's source files are hidden on its detail page."
           },
           "hasNoDataset": {
             "type": "boolean",
             "examples": [
               false
-            ]
+            ],
+            "description": "Whether the Actor stores results in a dataset. Set by Apify."
           }
         }
       },
@@ -27360,10 +27408,7 @@
             ]
           },
           "notice": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "$ref": "#/components/schemas/ActorNotice"
           },
           "pictureUrl": {
             "type": [

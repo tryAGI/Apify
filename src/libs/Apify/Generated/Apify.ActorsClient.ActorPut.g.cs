@@ -91,7 +91,7 @@ namespace Apify
         /// ```
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -160,7 +160,7 @@ namespace Apify
         /// ```
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -872,7 +872,7 @@ namespace Apify
         /// ```
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="name">
         /// The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account.

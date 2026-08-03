@@ -60,7 +60,7 @@ namespace Apify
         /// [Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -113,7 +113,7 @@ namespace Apify
         /// [Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED

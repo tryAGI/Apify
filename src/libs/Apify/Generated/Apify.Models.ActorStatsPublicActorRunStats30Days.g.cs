@@ -4,36 +4,37 @@
 namespace Apify
 {
     /// <summary>
-    /// Run status counts over the past 30 days.
+    /// Run status counts from the last 30 days. Only for public Actors.<br/>
+    /// Excludes runs started by the Actor's owner.
     /// </summary>
     public sealed partial class ActorStatsPublicActorRunStats30Days
     {
         /// <summary>
-        /// 
+        /// The number of runs that were aborted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ABORTED")]
         public int? Aborted { get; set; }
 
         /// <summary>
-        /// 
+        /// The number of runs that failed.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("FAILED")]
         public int? Failed { get; set; }
 
         /// <summary>
-        /// 
+        /// The number of runs that succeeded.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("SUCCEEDED")]
         public int? Succeeded { get; set; }
 
         /// <summary>
-        /// 
+        /// The number of runs that timed out.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("TIMED-OUT")]
         public int? TimedOut { get; set; }
 
         /// <summary>
-        /// 
+        /// The total number of runs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("TOTAL")]
         public int? Total { get; set; }
@@ -47,11 +48,21 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="ActorStatsPublicActorRunStats30Days" /> class.
         /// </summary>
-        /// <param name="aborted"></param>
-        /// <param name="failed"></param>
-        /// <param name="succeeded"></param>
-        /// <param name="timedOut"></param>
-        /// <param name="total"></param>
+        /// <param name="aborted">
+        /// The number of runs that were aborted.
+        /// </param>
+        /// <param name="failed">
+        /// The number of runs that failed.
+        /// </param>
+        /// <param name="succeeded">
+        /// The number of runs that succeeded.
+        /// </param>
+        /// <param name="timedOut">
+        /// The number of runs that timed out.
+        /// </param>
+        /// <param name="total">
+        /// The total number of runs.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

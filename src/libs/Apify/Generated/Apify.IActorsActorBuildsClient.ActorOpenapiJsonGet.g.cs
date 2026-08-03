@@ -17,7 +17,7 @@ namespace Apify
         /// :::
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="buildId">
         /// Example: soSkq9ekdmfOslopH
@@ -43,7 +43,7 @@ namespace Apify
         /// :::
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="buildId">
         /// Example: soSkq9ekdmfOslopH

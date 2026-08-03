@@ -11,7 +11,7 @@ namespace Apify
         /// [Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -45,7 +45,7 @@ namespace Apify
         /// [Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED

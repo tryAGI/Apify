@@ -33,6 +33,10 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.ActorPermissionLevelNullableJsonConverter),
 
+            typeof(global::Apify.JsonConverters.ActorNoticeJsonConverter),
+
+            typeof(global::Apify.JsonConverters.ActorNoticeNullableJsonConverter),
+
             typeof(global::Apify.JsonConverters.WebhookEventTypeJsonConverter),
 
             typeof(global::Apify.JsonConverters.WebhookEventTypeNullableJsonConverter),
@@ -300,6 +304,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaggedBuildInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaggedBuilds))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice), TypeInfoPropertyName = "ActorNotice2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Actor))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateOrUpdateVersionRequest))]

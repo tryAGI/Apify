@@ -65,7 +65,7 @@ namespace Apify
         /// * [Log](/api/v2/last-actor-runs-log)
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -114,7 +114,7 @@ namespace Apify
         /// * [Log](/api/v2/last-actor-runs-log)
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED

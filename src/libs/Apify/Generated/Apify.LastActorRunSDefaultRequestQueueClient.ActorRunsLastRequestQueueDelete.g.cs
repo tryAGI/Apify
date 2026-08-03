@@ -47,7 +47,7 @@ namespace Apify
         /// [Delete request queue](/api/v2/request-queue-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -78,7 +78,7 @@ namespace Apify
         /// [Delete request queue](/api/v2/request-queue-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
