@@ -11,35 +11,35 @@ namespace Apify
     public sealed partial class Actor
     {
         /// <summary>
-        /// 
+        /// The ID of the Actor.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Id { get; set; }
 
         /// <summary>
-        /// 
+        /// The ID of the user who owns the Actor.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string UserId { get; set; }
 
         /// <summary>
-        /// 
+        /// The name of the Actor.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// The username of the Actor owner.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Username { get; set; }
 
         /// <summary>
-        /// 
+        /// Short description of the Actor, displayed in Apify Store and Console.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
@@ -52,7 +52,7 @@ namespace Apify
         public bool? RestartOnError { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor is available to users in Apify Store.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isPublic")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -66,28 +66,28 @@ namespace Apify
         public global::Apify.ActorPermissionLevel? ActorPermissionLevel { get; set; }
 
         /// <summary>
-        /// 
+        /// The date and time the Actor was created. Follows the ISO 8601 format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdAt")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// 
+        /// The date and time the Actor was last modified. Follows the ISO 8601 format.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modifiedAt")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime ModifiedAt { get; set; }
 
         /// <summary>
-        /// 
+        /// Usage statistics and Apify Store metrics for the Actor.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.ActorStats Stats { get; set; }
 
         /// <summary>
-        /// 
+        /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -113,19 +113,19 @@ namespace Apify
         public global::Apify.ExampleRunInput? ExampleRunInput { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor is deprecated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isDeprecated")]
         public bool? IsDeprecated { get; set; }
 
         /// <summary>
-        /// 
+        /// The Actor's public SSH key, used as a deployment key for private Git repositories.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deploymentKey")]
         public string? DeploymentKey { get; set; }
 
         /// <summary>
-        /// 
+        /// Human-readable name of the Actor, displayed in Apify Store and Console.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("title")]
         public string? Title { get; set; }
@@ -143,67 +143,70 @@ namespace Apify
         public global::Apify.ActorStandby? ActorStandby { get; set; }
 
         /// <summary>
-        /// A brief, LLM-generated readme summary
+        /// An AI-generated Markdown summary of the Actor's README, optimized for search and AI agents. Contains an overview and a list of use cases. Generated only for public Actors.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("readmeSummary")]
         public string? ReadmeSummary { get; set; }
 
         /// <summary>
-        /// 
+        /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seoTitle")]
         public string? SeoTitle { get; set; }
 
         /// <summary>
-        /// 
+        /// Description of the Actor to display by search engines such as Google.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("seoDescription")]
         public string? SeoDescription { get; set; }
 
         /// <summary>
-        /// 
+        /// URL of the Actor's icon, displayed on the Actor's page in Apify Store and Console.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pictureUrl")]
         public string? PictureUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// URL for sending requests to the Actor in Standby mode.<br/>
+        /// `null` if the Standby mode isn't enabled.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("standbyUrl")]
         public string? StandbyUrl { get; set; }
 
         /// <summary>
-        /// 
+        /// A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("notice")]
-        public string? Notice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorNoticeJsonConverter))]
+        public global::Apify.ActorNotice? Notice { get; set; }
 
         /// <summary>
-        /// 
+        /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
         public global::System.Collections.Generic.IList<string>? Categories { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor is maintained by Apify.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isCritical")]
         public bool? IsCritical { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor is intended for developers. Set by Apify.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isGeneric")]
         public bool? IsGeneric { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor's source files are hidden on its detail page.<br/>
+        /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isSourceCodeHidden")]
         public bool? IsSourceCodeHidden { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the Actor stores results in a dataset. Set by Apify.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hasNoDataset")]
         public bool? HasNoDataset { get; set; }
@@ -217,42 +220,90 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="Actor" /> class.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="userId"></param>
-        /// <param name="name"></param>
-        /// <param name="username"></param>
-        /// <param name="isPublic"></param>
-        /// <param name="createdAt"></param>
-        /// <param name="modifiedAt"></param>
-        /// <param name="stats"></param>
-        /// <param name="versions"></param>
+        /// <param name="id">
+        /// The ID of the Actor.
+        /// </param>
+        /// <param name="userId">
+        /// The ID of the user who owns the Actor.
+        /// </param>
+        /// <param name="name">
+        /// The name of the Actor.
+        /// </param>
+        /// <param name="username">
+        /// The username of the Actor owner.
+        /// </param>
+        /// <param name="isPublic">
+        /// Whether the Actor is available to users in Apify Store.
+        /// </param>
+        /// <param name="createdAt">
+        /// The date and time the Actor was created. Follows the ISO 8601 format.
+        /// </param>
+        /// <param name="modifiedAt">
+        /// The date and time the Actor was last modified. Follows the ISO 8601 format.
+        /// </param>
+        /// <param name="stats">
+        /// Usage statistics and Apify Store metrics for the Actor.
+        /// </param>
+        /// <param name="versions">
+        /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
+        /// </param>
         /// <param name="defaultRunOptions">
         /// The default settings applied to an Actor run. Can be overridden elsewhere.
         /// </param>
-        /// <param name="description"></param>
+        /// <param name="description">
+        /// Short description of the Actor, displayed in Apify Store and Console.
+        /// </param>
         /// <param name="actorPermissionLevel">
         /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </param>
         /// <param name="pricingInfos"></param>
         /// <param name="exampleRunInput"></param>
-        /// <param name="isDeprecated"></param>
-        /// <param name="deploymentKey"></param>
-        /// <param name="title"></param>
+        /// <param name="isDeprecated">
+        /// Whether the Actor is deprecated.
+        /// </param>
+        /// <param name="deploymentKey">
+        /// The Actor's public SSH key, used as a deployment key for private Git repositories.
+        /// </param>
+        /// <param name="title">
+        /// Human-readable name of the Actor, displayed in Apify Store and Console.
+        /// </param>
         /// <param name="taggedBuilds"></param>
         /// <param name="actorStandby"></param>
         /// <param name="readmeSummary">
-        /// A brief, LLM-generated readme summary
+        /// An AI-generated Markdown summary of the Actor's README, optimized for search and AI agents. Contains an overview and a list of use cases. Generated only for public Actors.
         /// </param>
-        /// <param name="seoTitle"></param>
-        /// <param name="seoDescription"></param>
-        /// <param name="pictureUrl"></param>
-        /// <param name="standbyUrl"></param>
-        /// <param name="notice"></param>
-        /// <param name="categories"></param>
-        /// <param name="isCritical"></param>
-        /// <param name="isGeneric"></param>
-        /// <param name="isSourceCodeHidden"></param>
-        /// <param name="hasNoDataset"></param>
+        /// <param name="seoTitle">
+        /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console.
+        /// </param>
+        /// <param name="seoDescription">
+        /// Description of the Actor to display by search engines such as Google.
+        /// </param>
+        /// <param name="pictureUrl">
+        /// URL of the Actor's icon, displayed on the Actor's page in Apify Store and Console.
+        /// </param>
+        /// <param name="standbyUrl">
+        /// URL for sending requests to the Actor in Standby mode.<br/>
+        /// `null` if the Standby mode isn't enabled.
+        /// </param>
+        /// <param name="notice">
+        /// A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.
+        /// </param>
+        /// <param name="categories">
+        /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
+        /// </param>
+        /// <param name="isCritical">
+        /// Whether the Actor is maintained by Apify.
+        /// </param>
+        /// <param name="isGeneric">
+        /// Whether the Actor is intended for developers. Set by Apify.
+        /// </param>
+        /// <param name="isSourceCodeHidden">
+        /// Whether the Actor's source files are hidden on its detail page.<br/>
+        /// Default Value: true
+        /// </param>
+        /// <param name="hasNoDataset">
+        /// Whether the Actor stores results in a dataset. Set by Apify.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -281,7 +332,7 @@ namespace Apify
             string? seoDescription,
             string? pictureUrl,
             string? standbyUrl,
-            string? notice,
+            global::Apify.ActorNotice? notice,
             global::System.Collections.Generic.IList<string>? categories,
             bool? isCritical,
             bool? isGeneric,

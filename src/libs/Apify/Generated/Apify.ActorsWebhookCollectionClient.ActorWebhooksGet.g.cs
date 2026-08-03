@@ -57,7 +57,7 @@ namespace Apify
         /// order, to sort the records in descending order, use the `desc=1` parameter.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="offset">
         /// Example: 0
@@ -100,7 +100,7 @@ namespace Apify
         /// order, to sort the records in descending order, use the `desc=1` parameter.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="offset">
         /// Example: 0

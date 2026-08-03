@@ -66,7 +66,7 @@ namespace Apify
         /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -124,7 +124,7 @@ namespace Apify
         /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

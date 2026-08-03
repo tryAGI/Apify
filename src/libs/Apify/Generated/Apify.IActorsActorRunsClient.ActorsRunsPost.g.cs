@@ -24,7 +24,7 @@ namespace Apify
         /// API endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="timeout">
         /// Example: 60
@@ -92,7 +92,7 @@ namespace Apify
         /// API endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="timeout">
         /// Example: 60
@@ -160,7 +160,7 @@ namespace Apify
         /// API endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="timeout">
         /// Example: 60

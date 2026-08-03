@@ -48,7 +48,7 @@ namespace Apify
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -76,7 +76,7 @@ namespace Apify
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1

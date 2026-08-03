@@ -21,7 +21,7 @@ namespace Apify
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -58,7 +58,7 @@ namespace Apify
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -95,7 +95,7 @@ namespace Apify
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1

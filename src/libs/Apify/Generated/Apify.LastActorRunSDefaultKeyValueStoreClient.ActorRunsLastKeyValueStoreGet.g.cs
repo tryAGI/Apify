@@ -52,7 +52,7 @@ namespace Apify
         /// [Get store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED
@@ -85,7 +85,7 @@ namespace Apify
         /// [Get store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="status">
         /// Example: SUCCEEDED

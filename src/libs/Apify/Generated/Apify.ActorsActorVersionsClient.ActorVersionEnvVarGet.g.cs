@@ -52,7 +52,7 @@ namespace Apify
         /// If `isSecret` is set to `true`, then `value` will never be returned.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1
@@ -87,7 +87,7 @@ namespace Apify
         /// If `isSecret` is set to `true`, then `value` will never be returned.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="versionNumber">
         /// Example: 0.1

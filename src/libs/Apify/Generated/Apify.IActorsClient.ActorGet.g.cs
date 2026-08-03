@@ -6,10 +6,10 @@ namespace Apify
     {
         /// <summary>
         /// Get Actor<br/>
-        /// Gets an object that contains all the details about a specific Actor.
+        /// Gets an object that contains all the details about the Actor with the specified ID.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -20,10 +20,10 @@ namespace Apify
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Actor<br/>
-        /// Gets an object that contains all the details about a specific Actor.
+        /// Gets an object that contains all the details about the Actor with the specified ID.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

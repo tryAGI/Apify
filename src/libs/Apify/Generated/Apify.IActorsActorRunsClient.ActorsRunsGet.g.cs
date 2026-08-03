@@ -17,7 +17,7 @@ namespace Apify
         /// statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="offset">
         /// Example: 0
@@ -63,7 +63,7 @@ namespace Apify
         /// statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="offset">
         /// Example: 0

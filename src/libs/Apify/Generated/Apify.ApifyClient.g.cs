@@ -507,10 +507,11 @@ namespace Apify
         };
 
         /// <summary>
-        /// Actors. The API endpoints in this section allow you to manage Apify Actors. For more details about Actors, refer to the [Actor documentation](https://docs.apify.com/platform/actors).<br/>
-        /// For API endpoints that require the `actorId` parameter to identify an Actor, you can provide either:<br/>
-        /// - The Actor ID (e.g., `HG7ML7M8z78YcAPEB`), or<br/>
-        /// - A tilde-separated combination of the Actor owner's username and the Actor name (e.g., `janedoe~my-actor`).
+        /// Actors. The API endpoints in this section allow you to manage [Apify Actors](https://docs.apify.com/platform/actors).<br/>
+        /// ## Identify an Actor<br/>
+        /// For API endpoints that require the `actorId` parameter, provide one of the following:<br/>
+        /// - The Actor ID. It's part of the Actor's URL in Apify Console: `https://console.apify.com/actors/&lt;ACTOR_ID&gt;`. For example, `reGe1ST3OBgYZSsZJ`.<br/>
+        /// - The username of the Actor owner plus the Actor name, separated by a tilde (`~`). For example, `apify~instagram-scraper`.
         /// </summary>
         public ActorsClient Actors => new ActorsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

@@ -12,7 +12,7 @@ namespace Apify
         /// the `latest` build tag is used by default.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
         /// Example: latest
@@ -36,7 +36,7 @@ namespace Apify
         /// the `latest` build tag is used by default.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
         /// Example: latest
@@ -60,7 +60,7 @@ namespace Apify
         /// the `latest` build tag is used by default.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
         /// Example: latest

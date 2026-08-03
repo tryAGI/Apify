@@ -356,7 +356,7 @@
       "Order": 33,
       "Title": "Get Actor",
       "Slug": "actor-get",
-      "Description": "Gets an object that contains all the details about a specific Actor.",
+      "Description": "Gets an object that contains all the details about the Actor with the specified ID.",
       "Language": "http",
       "Code": "### Get Actor\n# @name actor_get\nGET {{host}}/v2/actors/{{actorId}}\nAuthorization: Bearer {{token}}\nAccept: application/json\n\n## Responses\n# 200\n# Content-Type: application/json\n# 400\n# Description: Bad request - invalid input parameters or request body.\n# Content-Type: application/json\n# 401\n# Description: Unauthorized - authentication required or invalid token.\n# Content-Type: application/json\n# 403\n# Description: Forbidden - insufficient permissions to perform this action.\n# Content-Type: application/json\n# 404\n# Description: Not found - the requested resource does not exist.\n# Content-Type: application/json\n# 405\n# Description: Method not allowed.\n# Content-Type: application/json\n# 429\n# Description: Too many requests - rate limit exceeded.\n# Content-Type: application/json",
       "Format": "http",

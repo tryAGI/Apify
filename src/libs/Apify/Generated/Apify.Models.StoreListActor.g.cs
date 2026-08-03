@@ -56,10 +56,11 @@ namespace Apify
         public global::System.Collections.Generic.IList<string>? Categories { get; set; }
 
         /// <summary>
-        /// 
+        /// A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("notice")]
-        public string? Notice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorNoticeJsonConverter))]
+        public global::Apify.ActorNotice? Notice { get; set; }
 
         /// <summary>
         /// 
@@ -80,7 +81,7 @@ namespace Apify
         public string? Url { get; set; }
 
         /// <summary>
-        /// 
+        /// Usage statistics and Apify Store metrics for the Actor.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -141,13 +142,17 @@ namespace Apify
         /// <param name="title"></param>
         /// <param name="name"></param>
         /// <param name="username"></param>
-        /// <param name="stats"></param>
+        /// <param name="stats">
+        /// Usage statistics and Apify Store metrics for the Actor.
+        /// </param>
         /// <param name="userFullName"></param>
         /// <param name="description"></param>
         /// <param name="categories">
         /// Example: [MARKETING, LEAD_GENERATION]
         /// </param>
-        /// <param name="notice"></param>
+        /// <param name="notice">
+        /// A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.
+        /// </param>
         /// <param name="pictureUrl"></param>
         /// <param name="userPictureUrl"></param>
         /// <param name="url"></param>
@@ -174,7 +179,7 @@ namespace Apify
             string? userFullName,
             string? description,
             global::System.Collections.Generic.IList<string>? categories,
-            string? notice,
+            global::Apify.ActorNotice? notice,
             string? pictureUrl,
             string? userPictureUrl,
             string? url,

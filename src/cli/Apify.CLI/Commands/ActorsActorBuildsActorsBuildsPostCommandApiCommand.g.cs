@@ -10,7 +10,7 @@ internal static partial class ActorsActorBuildsActorsBuildsPostCommandApiCommand
     private static Argument<string> ActorId { get; } = new(
         name: @"actor-id")
     {
-        Description = @"Actor ID or a tilde-separated owner's username and Actor name.",
+        Description = @"Actor ID or the username of the Actor owner and the Actor name, separated by a tilde (`~`).",
     };
 
     private static Option<string> Version { get; } = new(

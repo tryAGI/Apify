@@ -28,7 +28,7 @@ namespace Apify
         /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="outputRecordKey">
         /// Example: OUTPUT
@@ -96,7 +96,7 @@ namespace Apify
         /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="outputRecordKey">
         /// Example: OUTPUT
@@ -164,7 +164,7 @@ namespace Apify
         /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
-        /// Example: janedoe~my-actor
+        /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="outputRecordKey">
         /// Example: OUTPUT
