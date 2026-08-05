@@ -16,8 +16,8 @@ internal static partial class ActorsActorValidateInputPostCommandApiCommand
     private static Option<string?> Build { get; } = new(
         name: @"--build")
     {
-        Description = @"Optional tag or number of the Actor build to use for input schema validation.
-By default, the `latest` build tag is used.
+        Description = @"Actor build whose input schema is used for validation. Can be a build tag or build number.
+Defaults to the `latest` build tag.
 ",
     };
       private static Option<string?> Input { get; } = new(@"--input")
@@ -60,11 +60,11 @@ By default, the `latest` build tag is used.
     public static Command Create()
     {
         var command = new Command(@"validate-input-post", @"Validate Actor input
-Validates the provided input against the Actor's input schema for the specified build.
+Validates the JSON payload against the Actor's
+[input schema](https://docs.apify.com/actors/development/actor-definition/input-schema)
+defined in the specified build.
 
-The endpoint checks whether the JSON payload conforms to the input schema
-defined in the Actor's build. If no `build` query parameter is provided,
-the `latest` build tag is used by default.
+If the specified build has no input schema, any input is considered valid.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Build);
