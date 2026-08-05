@@ -9,7 +9,8 @@ namespace Apify
     public sealed partial class ActorValidateInputPostResponse
     {
         /// <summary>
-        /// Whether the input is valid according to the Actor's input schema.
+        /// Always `true`. The endpoint responds with `200` only when the input<br/>
+        /// passes validation. Invalid input returns a `400` error.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("valid")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +26,8 @@ namespace Apify
         /// Initializes a new instance of the <see cref="ActorValidateInputPostResponse" /> class.
         /// </summary>
         /// <param name="valid">
-        /// Whether the input is valid according to the Actor's input schema.
+        /// Always `true`. The endpoint responds with `200` only when the input<br/>
+        /// passes validation. Invalid input returns a `400` error.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -47,16 +47,16 @@ namespace Apify
 
         /// <summary>
         /// Validate Actor input<br/>
-        /// Validates the provided input against the Actor's input schema for the specified build.<br/>
-        /// The endpoint checks whether the JSON payload conforms to the input schema<br/>
-        /// defined in the Actor's build. If no `build` query parameter is provided,<br/>
-        /// the `latest` build tag is used by default.
+        /// Validates the JSON payload against the Actor's<br/>
+        /// [input schema](https://docs.apify.com/actors/development/actor-definition/input-schema)<br/>
+        /// defined in the specified build.<br/>
+        /// If the specified build has no input schema, any input is considered valid.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
-        /// Example: latest
+        /// Example: 0.1.234
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -83,16 +83,16 @@ namespace Apify
         }
         /// <summary>
         /// Validate Actor input<br/>
-        /// Validates the provided input against the Actor's input schema for the specified build.<br/>
-        /// The endpoint checks whether the JSON payload conforms to the input schema<br/>
-        /// defined in the Actor's build. If no `build` query parameter is provided,<br/>
-        /// the `latest` build tag is used by default.
+        /// Validates the JSON payload against the Actor's<br/>
+        /// [input schema](https://docs.apify.com/actors/development/actor-definition/input-schema)<br/>
+        /// defined in the specified build.<br/>
+        /// If the specified build has no input schema, any input is considered valid.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
-        /// Example: latest
+        /// Example: 0.1.234
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -766,16 +766,16 @@ namespace Apify
         }
         /// <summary>
         /// Validate Actor input<br/>
-        /// Validates the provided input against the Actor's input schema for the specified build.<br/>
-        /// The endpoint checks whether the JSON payload conforms to the input schema<br/>
-        /// defined in the Actor's build. If no `build` query parameter is provided,<br/>
-        /// the `latest` build tag is used by default.
+        /// Validates the JSON payload against the Actor's<br/>
+        /// [input schema](https://docs.apify.com/actors/development/actor-definition/input-schema)<br/>
+        /// defined in the specified build.<br/>
+        /// If the specified build has no input schema, any input is considered valid.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
         /// </param>
         /// <param name="build">
-        /// Example: latest
+        /// Example: 0.1.234
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
