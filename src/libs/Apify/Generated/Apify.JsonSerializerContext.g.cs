@@ -447,6 +447,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfTasksResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskPublicConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateTaskRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Task))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskResponse))]
