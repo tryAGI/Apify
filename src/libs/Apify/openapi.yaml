@@ -6658,7 +6658,7 @@
           "Actor tasks"
         ],
         "summary": "Update task",
-        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
+        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe `publicConfig` field carries the display configuration of the task's public\nlanding page, and `isPublic` publishes or unpublishes the task itself. Both require\nwrite permission to the task's Actor.\n\nTo publish a task, its Actor must be public, `publicConfig.inputSchemaFields` and\n`publicConfig.datasetView` must be set, and the Actor must have fewer than 50 published\ntasks. If the task isn't ready to be published, the whole update fails and none of it\nis applied.\n\nPublishing lists the task among the Actor's examples and makes its input public, so anyone\ncan view and copy it. The landing page itself is shown only while `publicConfig` still\nvalidates against the Actor's current build, so a new build can stop the page from being\noffered while the task stays published and copyable.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
         "operationId": "actorTask_put",
         "parameters": [
           {
@@ -25356,6 +25356,68 @@
           "maxRequestsPerCrawl": 100
         }
       },
+      "TaskPublicConfig": {
+        "title": "TaskPublicConfig",
+        "type": "object",
+        "description": "Public-facing configuration of a published task, used by the task's public landing page.\nThe task's publication state is determined by `publishedAt` - a task is published when\n`publishedAt` is set and unpublished when it is `null`.\n",
+        "properties": {
+          "publishedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "readOnly": true,
+            "description": "Time when the task was published, or `null` if the task isn't published.\nThis field is server-controlled. To publish or unpublish a task, use the\n[Update task](/api/v2/actor-task-put) endpoint and set `isPublic`.\n",
+            "examples": [
+              "2025-06-16T09:20:45.777Z"
+            ]
+          },
+          "seoTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 60,
+            "description": "Name of the Actor task to display by search engines such as Google. Defaults to the task\ntitle. At most 60 characters.\n",
+            "examples": [
+              "Scrape data from a website"
+            ]
+          },
+          "seoDescription": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 160,
+            "description": "Description of the Actor task to display by search engines such as Google. Defaults to the\ntask description. At most 160 characters.\n"
+          },
+          "inputSchemaFields": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Names of the task input fields displayed on the public task page.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "datasetName": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Name of the dataset from the Actor's dataset schema whose results are displayed. When\n`null`, the Actor's default dataset is used. That is, the only dataset the Actor declares,\nor the one named `default` when it declares several.\n"
+          },
+          "datasetView": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Key of the dataset view from the Actor's dataset schema used to display results. Must be\none of the views declared on the resolved dataset. You can't publish a task without it.\n"
+          }
+        }
+      },
       "CreateTaskRequest": {
         "title": "CreateTaskRequest",
         "required": [
@@ -25410,6 +25472,10 @@
                 "type": "null"
               }
             ]
+          },
+          "publicConfig": {
+            "description": "Configuration that controls how the published task appears on its public landing page.\nEditing this object requires write permission to the Actor that the task belongs to.\n",
+            "$ref": "#/components/schemas/TaskPublicConfig"
           }
         }
       },
@@ -25531,6 +25597,23 @@
               "null"
             ],
             "format": "uri"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Whether the task is published. Based on the `publicConfig.publishedAt` field.\n",
+            "examples": [
+              false
+            ]
+          },
+          "publicConfig": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TaskPublicConfig"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         }
       },
@@ -25614,6 +25697,17 @@
               {
                 "type": "null"
               }
+            ]
+          },
+          "publicConfig": {
+            "description": "Configuration that controls how the published task appears on its public landing page.\nEditing this object requires write permission to the Actor that the task belongs to.\n\nThe fields you send are merged into the stored configuration, so you only need to include\nthe ones you're changing. To clear a field, set it to `null`. Sending `publicConfig: null`\nis rejected, so the object as a whole can't be cleared.\n",
+            "$ref": "#/components/schemas/TaskPublicConfig"
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Set to `true` to publish the task on its public landing page, or `false` to unpublish it.\nSending the value the task already has does nothing.\n",
+            "examples": [
+              true
             ]
           }
         }

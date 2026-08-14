@@ -36,6 +36,24 @@ internal static partial class ActorTasksActorTaskPutCommandApiCommand
     {
         Description = @"",
     };
+
+    private static Option<global::Apify.TaskPublicConfig?> PublicConfig { get; } = new(
+        name: @"--public-config")
+    {
+        Description = @"Configuration that controls how the published task appears on its public landing page.
+Editing this object requires write permission to the Actor that the task belongs to.
+
+The fields you send are merged into the stored configuration, so you only need to include
+the ones you're changing. To clear a field, set it to `null`. Sending `publicConfig: null`
+is rejected, so the object as a whole can't be cleared.
+",
+    };
+
+    private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--is-public",
+        description: @"Set to `true` to publish the task on its public landing page, or `false` to unpublish it.
+Sending the value the task already has does nothing.
+");
     private static readonly ActorStandbyOptionSet ActorStandbyOptions = ActorStandbyOptionSet.Create(@"actor-standby");
       private static Option<string?> RequestInput { get; } = new(@"--request-input")
       {
@@ -82,6 +100,20 @@ in the POST payload.
 
 If the object does not define a specific property, its value is not updated.
 
+The `publicConfig` field carries the display configuration of the task's public
+landing page, and `isPublic` publishes or unpublishes the task itself. Both require
+write permission to the task's Actor.
+
+To publish a task, its Actor must be public, `publicConfig.inputSchemaFields` and
+`publicConfig.datasetView` must be set, and the Actor must have fewer than 50 published
+tasks. If the task isn't ready to be published, the whole update fails and none of it
+is applied.
+
+Publishing lists the task among the Actor's examples and makes its input public, so anyone
+can view and copy it. The landing page itself is shown only while `publicConfig` still
+validates against the Actor's current build, so a new build can stop the page from being
+offered while the task stays published and copyable.
+
 The response is the full task object as returned by the
 [Get task](/api/v2/actor-task-get) endpoint.
 
@@ -95,7 +127,9 @@ request's `Authorization` header, rather than the URL.
                         command.Options.Add(NameOption);
                         command.Options.Add(OptionsOption);
                         command.Options.Add(InputOption);
-                        command.Options.Add(Title);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
+                        command.Options.Add(Title);
+                        command.Options.Add(PublicConfig);
+                        command.Options.Add(IsPublic);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
                         command.Options.Add(ActorStandbyOptions.DesiredRequestsPerActorRun);
                         command.Options.Add(ActorStandbyOptions.MaxRequestsPerActorRun);
                         command.Options.Add(ActorStandbyOptions.IdleTimeoutSecs);
@@ -133,6 +167,8 @@ request's `Authorization` header, rather than the URL.
                         var options = CliRuntime.WasSpecified(parseResult, OptionsOption) ? parseResult.GetValue(OptionsOption) : (__requestBase is { } __OptionsBaseValue ? __OptionsBaseValue.Options : default);
                         var input = CliRuntime.WasSpecified(parseResult, InputOption) ? parseResult.GetValue(InputOption) : (__requestBase is { } __InputBaseValue ? __InputBaseValue.Input : default);
                         var title = CliRuntime.WasSpecified(parseResult, Title) ? parseResult.GetValue(Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
+                        var publicConfig = CliRuntime.WasSpecified(parseResult, PublicConfig) ? parseResult.GetValue(PublicConfig) : (__requestBase is { } __PublicConfigBaseValue ? __PublicConfigBaseValue.PublicConfig : default);
+                        var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
 
                         var __ActorStandbyBase = __requestBase is { } __ActorStandbyBaseValue ? __ActorStandbyBaseValue.ActorStandby : default;                        var actorStandbyIsEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsEnabled) : (__ActorStandbyBase is { } __ActorStandbyisEnabledBaseValue ? __ActorStandbyisEnabledBaseValue.IsEnabled : default);
                         var actorStandbyDesiredRequestsPerActorRun = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) ? parseResult.GetValue(ActorStandbyOptions.DesiredRequestsPerActorRun) : (__ActorStandbyBase is { } __ActorStandbydesiredRequestsPerActorRunBaseValue ? __ActorStandbydesiredRequestsPerActorRunBaseValue.DesiredRequestsPerActorRun : default);
@@ -167,6 +203,8 @@ request's `Authorization` header, rather than the URL.
                                     options: options,
                                     input: input,
                                     title: title,
+                                    publicConfig: publicConfig,
+                                    isPublic: isPublic,
                                     actorStandby: actorStandby,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

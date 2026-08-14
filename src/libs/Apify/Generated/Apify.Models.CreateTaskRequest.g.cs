@@ -46,6 +46,13 @@ namespace Apify
         public global::Apify.ActorStandby? ActorStandby { get; set; }
 
         /// <summary>
+        /// Configuration that controls how the published task appears on its public landing page.<br/>
+        /// Editing this object requires write permission to the Actor that the task belongs to.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("publicConfig")]
+        public global::Apify.TaskPublicConfig? PublicConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -60,6 +67,10 @@ namespace Apify
         /// <param name="input"></param>
         /// <param name="title"></param>
         /// <param name="actorStandby"></param>
+        /// <param name="publicConfig">
+        /// Configuration that controls how the published task appears on its public landing page.<br/>
+        /// Editing this object requires write permission to the Actor that the task belongs to.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -69,7 +80,8 @@ namespace Apify
             global::Apify.TaskOptions? options,
             global::Apify.TaskInput? input,
             string? title,
-            global::Apify.ActorStandby? actorStandby)
+            global::Apify.ActorStandby? actorStandby,
+            global::Apify.TaskPublicConfig? publicConfig)
         {
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
             this.Name = name;
@@ -77,6 +89,7 @@ namespace Apify
             this.Input = input;
             this.Title = title;
             this.ActorStandby = actorStandby;
+            this.PublicConfig = publicConfig;
         }
 
         /// <summary>

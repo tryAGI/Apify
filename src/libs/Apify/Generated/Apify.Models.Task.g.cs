@@ -99,6 +99,18 @@ namespace Apify
         public string? StandbyUrl { get; set; }
 
         /// <summary>
+        /// Whether the task is published. Based on the `publicConfig.publishedAt` field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("publicConfig")]
+        public global::Apify.TaskPublicConfig? PublicConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -121,6 +133,10 @@ namespace Apify
         /// <param name="title"></param>
         /// <param name="actorStandby"></param>
         /// <param name="standbyUrl"></param>
+        /// <param name="isPublic">
+        /// Whether the task is published. Based on the `publicConfig.publishedAt` field.
+        /// </param>
+        /// <param name="publicConfig"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -138,7 +154,9 @@ namespace Apify
             global::Apify.TaskInput? input,
             string? title,
             global::Apify.ActorStandby? actorStandby,
-            string? standbyUrl)
+            string? standbyUrl,
+            bool? isPublic,
+            global::Apify.TaskPublicConfig? publicConfig)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
@@ -154,6 +172,8 @@ namespace Apify
             this.Title = title;
             this.ActorStandby = actorStandby;
             this.StandbyUrl = standbyUrl;
+            this.IsPublic = isPublic;
+            this.PublicConfig = publicConfig;
         }
 
         /// <summary>
