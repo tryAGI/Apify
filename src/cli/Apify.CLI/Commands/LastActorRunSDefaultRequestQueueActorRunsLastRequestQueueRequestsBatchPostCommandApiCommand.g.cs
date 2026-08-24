@@ -118,7 +118,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                         var origin = parseResult.GetValue(Origin);
                         var clientKey = parseResult.GetValue(ClientKey);
                         var forefront = parseResult.GetValue(Forefront);
-                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestBase>>(
+                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestWithoutId>>(
                             parseResult,
                             Input,
                             RequestJson,

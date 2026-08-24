@@ -179,6 +179,8 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.RequestJsonConverter),
 
+            typeof(global::Apify.JsonConverters.RequestWithoutIdJsonConverter),
+
             typeof(global::Apify.JsonConverters.RequestDraftDeleteJsonConverter),
 
             typeof(global::Apify.JsonConverters.DeletedRequestJsonConverter),
@@ -408,6 +410,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequests))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Request>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequestsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestWithoutId), TypeInfoPropertyName = "RequestWithoutId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestRegistration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AddRequestResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AddedRequest))]
@@ -559,7 +562,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>), TypeInfoPropertyName = "OneOfPutItemsRequestIListPutItemsRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AllOf<global::Apify.UpdateRequestQueueRequest, object>), TypeInfoPropertyName = "AllOfUpdateRequestQueueRequestObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestBase>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestWithoutId>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AllOf<global::Apify.CreateTaskRequest, object>), TypeInfoPropertyName = "AllOfCreateTaskRequestObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AllOf<global::Apify.UpdateRunRequest, object>), TypeInfoPropertyName = "AllOfUpdateRunRequestObject2")]
@@ -643,7 +646,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.List<global::Apify.PutItemsRequest>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.PutItemsRequest>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestBase>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestWithoutId>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestDraftDelete>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem>))]

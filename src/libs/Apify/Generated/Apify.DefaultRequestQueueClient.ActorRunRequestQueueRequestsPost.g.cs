@@ -30,14 +30,14 @@ namespace Apify
             ref string runId,
             ref string? clientKey,
             ref string? forefront,
-            global::Apify.RequestBase request);
+            global::Apify.RequestWithoutId request);
         partial void PrepareActorRunRequestQueueRequestsPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string runId,
             string? clientKey,
             string? forefront,
-            global::Apify.RequestBase request);
+            global::Apify.RequestWithoutId request);
         partial void ProcessActorRunRequestQueueRequestsPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -69,7 +69,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> ActorRunRequestQueueRequestsPostAsync(
             string runId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -109,14 +109,12 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.AddRequestResponse>> ActorRunRequestQueueRequestsPostAsResponseAsync(
             string runId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareActorRunRequestQueueRequestsPostArguments(
@@ -828,10 +826,10 @@ namespace Apify
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> ActorRunRequestQueueRequestsPostAsync(
             string runId,
+            string uniqueKey,
+            string url,
             string? clientKey = default,
             string? forefront = default,
-            string? uniqueKey = default,
-            string? url = default,
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,
@@ -844,8 +842,9 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.RequestBase
-            {
+            var __request = new global::Apify.RequestWithoutId(
+                new global::Apify.RequestBase
+                {
                 UniqueKey = uniqueKey,
                 Url = url,
                 Method = method,
@@ -857,7 +856,7 @@ namespace Apify
                 NoRetry = noRetry,
                 ErrorMessages = errorMessages,
                 HandledAt = handledAt,
-            };
+                });
 
             return await ActorRunRequestQueueRequestsPostAsync(
                 runId: runId,

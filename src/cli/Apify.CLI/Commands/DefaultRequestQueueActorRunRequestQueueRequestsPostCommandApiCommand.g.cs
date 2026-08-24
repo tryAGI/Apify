@@ -34,6 +34,44 @@ end. Default value is `false` (end of queue).
 ",
     };
 
+    private static Option<string> UniqueKey { get; } = new(
+        name: @"--unique-key")
+    {
+        Description = @"A unique key used for request de-duplication. Requests with the same unique key are considered identical.",
+        Required = true,
+    };
+
+    private static Option<string> Url { get; } = new(
+        name: @"--url")
+    {
+        Description = @"The URL of the request.",
+        Required = true,
+    };
+
+    private static Option<global::Apify.HttpMethod?> Method { get; } = new(
+        name: @"--method")
+    {
+        Description = @"",
+    };
+
+    private static Option<int?> RetryCount { get; } = new(
+        name: @"--retry-count")
+    {
+        Description = @"The number of times this request has been retried.",
+    };
+
+    private static Option<string?> LoadedUrl { get; } = new(
+        name: @"--loaded-url")
+    {
+        Description = @"The final URL that was loaded, after redirects (if any).",
+    };
+
+    private static Option<string?> Payload { get; } = new(
+        name: @"--payload")
+    {
+        Description = @"The request payload, typically used with POST or PUT requests.",
+    };
+
     private static Option<object?> Headers { get; } = new(
         name: @"--headers")
     {
@@ -45,23 +83,22 @@ end. Default value is `false` (end of queue).
     {
         Description = @"Custom user data attached to the request. Can contain arbitrary fields.",
     };
-    private static readonly RequestBaseOptionSet RequestBaseOptionSetOptions = RequestBaseOptionSet.Create();
-      private static Option<string?> Input { get; } = new(@"--input")
-      {
-          Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
-      };
 
-      private static Option<string?> RequestJson { get; } = new(@"--request-json")
-      {
-          Description = "Request body as JSON.",
-          Hidden = true,
-      };
+    private static Option<bool?> NoRetry { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--no-retry",
+        description: @"Indicates whether the request should not be retried if processing fails.");
 
-      private static Option<string?> RequestFile { get; } = new(@"--request-file")
-      {
-          Description = "Path to a JSON request file, or '-' for stdin.",
-          Hidden = true,
-      };
+    private static Option<global::System.Collections.Generic.IList<string>?> ErrorMessages { get; } = new(
+        name: @"--error-messages")
+    {
+        Description = @"Error messages recorded from failed processing attempts.",
+    };
+
+    private static Option<global::System.DateTime?> HandledAt { get; } = new(
+        name: @"--handled-at")
+    {
+        Description = @"The timestamp when the request was marked as handled, if applicable.",
+    };
 
                     private static string FormatResponse(ParseResult parseResult, global::Apify.AddRequestResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
@@ -94,54 +131,36 @@ This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and th
                         command.Arguments.Add(RunId);
                         command.Options.Add(ClientKey);
                         command.Options.Add(Forefront);
+                        command.Options.Add(UniqueKey);
+                        command.Options.Add(Url);
+                        command.Options.Add(Method);
+                        command.Options.Add(RetryCount);
+                        command.Options.Add(LoadedUrl);
+                        command.Options.Add(Payload);
                         command.Options.Add(Headers);
-                        command.Options.Add(UserData);                        command.Options.Add(RequestBaseOptionSetOptions.UniqueKey);
-                        command.Options.Add(RequestBaseOptionSetOptions.Url);
-                        command.Options.Add(RequestBaseOptionSetOptions.Method);
-                        command.Options.Add(RequestBaseOptionSetOptions.RetryCount);
-                        command.Options.Add(RequestBaseOptionSetOptions.LoadedUrl);
-                        command.Options.Add(RequestBaseOptionSetOptions.Payload);
-                        command.Options.Add(RequestBaseOptionSetOptions.NoRetry);
-                        command.Options.Add(RequestBaseOptionSetOptions.ErrorMessages);
-                        command.Options.Add(RequestBaseOptionSetOptions.HandledAt);
-          command.Options.Add(Input);
-          command.Options.Add(RequestJson);
-          command.Options.Add(RequestFile);
-          command.Validators.Add(result =>
-          {
-              var hasInput = result.GetResult(Input) is not null;
-              var hasRequestJson = result.GetResult(RequestJson) is not null;
-              var hasRequestFile = result.GetResult(RequestFile) is not null;
-              var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
-              if (specifiedCount > 1)
-              {
-                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
-              }
-          });
+                        command.Options.Add(UserData);
+                        command.Options.Add(NoRetry);
+                        command.Options.Add(ErrorMessages);
+                        command.Options.Add(HandledAt);
+
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.RequestBase>(
-                            parseResult,
-                            Input,
-                            RequestJson,
-                            RequestFile,
-                            global::Apify.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);
                         var runId = parseResult.GetRequiredValue(RunId);
                         var clientKey = parseResult.GetValue(ClientKey);
                         var forefront = parseResult.GetValue(Forefront);
-                        var headers = CliRuntime.WasSpecified(parseResult, Headers) ? parseResult.GetValue(Headers) : (__requestBase is { } __HeadersBaseValue ? __HeadersBaseValue.Headers : default);
-                        var userData = CliRuntime.WasSpecified(parseResult, UserData) ? parseResult.GetValue(UserData) : (__requestBase is { } __UserDataBaseValue ? __UserDataBaseValue.UserData : default);                        var uniqueKey = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.UniqueKey) ? parseResult.GetValue(RequestBaseOptionSetOptions.UniqueKey) : (__requestBase is { } __UniqueKeyBaseValue ? __UniqueKeyBaseValue.UniqueKey : default);
-                        var url = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.Url) ? parseResult.GetValue(RequestBaseOptionSetOptions.Url) : (__requestBase is { } __UrlBaseValue ? __UrlBaseValue.Url : default);
-                        var method = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.Method) ? parseResult.GetValue(RequestBaseOptionSetOptions.Method) : (__requestBase is { } __MethodBaseValue ? __MethodBaseValue.Method : default);
-                        var retryCount = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.RetryCount) ? parseResult.GetValue(RequestBaseOptionSetOptions.RetryCount) : (__requestBase is { } __RetryCountBaseValue ? __RetryCountBaseValue.RetryCount : default);
-                        var loadedUrl = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.LoadedUrl) ? parseResult.GetValue(RequestBaseOptionSetOptions.LoadedUrl) : (__requestBase is { } __LoadedUrlBaseValue ? __LoadedUrlBaseValue.LoadedUrl : default);
-                        var payload = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.Payload) ? parseResult.GetValue(RequestBaseOptionSetOptions.Payload) : (__requestBase is { } __PayloadBaseValue ? __PayloadBaseValue.Payload : default);
-                        var noRetry = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.NoRetry) ? parseResult.GetValue(RequestBaseOptionSetOptions.NoRetry) : (__requestBase is { } __NoRetryBaseValue ? __NoRetryBaseValue.NoRetry : default);
-                        var errorMessages = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.ErrorMessages) ? parseResult.GetValue(RequestBaseOptionSetOptions.ErrorMessages) : (__requestBase is { } __ErrorMessagesBaseValue ? __ErrorMessagesBaseValue.ErrorMessages : default);
-                        var handledAt = CliRuntime.WasSpecified(parseResult, RequestBaseOptionSetOptions.HandledAt) ? parseResult.GetValue(RequestBaseOptionSetOptions.HandledAt) : (__requestBase is { } __HandledAtBaseValue ? __HandledAtBaseValue.HandledAt : default);
+                        var uniqueKey = parseResult.GetRequiredValue(UniqueKey);
+                        var url = parseResult.GetRequiredValue(Url);
+                        var method = parseResult.GetValue(Method);
+                        var retryCount = parseResult.GetValue(RetryCount);
+                        var loadedUrl = parseResult.GetValue(LoadedUrl);
+                        var payload = parseResult.GetValue(Payload);
+                        var headers = parseResult.GetValue(Headers);
+                        var userData = parseResult.GetValue(UserData);
+                        var noRetry = parseResult.GetValue(NoRetry);
+                        var errorMessages = parseResult.GetValue(ErrorMessages);
+                        var handledAt = parseResult.GetValue(HandledAt);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -149,14 +168,14 @@ This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and th
                                     runId: runId,
                                     clientKey: clientKey,
                                     forefront: forefront,
-                                    headers: headers,
-                                    userData: userData,
                                     uniqueKey: uniqueKey,
                                     url: url,
                                     method: method,
                                     retryCount: retryCount,
                                     loadedUrl: loadedUrl,
                                     payload: payload,
+                                    headers: headers,
+                                    userData: userData,
                                     noRetry: noRetry,
                                     errorMessages: errorMessages,
                                     handledAt: handledAt,

@@ -32,7 +32,7 @@ namespace Apify
             ref global::Apify.RunOrigin? origin,
             ref string? clientKey,
             ref string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request);
         partial void PrepareActorTaskRunsLastRequestQueueRequestsBatchPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -41,7 +41,7 @@ namespace Apify
             global::Apify.RunOrigin? origin,
             string? clientKey,
             string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request);
         partial void ProcessActorTaskRunsLastRequestQueueRequestsBatchPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -77,7 +77,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> ActorTaskRunsLastRequestQueueRequestsBatchPostAsync(
             string actorTaskId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
@@ -125,7 +125,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchAddResponse>> ActorTaskRunsLastRequestQueueRequestsBatchPostAsResponseAsync(
             string actorTaskId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,

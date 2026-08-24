@@ -30,7 +30,7 @@ namespace Apify
             string runId,
             string requestId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -61,7 +61,7 @@ namespace Apify
             string runId,
             string requestId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -122,10 +122,10 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.UpdateRequestResponse> ActorRunRequestQueueRequestPutAsync(
             string runId,
             string requestId,
+            string uniqueKey,
+            string url,
             string? forefront = default,
             string? clientKey = default,
-            string? uniqueKey = default,
-            string? url = default,
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,

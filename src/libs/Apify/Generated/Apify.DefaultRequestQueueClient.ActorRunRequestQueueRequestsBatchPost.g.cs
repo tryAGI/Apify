@@ -30,14 +30,14 @@ namespace Apify
             ref string runId,
             ref string? clientKey,
             ref string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request);
         partial void PrepareActorRunRequestQueueRequestsBatchPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string runId,
             string? clientKey,
             string? forefront,
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request);
         partial void ProcessActorRunRequestQueueRequestsBatchPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -69,7 +69,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> ActorRunRequestQueueRequestsBatchPostAsync(
             string runId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -109,7 +109,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchAddResponse>> ActorRunRequestQueueRequestsBatchPostAsResponseAsync(
             string runId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

@@ -30,7 +30,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.BatchAddResponse> ActorRunsLastRequestQueueRequestsBatchPostAsync(
             string actorId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
@@ -63,7 +63,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchAddResponse>> ActorRunsLastRequestQueueRequestsBatchPostAsResponseAsync(
             string actorId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestBase> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestWithoutId> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,

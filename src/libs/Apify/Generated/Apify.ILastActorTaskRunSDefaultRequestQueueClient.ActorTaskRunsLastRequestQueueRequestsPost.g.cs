@@ -30,7 +30,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> ActorTaskRunsLastRequestQueueRequestsPostAsync(
             string actorTaskId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
@@ -63,7 +63,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.AddRequestResponse>> ActorTaskRunsLastRequestQueueRequestsPostAsResponseAsync(
             string actorTaskId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
@@ -126,12 +126,12 @@ namespace Apify
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> ActorTaskRunsLastRequestQueueRequestsPostAsync(
             string actorTaskId,
+            string uniqueKey,
+            string url,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string? clientKey = default,
             string? forefront = default,
-            string? uniqueKey = default,
-            string? url = default,
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,
