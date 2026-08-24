@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class CommonActorPricingInfo
     {
         /// <summary>
-        /// In [0, 1], fraction of pricePerUnitUsd that goes to Apify
+        /// Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("apifyMarginPercentage")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -69,7 +69,7 @@ namespace Apify
         /// Initializes a new instance of the <see cref="CommonActorPricingInfo" /> class.
         /// </summary>
         /// <param name="apifyMarginPercentage">
-        /// In [0, 1], fraction of pricePerUnitUsd that goes to Apify
+        /// Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.
         /// </param>
         /// <param name="createdAt">
         /// When this pricing info record has been created

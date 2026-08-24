@@ -132,131 +132,131 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.CommonActorPricingInfo? Type26 { get; set; }
+        public global::Apify.ActorPermissionLevel? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.TieredPricingPerEventEntry? Type27 { get; set; }
+        public global::Apify.DefaultRunOptions? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Apify.TieredPricingPerEventEntry>? Type28 { get; set; }
+        public long? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorChargeEvent? Type29 { get; set; }
+        public global::Apify.ActorStandby? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PayPerEventActorPricingInfo? Type30 { get; set; }
+        public global::Apify.ExampleRunInput? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PayPerEventActorPricingInfoVariant2? Type31 { get; set; }
+        public global::Apify.CreateActorRequest? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent? Type32 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.Version>? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Apify.ActorChargeEvent>? Type33 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.TieredPricingPerDatasetItemEntry? Type34 { get; set; }
+        public global::Apify.CommonActorPricingInfo? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Apify.TieredPricingPerDatasetItemEntry>? Type35 { get; set; }
+        public global::Apify.TieredPricingPerEventEntry? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PricePerDatasetItemActorPricingInfo? Type36 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.TieredPricingPerEventEntry>? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.PricePerDatasetItemActorPricingInfoVariant2? Type37 { get; set; }
+        public global::Apify.ActorChargeEvent? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.FlatPricePerMonthActorPricingInfo? Type38 { get; set; }
+        public global::Apify.PayPerEventActorPricingInfo? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.FlatPricePerMonthActorPricingInfoVariant2? Type39 { get; set; }
+        public global::Apify.PayPerEventActorPricingInfoVariant2? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.FreeActorPricingInfo? Type40 { get; set; }
+        public global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.FreeActorPricingInfoVariant2? Type41 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.ActorChargeEvent>? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorRunPricingInfo? Type42 { get; set; }
+        public global::Apify.TieredPricingPerDatasetItemEntry? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorRunPricingInfoDiscriminator? Type43 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.TieredPricingPerDatasetItemEntry>? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorRunPricingInfoDiscriminatorPricingModel? Type44 { get; set; }
+        public global::Apify.PricePerDatasetItemActorPricingInfo? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorPermissionLevel? Type45 { get; set; }
+        public global::Apify.PricePerDatasetItemActorPricingInfoVariant2? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.DefaultRunOptions? Type46 { get; set; }
+        public global::Apify.FlatPricePerMonthActorPricingInfo? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public long? Type47 { get; set; }
+        public global::Apify.FlatPricePerMonthActorPricingInfoVariant2? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorStandby? Type48 { get; set; }
+        public global::Apify.FreeActorPricingInfo? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ExampleRunInput? Type49 { get; set; }
+        public global::Apify.FreeActorPricingInfoVariant2? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.CreateActorRequest? Type50 { get; set; }
+        public global::Apify.ActorRunPricingInfo? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.Version>? Type51 { get; set; }
+        public global::Apify.ActorRunPricingInfoDiscriminator? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? Type52 { get; set; }
+        public global::Apify.ActorRunPricingInfoDiscriminatorPricingModel? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type53 { get; set; }
+        public global::Apify.TaggedBuildInfo? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.TaggedBuildInfo? Type54 { get; set; }
+        public global::Apify.TaggedBuilds? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.TaggedBuilds? Type55 { get; set; }
+        public global::Apify.ActorNotice? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.ActorNotice? Type56 { get; set; }
+        public global::Apify.Actor? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Apify.Actor? Type57 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -1465,11 +1465,11 @@ namespace Apify
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Apify.ActorRunPricingInfo>? ListType4 { get; set; }
+        public global::System.Collections.Generic.List<string>? ListType4 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<string>? ListType5 { get; set; }
+        public global::System.Collections.Generic.List<global::Apify.ActorRunPricingInfo>? ListType5 { get; set; }
         /// <summary>
         /// 
         /// </summary>

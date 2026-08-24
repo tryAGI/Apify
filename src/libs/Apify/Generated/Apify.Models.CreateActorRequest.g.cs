@@ -60,12 +60,6 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.Version>? Versions { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pricingInfos")]
-        public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }
-
-        /// <summary>
         /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
@@ -125,7 +119,6 @@ namespace Apify
         /// <param name="versions">
         /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </param>
-        /// <param name="pricingInfos"></param>
         /// <param name="categories">
         /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
         /// </param>
@@ -152,7 +145,6 @@ namespace Apify
             string? seoTitle,
             string? seoDescription,
             global::System.Collections.Generic.IList<global::Apify.Version>? versions,
-            global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos,
             global::System.Collections.Generic.IList<string>? categories,
             global::Apify.DefaultRunOptions? defaultRunOptions,
             global::Apify.ActorStandby? actorStandby,
@@ -166,7 +158,6 @@ namespace Apify
             this.SeoTitle = seoTitle;
             this.SeoDescription = seoDescription;
             this.Versions = versions;
-            this.PricingInfos = pricingInfos;
             this.Categories = categories;
             this.DefaultRunOptions = defaultRunOptions;
             this.ActorStandby = actorStandby;

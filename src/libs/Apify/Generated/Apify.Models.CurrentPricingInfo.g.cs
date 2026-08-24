@@ -16,7 +16,7 @@ namespace Apify
         public required string PricingModel { get; set; }
 
         /// <summary>
-        /// 
+        /// Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("apifyMarginPercentage")]
         public double? ApifyMarginPercentage { get; set; }
@@ -109,7 +109,9 @@ namespace Apify
         /// Initializes a new instance of the <see cref="CurrentPricingInfo" /> class.
         /// </summary>
         /// <param name="pricingModel"></param>
-        /// <param name="apifyMarginPercentage"></param>
+        /// <param name="apifyMarginPercentage">
+        /// Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.
+        /// </param>
         /// <param name="createdAt"></param>
         /// <param name="startedAt"></param>
         /// <param name="notifiedAboutChangeAt"></param>

@@ -25,13 +25,13 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter),
 
-            typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelJsonConverter),
-
-            typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelNullableJsonConverter),
-
             typeof(global::Apify.JsonConverters.ActorPermissionLevelJsonConverter),
 
             typeof(global::Apify.JsonConverters.ActorPermissionLevelNullableJsonConverter),
+
+            typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelJsonConverter),
+
+            typeof(global::Apify.JsonConverters.ActorRunPricingInfoDiscriminatorPricingModelNullableJsonConverter),
 
             typeof(global::Apify.JsonConverters.ActorNoticeJsonConverter),
 
@@ -274,6 +274,14 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>), TypeInfoPropertyName = "AnyOfSourceCodeFileSourceCodeFolder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Version))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.EnvVar>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel), TypeInfoPropertyName = "ActorPermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DefaultRunOptions))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ExampleRunInput))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateActorRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Version>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CommonActorPricingInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TieredPricingPerEventEntry))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.TieredPricingPerEventEntry>))]
@@ -293,19 +301,11 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfo), TypeInfoPropertyName = "ActorRunPricingInfo2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfoDiscriminator))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel), TypeInfoPropertyName = "ActorRunPricingInfoDiscriminatorPricingModel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel), TypeInfoPropertyName = "ActorPermissionLevel2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DefaultRunOptions))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandby))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ExampleRunInput))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateActorRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Version>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaggedBuildInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaggedBuilds))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice), TypeInfoPropertyName = "ActorNotice2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Actor))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateOrUpdateVersionRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildTag))]
@@ -607,8 +607,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVar>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Version>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunPricingInfo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunPricingInfo>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.CreateOrUpdateVersionRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookShort>))]
