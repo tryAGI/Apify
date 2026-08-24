@@ -47,17 +47,14 @@ namespace Apify
         /// Create Actor<br/>
         /// Creates an Actor with the settings specified in an `Actor` object passed as<br/>
         /// JSON in the POST payload.<br/>
-        /// Returns the full `Actor` object, the same as the<br/>
-        /// [Get Actor](/api/v2/actor-get) endpoint.<br/>
+        /// Returns the created `Actor` object.<br/>
         /// In the HTTP request, set the `Content-Type` header to `application/json`.<br/>
         /// ### Define a source code version<br/>
         /// An Actor must specify at least one version of the source code.<br/>
         /// For details, see [Actor versions](/api/v2/actors-actor-versions).<br/>
-        /// ### Create a public Actor<br/>
-        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
-        /// - Set `isPublic` to `true`.<br/>
-        /// - Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`<br/>
-        /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
+        /// ### Publish an Actor<br/>
+        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing),<br/>
+        /// use the [Update Actor](/api/v2/actor-put) endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -82,17 +79,14 @@ namespace Apify
         /// Create Actor<br/>
         /// Creates an Actor with the settings specified in an `Actor` object passed as<br/>
         /// JSON in the POST payload.<br/>
-        /// Returns the full `Actor` object, the same as the<br/>
-        /// [Get Actor](/api/v2/actor-get) endpoint.<br/>
+        /// Returns the created `Actor` object.<br/>
         /// In the HTTP request, set the `Content-Type` header to `application/json`.<br/>
         /// ### Define a source code version<br/>
         /// An Actor must specify at least one version of the source code.<br/>
         /// For details, see [Actor versions](/api/v2/actors-actor-versions).<br/>
-        /// ### Create a public Actor<br/>
-        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
-        /// - Set `isPublic` to `true`.<br/>
-        /// - Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`<br/>
-        /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
+        /// ### Publish an Actor<br/>
+        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing),<br/>
+        /// use the [Update Actor](/api/v2/actor-put) endpoint.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -722,17 +716,14 @@ namespace Apify
         /// Create Actor<br/>
         /// Creates an Actor with the settings specified in an `Actor` object passed as<br/>
         /// JSON in the POST payload.<br/>
-        /// Returns the full `Actor` object, the same as the<br/>
-        /// [Get Actor](/api/v2/actor-get) endpoint.<br/>
+        /// Returns the created `Actor` object.<br/>
         /// In the HTTP request, set the `Content-Type` header to `application/json`.<br/>
         /// ### Define a source code version<br/>
         /// An Actor must specify at least one version of the source code.<br/>
         /// For details, see [Actor versions](/api/v2/actors-actor-versions).<br/>
-        /// ### Create a public Actor<br/>
-        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
-        /// - Set `isPublic` to `true`.<br/>
-        /// - Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`<br/>
-        /// package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
+        /// ### Publish an Actor<br/>
+        /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing),<br/>
+        /// use the [Update Actor](/api/v2/actor-put) endpoint.
         /// </summary>
         /// <param name="name">
         /// The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account.
@@ -755,7 +746,6 @@ namespace Apify
         /// <param name="versions">
         /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </param>
-        /// <param name="pricingInfos"></param>
         /// <param name="categories">
         /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
         /// </param>
@@ -782,7 +772,6 @@ namespace Apify
             string? seoTitle = default,
             string? seoDescription = default,
             global::System.Collections.Generic.IList<global::Apify.Version>? versions = default,
-            global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos = default,
             global::System.Collections.Generic.IList<string>? categories = default,
             global::Apify.DefaultRunOptions? defaultRunOptions = default,
             global::Apify.ActorStandby? actorStandby = default,
@@ -800,7 +789,6 @@ namespace Apify
                 SeoTitle = seoTitle,
                 SeoDescription = seoDescription,
                 Versions = versions,
-                PricingInfos = pricingInfos,
                 Categories = categories,
                 DefaultRunOptions = defaultRunOptions,
                 ActorStandby = actorStandby,

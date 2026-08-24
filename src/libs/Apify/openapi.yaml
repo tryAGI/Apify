@@ -552,7 +552,7 @@
           "Actors"
         ],
         "summary": "Create Actor",
-        "description": "Creates an Actor with the settings specified in an `Actor` object passed as\nJSON in the POST payload.\n\nReturns the full `Actor` object, the same as the\n[Get Actor](/api/v2/actor-get) endpoint.\n\nIn the HTTP request, set the `Content-Type` header to `application/json`.\n\n### Define a source code version\n\nAn Actor must specify at least one version of the source code.\nFor details, see [Actor versions](/api/v2/actors-actor-versions).\n\n### Create a public Actor\n\nTo make your Actor [public](https://docs.apify.com/platform/actors/publishing):\n- Set `isPublic` to `true`.\n- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`\npackage](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)\n",
+        "description": "Creates an Actor with the settings specified in an `Actor` object passed as\nJSON in the POST payload.\n\nReturns the created `Actor` object.\n\nIn the HTTP request, set the `Content-Type` header to `application/json`.\n\n### Define a source code version\n\nAn Actor must specify at least one version of the source code.\nFor details, see [Actor versions](/api/v2/actors-actor-versions).\n\n### Publish an Actor\n\nTo make your Actor [public](https://docs.apify.com/platform/actors/publishing),\nuse the [Update Actor](/api/v2/actor-put) endpoint.\n",
         "operationId": "actors_post",
         "requestBody": {
           "description": "",
@@ -625,12 +625,13 @@
                   "data": {
                     "id": "zdc3Pyhyz3m8vjDeM",
                     "userId": "wRsJZtadYvn4mBZmm",
-                    "name": "MyActor",
+                    "name": "instagram-scraper",
                     "username": "jane35",
-                    "description": "My favourite Actor!",
+                    "description": "This scraper extracts posts and comments from Instagram.",
                     "isPublic": false,
                     "createdAt": "2019-07-08T11:27:57.401Z",
                     "modifiedAt": "2019-07-08T14:01:05.546Z",
+                    "taggedBuilds": {},
                     "stats": {
                       "totalBuilds": 9,
                       "totalRuns": 16,
@@ -638,41 +639,16 @@
                       "totalUsers7Days": 2,
                       "totalUsers30Days": 6,
                       "totalUsers90Days": 6,
-                      "totalMetamorphs": 2,
-                      "lastRunStartedAt": "2019-07-08T14:01:05.546Z"
+                      "totalMetamorphs": 2
                     },
                     "versions": [
                       {
-                        "versionNumber": "0.1",
+                        "versionNumber": "0.0",
                         "envVars": null,
                         "sourceType": "SOURCE_FILES",
                         "applyEnvVarsToBuild": false,
                         "buildTag": "latest",
                         "sourceFiles": []
-                      },
-                      {
-                        "versionNumber": "0.2",
-                        "sourceType": "GIT_REPO",
-                        "envVars": null,
-                        "applyEnvVarsToBuild": false,
-                        "buildTag": "latest",
-                        "gitRepoUrl": "https://github.com/jane35/my-actor"
-                      },
-                      {
-                        "versionNumber": "0.3",
-                        "sourceType": "TARBALL",
-                        "envVars": null,
-                        "applyEnvVarsToBuild": false,
-                        "buildTag": "latest",
-                        "tarballUrl": "https://github.com/jane35/my-actor/archive/master.zip"
-                      },
-                      {
-                        "versionNumber": "0.4",
-                        "sourceType": "GITHUB_GIST",
-                        "envVars": null,
-                        "applyEnvVarsToBuild": false,
-                        "buildTag": "latest",
-                        "gitHubGistUrl": "https://gist.github.com/jane35/e51feb784yu89"
                       }
                     ],
                     "defaultRunOptions": {
@@ -685,16 +661,16 @@
                       "body": "{ \"helloWorld\": 123 }",
                       "contentType": "application/json; charset=utf-8"
                     },
+                    "categories": [],
                     "isDeprecated": false,
-                    "deploymentKey": "ssh-rsa AAAA ...",
                     "title": "My Actor",
-                    "taggedBuilds": {
-                      "latest": {
-                        "buildId": "z2EryhbfhgSyqj6Hn",
-                        "buildNumber": "0.0.2",
-                        "finishedAt": "2019-06-10T11:15:49.286Z"
-                      }
-                    }
+                    "notice": "NONE",
+                    "isCritical": false,
+                    "isGeneric": false,
+                    "hasNoDataset": false,
+                    "isSourceCodeHidden": true,
+                    "standbyUrl": null,
+                    "actorPermissionLevel": "LIMITED_PERMISSIONS"
                   }
                 }
               }
@@ -20037,6 +20013,283 @@
           }
         }
       },
+      "ActorPermissionLevel": {
+        "type": "string",
+        "description": "Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).\n",
+        "enum": [
+          "LIMITED_PERMISSIONS",
+          "FULL_PERMISSIONS"
+        ],
+        "examples": [
+          "LIMITED_PERMISSIONS"
+        ]
+      },
+      "DefaultRunOptions": {
+        "title": "DefaultRunOptions",
+        "type": "object",
+        "description": "The default settings applied to an Actor run. Can be overridden elsewhere.",
+        "properties": {
+          "build": {
+            "type": "string",
+            "examples": [
+              "latest"
+            ],
+            "description": "Which build to run. Either a build tag or a version number."
+          },
+          "timeoutSecs": {
+            "type": "integer",
+            "examples": [
+              3600
+            ],
+            "description": "Timeout in seconds. 0 if no timeout."
+          },
+          "memoryMbytes": {
+            "type": "integer",
+            "examples": [
+              2048
+            ],
+            "description": "In MB, the amount of memory allocated to the run."
+          },
+          "restartOnError": {
+            "type": "boolean",
+            "examples": [
+              false
+            ],
+            "description": "Whether to automatically restart the run if it fails."
+          },
+          "maxItems": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Maximum number of items the run might produce."
+          },
+          "forcePermissionLevel": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorPermissionLevel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "ActorStandby": {
+        "title": "ActorStandby",
+        "type": "object",
+        "properties": {
+          "isEnabled": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether standby mode is enabled for the Actor."
+          },
+          "desiredRequestsPerActorRun": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Target number of concurrent HTTP requests a single run is configured to handle."
+          },
+          "maxRequestsPerActorRun": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Maximum number of concurrent HTTP requests that can be routed to a single run."
+          },
+          "idleTimeoutSecs": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "In seconds, how long a run can stay idle without incoming requests before it's terminated."
+          },
+          "build": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Which build to run in standby mode. Either a build tag or a version number."
+          },
+          "memoryMbytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "In MB, the amount of memory allocated to the run."
+          },
+          "disableStandbyFieldsOverride": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "If `true`, prevents the standby mode configuration from being overridden elsewhere."
+          },
+          "shouldPassActorInput": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input."
+          }
+        }
+      },
+      "ExampleRunInput": {
+        "title": "ExampleRunInput",
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "example": "{ \"helloWorld\": 123 }",
+            "description": "Sample input, serialized as a string."
+          },
+          "contentType": {
+            "type": "string",
+            "examples": [
+              "application/json; charset=utf-8"
+            ],
+            "description": "MIME type of `body`."
+          }
+        }
+      },
+      "CreateActorRequest": {
+        "title": "CreateActorRequest",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "instagram-scraper"
+            ],
+            "description": "The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account."
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "This scraper extracts posts and comments from Instagram."
+            ],
+            "description": "Short description of the Actor, displayed in Apify Store and Console."
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Instagram scraper"
+            ],
+            "description": "Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO."
+          },
+          "isPublic": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ],
+            "description": "Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you."
+          },
+          "seoTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Free Instagram scraper"
+            ],
+            "description": "Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters."
+          },
+          "seoDescription": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "The best scraper for Instagram"
+            ],
+            "description": "Description of the Actor to display by search engines such as Google. Recommended length is 140-156 characters."
+          },
+          "restartOnError": {
+            "type": "boolean",
+            "examples": [
+              false
+            ],
+            "deprecated": true
+          },
+          "versions": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Version"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
+          },
+          "categories": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "examples": [
+              [
+                "SOCIAL_MEDIA"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options."
+          },
+          "defaultRunOptions": {
+            "$ref": "#/components/schemas/DefaultRunOptions"
+          },
+          "actorStandby": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorStandby"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby)."
+          },
+          "exampleRunInput": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ExampleRunInput"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided."
+          },
+          "isDeprecated": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether the Actor is deprecated."
+          }
+        }
+      },
       "CommonActorPricingInfo": {
         "title": "CommonActorPricingInfo",
         "type": "object",
@@ -20048,7 +20301,10 @@
         "properties": {
           "apifyMarginPercentage": {
             "type": "number",
-            "description": "In [0, 1], fraction of pricePerUnitUsd that goes to Apify"
+            "examples": [
+              0.2
+            ],
+            "description": "Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.\n"
           },
           "createdAt": {
             "type": "string",
@@ -20316,289 +20572,6 @@
             "$ref": "#/components/schemas/FreeActorPricingInfo"
           }
         ]
-      },
-      "ActorPermissionLevel": {
-        "type": "string",
-        "description": "Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).\n",
-        "enum": [
-          "LIMITED_PERMISSIONS",
-          "FULL_PERMISSIONS"
-        ],
-        "examples": [
-          "LIMITED_PERMISSIONS"
-        ]
-      },
-      "DefaultRunOptions": {
-        "title": "DefaultRunOptions",
-        "type": "object",
-        "description": "The default settings applied to an Actor run. Can be overridden elsewhere.",
-        "properties": {
-          "build": {
-            "type": "string",
-            "examples": [
-              "latest"
-            ],
-            "description": "Which build to run. Either a build tag or a version number."
-          },
-          "timeoutSecs": {
-            "type": "integer",
-            "examples": [
-              3600
-            ],
-            "description": "Timeout in seconds. 0 if no timeout."
-          },
-          "memoryMbytes": {
-            "type": "integer",
-            "examples": [
-              2048
-            ],
-            "description": "In MB, the amount of memory allocated to the run."
-          },
-          "restartOnError": {
-            "type": "boolean",
-            "examples": [
-              false
-            ],
-            "description": "Whether to automatically restart the run if it fails."
-          },
-          "maxItems": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "Maximum number of items the run might produce."
-          },
-          "forcePermissionLevel": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ActorPermissionLevel"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        }
-      },
-      "ActorStandby": {
-        "title": "ActorStandby",
-        "type": "object",
-        "properties": {
-          "isEnabled": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "Whether standby mode is enabled for the Actor."
-          },
-          "desiredRequestsPerActorRun": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "Target number of concurrent HTTP requests a single run is configured to handle."
-          },
-          "maxRequestsPerActorRun": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "Maximum number of concurrent HTTP requests that can be routed to a single run."
-          },
-          "idleTimeoutSecs": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "In seconds, how long a run can stay idle without incoming requests before it's terminated."
-          },
-          "build": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "Which build to run in standby mode. Either a build tag or a version number."
-          },
-          "memoryMbytes": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "description": "In MB, the amount of memory allocated to the run."
-          },
-          "disableStandbyFieldsOverride": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "If `true`, prevents the standby mode configuration from being overridden elsewhere."
-          },
-          "shouldPassActorInput": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input."
-          }
-        }
-      },
-      "ExampleRunInput": {
-        "title": "ExampleRunInput",
-        "type": "object",
-        "properties": {
-          "body": {
-            "type": "string",
-            "example": "{ \"helloWorld\": 123 }",
-            "description": "Sample input, serialized as a string."
-          },
-          "contentType": {
-            "type": "string",
-            "examples": [
-              "application/json; charset=utf-8"
-            ],
-            "description": "MIME type of `body`."
-          }
-        }
-      },
-      "CreateActorRequest": {
-        "title": "CreateActorRequest",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "instagram-scraper"
-            ],
-            "description": "The identifier of the Actor. Use lowercase letters, numbers, and hyphens. Spaces or special characters aren't allowed. Must be unique across your account."
-          },
-          "description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "This scraper extracts posts and comments from Instagram."
-            ],
-            "description": "Short description of the Actor, displayed in Apify Store and Console."
-          },
-          "title": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "Instagram scraper"
-            ],
-            "description": "Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO."
-          },
-          "isPublic": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "examples": [
-              false
-            ],
-            "description": "Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you."
-          },
-          "seoTitle": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "Free Instagram scraper"
-            ],
-            "description": "Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters."
-          },
-          "seoDescription": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "The best scraper for Instagram"
-            ],
-            "description": "Description of the Actor to display by search engines such as Google. Recommended length is 140-156 characters."
-          },
-          "restartOnError": {
-            "type": "boolean",
-            "examples": [
-              false
-            ],
-            "deprecated": true
-          },
-          "versions": {
-            "anyOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Version"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
-          },
-          "pricingInfos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActorRunPricingInfo"
-            }
-          },
-          "categories": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "examples": [
-              [
-                "SOCIAL_MEDIA"
-              ]
-            ],
-            "items": {
-              "type": "string"
-            },
-            "description": "A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options."
-          },
-          "defaultRunOptions": {
-            "$ref": "#/components/schemas/DefaultRunOptions"
-          },
-          "actorStandby": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ActorStandby"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby)."
-          },
-          "exampleRunInput": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ExampleRunInput"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided."
-          },
-          "isDeprecated": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "Whether the Actor is deprecated."
-          }
-        }
       },
       "TaggedBuildInfo": {
         "title": "TaggedBuildInfo",
@@ -27329,7 +27302,8 @@
             "type": "number",
             "examples": [
               0.2
-            ]
+            ],
+            "description": "Apify's share of the revenue generated under this pricing info record, as a fraction between 0 and 1. Set by the Apify platform.\n"
           },
           "createdAt": {
             "type": "string",

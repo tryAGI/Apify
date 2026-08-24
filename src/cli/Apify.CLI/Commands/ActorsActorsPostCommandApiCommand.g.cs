@@ -47,12 +47,6 @@ internal static partial class ActorsActorsPostCommandApiCommand
         Description = @"An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>?> PricingInfos { get; } = new(
-        name: @"--pricing-infos")
-    {
-        Description = @"",
-    };
-
     private static Option<global::System.Collections.Generic.IList<string>?> Categories { get; } = new(
         name: @"--categories")
     {
@@ -110,8 +104,7 @@ internal static partial class ActorsActorsPostCommandApiCommand
 Creates an Actor with the settings specified in an `Actor` object passed as
 JSON in the POST payload.
 
-Returns the full `Actor` object, the same as the
-[Get Actor](/api/v2/actor-get) endpoint.
+Returns the created `Actor` object.
 
 In the HTTP request, set the `Content-Type` header to `application/json`.
 
@@ -120,12 +113,10 @@ In the HTTP request, set the `Content-Type` header to `application/json`.
 An Actor must specify at least one version of the source code.
 For details, see [Actor versions](/api/v2/actors-actor-versions).
 
-### Create a public Actor
+### Publish an Actor
 
-To make your Actor [public](https://docs.apify.com/platform/actors/publishing):
-- Set `isPublic` to `true`.
-- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`
-package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)
+To make your Actor [public](https://docs.apify.com/platform/actors/publishing),
+use the [Update Actor](/api/v2/actor-put) endpoint.
 ");
                         command.Options.Add(NameOption);
                         command.Options.Add(DescriptionOption);
@@ -134,7 +125,6 @@ package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd
                         command.Options.Add(SeoTitle);
                         command.Options.Add(SeoDescription);
                         command.Options.Add(Versions);
-                        command.Options.Add(PricingInfos);
                         command.Options.Add(Categories);
                         command.Options.Add(IsDeprecated);                        command.Options.Add(DefaultRunOptionsOptions.Build);
                         command.Options.Add(DefaultRunOptionsOptions.TimeoutSecs);
@@ -181,7 +171,6 @@ package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd
                         var seoTitle = CliRuntime.WasSpecified(parseResult, SeoTitle) ? parseResult.GetValue(SeoTitle) : (__requestBase is { } __SeoTitleBaseValue ? __SeoTitleBaseValue.SeoTitle : default);
                         var seoDescription = CliRuntime.WasSpecified(parseResult, SeoDescription) ? parseResult.GetValue(SeoDescription) : (__requestBase is { } __SeoDescriptionBaseValue ? __SeoDescriptionBaseValue.SeoDescription : default);
                         var versions = CliRuntime.WasSpecified(parseResult, Versions) ? parseResult.GetValue(Versions) : (__requestBase is { } __VersionsBaseValue ? __VersionsBaseValue.Versions : default);
-                        var pricingInfos = CliRuntime.WasSpecified(parseResult, PricingInfos) ? parseResult.GetValue(PricingInfos) : (__requestBase is { } __PricingInfosBaseValue ? __PricingInfosBaseValue.PricingInfos : default);
                         var categories = CliRuntime.WasSpecified(parseResult, Categories) ? parseResult.GetValue(Categories) : (__requestBase is { } __CategoriesBaseValue ? __CategoriesBaseValue.Categories : default);
                         var isDeprecated = CliRuntime.WasSpecified(parseResult, IsDeprecated) ? parseResult.GetValue(IsDeprecated) : (__requestBase is { } __IsDeprecatedBaseValue ? __IsDeprecatedBaseValue.IsDeprecated : default);
 
@@ -252,7 +241,6 @@ package](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd
                                     seoTitle: seoTitle,
                                     seoDescription: seoDescription,
                                     versions: versions,
-                                    pricingInfos: pricingInfos,
                                     categories: categories,
                                     isDeprecated: isDeprecated,
                                     defaultRunOptions: defaultRunOptions,
