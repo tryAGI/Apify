@@ -12,13 +12,15 @@ namespace Apify
         /// A unique key used for request de-duplication. Requests with the same unique key are considered identical.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uniqueKey")]
-        public string? UniqueKey { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string UniqueKey { get; set; }
 
         /// <summary>
         /// The URL of the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
-        public string? Url { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Url { get; set; }
 
         /// <summary>
         /// 
@@ -122,8 +124,8 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestBase(
-            string? uniqueKey,
-            string? url,
+            string uniqueKey,
+            string url,
             global::Apify.HttpMethod? method,
             int? retryCount,
             string? loadedUrl,
@@ -134,8 +136,8 @@ namespace Apify
             global::System.Collections.Generic.IList<string>? errorMessages,
             global::System.DateTime? handledAt)
         {
-            this.UniqueKey = uniqueKey;
-            this.Url = url;
+            this.UniqueKey = uniqueKey ?? throw new global::System.ArgumentNullException(nameof(uniqueKey));
+            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.Method = method;
             this.RetryCount = retryCount;
             this.LoadedUrl = loadedUrl;

@@ -27,7 +27,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> RequestQueueRequestsPostAsync(
             string queueId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -55,7 +55,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.AddRequestResponse>> RequestQueueRequestsPostAsResponseAsync(
             string queueId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? clientKey = default,
             string? forefront = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -113,10 +113,10 @@ namespace Apify
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AddRequestResponse> RequestQueueRequestsPostAsync(
             string queueId,
+            string uniqueKey,
+            string url,
             string? clientKey = default,
             string? forefront = default,
-            string? uniqueKey = default,
-            string? url = default,
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,

@@ -108,7 +108,7 @@ then it returns an ID of the existing request.
                         var queueId = parseResult.GetRequiredValue(QueueId);
                         var clientKey = parseResult.GetValue(ClientKey);
                         var forefront = parseResult.GetValue(Forefront);
-                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestBase>>(
+                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestWithoutId>>(
                             parseResult,
                             Input,
                             RequestJson,

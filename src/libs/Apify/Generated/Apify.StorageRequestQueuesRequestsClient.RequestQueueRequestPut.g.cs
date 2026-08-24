@@ -31,7 +31,7 @@ namespace Apify
             ref string requestId,
             ref string? forefront,
             ref string? clientKey,
-            global::Apify.RequestBase request);
+            global::Apify.RequestWithoutId request);
         partial void PrepareRequestQueueRequestPutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -39,7 +39,7 @@ namespace Apify
             string requestId,
             string? forefront,
             string? clientKey,
-            global::Apify.RequestBase request);
+            global::Apify.RequestWithoutId request);
         partial void ProcessRequestQueueRequestPutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -75,7 +75,7 @@ namespace Apify
             string queueId,
             string requestId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -120,14 +120,12 @@ namespace Apify
             string queueId,
             string requestId,
 
-            global::Apify.RequestBase request,
+            global::Apify.RequestWithoutId request,
             string? forefront = default,
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareRequestQueueRequestPutArguments(
@@ -845,10 +843,10 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.UpdateRequestResponse> RequestQueueRequestPutAsync(
             string queueId,
             string requestId,
+            string uniqueKey,
+            string url,
             string? forefront = default,
             string? clientKey = default,
-            string? uniqueKey = default,
-            string? url = default,
             global::Apify.HttpMethod? method = default,
             int? retryCount = default,
             string? loadedUrl = default,
@@ -861,8 +859,9 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.RequestBase
-            {
+            var __request = new global::Apify.RequestWithoutId(
+                new global::Apify.RequestBase
+                {
                 UniqueKey = uniqueKey,
                 Url = url,
                 Method = method,
@@ -874,7 +873,7 @@ namespace Apify
                 NoRetry = noRetry,
                 ErrorMessages = errorMessages,
                 HandledAt = handledAt,
-            };
+                });
 
             return await RequestQueueRequestPutAsync(
                 queueId: queueId,
