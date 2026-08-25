@@ -26,7 +26,7 @@ public static class ApifyClientTools
                     ? JsonDocument.Parse(input).RootElement.Clone()
                     : JsonDocument.Parse("{}").RootElement.Clone();
 
-                var response = await client.ActorsActorRuns.ActRunsPostAsync(
+                var response = await client.ActorsActorRuns.ActorsRunsPostAsync(
                     actorId: actorId,
                     request: requestBody!,
                     timeout: timeout,
@@ -94,7 +94,7 @@ public static class ApifyClientTools
                    [Description("Maximum number of Actors to return (default: 100, max: 1000)")] double? limit,
                    CancellationToken cancellationToken) =>
             {
-                var response = await client.Actors.ActsGetAsync(
+                var response = await client.Actors.ActorsGetAsync(
                     my: my,
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);

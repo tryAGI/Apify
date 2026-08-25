@@ -14,7 +14,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         //// Run the Web Scraper Actor to scrape a single page
-        var runResponse = await client.ActorsActorRuns.ActRunsPostAsync(
+        var runResponse = await client.ActorsActorRuns.ActorsRunsPostAsync(
             actorId: "apify~web-scraper",
             request: new
             {
@@ -55,7 +55,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         //// List Actors owned by the user
-        var response = await client.Actors.ActsGetAsync(
+        var response = await client.Actors.ActorsGetAsync(
             my: true,
             limit: 10);
 
