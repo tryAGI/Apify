@@ -3,11 +3,11 @@
 
 namespace Apify
 {
-    public partial class DefaultKeyValueStoreClient
+    public partial class LastActorRunSDefaultDatasetClient
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunKeyValueStoreRecordGetSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunsLastDatasetItemsGetAsTextSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,66 +21,223 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunKeyValueStoreRecordGetSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunsLastDatasetItemsGetAsTextSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_ActorRunKeyValueStoreRecordGetSecurityRequirement0,
+            {                s_ActorRunsLastDatasetItemsGetAsTextSecurityRequirement0,
             };
-        partial void PrepareActorRunKeyValueStoreRecordGetArguments(
+        partial void PrepareActorRunsLastDatasetItemsGetAsTextArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string runId,
-            ref string recordKey,
-            ref string? signature,
-            ref bool? attachment);
-        partial void PrepareActorRunKeyValueStoreRecordGetRequest(
+            ref string actorId,
+            ref string? status,
+            ref global::Apify.RunOrigin? origin,
+            ref string? format,
+            ref bool? clean,
+            ref double? offset,
+            ref double? limit,
+            ref string? fields,
+            ref string? outputFields,
+            ref string? omit,
+            ref string? unwind,
+            ref string? flatten,
+            ref bool? desc,
+            ref bool? attachment,
+            ref string? delimiter,
+            ref bool? bom,
+            ref string? xmlRoot,
+            ref string? xmlRow,
+            ref bool? skipHeaderRow,
+            ref bool? skipHidden,
+            ref bool? skipEmpty,
+            ref bool? simplified,
+            ref string? view,
+            ref bool? skipFailedPages,
+            ref string? feedTitle,
+            ref string? feedDescription,
+            ref string? signature);
+        partial void PrepareActorRunsLastDatasetItemsGetAsTextRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string runId,
-            string recordKey,
-            string? signature,
-            bool? attachment);
-        partial void ProcessActorRunKeyValueStoreRecordGetResponse(
+            string actorId,
+            string? status,
+            global::Apify.RunOrigin? origin,
+            string? format,
+            bool? clean,
+            double? offset,
+            double? limit,
+            string? fields,
+            string? outputFields,
+            string? omit,
+            string? unwind,
+            string? flatten,
+            bool? desc,
+            bool? attachment,
+            string? delimiter,
+            bool? bom,
+            string? xmlRoot,
+            string? xmlRow,
+            bool? skipHeaderRow,
+            bool? skipHidden,
+            bool? skipEmpty,
+            bool? simplified,
+            string? view,
+            bool? skipFailedPages,
+            string? feedTitle,
+            string? feedDescription,
+            string? signature);
+        partial void ProcessActorRunsLastDatasetItemsGetAsTextResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessActorRunKeyValueStoreRecordGetResponseContent(
+        partial void ProcessActorRunsLastDatasetItemsGetAsTextResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Get default store's record<br/>
-        /// Gets a value stored under a specific key in the default key-value store of the Actor run.<br/>
-        /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// Get last run's dataset items<br/>
+        /// Returns data stored in the default dataset of the last Actor run in the desired format.<br/>
+        /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
+        /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
         /// </summary>
-        /// <param name="runId">
-        /// Example: 3KH8gEpp4d8uQSe8T
+        /// <param name="actorId">
+        /// Example: compass~google-maps-extractor
         /// </param>
-        /// <param name="recordKey">
-        /// Example: someKey
+        /// <param name="status">
+        /// Example: SUCCEEDED
         /// </param>
-        /// <param name="signature">
-        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// <param name="origin"></param>
+        /// <param name="format">
+        /// Example: json
+        /// </param>
+        /// <param name="clean">
+        /// Example: false
+        /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit"></param>
+        /// <param name="fields">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
+        /// <param name="omit">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="unwind">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="flatten">
+        /// Example: myValue
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
         /// </param>
         /// <param name="attachment">
         /// Example: true
         /// </param>
+        /// <param name="delimiter">
+        /// Example: ;
+        /// </param>
+        /// <param name="bom">
+        /// Example: false
+        /// </param>
+        /// <param name="xmlRoot">
+        /// Example: items
+        /// </param>
+        /// <param name="xmlRow">
+        /// Example: item
+        /// </param>
+        /// <param name="skipHeaderRow">
+        /// Example: true
+        /// </param>
+        /// <param name="skipHidden">
+        /// Example: false
+        /// </param>
+        /// <param name="skipEmpty">
+        /// Example: false
+        /// </param>
+        /// <param name="simplified">
+        /// Example: false
+        /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
+        /// <param name="skipFailedPages">
+        /// Example: false
+        /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.RecordResponse> ActorRunKeyValueStoreRecordGetAsync(
-            string runId,
-            string recordKey,
-            string? signature = default,
+        public async global::System.Threading.Tasks.Task<string> ActorRunsLastDatasetItemsGetAsTextAsync(
+            string actorId,
+            string? status = default,
+            global::Apify.RunOrigin? origin = default,
+            string? format = default,
+            bool? clean = default,
+            double? offset = default,
+            double? limit = default,
+            string? fields = default,
+            string? outputFields = default,
+            string? omit = default,
+            string? unwind = default,
+            string? flatten = default,
+            bool? desc = default,
             bool? attachment = default,
+            string? delimiter = default,
+            bool? bom = default,
+            string? xmlRoot = default,
+            string? xmlRow = default,
+            bool? skipHeaderRow = default,
+            bool? skipHidden = default,
+            bool? skipEmpty = default,
+            bool? simplified = default,
+            string? view = default,
+            bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
+            string? signature = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ActorRunKeyValueStoreRecordGetAsResponseAsync(
-                runId: runId,
-                recordKey: recordKey,
-                signature: signature,
+            var __response = await ActorRunsLastDatasetItemsGetAsTextAsResponseAsync(
+                actorId: actorId,
+                status: status,
+                origin: origin,
+                format: format,
+                clean: clean,
+                offset: offset,
+                limit: limit,
+                fields: fields,
+                outputFields: outputFields,
+                omit: omit,
+                unwind: unwind,
+                flatten: flatten,
+                desc: desc,
                 attachment: attachment,
+                delimiter: delimiter,
+                bom: bom,
+                xmlRoot: xmlRoot,
+                xmlRow: xmlRow,
+                skipHeaderRow: skipHeaderRow,
+                skipHidden: skipHidden,
+                skipEmpty: skipEmpty,
+                simplified: simplified,
+                view: view,
+                skipFailedPages: skipFailedPages,
+                feedTitle: feedTitle,
+                feedDescription: feedDescription,
+                signature: signature,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -88,48 +245,159 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default store's record<br/>
-        /// Gets a value stored under a specific key in the default key-value store of the Actor run.<br/>
-        /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// Get last run's dataset items<br/>
+        /// Returns data stored in the default dataset of the last Actor run in the desired format.<br/>
+        /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
+        /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
         /// </summary>
-        /// <param name="runId">
-        /// Example: 3KH8gEpp4d8uQSe8T
+        /// <param name="actorId">
+        /// Example: compass~google-maps-extractor
         /// </param>
-        /// <param name="recordKey">
-        /// Example: someKey
+        /// <param name="status">
+        /// Example: SUCCEEDED
         /// </param>
-        /// <param name="signature">
-        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// <param name="origin"></param>
+        /// <param name="format">
+        /// Example: json
+        /// </param>
+        /// <param name="clean">
+        /// Example: false
+        /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit"></param>
+        /// <param name="fields">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
+        /// <param name="omit">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="unwind">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="flatten">
+        /// Example: myValue
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
         /// </param>
         /// <param name="attachment">
         /// Example: true
         /// </param>
+        /// <param name="delimiter">
+        /// Example: ;
+        /// </param>
+        /// <param name="bom">
+        /// Example: false
+        /// </param>
+        /// <param name="xmlRoot">
+        /// Example: items
+        /// </param>
+        /// <param name="xmlRow">
+        /// Example: item
+        /// </param>
+        /// <param name="skipHeaderRow">
+        /// Example: true
+        /// </param>
+        /// <param name="skipHidden">
+        /// Example: false
+        /// </param>
+        /// <param name="skipEmpty">
+        /// Example: false
+        /// </param>
+        /// <param name="simplified">
+        /// Example: false
+        /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
+        /// <param name="skipFailedPages">
+        /// Example: false
+        /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RecordResponse>> ActorRunKeyValueStoreRecordGetAsResponseAsync(
-            string runId,
-            string recordKey,
-            string? signature = default,
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<string>> ActorRunsLastDatasetItemsGetAsTextAsResponseAsync(
+            string actorId,
+            string? status = default,
+            global::Apify.RunOrigin? origin = default,
+            string? format = default,
+            bool? clean = default,
+            double? offset = default,
+            double? limit = default,
+            string? fields = default,
+            string? outputFields = default,
+            string? omit = default,
+            string? unwind = default,
+            string? flatten = default,
+            bool? desc = default,
             bool? attachment = default,
+            string? delimiter = default,
+            bool? bom = default,
+            string? xmlRoot = default,
+            string? xmlRow = default,
+            bool? skipHeaderRow = default,
+            bool? skipHidden = default,
+            bool? skipEmpty = default,
+            bool? simplified = default,
+            string? view = default,
+            bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
+            string? signature = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareActorRunKeyValueStoreRecordGetArguments(
+            PrepareActorRunsLastDatasetItemsGetAsTextArguments(
                 httpClient: HttpClient,
-                runId: ref runId,
-                recordKey: ref recordKey,
-                signature: ref signature,
-                attachment: ref attachment);
+                actorId: ref actorId,
+                status: ref status,
+                origin: ref origin,
+                format: ref format,
+                clean: ref clean,
+                offset: ref offset,
+                limit: ref limit,
+                fields: ref fields,
+                outputFields: ref outputFields,
+                omit: ref omit,
+                unwind: ref unwind,
+                flatten: ref flatten,
+                desc: ref desc,
+                attachment: ref attachment,
+                delimiter: ref delimiter,
+                bom: ref bom,
+                xmlRoot: ref xmlRoot,
+                xmlRow: ref xmlRow,
+                skipHeaderRow: ref skipHeaderRow,
+                skipHidden: ref skipHidden,
+                skipEmpty: ref skipEmpty,
+                simplified: ref simplified,
+                view: ref view,
+                skipFailedPages: ref skipFailedPages,
+                feedTitle: ref feedTitle,
+                feedDescription: ref feedDescription,
+                signature: ref signature);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ActorRunKeyValueStoreRecordGetSecurityRequirements,
-                operationName: "ActorRunKeyValueStoreRecordGetAsync");
+                securityRequirements: s_ActorRunsLastDatasetItemsGetAsTextSecurityRequirements,
+                operationName: "ActorRunsLastDatasetItemsGetAsTextAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -149,11 +417,35 @@ namespace Apify
             {
 
                             var __pathBuilder = new global::Apify.PathBuilder(
-                                path: $"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}",
+                                path: $"/v2/actors/{actorId}/runs/last/dataset/items",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddOptionalParameter("signature", signature)
+                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
+                                .AddOptionalParameter("format", format)
+                                .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("offset", offset?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("fields", fields)
+                                .AddOptionalParameter("outputFields", outputFields)
+                                .AddOptionalParameter("omit", omit)
+                                .AddOptionalParameter("unwind", unwind)
+                                .AddOptionalParameter("flatten", flatten)
+                                .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("delimiter", delimiter)
+                                .AddOptionalParameter("bom", bom?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("xmlRoot", xmlRoot)
+                                .AddOptionalParameter("xmlRow", xmlRow)
+                                .AddOptionalParameter("skipHeaderRow", skipHeaderRow?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipHidden", skipHidden?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipEmpty", skipEmpty?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("view", view)
+                                .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("feedTitle", feedTitle)
+                                .AddOptionalParameter("feedDescription", feedDescription)
+                                .AddOptionalParameter("signature", signature)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -170,7 +462,7 @@ namespace Apify
 
                 __httpRequest.Headers.TryAddWithoutValidation(
                     "Accept",
-                    "application/json");
+                    "text/csv");
 
             foreach (var __authorization in __authorizations)
             {
@@ -196,13 +488,36 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareActorRunKeyValueStoreRecordGetRequest(
+                PrepareActorRunsLastDatasetItemsGetAsTextRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId!,
-                    recordKey: recordKey!,
-                    signature: signature,
-                    attachment: attachment);
+                    actorId: actorId!,
+                    status: status,
+                    origin: origin,
+                    format: format,
+                    clean: clean,
+                    offset: offset,
+                    limit: limit,
+                    fields: fields,
+                    outputFields: outputFields,
+                    omit: omit,
+                    unwind: unwind,
+                    flatten: flatten,
+                    desc: desc,
+                    attachment: attachment,
+                    delimiter: delimiter,
+                    bom: bom,
+                    xmlRoot: xmlRoot,
+                    xmlRow: xmlRow,
+                    skipHeaderRow: skipHeaderRow,
+                    skipHidden: skipHidden,
+                    skipEmpty: skipEmpty,
+                    simplified: simplified,
+                    view: view,
+                    skipFailedPages: skipFailedPages,
+                    feedTitle: feedTitle,
+                    feedDescription: feedDescription,
+                    signature: signature);
 
                 return __httpRequest;
             }
@@ -219,9 +534,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunKeyValueStoreRecordGet",
-                                methodName: "ActorRunKeyValueStoreRecordGetAsync",
-                                pathTemplate: "$\"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}\"",
+                                operationId: "ActorRunsLastDatasetItemsGetAsText",
+                                methodName: "ActorRunsLastDatasetItemsGetAsTextAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -253,9 +568,9 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunKeyValueStoreRecordGet",
-                                methodName: "ActorRunKeyValueStoreRecordGetAsync",
-                                pathTemplate: "$\"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}\"",
+                                operationId: "ActorRunsLastDatasetItemsGetAsText",
+                                methodName: "ActorRunsLastDatasetItemsGetAsTextAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -294,9 +609,9 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunKeyValueStoreRecordGet",
-                                methodName: "ActorRunKeyValueStoreRecordGetAsync",
-                                pathTemplate: "$\"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}\"",
+                                operationId: "ActorRunsLastDatasetItemsGetAsText",
+                                methodName: "ActorRunsLastDatasetItemsGetAsTextAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -334,7 +649,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessActorRunKeyValueStoreRecordGetResponse(
+                ProcessActorRunsLastDatasetItemsGetAsTextResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -342,9 +657,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunKeyValueStoreRecordGet",
-                                methodName: "ActorRunKeyValueStoreRecordGetAsync",
-                                pathTemplate: "$\"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}\"",
+                                operationId: "ActorRunsLastDatasetItemsGetAsText",
+                                methodName: "ActorRunsLastDatasetItemsGetAsTextAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -364,9 +679,9 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunKeyValueStoreRecordGet",
-                                methodName: "ActorRunKeyValueStoreRecordGetAsync",
-                                pathTemplate: "$\"/v2/actor-runs/{runId}/key-value-store/records/{recordKey}\"",
+                                operationId: "ActorRunsLastDatasetItemsGetAsText",
+                                methodName: "ActorRunsLastDatasetItemsGetAsTextAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -381,38 +696,6 @@ namespace Apify
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // 
-                            if ((int)__response.StatusCode == 302)
-                            {
-                                string? __content_302 = null;
-                                global::System.Exception? __exception_302 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_302 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                    }
-                                    else
-                                    {
-                                        __content_302 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_302 = __ex;
-                                }
-
-
-                                throw global::Apify.ApiException.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_302,
-                                    responseBody: __content_302,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
                             // Bad request - invalid input parameters or request body.
                             if ((int)__response.StatusCode == 400)
                             {
@@ -685,7 +968,7 @@ namespace Apify
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessActorRunKeyValueStoreRecordGetResponseContent(
+                                ProcessActorRunsLastDatasetItemsGetAsTextResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -694,13 +977,11 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.RecordResponse.FromJson(__content, JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RecordResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -720,19 +1001,17 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                                    var __content = await __response.Content.ReadAsStringAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.RecordResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.RecordResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<string>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

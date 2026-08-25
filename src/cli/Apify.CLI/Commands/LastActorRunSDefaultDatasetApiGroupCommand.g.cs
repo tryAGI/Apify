@@ -12,7 +12,9 @@ internal static class LastActorRunSDefaultDatasetApiGroupCommand
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetGetCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetItemsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetItemsGetAsBytesCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetItemsGetAsStreamCommandApiCommand.Create());
+                         command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetItemsGetAsTextCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetItemsPostCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetPutCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultDatasetActorRunsLastDatasetStatisticsGetCommandApiCommand.Create());

@@ -7,7 +7,7 @@ namespace Apify
     {
 
 
-        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunsLastDatasetItemsGetSecurityRequirement0 =
+        private static readonly global::Apify.EndPointSecurityRequirement s_ActorRunsLastDatasetItemsGetAsBytesSecurityRequirement0 =
             new global::Apify.EndPointSecurityRequirement
             {
                 Authorizations = new global::Apify.EndPointAuthorizationRequirement[]
@@ -21,11 +21,11 @@ namespace Apify
                     },
                 },
             };
-        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunsLastDatasetItemsGetSecurityRequirements =
+        private static readonly global::Apify.EndPointSecurityRequirement[] s_ActorRunsLastDatasetItemsGetAsBytesSecurityRequirements =
             new global::Apify.EndPointSecurityRequirement[]
-            {                s_ActorRunsLastDatasetItemsGetSecurityRequirement0,
+            {                s_ActorRunsLastDatasetItemsGetAsBytesSecurityRequirement0,
             };
-        partial void PrepareActorRunsLastDatasetItemsGetArguments(
+        partial void PrepareActorRunsLastDatasetItemsGetAsBytesArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string? status,
@@ -54,7 +54,7 @@ namespace Apify
             ref string? feedTitle,
             ref string? feedDescription,
             ref string? signature);
-        partial void PrepareActorRunsLastDatasetItemsGetRequest(
+        partial void PrepareActorRunsLastDatasetItemsGetAsBytesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
@@ -84,14 +84,14 @@ namespace Apify
             string? feedTitle,
             string? feedDescription,
             string? signature);
-        partial void ProcessActorRunsLastDatasetItemsGetResponse(
+        partial void ProcessActorRunsLastDatasetItemsGetAsBytesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessActorRunsLastDatasetItemsGetResponseContent(
+        partial void ProcessActorRunsLastDatasetItemsGetAsBytesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
-            ref string content);
+            ref byte[] content);
 
         /// <summary>
         /// Get last run's dataset items<br/>
@@ -179,7 +179,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<object>> ActorRunsLastDatasetItemsGetAsync(
+        public async global::System.Threading.Tasks.Task<byte[]> ActorRunsLastDatasetItemsGetAsBytesAsync(
             string actorId,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
@@ -210,7 +210,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ActorRunsLastDatasetItemsGetAsResponseAsync(
+            var __response = await ActorRunsLastDatasetItemsGetAsBytesAsResponseAsync(
                 actorId: actorId,
                 status: status,
                 origin: origin,
@@ -330,7 +330,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>> ActorRunsLastDatasetItemsGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::System.IO.Stream> ActorRunsLastDatasetItemsGetAsBytesAsStreamAsync(
             string actorId,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
@@ -363,7 +363,7 @@ namespace Apify
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareActorRunsLastDatasetItemsGetArguments(
+            PrepareActorRunsLastDatasetItemsGetAsBytesArguments(
                 httpClient: HttpClient,
                 actorId: ref actorId,
                 status: ref status,
@@ -396,8 +396,8 @@ namespace Apify
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ActorRunsLastDatasetItemsGetSecurityRequirements,
-                operationName: "ActorRunsLastDatasetItemsGetAsync");
+                securityRequirements: s_ActorRunsLastDatasetItemsGetAsBytesSecurityRequirements,
+                operationName: "ActorRunsLastDatasetItemsGetAsBytesAsync");
 
             using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -462,7 +462,7 @@ namespace Apify
 
                 __httpRequest.Headers.TryAddWithoutValidation(
                     "Accept",
-                    "application/json");
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
             foreach (var __authorization in __authorizations)
             {
@@ -488,7 +488,7 @@ namespace Apify
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareActorRunsLastDatasetItemsGetRequest(
+                PrepareActorRunsLastDatasetItemsGetAsBytesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     actorId: actorId!,
@@ -534,8 +534,8 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunsLastDatasetItemsGet",
-                                methodName: "ActorRunsLastDatasetItemsGetAsync",
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
                                 pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
@@ -554,7 +554,7 @@ namespace Apify
                     {
                         __response = await HttpClient.SendAsync(
                 request: __httpRequest,
-                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseHeadersRead,
                 cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
@@ -568,8 +568,8 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunsLastDatasetItemsGet",
-                                methodName: "ActorRunsLastDatasetItemsGetAsync",
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
                                 pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
@@ -609,8 +609,770 @@ namespace Apify
                         await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunsLastDatasetItemsGet",
-                                methodName: "ActorRunsLastDatasetItemsGetAsync",
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        __response.Dispose();
+                        __response = null;
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    break;
+                }
+
+                if (__response == null)
+                {
+                    throw new global::System.InvalidOperationException("No response received.");
+                }
+
+                try
+                {
+
+                ProcessResponse(
+                    client: HttpClient,
+                    response: __response);
+                ProcessActorRunsLastDatasetItemsGetAsBytesResponse(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response);
+                if (__response.IsSuccessStatusCode)
+                {
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                else
+                {
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: __response,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attemptNumber,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                }
+                            // Bad request - invalid input parameters or request body.
+                            if ((int)__response.StatusCode == 400)
+                            {
+                                string? __content_400 = null;
+                                global::System.Exception? __exception_400 = null;
+                                global::Apify.ErrorResponse? __value_400 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_400 = global::Apify.ErrorResponse.FromJson(__content_400, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_400 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_400,
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Unauthorized - authentication required or invalid token.
+                            if ((int)__response.StatusCode == 401)
+                            {
+                                string? __content_401 = null;
+                                global::System.Exception? __exception_401 = null;
+                                global::Apify.ErrorResponse? __value_401 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_401 = global::Apify.ErrorResponse.FromJson(__content_401, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_401 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_401,
+                                    responseBody: __content_401,
+                                    responseObject: __value_401,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.
+                            if ((int)__response.StatusCode == 402)
+                            {
+                                string? __content_402 = null;
+                                global::System.Exception? __exception_402 = null;
+                                global::Apify.ErrorResponse? __value_402 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_402 = global::Apify.ErrorResponse.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_402 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_402,
+                                    responseBody: __content_402,
+                                    responseObject: __value_402,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Forbidden - insufficient permissions to perform this action.
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                global::Apify.ErrorResponse? __value_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_403 = global::Apify.ErrorResponse.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Not found - the requested resource does not exist.
+                            if ((int)__response.StatusCode == 404)
+                            {
+                                string? __content_404 = null;
+                                global::System.Exception? __exception_404 = null;
+                                global::Apify.ErrorResponse? __value_404 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_404 = global::Apify.ErrorResponse.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_404 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_404,
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Method not allowed.
+                            if ((int)__response.StatusCode == 405)
+                            {
+                                string? __content_405 = null;
+                                global::System.Exception? __exception_405 = null;
+                                global::Apify.ErrorResponse? __value_405 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_405 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_405 = global::Apify.ErrorResponse.FromJson(__content_405, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_405 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_405 = global::Apify.ErrorResponse.FromJson(__content_405, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_405 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_405 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_405,
+                                    responseBody: __content_405,
+                                    responseObject: __value_405,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Too many requests - rate limit exceeded.
+                            if ((int)__response.StatusCode == 429)
+                            {
+                                string? __content_429 = null;
+                                global::System.Exception? __exception_429 = null;
+                                global::Apify.ErrorResponse? __value_429 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_429 = global::Apify.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_429 = global::Apify.ErrorResponse.FromJson(__content_429, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_429 = __ex;
+                                }
+
+
+                                throw global::Apify.ApiException<global::Apify.ErrorResponse>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_429,
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+
+                            try
+                            {
+                                __response.EnsureSuccessStatusCode();
+
+                                var __content = await __response.Content.ReadAsStreamAsync(
+                #if NET5_0_OR_GREATER
+                                    __effectiveCancellationToken
+                #endif
+                                ).ConfigureAwait(false);
+
+                                return new global::Apify.ResponseStream(__response, __content);
+                            }
+                            catch (global::System.Exception __ex)
+                            {
+                                string? __content = null;
+                                try
+                                {
+                                    __content = await __response.Content.ReadAsStringAsync(
+                #if NET5_0_OR_GREATER
+                                        __effectiveCancellationToken
+                #endif
+                                    ).ConfigureAwait(false);
+                                }
+                                catch (global::System.Exception)
+                                {
+                                }
+
+                                throw global::Apify.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __ex,
+                                    responseBody: __content,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+
+                }
+                catch
+                {
+                    __response.Dispose();
+                    throw;
+                }
+            }
+            finally
+            {
+                __httpRequest?.Dispose();
+            }
+        }
+        /// <summary>
+        /// Get last run's dataset items<br/>
+        /// Returns data stored in the default dataset of the last Actor run in the desired format.<br/>
+        /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
+        /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
+        /// </summary>
+        /// <param name="actorId">
+        /// Example: compass~google-maps-extractor
+        /// </param>
+        /// <param name="status">
+        /// Example: SUCCEEDED
+        /// </param>
+        /// <param name="origin"></param>
+        /// <param name="format">
+        /// Example: json
+        /// </param>
+        /// <param name="clean">
+        /// Example: false
+        /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit"></param>
+        /// <param name="fields">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="outputFields">
+        /// Example: title,link
+        /// </param>
+        /// <param name="omit">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="unwind">
+        /// Example: myValue,myOtherValue
+        /// </param>
+        /// <param name="flatten">
+        /// Example: myValue
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
+        /// </param>
+        /// <param name="attachment">
+        /// Example: true
+        /// </param>
+        /// <param name="delimiter">
+        /// Example: ;
+        /// </param>
+        /// <param name="bom">
+        /// Example: false
+        /// </param>
+        /// <param name="xmlRoot">
+        /// Example: items
+        /// </param>
+        /// <param name="xmlRow">
+        /// Example: item
+        /// </param>
+        /// <param name="skipHeaderRow">
+        /// Example: true
+        /// </param>
+        /// <param name="skipHidden">
+        /// Example: false
+        /// </param>
+        /// <param name="skipEmpty">
+        /// Example: false
+        /// </param>
+        /// <param name="simplified">
+        /// Example: false
+        /// </param>
+        /// <param name="view">
+        /// Example: overview
+        /// </param>
+        /// <param name="skipFailedPages">
+        /// Example: false
+        /// </param>
+        /// <param name="feedTitle">
+        /// Example: Latest posts from r/pasta
+        /// </param>
+        /// <param name="feedDescription">
+        /// Example: Scraped forum posts
+        /// </param>
+        /// <param name="signature">
+        /// Example: 2wTI46Bg8qWQrV7tavlPI
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Apify.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<byte[]>> ActorRunsLastDatasetItemsGetAsBytesAsResponseAsync(
+            string actorId,
+            string? status = default,
+            global::Apify.RunOrigin? origin = default,
+            string? format = default,
+            bool? clean = default,
+            double? offset = default,
+            double? limit = default,
+            string? fields = default,
+            string? outputFields = default,
+            string? omit = default,
+            string? unwind = default,
+            string? flatten = default,
+            bool? desc = default,
+            bool? attachment = default,
+            string? delimiter = default,
+            bool? bom = default,
+            string? xmlRoot = default,
+            string? xmlRow = default,
+            bool? skipHeaderRow = default,
+            bool? skipHidden = default,
+            bool? skipEmpty = default,
+            bool? simplified = default,
+            string? view = default,
+            bool? skipFailedPages = default,
+            string? feedTitle = default,
+            string? feedDescription = default,
+            string? signature = default,
+            global::Apify.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            PrepareArguments(
+                client: HttpClient);
+            PrepareActorRunsLastDatasetItemsGetAsBytesArguments(
+                httpClient: HttpClient,
+                actorId: ref actorId,
+                status: ref status,
+                origin: ref origin,
+                format: ref format,
+                clean: ref clean,
+                offset: ref offset,
+                limit: ref limit,
+                fields: ref fields,
+                outputFields: ref outputFields,
+                omit: ref omit,
+                unwind: ref unwind,
+                flatten: ref flatten,
+                desc: ref desc,
+                attachment: ref attachment,
+                delimiter: ref delimiter,
+                bom: ref bom,
+                xmlRoot: ref xmlRoot,
+                xmlRow: ref xmlRow,
+                skipHeaderRow: ref skipHeaderRow,
+                skipHidden: ref skipHidden,
+                skipEmpty: ref skipEmpty,
+                simplified: ref simplified,
+                view: ref view,
+                skipFailedPages: ref skipFailedPages,
+                feedTitle: ref feedTitle,
+                feedDescription: ref feedDescription,
+                signature: ref signature);
+
+
+            var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ActorRunsLastDatasetItemsGetAsBytesSecurityRequirements,
+                operationName: "ActorRunsLastDatasetItemsGetAsBytesAsync");
+
+            using var __timeoutCancellationTokenSource = global::Apify.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken);
+            var __effectiveCancellationToken = __timeoutCancellationTokenSource?.Token ?? cancellationToken;
+            var __effectiveReadResponseAsString = global::Apify.AutoSDKRequestOptionsSupport.GetReadResponseAsString(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                fallbackValue: ReadResponseAsString);
+            var __maxAttempts = global::Apify.AutoSDKRequestOptionsSupport.GetMaxAttempts(
+                clientOptions: Options,
+                requestOptions: requestOptions,
+                supportsRetry: true);
+
+            global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
+            {
+
+                            var __pathBuilder = new global::Apify.PathBuilder(
+                                path: $"/v2/actors/{actorId}/runs/last/dataset/items",
+                                baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("status", status)
+                                .AddOptionalParameter("origin", origin?.ToValueString())
+                                .AddOptionalParameter("format", format)
+                                .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("offset", offset?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("fields", fields)
+                                .AddOptionalParameter("outputFields", outputFields)
+                                .AddOptionalParameter("omit", omit)
+                                .AddOptionalParameter("unwind", unwind)
+                                .AddOptionalParameter("flatten", flatten)
+                                .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("attachment", attachment?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("delimiter", delimiter)
+                                .AddOptionalParameter("bom", bom?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("xmlRoot", xmlRoot)
+                                .AddOptionalParameter("xmlRow", xmlRow)
+                                .AddOptionalParameter("skipHeaderRow", skipHeaderRow?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipHidden", skipHidden?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("skipEmpty", skipEmpty?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("simplified", simplified?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("view", view)
+                                .AddOptionalParameter("skipFailedPages", skipFailedPages?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("feedTitle", feedTitle)
+                                .AddOptionalParameter("feedDescription", feedDescription)
+                                .AddOptionalParameter("signature", signature)
+                                ;
+                            var __path = __pathBuilder.ToString();
+                __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
+                    path: __path,
+                    clientParameters: Options.QueryParameters,
+                    requestParameters: requestOptions?.QueryParameters);
+                var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                    method: global::System.Net.Http.HttpMethod.Get,
+                    requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+                __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+                __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+                __httpRequest.Headers.TryAddWithoutValidation(
+                    "Accept",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+            foreach (var __authorization in __authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2" ||
+                    __authorization.Type == "OpenIdConnect")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                } 
+            }
+                global::Apify.AutoSDKRequestOptionsSupport.ApplyHeaders(
+                    request: __httpRequest,
+                    clientHeaders: Options.Headers,
+                    requestHeaders: requestOptions?.Headers);
+
+                PrepareRequest(
+                    client: HttpClient,
+                    request: __httpRequest);
+                PrepareActorRunsLastDatasetItemsGetAsBytesRequest(
+                    httpClient: HttpClient,
+                    httpRequestMessage: __httpRequest,
+                    actorId: actorId!,
+                    status: status,
+                    origin: origin,
+                    format: format,
+                    clean: clean,
+                    offset: offset,
+                    limit: limit,
+                    fields: fields,
+                    outputFields: outputFields,
+                    omit: omit,
+                    unwind: unwind,
+                    flatten: flatten,
+                    desc: desc,
+                    attachment: attachment,
+                    delimiter: delimiter,
+                    bom: bom,
+                    xmlRoot: xmlRoot,
+                    xmlRow: xmlRow,
+                    skipHeaderRow: skipHeaderRow,
+                    skipHidden: skipHidden,
+                    skipEmpty: skipEmpty,
+                    simplified: simplified,
+                    view: view,
+                    skipFailedPages: skipFailedPages,
+                    feedTitle: feedTitle,
+                    feedDescription: feedDescription,
+                    signature: signature);
+
+                return __httpRequest;
+            }
+
+            global::System.Net.Http.HttpRequestMessage? __httpRequest = null;
+            global::System.Net.Http.HttpResponseMessage? __response = null;
+            var __attemptNumber = 0;
+            try
+            {
+                for (var __attempt = 1; __attempt <= __maxAttempts; __attempt++)
+                {
+                    __attemptNumber = __attempt;
+                    __httpRequest = __CreateHttpRequest();
+                    await global::Apify.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: null,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                    try
+                    {
+                        __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                    }
+                    catch (global::System.Net.Http.HttpRequestException __exception)
+                    {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
+                        var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
+                        await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
+                                pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
+                                httpMethod: "GET",
+                                baseUri: BaseUri,
+                                request: __httpRequest!,
+                                response: null,
+                                exception: __exception,
+                                clientOptions: Options,
+                                requestOptions: requestOptions,
+                                attempt: __attempt,
+                                maxAttempts: __maxAttempts,
+                                willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
+                                cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
+                        if (!__willRetry)
+                        {
+                            throw;
+                        }
+
+                        __httpRequest.Dispose();
+                        __httpRequest = null;
+                        await global::Apify.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
+                            retryDelay: __retryDelay,
+                            cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
+                        continue;
+                    }
+
+                    if (__response != null &&
+                        __attempt < __maxAttempts &&
+                        global::Apify.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
+                    {
+                        var __retryDelay = global::Apify.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
+                        await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
+                            clientOptions: Options,
+                            context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
                                 pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
@@ -649,7 +1411,7 @@ namespace Apify
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessActorRunsLastDatasetItemsGetResponse(
+                ProcessActorRunsLastDatasetItemsGetAsBytesResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -657,8 +1419,8 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunsLastDatasetItemsGet",
-                                methodName: "ActorRunsLastDatasetItemsGetAsync",
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
                                 pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
@@ -679,8 +1441,8 @@ namespace Apify
                     await global::Apify.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Apify.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ActorRunsLastDatasetItemsGet",
-                                methodName: "ActorRunsLastDatasetItemsGetAsync",
+                                operationId: "ActorRunsLastDatasetItemsGetAsBytes",
+                                methodName: "ActorRunsLastDatasetItemsGetAsBytesAsync",
                                 pathTemplate: "$\"/v2/actors/{actorId}/runs/last/dataset/items\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
@@ -958,17 +1720,13 @@ namespace Apify
 
                             if (__effectiveReadResponseAsString)
                             {
-                                var __content = await __response.Content.ReadAsStringAsync(
+                                var __content = await __response.Content.ReadAsByteArrayAsync(
                 #if NET5_0_OR_GREATER
                                     __effectiveCancellationToken
                 #endif
                                 ).ConfigureAwait(false);
 
-                                ProcessResponseContent(
-                                    client: HttpClient,
-                                    response: __response,
-                                    content: ref __content);
-                                ProcessActorRunsLastDatasetItemsGetResponseContent(
+                                ProcessActorRunsLastDatasetItemsGetAsBytesResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -977,21 +1735,19 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = (global::System.Collections.Generic.IList<object>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>(
+                                    return new global::Apify.AutoSDKHttpResponse<byte[]>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
                                     throw global::Apify.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        responseBody: __content,
+                                        responseBody: null,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
@@ -1003,19 +1759,17 @@ namespace Apify
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
+                                    var __content = await __response.Content.ReadAsByteArrayAsync(
                 #if NET5_0_OR_GREATER
                                         __effectiveCancellationToken
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = (global::System.Collections.Generic.IList<object>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<object>), JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::System.Collections.Generic.IList<object>>(
+                                    return new global::Apify.AutoSDKHttpResponse<byte[]>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        body: __content);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
