@@ -86,7 +86,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Collections.Generic.IAsyncEnumerable<global::System.Collections.Generic.IList<object>> ActorRunDatasetItemsGetAsStreamAsync(
+        global::System.Collections.Generic.IAsyncEnumerable<string> ActorRunDatasetItemsGetAsStreamAsync(
             string runId,
             string? format = default,
             bool? clean = default,

@@ -15,6 +15,7 @@ internal static class StorageKeyValueStoresApiGroupCommand
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStorePutCommandApiCommand.Create());
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordGetCommandApiCommand.Create());
+                         command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordGetAsBytesCommandApiCommand.Create());
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordHeadCommandApiCommand.Create());
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordPostCommandApiCommand.Create());
                          command.Subcommands.Add(StorageKeyValueStoresKeyValueStoreRecordPutCommandApiCommand.Create());

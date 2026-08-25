@@ -15,6 +15,7 @@ internal static class LastActorTaskRunSDefaultKeyValueStoreApiGroupCommand
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStorePutCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordGetCommandApiCommand.Create());
+                         command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordGetAsBytesCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordPostCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordPutCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordsGetCommandApiCommand.Create());
