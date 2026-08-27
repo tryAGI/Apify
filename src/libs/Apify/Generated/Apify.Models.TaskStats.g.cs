@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TaskStats
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalRuns")]
         public int? TotalRuns { get; set; }

@@ -39,7 +39,7 @@ namespace Apify
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("forcePermissionLevel")]
         public global::Apify.ActorPermissionLevel? ForcePermissionLevel { get; set; }

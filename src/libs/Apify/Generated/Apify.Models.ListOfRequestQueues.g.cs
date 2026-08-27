@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PaginationResponse))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsPaginationResponse => PaginationResponse != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPaginationResponse(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
             ? PaginationResponse!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfRequestQueuesVariant2? ListOfRequestQueuesVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfRequestQueuesVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsListOfRequestQueuesVariant2 => ListOfRequestQueuesVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickListOfRequestQueuesVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ListOfRequestQueuesVariant2 PickListOfRequestQueuesVariant2() => IsListOfRequestQueuesVariant2
             ? ListOfRequestQueuesVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfRequestQueuesVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ListOfRequestQueues(global::Apify.PaginationResponse value) => new ListOfRequestQueues((global::Apify.PaginationResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PaginationResponse?(ListOfRequestQueues @this) => @this.PaginationResponse;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRequestQueues(global::Apify.PaginationResponse? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ListOfRequestQueues FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfRequestQueues(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ListOfRequestQueues(global::Apify.ListOfRequestQueuesVariant2 value) => new ListOfRequestQueues((global::Apify.ListOfRequestQueuesVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ListOfRequestQueuesVariant2?(ListOfRequestQueues @this) => @this.ListOfRequestQueuesVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRequestQueues(global::Apify.ListOfRequestQueuesVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ListOfRequestQueues FromListOfRequestQueuesVariant2(global::Apify.ListOfRequestQueuesVariant2? value) => new ListOfRequestQueues(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRequestQueues(
             global::Apify.PaginationResponse? paginationResponse,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ListOfRequestQueuesVariant2 as object ??
-            PaginationResponse as object 
+            PaginationResponse as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            ListOfRequestQueuesVariant2?.ToString() 
+            ListOfRequestQueuesVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse, TResult>? paginationResponse = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ListOfRequestQueues other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfRequestQueuesVariant2?>.Default.Equals(ListOfRequestQueuesVariant2, other.ListOfRequestQueuesVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfRequestQueuesVariant2?>.Default.Equals(ListOfRequestQueuesVariant2, other.ListOfRequestQueuesVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ListOfRequestQueues obj1, ListOfRequestQueues obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ListOfRequestQueues obj1, ListOfRequestQueues obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -4,16 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ActorRunRequestQueueRequestsGetFilterItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Locked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pending,
     }

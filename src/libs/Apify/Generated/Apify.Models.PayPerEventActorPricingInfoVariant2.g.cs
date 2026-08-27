@@ -4,26 +4,26 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PayPerEventActorPricingInfoVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"PAY_PER_EVENT"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]
         public string PricingModel { get; set; } = "PAY_PER_EVENT";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingPerEvent")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent PricingPerEvent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("minimalMaxTotalChargeUsd")]
         public double? MinimalMaxTotalChargeUsd { get; set; }

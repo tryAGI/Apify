@@ -4,19 +4,19 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UsageCycle
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startAt")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.DateTime StartAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endAt")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UpdateLimitsRequest
     {

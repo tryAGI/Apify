@@ -4,40 +4,40 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PriceTiers
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quantityAbove")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double QuantityAbove { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("discountPercent")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double DiscountPercent { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tierQuantity")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double TierQuantity { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unitPriceUsd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double UnitPriceUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priceUsd")]
         [global::System.Text.Json.Serialization.JsonRequired]

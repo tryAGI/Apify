@@ -9,1579 +9,1583 @@ namespace Apify
     public enum ErrorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3dSecureAuthFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AccessRightAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActionNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorAlreadyRented,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorCanNotBeRented,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorIsNotRented,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorMemoryLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorNameExistsNewOwner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorNameNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorNotGithubActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorNotPublic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorPermissionLevelNotSupportedForAgenticPayments,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorReviewAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorStandbyNotSupportedForAgenticPayments,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorTaskNameNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgenticPaymentInfoRetrievalError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgenticPaymentInformationMissing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgenticPaymentInsufficientAmount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgenticPaymentProviderInternalError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgenticPaymentProviderUnauthorized,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AirtableWebhookDeprecated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AlreadySubscribedToPaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApifyPlanRequiredToUsePaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApifySignupNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AuthMethodNotSupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AuthorizationServerNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AutoIssueDateInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BackgroundCheckRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingSystemError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BlackFridayPlanExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BraintreeError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BraintreeNotLinked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BraintreeOperationTimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BraintreeUnsupportedCurrency,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BuildNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BuildOutdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotAddApifyEventsToPpeActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotAddMultiplePricingInfos,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotAddPricingInfoThatAltersPast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotAddSecondFuturePricingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotBuildActorFromWebhook,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotChangeBillingInterval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotChangeOwner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotChargeApifyEvent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotChargeNonPayPerEventActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotCommentAsOtherUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotCopyActorTask,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotCreatePayout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotCreatePublicActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotCreateTaxTransaction,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDeleteCriticalActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDeleteInvoice,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDeletePaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDisableOneTimeEventForApifyStartEvent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDisableOrganizationWithEnabledMembers,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotDisableUserWithSubscription,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotLinkOauthToUnverifiedEmail,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotMetamorphToPayPerResultActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotModifyActorPricingTooFrequently,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotModifyActorPricingWithImmediateEffect,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotMonetizeWithoutPayoutBillingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotOverridePaidActorTrial,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotPermanentlyDeleteSubscription,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotPublishActor,
         /// <summary>
-        /// 
+        ///
+        /// </summary>
+        CannotPublishActorTask,
+        /// <summary>
+        ///
         /// </summary>
         CannotReduceLastFullToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotReimburseMoreThanOriginalCharge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotReimburseNonRentalCharge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemoveOwnActorFromRecentlyUsed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemovePaymentMethod,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemovePricingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemoveRunningRun,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemoveUserWithPublicActors,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemoveUserWithSubscription,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRemoveUserWithUnpaidInvoice,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRenameEnvVar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotRentPaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotReviewOwnActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotSetAccessRightsForOwner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotSetIsStatusMessageTerminal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotUnpublishCriticalActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotUnpublishPaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotUnpublishProfile,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CannotUpdateInvoiceField,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConcurrentRunsLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConcurrentUpdateDetected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConferenceTokenNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ContentEncodingForbiddenForHtml,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponAlreadyRedeemed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponForNewCustomers,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponForSubscribedUsers,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponLimitsAreInConflictWithCurrentLimits,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponMaxNumberOfRedemptionsReached,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CouponsDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreateGithubIssueNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreatorPlanNotAvailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CronExpressionInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DailyAiTokenLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DailyPublicationLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DatasetDoesNotHaveFieldsSchema,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DatasetDoesNotHaveSchema,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DatasetLocked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DatasetSchemaInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DcrNotSupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DefaultDatasetNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeletingDefaultBuild,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeletingUnfinishedBuild,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevatedPermissionsNeeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailAlreadyTaken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailAlreadyTakenRemovedUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailDomainNotAllowedForCoupon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailNotValid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EmailUpdateTooSoon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnvVarAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExchangeRateFetchFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExpiredConferenceToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FailedToChargeUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FinalInvoiceNegative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FullPermissionActorBlockedForAdmin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FullPermissionActorNotApproved,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubBranchEmpty,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubIssueAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubPublicKeyNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubRepositoryNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubSignatureDoesNotMatchPayload,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubUserNotAuthorizedForIssues,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GmailNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IdDoesNotMatch,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IncompatibleBillingInterval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IncompletePayoutBillingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InconsistentCurrencies,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IncorrectPricingModifierPrefix,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InputJsonInvalidCharacters,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InputJsonNotObject,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InputJsonTooLong,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InputUpdateCollision,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientPermissions,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientPermissionsToChangeField,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientSecurityMeasures,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InsufficientTaxCountryEvidence,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IntegrationAuthError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InternalServerError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidBillingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidBillingPeriodForPayout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidBuild,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidClientKey,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidCollection,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidConferenceLoginPassword,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidContentTypeHeader,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidCredentials,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidGitAuthToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidGithubIssueUrl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidHeader,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidIdempotencyKey,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidInput,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidInputSchema,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidInvoice,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidInvoiceType,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidIssueDate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidLabelParams,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidMainAccountUserId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidOauthApp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidOauthScope,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidOneTimeInvoice,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidParameter,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidPayoutStatus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidPictureUrl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidRecordKey,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidRequest,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidResourceType,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidSignature,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidSubscriptionPlan,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTaxNumber,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTaxNumberFormat,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTokenType,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTwoFactorCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTwoFactorCodeOrRecoveryCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidTwoFactorRecoveryCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidUsername,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidValue,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvitationInvalidResourceType,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvitationNoLongerValid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceCanceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceCannotBeRefundedDueToTooHighAmount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceIncomplete,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceIsDraft,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceLocked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceMustBeBuffer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceNotCanceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceNotDraft,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoiceOutdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvoicePaidAlready,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IssueAlreadyConnectedToGithub,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IssueNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IssuerNotRegistered,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IssuesBadRequest,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JobFinished,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LabelAlreadyLinked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LastApiToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LimitReached,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxItemsMustBeGreaterThanZero,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxMetamorphsExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxTotalChargeUsdBelowMinimum,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxTotalChargeUsdMustBeGreaterThanZero,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MethodNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MigrationDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingActorRights,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingApiToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingBillingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingLineItems,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingPaymentDate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingPayoutBillingInfo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingProxyPassword,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingReportingFields,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingResourceName,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingSettings,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MissingUsername,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MonthlyUsageLimitTooLow,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MoreThanOneUpdateNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MultipleRecordsFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MustBeAdmin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NameNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NextRuntimeComputationFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoColumnsInExportedDataset,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoPaymentAttemptForRefundFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoPaymentMethodAvailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoTeamAccountSeatsAvailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NonTemporaryEmail,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotEnoughUsageToRunPaidActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotImplemented,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotSupportedCurrencies,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OAuthServiceAlreadyConnected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OAuthServiceNotConnected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OauthResourceAccessFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OneTimeInvoiceAlreadyMarkedPaid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnlyDraftsCanBeDeleted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OperationCanceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OperationNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OperationTimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OrganizationCannotOwnItself,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OrganizationRoleNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OverlappingPayoutBillingPeriods,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OwnTokenRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PageNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParamNotOneOf,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParametersMismatched,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PasswordResetEmailAlreadySent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PasswordResetTokenExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayAsYouGoWithoutMonthlyInterval,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PaymentAttemptStatusMessageRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutAlreadyPaid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutCanceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutInvalidState,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutMustBeApprovedToBeMarkedPaid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayoutNumberAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneNumberInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneNumberLandline,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneNumberOptedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneVerificationDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlatformFeatureDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PriceOverridesValidationFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PricingModelNotSupported,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PromotionalPlanNotAvailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ProxyAuthIpNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PublicActorDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QueryTimeout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QuotedPriceOutdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RateLimitExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecaptchaInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecaptchaRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecordNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecordNotPublic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecordOrTokenNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RecordTooLarge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RedirectUriMismatch,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReducedPlanNotAvailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RentalChargeAlreadyReimbursed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RentalNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestAbortedPrematurely,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestHandledOrLocked,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestIdInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestQueueDuplicateRequests,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestTooLarge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestedDatasetViewDoesNotExist,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ResumeTokenExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunInputBodyNotValidJson,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunTimeoutExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RussiaIsEvil,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SameUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScheduleActorNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScheduleActorTaskNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScheduleNameNotUnique,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SchemaValidation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SchemaValidationError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SchemaValidationFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ServiceWorkerRegistrationNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SignUpMethodNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SlackIntegrationNotCustom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SocketClosed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SocketDestroyed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StoreSchemaInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StoreTermsNotAccepted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StripeEnabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StripeGenericDecline,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StripeNotEnabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StripeNotEnabledForUser,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaggedBuildRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaxCountryInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaxNumberInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaxNumberValidationFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaxamoCallFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaxamoRequestFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TestingError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TokenNotProvided,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooFewVersions,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyActorTasks,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyActors,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyLabelsOnResource,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyMcpConnectors,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyOAuthApps,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyOrganizations,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyRequests,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManySchedules,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyUiAccessKeys,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyUserLabels,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyValues,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyVersions,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyWebhooks,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnexpectedRoute,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnknownBuildTag,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnknownPaymentProvider,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsubscribeTokenInvalid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedActorPricingModelForAgenticPayments,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedContentEncoding,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedFileTypeForIssue,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedFileTypeImageExpected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedFileTypeTextOrJsonExpected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnsupportedPermission,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UpcomingSubscriptionBillNotUpToDate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserAlreadyVerified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserCreatesOrganizationsTooFast,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserDisabled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserEmailIsDisposable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserEmailNotSet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserEmailNotVerified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserHasNoSubscription,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIntegrationNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsAlreadyInvited,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsAlreadyOrganizationMember,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsNotMemberOfOrganization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsNotOrganization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsOrganization,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsOrganizationOwner,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserIsRemoved,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserNotLoggedIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserNotVerified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserOrTokenNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserPlanNotAllowedForCoupon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserProblemWithCard,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserRecordNotFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsernameAlreadyTaken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsernameMissing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsernameNotAllowed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsernameRemovalForbidden,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsernameRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VerificationEmailAlreadySent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VerificationTokenExpired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VersionAlreadyExists,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VersionsSizeExceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WeakPassword,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentAlreadyFinalized,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentInsufficientAmount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentMalformedToken,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentSettlementFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentSettlementInProgress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentSettlementStuck,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402AgenticPaymentUnauthorized,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         X402PaymentRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZeroInvoice,
     }
@@ -1665,6 +1669,7 @@ namespace Apify
                 ErrorType.CannotOverridePaidActorTrial => "cannot-override-paid-actor-trial",
                 ErrorType.CannotPermanentlyDeleteSubscription => "cannot-permanently-delete-subscription",
                 ErrorType.CannotPublishActor => "cannot-publish-actor",
+                ErrorType.CannotPublishActorTask => "cannot-publish-actor-task",
                 ErrorType.CannotReduceLastFullToken => "cannot-reduce-last-full-token",
                 ErrorType.CannotReimburseMoreThanOriginalCharge => "cannot-reimburse-more-than-original-charge",
                 ErrorType.CannotReimburseNonRentalCharge => "cannot-reimburse-non-rental-charge",
@@ -2069,6 +2074,7 @@ namespace Apify
                 "cannot-override-paid-actor-trial" => ErrorType.CannotOverridePaidActorTrial,
                 "cannot-permanently-delete-subscription" => ErrorType.CannotPermanentlyDeleteSubscription,
                 "cannot-publish-actor" => ErrorType.CannotPublishActor,
+                "cannot-publish-actor-task" => ErrorType.CannotPublishActorTask,
                 "cannot-reduce-last-full-token" => ErrorType.CannotReduceLastFullToken,
                 "cannot-reimburse-more-than-original-charge" => ErrorType.CannotReimburseMoreThanOriginalCharge,
                 "cannot-reimburse-non-rental-charge" => ErrorType.CannotReimburseNonRentalCharge,

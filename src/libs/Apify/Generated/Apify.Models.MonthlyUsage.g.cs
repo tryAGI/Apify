@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MonthlyUsage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageCycle")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -23,21 +23,21 @@ namespace Apify
         public required global::System.Collections.Generic.Dictionary<string, global::Apify.UsageItem> MonthlyServiceUsage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dailyServiceUsages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Apify.DailyServiceUsages> DailyServiceUsages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalUsageCreditsUsdBeforeVolumeDiscount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double TotalUsageCreditsUsdBeforeVolumeDiscount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalUsageCreditsUsdAfterVolumeDiscount")]
         [global::System.Text.Json.Serialization.JsonRequired]

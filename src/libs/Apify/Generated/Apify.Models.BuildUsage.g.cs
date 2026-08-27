@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class BuildUsage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ACTOR_COMPUTE_UNITS")]
         public double? ActorComputeUnits { get; set; }

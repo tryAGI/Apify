@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CommonActorPricingInfo
     {
@@ -30,31 +30,31 @@ namespace Apify
         public required global::System.DateTime StartedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("notifiedAboutFutureChangeAt")]
         public global::System.DateTime? NotifiedAboutFutureChangeAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("notifiedAboutChangeAt")]
         public global::System.DateTime? NotifiedAboutChangeAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reasonForChange")]
         public string? ReasonForChange { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isPriceChangeNotificationSuppressed")]
         public bool? IsPriceChangeNotificationSuppressed { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("forceContainsSignificantPriceChange")]
         public bool? ForceContainsSignificantPriceChange { get; set; }

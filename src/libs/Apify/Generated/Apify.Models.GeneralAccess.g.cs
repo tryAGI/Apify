@@ -9,19 +9,19 @@ namespace Apify
     public enum GeneralAccess
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnyoneWithIdCanRead,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AnyoneWithNameCanRead,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FollowUserSetting,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Restricted,
     }

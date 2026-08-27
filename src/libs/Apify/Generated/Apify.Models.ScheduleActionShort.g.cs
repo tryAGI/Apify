@@ -5,17 +5,17 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ScheduleActionShort : global::System.IEquatable<ScheduleActionShort>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ScheduleActionShortDiscriminatorType? Type { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleActionShortRunActor? RunActor { get; init; }
@@ -24,7 +24,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunActor))]
@@ -32,7 +32,7 @@ namespace Apify
         public bool IsRunActor => RunActor != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunActor(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ScheduleActionShortRunActor PickRunActor() => IsRunActor
             ? RunActor!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunActor' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleActionShortRunActorTask? RunActorTask { get; init; }
@@ -61,7 +61,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RunActorTask))]
@@ -69,7 +69,7 @@ namespace Apify
         public bool IsRunActorTask => RunActorTask != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRunActorTask(
 #if NET6_0_OR_GREATER
@@ -82,23 +82,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ScheduleActionShortRunActorTask PickRunActorTask() => IsRunActorTask
             ? RunActorTask!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunActorTask' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortRunActor value) => new ScheduleActionShort((global::Apify.ScheduleActionShortRunActor?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ScheduleActionShortRunActor?(ScheduleActionShort @this) => @this.RunActor;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ScheduleActionShort(global::Apify.ScheduleActionShortRunActor? value)
         {
@@ -106,22 +106,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ScheduleActionShort FromRunActor(global::Apify.ScheduleActionShortRunActor? value) => new ScheduleActionShort(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ScheduleActionShort(global::Apify.ScheduleActionShortRunActorTask value) => new ScheduleActionShort((global::Apify.ScheduleActionShortRunActorTask?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ScheduleActionShortRunActorTask?(ScheduleActionShort @this) => @this.RunActorTask;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ScheduleActionShort(global::Apify.ScheduleActionShortRunActorTask? value)
         {
@@ -129,12 +129,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ScheduleActionShort FromRunActorTask(global::Apify.ScheduleActionShortRunActorTask? value) => new ScheduleActionShort(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ScheduleActionShort(
             global::Apify.ScheduleActionShortDiscriminatorType? type,
@@ -149,23 +149,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RunActorTask as object ??
-            RunActor as object 
+            RunActor as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RunActor?.ToString() ??
-            RunActorTask?.ToString() 
+            RunActorTask?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -173,7 +173,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.ScheduleActionShortRunActor, TResult>? runActor = null,
@@ -198,7 +198,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.ScheduleActionShortRunActor>? runActor = null,
@@ -222,7 +222,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.ScheduleActionShortRunActor>? runActor = null,
@@ -245,7 +245,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -266,18 +266,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ScheduleActionShort other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortRunActor?>.Default.Equals(RunActor, other.RunActor) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleActionShortRunActorTask?>.Default.Equals(RunActorTask, other.RunActorTask)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ScheduleActionShort obj1, ScheduleActionShort obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ScheduleActionShort obj1, ScheduleActionShort obj2)
         {
@@ -293,7 +293,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

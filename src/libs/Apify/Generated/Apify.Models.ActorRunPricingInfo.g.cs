@@ -5,17 +5,17 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ActorRunPricingInfo : global::System.IEquatable<ActorRunPricingInfo>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ActorRunPricingInfoDiscriminatorPricingModel? PricingModel { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PayPerEventActorPricingInfo? PayPerEvent { get; init; }
@@ -24,7 +24,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PayPerEvent))]
@@ -32,7 +32,7 @@ namespace Apify
         public bool IsPayPerEvent => PayPerEvent != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPayPerEvent(
 #if NET6_0_OR_GREATER
@@ -45,14 +45,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PayPerEventActorPricingInfo PickPayPerEvent() => IsPayPerEvent
             ? PayPerEvent!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEvent' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfo? PricePerDatasetItem { get; init; }
@@ -61,7 +61,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PricePerDatasetItem))]
@@ -69,7 +69,7 @@ namespace Apify
         public bool IsPricePerDatasetItem => PricePerDatasetItem != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPricePerDatasetItem(
 #if NET6_0_OR_GREATER
@@ -82,14 +82,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PricePerDatasetItemActorPricingInfo PickPricePerDatasetItem() => IsPricePerDatasetItem
             ? PricePerDatasetItem!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItem' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FlatPricePerMonthActorPricingInfo? FlatPricePerMonth { get; init; }
@@ -98,7 +98,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FlatPricePerMonth))]
@@ -106,7 +106,7 @@ namespace Apify
         public bool IsFlatPricePerMonth => FlatPricePerMonth != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFlatPricePerMonth(
 #if NET6_0_OR_GREATER
@@ -119,14 +119,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.FlatPricePerMonthActorPricingInfo PickFlatPricePerMonth() => IsFlatPricePerMonth
             ? FlatPricePerMonth!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FlatPricePerMonth' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FreeActorPricingInfo? Free { get; init; }
@@ -135,7 +135,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Free))]
@@ -143,7 +143,7 @@ namespace Apify
         public bool IsFree => Free != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFree(
 #if NET6_0_OR_GREATER
@@ -156,23 +156,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.FreeActorPricingInfo PickFree() => IsFree
             ? Free!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Free' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.PayPerEventActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.PayPerEventActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PayPerEventActorPricingInfo?(ActorRunPricingInfo @this) => @this.PayPerEvent;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActorRunPricingInfo(global::Apify.PayPerEventActorPricingInfo? value)
         {
@@ -180,22 +180,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ActorRunPricingInfo FromPayPerEvent(global::Apify.PayPerEventActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.PricePerDatasetItemActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PricePerDatasetItemActorPricingInfo?(ActorRunPricingInfo @this) => @this.PricePerDatasetItem;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActorRunPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfo? value)
         {
@@ -203,22 +203,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ActorRunPricingInfo FromPricePerDatasetItem(global::Apify.PricePerDatasetItemActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.FlatPricePerMonthActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.FlatPricePerMonthActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.FlatPricePerMonthActorPricingInfo?(ActorRunPricingInfo @this) => @this.FlatPricePerMonth;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActorRunPricingInfo(global::Apify.FlatPricePerMonthActorPricingInfo? value)
         {
@@ -226,22 +226,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ActorRunPricingInfo FromFlatPricePerMonth(global::Apify.FlatPricePerMonthActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ActorRunPricingInfo(global::Apify.FreeActorPricingInfo value) => new ActorRunPricingInfo((global::Apify.FreeActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.FreeActorPricingInfo?(ActorRunPricingInfo @this) => @this.Free;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActorRunPricingInfo(global::Apify.FreeActorPricingInfo? value)
         {
@@ -249,12 +249,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ActorRunPricingInfo FromFree(global::Apify.FreeActorPricingInfo? value) => new ActorRunPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActorRunPricingInfo(
             global::Apify.ActorRunPricingInfoDiscriminatorPricingModel? pricingModel,
@@ -273,27 +273,27 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Free as object ??
             FlatPricePerMonth as object ??
             PricePerDatasetItem as object ??
-            PayPerEvent as object 
+            PayPerEvent as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             PayPerEvent?.ToString() ??
             PricePerDatasetItem?.ToString() ??
             FlatPricePerMonth?.ToString() ??
-            Free?.ToString() 
+            Free?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -301,7 +301,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PayPerEventActorPricingInfo?, TResult>? payPerEvent = null,
@@ -336,7 +336,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PayPerEventActorPricingInfo?>? payPerEvent = null,
@@ -372,7 +372,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.PayPerEventActorPricingInfo?>? payPerEvent = null,
@@ -405,7 +405,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -430,7 +430,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ActorRunPricingInfo other)
         {
@@ -438,12 +438,12 @@ namespace Apify
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PayPerEventActorPricingInfo?>.Default.Equals(PayPerEvent, other.PayPerEvent) &&
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PricePerDatasetItemActorPricingInfo?>.Default.Equals(PricePerDatasetItem, other.PricePerDatasetItem) &&
                 global::System.Collections.Generic.EqualityComparer<global::Apify.FlatPricePerMonthActorPricingInfo?>.Default.Equals(FlatPricePerMonth, other.FlatPricePerMonth) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.FreeActorPricingInfo?>.Default.Equals(Free, other.Free) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.FreeActorPricingInfo?>.Default.Equals(Free, other.Free)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ActorRunPricingInfo obj1, ActorRunPricingInfo obj2)
         {
@@ -451,7 +451,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ActorRunPricingInfo obj1, ActorRunPricingInfo obj2)
         {
@@ -459,7 +459,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

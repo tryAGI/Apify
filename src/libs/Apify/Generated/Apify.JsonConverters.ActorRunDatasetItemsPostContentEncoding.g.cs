@@ -20,7 +20,7 @@ namespace Apify.JsonConverters
                     {
                         return global::Apify.ActorRunDatasetItemsPostContentEncodingExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

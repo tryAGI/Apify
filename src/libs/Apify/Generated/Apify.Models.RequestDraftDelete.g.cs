@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestDraftDeleteById))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsRequestDraftDeleteById => RequestDraftDeleteById != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequestDraftDeleteById(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.RequestDraftDeleteById PickRequestDraftDeleteById() => IsRequestDraftDeleteById
             ? RequestDraftDeleteById!
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestDraftDeleteByUniqueKey))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsRequestDraftDeleteByUniqueKey => RequestDraftDeleteByUniqueKey != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequestDraftDeleteByUniqueKey(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.RequestDraftDeleteByUniqueKey PickRequestDraftDeleteByUniqueKey() => IsRequestDraftDeleteByUniqueKey
             ? RequestDraftDeleteByUniqueKey!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestDraftDeleteByUniqueKey' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteById value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteById?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.RequestDraftDeleteById?(RequestDraftDelete @this) => @this.RequestDraftDeleteById;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestDraftDelete(global::Apify.RequestDraftDeleteById? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RequestDraftDelete FromRequestDraftDeleteById(global::Apify.RequestDraftDeleteById? value) => new RequestDraftDelete(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey value) => new RequestDraftDelete((global::Apify.RequestDraftDeleteByUniqueKey?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.RequestDraftDeleteByUniqueKey?(RequestDraftDelete @this) => @this.RequestDraftDeleteByUniqueKey;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestDraftDelete(global::Apify.RequestDraftDeleteByUniqueKey? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RequestDraftDelete FromRequestDraftDeleteByUniqueKey(global::Apify.RequestDraftDeleteByUniqueKey? value) => new RequestDraftDelete(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestDraftDelete(
             global::Apify.RequestDraftDeleteById? requestDraftDeleteById,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RequestDraftDeleteByUniqueKey as object ??
-            RequestDraftDeleteById as object 
+            RequestDraftDeleteById as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RequestDraftDeleteById?.ToString() ??
-            RequestDraftDeleteByUniqueKey?.ToString() 
+            RequestDraftDeleteByUniqueKey?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.RequestDraftDeleteById, TResult>? requestDraftDeleteById = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.RequestDraftDeleteById>? requestDraftDeleteById = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.RequestDraftDeleteById>? requestDraftDeleteById = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(RequestDraftDelete other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.RequestDraftDeleteById?>.Default.Equals(RequestDraftDeleteById, other.RequestDraftDeleteById) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestDraftDeleteByUniqueKey?>.Default.Equals(RequestDraftDeleteByUniqueKey, other.RequestDraftDeleteByUniqueKey) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestDraftDeleteByUniqueKey?>.Default.Equals(RequestDraftDeleteByUniqueKey, other.RequestDraftDeleteByUniqueKey)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(RequestDraftDelete obj1, RequestDraftDelete obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(RequestDraftDelete obj1, RequestDraftDelete obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

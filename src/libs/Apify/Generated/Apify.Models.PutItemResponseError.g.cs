@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class PutItemResponseError
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonRequired]

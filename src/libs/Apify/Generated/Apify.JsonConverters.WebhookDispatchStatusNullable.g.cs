@@ -20,7 +20,7 @@ namespace Apify.JsonConverters
                     {
                         return global::Apify.WebhookDispatchStatusExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

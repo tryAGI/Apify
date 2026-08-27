@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class EncodeAndSignData
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encoded")]
         [global::System.Text.Json.Serialization.JsonRequired]

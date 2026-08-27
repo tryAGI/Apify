@@ -9,11 +9,11 @@ namespace Apify
     public enum ActorPermissionLevel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FullPermissions,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LimitedPermissions,
     }

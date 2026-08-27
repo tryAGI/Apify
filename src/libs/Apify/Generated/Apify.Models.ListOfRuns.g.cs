@@ -5,7 +5,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ListOfRuns : global::System.IEquatable<ListOfRuns>
     {
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PaginationResponse))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsPaginationResponse => PaginationResponse != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPaginationResponse(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
             ? PaginationResponse!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ListOfRunsVariant2? ListOfRunsVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ListOfRunsVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsListOfRunsVariant2 => ListOfRunsVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickListOfRunsVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ListOfRunsVariant2 PickListOfRunsVariant2() => IsListOfRunsVariant2
             ? ListOfRunsVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfRunsVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ListOfRuns(global::Apify.PaginationResponse value) => new ListOfRuns((global::Apify.PaginationResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PaginationResponse?(ListOfRuns @this) => @this.PaginationResponse;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRuns(global::Apify.PaginationResponse? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ListOfRuns FromPaginationResponse(global::Apify.PaginationResponse? value) => new ListOfRuns(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ListOfRuns(global::Apify.ListOfRunsVariant2 value) => new ListOfRuns((global::Apify.ListOfRunsVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ListOfRunsVariant2?(ListOfRuns @this) => @this.ListOfRunsVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRuns(global::Apify.ListOfRunsVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ListOfRuns FromListOfRunsVariant2(global::Apify.ListOfRunsVariant2? value) => new ListOfRuns(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ListOfRuns(
             global::Apify.PaginationResponse? paginationResponse,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ListOfRunsVariant2 as object ??
-            PaginationResponse as object 
+            PaginationResponse as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             PaginationResponse?.ToString() ??
-            ListOfRunsVariant2?.ToString() 
+            ListOfRunsVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.PaginationResponse, TResult>? paginationResponse = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.PaginationResponse>? paginationResponse = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ListOfRuns other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.PaginationResponse?>.Default.Equals(PaginationResponse, other.PaginationResponse) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfRunsVariant2?>.Default.Equals(ListOfRunsVariant2, other.ListOfRunsVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ListOfRunsVariant2?>.Default.Equals(ListOfRunsVariant2, other.ListOfRunsVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ListOfRuns obj1, ListOfRuns obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ListOfRuns obj1, ListOfRuns obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

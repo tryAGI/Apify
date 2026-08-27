@@ -4,16 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SourceCodeFileFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Base64,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
     }

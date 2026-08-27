@@ -4,46 +4,46 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class RunOptions
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("build")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Build { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeoutSecs")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TimeoutSecs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("memoryMbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required long MemoryMbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("diskMbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required long DiskMbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxItems")]
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxTotalChargeUsd")]
         public double? MaxTotalChargeUsd { get; set; }

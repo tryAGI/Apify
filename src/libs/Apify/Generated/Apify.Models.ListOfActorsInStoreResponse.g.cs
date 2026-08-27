@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class ListOfActorsInStoreResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ListOfStoreActorsJsonConverter))]

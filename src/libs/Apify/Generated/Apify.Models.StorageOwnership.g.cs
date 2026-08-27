@@ -4,16 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum StorageOwnership
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OwnedByMe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SharedWithMe,
     }

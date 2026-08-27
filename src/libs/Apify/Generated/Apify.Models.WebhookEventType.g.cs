@@ -9,51 +9,51 @@ namespace Apify
     public enum WebhookEventType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorBuildAborted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorBuildCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorBuildFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorBuildSucceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorBuildTimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunAborted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunCreated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunResurrected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunSucceeded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ActorRunTimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Test,
     }

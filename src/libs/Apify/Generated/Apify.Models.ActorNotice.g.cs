@@ -9,15 +9,15 @@ namespace Apify
     public enum ActorNotice
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ResidentialProxyRequired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnderMaintenance,
     }

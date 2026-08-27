@@ -33,7 +33,7 @@ namespace Apify
         };
 
         private static readonly string[] s_baseUrlEnvironmentVariables = new string[]
-        { 
+        {
         };
 
         /// <summary>

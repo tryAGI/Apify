@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DeletedRequestById))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsDeletedRequestById => DeletedRequestById != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDeletedRequestById(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.DeletedRequestById PickDeletedRequestById() => IsDeletedRequestById
             ? DeletedRequestById!
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(DeletedRequestByUniqueKey))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsDeletedRequestByUniqueKey => DeletedRequestByUniqueKey != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDeletedRequestByUniqueKey(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.DeletedRequestByUniqueKey PickDeletedRequestByUniqueKey() => IsDeletedRequestByUniqueKey
             ? DeletedRequestByUniqueKey!
             : throw new global::System.InvalidOperationException($"Expected union variant 'DeletedRequestByUniqueKey' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DeletedRequest(global::Apify.DeletedRequestById value) => new DeletedRequest((global::Apify.DeletedRequestById?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.DeletedRequestById?(DeletedRequest @this) => @this.DeletedRequestById;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DeletedRequest(global::Apify.DeletedRequestById? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DeletedRequest FromDeletedRequestById(global::Apify.DeletedRequestById? value) => new DeletedRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator DeletedRequest(global::Apify.DeletedRequestByUniqueKey value) => new DeletedRequest((global::Apify.DeletedRequestByUniqueKey?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.DeletedRequestByUniqueKey?(DeletedRequest @this) => @this.DeletedRequestByUniqueKey;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DeletedRequest(global::Apify.DeletedRequestByUniqueKey? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static DeletedRequest FromDeletedRequestByUniqueKey(global::Apify.DeletedRequestByUniqueKey? value) => new DeletedRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DeletedRequest(
             global::Apify.DeletedRequestById? deletedRequestById,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             DeletedRequestByUniqueKey as object ??
-            DeletedRequestById as object 
+            DeletedRequestById as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             DeletedRequestById?.ToString() ??
-            DeletedRequestByUniqueKey?.ToString() 
+            DeletedRequestByUniqueKey?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.DeletedRequestById, TResult>? deletedRequestById = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.DeletedRequestById>? deletedRequestById = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.DeletedRequestById>? deletedRequestById = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(DeletedRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.DeletedRequestById?>.Default.Equals(DeletedRequestById, other.DeletedRequestById) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.DeletedRequestByUniqueKey?>.Default.Equals(DeletedRequestByUniqueKey, other.DeletedRequestByUniqueKey) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.DeletedRequestByUniqueKey?>.Default.Equals(DeletedRequestByUniqueKey, other.DeletedRequestByUniqueKey)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(DeletedRequest obj1, DeletedRequest obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(DeletedRequest obj1, DeletedRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

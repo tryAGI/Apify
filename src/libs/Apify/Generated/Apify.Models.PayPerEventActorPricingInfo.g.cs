@@ -5,12 +5,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PayPerEventActorPricingInfo : global::System.IEquatable<PayPerEventActorPricingInfo>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.CommonActorPricingInfo? CommonActorPricingInfo { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CommonActorPricingInfo))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsCommonActorPricingInfo => CommonActorPricingInfo != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommonActorPricingInfo(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
             ? CommonActorPricingInfo!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PayPerEventActorPricingInfoVariant2? PayPerEventActorPricingInfoVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PayPerEventActorPricingInfoVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsPayPerEventActorPricingInfoVariant2 => PayPerEventActorPricingInfoVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPayPerEventActorPricingInfoVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PayPerEventActorPricingInfoVariant2 PickPayPerEventActorPricingInfoVariant2() => IsPayPerEventActorPricingInfoVariant2
             ? PayPerEventActorPricingInfoVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEventActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PayPerEventActorPricingInfo(global::Apify.CommonActorPricingInfo value) => new PayPerEventActorPricingInfo((global::Apify.CommonActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.CommonActorPricingInfo?(PayPerEventActorPricingInfo @this) => @this.CommonActorPricingInfo;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PayPerEventActorPricingInfo(global::Apify.CommonActorPricingInfo? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PayPerEventActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new PayPerEventActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PayPerEventActorPricingInfo(global::Apify.PayPerEventActorPricingInfoVariant2 value) => new PayPerEventActorPricingInfo((global::Apify.PayPerEventActorPricingInfoVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PayPerEventActorPricingInfoVariant2?(PayPerEventActorPricingInfo @this) => @this.PayPerEventActorPricingInfoVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PayPerEventActorPricingInfo(global::Apify.PayPerEventActorPricingInfoVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PayPerEventActorPricingInfo FromPayPerEventActorPricingInfoVariant2(global::Apify.PayPerEventActorPricingInfoVariant2? value) => new PayPerEventActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PayPerEventActorPricingInfo(
             global::Apify.CommonActorPricingInfo? commonActorPricingInfo,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             PayPerEventActorPricingInfoVariant2 as object ??
-            CommonActorPricingInfo as object 
+            CommonActorPricingInfo as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CommonActorPricingInfo?.ToString() ??
-            PayPerEventActorPricingInfoVariant2?.ToString() 
+            PayPerEventActorPricingInfoVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.CommonActorPricingInfo, TResult>? commonActorPricingInfo = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PayPerEventActorPricingInfo other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.CommonActorPricingInfo?>.Default.Equals(CommonActorPricingInfo, other.CommonActorPricingInfo) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.PayPerEventActorPricingInfoVariant2?>.Default.Equals(PayPerEventActorPricingInfoVariant2, other.PayPerEventActorPricingInfoVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.PayPerEventActorPricingInfoVariant2?>.Default.Equals(PayPerEventActorPricingInfoVariant2, other.PayPerEventActorPricingInfoVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PayPerEventActorPricingInfo obj1, PayPerEventActorPricingInfo obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PayPerEventActorPricingInfo obj1, PayPerEventActorPricingInfo obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

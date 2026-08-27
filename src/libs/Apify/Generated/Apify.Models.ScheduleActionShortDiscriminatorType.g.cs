@@ -4,16 +4,16 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ScheduleActionShortDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunActor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RunActorTask,
     }

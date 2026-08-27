@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ExampleWebhookDispatch
     {
@@ -17,13 +17,13 @@ namespace Apify
         public required global::Apify.WebhookDispatchStatus Status { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finishedAt")]
         public global::System.DateTime? FinishedAt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("removedAt")]
         public global::System.DateTime? RemovedAt { get; set; }

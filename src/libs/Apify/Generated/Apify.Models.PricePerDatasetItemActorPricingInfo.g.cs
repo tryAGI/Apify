@@ -5,12 +5,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct PricePerDatasetItemActorPricingInfo : global::System.IEquatable<PricePerDatasetItemActorPricingInfo>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.CommonActorPricingInfo? CommonActorPricingInfo { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CommonActorPricingInfo))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsCommonActorPricingInfo => CommonActorPricingInfo != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommonActorPricingInfo(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
             ? CommonActorPricingInfo!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.PricePerDatasetItemActorPricingInfoVariant2? PricePerDatasetItemActorPricingInfoVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PricePerDatasetItemActorPricingInfoVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsPricePerDatasetItemActorPricingInfoVariant2 => PricePerDatasetItemActorPricingInfoVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPricePerDatasetItemActorPricingInfoVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.PricePerDatasetItemActorPricingInfoVariant2 PickPricePerDatasetItemActorPricingInfoVariant2() => IsPricePerDatasetItemActorPricingInfoVariant2
             ? PricePerDatasetItemActorPricingInfoVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItemActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PricePerDatasetItemActorPricingInfo(global::Apify.CommonActorPricingInfo value) => new PricePerDatasetItemActorPricingInfo((global::Apify.CommonActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.CommonActorPricingInfo?(PricePerDatasetItemActorPricingInfo @this) => @this.CommonActorPricingInfo;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PricePerDatasetItemActorPricingInfo(global::Apify.CommonActorPricingInfo? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PricePerDatasetItemActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new PricePerDatasetItemActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PricePerDatasetItemActorPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfoVariant2 value) => new PricePerDatasetItemActorPricingInfo((global::Apify.PricePerDatasetItemActorPricingInfoVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.PricePerDatasetItemActorPricingInfoVariant2?(PricePerDatasetItemActorPricingInfo @this) => @this.PricePerDatasetItemActorPricingInfoVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PricePerDatasetItemActorPricingInfo(global::Apify.PricePerDatasetItemActorPricingInfoVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PricePerDatasetItemActorPricingInfo FromPricePerDatasetItemActorPricingInfoVariant2(global::Apify.PricePerDatasetItemActorPricingInfoVariant2? value) => new PricePerDatasetItemActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PricePerDatasetItemActorPricingInfo(
             global::Apify.CommonActorPricingInfo? commonActorPricingInfo,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             PricePerDatasetItemActorPricingInfoVariant2 as object ??
-            CommonActorPricingInfo as object 
+            CommonActorPricingInfo as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CommonActorPricingInfo?.ToString() ??
-            PricePerDatasetItemActorPricingInfoVariant2?.ToString() 
+            PricePerDatasetItemActorPricingInfoVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.CommonActorPricingInfo, TResult>? commonActorPricingInfo = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PricePerDatasetItemActorPricingInfo other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.CommonActorPricingInfo?>.Default.Equals(CommonActorPricingInfo, other.CommonActorPricingInfo) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.PricePerDatasetItemActorPricingInfoVariant2?>.Default.Equals(PricePerDatasetItemActorPricingInfoVariant2, other.PricePerDatasetItemActorPricingInfoVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.PricePerDatasetItemActorPricingInfoVariant2?>.Default.Equals(PricePerDatasetItemActorPricingInfoVariant2, other.PricePerDatasetItemActorPricingInfoVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PricePerDatasetItemActorPricingInfo obj1, PricePerDatasetItemActorPricingInfo obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PricePerDatasetItemActorPricingInfo obj1, PricePerDatasetItemActorPricingInfo obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
