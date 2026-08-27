@@ -9,19 +9,19 @@ namespace Apify
     public enum StoreGetPricingModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FlatPricePerMonth,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Free,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayPerEvent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PricePerDatasetItem,
     }

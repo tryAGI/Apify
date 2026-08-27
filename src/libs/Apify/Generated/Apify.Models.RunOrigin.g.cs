@@ -4,52 +4,52 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RunOrigin
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Actor,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Api,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ci,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cli,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Development,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mcp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Scheduler,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Standby,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Test,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Web,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Webhook,
     }

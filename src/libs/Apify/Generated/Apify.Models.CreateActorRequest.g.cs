@@ -6,7 +6,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateActorRequest
     {
@@ -47,7 +47,7 @@ namespace Apify
         public string? SeoDescription { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("restartOnError")]
         [global::System.Obsolete("This property marked as deprecated.")]

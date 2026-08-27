@@ -9,13 +9,13 @@ namespace Apify
     public sealed partial class WebhookDispatchWebhookSummary
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actionType")]
         public string? ActionType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("condition")]
         public global::Apify.WebhookCondition? Condition { get; set; }
@@ -27,7 +27,7 @@ namespace Apify
         public string? RequestUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isAdHoc")]
         public bool? IsAdHoc { get; set; }

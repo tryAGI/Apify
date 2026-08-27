@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class UpdateDatasetRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }

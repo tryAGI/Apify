@@ -6,7 +6,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UpdateActorRequest
     {
@@ -29,7 +29,7 @@ namespace Apify
         public bool? IsPublic { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorPermissionLevel")]
         public global::Apify.ActorPermissionLevel? ActorPermissionLevel { get; set; }
@@ -53,7 +53,7 @@ namespace Apify
         public string? Title { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("restartOnError")]
         [global::System.Obsolete("This property marked as deprecated.")]
@@ -66,7 +66,7 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>? Versions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingInfos")]
         public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }

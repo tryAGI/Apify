@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FlatPricePerMonthActorPricingInfoVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"FLAT_PRICE_PER_MONTH"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]

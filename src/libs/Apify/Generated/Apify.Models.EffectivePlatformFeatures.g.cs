@@ -4,75 +4,75 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class EffectivePlatformFeatures
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ACTORS")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature Actors { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("STORAGE")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature Storage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("SCHEDULER")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature Scheduler { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("PROXY")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature Proxy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("PROXY_EXTERNAL_ACCESS")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature ProxyExternalAccess { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("PROXY_RESIDENTIAL")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature ProxyResidential { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("PROXY_SERPS")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature ProxySerps { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("WEBHOOKS")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature Webhooks { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ACTORS_PUBLIC_ALL")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.EffectivePlatformFeature ActorsPublicAll { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ACTORS_PUBLIC_DEVELOPER")]
         [global::System.Text.Json.Serialization.JsonRequired]

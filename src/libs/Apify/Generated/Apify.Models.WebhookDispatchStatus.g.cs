@@ -9,15 +9,15 @@ namespace Apify
     public enum WebhookDispatchStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Failed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Succeeded,
     }

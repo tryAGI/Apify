@@ -9,11 +9,11 @@ namespace Apify
     public enum ActorsGetSortBy
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreatedAt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StatsLastRunStartedAt,
     }

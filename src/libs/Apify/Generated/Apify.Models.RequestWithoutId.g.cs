@@ -10,7 +10,7 @@ namespace Apify
     public readonly partial struct RequestWithoutId : global::System.IEquatable<RequestWithoutId>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RequestBase? RequestBase { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestBase))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsRequestBase => RequestBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequestBase(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.RequestBase PickRequestBase() => IsRequestBase
             ? RequestBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestBase' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RequestWithoutId(global::Apify.RequestBase value) => new RequestWithoutId((global::Apify.RequestBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.RequestBase?(RequestWithoutId @this) => @this.RequestBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RequestWithoutId(global::Apify.RequestBase? value)
         {
@@ -64,26 +64,26 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RequestWithoutId FromRequestBase(global::Apify.RequestBase? value) => new RequestWithoutId(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            RequestBase as object 
+            RequestBase as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            RequestBase?.ToString() 
+            RequestBase?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.RequestBase, TResult>? requestBase = null,
@@ -111,7 +111,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.RequestBase>? requestBase = null,
@@ -129,7 +129,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.RequestBase>? requestBase = null,
@@ -147,7 +147,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(RequestWithoutId other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestBase?>.Default.Equals(RequestBase, other.RequestBase) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestBase?>.Default.Equals(RequestBase, other.RequestBase)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(RequestWithoutId obj1, RequestWithoutId obj2)
         {
@@ -184,7 +184,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(RequestWithoutId obj1, RequestWithoutId obj2)
         {
@@ -192,7 +192,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

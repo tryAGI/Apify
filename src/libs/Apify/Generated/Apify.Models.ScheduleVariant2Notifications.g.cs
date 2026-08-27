@@ -9,7 +9,7 @@ namespace Apify
     public sealed partial class ScheduleVariant2Notifications
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("email")]
         public bool? Email { get; set; }

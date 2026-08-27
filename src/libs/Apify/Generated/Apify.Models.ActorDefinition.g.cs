@@ -69,7 +69,7 @@ namespace Apify
         public string? Changelog { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("storages")]
         public global::Apify.ActorDefinitionStorages? Storages { get; set; }

@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PayPerEventActorPricingInfoVariant2PricingPerEvent
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorChargeEvents")]
         public global::System.Collections.Generic.Dictionary<string, global::Apify.ActorChargeEvent>? ActorChargeEvents { get; set; }

@@ -20,7 +20,7 @@ namespace Apify.JsonConverters
                     {
                         return global::Apify.ActorJobStatusExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

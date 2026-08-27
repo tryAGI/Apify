@@ -5,12 +5,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct FreeActorPricingInfo : global::System.IEquatable<FreeActorPricingInfo>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.CommonActorPricingInfo? CommonActorPricingInfo { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CommonActorPricingInfo))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsCommonActorPricingInfo => CommonActorPricingInfo != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommonActorPricingInfo(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
             ? CommonActorPricingInfo!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FreeActorPricingInfoVariant2? FreeActorPricingInfoVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FreeActorPricingInfoVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsFreeActorPricingInfoVariant2 => FreeActorPricingInfoVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFreeActorPricingInfoVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.FreeActorPricingInfoVariant2 PickFreeActorPricingInfoVariant2() => IsFreeActorPricingInfoVariant2
             ? FreeActorPricingInfoVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FreeActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FreeActorPricingInfo(global::Apify.CommonActorPricingInfo value) => new FreeActorPricingInfo((global::Apify.CommonActorPricingInfo?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.CommonActorPricingInfo?(FreeActorPricingInfo @this) => @this.CommonActorPricingInfo;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FreeActorPricingInfo(global::Apify.CommonActorPricingInfo? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FreeActorPricingInfo FromCommonActorPricingInfo(global::Apify.CommonActorPricingInfo? value) => new FreeActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FreeActorPricingInfo(global::Apify.FreeActorPricingInfoVariant2 value) => new FreeActorPricingInfo((global::Apify.FreeActorPricingInfoVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.FreeActorPricingInfoVariant2?(FreeActorPricingInfo @this) => @this.FreeActorPricingInfoVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FreeActorPricingInfo(global::Apify.FreeActorPricingInfoVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FreeActorPricingInfo FromFreeActorPricingInfoVariant2(global::Apify.FreeActorPricingInfoVariant2? value) => new FreeActorPricingInfo(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FreeActorPricingInfo(
             global::Apify.CommonActorPricingInfo? commonActorPricingInfo,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             FreeActorPricingInfoVariant2 as object ??
-            CommonActorPricingInfo as object 
+            CommonActorPricingInfo as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CommonActorPricingInfo?.ToString() ??
-            FreeActorPricingInfoVariant2?.ToString() 
+            FreeActorPricingInfoVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.CommonActorPricingInfo, TResult>? commonActorPricingInfo = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.CommonActorPricingInfo>? commonActorPricingInfo = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(FreeActorPricingInfo other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.CommonActorPricingInfo?>.Default.Equals(CommonActorPricingInfo, other.CommonActorPricingInfo) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.FreeActorPricingInfoVariant2?>.Default.Equals(FreeActorPricingInfoVariant2, other.FreeActorPricingInfoVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.FreeActorPricingInfoVariant2?>.Default.Equals(FreeActorPricingInfoVariant2, other.FreeActorPricingInfoVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(FreeActorPricingInfo obj1, FreeActorPricingInfo obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(FreeActorPricingInfo obj1, FreeActorPricingInfo obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

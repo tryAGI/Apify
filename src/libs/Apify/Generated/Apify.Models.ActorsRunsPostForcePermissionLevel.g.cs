@@ -9,11 +9,11 @@ namespace Apify
     public enum ActorsRunsPostForcePermissionLevel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FullPermissions,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LimitedPermissions,
     }

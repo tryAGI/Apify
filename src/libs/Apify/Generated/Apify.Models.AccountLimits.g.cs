@@ -4,26 +4,26 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AccountLimits
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyUsageCycle")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.UsageCycle MonthlyUsageCycle { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("limits")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::Apify.Limits Limits { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("current")]
         [global::System.Text.Json.Serialization.JsonRequired]

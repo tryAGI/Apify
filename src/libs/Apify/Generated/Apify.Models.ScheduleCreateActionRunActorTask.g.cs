@@ -4,26 +4,26 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ScheduleCreateActionRunActorTask
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"RUN_ACTOR_TASK"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         public string Type { get; set; } = "RUN_ACTOR_TASK";
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorTaskId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ActorTaskId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         public object? Input { get; set; }

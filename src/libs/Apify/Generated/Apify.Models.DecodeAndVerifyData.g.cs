@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class DecodeAndVerifyData
     {
@@ -16,13 +16,13 @@ namespace Apify
         public required object Decoded { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("encodedByUserId")]
         public string? EncodedByUserId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isVerifiedUser")]
         [global::System.Text.Json.Serialization.JsonRequired]

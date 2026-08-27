@@ -10,7 +10,7 @@ namespace Apify
     public readonly partial struct Request : global::System.IEquatable<Request>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RequestBase? RequestBase { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestBase))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsRequestBase => RequestBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequestBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.RequestBase PickRequestBase() => IsRequestBase
             ? RequestBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.RequestVariant2? RequestVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RequestVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsRequestVariant2 => RequestVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequestVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.RequestVariant2 PickRequestVariant2() => IsRequestVariant2
             ? RequestVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Request(global::Apify.RequestBase value) => new Request((global::Apify.RequestBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.RequestBase?(Request @this) => @this.RequestBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Request(global::Apify.RequestBase? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Request FromRequestBase(global::Apify.RequestBase? value) => new Request(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Request(global::Apify.RequestVariant2 value) => new Request((global::Apify.RequestVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.RequestVariant2?(Request @this) => @this.RequestVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Request(global::Apify.RequestVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Request FromRequestVariant2(global::Apify.RequestVariant2? value) => new Request(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Request(
             global::Apify.RequestBase? requestBase,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RequestVariant2 as object ??
-            RequestBase as object 
+            RequestBase as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RequestBase?.ToString() ??
-            RequestVariant2?.ToString() 
+            RequestVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.RequestBase, TResult>? requestBase = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.RequestBase>? requestBase = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.RequestBase>? requestBase = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Request other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.RequestBase?>.Default.Equals(RequestBase, other.RequestBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestVariant2?>.Default.Equals(RequestVariant2, other.RequestVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.RequestVariant2?>.Default.Equals(RequestVariant2, other.RequestVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Request obj1, Request obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Request obj1, Request obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

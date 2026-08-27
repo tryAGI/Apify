@@ -4,89 +4,89 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Limits
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyUsageUsd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MaxMonthlyUsageUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyActorComputeUnits")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MaxMonthlyActorComputeUnits { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyExternalDataTransferGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MaxMonthlyExternalDataTransferGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyProxySerps")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxMonthlyProxySerps { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyResidentialProxyGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MaxMonthlyResidentialProxyGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorMemoryGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MaxActorMemoryGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxActorCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxActorTaskCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxActorTaskCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxConcurrentActorJobs")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxConcurrentActorJobs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxTeamAccountSeatCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MaxTeamAccountSeatCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dataRetentionDays")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int DataRetentionDays { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxScheduleCount")]
         public int? MaxScheduleCount { get; set; }

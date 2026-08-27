@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class DatasetSchemaValidationError
     {
@@ -21,7 +21,7 @@ namespace Apify
         public string? Message { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public global::Apify.SchemaValidationErrorData? Data { get; set; }

@@ -6,7 +6,7 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Actor
     {
@@ -45,7 +45,7 @@ namespace Apify
         public string? Description { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("restartOnError")]
         [global::System.Obsolete("This property marked as deprecated.")]
@@ -94,7 +94,7 @@ namespace Apify
         public required global::System.Collections.Generic.IList<global::Apify.Version> Versions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingInfos")]
         public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }
@@ -107,7 +107,7 @@ namespace Apify
         public required global::Apify.DefaultRunOptions DefaultRunOptions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("exampleRunInput")]
         public global::Apify.ExampleRunInput? ExampleRunInput { get; set; }
@@ -131,13 +131,13 @@ namespace Apify
         public string? Title { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("taggedBuilds")]
         public global::Apify.TaggedBuilds? TaggedBuilds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorStandby")]
         public global::Apify.ActorStandby? ActorStandby { get; set; }

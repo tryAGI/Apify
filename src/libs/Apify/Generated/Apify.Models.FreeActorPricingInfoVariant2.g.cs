@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FreeActorPricingInfoVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"FREE"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]

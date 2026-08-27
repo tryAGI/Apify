@@ -4,12 +4,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PricePerDatasetItemActorPricingInfoVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <default>"PRICE_PER_DATASET_ITEM"</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingModel")]

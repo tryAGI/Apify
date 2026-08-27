@@ -9,20 +9,20 @@ namespace Apify
     public sealed partial class BuildActVersion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceType")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.VersionSourceTypeJsonConverter))]
         public global::Apify.VersionSourceType? SourceType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildTag")]
         public string? BuildTag { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versionNumber")]
         public string? VersionNumber { get; set; }

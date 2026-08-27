@@ -10,11 +10,11 @@ namespace Apify
     public enum StoreGetResponseFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Full,
     }

@@ -4,28 +4,28 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum VersionSourceType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GithubGist,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GitRepo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceCode,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceFiles,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tarball,
     }

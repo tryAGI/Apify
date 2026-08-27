@@ -11,7 +11,7 @@ namespace Apify
     public sealed partial class WebhookRepresentation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("eventTypes")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,82 +4,82 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Current
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyUsageUsd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MonthlyUsageUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyActorComputeUnits")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MonthlyActorComputeUnits { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyExternalDataTransferGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MonthlyExternalDataTransferGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyProxySerps")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int MonthlyProxySerps { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("monthlyResidentialProxyGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double MonthlyResidentialProxyGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorMemoryGbytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double ActorMemoryGbytes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ActorCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorTaskCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ActorTaskCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("activeActorJobCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ActiveActorJobCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("teamAccountSeatCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int TeamAccountSeatCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scheduleCount")]
         public int? ScheduleCount { get; set; }

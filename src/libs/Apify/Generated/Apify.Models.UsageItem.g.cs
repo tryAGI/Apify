@@ -4,38 +4,38 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UsageItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("quantity")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Quantity { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("baseAmountUsd")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double BaseAmountUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("baseUnitPriceUsd")]
         public double? BaseUnitPriceUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("amountAfterVolumeDiscountUsd")]
         public double? AmountAfterVolumeDiscountUsd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priceTiers")]
         public global::System.Collections.Generic.IList<global::Apify.PriceTiers>? PriceTiers { get; set; }

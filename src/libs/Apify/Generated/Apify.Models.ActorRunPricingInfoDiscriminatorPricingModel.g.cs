@@ -4,24 +4,24 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ActorRunPricingInfoDiscriminatorPricingModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FlatPricePerMonth,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Free,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PayPerEvent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PricePerDatasetItem,
     }

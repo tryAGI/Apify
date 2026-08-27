@@ -5,12 +5,12 @@
 namespace Apify
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct Schedule : global::System.IEquatable<Schedule>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleBase? ScheduleBase { get; init; }
@@ -19,7 +19,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ScheduleBase))]
@@ -27,7 +27,7 @@ namespace Apify
         public bool IsScheduleBase => ScheduleBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickScheduleBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ScheduleBase PickScheduleBase() => IsScheduleBase
             ? ScheduleBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.ScheduleVariant2? ScheduleVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Apify
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ScheduleVariant2))]
@@ -64,7 +64,7 @@ namespace Apify
         public bool IsScheduleVariant2 => ScheduleVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickScheduleVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Apify.ScheduleVariant2 PickScheduleVariant2() => IsScheduleVariant2
             ? ScheduleVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Schedule(global::Apify.ScheduleBase value) => new Schedule((global::Apify.ScheduleBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ScheduleBase?(Schedule @this) => @this.ScheduleBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Schedule(global::Apify.ScheduleBase? value)
         {
@@ -101,22 +101,22 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Schedule FromScheduleBase(global::Apify.ScheduleBase? value) => new Schedule(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator Schedule(global::Apify.ScheduleVariant2 value) => new Schedule((global::Apify.ScheduleVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Apify.ScheduleVariant2?(Schedule @this) => @this.ScheduleVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Schedule(global::Apify.ScheduleVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static Schedule FromScheduleVariant2(global::Apify.ScheduleVariant2? value) => new Schedule(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Schedule(
             global::Apify.ScheduleBase? scheduleBase,
@@ -141,23 +141,23 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ScheduleVariant2 as object ??
-            ScheduleBase as object 
+            ScheduleBase as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ScheduleBase?.ToString() ??
-            ScheduleVariant2?.ToString() 
+            ScheduleVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Apify.ScheduleBase, TResult>? scheduleBase = null,
@@ -190,7 +190,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Apify.ScheduleBase>? scheduleBase = null,
@@ -214,7 +214,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Apify.ScheduleBase>? scheduleBase = null,
@@ -237,7 +237,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(Schedule other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleBase?>.Default.Equals(ScheduleBase, other.ScheduleBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleVariant2?>.Default.Equals(ScheduleVariant2, other.ScheduleVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Apify.ScheduleVariant2?>.Default.Equals(ScheduleVariant2, other.ScheduleVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(Schedule obj1, Schedule obj2)
         {
@@ -277,7 +277,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(Schedule obj1, Schedule obj2)
         {
@@ -285,7 +285,7 @@ namespace Apify
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
