@@ -482,7 +482,7 @@ namespace Apify
 
         /// <summary>
         /// Manage Actor tasks. The API endpoints described in this section enable you to create, manage, delete, and run Apify Actor tasks.<br/>
-        /// For more information, see the [Actor tasts documentation](https://docs.apify.com/platform/actors/running/tasks).<br/>
+        /// For more information, see the [Actor tasks documentation](https://docs.apify.com/platform/actors/running/tasks).<br/>
         /// :::note<br/>
         /// For all the API endpoints that accept the `actorTaskId` parameter to<br/>
         /// specify a task, you can pass either the task ID (e.g. `HG7ML7M8z78YcAPEB`) or a tilde-separated<br/>
