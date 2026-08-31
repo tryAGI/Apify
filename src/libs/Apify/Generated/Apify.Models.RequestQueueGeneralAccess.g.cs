@@ -6,7 +6,7 @@ namespace Apify
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class UpdateTaskRequestInput
+    public sealed partial class RequestQueueGeneralAccess
     {
 
         /// <summary>

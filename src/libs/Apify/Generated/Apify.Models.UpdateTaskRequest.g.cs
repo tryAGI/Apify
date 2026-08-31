@@ -24,7 +24,8 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        public global::Apify.TaskInput? Input { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>))]
+        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? Input { get; set; }
 
         /// <summary>
         ///
@@ -86,7 +87,7 @@ namespace Apify
         public UpdateTaskRequest(
             string? name,
             global::Apify.TaskOptions? options,
-            global::Apify.TaskInput? input,
+            global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? input,
             string? title,
             global::Apify.ActorStandby? actorStandby,
             global::Apify.TaskPublicConfig? publicConfig,

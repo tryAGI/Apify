@@ -104,10 +104,9 @@ namespace Apify
         public required bool HadMultipleClients { get; set; }
 
         /// <summary>
-        /// Defines the general access level for the resource.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generalAccess")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.GeneralAccessJsonConverter))]
         public global::Apify.GeneralAccess? GeneralAccess { get; set; }
 
         /// <summary>
@@ -167,9 +166,7 @@ namespace Apify
         /// <param name="actRunId">
         /// The ID of the Actor run that created this request queue.
         /// </param>
-        /// <param name="generalAccess">
-        /// Defines the general access level for the resource.
-        /// </param>
+        /// <param name="generalAccess"></param>
         /// <param name="stats">
         /// Statistics about request queue operations and storage.
         /// </param>
