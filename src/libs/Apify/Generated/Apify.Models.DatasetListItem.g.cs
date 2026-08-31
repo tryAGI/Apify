@@ -89,10 +89,9 @@ namespace Apify
         public string? Username { get; set; }
 
         /// <summary>
-        /// Defines the general access level for the resource.
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generalAccess")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.GeneralAccessJsonConverter))]
         public global::Apify.GeneralAccess? GeneralAccess { get; set; }
 
         /// <summary>
@@ -122,9 +121,7 @@ namespace Apify
         /// <param name="actRunId"></param>
         /// <param name="title"></param>
         /// <param name="username"></param>
-        /// <param name="generalAccess">
-        /// Defines the general access level for the resource.
-        /// </param>
+        /// <param name="generalAccess"></param>
         /// <param name="stats"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -6,7 +6,7 @@ namespace Apify
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class CreateTaskRequestInput
+    public sealed partial class KeyValueStoreGeneralAccess
     {
 
         /// <summary>

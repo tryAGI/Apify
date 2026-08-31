@@ -6,7 +6,7 @@ namespace Apify
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class TaskInput2
+    public sealed partial class DatasetListItemGeneralAccess
     {
 
         /// <summary>

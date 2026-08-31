@@ -43,15 +43,13 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("plan")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Plan Plan { get; set; }
+        public global::Apify.Plan? Plan { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("effectivePlatformFeatures")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.EffectivePlatformFeatures EffectivePlatformFeatures { get; set; }
+        public global::Apify.EffectivePlatformFeatures? EffectivePlatformFeatures { get; set; }
 
         /// <summary>
         ///
@@ -63,8 +61,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isPaying")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool IsPaying { get; set; }
+        public bool? IsPaying { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -76,35 +73,35 @@ namespace Apify
         /// Initializes a new instance of the <see cref="UserPrivateInfo" /> class.
         /// </summary>
         /// <param name="username"></param>
-        /// <param name="plan"></param>
-        /// <param name="effectivePlatformFeatures"></param>
-        /// <param name="isPaying"></param>
         /// <param name="id"></param>
         /// <param name="profile"></param>
         /// <param name="email"></param>
         /// <param name="proxy"></param>
+        /// <param name="plan"></param>
+        /// <param name="effectivePlatformFeatures"></param>
         /// <param name="createdAt"></param>
+        /// <param name="isPaying"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UserPrivateInfo(
             string username,
-            global::Apify.Plan plan,
-            global::Apify.EffectivePlatformFeatures effectivePlatformFeatures,
-            bool isPaying,
             string? id,
             global::Apify.Profile? profile,
             string? email,
             global::Apify.Proxy? proxy,
-            global::System.DateTime? createdAt)
+            global::Apify.Plan? plan,
+            global::Apify.EffectivePlatformFeatures? effectivePlatformFeatures,
+            global::System.DateTime? createdAt,
+            bool? isPaying)
         {
             this.Id = id;
             this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
             this.Profile = profile;
             this.Email = email;
             this.Proxy = proxy;
-            this.Plan = plan ?? throw new global::System.ArgumentNullException(nameof(plan));
-            this.EffectivePlatformFeatures = effectivePlatformFeatures ?? throw new global::System.ArgumentNullException(nameof(effectivePlatformFeatures));
+            this.Plan = plan;
+            this.EffectivePlatformFeatures = effectivePlatformFeatures;
             this.CreatedAt = createdAt;
             this.IsPaying = isPaying;
         }

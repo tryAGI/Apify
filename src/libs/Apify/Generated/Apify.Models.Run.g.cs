@@ -121,9 +121,7 @@ namespace Apify
         /// General access level for the Actor run.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generalAccess")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.GeneralAccessJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.GeneralAccess GeneralAccess { get; set; }
+        public global::Apify.GeneralAccess? GeneralAccess { get; set; }
 
         /// <summary>
         /// ID of the default key-value store for this run.
@@ -242,9 +240,6 @@ namespace Apify
         /// <param name="buildId">
         /// ID of the Actor build used for this run.
         /// </param>
-        /// <param name="generalAccess">
-        /// General access level for the Actor run.
-        /// </param>
         /// <param name="defaultKeyValueStoreId">
         /// ID of the default key-value store for this run.
         /// </param>
@@ -275,6 +270,9 @@ namespace Apify
         /// </param>
         /// <param name="exitCode">
         /// Exit code of the Actor run process.
+        /// </param>
+        /// <param name="generalAccess">
+        /// General access level for the Actor run.
         /// </param>
         /// <param name="storageIds">
         /// A map of aliased storage IDs associated with this run, grouped by storage type.
@@ -319,7 +317,6 @@ namespace Apify
             global::Apify.RunStats stats,
             global::Apify.RunOptions options,
             string buildId,
-            global::Apify.GeneralAccess generalAccess,
             string defaultKeyValueStoreId,
             string defaultDatasetId,
             string defaultRequestQueueId,
@@ -330,6 +327,7 @@ namespace Apify
             global::Apify.ActorRunPricingInfo? pricingInfo,
             global::System.Collections.Generic.Dictionary<string, int>? chargedEventCounts,
             int? exitCode,
+            global::Apify.GeneralAccess? generalAccess,
             global::Apify.RunStorageIds? storageIds,
             string? buildNumber,
             string? containerUrl,

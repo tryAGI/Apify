@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("date")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Date { get; set; }
+        public required global::System.DateTime Date { get; set; }
 
         /// <summary>
         /// A map of service usage item names to their usage details.<br/>
@@ -50,11 +50,11 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public DailyServiceUsages(
-            string date,
+            global::System.DateTime date,
             global::System.Collections.Generic.Dictionary<string, global::Apify.UsageItem> serviceUsage,
             double totalUsageCreditsUsd)
         {
-            this.Date = date ?? throw new global::System.ArgumentNullException(nameof(date));
+            this.Date = date;
             this.ServiceUsage = serviceUsage ?? throw new global::System.ArgumentNullException(nameof(serviceUsage));
             this.TotalUsageCreditsUsd = totalUsageCreditsUsd;
         }

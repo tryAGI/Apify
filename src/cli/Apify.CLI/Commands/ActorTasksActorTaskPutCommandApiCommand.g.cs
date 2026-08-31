@@ -25,7 +25,7 @@ internal static partial class ActorTasksActorTaskPutCommandApiCommand
         Description = @"",
     };
 
-    private static Option<global::Apify.TaskInput?> InputOption { get; } = new(
+    private static Option<global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>?> InputOption { get; } = new(
         name: @"--input")
     {
         Description = @"",

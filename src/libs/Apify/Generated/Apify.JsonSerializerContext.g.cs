@@ -213,6 +213,12 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.OneOfJsonConverter<string, long?>),
 
+            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>),
+
+            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>),
+
+            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>),
+
             typeof(global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>),
 
             typeof(global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>),
@@ -453,6 +459,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskPublicConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateTaskRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>), TypeInfoPropertyName = "AnyOfTaskInputIListTaskInputObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.TaskInput>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Task))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateTaskRequest))]
@@ -630,6 +638,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.HeadRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.LockedHeadRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.TaskShort>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.List<global::Apify.TaskInput>, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.TaskInput>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.KeyValueStore>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.DatasetListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestQueueShort>))]
