@@ -37,6 +37,12 @@ internal static partial class ActorTasksActorTaskPutCommandApiCommand
         Description = @"",
     };
 
+    private static Option<string?> DescriptionOption { get; } = new(
+        name: @"--description")
+    {
+        Description = @"",
+    };
+
     private static Option<global::Apify.TaskPublicConfig?> PublicConfig { get; } = new(
         name: @"--public-config")
     {
@@ -128,6 +134,7 @@ request's `Authorization` header, rather than the URL.
                         command.Options.Add(OptionsOption);
                         command.Options.Add(InputOption);
                         command.Options.Add(Title);
+                        command.Options.Add(DescriptionOption);
                         command.Options.Add(PublicConfig);
                         command.Options.Add(IsPublic);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
                         command.Options.Add(ActorStandbyOptions.DesiredRequestsPerActorRun);
@@ -167,6 +174,7 @@ request's `Authorization` header, rather than the URL.
                         var options = CliRuntime.WasSpecified(parseResult, OptionsOption) ? parseResult.GetValue(OptionsOption) : (__requestBase is { } __OptionsBaseValue ? __OptionsBaseValue.Options : default);
                         var input = CliRuntime.WasSpecified(parseResult, InputOption) ? parseResult.GetValue(InputOption) : (__requestBase is { } __InputBaseValue ? __InputBaseValue.Input : default);
                         var title = CliRuntime.WasSpecified(parseResult, Title) ? parseResult.GetValue(Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
+                        var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var publicConfig = CliRuntime.WasSpecified(parseResult, PublicConfig) ? parseResult.GetValue(PublicConfig) : (__requestBase is { } __PublicConfigBaseValue ? __PublicConfigBaseValue.PublicConfig : default);
                         var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
 
@@ -203,6 +211,7 @@ request's `Authorization` header, rather than the URL.
                                     options: options,
                                     input: input,
                                     title: title,
+                                    description: description,
                                     publicConfig: publicConfig,
                                     isPublic: isPublic,
                                     actorStandby: actorStandby,

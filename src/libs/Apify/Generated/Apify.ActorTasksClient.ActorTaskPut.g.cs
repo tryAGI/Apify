@@ -847,6 +847,7 @@ namespace Apify
         /// <param name="options"></param>
         /// <param name="input"></param>
         /// <param name="title"></param>
+        /// <param name="description"></param>
         /// <param name="actorStandby"></param>
         /// <param name="publicConfig">
         /// Configuration that controls how the published task appears on its public landing page.<br/>
@@ -868,6 +869,7 @@ namespace Apify
             global::Apify.TaskOptions? options = default,
             global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? input = default,
             string? title = default,
+            string? description = default,
             global::Apify.ActorStandby? actorStandby = default,
             global::Apify.TaskPublicConfig? publicConfig = default,
             bool? isPublic = default,
@@ -880,6 +882,7 @@ namespace Apify
                 Options = options,
                 Input = input,
                 Title = title,
+                Description = description,
                 ActorStandby = actorStandby,
                 PublicConfig = publicConfig,
                 IsPublic = isPublic,
