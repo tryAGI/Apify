@@ -36,6 +36,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorStandby")]
         public global::Apify.ActorStandby? ActorStandby { get; set; }
 
@@ -69,6 +75,7 @@ namespace Apify
         /// <param name="options"></param>
         /// <param name="input"></param>
         /// <param name="title"></param>
+        /// <param name="description"></param>
         /// <param name="actorStandby"></param>
         /// <param name="publicConfig">
         /// Configuration that controls how the published task appears on its public landing page.<br/>
@@ -89,6 +96,7 @@ namespace Apify
             global::Apify.TaskOptions? options,
             global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? input,
             string? title,
+            string? description,
             global::Apify.ActorStandby? actorStandby,
             global::Apify.TaskPublicConfig? publicConfig,
             bool? isPublic)
@@ -97,6 +105,7 @@ namespace Apify
             this.Options = options;
             this.Input = input;
             this.Title = title;
+            this.Description = description;
             this.ActorStandby = actorStandby;
             this.PublicConfig = publicConfig;
             this.IsPublic = isPublic;

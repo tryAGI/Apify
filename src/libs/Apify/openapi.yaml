@@ -25501,6 +25501,12 @@
               "null"
             ]
           },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "actorStandby": {
             "anyOf": [
               {
@@ -25625,6 +25631,12 @@
               "null"
             ]
           },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "actorStandby": {
             "anyOf": [
               {
@@ -25734,6 +25746,12 @@
             ]
           },
           "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
             "type": [
               "string",
               "null"
