@@ -82,7 +82,9 @@ namespace Apify
         /// <param name="url">
         /// The URL of the request.
         /// </param>
-        /// <param name="method"></param>
+        /// <param name="method">
+        /// The HTTP method of the request.
+        /// </param>
         /// <param name="retryCount">
         /// The number of times this request has been retried.
         /// </param>

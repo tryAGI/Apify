@@ -30,7 +30,7 @@ namespace Apify
         public required string Url { get; set; }
 
         /// <summary>
-        ///
+        /// The HTTP method of the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("method")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.HttpMethodJsonConverter))]
@@ -60,7 +60,9 @@ namespace Apify
         /// <param name="url">
         /// The URL of the request.
         /// </param>
-        /// <param name="method"></param>
+        /// <param name="method">
+        /// The HTTP method of the request.
+        /// </param>
         /// <param name="retryCount">
         /// The number of times this request has been retried.
         /// </param>

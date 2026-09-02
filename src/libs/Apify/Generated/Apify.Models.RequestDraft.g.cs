@@ -29,7 +29,7 @@ namespace Apify
         public required string Url { get; set; }
 
         /// <summary>
-        ///
+        /// The HTTP method of the request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("method")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.HttpMethodJsonConverter))]
@@ -53,7 +53,9 @@ namespace Apify
         /// <param name="id">
         /// A unique identifier assigned to the request.
         /// </param>
-        /// <param name="method"></param>
+        /// <param name="method">
+        /// The HTTP method of the request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

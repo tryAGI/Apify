@@ -63,7 +63,7 @@ end. Default value is `false` (end of queue).
     private static Option<global::Apify.HttpMethod?> Method { get; } = new(
         name: @"--method")
     {
-        Description = @"",
+        Description = @"The HTTP method of the request.",
     };
 
     private static Option<int?> RetryCount { get; } = new(
