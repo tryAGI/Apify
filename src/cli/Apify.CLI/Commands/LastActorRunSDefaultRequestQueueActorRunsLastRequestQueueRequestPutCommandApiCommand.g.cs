@@ -69,7 +69,7 @@ head](#/reference/request-queues/queue-head) operation.
     private static Option<global::Apify.HttpMethod?> Method { get; } = new(
         name: @"--method")
     {
-        Description = @"",
+        Description = @"The HTTP method of the request.",
     };
 
     private static Option<int?> RetryCount { get; } = new(
