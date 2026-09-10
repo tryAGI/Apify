@@ -27,11 +27,17 @@ namespace Apify
             };
         partial void PrepareWebhookWebhookDispatchesGetArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string webhookId);
+            ref string webhookId,
+            ref double? offset,
+            ref double? limit,
+            ref bool? desc);
         partial void PrepareWebhookWebhookDispatchesGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string webhookId);
+            string webhookId,
+            double? offset,
+            double? limit,
+            bool? desc);
         partial void ProcessWebhookWebhookDispatchesGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -48,16 +54,31 @@ namespace Apify
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
         /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit">
+        /// Example: 1000
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.ListOfWebhookDispatchesResponse> WebhookWebhookDispatchesGetAsync(
             string webhookId,
+            double? offset = default,
+            double? limit = default,
+            bool? desc = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await WebhookWebhookDispatchesGetAsResponseAsync(
                 webhookId: webhookId,
+                offset: offset,
+                limit: limit,
+                desc: desc,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -71,11 +92,23 @@ namespace Apify
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
         /// </param>
+        /// <param name="offset">
+        /// Example: 0
+        /// </param>
+        /// <param name="limit">
+        /// Example: 1000
+        /// </param>
+        /// <param name="desc">
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfWebhookDispatchesResponse>> WebhookWebhookDispatchesGetAsResponseAsync(
             string webhookId,
+            double? offset = default,
+            double? limit = default,
+            bool? desc = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -83,7 +116,10 @@ namespace Apify
                 client: HttpClient);
             PrepareWebhookWebhookDispatchesGetArguments(
                 httpClient: HttpClient,
-                webhookId: ref webhookId);
+                webhookId: ref webhookId,
+                offset: ref offset,
+                limit: ref limit,
+                desc: ref desc);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -111,6 +147,11 @@ namespace Apify
                             var __pathBuilder = new global::Apify.PathBuilder(
                                 path: $"/v2/webhooks/{webhookId}/dispatches",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("offset", offset?.ToString())
+                                .AddOptionalParameter("limit", limit?.ToString())
+                                .AddOptionalParameter("desc", desc?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -151,7 +192,10 @@ namespace Apify
                 PrepareWebhookWebhookDispatchesGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    webhookId: webhookId!);
+                    webhookId: webhookId!,
+                    offset: offset,
+                    limit: limit,
+                    desc: desc);
 
                 return __httpRequest;
             }
