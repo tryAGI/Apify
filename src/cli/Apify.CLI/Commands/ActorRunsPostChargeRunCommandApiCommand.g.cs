@@ -16,7 +16,7 @@ internal static partial class ActorRunsPostChargeRunCommandApiCommand
     private static Option<string?> IdempotencyKey { get; } = new(
         name: @"--idempotency-key")
     {
-        Description = @"Always pass a unique idempotency key (any unique string) for each charge to avoid double charging in case of retries or network errors.",
+        Description = @"Always pass a unique idempotency key (any unique string) for each charge to avoid double charging in case of retries or network errors. The key expires 3 minutes after the charge, so a later request with the same key creates a new charge.",
     };
 
     private static Option<string> EventName { get; } = new(
