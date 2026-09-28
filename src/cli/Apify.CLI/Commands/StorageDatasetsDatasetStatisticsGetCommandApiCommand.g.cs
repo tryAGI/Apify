@@ -33,6 +33,8 @@ internal static partial class StorageDatasetsDatasetStatisticsGetCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-statistics-get", @"Get dataset statistics
@@ -62,6 +64,7 @@ Provides only [field statistics](https://docs.apify.com/platform/actors/developm
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

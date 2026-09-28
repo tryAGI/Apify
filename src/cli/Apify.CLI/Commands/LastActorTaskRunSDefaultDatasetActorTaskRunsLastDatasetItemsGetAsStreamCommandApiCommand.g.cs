@@ -204,6 +204,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-dataset-items-get-as-stream", @"Get last task run's dataset items
@@ -313,6 +315,7 @@ This endpoint is a shortcut that resolves the last task run's `defaultDatasetId`
                                         cancellationToken: cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class ActorsActorVersionsActorVersionsGetCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-versions-get", @"Get list of versions
@@ -62,6 +64,7 @@ contains basic information about a single version.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

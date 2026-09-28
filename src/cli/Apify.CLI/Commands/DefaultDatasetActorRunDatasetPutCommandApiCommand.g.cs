@@ -50,6 +50,8 @@ internal static partial class DefaultDatasetActorRunDatasetPutCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-dataset-put", @"Update default dataset
@@ -104,6 +106,7 @@ This endpoint is a shortcut for getting the run's `defaultDatasetId` and then us
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

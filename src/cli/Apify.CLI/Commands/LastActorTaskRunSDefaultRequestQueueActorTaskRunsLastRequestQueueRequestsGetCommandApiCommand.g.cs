@@ -82,6 +82,8 @@ head](#/reference/request-queues/queue-head) operation.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-request-queue-requests-get", @"List last task run's default request queue's requests
@@ -133,6 +135,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

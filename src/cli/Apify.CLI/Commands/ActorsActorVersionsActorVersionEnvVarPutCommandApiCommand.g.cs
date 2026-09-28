@@ -61,6 +61,8 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarPutCommandApi
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-version-env-var-put", @"Update environment variable
@@ -130,6 +132,7 @@ endpoint.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

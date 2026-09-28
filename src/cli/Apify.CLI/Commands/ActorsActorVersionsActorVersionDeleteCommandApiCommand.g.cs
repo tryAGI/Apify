@@ -39,6 +39,8 @@ internal static partial class ActorsActorVersionsActorVersionDeleteCommandApiCom
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-version-delete", @"Delete version
@@ -69,6 +71,7 @@ Deletes a specific version of Actor's source code.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

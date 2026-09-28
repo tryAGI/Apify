@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class LastActorTaskRunSDefaultKeyValueStoreApiGroupCommand
+internal static partial class LastActorTaskRunSDefaultKeyValueStoreApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"last-actor-task-run-s-default-key-value-store", @"Last Actor task run's default key-value store endpoint commands.");
@@ -19,6 +21,7 @@ internal static class LastActorTaskRunSDefaultKeyValueStoreApiGroupCommand
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordPostCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordPutCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultKeyValueStoreActorTaskRunsLastKeyValueStoreRecordsGetCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

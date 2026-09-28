@@ -61,6 +61,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPostComman
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-record-post", @"Store record (POST)
@@ -117,6 +119,7 @@ This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/ope
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

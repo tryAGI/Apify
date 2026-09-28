@@ -40,6 +40,8 @@ It is helpful in cases where you plan to resurrect the run later.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"abort-post", @"Abort run
@@ -74,6 +76,7 @@ Only runs that are starting or running are aborted. For runs with status
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

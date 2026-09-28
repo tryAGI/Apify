@@ -25,6 +25,8 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
         Description = @"Filter for the run origin, i.e. the means by which the run was started.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-request-queue-delete", @"Delete last task run's default request queue
@@ -55,6 +57,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

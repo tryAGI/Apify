@@ -13,6 +13,8 @@ internal static partial class ActorBuildsActorBuildDeleteCommandApiCommand
         Description = @"ID of the build, found in the build's Info tab.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete", @"Delete build
@@ -37,6 +39,7 @@ Only users with build permissions for the Actor can delete builds.
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -45,6 +45,8 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-dataset-get", @"Get last task run's default dataset
@@ -81,6 +83,7 @@ This endpoint is a shortcut for getting the last task run's `defaultDatasetId` a
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

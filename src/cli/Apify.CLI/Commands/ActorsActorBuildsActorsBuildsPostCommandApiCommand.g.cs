@@ -70,6 +70,8 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actors-builds-post", @"Build Actor
@@ -114,6 +116,7 @@ The response is the build object as returned by the
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

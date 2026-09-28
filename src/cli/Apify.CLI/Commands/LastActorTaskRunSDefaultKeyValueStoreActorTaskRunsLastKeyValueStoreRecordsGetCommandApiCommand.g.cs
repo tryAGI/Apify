@@ -45,6 +45,8 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-key-value-store-records-get", @"Download last task run's default store's records
@@ -84,6 +86,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

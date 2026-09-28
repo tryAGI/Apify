@@ -67,6 +67,8 @@ end after lock expires.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-request-lock-put", @"Prolong request lock
@@ -111,6 +113,7 @@ You can delete or prolong the lock only for requests that were locked by the sam
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

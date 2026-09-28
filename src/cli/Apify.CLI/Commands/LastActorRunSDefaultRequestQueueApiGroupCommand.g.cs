@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class LastActorRunSDefaultRequestQueueApiGroupCommand
+internal static partial class LastActorRunSDefaultRequestQueueApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"last-actor-run-s-default-request-queue", @"Last Actor run's default request queue endpoint commands.");
@@ -24,6 +26,7 @@ internal static class LastActorRunSDefaultRequestQueueApiGroupCommand
                          command.Subcommands.Add(LastActorRunSDefaultRequestQueueActorRunsLastRequestQueueRequestsGetCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultRequestQueueActorRunsLastRequestQueueRequestsPostCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorRunSDefaultRequestQueueActorRunsLastRequestQueueRequestsUnlockPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

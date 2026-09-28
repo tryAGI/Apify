@@ -88,6 +88,8 @@ By default, the resurrected run uses the same setting as before.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"post-resurrect-run", @"Resurrect run
@@ -138,6 +140,7 @@ For more information, see the [Actor docs](https://docs.apify.com/platform/actor
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

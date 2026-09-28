@@ -13,6 +13,8 @@ internal static partial class StorageRequestQueuesRequestQueueDeleteCommandApiCo
         Description = @"Queue ID or `username~queue-name`.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-delete", @"Delete request queue
@@ -33,6 +35,7 @@ Deletes given queue.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

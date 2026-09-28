@@ -19,6 +19,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordHeadComman
         Description = @"Key of the record.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-record-head", @"Check if a record exists
@@ -43,6 +45,7 @@ Check if a value is stored in the key-value store under a specific key.
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

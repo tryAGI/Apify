@@ -33,6 +33,8 @@ internal static partial class StorageDatasetsDatasetGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-get", @"Get dataset
@@ -71,6 +73,7 @@ There is a short period (up to 5 seconds) during which these counters may not ma
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

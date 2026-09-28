@@ -43,6 +43,8 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
 causing web browsers to offer downloading HTML records instead of displaying them.
 ");
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-key-value-store-record-get-as-bytes", @"Get last task run's default store's record
@@ -82,6 +84,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -101,6 +101,8 @@ bypass this safety filtering and include all Actors in the results.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get", @"Get list of Actors in Store
@@ -162,6 +164,7 @@ It will not return more than 1,000 records.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

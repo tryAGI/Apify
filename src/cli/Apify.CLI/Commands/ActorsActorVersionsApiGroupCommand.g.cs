@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class ActorsActorVersionsApiGroupCommand
+internal static partial class ActorsActorVersionsApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actors-actor-versions", @"Actors/Actor versions endpoint commands.");
@@ -21,6 +23,7 @@ internal static class ActorsActorVersionsApiGroupCommand
                          command.Subcommands.Add(ActorsActorVersionsActorVersionPutCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorVersionsActorVersionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorVersionsActorVersionsPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

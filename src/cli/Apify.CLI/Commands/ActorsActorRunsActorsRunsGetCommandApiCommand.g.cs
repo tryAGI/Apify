@@ -77,6 +77,8 @@ The value must be a valid ISO 8601 datetime string (UTC).
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actors-runs-get", @"Get list of runs
@@ -132,6 +134,7 @@ statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecyc
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

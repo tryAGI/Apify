@@ -33,6 +33,8 @@ internal static partial class DefaultDatasetActorRunDatasetStatisticsGetCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-dataset-statistics-get", @"Get default dataset statistics
@@ -63,6 +65,7 @@ This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxi
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

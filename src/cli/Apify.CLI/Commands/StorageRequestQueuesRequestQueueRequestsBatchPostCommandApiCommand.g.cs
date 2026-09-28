@@ -70,6 +70,8 @@ end. Default value is `false` (end of queue).
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-requests-batch-post", @"Add requests
@@ -133,6 +135,7 @@ then it returns an ID of the existing request.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

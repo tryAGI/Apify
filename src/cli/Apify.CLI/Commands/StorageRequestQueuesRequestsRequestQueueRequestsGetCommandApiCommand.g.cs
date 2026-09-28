@@ -70,6 +70,8 @@ head](#/reference/request-queues/queue-head) operation.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-requests-get", @"List requests
@@ -113,6 +115,7 @@ cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

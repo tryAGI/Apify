@@ -63,6 +63,8 @@ Actor (typically `latest`).
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-metamorph-post", @"Metamorph Actor's last run
@@ -106,6 +108,7 @@ on the Actor's last run.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

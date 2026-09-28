@@ -53,6 +53,8 @@ descending order. By default, they are sorted in ascending order.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhook-webhook-dispatches-get", @"Get collection
@@ -88,6 +90,7 @@ Gets a given webhook's list of dispatches.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

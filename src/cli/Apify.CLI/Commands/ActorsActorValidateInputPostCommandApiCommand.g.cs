@@ -57,6 +57,8 @@ Defaults to the `latest` build tag.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"validate-input-post", @"Validate Actor input
@@ -112,6 +114,7 @@ If the specified build has no input schema, any input is considered valid.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

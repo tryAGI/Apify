@@ -43,6 +43,8 @@ otherwise it will have a transitional status (e.g. `RUNNING`).
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"get", @"Get run
@@ -93,6 +95,7 @@ if you access the endpoint without the token, certain attributes, such as `usage
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

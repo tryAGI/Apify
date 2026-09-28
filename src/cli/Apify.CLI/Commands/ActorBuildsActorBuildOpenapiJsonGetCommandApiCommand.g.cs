@@ -35,6 +35,8 @@ Use the special value `default` to get the OpenAPI schema for the Actor's defaul
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"openapi-json-get", @"Get OpenAPI definition
@@ -74,6 +76,7 @@ You can also use the [`/api/v2/actor-openapi-json-get`](/api/v2/actor-openapi-js
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

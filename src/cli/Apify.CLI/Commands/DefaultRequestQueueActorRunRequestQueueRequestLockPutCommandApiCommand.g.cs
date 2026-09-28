@@ -67,6 +67,8 @@ end after lock expires.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-request-queue-request-lock-put", @"Prolong lock on request in default request queue
@@ -109,6 +111,7 @@ This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and th
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

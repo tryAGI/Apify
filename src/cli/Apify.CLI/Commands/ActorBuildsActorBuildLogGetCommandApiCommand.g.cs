@@ -43,6 +43,8 @@ internal static partial class ActorBuildsActorBuildLogGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"log-get", @"Get build's Log
@@ -78,6 +80,7 @@ This endpoint is a shortcut for getting the build's log. Same as [Get log](/api/
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

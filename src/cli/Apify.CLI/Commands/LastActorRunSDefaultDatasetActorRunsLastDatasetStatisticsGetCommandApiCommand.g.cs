@@ -45,6 +45,8 @@ internal static partial class LastActorRunSDefaultDatasetActorRunsLastDatasetSta
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-dataset-statistics-get", @"Get last run's dataset statistics
@@ -81,6 +83,7 @@ This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

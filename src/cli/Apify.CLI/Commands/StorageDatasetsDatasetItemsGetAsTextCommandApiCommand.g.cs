@@ -212,6 +212,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-items-get-as-text", @"Get dataset items
@@ -459,6 +461,7 @@ Note that only the order of **Items** is reversed, but not the order of the `unw
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

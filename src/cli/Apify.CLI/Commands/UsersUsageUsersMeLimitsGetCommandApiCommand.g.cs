@@ -29,6 +29,8 @@ internal static partial class UsersUsageUsersMeLimitsGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"users-me-limits-get", @"Get limits
@@ -58,6 +60,7 @@ includes the current usage cycle, a summary of your limits, and your current usa
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

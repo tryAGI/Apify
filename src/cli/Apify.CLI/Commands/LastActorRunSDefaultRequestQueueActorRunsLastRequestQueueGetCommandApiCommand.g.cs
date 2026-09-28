@@ -45,6 +45,8 @@ internal static partial class LastActorRunSDefaultRequestQueueActorRunsLastReque
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-request-queue-get", @"Get last run's default request queue
@@ -81,6 +83,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

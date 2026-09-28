@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class DefaultDatasetApiGroupCommand
+internal static partial class DefaultDatasetApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"default-dataset", @"Default dataset endpoint commands.");
@@ -18,6 +20,7 @@ internal static class DefaultDatasetApiGroupCommand
                          command.Subcommands.Add(DefaultDatasetActorRunDatasetItemsPostCommandApiCommand.Create());
                          command.Subcommands.Add(DefaultDatasetActorRunDatasetPutCommandApiCommand.Create());
                          command.Subcommands.Add(DefaultDatasetActorRunDatasetStatisticsGetCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

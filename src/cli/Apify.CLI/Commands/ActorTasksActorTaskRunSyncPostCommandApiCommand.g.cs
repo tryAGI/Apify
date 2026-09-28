@@ -118,6 +118,8 @@ the WebhookRepresentation schema. For more information, see
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"run-sync-post", @"Run task synchronously
@@ -224,6 +226,7 @@ task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

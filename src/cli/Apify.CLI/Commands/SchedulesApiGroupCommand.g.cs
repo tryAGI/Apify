@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class SchedulesApiGroupCommand
+internal static partial class SchedulesApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"schedules", @"Schedules endpoint commands.");
@@ -15,6 +17,7 @@ internal static class SchedulesApiGroupCommand
                          command.Subcommands.Add(SchedulesSchedulePutCommandApiCommand.Create());
                          command.Subcommands.Add(SchedulesSchedulesGetCommandApiCommand.Create());
                          command.Subcommands.Add(SchedulesSchedulesPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

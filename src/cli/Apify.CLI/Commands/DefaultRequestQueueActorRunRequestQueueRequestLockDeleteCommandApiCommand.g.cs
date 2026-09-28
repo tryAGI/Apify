@@ -40,6 +40,8 @@ end after lock was removed.
 ",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-request-queue-request-lock-delete", @"Delete lock on request in default request queue
@@ -73,6 +75,7 @@ This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and th
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

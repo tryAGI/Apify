@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class WebhooksWebhooksApiGroupCommand
+internal static partial class WebhooksWebhooksApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhooks-webhooks", @"Webhooks/Webhooks endpoint commands.");
@@ -16,6 +18,7 @@ internal static class WebhooksWebhooksApiGroupCommand
                          command.Subcommands.Add(WebhooksWebhooksWebhookWebhookDispatchesGetCommandApiCommand.Create());
                          command.Subcommands.Add(WebhooksWebhooksWebhooksGetCommandApiCommand.Create());
                          command.Subcommands.Add(WebhooksWebhooksWebhooksPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -44,6 +44,8 @@ head](#/reference/request-queues/queue-head) operation.
 ",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-request-queue-request-delete", @"Delete request from last task run's default request queue
@@ -80,6 +82,7 @@ This endpoint is a shortcut for getting the last task run's `defaultRequestQueue
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

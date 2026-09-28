@@ -33,6 +33,8 @@ internal static partial class ActorTasksActorTaskDeleteCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete", @"Delete task
@@ -59,6 +61,7 @@ Delete the task specified through the `actorTaskId` parameter.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

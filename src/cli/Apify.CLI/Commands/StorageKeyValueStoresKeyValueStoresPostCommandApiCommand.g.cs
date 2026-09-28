@@ -33,6 +33,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoresPostCommandApiC
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-stores-post", @"Create key-value store
@@ -69,6 +71,7 @@ new one and returns the existing object instead.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

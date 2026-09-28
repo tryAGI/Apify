@@ -33,6 +33,8 @@ internal static partial class StorageDatasetsDatasetsPostCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"datasets-post", @"Create dataset
@@ -63,6 +65,7 @@ If a dataset with the given name already exists then returns its object.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
