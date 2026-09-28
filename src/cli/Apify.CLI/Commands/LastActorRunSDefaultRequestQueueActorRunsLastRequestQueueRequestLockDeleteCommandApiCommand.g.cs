@@ -52,6 +52,8 @@ end after lock was removed.
 ",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-request-queue-request-lock-delete", @"Delete lock on request in last run's default request queue
@@ -91,6 +93,7 @@ This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` a
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

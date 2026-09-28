@@ -45,6 +45,8 @@ internal static partial class LastActorRunSRebootActorRunsLastRebootPostCommandA
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-reboot-post", @"Reboot Actor's last run
@@ -84,6 +86,7 @@ or request queue will be lost.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

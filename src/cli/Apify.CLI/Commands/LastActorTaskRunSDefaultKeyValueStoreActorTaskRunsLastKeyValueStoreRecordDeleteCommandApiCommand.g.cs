@@ -31,6 +31,8 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
         Description = @"Filter for the run origin, i.e. the means by which the run was started.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-key-value-store-record-delete", @"Delete last task run's default store's record
@@ -64,6 +66,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

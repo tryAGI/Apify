@@ -50,6 +50,8 @@ internal static partial class StorageKeyValueStoresKeyValueStorePutCommandApiCom
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-put", @"Update store
@@ -105,6 +107,7 @@ store](#/reference/key-value-stores/store-object/get-store) API endpoint.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

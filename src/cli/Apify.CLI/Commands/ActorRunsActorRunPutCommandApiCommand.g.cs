@@ -49,6 +49,8 @@ internal static partial class ActorRunsActorRunPutCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"put", @"Update run
@@ -120,6 +122,7 @@ When a run is accessible anonymously, all of the run's default storages and logs
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class StorageRequestQueuesApiGroupCommand
+internal static partial class StorageRequestQueuesApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"storage-request-queues", @"Storage/Request queues endpoint commands.");
@@ -16,6 +18,7 @@ internal static class StorageRequestQueuesApiGroupCommand
                          command.Subcommands.Add(StorageRequestQueuesRequestQueueRequestsBatchPostCommandApiCommand.Create());
                          command.Subcommands.Add(StorageRequestQueuesRequestQueuesGetCommandApiCommand.Create());
                          command.Subcommands.Add(StorageRequestQueuesRequestQueuesPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

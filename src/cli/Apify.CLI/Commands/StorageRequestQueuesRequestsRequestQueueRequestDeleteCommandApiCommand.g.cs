@@ -32,6 +32,8 @@ head](#/reference/request-queues/queue-head) operation.
 ",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-request-delete", @"Delete request
@@ -58,6 +60,7 @@ Deletes given request from queue.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

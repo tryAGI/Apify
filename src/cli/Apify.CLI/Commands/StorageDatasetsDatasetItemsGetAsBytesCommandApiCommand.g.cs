@@ -192,6 +192,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-items-get-as-bytes", @"Get dataset items
@@ -433,6 +435,7 @@ Note that only the order of **Items** is reversed, but not the order of the `unw
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -192,6 +192,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-dataset-items-get-as-bytes", @"Get default dataset items
@@ -288,6 +290,7 @@ This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxi
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

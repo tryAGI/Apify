@@ -68,6 +68,8 @@ internal static partial class ActorsActorVersionsActorVersionsPostCommandApiComm
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-versions-post", @"Create version
@@ -168,6 +170,7 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

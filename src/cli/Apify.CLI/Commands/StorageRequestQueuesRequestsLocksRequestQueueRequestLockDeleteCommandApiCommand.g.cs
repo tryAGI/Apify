@@ -40,6 +40,8 @@ end after lock was removed.
 ",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-request-lock-delete", @"Delete request lock
@@ -75,6 +77,7 @@ You can delete or prolong the lock only for requests that were locked by the sam
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

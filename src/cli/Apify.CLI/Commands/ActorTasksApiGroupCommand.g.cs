@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class ActorTasksApiGroupCommand
+internal static partial class ActorTasksApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-tasks", @"Actor tasks endpoint commands.");
@@ -24,6 +26,7 @@ internal static class ActorTasksApiGroupCommand
                          command.Subcommands.Add(ActorTasksActorTaskWebhooksGetCommandApiCommand.Create());
                          command.Subcommands.Add(ActorTasksActorTasksGetCommandApiCommand.Create());
                          command.Subcommands.Add(ActorTasksActorTasksPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -31,6 +31,8 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordGet
 causing web browsers to offer downloading HTML records instead of displaying them.
 ");
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-key-value-store-record-get-as-bytes", @"Get default store's record
@@ -64,6 +66,7 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

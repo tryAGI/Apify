@@ -33,6 +33,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordsGetComman
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-records-get", @"Download records
@@ -66,6 +68,7 @@ You can optionally filter the records by `collection` or `prefix` to download on
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

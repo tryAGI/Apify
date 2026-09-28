@@ -45,6 +45,8 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-task-runs-last-key-value-store-get", @"Get last task run's default store
@@ -81,6 +83,7 @@ This endpoint is a shortcut for getting the last task run's `defaultKeyValueStor
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -57,6 +57,8 @@ internal static partial class UsersUsageUsersMeLimitsPutCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"users-me-limits-put", @"Update limits
@@ -108,6 +110,7 @@ Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see reque
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

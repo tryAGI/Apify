@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class LastActorTaskRunSDefaultDatasetApiGroupCommand
+internal static partial class LastActorTaskRunSDefaultDatasetApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"last-actor-task-run-s-default-dataset", @"Last Actor task run's default dataset endpoint commands.");
@@ -18,6 +20,7 @@ internal static class LastActorTaskRunSDefaultDatasetApiGroupCommand
                          command.Subcommands.Add(LastActorTaskRunSDefaultDatasetActorTaskRunsLastDatasetItemsPostCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultDatasetActorTaskRunsLastDatasetPutCommandApiCommand.Create());
                          command.Subcommands.Add(LastActorTaskRunSDefaultDatasetActorTaskRunsLastDatasetStatisticsGetCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

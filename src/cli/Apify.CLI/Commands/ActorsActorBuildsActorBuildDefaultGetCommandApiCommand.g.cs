@@ -43,6 +43,8 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-build-default-get", @"Get default build
@@ -79,6 +81,7 @@ However, if you access the endpoint without a token, certain attributes (e.g., `
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

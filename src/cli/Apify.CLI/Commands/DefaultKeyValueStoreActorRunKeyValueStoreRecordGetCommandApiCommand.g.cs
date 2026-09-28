@@ -51,6 +51,8 @@ causing web browsers to offer downloading HTML records instead of displaying the
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-key-value-store-record-get", @"Get default store's record
@@ -90,6 +92,7 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

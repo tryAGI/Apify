@@ -33,6 +33,8 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordsGe
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-key-value-store-records-get", @"Download default store's records
@@ -66,6 +68,7 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

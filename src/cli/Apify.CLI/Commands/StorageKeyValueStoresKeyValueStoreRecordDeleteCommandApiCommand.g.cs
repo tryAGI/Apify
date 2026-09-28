@@ -19,6 +19,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordDeleteComm
         Description = @"Key of the record.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-record-delete", @"Delete record
@@ -42,6 +44,7 @@ Removes a record specified by a key from the key-value store.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

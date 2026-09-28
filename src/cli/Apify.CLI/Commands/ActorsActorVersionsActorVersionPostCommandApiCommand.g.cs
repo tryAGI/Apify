@@ -74,6 +74,8 @@ internal static partial class ActorsActorVersionsActorVersionPostCommandApiComma
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-version-post", @"Update version (POST)
@@ -150,6 +152,7 @@ This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-obje
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

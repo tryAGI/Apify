@@ -51,6 +51,8 @@ causing web browsers to offer downloading HTML records instead of displaying the
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-record-get", @"Get record
@@ -101,6 +103,7 @@ content without any modifications, use the `attachment` query parameter.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

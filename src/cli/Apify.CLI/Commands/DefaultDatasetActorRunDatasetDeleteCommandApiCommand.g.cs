@@ -13,6 +13,8 @@ internal static partial class DefaultDatasetActorRunDatasetDeleteCommandApiComma
         Description = @"Actor run ID.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-dataset-delete", @"Delete default dataset
@@ -37,6 +39,7 @@ This endpoint is a shortcut for getting the last run's `defaultDatasetId` and th
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

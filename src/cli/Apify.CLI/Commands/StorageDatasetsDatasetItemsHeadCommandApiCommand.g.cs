@@ -192,6 +192,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
         Description = @"Signature used for the access.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-items-head", @"Get dataset items headers
@@ -286,6 +288,7 @@ This is useful to check pagination metadata or verify access without downloading
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

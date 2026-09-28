@@ -261,6 +261,8 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"run-sync-get-dataset-items-get", @"Run task synchronously and get dataset items
@@ -393,6 +395,7 @@ instead.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -55,6 +55,8 @@ otherwise it will have a transitional status (e.g. `RUNNING`).
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-get", @"Get last run
@@ -112,6 +114,7 @@ parameters are the same as in the [Run object](#/reference/actors/run-object) en
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

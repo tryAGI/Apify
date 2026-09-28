@@ -13,6 +13,8 @@ internal static partial class ActorRunsActorRunDeleteCommandApiCommand
         Description = @"Actor run ID.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"delete", @"Delete run
@@ -35,6 +37,7 @@ organization that initiated the run can delete it.
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -53,6 +53,8 @@ descending order. By default, they are sorted in ascending order.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-webhooks-get", @"Get list of webhooks
@@ -96,6 +98,7 @@ order, to sort the records in descending order, use the `desc=1` parameter.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

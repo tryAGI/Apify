@@ -59,6 +59,8 @@ head](#/reference/request-queues/queue-head) operation.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"request-queue-head-lock-post", @"Get head and lock
@@ -103,6 +105,7 @@ that the queue was accessed by more than one client (with unique or empty
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

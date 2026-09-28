@@ -19,6 +19,8 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordDel
         Description = @"Key of the record.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-key-value-store-record-delete", @"Delete default store's record
@@ -46,6 +48,7 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

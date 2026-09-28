@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal static class StorageDatasetsApiGroupCommand
+internal static partial class StorageDatasetsApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"storage-datasets", @"Storage/Datasets endpoint commands.");
@@ -21,6 +23,7 @@ internal static class StorageDatasetsApiGroupCommand
                          command.Subcommands.Add(StorageDatasetsDatasetStatisticsGetCommandApiCommand.Create());
                          command.Subcommands.Add(StorageDatasetsDatasetsGetCommandApiCommand.Create());
                          command.Subcommands.Add(StorageDatasetsDatasetsPostCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

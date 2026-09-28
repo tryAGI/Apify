@@ -33,6 +33,8 @@ internal static partial class SchedulesScheduleLogGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"log-get", @"Get schedule log
@@ -69,6 +71,7 @@ Gets the schedule log as a JSON array containing information about up to a
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

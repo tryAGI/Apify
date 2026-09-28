@@ -39,6 +39,8 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarsGetCommandAp
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-version-env-vars-get", @"Get list of environment variables
@@ -70,6 +72,7 @@ The response is a JSON object with the list of [EnvVar objects](#/reference/acto
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -63,6 +63,8 @@ internal static partial class StorageKeyValueStoresKeyValueStoreKeysGetCommandAp
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"key-value-store-keys-get", @"Get list of keys
@@ -109,6 +111,7 @@ This endpoint is paginated using `exclusiveStartKey` and `limit` parameters
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

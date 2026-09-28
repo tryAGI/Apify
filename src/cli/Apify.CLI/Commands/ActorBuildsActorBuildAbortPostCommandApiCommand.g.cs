@@ -33,6 +33,8 @@ internal static partial class ActorBuildsActorBuildAbortPostCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"abort-post", @"Abort build
@@ -64,6 +66,7 @@ Only builds that are starting or running are aborted. For builds with status
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

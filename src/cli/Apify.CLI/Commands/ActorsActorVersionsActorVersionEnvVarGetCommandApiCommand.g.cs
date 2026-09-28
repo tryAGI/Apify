@@ -45,6 +45,8 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarGetCommandApi
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-version-env-var-get", @"Get environment variable
@@ -81,6 +83,7 @@ If `isSecret` is set to `true`, then `value` will never be returned.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

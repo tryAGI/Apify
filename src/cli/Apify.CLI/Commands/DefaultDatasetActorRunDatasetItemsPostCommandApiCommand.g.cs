@@ -55,6 +55,8 @@ internal static partial class DefaultDatasetActorRunDatasetItemsPostCommandApiCo
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-run-dataset-items-post", @"Store items
@@ -117,6 +119,7 @@ Below is a list of supported `Content-Encoding` types.
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

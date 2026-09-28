@@ -53,6 +53,8 @@ internal static partial class ActorRunsPostChargeRunCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"post-charge-run", @"Charge events in run
@@ -97,6 +99,7 @@ For more details about pay-per-event (PPE) pricing, refer to our [PPE documentat
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

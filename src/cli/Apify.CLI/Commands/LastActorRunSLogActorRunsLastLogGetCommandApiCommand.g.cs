@@ -61,6 +61,8 @@ ANSI escape codes from the logs, keeping only printable characters.
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"actor-runs-last-log-get", @"Get last Actor run's log
@@ -105,6 +107,7 @@ This endpoint is a shortcut for getting last Actor run's log. Same as [Get log](
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -13,6 +13,8 @@ internal static partial class StorageDatasetsDatasetDeleteCommandApiCommand
         Description = @"Dataset ID or `username~dataset-name`.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"dataset-delete", @"Delete dataset
@@ -33,6 +35,7 @@ Deletes a specific dataset.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
