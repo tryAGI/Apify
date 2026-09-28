@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
-            ? CommonActorPricingInfo!
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => CommonActorPricingInfo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PricePerDatasetItemActorPricingInfoVariant2 PickPricePerDatasetItemActorPricingInfoVariant2() => IsPricePerDatasetItemActorPricingInfoVariant2
-            ? PricePerDatasetItemActorPricingInfoVariant2!
+        public global::Apify.PricePerDatasetItemActorPricingInfoVariant2 PickPricePerDatasetItemActorPricingInfoVariant2() => PricePerDatasetItemActorPricingInfoVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItemActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo && commonActorPricingInfo != null)
+            if (CommonActorPricingInfo is { } __value0 && commonActorPricingInfo != null)
             {
-                return commonActorPricingInfo(CommonActorPricingInfo!);
+                return commonActorPricingInfo(__value0);
             }
-            else if (IsPricePerDatasetItemActorPricingInfoVariant2 && pricePerDatasetItemActorPricingInfoVariant2 != null)
+            else if (PricePerDatasetItemActorPricingInfoVariant2 is { } __value1 && pricePerDatasetItemActorPricingInfoVariant2 != null)
             {
-                return pricePerDatasetItemActorPricingInfoVariant2(PricePerDatasetItemActorPricingInfoVariant2!);
+                return pricePerDatasetItemActorPricingInfoVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsPricePerDatasetItemActorPricingInfoVariant2)
+            else if (PricePerDatasetItemActorPricingInfoVariant2 is { } __value1)
             {
-                pricePerDatasetItemActorPricingInfoVariant2?.Invoke(PricePerDatasetItemActorPricingInfoVariant2!);
+                pricePerDatasetItemActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsPricePerDatasetItemActorPricingInfoVariant2)
+            else if (PricePerDatasetItemActorPricingInfoVariant2 is { } __value1)
             {
-                pricePerDatasetItemActorPricingInfoVariant2?.Invoke(PricePerDatasetItemActorPricingInfoVariant2!);
+                pricePerDatasetItemActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 

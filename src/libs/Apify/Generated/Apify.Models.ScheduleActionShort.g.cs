@@ -47,8 +47,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ScheduleActionShortRunActor PickRunActor() => IsRunActor
-            ? RunActor!
+        public global::Apify.ScheduleActionShortRunActor PickRunActor() => RunActor is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunActor' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ScheduleActionShortRunActorTask PickRunActorTask() => IsRunActorTask
-            ? RunActorTask!
+        public global::Apify.ScheduleActionShortRunActorTask PickRunActorTask() => RunActorTask is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RunActorTask' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -185,13 +185,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRunActor && runActor != null)
+            if (RunActor is { } __value0 && runActor != null)
             {
-                return runActor(RunActor!);
+                return runActor(__value0);
             }
-            else if (IsRunActorTask && runActorTask != null)
+            else if (RunActorTask is { } __value1 && runActorTask != null)
             {
-                return runActorTask(RunActorTask!);
+                return runActorTask(__value1);
             }
 
             return default(TResult);
@@ -211,13 +211,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRunActor)
+            if (RunActor is { } __value0)
             {
-                runActor?.Invoke(RunActor!);
+                runActor?.Invoke(__value0);
             }
-            else if (IsRunActorTask)
+            else if (RunActorTask is { } __value1)
             {
-                runActorTask?.Invoke(RunActorTask!);
+                runActorTask?.Invoke(__value1);
             }
         }
 
@@ -234,13 +234,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRunActor)
+            if (RunActor is { } __value0)
             {
-                runActor?.Invoke(RunActor!);
+                runActor?.Invoke(__value0);
             }
-            else if (IsRunActorTask)
+            else if (RunActorTask is { } __value1)
             {
-                runActorTask?.Invoke(RunActorTask!);
+                runActorTask?.Invoke(__value1);
             }
         }
 

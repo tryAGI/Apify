@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestDraftDeleteById PickRequestDraftDeleteById() => IsRequestDraftDeleteById
-            ? RequestDraftDeleteById!
+        public global::Apify.RequestDraftDeleteById PickRequestDraftDeleteById() => RequestDraftDeleteById is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestDraftDeleteById' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestDraftDeleteByUniqueKey PickRequestDraftDeleteByUniqueKey() => IsRequestDraftDeleteByUniqueKey
-            ? RequestDraftDeleteByUniqueKey!
+        public global::Apify.RequestDraftDeleteByUniqueKey PickRequestDraftDeleteByUniqueKey() => RequestDraftDeleteByUniqueKey is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestDraftDeleteByUniqueKey' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestDraftDeleteById && requestDraftDeleteById != null)
+            if (RequestDraftDeleteById is { } __value0 && requestDraftDeleteById != null)
             {
-                return requestDraftDeleteById(RequestDraftDeleteById!);
+                return requestDraftDeleteById(__value0);
             }
-            else if (IsRequestDraftDeleteByUniqueKey && requestDraftDeleteByUniqueKey != null)
+            else if (RequestDraftDeleteByUniqueKey is { } __value1 && requestDraftDeleteByUniqueKey != null)
             {
-                return requestDraftDeleteByUniqueKey(RequestDraftDeleteByUniqueKey!);
+                return requestDraftDeleteByUniqueKey(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestDraftDeleteById)
+            if (RequestDraftDeleteById is { } __value0)
             {
-                requestDraftDeleteById?.Invoke(RequestDraftDeleteById!);
+                requestDraftDeleteById?.Invoke(__value0);
             }
-            else if (IsRequestDraftDeleteByUniqueKey)
+            else if (RequestDraftDeleteByUniqueKey is { } __value1)
             {
-                requestDraftDeleteByUniqueKey?.Invoke(RequestDraftDeleteByUniqueKey!);
+                requestDraftDeleteByUniqueKey?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestDraftDeleteById)
+            if (RequestDraftDeleteById is { } __value0)
             {
-                requestDraftDeleteById?.Invoke(RequestDraftDeleteById!);
+                requestDraftDeleteById?.Invoke(__value0);
             }
-            else if (IsRequestDraftDeleteByUniqueKey)
+            else if (RequestDraftDeleteByUniqueKey is { } __value1)
             {
-                requestDraftDeleteByUniqueKey?.Invoke(RequestDraftDeleteByUniqueKey!);
+                requestDraftDeleteByUniqueKey?.Invoke(__value1);
             }
         }
 

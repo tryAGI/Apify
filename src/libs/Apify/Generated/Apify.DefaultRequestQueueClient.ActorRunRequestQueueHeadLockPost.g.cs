@@ -154,7 +154,7 @@ namespace Apify
                                 path: $"/v2/actor-runs/{runId}/request-queue/head/lock",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddRequiredParameter("lockSecs", lockSecs.ToString()!)
+                                .AddRequiredParameter("lockSecs", lockSecs.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("clientKey", clientKey)
                                 ;
@@ -198,8 +198,8 @@ namespace Apify
                 PrepareActorRunRequestQueueHeadLockPostRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    runId: runId!,
-                    lockSecs: lockSecs!,
+                    runId: runId,
+                    lockSecs: lockSecs,
                     limit: limit,
                     clientKey: clientKey);
 
@@ -223,7 +223,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/head/lock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -257,7 +257,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/head/lock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -298,7 +298,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/head/lock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -346,7 +346,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/head/lock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -368,7 +368,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-runs/{runId}/request-queue/head/lock\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

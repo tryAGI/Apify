@@ -190,7 +190,7 @@ namespace Apify
                 PrepareWebhookPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    webhookId: webhookId!,
+                    webhookId: webhookId,
                     request: request);
 
                 return __httpRequest;
@@ -213,7 +213,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/webhooks/{webhookId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -247,7 +247,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/webhooks/{webhookId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -288,7 +288,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/webhooks/{webhookId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -336,7 +336,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/webhooks/{webhookId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -358,7 +358,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/webhooks/{webhookId}\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

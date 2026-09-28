@@ -153,7 +153,7 @@ namespace Apify
                 PrepareScheduleLogGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    scheduleId: scheduleId!);
+                    scheduleId: scheduleId);
 
                 return __httpRequest;
             }
@@ -175,7 +175,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/schedules/{scheduleId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -209,7 +209,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/schedules/{scheduleId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -250,7 +250,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/schedules/{scheduleId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -298,7 +298,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/schedules/{scheduleId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -320,7 +320,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/schedules/{scheduleId}/log\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

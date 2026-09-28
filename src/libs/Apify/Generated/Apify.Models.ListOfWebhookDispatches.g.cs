@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
-            ? PaginationResponse!
+        public global::Apify.PaginationResponse PickPaginationResponse() => PaginationResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ListOfWebhookDispatchesVariant2 PickListOfWebhookDispatchesVariant2() => IsListOfWebhookDispatchesVariant2
-            ? ListOfWebhookDispatchesVariant2!
+        public global::Apify.ListOfWebhookDispatchesVariant2 PickListOfWebhookDispatchesVariant2() => ListOfWebhookDispatchesVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfWebhookDispatchesVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse && paginationResponse != null)
+            if (PaginationResponse is { } __value0 && paginationResponse != null)
             {
-                return paginationResponse(PaginationResponse!);
+                return paginationResponse(__value0);
             }
-            else if (IsListOfWebhookDispatchesVariant2 && listOfWebhookDispatchesVariant2 != null)
+            else if (ListOfWebhookDispatchesVariant2 is { } __value1 && listOfWebhookDispatchesVariant2 != null)
             {
-                return listOfWebhookDispatchesVariant2(ListOfWebhookDispatchesVariant2!);
+                return listOfWebhookDispatchesVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfWebhookDispatchesVariant2)
+            else if (ListOfWebhookDispatchesVariant2 is { } __value1)
             {
-                listOfWebhookDispatchesVariant2?.Invoke(ListOfWebhookDispatchesVariant2!);
+                listOfWebhookDispatchesVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfWebhookDispatchesVariant2)
+            else if (ListOfWebhookDispatchesVariant2 is { } __value1)
             {
-                listOfWebhookDispatchesVariant2?.Invoke(ListOfWebhookDispatchesVariant2!);
+                listOfWebhookDispatchesVariant2?.Invoke(__value1);
             }
         }
 

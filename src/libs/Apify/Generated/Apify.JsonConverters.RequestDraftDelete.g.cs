@@ -130,13 +130,13 @@ namespace Apify.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestDraftDeleteById), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestDraftDeleteById?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestDraftDeleteById).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RequestDraftDeleteById!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRequestDraftDeleteById(), typeInfo);
             }
             else if (value.IsRequestDraftDeleteByUniqueKey)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Apify.RequestDraftDeleteByUniqueKey), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Apify.RequestDraftDeleteByUniqueKey?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Apify.RequestDraftDeleteByUniqueKey).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RequestDraftDeleteByUniqueKey!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRequestDraftDeleteByUniqueKey(), typeInfo);
             }
         }
     }

@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
-            ? CommonActorPricingInfo!
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => CommonActorPricingInfo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PayPerEventActorPricingInfoVariant2 PickPayPerEventActorPricingInfoVariant2() => IsPayPerEventActorPricingInfoVariant2
-            ? PayPerEventActorPricingInfoVariant2!
+        public global::Apify.PayPerEventActorPricingInfoVariant2 PickPayPerEventActorPricingInfoVariant2() => PayPerEventActorPricingInfoVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEventActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo && commonActorPricingInfo != null)
+            if (CommonActorPricingInfo is { } __value0 && commonActorPricingInfo != null)
             {
-                return commonActorPricingInfo(CommonActorPricingInfo!);
+                return commonActorPricingInfo(__value0);
             }
-            else if (IsPayPerEventActorPricingInfoVariant2 && payPerEventActorPricingInfoVariant2 != null)
+            else if (PayPerEventActorPricingInfoVariant2 is { } __value1 && payPerEventActorPricingInfoVariant2 != null)
             {
-                return payPerEventActorPricingInfoVariant2(PayPerEventActorPricingInfoVariant2!);
+                return payPerEventActorPricingInfoVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsPayPerEventActorPricingInfoVariant2)
+            else if (PayPerEventActorPricingInfoVariant2 is { } __value1)
             {
-                payPerEventActorPricingInfoVariant2?.Invoke(PayPerEventActorPricingInfoVariant2!);
+                payPerEventActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsPayPerEventActorPricingInfoVariant2)
+            else if (PayPerEventActorPricingInfoVariant2 is { } __value1)
             {
-                payPerEventActorPricingInfoVariant2?.Invoke(PayPerEventActorPricingInfoVariant2!);
+                payPerEventActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 

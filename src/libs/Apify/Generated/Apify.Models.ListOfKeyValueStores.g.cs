@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
-            ? PaginationResponse!
+        public global::Apify.PaginationResponse PickPaginationResponse() => PaginationResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ListOfKeyValueStoresVariant2 PickListOfKeyValueStoresVariant2() => IsListOfKeyValueStoresVariant2
-            ? ListOfKeyValueStoresVariant2!
+        public global::Apify.ListOfKeyValueStoresVariant2 PickListOfKeyValueStoresVariant2() => ListOfKeyValueStoresVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfKeyValueStoresVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse && paginationResponse != null)
+            if (PaginationResponse is { } __value0 && paginationResponse != null)
             {
-                return paginationResponse(PaginationResponse!);
+                return paginationResponse(__value0);
             }
-            else if (IsListOfKeyValueStoresVariant2 && listOfKeyValueStoresVariant2 != null)
+            else if (ListOfKeyValueStoresVariant2 is { } __value1 && listOfKeyValueStoresVariant2 != null)
             {
-                return listOfKeyValueStoresVariant2(ListOfKeyValueStoresVariant2!);
+                return listOfKeyValueStoresVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfKeyValueStoresVariant2)
+            else if (ListOfKeyValueStoresVariant2 is { } __value1)
             {
-                listOfKeyValueStoresVariant2?.Invoke(ListOfKeyValueStoresVariant2!);
+                listOfKeyValueStoresVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfKeyValueStoresVariant2)
+            else if (ListOfKeyValueStoresVariant2 is { } __value1)
             {
-                listOfKeyValueStoresVariant2?.Invoke(ListOfKeyValueStoresVariant2!);
+                listOfKeyValueStoresVariant2?.Invoke(__value1);
             }
         }
 
