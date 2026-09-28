@@ -363,23 +363,36 @@ namespace Apify
     /// The default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.<br/>
     /// The default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.<br/>
     /// Each API endpoint returns its rate limit in `X-RateLimit-Limit` header.<br/>
+    /// These endpoints have a rate limit of _35 requests per second per resource_:<br/>
+    /// * Batch ([add](#/reference/request-queues/batch-request-operations/add-requests),<br/>
+    ///   [delete](#/reference/request-queues/batch-request-operations/delete-requests))<br/>
+    ///   operations on requests in request queues<br/>
+    /// * [List and lock head](#/reference/request-queues/queue-head-with-locks/list-and-lock-head) of a request queue<br/>
+    /// These endpoints have a rate limit of _100 requests per second per resource_:<br/>
+    /// * Download records from a key-value store as a ZIP archive<br/>
     /// These endpoints have a rate limit of _200 requests per second per resource_:<br/>
     /// * CRUD ([get](#/reference/key-value-stores/record/get-record),<br/>
     ///   [put](#/reference/key-value-stores/record/put-record),<br/>
     ///   [delete](#/reference/key-value-stores/record/delete-record))<br/>
     ///   operations on key-value store records<br/>
-    /// These endpoints have a rate limit of _400 requests per second per resource_:<br/>
-    /// * [Run Actor](#/reference/actors/run-collection/run-actor)<br/>
-    /// * [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)<br/>
-    /// * [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)<br/>
-    /// * [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)<br/>
-    /// * [Push items](#/reference/datasets/item-collection/put-items) to dataset<br/>
+    /// * [Get list of keys](#/reference/key-value-stores/key-collection/get-list-of-keys) in a key-value store<br/>
+    /// These endpoints have a rate limit of _350 requests per second per resource_:<br/>
     /// * CRUD<br/>
     ///   ([add](#/reference/request-queues/request-collection/add-request),<br/>
     ///   [get](#/reference/request-queues/request-collection/get-request),<br/>
     ///   [update](#/reference/request-queues/request-collection/update-request),<br/>
     ///   [delete](#/reference/request-queues/request-collection/delete-request))<br/>
     ///   operations on requests in request queues<br/>
+    /// * Request lock operations<br/>
+    ///   ([prolong](#/reference/request-queues/request-lock/prolong-request-lock),<br/>
+    ///   [delete](#/reference/request-queues/request-lock/delete-request-lock))<br/>
+    ///   in request queues<br/>
+    /// These endpoints have a rate limit of _400 requests per second per resource_:<br/>
+    /// * [Run Actor](#/reference/actors/run-collection/run-actor)<br/>
+    /// * [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)<br/>
+    /// * [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)<br/>
+    /// * [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)<br/>
+    /// * [Push items](#/reference/datasets/item-collection/put-items) to dataset<br/>
     /// ### Rate limit exceeded errors<br/>
     /// &lt;span id="/introduction/rate-limiting/rate-limit-exceeded-errors"&gt;&lt;/span&gt;<br/>
     /// If the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`<br/>
