@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestBase PickRequestBase() => IsRequestBase
-            ? RequestBase!
+        public global::Apify.RequestBase PickRequestBase() => RequestBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestVariant2 PickRequestVariant2() => IsRequestVariant2
-            ? RequestVariant2!
+        public global::Apify.RequestVariant2 PickRequestVariant2() => RequestVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase && requestBase != null)
+            if (RequestBase is { } __value0 && requestBase != null)
             {
-                return requestBase(RequestBase!);
+                return requestBase(__value0);
             }
-            else if (IsRequestVariant2 && requestVariant2 != null)
+            else if (RequestVariant2 is { } __value1 && requestVariant2 != null)
             {
-                return requestVariant2(RequestVariant2!);
+                return requestVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase)
+            if (RequestBase is { } __value0)
             {
-                requestBase?.Invoke(RequestBase!);
+                requestBase?.Invoke(__value0);
             }
-            else if (IsRequestVariant2)
+            else if (RequestVariant2 is { } __value1)
             {
-                requestVariant2?.Invoke(RequestVariant2!);
+                requestVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase)
+            if (RequestBase is { } __value0)
             {
-                requestBase?.Invoke(RequestBase!);
+                requestBase?.Invoke(__value0);
             }
-            else if (IsRequestVariant2)
+            else if (RequestVariant2 is { } __value1)
             {
-                requestVariant2?.Invoke(RequestVariant2!);
+                requestVariant2?.Invoke(__value1);
             }
         }
 

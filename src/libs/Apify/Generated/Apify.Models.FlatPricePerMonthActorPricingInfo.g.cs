@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => IsCommonActorPricingInfo
-            ? CommonActorPricingInfo!
+        public global::Apify.CommonActorPricingInfo PickCommonActorPricingInfo() => CommonActorPricingInfo is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CommonActorPricingInfo' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.FlatPricePerMonthActorPricingInfoVariant2 PickFlatPricePerMonthActorPricingInfoVariant2() => IsFlatPricePerMonthActorPricingInfoVariant2
-            ? FlatPricePerMonthActorPricingInfoVariant2!
+        public global::Apify.FlatPricePerMonthActorPricingInfoVariant2 PickFlatPricePerMonthActorPricingInfoVariant2() => FlatPricePerMonthActorPricingInfoVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FlatPricePerMonthActorPricingInfoVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo && commonActorPricingInfo != null)
+            if (CommonActorPricingInfo is { } __value0 && commonActorPricingInfo != null)
             {
-                return commonActorPricingInfo(CommonActorPricingInfo!);
+                return commonActorPricingInfo(__value0);
             }
-            else if (IsFlatPricePerMonthActorPricingInfoVariant2 && flatPricePerMonthActorPricingInfoVariant2 != null)
+            else if (FlatPricePerMonthActorPricingInfoVariant2 is { } __value1 && flatPricePerMonthActorPricingInfoVariant2 != null)
             {
-                return flatPricePerMonthActorPricingInfoVariant2(FlatPricePerMonthActorPricingInfoVariant2!);
+                return flatPricePerMonthActorPricingInfoVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsFlatPricePerMonthActorPricingInfoVariant2)
+            else if (FlatPricePerMonthActorPricingInfoVariant2 is { } __value1)
             {
-                flatPricePerMonthActorPricingInfoVariant2?.Invoke(FlatPricePerMonthActorPricingInfoVariant2!);
+                flatPricePerMonthActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsCommonActorPricingInfo)
+            if (CommonActorPricingInfo is { } __value0)
             {
-                commonActorPricingInfo?.Invoke(CommonActorPricingInfo!);
+                commonActorPricingInfo?.Invoke(__value0);
             }
-            else if (IsFlatPricePerMonthActorPricingInfoVariant2)
+            else if (FlatPricePerMonthActorPricingInfoVariant2 is { } __value1)
             {
-                flatPricePerMonthActorPricingInfoVariant2?.Invoke(FlatPricePerMonthActorPricingInfoVariant2!);
+                flatPricePerMonthActorPricingInfoVariant2?.Invoke(__value1);
             }
         }
 

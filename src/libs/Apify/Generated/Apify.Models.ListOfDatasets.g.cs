@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
-            ? PaginationResponse!
+        public global::Apify.PaginationResponse PickPaginationResponse() => PaginationResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ListOfDatasetsVariant2 PickListOfDatasetsVariant2() => IsListOfDatasetsVariant2
-            ? ListOfDatasetsVariant2!
+        public global::Apify.ListOfDatasetsVariant2 PickListOfDatasetsVariant2() => ListOfDatasetsVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfDatasetsVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse && paginationResponse != null)
+            if (PaginationResponse is { } __value0 && paginationResponse != null)
             {
-                return paginationResponse(PaginationResponse!);
+                return paginationResponse(__value0);
             }
-            else if (IsListOfDatasetsVariant2 && listOfDatasetsVariant2 != null)
+            else if (ListOfDatasetsVariant2 is { } __value1 && listOfDatasetsVariant2 != null)
             {
-                return listOfDatasetsVariant2(ListOfDatasetsVariant2!);
+                return listOfDatasetsVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfDatasetsVariant2)
+            else if (ListOfDatasetsVariant2 is { } __value1)
             {
-                listOfDatasetsVariant2?.Invoke(ListOfDatasetsVariant2!);
+                listOfDatasetsVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfDatasetsVariant2)
+            else if (ListOfDatasetsVariant2 is { } __value1)
             {
-                listOfDatasetsVariant2?.Invoke(ListOfDatasetsVariant2!);
+                listOfDatasetsVariant2?.Invoke(__value1);
             }
         }
 

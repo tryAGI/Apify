@@ -47,8 +47,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PayPerEventActorPricingInfo PickPayPerEvent() => IsPayPerEvent
-            ? PayPerEvent!.Value
+        public global::Apify.PayPerEventActorPricingInfo PickPayPerEvent() => PayPerEvent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PayPerEvent' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PricePerDatasetItemActorPricingInfo PickPricePerDatasetItem() => IsPricePerDatasetItem
-            ? PricePerDatasetItem!.Value
+        public global::Apify.PricePerDatasetItemActorPricingInfo PickPricePerDatasetItem() => PricePerDatasetItem is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItem' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.FlatPricePerMonthActorPricingInfo PickFlatPricePerMonth() => IsFlatPricePerMonth
-            ? FlatPricePerMonth!.Value
+        public global::Apify.FlatPricePerMonthActorPricingInfo PickFlatPricePerMonth() => FlatPricePerMonth is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'FlatPricePerMonth' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.FreeActorPricingInfo PickFree() => IsFree
-            ? Free!.Value
+        public global::Apify.FreeActorPricingInfo PickFree() => Free is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Free' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -315,21 +315,21 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPayPerEvent && payPerEvent != null)
+            if (PayPerEvent is { } __value0 && payPerEvent != null)
             {
-                return payPerEvent(PayPerEvent!);
+                return payPerEvent(__value0);
             }
-            else if (IsPricePerDatasetItem && pricePerDatasetItem != null)
+            else if (PricePerDatasetItem is { } __value1 && pricePerDatasetItem != null)
             {
-                return pricePerDatasetItem(PricePerDatasetItem!);
+                return pricePerDatasetItem(__value1);
             }
-            else if (IsFlatPricePerMonth && flatPricePerMonth != null)
+            else if (FlatPricePerMonth is { } __value2 && flatPricePerMonth != null)
             {
-                return flatPricePerMonth(FlatPricePerMonth!);
+                return flatPricePerMonth(__value2);
             }
-            else if (IsFree && free != null)
+            else if (Free is { } __value3 && free != null)
             {
-                return free(Free!);
+                return free(__value3);
             }
 
             return default(TResult);
@@ -353,21 +353,21 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPayPerEvent)
+            if (PayPerEvent is { } __value0)
             {
-                payPerEvent?.Invoke(PayPerEvent!);
+                payPerEvent?.Invoke(__value0);
             }
-            else if (IsPricePerDatasetItem)
+            else if (PricePerDatasetItem is { } __value1)
             {
-                pricePerDatasetItem?.Invoke(PricePerDatasetItem!);
+                pricePerDatasetItem?.Invoke(__value1);
             }
-            else if (IsFlatPricePerMonth)
+            else if (FlatPricePerMonth is { } __value2)
             {
-                flatPricePerMonth?.Invoke(FlatPricePerMonth!);
+                flatPricePerMonth?.Invoke(__value2);
             }
-            else if (IsFree)
+            else if (Free is { } __value3)
             {
-                free?.Invoke(Free!);
+                free?.Invoke(__value3);
             }
         }
 
@@ -386,21 +386,21 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPayPerEvent)
+            if (PayPerEvent is { } __value0)
             {
-                payPerEvent?.Invoke(PayPerEvent!);
+                payPerEvent?.Invoke(__value0);
             }
-            else if (IsPricePerDatasetItem)
+            else if (PricePerDatasetItem is { } __value1)
             {
-                pricePerDatasetItem?.Invoke(PricePerDatasetItem!);
+                pricePerDatasetItem?.Invoke(__value1);
             }
-            else if (IsFlatPricePerMonth)
+            else if (FlatPricePerMonth is { } __value2)
             {
-                flatPricePerMonth?.Invoke(FlatPricePerMonth!);
+                flatPricePerMonth?.Invoke(__value2);
             }
-            else if (IsFree)
+            else if (Free is { } __value3)
             {
-                free?.Invoke(Free!);
+                free?.Invoke(__value3);
             }
         }
 

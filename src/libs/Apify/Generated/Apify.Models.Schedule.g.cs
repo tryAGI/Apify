@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ScheduleBase PickScheduleBase() => IsScheduleBase
-            ? ScheduleBase!
+        public global::Apify.ScheduleBase PickScheduleBase() => ScheduleBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ScheduleVariant2 PickScheduleVariant2() => IsScheduleVariant2
-            ? ScheduleVariant2!
+        public global::Apify.ScheduleVariant2 PickScheduleVariant2() => ScheduleVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ScheduleVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsScheduleBase && scheduleBase != null)
+            if (ScheduleBase is { } __value0 && scheduleBase != null)
             {
-                return scheduleBase(ScheduleBase!);
+                return scheduleBase(__value0);
             }
-            else if (IsScheduleVariant2 && scheduleVariant2 != null)
+            else if (ScheduleVariant2 is { } __value1 && scheduleVariant2 != null)
             {
-                return scheduleVariant2(ScheduleVariant2!);
+                return scheduleVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsScheduleBase)
+            if (ScheduleBase is { } __value0)
             {
-                scheduleBase?.Invoke(ScheduleBase!);
+                scheduleBase?.Invoke(__value0);
             }
-            else if (IsScheduleVariant2)
+            else if (ScheduleVariant2 is { } __value1)
             {
-                scheduleVariant2?.Invoke(ScheduleVariant2!);
+                scheduleVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsScheduleBase)
+            if (ScheduleBase is { } __value0)
             {
-                scheduleBase?.Invoke(ScheduleBase!);
+                scheduleBase?.Invoke(__value0);
             }
-            else if (IsScheduleVariant2)
+            else if (ScheduleVariant2 is { } __value1)
             {
-                scheduleVariant2?.Invoke(ScheduleVariant2!);
+                scheduleVariant2?.Invoke(__value1);
             }
         }
 

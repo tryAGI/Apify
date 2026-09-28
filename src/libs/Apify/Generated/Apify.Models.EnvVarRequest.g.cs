@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.EnvVar PickEnvVar() => IsEnvVar
-            ? EnvVar!
+        public global::Apify.EnvVar PickEnvVar() => EnvVar is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVar' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public object PickEnvVarRequestVariant2() => IsEnvVarRequestVariant2
-            ? EnvVarRequestVariant2!
+        public object PickEnvVarRequestVariant2() => EnvVarRequestVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVarRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsEnvVar && envVar != null)
+            if (EnvVar is { } __value0 && envVar != null)
             {
-                return envVar(EnvVar!);
+                return envVar(__value0);
             }
-            else if (IsEnvVarRequestVariant2 && envVarRequestVariant2 != null)
+            else if (EnvVarRequestVariant2 is { } __value1 && envVarRequestVariant2 != null)
             {
-                return envVarRequestVariant2(EnvVarRequestVariant2!);
+                return envVarRequestVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsEnvVar)
+            if (EnvVar is { } __value0)
             {
-                envVar?.Invoke(EnvVar!);
+                envVar?.Invoke(__value0);
             }
-            else if (IsEnvVarRequestVariant2)
+            else if (EnvVarRequestVariant2 is { } __value1)
             {
-                envVarRequestVariant2?.Invoke(EnvVarRequestVariant2!);
+                envVarRequestVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsEnvVar)
+            if (EnvVar is { } __value0)
             {
-                envVar?.Invoke(EnvVar!);
+                envVar?.Invoke(__value0);
             }
-            else if (IsEnvVarRequestVariant2)
+            else if (EnvVarRequestVariant2 is { } __value1)
             {
-                envVarRequestVariant2?.Invoke(EnvVarRequestVariant2!);
+                envVarRequestVariant2?.Invoke(__value1);
             }
         }
 

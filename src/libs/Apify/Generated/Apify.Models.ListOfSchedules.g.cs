@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PaginationResponse PickPaginationResponse() => IsPaginationResponse
-            ? PaginationResponse!
+        public global::Apify.PaginationResponse PickPaginationResponse() => PaginationResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginationResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ListOfSchedulesVariant2 PickListOfSchedulesVariant2() => IsListOfSchedulesVariant2
-            ? ListOfSchedulesVariant2!
+        public global::Apify.ListOfSchedulesVariant2 PickListOfSchedulesVariant2() => ListOfSchedulesVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ListOfSchedulesVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse && paginationResponse != null)
+            if (PaginationResponse is { } __value0 && paginationResponse != null)
             {
-                return paginationResponse(PaginationResponse!);
+                return paginationResponse(__value0);
             }
-            else if (IsListOfSchedulesVariant2 && listOfSchedulesVariant2 != null)
+            else if (ListOfSchedulesVariant2 is { } __value1 && listOfSchedulesVariant2 != null)
             {
-                return listOfSchedulesVariant2(ListOfSchedulesVariant2!);
+                return listOfSchedulesVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfSchedulesVariant2)
+            else if (ListOfSchedulesVariant2 is { } __value1)
             {
-                listOfSchedulesVariant2?.Invoke(ListOfSchedulesVariant2!);
+                listOfSchedulesVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Apify
                 Validate();
             }
 
-            if (IsPaginationResponse)
+            if (PaginationResponse is { } __value0)
             {
-                paginationResponse?.Invoke(PaginationResponse!);
+                paginationResponse?.Invoke(__value0);
             }
-            else if (IsListOfSchedulesVariant2)
+            else if (ListOfSchedulesVariant2 is { } __value1)
             {
-                listOfSchedulesVariant2?.Invoke(ListOfSchedulesVariant2!);
+                listOfSchedulesVariant2?.Invoke(__value1);
             }
         }
 

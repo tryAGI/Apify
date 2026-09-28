@@ -42,8 +42,8 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestBase PickRequestBase() => IsRequestBase
-            ? RequestBase!
+        public global::Apify.RequestBase PickRequestBase() => RequestBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RequestBase' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase && requestBase != null)
+            if (RequestBase is { } __value0 && requestBase != null)
             {
-                return requestBase(RequestBase!);
+                return requestBase(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase)
+            if (RequestBase is { } __value0)
             {
-                requestBase?.Invoke(RequestBase!);
+                requestBase?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace Apify
                 Validate();
             }
 
-            if (IsRequestBase)
+            if (RequestBase is { } __value0)
             {
-                requestBase?.Invoke(RequestBase!);
+                requestBase?.Invoke(__value0);
             }
         }
 

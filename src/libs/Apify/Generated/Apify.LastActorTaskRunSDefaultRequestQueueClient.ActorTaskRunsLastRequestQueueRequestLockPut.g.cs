@@ -186,7 +186,7 @@ namespace Apify
                             __pathBuilder
                                 .AddOptionalParameter("status", status)
                                 .AddOptionalParameter("origin", origin?.ToValueString())
-                                .AddRequiredParameter("lockSecs", lockSecs.ToString()!)
+                                .AddRequiredParameter("lockSecs", lockSecs.ToString() ?? throw new global::System.InvalidOperationException("A required query parameter returned null from ToString()."))
                                 .AddOptionalParameter("clientKey", clientKey)
                                 .AddOptionalParameter("forefront", forefront)
                                 ;
@@ -230,11 +230,11 @@ namespace Apify
                 PrepareActorTaskRunsLastRequestQueueRequestLockPutRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    actorTaskId: actorTaskId!,
+                    actorTaskId: actorTaskId,
                     status: status,
                     origin: origin,
-                    requestId: requestId!,
-                    lockSecs: lockSecs!,
+                    requestId: requestId,
+                    lockSecs: lockSecs,
                     clientKey: clientKey,
                     forefront: forefront);
 
@@ -258,7 +258,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -292,7 +292,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -333,7 +333,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -381,7 +381,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -403,7 +403,7 @@ namespace Apify
                                 pathTemplate: "$\"/v2/actor-tasks/{actorTaskId}/runs/last/request-queue/requests/{requestId}/lock\"",
                                 httpMethod: "PUT",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
