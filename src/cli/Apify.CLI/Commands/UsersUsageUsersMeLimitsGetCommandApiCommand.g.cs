@@ -31,9 +31,9 @@ internal static partial class UsersUsageUsersMeLimitsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"users-me-limits-get", @"Get limits
+        var command = new Command(commandName ?? @"users-me-limits-get", @"Get limits
 Returns a complete summary of your account's limits. It is the same
 information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data
 includes the current usage cycle, a summary of your limits, and your current usage.

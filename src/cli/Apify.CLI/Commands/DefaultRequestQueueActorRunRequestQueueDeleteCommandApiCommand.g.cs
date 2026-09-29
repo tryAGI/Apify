@@ -15,9 +15,9 @@ internal static partial class DefaultRequestQueueActorRunRequestQueueDeleteComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-request-queue-delete", @"Delete default request queue
+        var command = new Command(commandName ?? @"actor-run-request-queue-delete", @"Delete default request queue
 Deletes the default request queue associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the

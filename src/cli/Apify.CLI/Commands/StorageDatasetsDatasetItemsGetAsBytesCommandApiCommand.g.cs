@@ -194,9 +194,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-items-get-as-bytes", @"Get dataset items
+        var command = new Command(commandName ?? @"dataset-items-get-as-bytes", @"Get dataset items
 Returns data stored in the dataset in a desired format.
 
 ### Response format

@@ -15,9 +15,9 @@ internal static partial class StorageDatasetsDatasetDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-delete", @"Delete dataset
+        var command = new Command(commandName ?? @"dataset-delete", @"Delete dataset
 Deletes a specific dataset.");
                         command.Arguments.Add(DatasetId);
 

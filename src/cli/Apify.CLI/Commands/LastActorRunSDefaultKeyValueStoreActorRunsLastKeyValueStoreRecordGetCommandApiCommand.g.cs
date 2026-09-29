@@ -65,9 +65,9 @@ causing web browsers to offer downloading HTML records instead of displaying the
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-key-value-store-record-get", @"Get last run's default store's record
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-record-get", @"Get last run's default store's record
 Gets a value stored under a specific key in the default key-value store of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the

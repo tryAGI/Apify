@@ -35,9 +35,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoresPostCommandApiC
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-stores-post", @"Create key-value store
+        var command = new Command(commandName ?? @"key-value-stores-post", @"Create key-value store
 Creates a key-value store and returns its object. The response is the same
 object as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)
 endpoint.

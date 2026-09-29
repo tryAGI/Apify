@@ -100,9 +100,9 @@ internal static partial class ActorsActorsPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"post", @"Create Actor
+        var command = new Command(commandName ?? @"post", @"Create Actor
 Creates an Actor with the settings specified in an `Actor` object passed as
 JSON in the POST payload.
 

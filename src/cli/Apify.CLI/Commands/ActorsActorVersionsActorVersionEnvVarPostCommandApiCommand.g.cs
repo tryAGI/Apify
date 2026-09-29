@@ -63,9 +63,9 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarPostCommandAp
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-env-var-post", @"Update environment variable (POST)
+        var command = new Command(commandName ?? @"actor-version-env-var-post", @"Update environment variable (POST)
 Updates Actor environment variable using values specified by a [EnvVar
 object](#/reference/actors/environment-variable-object)
 passed as JSON in the POST payload.

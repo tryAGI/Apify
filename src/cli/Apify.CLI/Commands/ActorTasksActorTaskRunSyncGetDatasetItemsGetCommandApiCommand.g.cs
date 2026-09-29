@@ -263,9 +263,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"run-sync-get-dataset-items-get", @"Run task synchronously and get dataset items
+        var command = new Command(commandName ?? @"run-sync-get-dataset-items-get", @"Run task synchronously and get dataset items
 Run a specific task and return its dataset items.
 
 The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds

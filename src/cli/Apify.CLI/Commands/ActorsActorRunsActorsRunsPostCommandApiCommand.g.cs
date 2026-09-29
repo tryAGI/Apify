@@ -131,9 +131,9 @@ parameter, the Actor uses its configured default permission level. For more info
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actors-runs-post", @"Run Actor
+        var command = new Command(commandName ?? @"actors-runs-post", @"Run Actor
 Runs an Actor and immediately returns without waiting for the run to finish.
 
 The POST payload including its `Content-Type` header is passed as `INPUT` to

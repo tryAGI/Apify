@@ -41,9 +41,9 @@ internal static partial class StorageRequestQueuesRequestsRequestQueueRequestGet
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-request-get", @"Get request
+        var command = new Command(commandName ?? @"request-queue-request-get", @"Get request
 Returns request from queue.");
                         command.Arguments.Add(QueueId);
                         command.Arguments.Add(RequestId);

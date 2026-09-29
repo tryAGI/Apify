@@ -35,9 +35,9 @@ internal static partial class ActorTasksActorTaskGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get task
+        var command = new Command(commandName ?? @"get", @"Get task
 Get an object that contains all the details about a task.");
                         command.Arguments.Add(ActorTaskId);
 

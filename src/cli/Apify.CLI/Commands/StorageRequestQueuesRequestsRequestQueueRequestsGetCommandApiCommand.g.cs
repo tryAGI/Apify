@@ -72,9 +72,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-requests-get", @"List requests
+        var command = new Command(commandName ?? @"request-queue-requests-get", @"List requests
 Returns a list of requests. This endpoint is paginated using
 cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
 ");

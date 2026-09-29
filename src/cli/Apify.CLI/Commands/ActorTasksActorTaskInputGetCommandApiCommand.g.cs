@@ -35,9 +35,9 @@ internal static partial class ActorTasksActorTaskInputGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"input-get", @"Get task input
+        var command = new Command(commandName ?? @"input-get", @"Get task input
 Returns the input of a given task.");
                         command.Arguments.Add(ActorTaskId);
 

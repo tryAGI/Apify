@@ -51,9 +51,9 @@ internal static partial class ActorRunsActorRunPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"put", @"Update run
+        var command = new Command(commandName ?? @"put", @"Update run
 This endpoint can be used to update both the run's status message and to configure its general resource access level.
 
 **Status message:**

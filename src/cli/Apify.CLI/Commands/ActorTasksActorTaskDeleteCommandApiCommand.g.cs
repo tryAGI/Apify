@@ -35,9 +35,9 @@ internal static partial class ActorTasksActorTaskDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete", @"Delete task
+        var command = new Command(commandName ?? @"delete", @"Delete task
 Delete the task specified through the `actorTaskId` parameter.");
                         command.Arguments.Add(ActorTaskId);
 

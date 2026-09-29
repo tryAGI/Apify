@@ -35,9 +35,9 @@ internal static partial class SchedulesScheduleGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get schedule
+        var command = new Command(commandName ?? @"get", @"Get schedule
 Gets the schedule object with all details.");
                         command.Arguments.Add(ScheduleId);
 

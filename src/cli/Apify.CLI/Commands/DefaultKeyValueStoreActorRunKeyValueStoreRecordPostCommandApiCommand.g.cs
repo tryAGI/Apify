@@ -63,9 +63,9 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordPos
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-key-value-store-record-post", @"Store record in default store (POST)
+        var command = new Command(commandName ?? @"actor-run-key-value-store-record-post", @"Store record in default store (POST)
 Stores a value under a specific key in the default key-value store of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the

@@ -45,9 +45,9 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get build
+        var command = new Command(commandName ?? @"get", @"Get build
 Gets an object that contains all the details about a specific build of an
 Actor.
 

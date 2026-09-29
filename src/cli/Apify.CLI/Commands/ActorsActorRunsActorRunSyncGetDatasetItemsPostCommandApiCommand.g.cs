@@ -284,9 +284,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-sync-get-dataset-items-post", @"Run Actor synchronously and get dataset items
+        var command = new Command(commandName ?? @"actor-run-sync-get-dataset-items-post", @"Run Actor synchronously and get dataset items
 Runs a specific Actor and returns its dataset items.
 
 The POST payload including its `Content-Type` header is passed as `INPUT` to

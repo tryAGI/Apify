@@ -52,9 +52,9 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStorePutComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-key-value-store-put", @"Update default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-put", @"Update default store
 Updates the default key-value store's name and general resource access level using a value specified by a JSON object
 passed in the PUT payload.
 

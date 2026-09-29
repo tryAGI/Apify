@@ -55,9 +55,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-get", @"Get list of webhooks
+        var command = new Command(commandName ?? @"webhooks-get", @"Get list of webhooks
 Gets the list of webhooks of a specific Actor task. The response is a JSON
 with the list of objects, where each object contains basic information about a single webhook.
 

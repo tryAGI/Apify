@@ -64,9 +64,9 @@ internal static partial class LastActorRunSDefaultDatasetActorRunsLastDatasetPut
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-dataset-put", @"Update last run's default dataset
+        var command = new Command(commandName ?? @"actor-runs-last-dataset-put", @"Update last run's default dataset
 Updates the default dataset associated with the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the

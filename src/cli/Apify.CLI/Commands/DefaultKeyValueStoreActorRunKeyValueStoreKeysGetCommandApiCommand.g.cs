@@ -65,9 +65,9 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreKeysGetCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-key-value-store-keys-get", @"Get default store's list of keys
+        var command = new Command(commandName ?? @"actor-run-key-value-store-keys-get", @"Get default store's list of keys
 Returns a list of keys for the default key-value store of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the

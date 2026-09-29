@@ -62,9 +62,9 @@ by the most recently ran Actors.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-2", @"Get list of Actors
+        var command = new Command(commandName ?? @"get-2", @"Get list of Actors
 Gets the list of all Actors that the user created or used. The response is a
 list of objects, where each object contains a basic information about a single Actor.
 

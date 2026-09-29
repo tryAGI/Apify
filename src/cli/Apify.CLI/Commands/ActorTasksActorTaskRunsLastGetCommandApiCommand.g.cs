@@ -57,9 +57,9 @@ otherwise it will have a transitional status (e.g. `RUNNING`).
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"runs-last-get", @"Get last run
+        var command = new Command(commandName ?? @"runs-last-get", @"Get last run
 This is not a single endpoint, but an entire group of endpoints that lets you to
 retrieve and manage the last run of given actor task or any of its default storages.
 All the endpoints require an authentication token.

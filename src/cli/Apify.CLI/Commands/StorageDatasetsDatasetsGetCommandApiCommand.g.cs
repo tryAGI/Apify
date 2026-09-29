@@ -65,9 +65,9 @@ named storages are returned.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"datasets-get", @"Get list of datasets
+        var command = new Command(commandName ?? @"datasets-get", @"Get list of datasets
 Lists all of a user's datasets.
 
 The response is a JSON array of objects,

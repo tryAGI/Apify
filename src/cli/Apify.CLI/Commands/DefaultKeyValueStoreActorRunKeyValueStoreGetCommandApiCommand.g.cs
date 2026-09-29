@@ -35,9 +35,9 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreGetComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-key-value-store-get", @"Get default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-get", @"Get default store
 Gets an object that contains all the details about the default key-value
 store.
 

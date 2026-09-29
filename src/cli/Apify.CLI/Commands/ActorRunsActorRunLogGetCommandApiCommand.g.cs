@@ -51,9 +51,9 @@ ANSI escape codes from the logs, keeping only printable characters.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"log-get", @"Get run's log
+        var command = new Command(commandName ?? @"log-get", @"Get run's log
 Retrieves Actor run's logs.
 
 This endpoint is a shortcut for getting the run's log. Same as [Get log](/api/v2/log-get) endpoint.

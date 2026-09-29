@@ -65,9 +65,9 @@ named storages are returned.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-stores-get", @"Get list of key-value stores
+        var command = new Command(commandName ?? @"key-value-stores-get", @"Get list of key-value stores
 Gets the list of key-value stores owned by the user.
 
 The response is a list of objects, where each objects contains a basic

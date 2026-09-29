@@ -31,9 +31,9 @@ internal static partial class UsersUsersMeGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"me-get", @"Get private user data
+        var command = new Command(commandName ?? @"me-get", @"Get private user data
 Returns information about the current user account, including both public
 and private information.
 

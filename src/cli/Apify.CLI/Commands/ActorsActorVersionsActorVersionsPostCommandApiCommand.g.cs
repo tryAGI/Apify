@@ -70,9 +70,9 @@ internal static partial class ActorsActorVersionsActorVersionsPostCommandApiComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-versions-post", @"Create version
+        var command = new Command(commandName ?? @"actor-versions-post", @"Create version
 Creates a version of an Actor using values specified in a [Version
 object](#/reference/actors/version-object) passed as JSON in the POST
 payload.

@@ -35,9 +35,9 @@ internal static partial class UsersUserGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get public user data
+        var command = new Command(commandName ?? @"get", @"Get public user data
 Returns public information about a specific user account, similar to what
 can be seen on public profile pages (e.g. https://apify.com/apify).
 

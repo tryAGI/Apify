@@ -51,9 +51,9 @@ internal static partial class StorageRequestQueuesRequestQueuePutCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-put", @"Update request queue
+        var command = new Command(commandName ?? @"request-queue-put", @"Update request queue
 Updates a request queue's name and general resource access level using a value specified by a JSON object
 passed in the PUT payload.
 

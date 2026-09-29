@@ -63,9 +63,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPutCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-record-put", @"Store record
+        var command = new Command(commandName ?? @"key-value-store-record-put", @"Store record
 Stores a value under a specific key to the key-value store.
 
 The value is passed as the PUT payload and it is stored with a MIME content

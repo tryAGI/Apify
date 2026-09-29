@@ -194,9 +194,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-items-head", @"Get dataset items headers
+        var command = new Command(commandName ?? @"dataset-items-head", @"Get dataset items headers
 Returns only the HTTP headers for the dataset items endpoint, without the response body.
 This is useful to check pagination metadata or verify access without downloading the full dataset.
 ");

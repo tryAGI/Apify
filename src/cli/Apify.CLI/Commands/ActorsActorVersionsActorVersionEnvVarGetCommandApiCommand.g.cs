@@ -47,9 +47,9 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarGetCommandApi
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-env-var-get", @"Get environment variable
+        var command = new Command(commandName ?? @"actor-version-env-var-get", @"Get environment variable
 Gets a [EnvVar object](#/reference/actors/environment-variable-object) that
 contains all the details about a specific environment variable of an Actor.
 

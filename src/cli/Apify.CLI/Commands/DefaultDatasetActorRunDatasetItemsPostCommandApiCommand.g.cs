@@ -57,9 +57,9 @@ internal static partial class DefaultDatasetActorRunDatasetItemsPostCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-dataset-items-post", @"Store items
+        var command = new Command(commandName ?? @"actor-run-dataset-items-post", @"Store items
 Appends an item or an array of items to the end of the Actor run's default dataset.
 
 This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the

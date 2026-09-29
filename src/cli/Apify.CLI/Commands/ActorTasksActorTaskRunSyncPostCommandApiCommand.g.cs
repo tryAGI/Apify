@@ -120,9 +120,9 @@ the WebhookRepresentation schema. For more information, see
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"run-sync-post", @"Run task synchronously
+        var command = new Command(commandName ?? @"run-sync-post", @"Run task synchronously
 Runs an Actor task and synchronously returns a key-value store record.
 
 The response contains the record stored under the `OUTPUT` key in the run's

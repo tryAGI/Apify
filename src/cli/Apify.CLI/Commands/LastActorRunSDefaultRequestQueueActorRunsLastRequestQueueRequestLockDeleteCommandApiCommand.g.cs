@@ -54,9 +54,9 @@ end after lock was removed.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-request-queue-request-lock-delete", @"Delete lock on request in last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-lock-delete", @"Delete lock on request in last run's default request queue
 Deletes a request lock in the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the

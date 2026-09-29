@@ -72,9 +72,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-request-queue-requests-get", @"List default request queue's requests
+        var command = new Command(commandName ?? @"actor-run-request-queue-requests-get", @"List default request queue's requests
 Returns a list of requests from the default request queue of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the

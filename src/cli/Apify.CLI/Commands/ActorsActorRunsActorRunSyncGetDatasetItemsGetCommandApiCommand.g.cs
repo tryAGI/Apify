@@ -268,9 +268,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-sync-get-dataset-items-get", @"Run Actor synchronously without input and get dataset items
+        var command = new Command(commandName ?? @"actor-run-sync-get-dataset-items-get", @"Run Actor synchronously without input and get dataset items
 Runs a specific Actor and returns its dataset items.
 The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds
 otherwise the API endpoint returns a timeout error.

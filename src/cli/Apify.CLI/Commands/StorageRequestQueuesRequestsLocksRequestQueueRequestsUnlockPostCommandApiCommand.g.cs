@@ -48,9 +48,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-requests-unlock-post", @"Unlock requests
+        var command = new Command(commandName ?? @"request-queue-requests-unlock-post", @"Unlock requests
 Unlocks requests in the queue that are currently locked by the client.
 
 * If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.

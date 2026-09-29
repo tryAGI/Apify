@@ -51,9 +51,9 @@ ANSI escape codes from the logs, keeping only printable characters.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get log
+        var command = new Command(commandName ?? @"get", @"Get log
 Retrieves logs for a specific Actor build or run.
 ");
                         command.Arguments.Add(BuildOrRunId);

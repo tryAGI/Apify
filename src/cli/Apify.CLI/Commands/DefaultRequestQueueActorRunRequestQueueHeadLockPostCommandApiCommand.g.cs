@@ -61,9 +61,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-request-queue-head-lock-post", @"Get and lock default request queue head
+        var command = new Command(commandName ?? @"actor-run-request-queue-head-lock-post", @"Get and lock default request queue head
 Returns the given number of first requests from the default request queue of the Actor run
 and locks them for the given time.
 

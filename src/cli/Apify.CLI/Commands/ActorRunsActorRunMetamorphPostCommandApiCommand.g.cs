@@ -53,9 +53,9 @@ Actor (typically `latest`).
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"metamorph-post", @"Metamorph run
+        var command = new Command(commandName ?? @"metamorph-post", @"Metamorph run
 Transforms an Actor run into a run of another Actor with a new input.
 
 This is useful if you want to use another Actor to finish the work

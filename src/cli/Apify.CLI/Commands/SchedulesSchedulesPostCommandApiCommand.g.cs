@@ -52,9 +52,9 @@ internal static partial class SchedulesSchedulesPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"post", @"Create schedule
+        var command = new Command(commandName ?? @"post", @"Create schedule
 Creates a new schedule with settings provided by the schedule object passed
 as JSON in the payload. The response is the created schedule object.
 
