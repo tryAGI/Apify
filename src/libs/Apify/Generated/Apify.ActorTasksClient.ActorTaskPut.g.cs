@@ -53,7 +53,7 @@ namespace Apify
         /// write permission to the task's Actor.<br/>
         /// To publish a task, its Actor must be public and both `publicConfig.inputSchemaFields` and<br/>
         /// `publicConfig.datasetView` must be set. Note that an Actor can have up to 10 published tasks<br/>
-        /// and your account up to 100. To increase these limits, [contact support](http://apify.com/contact).<br/>
+        /// and your account up to 100.<br/>
         /// If the task doesn't meet all these conditions, the request fails and no fields are updated,<br/>
         /// including those unrelated to publishing.<br/>
         /// Publishing lists the task among the Actor's examples and makes its input public, so anyone<br/>
@@ -101,7 +101,7 @@ namespace Apify
         /// write permission to the task's Actor.<br/>
         /// To publish a task, its Actor must be public and both `publicConfig.inputSchemaFields` and<br/>
         /// `publicConfig.datasetView` must be set. Note that an Actor can have up to 10 published tasks<br/>
-        /// and your account up to 100. To increase these limits, [contact support](http://apify.com/contact).<br/>
+        /// and your account up to 100.<br/>
         /// If the task doesn't meet all these conditions, the request fails and no fields are updated,<br/>
         /// including those unrelated to publishing.<br/>
         /// Publishing lists the task among the Actor's examples and makes its input public, so anyone<br/>
@@ -829,7 +829,7 @@ namespace Apify
         /// write permission to the task's Actor.<br/>
         /// To publish a task, its Actor must be public and both `publicConfig.inputSchemaFields` and<br/>
         /// `publicConfig.datasetView` must be set. Note that an Actor can have up to 10 published tasks<br/>
-        /// and your account up to 100. To increase these limits, [contact support](http://apify.com/contact).<br/>
+        /// and your account up to 100.<br/>
         /// If the task doesn't meet all these conditions, the request fails and no fields are updated,<br/>
         /// including those unrelated to publishing.<br/>
         /// Publishing lists the task among the Actor's examples and makes its input public, so anyone<br/>
