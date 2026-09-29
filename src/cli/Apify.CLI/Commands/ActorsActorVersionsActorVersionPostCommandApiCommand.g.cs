@@ -76,9 +76,9 @@ internal static partial class ActorsActorVersionsActorVersionPostCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-post", @"Update version (POST)
+        var command = new Command(commandName ?? @"actor-version-post", @"Update version (POST)
 Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.
 This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
 ");

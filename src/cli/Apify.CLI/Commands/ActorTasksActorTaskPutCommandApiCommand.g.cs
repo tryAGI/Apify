@@ -100,9 +100,9 @@ Sending the value the task already has does nothing.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"put", @"Update task
+        var command = new Command(commandName ?? @"put", @"Update task
 Update settings of a task using values specified by an object passed as JSON
 in the POST payload.
 

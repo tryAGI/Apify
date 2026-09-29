@@ -65,9 +65,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoreKeysGetCommandAp
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-keys-get", @"Get list of keys
+        var command = new Command(commandName ?? @"key-value-store-keys-get", @"Get list of keys
 Returns a list of objects describing keys of a given key-value store, as
 well as some information about the values (e.g. size).
 

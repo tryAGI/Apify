@@ -54,9 +54,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-head-get", @"Get head
+        var command = new Command(commandName ?? @"request-queue-head-get", @"Get head
 Returns given number of first requests from the queue.
 
 The response contains the `hadMultipleClients` boolean field which indicates

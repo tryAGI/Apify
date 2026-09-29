@@ -37,9 +37,9 @@ internal static partial class ToolsToolsBrowserInfoPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"browser-info-post", @"Get browser info
+        var command = new Command(commandName ?? @"browser-info-post", @"Get browser info
 Returns information about the HTTP request, including the client IP address,
 country code, request headers, and body length.
 

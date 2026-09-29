@@ -35,9 +35,9 @@ internal static partial class WebhooksWebhooksWebhookDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-delete", @"Delete webhook
+        var command = new Command(commandName ?? @"webhook-delete", @"Delete webhook
 Deletes a webhook.");
                         command.Arguments.Add(WebhookId);
 

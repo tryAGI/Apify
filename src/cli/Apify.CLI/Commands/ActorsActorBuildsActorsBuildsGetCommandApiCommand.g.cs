@@ -55,9 +55,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actors-builds-get", @"Get list of builds
+        var command = new Command(commandName ?? @"actors-builds-get", @"Get list of builds
 Gets the list of builds of a specific Actor. The response is a JSON with the
 list of objects, where each object contains basic information about a single build.
 

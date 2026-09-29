@@ -35,9 +35,9 @@ internal static partial class SchedulesScheduleLogGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"log-get", @"Get schedule log
+        var command = new Command(commandName ?? @"log-get", @"Get schedule log
 Gets the schedule log as a JSON array containing information about up to a
 1000 invocations of the schedule.
 ");

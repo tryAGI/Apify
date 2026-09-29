@@ -37,9 +37,9 @@ Use the special value `default` to get the OpenAPI schema for the Actor's defaul
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"openapi-json-get", @"Get OpenAPI definition
+        var command = new Command(commandName ?? @"openapi-json-get", @"Get OpenAPI definition
 Get the OpenAPI definition for Actor builds. Two similar endpoints are available:
 
 - [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.

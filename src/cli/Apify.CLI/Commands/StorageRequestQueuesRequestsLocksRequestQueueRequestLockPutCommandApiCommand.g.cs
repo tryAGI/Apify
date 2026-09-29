@@ -69,9 +69,9 @@ end after lock expires.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-request-lock-put", @"Prolong request lock
+        var command = new Command(commandName ?? @"request-queue-request-lock-put", @"Prolong request lock
 Prolongs request lock. The request lock can be prolonged only by the client
 that has locked it using [Get and lock head
 operation](#/request-queue-head-lock-post).

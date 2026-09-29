@@ -140,9 +140,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-request-queue-request-put", @"Update request in last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-put", @"Update request in last run's default request queue
 Updates a request in the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the

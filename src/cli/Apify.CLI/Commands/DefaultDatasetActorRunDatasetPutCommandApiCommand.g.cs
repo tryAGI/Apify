@@ -52,9 +52,9 @@ internal static partial class DefaultDatasetActorRunDatasetPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-dataset-put", @"Update default dataset
+        var command = new Command(commandName ?? @"actor-run-dataset-put", @"Update default dataset
 Updates the default dataset associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the

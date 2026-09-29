@@ -35,9 +35,9 @@ internal static partial class WebhooksWebhooksWebhookTestPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-test-post", @"Test webhook
+        var command = new Command(commandName ?? @"webhook-test-post", @"Test webhook
 Tests a webhook. Creates a webhook dispatch with a dummy payload.");
                         command.Arguments.Add(WebhookId);
 

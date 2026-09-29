@@ -49,9 +49,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-dispatches-get", @"Get list of webhook dispatches
+        var command = new Command(commandName ?? @"webhook-dispatches-get", @"Get list of webhook dispatches
 Gets the list of webhook dispatches that the user have.
 
 The endpoint supports pagination using the `limit` and `offset` parameters

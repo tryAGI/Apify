@@ -65,9 +65,9 @@ named storages are returned.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queues-get", @"Get list of request queues
+        var command = new Command(commandName ?? @"request-queues-get", @"Get list of request queues
 Lists all of a user's request queues. The response is a JSON array of
 objects, where each object
 contains basic information about one queue.

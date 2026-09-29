@@ -15,9 +15,9 @@ internal static partial class DefaultDatasetActorRunDatasetDeleteCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-dataset-delete", @"Delete default dataset
+        var command = new Command(commandName ?? @"actor-run-dataset-delete", @"Delete default dataset
 Deletes default dataset associated with an Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the

@@ -72,9 +72,9 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actors-builds-post", @"Build Actor
+        var command = new Command(commandName ?? @"actors-builds-post", @"Build Actor
 Builds an Actor.
 The response is the build object as returned by the
 [Get build](#/reference/actors/build-object/get-build) endpoint.

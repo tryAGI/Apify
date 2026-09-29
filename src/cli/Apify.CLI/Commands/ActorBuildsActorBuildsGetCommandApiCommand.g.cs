@@ -49,9 +49,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-2", @"Get user builds list
+        var command = new Command(commandName ?? @"get-2", @"Get user builds list
 Gets a list of all builds for a user. The response is a JSON array of
 objects, where each object contains basic information about a single build.
 

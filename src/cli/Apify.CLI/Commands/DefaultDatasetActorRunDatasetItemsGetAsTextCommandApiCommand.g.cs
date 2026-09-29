@@ -214,9 +214,9 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-dataset-items-get-as-text", @"Get default dataset items
+        var command = new Command(commandName ?? @"actor-run-dataset-items-get-as-text", @"Get default dataset items
 Returns data stored in the default dataset of the Actor run in the desired format.
 
 This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the

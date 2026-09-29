@@ -15,9 +15,9 @@ internal static partial class ActorRunsActorRunDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"delete", @"Delete run
+        var command = new Command(commandName ?? @"delete", @"Delete run
 Delete the run. Only finished runs can be deleted. Only the person or
 organization that initiated the run can delete it.
 ");

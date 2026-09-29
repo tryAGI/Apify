@@ -33,9 +33,9 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-key-value-store-record-delete", @"Delete last run's default store's record
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-record-delete", @"Delete last run's default store's record
 Removes a record specified by a key from the default key-value store of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the

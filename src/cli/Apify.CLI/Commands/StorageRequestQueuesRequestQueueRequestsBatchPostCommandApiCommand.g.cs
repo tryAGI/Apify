@@ -72,9 +72,9 @@ end. Default value is `false` (end of queue).
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-requests-batch-post", @"Add requests
+        var command = new Command(commandName ?? @"request-queue-requests-batch-post", @"Add requests
 Adds requests to the queue in batch. The maximum requests in batch is limited
 to 25. The response contains an array of unprocessed and processed requests.
 If any add operation fails because the request queue rate limit is exceeded

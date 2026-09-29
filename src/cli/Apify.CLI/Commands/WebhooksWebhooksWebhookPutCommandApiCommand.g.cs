@@ -98,9 +98,9 @@ internal static partial class WebhooksWebhooksWebhookPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-put", @"Update webhook
+        var command = new Command(commandName ?? @"webhook-put", @"Update webhook
 Updates a webhook using values specified by a webhook object passed as JSON
 in the POST payload.
 If the object does not define a specific property, its value will not be

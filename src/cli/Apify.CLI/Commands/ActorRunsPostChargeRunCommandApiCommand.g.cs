@@ -55,9 +55,9 @@ internal static partial class ActorRunsPostChargeRunCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"post-charge-run", @"Charge events in run
+        var command = new Command(commandName ?? @"post-charge-run", @"Charge events in run
 Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).
 The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,
 the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.

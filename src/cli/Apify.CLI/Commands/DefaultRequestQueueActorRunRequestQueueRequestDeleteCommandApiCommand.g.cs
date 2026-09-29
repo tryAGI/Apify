@@ -34,9 +34,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-request-queue-request-delete", @"Delete request from default request queue
+        var command = new Command(commandName ?? @"actor-run-request-queue-request-delete", @"Delete request from default request queue
 Deletes a request from the default request queue of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the

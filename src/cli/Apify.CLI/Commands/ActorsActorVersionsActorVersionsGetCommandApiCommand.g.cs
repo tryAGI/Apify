@@ -35,9 +35,9 @@ internal static partial class ActorsActorVersionsActorVersionsGetCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-versions-get", @"Get list of versions
+        var command = new Command(commandName ?? @"actor-versions-get", @"Get list of versions
 Gets the list of versions of a specific Actor. The response is a JSON object
 with the list of [Version objects](#/reference/actors/version-object), where each
 contains basic information about a single version.

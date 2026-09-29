@@ -47,9 +47,9 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarDeleteCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-env-var-delete", @"Delete environment variable
+        var command = new Command(commandName ?? @"actor-version-env-var-delete", @"Delete environment variable
 Deletes a specific environment variable.");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);

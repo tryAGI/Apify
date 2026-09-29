@@ -55,9 +55,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-webhook-dispatches-get", @"Get collection
+        var command = new Command(commandName ?? @"webhook-webhook-dispatches-get", @"Get collection
 Gets a given webhook's list of dispatches.");
                         command.Arguments.Add(WebhookId);
                         command.Options.Add(Offset);

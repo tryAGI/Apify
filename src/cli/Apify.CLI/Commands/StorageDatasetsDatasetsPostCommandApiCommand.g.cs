@@ -35,9 +35,9 @@ internal static partial class StorageDatasetsDatasetsPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"datasets-post", @"Create dataset
+        var command = new Command(commandName ?? @"datasets-post", @"Create dataset
 Creates a dataset and returns its object.
 Keep in mind that data stored under unnamed dataset follows [data retention period](https://docs.apify.com/platform/storage#data-retention).
 It creates a dataset with the given name if the parameter name is used.

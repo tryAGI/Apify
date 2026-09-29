@@ -47,9 +47,9 @@ internal static partial class LastActorTaskRunSRebootActorTaskRunsLastRebootPost
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-task-runs-last-reboot-post", @"Reboot Actor task's last run
+        var command = new Command(commandName ?? @"actor-task-runs-last-reboot-post", @"Reboot Actor task's last run
 Reboots the last run of the specified Actor task and returns an object that
 contains all the details about the rebooted run.
 

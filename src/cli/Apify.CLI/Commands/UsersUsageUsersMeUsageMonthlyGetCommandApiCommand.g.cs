@@ -35,9 +35,9 @@ internal static partial class UsersUsageUsersMeUsageMonthlyGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"users-me-usage-monthly-get", @"Get monthly usage
+        var command = new Command(commandName ?? @"users-me-usage-monthly-get", @"Get monthly usage
 Returns a complete summary of your usage for the current monthly usage cycle,
 an overall sum, as well as a daily breakdown of usage. It is the same
 information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information

@@ -100,9 +100,9 @@ internal static partial class WebhooksWebhooksWebhooksPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-post", @"Create webhook
+        var command = new Command(commandName ?? @"webhooks-post", @"Create webhook
 Creates a new webhook with settings provided by the webhook object passed as
 JSON in the payload.
 The response is the created webhook object.

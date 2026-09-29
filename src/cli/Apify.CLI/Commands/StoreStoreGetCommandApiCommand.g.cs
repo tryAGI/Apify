@@ -103,9 +103,9 @@ bypass this safety filtering and include all Actors in the results.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get", @"Get list of Actors in Store
+        var command = new Command(commandName ?? @"get", @"Get list of Actors in Store
 Gets the list of public Actors in Apify Store. You can use `search`
 parameter to search Actors by string in title, name, description, username
 and readme.

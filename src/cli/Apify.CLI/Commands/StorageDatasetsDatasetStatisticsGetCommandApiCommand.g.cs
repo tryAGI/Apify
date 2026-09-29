@@ -35,9 +35,9 @@ internal static partial class StorageDatasetsDatasetStatisticsGetCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-statistics-get", @"Get dataset statistics
+        var command = new Command(commandName ?? @"dataset-statistics-get", @"Get dataset statistics
 Returns statistics for given dataset.
 
 Provides only [field statistics](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation#dataset-field-statistics).

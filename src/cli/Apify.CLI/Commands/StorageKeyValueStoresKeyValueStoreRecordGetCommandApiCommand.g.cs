@@ -53,9 +53,9 @@ causing web browsers to offer downloading HTML records instead of displaying the
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-record-get", @"Get record
+        var command = new Command(commandName ?? @"key-value-store-record-get", @"Get record
 Gets a value stored in the key-value store under a specific key.
 
 The response body has the same `Content-Encoding` header as it was set in

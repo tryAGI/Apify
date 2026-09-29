@@ -47,9 +47,9 @@ internal static partial class LastActorRunSDefaultRequestQueueActorRunsLastReque
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-request-queue-get", @"Get last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-get", @"Get last run's default request queue
 Returns the default request queue associated with the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the

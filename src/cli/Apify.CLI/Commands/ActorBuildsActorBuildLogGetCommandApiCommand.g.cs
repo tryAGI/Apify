@@ -45,9 +45,9 @@ internal static partial class ActorBuildsActorBuildLogGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"log-get", @"Get build's Log
+        var command = new Command(commandName ?? @"log-get", @"Get build's Log
 Retrieves Actor build's logs.
 
 This endpoint is a shortcut for getting the build's log. Same as [Get log](/api/v2/log-get) endpoint.

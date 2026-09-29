@@ -124,9 +124,9 @@ internal static partial class ActorsActorPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"put", @"Update Actor
+        var command = new Command(commandName ?? @"put", @"Update Actor
 Updates an Actor's settings with the values specified in an `Actor` object
 passed as JSON in the POST payload. Only the fields specified in the request body are updated.
 

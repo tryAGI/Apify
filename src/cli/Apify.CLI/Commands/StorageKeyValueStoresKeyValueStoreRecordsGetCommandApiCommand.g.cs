@@ -35,9 +35,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordsGetComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-records-get", @"Download records
+        var command = new Command(commandName ?? @"key-value-store-records-get", @"Download records
 Downloads all records from the key-value store as a ZIP archive.
 Each record is stored as a separate file in the archive, with the filename equal to the record key.
 

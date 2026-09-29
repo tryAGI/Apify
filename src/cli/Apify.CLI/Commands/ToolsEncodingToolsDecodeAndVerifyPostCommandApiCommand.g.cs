@@ -36,9 +36,9 @@ internal static partial class ToolsEncodingToolsDecodeAndVerifyPostCommandApiCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"tools-decode-and-verify-post", @"Decode and verify object
+        var command = new Command(commandName ?? @"tools-decode-and-verify-post", @"Decode and verify object
 Decodes and verifies an encoded value previously created by the
 encode-and-sign endpoint. Returns the original decoded object along with
 information about the user who encoded it and whether that user is verified.

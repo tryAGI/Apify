@@ -58,9 +58,9 @@ internal static partial class SchedulesSchedulePutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"put", @"Update schedule
+        var command = new Command(commandName ?? @"put", @"Update schedule
 Updates a schedule using values specified by a schedule object passed as
 JSON in the POST payload. If the object does not define a specific property,
 its value will not be updated.

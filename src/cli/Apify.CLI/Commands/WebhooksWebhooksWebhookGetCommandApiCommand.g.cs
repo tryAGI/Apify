@@ -35,9 +35,9 @@ internal static partial class WebhooksWebhooksWebhookGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhook-get", @"Get webhook
+        var command = new Command(commandName ?? @"webhook-get", @"Get webhook
 Gets webhook object with all details.");
                         command.Arguments.Add(WebhookId);
 

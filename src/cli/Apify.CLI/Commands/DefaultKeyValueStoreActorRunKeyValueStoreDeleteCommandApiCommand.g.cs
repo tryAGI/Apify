@@ -15,9 +15,9 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreDeleteCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-run-key-value-store-delete", @"Delete default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-delete", @"Delete default store
 Delete the default key-value store.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the

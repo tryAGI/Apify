@@ -35,9 +35,9 @@ internal static partial class StorageDatasetsDatasetGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-get", @"Get dataset
+        var command = new Command(commandName ?? @"dataset-get", @"Get dataset
 Returns dataset object for given dataset ID.
 
 This does not return dataset items, only information about the storage itself.

@@ -15,9 +15,9 @@ internal static partial class StorageRequestQueuesRequestQueueDeleteCommandApiCo
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-delete", @"Delete request queue
+        var command = new Command(commandName ?? @"request-queue-delete", @"Delete request queue
 Deletes given queue.");
                         command.Arguments.Add(QueueId);
 

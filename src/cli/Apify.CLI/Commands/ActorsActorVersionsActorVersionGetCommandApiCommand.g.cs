@@ -41,9 +41,9 @@ internal static partial class ActorsActorVersionsActorVersionGetCommandApiComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-get", @"Get version
+        var command = new Command(commandName ?? @"actor-version-get", @"Get version
 Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
 ");
                         command.Arguments.Add(ActorId);

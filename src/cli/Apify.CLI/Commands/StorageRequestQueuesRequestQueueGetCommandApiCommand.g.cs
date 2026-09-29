@@ -35,9 +35,9 @@ internal static partial class StorageRequestQueuesRequestQueueGetCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-get", @"Get request queue
+        var command = new Command(commandName ?? @"request-queue-get", @"Get request queue
 Returns queue object for given queue ID.");
                         command.Arguments.Add(QueueId);
 

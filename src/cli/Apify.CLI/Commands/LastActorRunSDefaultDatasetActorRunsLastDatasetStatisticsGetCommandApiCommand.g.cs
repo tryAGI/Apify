@@ -47,9 +47,9 @@ internal static partial class LastActorRunSDefaultDatasetActorRunsLastDatasetSta
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-dataset-statistics-get", @"Get last run's dataset statistics
+        var command = new Command(commandName ?? @"actor-runs-last-dataset-statistics-get", @"Get last run's dataset statistics
 Returns statistics for the last Actor run's default dataset.
 
 This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the

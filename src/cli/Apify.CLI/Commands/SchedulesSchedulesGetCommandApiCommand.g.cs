@@ -49,9 +49,9 @@ descending order. By default, they are sorted in ascending order.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"get-2", @"Get list of schedules
+        var command = new Command(commandName ?? @"get-2", @"Get list of schedules
 Gets the list of schedules that the user created.
 
 The endpoint supports pagination using the `limit` and `offset` parameters.

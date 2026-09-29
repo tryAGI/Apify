@@ -59,9 +59,9 @@ Defaults to the `latest` build tag.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"validate-input-post", @"Validate Actor input
+        var command = new Command(commandName ?? @"validate-input-post", @"Validate Actor input
 Validates the JSON payload against the Actor's
 [input schema](https://docs.apify.com/actors/development/actor-definition/input-schema)
 defined in the specified build.

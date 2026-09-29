@@ -21,9 +21,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordDeleteComm
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-record-delete", @"Delete record
+        var command = new Command(commandName ?? @"key-value-store-record-delete", @"Delete record
 Removes a record specified by a key from the key-value store.");
                         command.Arguments.Add(StoreId);
                         command.Arguments.Add(RecordKey);

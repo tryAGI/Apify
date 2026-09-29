@@ -63,9 +63,9 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPostComman
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"key-value-store-record-post", @"Store record (POST)
+        var command = new Command(commandName ?? @"key-value-store-record-post", @"Store record (POST)
 Stores a value under a specific key to the key-value store.
 
 This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.

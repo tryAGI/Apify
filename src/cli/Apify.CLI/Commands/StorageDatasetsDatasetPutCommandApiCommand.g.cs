@@ -52,9 +52,9 @@ internal static partial class StorageDatasetsDatasetPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"dataset-put", @"Update dataset
+        var command = new Command(commandName ?? @"dataset-put", @"Update dataset
 Updates a dataset's name and general resource access level using a value specified by a JSON object passed in the PUT payload.
 The response is the updated dataset object, as returned by the [Get dataset](/api/v2/dataset-get) API endpoint.
 ");

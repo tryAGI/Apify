@@ -41,9 +41,9 @@ internal static partial class ActorsActorVersionsActorVersionDeleteCommandApiCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-version-delete", @"Delete version
+        var command = new Command(commandName ?? @"actor-version-delete", @"Delete version
 Deletes a specific version of Actor's source code.
 ");
                         command.Arguments.Add(ActorId);

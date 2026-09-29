@@ -121,9 +121,9 @@ the WebhookRepresentation schema. For more information, see
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"runs-post", @"Run task
+        var command = new Command(commandName ?? @"runs-post", @"Run task
 Runs an Actor task and immediately returns without waiting for the run to
 finish.
 

@@ -122,9 +122,9 @@ end. Default value is `false` (end of queue).
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-requests-post", @"Add request
+        var command = new Command(commandName ?? @"request-queue-requests-post", @"Add request
 Adds request to the queue. Response contains ID of the request and info if
 request was already present in the queue or handled.
 

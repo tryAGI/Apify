@@ -47,9 +47,9 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-key-value-store-get", @"Get last run's default store
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-get", @"Get last run's default store
 Gets an object that contains all the details about the default key-value store associated with the last Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the

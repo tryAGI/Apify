@@ -47,9 +47,9 @@ internal static partial class ActorTasksActorTasksPostCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"post", @"Create task
+        var command = new Command(commandName ?? @"post", @"Create task
 Create a new task with settings specified by the object passed as JSON in
 the POST payload.
 

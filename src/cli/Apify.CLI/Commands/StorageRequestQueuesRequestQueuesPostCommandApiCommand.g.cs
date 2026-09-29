@@ -35,9 +35,9 @@ internal static partial class StorageRequestQueuesRequestQueuesPostCommandApiCom
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queues-post", @"Create request queue
+        var command = new Command(commandName ?? @"request-queues-post", @"Create request queue
 Creates a request queue and returns its object.
 Keep in mind that requests stored under unnamed queue follows [data
 retention period](https://docs.apify.com/platform/storage#data-retention).

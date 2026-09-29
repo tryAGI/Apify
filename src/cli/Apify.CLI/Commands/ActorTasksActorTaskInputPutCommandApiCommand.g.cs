@@ -51,9 +51,9 @@ internal static partial class ActorTasksActorTaskInputPutCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"input-put", @"Update task input
+        var command = new Command(commandName ?? @"input-put", @"Update task input
 Updates the input of a task using values specified by an object passed as
 JSON in the PUT payload.
 

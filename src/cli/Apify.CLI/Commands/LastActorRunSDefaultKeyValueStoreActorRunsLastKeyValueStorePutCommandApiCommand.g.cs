@@ -64,9 +64,9 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-runs-last-key-value-store-put", @"Update last run's default store
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-put", @"Update last run's default store
 Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object
 passed in the PUT payload.
 

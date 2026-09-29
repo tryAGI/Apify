@@ -47,9 +47,9 @@ internal static partial class ToolsEncodingToolsEncodeAndSignPostCommandApiComma
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"tools-encode-and-sign-post", @"Encode and sign object
+        var command = new Command(commandName ?? @"tools-encode-and-sign-post", @"Encode and sign object
 Encodes and signs any JSON object. The encoded value includes a signature
 tied to the authenticated user's ID, which can later be verified using the
 decode-and-verify endpoint.

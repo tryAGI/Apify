@@ -69,9 +69,9 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"actor-task-runs-last-dataset-items-post", @"Store items in last task run's dataset
+        var command = new Command(commandName ?? @"actor-task-runs-last-dataset-items-post", @"Store items in last task run's dataset
 Appends an item or an array of items to the end of the last Actor task run's default dataset.
 
 This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the

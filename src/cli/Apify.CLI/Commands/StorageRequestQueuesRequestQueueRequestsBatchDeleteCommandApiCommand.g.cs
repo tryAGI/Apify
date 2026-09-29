@@ -71,9 +71,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-requests-batch-delete", @"Delete requests
+        var command = new Command(commandName ?? @"request-queue-requests-batch-delete", @"Delete requests
 Batch-deletes given requests from the queue. The number of requests in a
 batch is limited to 25. The response contains an array of unprocessed and
 processed requests.

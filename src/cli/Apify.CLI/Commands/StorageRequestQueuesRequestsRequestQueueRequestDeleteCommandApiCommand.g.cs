@@ -34,9 +34,9 @@ head](#/reference/request-queues/queue-head) operation.
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"request-queue-request-delete", @"Delete request
+        var command = new Command(commandName ?? @"request-queue-request-delete", @"Delete request
 Deletes given request from queue.");
                         command.Arguments.Add(QueueId);
                         command.Arguments.Add(RequestId);
