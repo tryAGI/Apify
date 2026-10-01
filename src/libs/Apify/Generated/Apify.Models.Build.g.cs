@@ -6,7 +6,7 @@
 namespace Apify
 {
     /// <summary>
-    /// Example: {"id":"HG7ML7M8z78YcAPEB","actId":"janedoe~my-actor","userId":"klmdEpoiojmdEMlk3","startedAt":"2019-11-30T07:34:24.202Z","finishedAt":"2019-12-12T09:30:12.202Z","status":"SUCCEEDED","meta":{"origin":"WEB","clientIp":"172.234.12.34","userAgent":"Mozilla/5.0 (iPad)"},"stats":{"durationMillis":1000,"runTimeSecs":45.718,"computeUnits":0.012699444444444444},"options":{"useCache":false,"betaPackages":false,"memoryMbytes":1024,"diskMbytes":2048},"usage":{"ACTOR_COMPUTE_UNITS":0.08},"usageTotalUsd":0.02,"usageUsd":{"ACTOR_COMPUTE_UNITS":0.02},"inputSchema":"{\\n  \u0022title\u0022: \u0022Schema for ...\u0022}","readme":"# Magic Actor\\nThis Actor is magic.","buildNumber":"0.1.1","actorDefinition":{"actorSpecification":1,"name":"example-actor","version":"1.0","buildTag":"latest","environmentVariables":{"DEBUG_MODE":"false"},"input":{"type":"object","properties":{"prompt":{"type":"string","description":"The text prompt to generate completions for."},"maxTokens":{"type":"integer","description":"The maximum number of tokens to generate."}},"required":["prompt"]},"storages":{"dataset":{"type":"object","$schema":"http://json-schema.org/draft-07/schema#","properties":{"id":{"type":"string","description":"Unique identifier for the generated text."},"text":{"type":"string","description":"The generated text output from the model."}},"required":["id","text"]}},"minMemoryMbytes":512,"maxMemoryMbytes":2048,"usesStandbyMode":false}}
+    /// Example: {"id":"HG7ML7M8z78YcAPEB","actId":"janedoe~my-actor","userId":"klmdEpoiojmdEMlk3","startedAt":"2019-11-30T07:34:24.202Z","finishedAt":"2019-12-12T09:30:12.202Z","status":"SUCCEEDED","meta":{"origin":"WEB","clientIp":"172.234.12.34","userAgent":"Mozilla/5.0 (iPad)"},"stats":{"durationMillis":1000,"runTimeSecs":45.718,"computeUnits":0.012699444444444444},"options":{"useCache":false,"betaPackages":false,"memoryMbytes":1024,"diskMbytes":2048},"usage":{"ACTOR_COMPUTE_UNITS":0.08},"usageTotalUsd":0.02,"usageUsd":{"ACTOR_COMPUTE_UNITS":0.02},"inputSchema":"{\\n  \u0022title\u0022: \u0022Schema for ...\u0022}","readme":"# Magic Actor\\nThis Actor is magic.","buildNumber":"0.1.1","imageDigest":"1b2f1e8c0d5a4c7f9e3b6a2d8c4e0f7a5b9d3c1e6f8a2b4d0c7e9f1a3b5d7c9e","actorDefinition":{"actorSpecification":1,"name":"example-actor","version":"1.0","buildTag":"latest","environmentVariables":{"DEBUG_MODE":"false"},"input":{"type":"object","properties":{"prompt":{"type":"string","description":"The text prompt to generate completions for."},"maxTokens":{"type":"integer","description":"The maximum number of tokens to generate."}},"required":["prompt"]},"storages":{"dataset":{"type":"object","$schema":"http://json-schema.org/draft-07/schema#","properties":{"id":{"type":"string","description":"Unique identifier for the generated text."},"text":{"type":"string","description":"The generated text output from the model."}},"required":["id","text"]}},"minMemoryMbytes":512,"maxMemoryMbytes":2048,"usesStandbyMode":false}}
     /// </summary>
     public sealed partial class Build
     {
@@ -111,6 +111,12 @@ namespace Apify
         public required string BuildNumber { get; set; }
 
         /// <summary>
+        /// Digest of the built Docker image manifest, without the `sha256:` prefix. Compare digests of two builds to find out whether their image contents differ. `null` if the digest is not available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("imageDigest")]
+        public string? ImageDigest { get; set; }
+
+        /// <summary>
         /// Snapshot of the Actor version that this build was created from.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actVersion")]
@@ -150,6 +156,9 @@ namespace Apify
         /// <param name="usageUsd">
         /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
         /// </param>
+        /// <param name="imageDigest">
+        /// Digest of the built Docker image manifest, without the `sha256:` prefix. Compare digests of two builds to find out whether their image contents differ. `null` if the digest is not available.
+        /// </param>
         /// <param name="actVersion">
         /// Snapshot of the Actor version that this build was created from.
         /// </param>
@@ -171,6 +180,7 @@ namespace Apify
             global::Apify.BuildUsage? usage,
             double? usageTotalUsd,
             global::Apify.BuildUsage? usageUsd,
+            string? imageDigest,
             global::Apify.BuildActVersion? actVersion,
             global::Apify.ActorDefinition? actorDefinition)
         {
@@ -187,6 +197,7 @@ namespace Apify
             this.UsageTotalUsd = usageTotalUsd;
             this.UsageUsd = usageUsd;
             this.BuildNumber = buildNumber ?? throw new global::System.ArgumentNullException(nameof(buildNumber));
+            this.ImageDigest = imageDigest;
             this.ActVersion = actVersion;
             this.ActorDefinition = actorDefinition;
         }
