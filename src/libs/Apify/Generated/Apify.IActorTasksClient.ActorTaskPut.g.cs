@@ -129,7 +129,7 @@ namespace Apify
             string actorTaskId,
             string? name = default,
             global::Apify.TaskOptions? options = default,
-            global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? input = default,
+            global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>>? input = default,
             string? title = default,
             string? description = default,
             global::Apify.ActorStandby? actorStandby = default,
