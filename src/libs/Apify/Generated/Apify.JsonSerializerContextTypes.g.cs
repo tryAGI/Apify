@@ -841,7 +841,7 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? Type202 { get; set; }
+        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>>? Type202 { get; set; }
         /// <summary>
         ///
         /// </summary>
@@ -1558,7 +1558,7 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.List<global::Apify.TaskInput>, object>? ListType23 { get; set; }
+        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.List<global::Apify.TaskInput>>? ListType23 { get; set; }
         /// <summary>
         ///
         /// </summary>

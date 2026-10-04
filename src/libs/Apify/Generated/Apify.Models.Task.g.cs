@@ -78,8 +78,8 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>))]
-        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? Input { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>>))]
+        public global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>>? Input { get; set; }
 
         /// <summary>
         ///
@@ -159,7 +159,7 @@ namespace Apify
             global::System.DateTime? removedAt,
             global::Apify.TaskStats? stats,
             global::Apify.TaskOptions? options,
-            global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>, object>? input,
+            global::Apify.AnyOf<global::Apify.TaskInput, global::System.Collections.Generic.IList<global::Apify.TaskInput>>? input,
             string? title,
             string? description,
             global::Apify.ActorStandby? actorStandby,
