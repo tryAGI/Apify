@@ -15,6 +15,12 @@ namespace Apify
         public string? Bio { get; set; }
 
         /// <summary>
+        /// Markdown README shown on the user's public profile page.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("readme")]
+        public string? Readme { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -54,6 +60,9 @@ namespace Apify
         /// Initializes a new instance of the <see cref="Profile" /> class.
         /// </summary>
         /// <param name="bio"></param>
+        /// <param name="readme">
+        /// Markdown README shown on the user's public profile page.
+        /// </param>
         /// <param name="name"></param>
         /// <param name="pictureUrl"></param>
         /// <param name="githubUsername"></param>
@@ -64,6 +73,7 @@ namespace Apify
 #endif
         public Profile(
             string? bio,
+            string? readme,
             string? name,
             string? pictureUrl,
             string? githubUsername,
@@ -71,6 +81,7 @@ namespace Apify
             string? twitterUsername)
         {
             this.Bio = bio;
+            this.Readme = readme;
             this.Name = name;
             this.PictureUrl = pictureUrl;
             this.GithubUsername = githubUsername;
