@@ -24,7 +24,7 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
     {
         Description = @"Filter for the run origin, i.e. the means by which the run was started.",
     };
-    private static readonly UpdateStoreRequestOptionSet UpdateStoreRequestOptionSetOptions = UpdateStoreRequestOptionSet.Create();
+    private static readonly UpdateKeyValueStoreRequestOptionSet UpdateKeyValueStoreRequestOptionSetOptions = UpdateKeyValueStoreRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -75,8 +75,8 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);
-                        command.Options.Add(Origin);                        command.Options.Add(UpdateStoreRequestOptionSetOptions.NameOption);
-                        command.Options.Add(UpdateStoreRequestOptionSetOptions.GeneralAccess);
+                        command.Options.Add(Origin);                        command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.NameOption);
+                        command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -95,7 +95,7 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateStoreRequest>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateKeyValueStoreRequest>(
                             parseResult,
                             Input,
                             RequestJson,
@@ -104,8 +104,8 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
                             cancellationToken).ConfigureAwait(false);
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var status = parseResult.GetValue(Status);
-                        var origin = parseResult.GetValue(Origin);                        var name = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
-                        var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
+                        var origin = parseResult.GetValue(Origin);                        var name = CliRuntime.WasSpecified(parseResult, UpdateKeyValueStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateKeyValueStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

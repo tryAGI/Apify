@@ -184,7 +184,7 @@ HTTP header.
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.WebhookCreate>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.CreateWebhookRequest>(
                             parseResult,
                             Input,
                             RequestJson,

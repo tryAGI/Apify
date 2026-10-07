@@ -28,12 +28,12 @@ namespace Apify
         partial void PrepareSchedulePutArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string scheduleId,
-            global::Apify.ScheduleCreate request);
+            global::Apify.CreateOrUpdateScheduleRequest request);
         partial void PrepareSchedulePutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string scheduleId,
-            global::Apify.ScheduleCreate request);
+            global::Apify.CreateOrUpdateScheduleRequest request);
         partial void ProcessSchedulePutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -66,7 +66,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.ScheduleResponse> SchedulePutAsync(
             string scheduleId,
 
-            global::Apify.ScheduleCreate request,
+            global::Apify.CreateOrUpdateScheduleRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -103,7 +103,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>> SchedulePutAsResponseAsync(
             string scheduleId,
 
-            global::Apify.ScheduleCreate request,
+            global::Apify.CreateOrUpdateScheduleRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -837,7 +837,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.ScheduleCreate
+            var __request = new global::Apify.CreateOrUpdateScheduleRequest
             {
                 Name = name,
                 IsEnabled = isEnabled,

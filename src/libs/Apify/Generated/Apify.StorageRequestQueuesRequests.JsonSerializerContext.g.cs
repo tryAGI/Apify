@@ -26,10 +26,10 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.HttpMethod), TypeInfoPropertyName = "HttpMethod2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestUserData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestBase))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Request), TypeInfoPropertyName = "Request2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestResource), TypeInfoPropertyName = "RequestResource2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestResourceVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequests))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Request>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RequestResource>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequestsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestWithoutId), TypeInfoPropertyName = "RequestWithoutId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestRegistration))]
@@ -44,11 +44,11 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.HttpMethod?), TypeInfoPropertyName = "NullableHttpMethod2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Request?), TypeInfoPropertyName = "NullableRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestResource?), TypeInfoPropertyName = "NullableRequestResource2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestWithoutId?), TypeInfoPropertyName = "NullableRequestWithoutId2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueRequestsGetFilterItem?), TypeInfoPropertyName = "NullableRequestQueueRequestsGetFilterItem2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Request>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestResource>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RequestQueueRequestsGetFilterItem>))]
     internal sealed partial class StorageRequestQueuesRequestsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -97,7 +97,7 @@ namespace Apify
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Apify.JsonConverters.RequestJsonConverter());
+            options.Converters.Add(new global::Apify.JsonConverters.RequestResourceJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.RequestWithoutIdJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());

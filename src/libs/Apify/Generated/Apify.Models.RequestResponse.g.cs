@@ -12,9 +12,9 @@ namespace Apify
         /// A request stored in the request queue, including its metadata and processing state.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RequestJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RequestResourceJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Request Data { get; set; }
+        public required global::Apify.RequestResource Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -32,7 +32,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestResponse(
-            global::Apify.Request data)
+            global::Apify.RequestResource data)
         {
             this.Data = data;
         }

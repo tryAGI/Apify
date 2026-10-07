@@ -25,7 +25,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
-        public global::Apify.Profile? Profile { get; set; }
+        public global::Apify.UserProfile? Profile { get; set; }
 
         /// <summary>
         ///
@@ -37,13 +37,13 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxy")]
-        public global::Apify.Proxy? Proxy { get; set; }
+        public global::Apify.ProxyResource? Proxy { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("plan")]
-        public global::Apify.Plan? Plan { get; set; }
+        public global::Apify.UserPlan? Plan { get; set; }
 
         /// <summary>
         ///
@@ -87,10 +87,10 @@ namespace Apify
         public UserPrivateInfo(
             string username,
             string? id,
-            global::Apify.Profile? profile,
+            global::Apify.UserProfile? profile,
             string? email,
-            global::Apify.Proxy? proxy,
-            global::Apify.Plan? plan,
+            global::Apify.ProxyResource? proxy,
+            global::Apify.UserPlan? plan,
             global::Apify.EffectivePlatformFeatures? effectivePlatformFeatures,
             global::System.DateTime? createdAt,
             bool? isPaying)

@@ -32,7 +32,7 @@ head](#/reference/request-queues/queue-head) operation.
 ",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Apify.HeadResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.RequestQueueHeadResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -48,7 +48,7 @@ head](#/reference/request-queues/queue-head) operation.
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.HeadResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.RequestQueueHeadResponse value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

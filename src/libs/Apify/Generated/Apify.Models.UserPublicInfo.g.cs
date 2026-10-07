@@ -19,7 +19,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profile")]
-        public global::Apify.Profile? Profile { get; set; }
+        public global::Apify.UserProfile? Profile { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -37,7 +37,7 @@ namespace Apify
 #endif
         public UserPublicInfo(
             string username,
-            global::Apify.Profile? profile)
+            global::Apify.UserProfile? profile)
         {
             this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
             this.Profile = profile;

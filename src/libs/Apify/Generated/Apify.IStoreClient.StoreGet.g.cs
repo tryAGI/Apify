@@ -49,7 +49,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.ListOfActorsInStoreResponse> StoreGetAsync(
+        global::System.Threading.Tasks.Task<global::Apify.ListOfStoreActorsResponse> StoreGetAsync(
             double? limit = default,
             double? offset = default,
             string? search = default,
@@ -107,7 +107,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfActorsInStoreResponse>> StoreGetAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfStoreActorsResponse>> StoreGetAsResponseAsync(
             double? limit = default,
             double? offset = default,
             string? search = default,

@@ -12,7 +12,7 @@ internal static partial class SchedulesSchedulesPostCommandApiCommand
     {
         Description = @"",
     };
-    private static readonly ScheduleCreateOptionSet ScheduleCreateOptionSetOptions = ScheduleCreateOptionSet.Create();
+    private static readonly CreateOrUpdateScheduleRequestOptionSet CreateOrUpdateScheduleRequestOptionSetOptions = CreateOrUpdateScheduleRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -64,13 +64,13 @@ When providing your API authentication token, we recommend using the
 request's `Authorization` header, rather than the URL. ([More
 info](#/introduction/authentication)).
 ");
-                        command.Options.Add(Actions);                        command.Options.Add(ScheduleCreateOptionSetOptions.NameOption);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.IsEnabled);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.IsExclusive);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.CronExpression);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.Timezone);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.DescriptionOption);
-                        command.Options.Add(ScheduleCreateOptionSetOptions.Title);
+                        command.Options.Add(Actions);                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.NameOption);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.IsEnabled);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.IsExclusive);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.CronExpression);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.Timezone);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.Title);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -89,20 +89,20 @@ info](#/introduction/authentication)).
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.ScheduleCreate>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.CreateOrUpdateScheduleRequest>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Apify.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var actions = CliRuntime.WasSpecified(parseResult, Actions) ? parseResult.GetValue(Actions) : (__requestBase is { } __ActionsBaseValue ? __ActionsBaseValue.Actions : default);                        var name = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.NameOption) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
-                        var isEnabled = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.IsEnabled) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.IsEnabled) : (__requestBase is { } __IsEnabledBaseValue ? __IsEnabledBaseValue.IsEnabled : default);
-                        var isExclusive = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.IsExclusive) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.IsExclusive) : (__requestBase is { } __IsExclusiveBaseValue ? __IsExclusiveBaseValue.IsExclusive : default);
-                        var cronExpression = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.CronExpression) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.CronExpression) : (__requestBase is { } __CronExpressionBaseValue ? __CronExpressionBaseValue.CronExpression : default);
-                        var timezone = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.Timezone) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.Timezone) : (__requestBase is { } __TimezoneBaseValue ? __TimezoneBaseValue.Timezone : default);
-                        var description = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.DescriptionOption) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
-                        var title = CliRuntime.WasSpecified(parseResult, ScheduleCreateOptionSetOptions.Title) ? parseResult.GetValue(ScheduleCreateOptionSetOptions.Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
+                        var actions = CliRuntime.WasSpecified(parseResult, Actions) ? parseResult.GetValue(Actions) : (__requestBase is { } __ActionsBaseValue ? __ActionsBaseValue.Actions : default);                        var name = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.NameOption) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var isEnabled = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.IsEnabled) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.IsEnabled) : (__requestBase is { } __IsEnabledBaseValue ? __IsEnabledBaseValue.IsEnabled : default);
+                        var isExclusive = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.IsExclusive) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.IsExclusive) : (__requestBase is { } __IsExclusiveBaseValue ? __IsExclusiveBaseValue.IsExclusive : default);
+                        var cronExpression = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.CronExpression) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.CronExpression) : (__requestBase is { } __CronExpressionBaseValue ? __CronExpressionBaseValue.CronExpression : default);
+                        var timezone = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.Timezone) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.Timezone) : (__requestBase is { } __TimezoneBaseValue ? __TimezoneBaseValue.Timezone : default);
+                        var description = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
+                        var title = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.Title) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

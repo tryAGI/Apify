@@ -19,7 +19,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.RequestQueueShort> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.RequestQueueListItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -40,7 +40,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfRequestQueuesVariant2(
-            global::System.Collections.Generic.IList<global::Apify.RequestQueueShort> items,
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueListItem> items,
             bool? unnamed)
         {
             this.Unnamed = unnamed;

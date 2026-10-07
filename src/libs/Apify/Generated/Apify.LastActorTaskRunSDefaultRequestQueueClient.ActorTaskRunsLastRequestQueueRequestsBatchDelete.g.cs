@@ -32,7 +32,7 @@ namespace Apify
             ref global::Apify.RunOrigin? origin,
             ref string contentType,
             ref string? clientKey,
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request);
         partial void PrepareActorTaskRunsLastRequestQueueRequestsBatchDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -41,7 +41,7 @@ namespace Apify
             global::Apify.RunOrigin? origin,
             string contentType,
             string? clientKey,
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request);
         partial void ProcessActorTaskRunsLastRequestQueueRequestsBatchDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -75,7 +75,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> ActorTaskRunsLastRequestQueueRequestsBatchDeleteAsync(
             string actorTaskId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",
@@ -121,7 +121,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchDeleteResponse>> ActorTaskRunsLastRequestQueueRequestsBatchDeleteAsResponseAsync(
             string actorTaskId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             string contentType = "application/json",

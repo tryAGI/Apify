@@ -25,7 +25,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.KeyValueStoreResponse> ActorRunsLastKeyValueStorePutAsync(
             string actorId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -51,7 +51,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>> ActorRunsLastKeyValueStorePutAsResponseAsync(
             string actorId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             string? status = default,
             global::Apify.RunOrigin? origin = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

@@ -57,7 +57,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("meta")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.BuildsMeta Meta { get; set; }
+        public required global::Apify.BuildMeta Meta { get; set; }
 
         /// <summary>
         ///
@@ -172,7 +172,7 @@ namespace Apify
             string userId,
             global::System.DateTime startedAt,
             global::Apify.ActorJobStatus status,
-            global::Apify.BuildsMeta meta,
+            global::Apify.BuildMeta meta,
             string buildNumber,
             global::System.DateTime? finishedAt,
             global::Apify.BuildStats? stats,

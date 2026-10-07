@@ -77,7 +77,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.HeadAndLockResponse> ActorTaskRunsLastRequestQueueHeadLockPostAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.LockedRequestQueueHeadResponse> ActorTaskRunsLastRequestQueueHeadLockPostAsync(
             string actorTaskId,
             double lockSecs,
             string? status = default,
@@ -126,7 +126,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.HeadAndLockResponse>> ActorTaskRunsLastRequestQueueHeadLockPostAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.LockedRequestQueueHeadResponse>> ActorTaskRunsLastRequestQueueHeadLockPostAsResponseAsync(
             string actorTaskId,
             double lockSecs,
             string? status = default,
@@ -648,9 +648,9 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.HeadAndLockResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.LockedRequestQueueHeadResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.HeadAndLockResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.LockedRequestQueueHeadResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -680,9 +680,9 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.HeadAndLockResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.LockedRequestQueueHeadResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.HeadAndLockResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.LockedRequestQueueHeadResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

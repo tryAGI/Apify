@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.RequestQueue Data { get; set; }
+        public required global::Apify.RequestQueueResource Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,7 +31,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestQueueResponse(
-            global::Apify.RequestQueue data)
+            global::Apify.RequestQueueResource data)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }

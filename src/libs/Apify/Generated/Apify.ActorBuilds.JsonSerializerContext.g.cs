@@ -29,11 +29,11 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus), TypeInfoPropertyName = "ActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildsMeta))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildShort))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildMeta))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfBuilds), TypeInfoPropertyName = "ListOfBuilds2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfBuildsVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.BuildShort>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.BuildListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfBuildsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildOptions))]
@@ -57,7 +57,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin?), TypeInfoPropertyName = "NullableRunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfBuilds?), TypeInfoPropertyName = "NullableListOfBuilds2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, long?>?), TypeInfoPropertyName = "NullableOneOfStringInt642")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.BuildShort>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.BuildListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.SourceCodeFile>))]
     internal sealed partial class ActorBuildsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {

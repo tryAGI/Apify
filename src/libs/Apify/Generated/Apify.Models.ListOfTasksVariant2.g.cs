@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.TaskShort> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.TaskListItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfTasksVariant2(
-            global::System.Collections.Generic.IList<global::Apify.TaskShort> items)
+            global::System.Collections.Generic.IList<global::Apify.TaskListItem> items)
         {
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }

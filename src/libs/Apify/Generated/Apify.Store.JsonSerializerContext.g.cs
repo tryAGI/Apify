@@ -28,11 +28,11 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice), TypeInfoPropertyName = "ActorNotice2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CurrentPricingInfo))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreListActor))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActor))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActors), TypeInfoPropertyName = "ListOfStoreActors2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActorsVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.StoreListActor>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorsInStoreResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.StoreActor>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActorsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel), TypeInfoPropertyName = "StoreGetPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat), TypeInfoPropertyName = "StoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
@@ -45,7 +45,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel?), TypeInfoPropertyName = "NullableStoreGetPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat?), TypeInfoPropertyName = "NullableStoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.StoreListActor>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.StoreActor>))]
     internal sealed partial class StoreSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

@@ -26,7 +26,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.HeadResponse> RequestQueueHeadGetAsync(
+        global::System.Threading.Tasks.Task<global::Apify.RequestQueueHeadResponse> RequestQueueHeadGetAsync(
             string queueId,
             double? limit = default,
             string? clientKey = default,
@@ -54,7 +54,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.HeadResponse>> RequestQueueHeadGetAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.RequestQueueHeadResponse>> RequestQueueHeadGetAsResponseAsync(
             string queueId,
             double? limit = default,
             string? clientKey = default,

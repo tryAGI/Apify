@@ -4325,7 +4325,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/PutItemResponseError"
+                      "$ref": "#/components/schemas/PutItemsErrorResponse"
                     },
                     {
                       "$ref": "#/components/schemas/ErrorResponse"
@@ -4495,7 +4495,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateStoreRequest"
+                "$ref": "#/components/schemas/UpdateKeyValueStoreRequest"
               },
               "example": {
                 "name": "new-store-name"
@@ -5457,7 +5457,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RequestDraftDelete"
+                  "$ref": "#/components/schemas/RequestToDelete"
                 }
               }
             }
@@ -5893,7 +5893,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadResponse"
+                  "$ref": "#/components/schemas/RequestQueueHeadResponse"
                 }
               }
             }
@@ -5955,7 +5955,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                  "$ref": "#/components/schemas/LockedRequestQueueHeadResponse"
                 }
               }
             }
@@ -7340,7 +7340,7 @@
                             "items": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Webhook"
+                                "$ref": "#/components/schemas/WebhookResource"
                               }
                             }
                           }
@@ -7555,7 +7555,7 @@
                             "items": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/RunShort"
+                                "$ref": "#/components/schemas/RunListItem"
                               }
                             }
                           }
@@ -9177,7 +9177,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/PutItemResponseError"
+                      "$ref": "#/components/schemas/PutItemsErrorResponse"
                     },
                     {
                       "$ref": "#/components/schemas/ErrorResponse"
@@ -9347,7 +9347,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateStoreRequest"
+                "$ref": "#/components/schemas/UpdateKeyValueStoreRequest"
               },
               "example": {
                 "name": "new-store-name"
@@ -10086,7 +10086,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadResponse"
+                  "$ref": "#/components/schemas/RequestQueueHeadResponse"
                 }
               }
             }
@@ -10148,7 +10148,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                  "$ref": "#/components/schemas/LockedRequestQueueHeadResponse"
                 }
               }
             }
@@ -10433,7 +10433,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RequestDraftDelete"
+                  "$ref": "#/components/schemas/RequestToDelete"
                 }
               }
             }
@@ -12058,7 +12058,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/PutItemResponseError"
+                      "$ref": "#/components/schemas/PutItemsErrorResponse"
                     },
                     {
                       "$ref": "#/components/schemas/ErrorResponse"
@@ -12210,7 +12210,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateStoreRequest"
+                "$ref": "#/components/schemas/UpdateKeyValueStoreRequest"
               },
               "example": {
                 "name": "new-store-name"
@@ -13088,7 +13088,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RequestDraftDelete"
+                  "$ref": "#/components/schemas/RequestToDelete"
                 }
               }
             }
@@ -13482,7 +13482,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadResponse"
+                  "$ref": "#/components/schemas/RequestQueueHeadResponse"
                 }
               }
             }
@@ -13538,7 +13538,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                  "$ref": "#/components/schemas/LockedRequestQueueHeadResponse"
                 }
               }
             }
@@ -14314,7 +14314,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateStoreRequest"
+                "$ref": "#/components/schemas/UpdateKeyValueStoreRequest"
               },
               "example": {
                 "name": "new-store-name"
@@ -15779,7 +15779,7 @@
                 "schema": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/PutItemResponseError"
+                      "$ref": "#/components/schemas/PutItemsErrorResponse"
                     },
                     {
                       "$ref": "#/components/schemas/ErrorResponse"
@@ -16383,7 +16383,7 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RequestDraftDelete"
+                  "$ref": "#/components/schemas/RequestToDelete"
                 }
               }
             }
@@ -16874,7 +16874,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadResponse"
+                  "$ref": "#/components/schemas/RequestQueueHeadResponse"
                 }
               }
             }
@@ -16941,7 +16941,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HeadAndLockResponse"
+                  "$ref": "#/components/schemas/LockedRequestQueueHeadResponse"
                 }
               }
             }
@@ -17254,7 +17254,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WebhookCreate"
+                "$ref": "#/components/schemas/CreateWebhookRequest"
               }
             }
           },
@@ -17396,7 +17396,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WebhookUpdate"
+                "$ref": "#/components/schemas/UpdateWebhookRequest"
               }
             }
           },
@@ -17527,7 +17527,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TestWebhookResponse"
+                  "$ref": "#/components/schemas/WebhookDispatchResponse"
                 }
               }
             }
@@ -17996,7 +17996,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ScheduleCreate"
+                "$ref": "#/components/schemas/CreateOrUpdateScheduleRequest"
               }
             }
           },
@@ -18141,7 +18141,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ScheduleCreate"
+                "$ref": "#/components/schemas/CreateOrUpdateScheduleRequest"
               }
             }
           },
@@ -18507,7 +18507,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListOfActorsInStoreResponse"
+                  "$ref": "#/components/schemas/ListOfStoreActorsResponse"
                 }
               }
             }
@@ -18638,7 +18638,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PublicUserDataResponse"
+                  "$ref": "#/components/schemas/UserPublicInfoResponse"
                 }
               }
             }
@@ -18682,7 +18682,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PrivateUserDataResponse"
+                  "$ref": "#/components/schemas/UserPrivateInfoResponse"
                 }
               }
             }
@@ -18783,7 +18783,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LimitsResponse"
+                  "$ref": "#/components/schemas/AccountLimitsResponse"
                 }
               }
             }
@@ -20349,8 +20349,8 @@
           }
         }
       },
-      "ActorShort": {
-        "title": "ActorShort",
+      "ActorListItem": {
+        "title": "ActorListItem",
         "required": [
           "id",
           "createdAt",
@@ -20425,7 +20425,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ActorShort"
+                  "$ref": "#/components/schemas/ActorListItem"
                 }
               }
             }
@@ -21727,8 +21727,8 @@
           "UNDER_MAINTENANCE"
         ]
       },
-      "Actor": {
-        "title": "Actor",
+      "ActorResource": {
+        "title": "ActorResource",
         "required": [
           "id",
           "userId",
@@ -21990,7 +21990,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/Actor"
+            "$ref": "#/components/schemas/ActorResource"
           }
         }
       },
@@ -22081,8 +22081,8 @@
           }
         }
       },
-      "BuildTag": {
-        "title": "BuildTag",
+      "UpdatedBuildProperty": {
+        "title": "UpdatedBuildProperty",
         "type": [
           "object",
           "null"
@@ -22219,7 +22219,7 @@
             ],
             "description": "A dictionary that maps tag names to specific builds. For details, see [Update build tags](#update-build-tags).",
             "additionalProperties": {
-              "$ref": "#/components/schemas/BuildTag"
+              "$ref": "#/components/schemas/UpdatedBuildProperty"
             },
             "example": {
               "latest": {
@@ -22428,8 +22428,8 @@
         ],
         "description": "Status of the webhook dispatch indicating whether the HTTP request was successful."
       },
-      "ExampleWebhookDispatch": {
-        "title": "ExampleWebhookDispatch",
+      "WebhookLastDispatch": {
+        "title": "WebhookLastDispatch",
         "required": [
           "status"
         ],
@@ -22472,8 +22472,8 @@
           }
         }
       },
-      "WebhookShort": {
-        "title": "WebhookShort",
+      "WebhookListItem": {
+        "title": "WebhookListItem",
         "required": [
           "id",
           "createdAt",
@@ -22585,7 +22585,7 @@
           "lastDispatch": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ExampleWebhookDispatch"
+                "$ref": "#/components/schemas/WebhookLastDispatch"
               },
               {
                 "type": "null"
@@ -22619,7 +22619,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/WebhookShort"
+                  "$ref": "#/components/schemas/WebhookListItem"
                 }
               }
             }
@@ -22670,8 +22670,8 @@
           "MCP"
         ]
       },
-      "BuildsMeta": {
-        "title": "BuildsMeta",
+      "BuildMeta": {
+        "title": "BuildMeta",
         "required": [
           "origin"
         ],
@@ -22700,8 +22700,8 @@
           }
         }
       },
-      "BuildShort": {
-        "title": "BuildShort",
+      "BuildListItem": {
+        "title": "BuildListItem",
         "required": [
           "id",
           "status",
@@ -22769,7 +22769,7 @@
             ]
           },
           "meta": {
-            "$ref": "#/components/schemas/BuildsMeta"
+            "$ref": "#/components/schemas/BuildMeta"
           }
         }
       },
@@ -22788,7 +22788,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/BuildShort"
+                  "$ref": "#/components/schemas/BuildListItem"
                 }
               }
             }
@@ -23052,7 +23052,7 @@
             "$ref": "#/components/schemas/ActorJobStatus"
           },
           "meta": {
-            "$ref": "#/components/schemas/BuildsMeta"
+            "$ref": "#/components/schemas/BuildMeta"
           },
           "stats": {
             "anyOf": [
@@ -23328,8 +23328,8 @@
           }
         }
       },
-      "RunShort": {
-        "title": "RunShort",
+      "RunListItem": {
+        "title": "RunListItem",
         "required": [
           "id",
           "actId",
@@ -23454,7 +23454,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/RunShort"
+                  "$ref": "#/components/schemas/RunListItem"
                 }
               }
             }
@@ -23989,8 +23989,8 @@
           }
         }
       },
-      "Metamorph": {
-        "title": "Metamorph",
+      "RunMetamorphEvent": {
+        "title": "RunMetamorphEvent",
         "description": "Information about a metamorph event that occurred during the run.",
         "type": "object",
         "required": [
@@ -24328,7 +24328,7 @@
               {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Metamorph"
+                  "$ref": "#/components/schemas/RunMetamorphEvent"
                 }
               },
               {
@@ -24389,8 +24389,8 @@
           }
         }
       },
-      "Dataset": {
-        "title": "Dataset",
+      "DatasetResource": {
+        "title": "DatasetResource",
         "required": [
           "id",
           "userId",
@@ -24557,7 +24557,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/Dataset"
+            "$ref": "#/components/schemas/DatasetResource"
           }
         }
       },
@@ -24591,8 +24591,8 @@
           "price": 19.99
         }
       },
-      "ValidationError": {
-        "title": "ValidationError",
+      "DatasetItemValidationError": {
+        "title": "DatasetItemValidationError",
         "type": "object",
         "properties": {
           "instancePath": {
@@ -24617,8 +24617,8 @@
           }
         }
       },
-      "InvalidItem": {
-        "title": "InvalidItem",
+      "InvalidDatasetItem": {
+        "title": "InvalidDatasetItem",
         "type": "object",
         "properties": {
           "itemPosition": {
@@ -24632,13 +24632,13 @@
             "type": "array",
             "description": "A complete list of AJV validation error objects for the invalid item.",
             "items": {
-              "$ref": "#/components/schemas/ValidationError"
+              "$ref": "#/components/schemas/DatasetItemValidationError"
             }
           }
         }
       },
-      "SchemaValidationErrorData": {
-        "title": "SchemaValidationErrorData",
+      "DatasetSchemaValidationErrorData": {
+        "title": "DatasetSchemaValidationErrorData",
         "required": [
           "invalidItems"
         ],
@@ -24648,7 +24648,7 @@
             "type": "array",
             "description": "A list of invalid items in the received array of items.",
             "items": {
-              "$ref": "#/components/schemas/InvalidItem"
+              "$ref": "#/components/schemas/InvalidDatasetItem"
             }
           }
         }
@@ -24672,12 +24672,12 @@
             ]
           },
           "data": {
-            "$ref": "#/components/schemas/SchemaValidationErrorData"
+            "$ref": "#/components/schemas/DatasetSchemaValidationErrorData"
           }
         }
       },
-      "PutItemResponseError": {
-        "title": "PutItemResponseError",
+      "PutItemsErrorResponse": {
+        "title": "PutItemsErrorResponse",
         "required": [
           "error"
         ],
@@ -24827,8 +24827,8 @@
           }
         }
       },
-      "KeyValueStore": {
-        "title": "KeyValueStore",
+      "KeyValueStoreResource": {
+        "title": "KeyValueStoreResource",
         "required": [
           "id",
           "createdAt",
@@ -24970,12 +24970,12 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/KeyValueStore"
+            "$ref": "#/components/schemas/KeyValueStoreResource"
           }
         }
       },
-      "UpdateStoreRequest": {
-        "title": "UpdateStoreRequest",
+      "UpdateKeyValueStoreRequest": {
+        "title": "UpdateKeyValueStoreRequest",
         "type": "object",
         "properties": {
           "name": {
@@ -25242,8 +25242,8 @@
           }
         }
       },
-      "RequestQueue": {
-        "title": "RequestQueue",
+      "RequestQueueResource": {
+        "title": "RequestQueueResource",
         "description": "A request queue object containing metadata and statistics.",
         "required": [
           "id",
@@ -25342,7 +25342,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/RequestQueue"
+            "$ref": "#/components/schemas/RequestQueueResource"
           }
         }
       },
@@ -25516,8 +25516,8 @@
           "sbJ7klsdf7ujN9l"
         ]
       },
-      "Request": {
-        "title": "Request",
+      "RequestResource": {
+        "title": "RequestResource",
         "description": "A request stored in the request queue, including its metadata and processing state.",
         "allOf": [
           {
@@ -25547,7 +25547,7 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Request"
+              "$ref": "#/components/schemas/RequestResource"
             },
             "description": "The array of requests."
           },
@@ -25719,8 +25719,8 @@
           }
         }
       },
-      "RequestDraft": {
-        "title": "RequestDraft",
+      "UnprocessedRequest": {
+        "title": "UnprocessedRequest",
         "description": "A request that failed to be processed during a request queue operation and can be retried.",
         "required": [
           "uniqueKey",
@@ -25762,7 +25762,7 @@
             "type": "array",
             "description": "Requests that failed to be added and can be retried.",
             "items": {
-              "$ref": "#/components/schemas/RequestDraft"
+              "$ref": "#/components/schemas/UnprocessedRequest"
             }
           }
         }
@@ -25799,8 +25799,8 @@
           }
         }
       },
-      "RequestDraftDeleteById": {
-        "title": "RequestDraftDeleteById",
+      "RequestToDeleteById": {
+        "title": "RequestToDeleteById",
         "description": "A request that should be deleted, identified by its ID.",
         "type": "object",
         "required": [
@@ -25815,8 +25815,8 @@
           }
         }
       },
-      "RequestDraftDeleteByUniqueKey": {
-        "title": "RequestDraftDeleteByUniqueKey",
+      "RequestToDeleteByUniqueKey": {
+        "title": "RequestToDeleteByUniqueKey",
         "description": "A request that should be deleted, identified by its unique key.",
         "type": "object",
         "required": [
@@ -25831,15 +25831,15 @@
           }
         }
       },
-      "RequestDraftDelete": {
-        "title": "RequestDraftDelete",
+      "RequestToDelete": {
+        "title": "RequestToDelete",
         "description": "A request that should be deleted.",
         "anyOf": [
           {
-            "$ref": "#/components/schemas/RequestDraftDeleteById"
+            "$ref": "#/components/schemas/RequestToDeleteById"
           },
           {
-            "$ref": "#/components/schemas/RequestDraftDeleteByUniqueKey"
+            "$ref": "#/components/schemas/RequestToDeleteByUniqueKey"
           }
         ]
       },
@@ -25907,7 +25907,7 @@
             "type": "array",
             "description": "Requests that failed to be deleted and can be retried.",
             "items": {
-              "$ref": "#/components/schemas/RequestDraft"
+              "$ref": "#/components/schemas/UnprocessedRequest"
             }
           }
         }
@@ -25964,7 +25964,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/Request"
+            "$ref": "#/components/schemas/RequestResource"
           }
         }
       },
@@ -26022,8 +26022,8 @@
           1000
         ]
       },
-      "HeadRequest": {
-        "title": "HeadRequest",
+      "RequestQueueHeadItem": {
+        "title": "RequestQueueHeadItem",
         "description": "A request from the request queue head without lock information.",
         "type": "object",
         "required": [
@@ -26072,14 +26072,14 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/HeadRequest"
+              "$ref": "#/components/schemas/RequestQueueHeadItem"
             },
             "description": "The array of requests from the request queue head."
           }
         }
       },
-      "HeadResponse": {
-        "title": "HeadResponse",
+      "RequestQueueHeadResponse": {
+        "title": "RequestQueueHeadResponse",
         "description": "Response containing requests from the request queue head without locking.",
         "required": [
           "data"
@@ -26121,8 +26121,8 @@
           }
         }
       },
-      "LockedHeadRequest": {
-        "title": "LockedHeadRequest",
+      "LockedRequestQueueHeadItem": {
+        "title": "LockedRequestQueueHeadItem",
         "description": "A request from the request queue head that has been locked for processing.",
         "type": "object",
         "required": [
@@ -26197,14 +26197,14 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LockedHeadRequest"
+              "$ref": "#/components/schemas/LockedRequestQueueHeadItem"
             },
             "description": "The array of locked requests from the request queue head."
           }
         }
       },
-      "HeadAndLockResponse": {
-        "title": "HeadAndLockResponse",
+      "LockedRequestQueueHeadResponse": {
+        "title": "LockedRequestQueueHeadResponse",
         "description": "Response containing locked requests from the request queue head.",
         "required": [
           "data"
@@ -26262,8 +26262,8 @@
           }
         }
       },
-      "TaskShort": {
-        "title": "TaskShort",
+      "TaskListItem": {
+        "title": "TaskListItem",
         "required": [
           "id",
           "userId",
@@ -26366,7 +26366,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/TaskShort"
+                  "$ref": "#/components/schemas/TaskListItem"
                 }
               }
             }
@@ -26851,8 +26851,8 @@
           }
         }
       },
-      "Webhook": {
-        "title": "Webhook",
+      "WebhookResource": {
+        "title": "WebhookResource",
         "required": [
           "id",
           "createdAt",
@@ -26978,7 +26978,7 @@
           "lastDispatch": {
             "anyOf": [
               {
-                "$ref": "#/components/schemas/ExampleWebhookDispatch"
+                "$ref": "#/components/schemas/WebhookLastDispatch"
               },
               {
                 "type": "null"
@@ -27078,7 +27078,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/KeyValueStore"
+                  "$ref": "#/components/schemas/KeyValueStoreResource"
                 }
               }
             }
@@ -27251,8 +27251,8 @@
           }
         }
       },
-      "RequestQueueShort": {
-        "title": "RequestQueueShort",
+      "RequestQueueListItem": {
+        "title": "RequestQueueListItem",
         "description": "A shortened request queue object for list responses.",
         "required": [
           "id",
@@ -27371,7 +27371,7 @@
                 "type": "array",
                 "description": "The array of request queues.",
                 "items": {
-                  "$ref": "#/components/schemas/RequestQueueShort"
+                  "$ref": "#/components/schemas/RequestQueueListItem"
                 }
               }
             }
@@ -27391,8 +27391,8 @@
           }
         }
       },
-      "WebhookCreate": {
-        "title": "WebhookCreate",
+      "CreateWebhookRequest": {
+        "title": "CreateWebhookRequest",
         "required": [
           "eventTypes",
           "condition",
@@ -27503,12 +27503,12 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/Webhook"
+            "$ref": "#/components/schemas/WebhookResource"
           }
         }
       },
-      "WebhookUpdate": {
-        "title": "WebhookUpdate",
+      "UpdateWebhookRequest": {
+        "title": "UpdateWebhookRequest",
         "type": "object",
         "properties": {
           "isAdHoc": {
@@ -27792,8 +27792,8 @@
           }
         }
       },
-      "TestWebhookResponse": {
-        "title": "TestWebhookResponse",
+      "WebhookDispatchResponse": {
+        "title": "WebhookDispatchResponse",
         "required": [
           "data"
         ],
@@ -27835,18 +27835,6 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ListOfWebhookDispatches"
-          }
-        }
-      },
-      "WebhookDispatchResponse": {
-        "title": "WebhookDispatchResponse",
-        "required": [
-          "data"
-        ],
-        "type": "object",
-        "properties": {
-          "data": {
-            "$ref": "#/components/schemas/WebhookDispatch"
           }
         }
       },
@@ -27943,8 +27931,8 @@
           }
         }
       },
-      "ScheduleActionShortRunActor": {
-        "title": "ScheduleActionShortRunActor",
+      "ScheduleListItemActionRunActor": {
+        "title": "ScheduleListItemActionRunActor",
         "required": [
           "id",
           "type",
@@ -27969,8 +27957,8 @@
           }
         }
       },
-      "ScheduleActionShortRunActorTask": {
-        "title": "ScheduleActionShortRunActorTask",
+      "ScheduleListItemActionRunActorTask": {
+        "title": "ScheduleListItemActionRunActorTask",
         "required": [
           "id",
           "type",
@@ -27995,26 +27983,26 @@
           }
         }
       },
-      "ScheduleActionShort": {
-        "title": "ScheduleActionShort",
+      "ScheduleListItemAction": {
+        "title": "ScheduleListItemAction",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ScheduleActionShortRunActor"
+            "$ref": "#/components/schemas/ScheduleListItemActionRunActor"
           },
           {
-            "$ref": "#/components/schemas/ScheduleActionShortRunActorTask"
+            "$ref": "#/components/schemas/ScheduleListItemActionRunActorTask"
           }
         ],
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "RUN_ACTOR": "#/components/schemas/ScheduleActionShortRunActor",
-            "RUN_ACTOR_TASK": "#/components/schemas/ScheduleActionShortRunActorTask"
+            "RUN_ACTOR": "#/components/schemas/ScheduleListItemActionRunActor",
+            "RUN_ACTOR_TASK": "#/components/schemas/ScheduleListItemActionRunActorTask"
           }
         }
       },
-      "ScheduleShort": {
-        "title": "ScheduleShort",
+      "ScheduleListItem": {
+        "title": "ScheduleListItem",
         "allOf": [
           {
             "$ref": "#/components/schemas/ScheduleBase"
@@ -28028,7 +28016,7 @@
               "actions": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ScheduleActionShort"
+                  "$ref": "#/components/schemas/ScheduleListItemAction"
                 },
                 "description": ""
               }
@@ -28051,7 +28039,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ScheduleShort"
+                  "$ref": "#/components/schemas/ScheduleListItem"
                 }
               }
             }
@@ -28180,8 +28168,8 @@
           }
         }
       },
-      "ScheduleCreate": {
-        "title": "ScheduleCreate",
+      "CreateOrUpdateScheduleRequest": {
+        "title": "CreateOrUpdateScheduleRequest",
         "type": "object",
         "properties": {
           "name": {
@@ -28419,8 +28407,8 @@
           }
         }
       },
-      "ScheduleInvoked": {
-        "title": "ScheduleInvoked",
+      "ScheduleLogEntry": {
+        "title": "ScheduleLogEntry",
         "required": [
           "message",
           "level",
@@ -28459,7 +28447,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ScheduleInvoked"
+              "$ref": "#/components/schemas/ScheduleLogEntry"
             },
             "description": ""
           }
@@ -28592,8 +28580,8 @@
           }
         }
       },
-      "StoreListActor": {
-        "title": "StoreListActor",
+      "StoreActor": {
+        "title": "StoreActor",
         "required": [
           "id",
           "title",
@@ -28748,15 +28736,15 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/StoreListActor"
+                  "$ref": "#/components/schemas/StoreActor"
                 }
               }
             }
           }
         ]
       },
-      "ListOfActorsInStoreResponse": {
-        "title": "ListOfActorsInStoreResponse",
+      "ListOfStoreActorsResponse": {
+        "title": "ListOfStoreActorsResponse",
         "required": [
           "data"
         ],
@@ -28832,8 +28820,8 @@
           }
         }
       },
-      "Profile": {
-        "title": "Profile",
+      "UserProfile": {
+        "title": "UserProfile",
         "type": "object",
         "properties": {
           "bio": {
@@ -28915,12 +28903,12 @@
             ]
           },
           "profile": {
-            "$ref": "#/components/schemas/Profile"
+            "$ref": "#/components/schemas/UserProfile"
           }
         }
       },
-      "PublicUserDataResponse": {
-        "title": "PublicUserDataResponse",
+      "UserPublicInfoResponse": {
+        "title": "UserPublicInfoResponse",
         "required": [
           "data"
         ],
@@ -28963,8 +28951,8 @@
           }
         }
       },
-      "Proxy": {
-        "title": "Proxy",
+      "ProxyResource": {
+        "title": "ProxyResource",
         "required": [
           "password",
           "groups"
@@ -28999,8 +28987,8 @@
           "GOOGLE_SERP": 200
         }
       },
-      "Plan": {
-        "title": "Plan",
+      "UserPlan": {
+        "title": "UserPlan",
         "required": [
           "availableProxyGroups"
         ],
@@ -29285,7 +29273,7 @@
             ]
           },
           "profile": {
-            "$ref": "#/components/schemas/Profile"
+            "$ref": "#/components/schemas/UserProfile"
           },
           "email": {
             "type": "string",
@@ -29295,10 +29283,10 @@
             ]
           },
           "proxy": {
-            "$ref": "#/components/schemas/Proxy"
+            "$ref": "#/components/schemas/ProxyResource"
           },
           "plan": {
-            "$ref": "#/components/schemas/Plan"
+            "$ref": "#/components/schemas/UserPlan"
           },
           "effectivePlatformFeatures": {
             "$ref": "#/components/schemas/EffectivePlatformFeatures"
@@ -29318,8 +29306,8 @@
           }
         }
       },
-      "PrivateUserDataResponse": {
-        "title": "PrivateUserDataResponse",
+      "UserPrivateInfoResponse": {
+        "title": "UserPrivateInfoResponse",
         "required": [
           "data"
         ],
@@ -29354,8 +29342,8 @@
           }
         }
       },
-      "PriceTiers": {
-        "title": "PriceTiers",
+      "PriceTier": {
+        "title": "PriceTier",
         "required": [
           "quantityAbove",
           "discountPercent",
@@ -29432,7 +29420,7 @@
           "priceTiers": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PriceTiers"
+              "$ref": "#/components/schemas/PriceTier"
             },
             "description": ""
           }
@@ -29463,8 +29451,8 @@
           }
         }
       },
-      "DailyServiceUsages": {
-        "title": "DailyServiceUsages",
+      "DailyServiceUsage": {
+        "title": "DailyServiceUsage",
         "required": [
           "date",
           "serviceUsage",
@@ -29510,7 +29498,7 @@
           "dailyServiceUsages": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DailyServiceUsages"
+              "$ref": "#/components/schemas/DailyServiceUsage"
             },
             "description": ""
           },
@@ -29631,8 +29619,8 @@
           }
         }
       },
-      "Current": {
-        "title": "Current",
+      "CurrentUsage": {
+        "title": "CurrentUsage",
         "required": [
           "monthlyUsageUsd",
           "monthlyActorComputeUnits",
@@ -29731,12 +29719,12 @@
             "$ref": "#/components/schemas/Limits"
           },
           "current": {
-            "$ref": "#/components/schemas/Current"
+            "$ref": "#/components/schemas/CurrentUsage"
           }
         }
       },
-      "LimitsResponse": {
-        "title": "LimitsResponse",
+      "AccountLimitsResponse": {
+        "title": "AccountLimitsResponse",
         "required": [
           "data"
         ],
@@ -29828,8 +29816,8 @@
           }
         }
       },
-      "EncodeAndSignData": {
-        "title": "EncodeAndSignData",
+      "EncodeAndSignResult": {
+        "title": "EncodeAndSignResult",
         "type": "object",
         "required": [
           "encoded"
@@ -29851,7 +29839,7 @@
         ],
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/EncodeAndSignData"
+            "$ref": "#/components/schemas/EncodeAndSignResult"
           }
         }
       },
@@ -29870,8 +29858,8 @@
           }
         }
       },
-      "DecodeAndVerifyData": {
-        "title": "DecodeAndVerifyData",
+      "DecodeAndVerifyResult": {
+        "title": "DecodeAndVerifyResult",
         "type": "object",
         "required": [
           "decoded",
@@ -29907,7 +29895,7 @@
         ],
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/DecodeAndVerifyData"
+            "$ref": "#/components/schemas/DecodeAndVerifyResult"
           }
         }
       }

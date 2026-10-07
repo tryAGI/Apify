@@ -89,7 +89,7 @@ namespace Apify
         /// </summary>
         /// <example>{"latest":{"buildId":"z2EryhbfhgSyqj6Hn"},"beta":null}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("taggedBuilds")]
-        public global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>? TaggedBuilds { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>? TaggedBuilds { get; set; }
 
         /// <summary>
         /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
@@ -175,7 +175,7 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos,
             global::System.Collections.Generic.IList<string>? categories,
             global::Apify.DefaultRunOptions? defaultRunOptions,
-            global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>? taggedBuilds,
+            global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>? taggedBuilds,
             global::Apify.ActorStandby? actorStandby,
             global::Apify.ExampleRunInput? exampleRunInput,
             bool? isDeprecated)

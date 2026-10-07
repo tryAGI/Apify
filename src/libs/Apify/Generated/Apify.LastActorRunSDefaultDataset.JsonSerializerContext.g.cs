@@ -27,17 +27,17 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess), TypeInfoPropertyName = "GeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetStats))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Dataset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetResource))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateDatasetRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PutItemsRequest))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ValidationError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.InvalidItem))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ValidationError>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SchemaValidationErrorData))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.InvalidItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetItemValidationError))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.InvalidDatasetItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.DatasetItemValidationError>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetSchemaValidationErrorData))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.InvalidDatasetItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetSchemaValidationError))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PutItemResponseError))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PutItemsErrorResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetFieldStatistics))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DatasetStatistics))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.DatasetFieldStatistics>))]
@@ -46,7 +46,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastDatasetItemsPostContentEncoding), TypeInfoPropertyName = "ActorRunsLastDatasetItemsPostContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>), TypeInfoPropertyName = "AnyOfPutItemResponseErrorErrorResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>), TypeInfoPropertyName = "AnyOfPutItemsErrorResponseErrorResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
@@ -57,10 +57,10 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess?), TypeInfoPropertyName = "NullableGeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>?), TypeInfoPropertyName = "NullableOneOfPutItemsRequestIListPutItemsRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunsLastDatasetItemsPostContentEncoding?), TypeInfoPropertyName = "NullableActorRunsLastDatasetItemsPostContentEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>?), TypeInfoPropertyName = "NullableAnyOfPutItemResponseErrorErrorResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>?), TypeInfoPropertyName = "NullableAnyOfPutItemsErrorResponseErrorResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ValidationError>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.InvalidItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.DatasetItemValidationError>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.InvalidDatasetItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.List<global::Apify.PutItemsRequest>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.PutItemsRequest>))]
     internal sealed partial class LastActorRunSDefaultDatasetSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -116,10 +116,10 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>());
-            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>());
-            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>());
-            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>());
-            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }

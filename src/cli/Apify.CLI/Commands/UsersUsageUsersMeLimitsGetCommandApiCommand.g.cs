@@ -9,7 +9,7 @@ internal static partial class UsersUsageUsersMeLimitsGetCommandApiCommand
 {
 
 
-                    private static string FormatResponse(ParseResult parseResult, global::Apify.LimitsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.AccountLimitsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -25,7 +25,7 @@ internal static partial class UsersUsageUsersMeLimitsGetCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.LimitsResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.AccountLimitsResponse value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

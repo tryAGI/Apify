@@ -104,7 +104,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.ListOfActorsInStoreResponse> StoreGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.ListOfStoreActorsResponse> StoreGetAsync(
             double? limit = default,
             double? offset = default,
             string? search = default,
@@ -180,7 +180,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfActorsInStoreResponse>> StoreGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfStoreActorsResponse>> StoreGetAsResponseAsync(
             double? limit = default,
             double? offset = default,
             string? search = default,
@@ -645,9 +645,9 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.ListOfActorsInStoreResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.ListOfStoreActorsResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ListOfActorsInStoreResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ListOfStoreActorsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -677,9 +677,9 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.ListOfActorsInStoreResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.ListOfStoreActorsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ListOfActorsInStoreResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.ListOfStoreActorsResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
