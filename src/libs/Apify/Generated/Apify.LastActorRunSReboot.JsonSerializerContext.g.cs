@@ -50,14 +50,14 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess), TypeInfoPropertyName = "GeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunUsageUsd))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Metamorph))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMetamorphEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Run))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, int>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIds))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsDatasets))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsKeyValueStores))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsRequestQueues))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Metamorph>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RunMetamorphEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
@@ -74,7 +74,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus?), TypeInfoPropertyName = "NullableActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin?), TypeInfoPropertyName = "NullableRunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess?), TypeInfoPropertyName = "NullableGeneralAccess2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Metamorph>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RunMetamorphEvent>))]
     internal sealed partial class LastActorRunSRebootSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

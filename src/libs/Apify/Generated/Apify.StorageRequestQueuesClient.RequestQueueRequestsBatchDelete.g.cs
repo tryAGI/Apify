@@ -30,14 +30,14 @@ namespace Apify
             ref string queueId,
             ref string contentType,
             ref string? clientKey,
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request);
         partial void PrepareRequestQueueRequestsBatchDeleteRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string queueId,
             string contentType,
             string? clientKey,
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request);
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request);
         partial void ProcessRequestQueueRequestsBatchDeleteResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -75,7 +75,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> RequestQueueRequestsBatchDeleteAsync(
             string queueId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -121,7 +121,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchDeleteResponse>> RequestQueueRequestsBatchDeleteAsResponseAsync(
             string queueId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

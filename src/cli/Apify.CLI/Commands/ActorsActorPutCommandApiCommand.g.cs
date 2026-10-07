@@ -71,7 +71,7 @@ internal static partial class ActorsActorPutCommandApiCommand
         Description = @"A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.",
     };
 
-    private static Option<global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>?> TaggedBuilds { get; } = new(
+    private static Option<global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>?> TaggedBuilds { get; } = new(
         name: @"--tagged-builds")
     {
         Description = @"A dictionary that maps tag names to specific builds. For details, see [Update build tags](#update-build-tags).",

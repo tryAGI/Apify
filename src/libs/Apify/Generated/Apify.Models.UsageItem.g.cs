@@ -38,7 +38,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("priceTiers")]
-        public global::System.Collections.Generic.IList<global::Apify.PriceTiers>? PriceTiers { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.PriceTier>? PriceTiers { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -62,7 +62,7 @@ namespace Apify
             double baseAmountUsd,
             double? baseUnitPriceUsd,
             double? amountAfterVolumeDiscountUsd,
-            global::System.Collections.Generic.IList<global::Apify.PriceTiers>? priceTiers)
+            global::System.Collections.Generic.IList<global::Apify.PriceTier>? priceTiers)
         {
             this.Quantity = quantity;
             this.BaseAmountUsd = baseAmountUsd;

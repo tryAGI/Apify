@@ -196,7 +196,7 @@ namespace Apify
         /// List of metamorph events that occurred during the run.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metamorphs")]
-        public global::System.Collections.Generic.IList<global::Apify.Metamorph>? Metamorphs { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.RunMetamorphEvent>? Metamorphs { get; set; }
 
         /// <summary>
         /// Indicates which party covers platform usage costs for this run.
@@ -336,7 +336,7 @@ namespace Apify
             global::Apify.RunUsage? usage,
             double? usageTotalUsd,
             global::Apify.RunUsageUsd? usageUsd,
-            global::System.Collections.Generic.IList<global::Apify.Metamorph>? metamorphs,
+            global::System.Collections.Generic.IList<global::Apify.RunMetamorphEvent>? metamorphs,
             string? platformUsageBillingModel)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));

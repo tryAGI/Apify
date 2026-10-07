@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.ScheduleInvoked> Data { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.ScheduleLogEntry> Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ScheduleLogResponse(
-            global::System.Collections.Generic.IList<global::Apify.ScheduleInvoked> data)
+            global::System.Collections.Generic.IList<global::Apify.ScheduleLogEntry> data)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }

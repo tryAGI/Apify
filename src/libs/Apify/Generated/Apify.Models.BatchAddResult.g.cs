@@ -20,7 +20,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unprocessedRequests")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.RequestDraft> UnprocessedRequests { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.UnprocessedRequest> UnprocessedRequests { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,7 +42,7 @@ namespace Apify
 #endif
         public BatchAddResult(
             global::System.Collections.Generic.IList<global::Apify.AddedRequest> processedRequests,
-            global::System.Collections.Generic.IList<global::Apify.RequestDraft> unprocessedRequests)
+            global::System.Collections.Generic.IList<global::Apify.UnprocessedRequest> unprocessedRequests)
         {
             this.ProcessedRequests = processedRequests ?? throw new global::System.ArgumentNullException(nameof(processedRequests));
             this.UnprocessedRequests = unprocessedRequests ?? throw new global::System.ArgumentNullException(nameof(unprocessedRequests));

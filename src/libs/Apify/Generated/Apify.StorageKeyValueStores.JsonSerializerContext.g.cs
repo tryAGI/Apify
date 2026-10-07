@@ -26,9 +26,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess), TypeInfoPropertyName = "GeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreStats))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStore))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreResource))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateStoreRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateKeyValueStoreRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreKey))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeys))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.KeyValueStoreKey>))]
@@ -38,7 +38,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StorageOwnership), TypeInfoPropertyName = "StorageOwnership2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeyValueStores), TypeInfoPropertyName = "ListOfKeyValueStores2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeyValueStoresVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.KeyValueStore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.KeyValueStoreResource>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfKeyValueStoresResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreRecordPutContentEncoding), TypeInfoPropertyName = "KeyValueStoreRecordPutContentEncoding2")]
@@ -55,7 +55,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreRecordPutContentEncoding?), TypeInfoPropertyName = "NullableKeyValueStoreRecordPutContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.KeyValueStoreRecordPostContentEncoding?), TypeInfoPropertyName = "NullableKeyValueStoreRecordPostContentEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.KeyValueStoreKey>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.KeyValueStore>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.KeyValueStoreResource>))]
     internal sealed partial class StorageKeyValueStoresSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

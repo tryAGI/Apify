@@ -19,7 +19,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.KeyValueStore> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.KeyValueStoreResource> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,7 +38,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfKeyValueStoresVariant2(
-            global::System.Collections.Generic.IList<global::Apify.KeyValueStore> items,
+            global::System.Collections.Generic.IList<global::Apify.KeyValueStoreResource> items,
             bool? unnamed)
         {
             this.Unnamed = unnamed;

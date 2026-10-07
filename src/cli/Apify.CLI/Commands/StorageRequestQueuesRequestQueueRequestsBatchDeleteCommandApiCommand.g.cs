@@ -110,7 +110,7 @@ either of them to identify the request.
                         var queueId = parseResult.GetRequiredValue(QueueId);
                         var contentType = parseResult.GetRequiredValue(ContentType);
                         var clientKey = parseResult.GetValue(ClientKey);
-                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete>>(
+                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestToDelete>>(
                             parseResult,
                             Input,
                             RequestJson,

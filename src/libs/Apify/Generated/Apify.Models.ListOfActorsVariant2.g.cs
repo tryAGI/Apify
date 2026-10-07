@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.ActorShort> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.ActorListItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfActorsVariant2(
-            global::System.Collections.Generic.IList<global::Apify.ActorShort> items)
+            global::System.Collections.Generic.IList<global::Apify.ActorListItem> items)
         {
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }

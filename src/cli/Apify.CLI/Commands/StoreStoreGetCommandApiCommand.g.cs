@@ -81,7 +81,7 @@ full-permission Actors without a large user base). Set to `true` to
 bypass this safety filtering and include all Actors in the results.
 ");
 
-                    private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfActorsInStoreResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfStoreActorsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -97,7 +97,7 @@ bypass this safety filtering and include all Actors in the results.
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.ListOfActorsInStoreResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.ListOfStoreActorsResponse value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

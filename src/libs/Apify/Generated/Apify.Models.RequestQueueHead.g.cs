@@ -34,7 +34,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.HeadRequest> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.RequestQueueHeadItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -64,7 +64,7 @@ namespace Apify
             int limit,
             global::System.DateTime queueModifiedAt,
             bool hadMultipleClients,
-            global::System.Collections.Generic.IList<global::Apify.HeadRequest> items)
+            global::System.Collections.Generic.IList<global::Apify.RequestQueueHeadItem> items)
         {
             this.Limit = limit;
             this.QueueModifiedAt = queueModifiedAt;

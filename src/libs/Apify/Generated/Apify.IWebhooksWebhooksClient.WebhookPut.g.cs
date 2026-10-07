@@ -28,7 +28,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.WebhookResponse> WebhookPutAsync(
             string webhookId,
 
-            global::Apify.WebhookUpdate request,
+            global::Apify.UpdateWebhookRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -55,7 +55,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.WebhookResponse>> WebhookPutAsResponseAsync(
             string webhookId,
 
-            global::Apify.WebhookUpdate request,
+            global::Apify.UpdateWebhookRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>

@@ -28,12 +28,12 @@ namespace Apify
         partial void PrepareKeyValueStorePutArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string storeId,
-            global::Apify.UpdateStoreRequest request);
+            global::Apify.UpdateKeyValueStoreRequest request);
         partial void PrepareKeyValueStorePutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string storeId,
-            global::Apify.UpdateStoreRequest request);
+            global::Apify.UpdateKeyValueStoreRequest request);
         partial void ProcessKeyValueStorePutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -60,7 +60,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.KeyValueStoreResponse> KeyValueStorePutAsync(
             string storeId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -91,7 +91,7 @@ namespace Apify
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>> KeyValueStorePutAsResponseAsync(
             string storeId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -772,7 +772,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.UpdateStoreRequest
+            var __request = new global::Apify.UpdateKeyValueStoreRequest
             {
                 Name = name,
                 GeneralAccess = generalAccess,

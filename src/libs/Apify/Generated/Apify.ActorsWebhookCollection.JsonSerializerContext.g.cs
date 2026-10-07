@@ -26,13 +26,13 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookEventType), TypeInfoPropertyName = "WebhookEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookCondition))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchStatus), TypeInfoPropertyName = "WebhookDispatchStatus2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ExampleWebhookDispatch))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookLastDispatch))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookStats))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookShort))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.WebhookEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfWebhooks), TypeInfoPropertyName = "ListOfWebhooks2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfWebhooksVariant2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.WebhookShort>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.WebhookListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfWebhooksResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
@@ -43,7 +43,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchStatus?), TypeInfoPropertyName = "NullableWebhookDispatchStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfWebhooks?), TypeInfoPropertyName = "NullableListOfWebhooks2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookEventType>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookShort>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookListItem>))]
     internal sealed partial class ActorsWebhookCollectionSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

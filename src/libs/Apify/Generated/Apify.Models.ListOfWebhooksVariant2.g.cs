@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.WebhookShort> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.WebhookListItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfWebhooksVariant2(
-            global::System.Collections.Generic.IList<global::Apify.WebhookShort> items)
+            global::System.Collections.Generic.IList<global::Apify.WebhookListItem> items)
         {
             this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }

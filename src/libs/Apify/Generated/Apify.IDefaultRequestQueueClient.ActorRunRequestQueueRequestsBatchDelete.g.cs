@@ -24,7 +24,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.BatchDeleteResponse> ActorRunRequestQueueRequestsBatchDeleteAsync(
             string runId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
@@ -49,7 +49,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.BatchDeleteResponse>> ActorRunRequestQueueRequestsBatchDeleteAsResponseAsync(
             string runId,
 
-            global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete> request,
+            global::System.Collections.Generic.IList<global::Apify.RequestToDelete> request,
             string contentType = "application/json",
             string? clientKey = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,

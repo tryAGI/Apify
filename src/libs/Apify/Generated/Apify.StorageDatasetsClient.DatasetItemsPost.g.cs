@@ -386,19 +386,19 @@ namespace Apify
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>? __value_400 = null;
+                                global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -407,7 +407,7 @@ namespace Apify
                                 }
 
 
-                                throw global::Apify.ApiException<global::Apify.AnyOf<global::Apify.PutItemResponseError, global::Apify.ErrorResponse>?>.Create(
+                                throw global::Apify.ApiException<global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>?>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,

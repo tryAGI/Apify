@@ -13,7 +13,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Actor Data { get; set; }
+        public required global::Apify.ActorResource Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,7 +29,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ActorResponse(
-            global::Apify.Actor data)
+            global::Apify.ActorResource data)
         {
             this.Data = data ?? throw new global::System.ArgumentNullException(nameof(data));
         }

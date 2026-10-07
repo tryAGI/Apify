@@ -12,7 +12,7 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStorePutComman
     {
         Description = @"Actor run ID.",
     };
-    private static readonly UpdateStoreRequestOptionSet UpdateStoreRequestOptionSetOptions = UpdateStoreRequestOptionSet.Create();
+    private static readonly UpdateKeyValueStoreRequestOptionSet UpdateKeyValueStoreRequestOptionSetOptions = UpdateKeyValueStoreRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -61,8 +61,8 @@ passed in the PUT payload.
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the
 [Update store](/api/v2/key-value-store-put) endpoint.
 ");
-                        command.Arguments.Add(RunId);                        command.Options.Add(UpdateStoreRequestOptionSetOptions.NameOption);
-                        command.Options.Add(UpdateStoreRequestOptionSetOptions.GeneralAccess);
+                        command.Arguments.Add(RunId);                        command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.NameOption);
+                        command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -81,15 +81,15 @@ This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and t
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateStoreRequest>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateKeyValueStoreRequest>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Apify.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var runId = parseResult.GetRequiredValue(RunId);                        var name = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
-                        var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateStoreRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateStoreRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
+                        var runId = parseResult.GetRequiredValue(RunId);                        var name = CliRuntime.WasSpecified(parseResult, UpdateKeyValueStoreRequestOptionSetOptions.NameOption) ? parseResult.GetValue(UpdateKeyValueStoreRequestOptionSetOptions.NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
+                        var generalAccess = CliRuntime.WasSpecified(parseResult, UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess) ? parseResult.GetValue(UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess) : (__requestBase is { } __GeneralAccessBaseValue ? __GeneralAccessBaseValue.GeneralAccess : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

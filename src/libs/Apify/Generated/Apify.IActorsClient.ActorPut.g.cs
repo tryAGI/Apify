@@ -228,7 +228,7 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos = default,
             global::System.Collections.Generic.IList<string>? categories = default,
             global::Apify.DefaultRunOptions? defaultRunOptions = default,
-            global::System.Collections.Generic.Dictionary<string, global::Apify.BuildTag?>? taggedBuilds = default,
+            global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>? taggedBuilds = default,
             global::Apify.ActorStandby? actorStandby = default,
             global::Apify.ExampleRunInput? exampleRunInput = default,
             bool? isDeprecated = default,

@@ -24,7 +24,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
-        public global::Apify.SchemaValidationErrorData? Data { get; set; }
+        public global::Apify.DatasetSchemaValidationErrorData? Data { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -48,7 +48,7 @@ namespace Apify
         public DatasetSchemaValidationError(
             string? type,
             string? message,
-            global::Apify.SchemaValidationErrorData? data)
+            global::Apify.DatasetSchemaValidationErrorData? data)
         {
             this.Type = type;
             this.Message = message;

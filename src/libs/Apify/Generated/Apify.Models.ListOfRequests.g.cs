@@ -15,7 +15,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.Request> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.RequestResource> Items { get; set; }
 
         /// <summary>
         /// The maximum number of requests returned in this response.
@@ -68,7 +68,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListOfRequests(
-            global::System.Collections.Generic.IList<global::Apify.Request> items,
+            global::System.Collections.Generic.IList<global::Apify.RequestResource> items,
             int limit,
             string? cursor,
             string? nextCursor)

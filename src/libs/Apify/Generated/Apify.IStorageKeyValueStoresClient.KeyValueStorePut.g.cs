@@ -21,7 +21,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.KeyValueStoreResponse> KeyValueStorePutAsync(
             string storeId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -41,7 +41,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.KeyValueStoreResponse>> KeyValueStorePutAsResponseAsync(
             string storeId,
 
-            global::Apify.UpdateStoreRequest request,
+            global::Apify.UpdateKeyValueStoreRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>

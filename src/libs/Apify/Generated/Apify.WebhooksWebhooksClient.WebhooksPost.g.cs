@@ -27,11 +27,11 @@ namespace Apify
             };
         partial void PrepareWebhooksPostArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Apify.WebhookCreate request);
+            global::Apify.CreateWebhookRequest request);
         partial void PrepareWebhooksPostRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Apify.WebhookCreate request);
+            global::Apify.CreateWebhookRequest request);
         partial void ProcessWebhooksPostResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -95,7 +95,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.WebhookResponse> WebhooksPostAsync(
 
-            global::Apify.WebhookCreate request,
+            global::Apify.CreateWebhookRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -162,7 +162,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.WebhookResponse>> WebhooksPostAsResponseAsync(
 
-            global::Apify.WebhookCreate request,
+            global::Apify.CreateWebhookRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -894,7 +894,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.WebhookCreate
+            var __request = new global::Apify.CreateWebhookRequest
             {
                 IsAdHoc = isAdHoc,
                 EventTypes = eventTypes,

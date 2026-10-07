@@ -53,7 +53,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.LockedHeadRequest> Items { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.LockedRequestQueueHeadItem> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -93,7 +93,7 @@ namespace Apify
             global::System.DateTime queueModifiedAt,
             bool hadMultipleClients,
             int lockSecs,
-            global::System.Collections.Generic.IList<global::Apify.LockedHeadRequest> items,
+            global::System.Collections.Generic.IList<global::Apify.LockedRequestQueueHeadItem> items,
             bool? queueHasLockedRequests,
             string? clientKey)
         {

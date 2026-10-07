@@ -19,7 +19,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.ScheduleResponse> SchedulesPostAsync(
 
-            global::Apify.ScheduleCreate request,
+            global::Apify.CreateOrUpdateScheduleRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -37,7 +37,7 @@ namespace Apify
         /// <exception cref="global::Apify.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ScheduleResponse>> SchedulesPostAsResponseAsync(
 
-            global::Apify.ScheduleCreate request,
+            global::Apify.CreateOrUpdateScheduleRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>

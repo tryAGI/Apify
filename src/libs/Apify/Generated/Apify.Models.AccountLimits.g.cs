@@ -27,7 +27,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("current")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.Current Current { get; set; }
+        public required global::Apify.CurrentUsage Current { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -47,7 +47,7 @@ namespace Apify
         public AccountLimits(
             global::Apify.UsageCycle monthlyUsageCycle,
             global::Apify.Limits limits,
-            global::Apify.Current current)
+            global::Apify.CurrentUsage current)
         {
             this.MonthlyUsageCycle = monthlyUsageCycle ?? throw new global::System.ArgumentNullException(nameof(monthlyUsageCycle));
             this.Limits = limits ?? throw new global::System.ArgumentNullException(nameof(limits));

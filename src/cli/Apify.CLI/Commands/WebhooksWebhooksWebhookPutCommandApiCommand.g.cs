@@ -146,7 +146,7 @@ info](#/introduction/authentication)).
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.WebhookUpdate>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateWebhookRequest>(
                             parseResult,
                             Input,
                             RequestJson,

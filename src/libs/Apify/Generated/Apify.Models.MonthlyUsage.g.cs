@@ -27,7 +27,7 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dailyServiceUsages")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Apify.DailyServiceUsages> DailyServiceUsages { get; set; }
+        public required global::System.Collections.Generic.IList<global::Apify.DailyServiceUsage> DailyServiceUsages { get; set; }
 
         /// <summary>
         ///
@@ -65,7 +65,7 @@ namespace Apify
         public MonthlyUsage(
             global::Apify.UsageCycle usageCycle,
             global::System.Collections.Generic.Dictionary<string, global::Apify.UsageItem> monthlyServiceUsage,
-            global::System.Collections.Generic.IList<global::Apify.DailyServiceUsages> dailyServiceUsages,
+            global::System.Collections.Generic.IList<global::Apify.DailyServiceUsage> dailyServiceUsages,
             double totalUsageCreditsUsdBeforeVolumeDiscount,
             double totalUsageCreditsUsdAfterVolumeDiscount)
         {

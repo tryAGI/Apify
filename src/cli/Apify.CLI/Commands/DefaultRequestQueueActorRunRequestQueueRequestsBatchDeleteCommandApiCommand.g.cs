@@ -103,7 +103,7 @@ This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and th
                         var runId = parseResult.GetRequiredValue(RunId);
                         var contentType = parseResult.GetRequiredValue(ContentType);
                         var clientKey = parseResult.GetValue(ClientKey);
-                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestDraftDelete>>(
+                        var request = await CliRuntime.ReadRequestAsync<global::System.Collections.Generic.IList<global::Apify.RequestToDelete>>(
                             parseResult,
                             Input,
                             RequestJson,
