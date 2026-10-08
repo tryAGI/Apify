@@ -23,7 +23,8 @@ internal static partial class ActorsActorBuildsActorsBuildsPostCommandApiCommand
     private static Option<bool?> UseCache { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--use-cache",
         description: @"If `true` or `1`, the system will use a cache to speed up the build
-process. By default, cache is not used.
+process. Pass `false` or `0` to build without the cache. By default,
+cache is used.
 ");
 
     private static Option<bool?> BetaPackages { get; } = CliRuntime.CreateNullableBoolOption(

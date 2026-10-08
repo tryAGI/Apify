@@ -64,7 +64,8 @@ namespace Apify
         /// Example: 0.0
         /// </param>
         /// <param name="useCache">
-        /// Example: true
+        /// Default Value: true<br/>
+        /// Example: false
         /// </param>
         /// <param name="betaPackages">
         /// Example: true
@@ -114,7 +115,8 @@ namespace Apify
         /// Example: 0.0
         /// </param>
         /// <param name="useCache">
-        /// Example: true
+        /// Default Value: true<br/>
+        /// Example: false
         /// </param>
         /// <param name="betaPackages">
         /// Example: true
