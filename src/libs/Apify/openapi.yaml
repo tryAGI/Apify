@@ -2416,12 +2416,13 @@
           {
             "name": "useCache",
             "in": "query",
-            "description": "If `true` or `1`, the system will use a cache to speed up the build\nprocess. By default, cache is not used.\n",
+            "description": "If `true` or `1`, the system will use a cache to speed up the build\nprocess. Pass `false` or `0` to build without the cache. By default,\ncache is used.\n",
             "style": "form",
             "explode": true,
             "schema": {
               "type": "boolean",
-              "example": true
+              "default": true,
+              "example": false
             }
           },
           {
