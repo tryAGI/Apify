@@ -41,7 +41,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.VersionResponse> ActorVersionsPostAsync(
             string actorId,
 
-            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.CreateVersionRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -81,7 +81,7 @@ namespace Apify
         global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.VersionResponse>> ActorVersionsPostAsResponseAsync(
             string actorId,
 
-            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.CreateVersionRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -146,9 +146,9 @@ namespace Apify
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Apify.VersionResponse> ActorVersionsPostAsync(
             string actorId,
-            string? versionNumber = default,
-            global::Apify.VersionSourceType? sourceType = default,
-            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars = default,
+            string versionNumber,
+            global::Apify.WritableVersionSourceType sourceType,
+            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars = default,
             bool? applyEnvVarsToBuild = default,
             string? buildTag = default,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles = default,

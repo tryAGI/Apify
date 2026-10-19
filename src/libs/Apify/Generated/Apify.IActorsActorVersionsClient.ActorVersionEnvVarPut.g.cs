@@ -103,6 +103,15 @@ namespace Apify
         /// <param name="envVarName">
         /// Example: MY_ENV_VAR
         /// </param>
+        /// <param name="name">
+        /// The name of the environment variable. Can't contain `=`.
+        /// </param>
+        /// <param name="value">
+        /// The value of the environment variable.
+        /// </param>
+        /// <param name="isSecret">
+        /// Whether the environment variable is encrypted. Secret values aren't returned by the API.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -110,6 +119,9 @@ namespace Apify
             string actorId,
             string versionNumber,
             string envVarName,
+            string name,
+            string value,
+            bool? isSecret = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

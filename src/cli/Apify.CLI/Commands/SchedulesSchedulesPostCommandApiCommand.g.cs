@@ -13,6 +13,8 @@ internal static partial class SchedulesSchedulesPostCommandApiCommand
         Description = @"",
     };
     private static readonly CreateOrUpdateScheduleRequestOptionSet CreateOrUpdateScheduleRequestOptionSetOptions = CreateOrUpdateScheduleRequestOptionSet.Create();
+
+    private static readonly ScheduleNotificationsOptionSet NotificationsOptions = ScheduleNotificationsOptionSet.Create(@"notifications");
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -70,7 +72,7 @@ info](#/introduction/authentication)).
                         command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.CronExpression);
                         command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.Timezone);
                         command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption);
-                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.Title);
+                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.Title);                        command.Options.Add(NotificationsOptions.Email);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -103,6 +105,17 @@ info](#/introduction/authentication)).
                         var timezone = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.Timezone) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.Timezone) : (__requestBase is { } __TimezoneBaseValue ? __TimezoneBaseValue.Timezone : default);
                         var description = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var title = CliRuntime.WasSpecified(parseResult, CreateOrUpdateScheduleRequestOptionSetOptions.Title) ? parseResult.GetValue(CreateOrUpdateScheduleRequestOptionSetOptions.Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
+
+                        var __NotificationsBase = __requestBase is { } __NotificationsBaseValue ? __NotificationsBaseValue.Notifications : default;                        var notificationsEmail = CliRuntime.WasSpecified(parseResult, NotificationsOptions.Email) ? parseResult.GetValue(NotificationsOptions.Email) : (__NotificationsBase is { } __NotificationsemailBaseValue ? __NotificationsemailBaseValue.Email : default);
+                        var __NotificationsSpecified = CliRuntime.WasSpecified(parseResult, NotificationsOptions.Email);
+                        var notifications =
+                            __NotificationsSpecified || __NotificationsBase is not null
+                                ? new global::Apify.ScheduleNotifications
+                                {
+	                                Email = notificationsEmail,
+
+                                }
+                                : __NotificationsBase;
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -115,6 +128,7 @@ info](#/introduction/authentication)).
                                     timezone: timezone,
                                     description: description,
                                     title: title,
+                                    notifications: notifications,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

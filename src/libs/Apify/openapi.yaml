@@ -966,7 +966,6 @@
                   "value": {
                     "name": "MyActor",
                     "isPublic": false,
-                    "versions": [],
                     "taggedBuilds": {
                       "latest": {
                         "buildId": "z2EryhbfhgSyqj6Hn"
@@ -979,7 +978,6 @@
                   "value": {
                     "name": "MyActor",
                     "isPublic": false,
-                    "versions": [],
                     "taggedBuilds": {
                       "latest": null
                     }
@@ -990,7 +988,6 @@
                   "value": {
                     "name": "MyActor",
                     "isPublic": false,
-                    "versions": [],
                     "taggedBuilds": {
                       "latest": {
                         "buildId": "z2EryhbfhgSyqj6Hn"
@@ -1297,7 +1294,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrUpdateVersionRequest"
+                "$ref": "#/components/schemas/CreateVersionRequest"
               },
               "example": {
                 "versionNumber": "0.1",
@@ -1441,7 +1438,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrUpdateVersionRequest"
+                "$ref": "#/components/schemas/UpdateVersionRequest"
               },
               "example": {
                 "versionNumber": "0.0",
@@ -1533,7 +1530,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateOrUpdateVersionRequest"
+                "$ref": "#/components/schemas/UpdateVersionRequest"
               },
               "example": {
                 "versionNumber": "0.0",
@@ -20872,21 +20869,33 @@
           }
         }
       },
-      "VersionSourceType": {
-        "title": "VersionSourceType",
+      "ActorPermissionLevel": {
+        "type": "string",
+        "description": "Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).\n",
+        "enum": [
+          "LIMITED_PERMISSIONS",
+          "FULL_PERMISSIONS"
+        ],
+        "examples": [
+          "LIMITED_PERMISSIONS"
+        ]
+      },
+      "WritableVersionSourceType": {
+        "title": "WritableVersionSourceType",
+        "description": "The version source types accepted in request bodies. Same as `VersionSourceType`, without `SOURCE_CODE`.",
         "enum": [
           "SOURCE_FILES",
           "GIT_REPO",
           "TARBALL",
-          "GITHUB_GIST",
-          "SOURCE_CODE"
+          "GITHUB_GIST"
         ],
         "type": "string"
       },
-      "EnvVar": {
-        "title": "EnvVar",
+      "EnvVarRequest": {
+        "title": "EnvVarRequest",
         "required": [
-          "name"
+          "name",
+          "value"
         ],
         "type": "object",
         "properties": {
@@ -20895,14 +20904,14 @@
             "examples": [
               "MY_ENV_VAR"
             ],
-            "description": "The name of the environment variable."
+            "description": "The name of the environment variable. Can't contain `=`."
           },
           "value": {
             "type": "string",
             "examples": [
               "my-value"
             ],
-            "description": "The value of the environment variable. If `isSecret` is `true`, this value isn't returned by the API."
+            "description": "The value of the environment variable."
           },
           "isSecret": {
             "type": [
@@ -20993,45 +21002,31 @@
           ]
         }
       },
-      "Version": {
-        "title": "Version",
-        "type": "object",
+      "CreateVersionRequest": {
+        "title": "CreateVersionRequest",
         "required": [
           "versionNumber",
           "sourceType"
         ],
+        "type": "object",
         "properties": {
           "versionNumber": {
             "type": "string",
             "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
             "examples": [
-              "0.0"
+              "1.6"
             ],
             "description": "The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning."
           },
           "sourceType": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/VersionSourceType"
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "$ref": "#/components/schemas/WritableVersionSourceType",
             "description": "Where the source code of the version lives."
           },
           "envVars": {
-            "anyOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EnvVar"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EnvVarRequest"
+            },
             "description": "Environment variables for the version."
           },
           "applyEnvVarsToBuild": {
@@ -21059,38 +21054,18 @@
             "description": "Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders."
           },
           "gitRepoUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "description": "URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`."
           },
           "tarballUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "URL to download the source code from as a tarball or ZIP file. Applies when the `sourceType` is `TARBALL`."
+            "type": "string",
+            "description": "URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`."
           },
           "gitHubGistUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
           }
         }
-      },
-      "ActorPermissionLevel": {
-        "type": "string",
-        "description": "Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).\n",
-        "enum": [
-          "LIMITED_PERMISSIONS",
-          "FULL_PERMISSIONS"
-        ],
-        "examples": [
-          "LIMITED_PERMISSIONS"
-        ]
       },
       "DefaultRunOptions": {
         "title": "DefaultRunOptions",
@@ -21259,14 +21234,14 @@
             "description": "Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO."
           },
           "isPublic": {
-            "type": [
-              "boolean",
-              "null"
-            ],
+            "type": "boolean",
             "examples": [
               false
             ],
-            "description": "Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you."
+            "description": "Whether the Actor is available to users in Apify Store. A new Actor is always private. To publish it, build it first, then update it with `isPublic` set to `true`."
+          },
+          "actorPermissionLevel": {
+            "$ref": "#/components/schemas/ActorPermissionLevel"
           },
           "seoTitle": {
             "type": [
@@ -21296,17 +21271,11 @@
             "deprecated": true
           },
           "versions": {
-            "anyOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Version"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/CreateVersionRequest"
+            },
             "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
           },
           "categories": {
@@ -21355,6 +21324,138 @@
               "null"
             ],
             "description": "Whether the Actor is deprecated."
+          }
+        }
+      },
+      "VersionSourceType": {
+        "title": "VersionSourceType",
+        "enum": [
+          "SOURCE_FILES",
+          "GIT_REPO",
+          "TARBALL",
+          "GITHUB_GIST",
+          "SOURCE_CODE"
+        ],
+        "type": "string"
+      },
+      "EnvVar": {
+        "title": "EnvVar",
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": [
+              "MY_ENV_VAR"
+            ],
+            "description": "The name of the environment variable."
+          },
+          "value": {
+            "type": "string",
+            "examples": [
+              "my-value"
+            ],
+            "description": "The value of the environment variable. If `isSecret` is `true`, this value isn't returned by the API."
+          },
+          "isSecret": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ],
+            "description": "Whether the environment variable is encrypted. Secret values aren't returned by the API."
+          }
+        }
+      },
+      "Version": {
+        "title": "Version",
+        "type": "object",
+        "required": [
+          "versionNumber",
+          "sourceType"
+        ],
+        "properties": {
+          "versionNumber": {
+            "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
+            "examples": [
+              "0.0"
+            ],
+            "description": "The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning."
+          },
+          "sourceType": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/VersionSourceType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Where the source code of the version lives."
+          },
+          "envVars": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EnvVar"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Environment variables for the version."
+          },
+          "applyEnvVarsToBuild": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ],
+            "description": "Whether to inject the environment variables at build time."
+          },
+          "buildTag": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "latest"
+            ],
+            "description": "The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag."
+          },
+          "sourceFiles": {
+            "$ref": "#/components/schemas/VersionSourceFiles",
+            "description": "Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders."
+          },
+          "gitRepoUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`."
+          },
+          "tarballUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "URL to download the source code from as a tarball or ZIP file. Applies when the `sourceType` is `TARBALL`."
+          },
+          "gitHubGistUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
           }
         }
       },
@@ -21995,93 +22096,6 @@
           }
         }
       },
-      "CreateOrUpdateVersionRequest": {
-        "title": "CreateOrUpdateVersionRequest",
-        "type": "object",
-        "properties": {
-          "versionNumber": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
-            "examples": [
-              "1.6"
-            ],
-            "description": "The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning."
-          },
-          "sourceType": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/VersionSourceType"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Where the source code of the version lives."
-          },
-          "envVars": {
-            "anyOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EnvVar"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "description": "Environment variables for the version."
-          },
-          "applyEnvVarsToBuild": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "examples": [
-              false
-            ],
-            "description": "Whether to inject the environment variables at build time."
-          },
-          "buildTag": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "latest"
-            ],
-            "description": "The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag."
-          },
-          "sourceFiles": {
-            "$ref": "#/components/schemas/VersionSourceFiles",
-            "description": "Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders."
-          },
-          "gitRepoUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`."
-          },
-          "tarballUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`."
-          },
-          "gitHubGistUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
-          }
-        }
-      },
       "UpdatedBuildProperty": {
         "title": "UpdatedBuildProperty",
         "type": [
@@ -22128,14 +22142,7 @@
             "description": "Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you."
           },
           "actorPermissionLevel": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ActorPermissionLevel"
-              },
-              {
-                "type": "null"
-              }
-            ]
+            "$ref": "#/components/schemas/ActorPermissionLevel"
           },
           "seoTitle": {
             "type": [
@@ -22176,8 +22183,9 @@
           },
           "versions": {
             "type": "array",
+            "minItems": 1,
             "items": {
-              "$ref": "#/components/schemas/CreateOrUpdateVersionRequest"
+              "$ref": "#/components/schemas/CreateVersionRequest"
             },
             "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
           },
@@ -22307,6 +22315,67 @@
           }
         }
       },
+      "UpdateVersionRequest": {
+        "title": "UpdateVersionRequest",
+        "type": "object",
+        "properties": {
+          "versionNumber": {
+            "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])$",
+            "examples": [
+              "1.6"
+            ],
+            "description": "The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning."
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WritableVersionSourceType",
+            "description": "Where the source code of the version lives."
+          },
+          "envVars": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EnvVarRequest"
+            },
+            "description": "Environment variables for the version."
+          },
+          "applyEnvVarsToBuild": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ],
+            "description": "Whether to inject the environment variables at build time."
+          },
+          "buildTag": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "latest"
+            ],
+            "description": "The tag name to apply to a successful build of this version. Can be `null` when the version has no build tag."
+          },
+          "sourceFiles": {
+            "$ref": "#/components/schemas/VersionSourceFiles",
+            "description": "Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders."
+          },
+          "gitRepoUrl": {
+            "type": "string",
+            "description": "URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`."
+          },
+          "tarballUrl": {
+            "type": "string",
+            "description": "URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`."
+          },
+          "gitHubGistUrl": {
+            "type": "string",
+            "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
+          }
+        }
+      },
       "ListOfEnvVars": {
         "title": "ListOfEnvVars",
         "type": "object",
@@ -22341,19 +22410,6 @@
             "$ref": "#/components/schemas/ListOfEnvVars"
           }
         }
-      },
-      "EnvVarRequest": {
-        "title": "EnvVarRequest",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/EnvVar"
-          },
-          {
-            "required": [
-              "value"
-            ]
-          }
-        ]
       },
       "EnvVarResponse": {
         "title": "EnvVarResponse",
@@ -28059,6 +28115,19 @@
           }
         }
       },
+      "ScheduleNotifications": {
+        "title": "ScheduleNotifications",
+        "type": "object",
+        "description": "Notification settings for this schedule.",
+        "properties": {
+          "email": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          }
+        }
+      },
       "ScheduleActionRunInput": {
         "title": "ScheduleActionRunInput",
         "type": "object",
@@ -28233,6 +28302,9 @@
               "null"
             ]
           },
+          "notifications": {
+            "$ref": "#/components/schemas/ScheduleNotifications"
+          },
           "actions": {
             "type": [
               "array",
@@ -28373,17 +28445,7 @@
                 ]
               },
               "notifications": {
-                "title": "ScheduleNotifications",
-                "type": "object",
-                "description": "Notification settings for this schedule.",
-                "properties": {
-                  "email": {
-                    "type": "boolean",
-                    "examples": [
-                      true
-                    ]
-                  }
-                }
+                "$ref": "#/components/schemas/ScheduleNotifications"
               },
               "actions": {
                 "type": "array",

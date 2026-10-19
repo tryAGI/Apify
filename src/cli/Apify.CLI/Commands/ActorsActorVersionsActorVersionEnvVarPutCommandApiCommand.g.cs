@@ -24,6 +24,7 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarPutCommandApi
     {
         Description = @"The name of the environment variable",
     };
+    private static readonly EnvVarRequestOptionSet EnvVarRequestOptionSetOptions = EnvVarRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -85,7 +86,9 @@ endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);
-                        command.Arguments.Add(EnvVarName);
+                        command.Arguments.Add(EnvVarName);                        command.Options.Add(EnvVarRequestOptionSetOptions.NameOption);
+                        command.Options.Add(EnvVarRequestOptionSetOptions.Value);
+                        command.Options.Add(EnvVarRequestOptionSetOptions.IsSecret);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -95,25 +98,27 @@ endpoint.
               var hasRequestJson = result.GetResult(RequestJson) is not null;
               var hasRequestFile = result.GetResult(RequestFile) is not null;
               var specifiedCount = (hasInput ? 1 : 0) + (hasRequestJson ? 1 : 0) + (hasRequestFile ? 1 : 0);
-              if (specifiedCount != 1)
+              if (specifiedCount > 1)
               {
-                  result.AddError(@"Specify exactly one of --input, --request-json, or --request-file.");
+                  result.AddError(@"Specify at most one of --input, --request-json, or --request-file.");
               }
           });
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var actorId = parseResult.GetRequiredValue(ActorId);
-                        var versionNumber = parseResult.GetRequiredValue(VersionNumber);
-                        var envVarName = parseResult.GetRequiredValue(EnvVarName);
-                        var request = await CliRuntime.ReadRequestAsync<global::Apify.EnvVarRequest>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.EnvVarRequest>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Apify.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
+                        var actorId = parseResult.GetRequiredValue(ActorId);
+                        var versionNumber = parseResult.GetRequiredValue(VersionNumber);
+                        var envVarName = parseResult.GetRequiredValue(EnvVarName);                        var name = parseResult.GetRequiredValue(EnvVarRequestOptionSetOptions.NameOption);
+                        var value = parseResult.GetRequiredValue(EnvVarRequestOptionSetOptions.Value);
+                        var isSecret = CliRuntime.WasSpecified(parseResult, EnvVarRequestOptionSetOptions.IsSecret) ? parseResult.GetValue(EnvVarRequestOptionSetOptions.IsSecret) : (__requestBase is { } __IsSecretBaseValue ? __IsSecretBaseValue.IsSecret : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -121,7 +126,9 @@ endpoint.
                                     actorId: actorId,
                                     versionNumber: versionNumber,
                                     envVarName: envVarName,
-                                    request: request,
+                                    name: name,
+                                    value: value,
+                                    isSecret: isSecret,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

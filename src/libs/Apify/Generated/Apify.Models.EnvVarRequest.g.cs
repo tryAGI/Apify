@@ -1,4 +1,3 @@
-#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -7,266 +6,65 @@ namespace Apify
     /// <summary>
     ///
     /// </summary>
-    public readonly partial struct EnvVarRequest : global::System.IEquatable<EnvVarRequest>
+    public sealed partial class EnvVarRequest
     {
         /// <summary>
-        ///
+        /// The name of the environment variable. Can't contain `=`.
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::Apify.EnvVar? EnvVar { get; init; }
-#else
-        public global::Apify.EnvVar? EnvVar { get; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Name { get; set; }
+
+        /// <summary>
+        /// The value of the environment variable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Value { get; set; }
+
+        /// <summary>
+        /// Whether the environment variable is encrypted. Secret values aren't returned by the API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isSecret")]
+        public bool? IsSecret { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnvVarRequest" /> class.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the environment variable. Can't contain `=`.
+        /// </param>
+        /// <param name="value">
+        /// The value of the environment variable.
+        /// </param>
+        /// <param name="isSecret">
+        /// Whether the environment variable is encrypted. Secret values aren't returned by the API.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvVar))]
-#endif
-        public bool IsEnvVar => EnvVar != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickEnvVar(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::Apify.EnvVar? value)
-        {
-            value = EnvVar;
-            return IsEnvVar;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Apify.EnvVar PickEnvVar() => EnvVar is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVar' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public object? EnvVarRequestVariant2 { get; init; }
-#else
-        public object? EnvVarRequestVariant2 { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EnvVarRequestVariant2))]
-#endif
-        public bool IsEnvVarRequestVariant2 => EnvVarRequestVariant2 != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickEnvVarRequestVariant2(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out object? value)
-        {
-            value = EnvVarRequestVariant2;
-            return IsEnvVarRequestVariant2;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public object PickEnvVarRequestVariant2() => EnvVarRequestVariant2 is { } value
-            ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'EnvVarRequestVariant2' but the value was {ToString()}.");
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator EnvVarRequest(global::Apify.EnvVar value) => new EnvVarRequest((global::Apify.EnvVar?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::Apify.EnvVar?(EnvVarRequest @this) => @this.EnvVar;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public EnvVarRequest(global::Apify.EnvVar? value)
-        {
-            EnvVar = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static EnvVarRequest FromEnvVar(global::Apify.EnvVar? value) => new EnvVarRequest(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public EnvVarRequest(
-            global::Apify.EnvVar? envVar,
-            object? envVarRequestVariant2
-            )
+            string name,
+            string value,
+            bool? isSecret)
         {
-            EnvVar = envVar;
-            EnvVarRequestVariant2 = envVarRequestVariant2;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
+            this.IsSecret = isSecret;
         }
 
         /// <summary>
-        ///
+        /// Initializes a new instance of the <see cref="EnvVarRequest" /> class.
         /// </summary>
-        public object? Object =>
-            EnvVarRequestVariant2 as object ??
-            EnvVar as object
-            ;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public override string? ToString() =>
-            EnvVar?.ToString() ??
-            EnvVarRequestVariant2?.ToString()
-            ;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool Validate()
+        public EnvVarRequest()
         {
-            return IsEnvVar && IsEnvVarRequestVariant2;
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public TResult? Match<TResult>(
-            global::System.Func<global::Apify.EnvVar, TResult>? envVar = null,
-            global::System.Func<object, TResult>? envVarRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (EnvVar is { } __value0 && envVar != null)
-            {
-                return envVar(__value0);
-            }
-            else if (EnvVarRequestVariant2 is { } __value1 && envVarRequestVariant2 != null)
-            {
-                return envVarRequestVariant2(__value1);
-            }
-
-            return default(TResult);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public void Match(
-            global::System.Action<global::Apify.EnvVar>? envVar = null,
-
-            global::System.Action<object>? envVarRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (EnvVar is { } __value0)
-            {
-                envVar?.Invoke(__value0);
-            }
-            else if (EnvVarRequestVariant2 is { } __value1)
-            {
-                envVarRequestVariant2?.Invoke(__value1);
-            }
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public void Switch(
-            global::System.Action<global::Apify.EnvVar>? envVar = null,
-            global::System.Action<object>? envVarRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (EnvVar is { } __value0)
-            {
-                envVar?.Invoke(__value0);
-            }
-            else if (EnvVarRequestVariant2 is { } __value1)
-            {
-                envVarRequestVariant2?.Invoke(__value1);
-            }
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public override int GetHashCode()
-        {
-            var fields = new object?[]
-            {
-                EnvVar,
-                typeof(global::Apify.EnvVar),
-                EnvVarRequestVariant2,
-                typeof(object),
-            };
-            const int offset = unchecked((int)2166136261);
-            const int prime = 16777619;
-            static int HashCodeAggregator(int hashCode, object? value) => value == null
-                ? (hashCode ^ 0) * prime
-                : (hashCode ^ value.GetHashCode()) * prime;
-
-            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool Equals(EnvVarRequest other)
-        {
-            return
-                global::System.Collections.Generic.EqualityComparer<global::Apify.EnvVar?>.Default.Equals(EnvVar, other.EnvVar) &&
-                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(EnvVarRequestVariant2, other.EnvVarRequestVariant2)
-                ;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static bool operator ==(EnvVarRequest obj1, EnvVarRequest obj2)
-        {
-            return global::System.Collections.Generic.EqualityComparer<EnvVarRequest>.Default.Equals(obj1, obj2);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static bool operator !=(EnvVarRequest obj1, EnvVarRequest obj2)
-        {
-            return !(obj1 == obj2);
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public override bool Equals(object? obj)
-        {
-            return obj is EnvVarRequest o && Equals(o);
-        }
     }
 }

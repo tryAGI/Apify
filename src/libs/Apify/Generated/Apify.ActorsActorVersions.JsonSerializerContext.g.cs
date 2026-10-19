@@ -20,32 +20,36 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType), TypeInfoPropertyName = "VersionSourceType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVar))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WritableVersionSourceType), TypeInfoPropertyName = "WritableVersionSourceType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVarRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat), TypeInfoPropertyName = "SourceCodeFileFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFile))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFolder))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>), TypeInfoPropertyName = "AnyOfSourceCodeFileSourceCodeFolder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateVersionRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType), TypeInfoPropertyName = "VersionSourceType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVar))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Version))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.EnvVar>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.Version>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateOrUpdateVersionRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfVersions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfVersionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateVersionRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfEnvVars))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfEnvVarsResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVarRequest), TypeInfoPropertyName = "EnvVarRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVarResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType?), TypeInfoPropertyName = "NullableVersionSourceType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WritableVersionSourceType?), TypeInfoPropertyName = "NullableWritableVersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat?), TypeInfoPropertyName = "NullableSourceCodeFileFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>?), TypeInfoPropertyName = "NullableAnyOfSourceCodeFileSourceCodeFolder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EnvVarRequest?), TypeInfoPropertyName = "NullableEnvVarRequest2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType?), TypeInfoPropertyName = "NullableVersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVarRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVar>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Version>))]
     internal sealed partial class ActorsActorVersionsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -95,7 +99,6 @@ namespace Apify
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
-            options.Converters.Add(new global::Apify.JsonConverters.EnvVarRequestJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
@@ -125,13 +128,17 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.ErrorType?)
 
-                    || typeToConvert == typeof(global::Apify.VersionSourceType)
+                    || typeToConvert == typeof(global::Apify.WritableVersionSourceType)
 
-                    || typeToConvert == typeof(global::Apify.VersionSourceType?)
+                    || typeToConvert == typeof(global::Apify.WritableVersionSourceType?)
 
                     || typeToConvert == typeof(global::Apify.SourceCodeFileFormat)
 
-                    || typeToConvert == typeof(global::Apify.SourceCodeFileFormat?);
+                    || typeToConvert == typeof(global::Apify.SourceCodeFileFormat?)
+
+                    || typeToConvert == typeof(global::Apify.VersionSourceType)
+
+                    || typeToConvert == typeof(global::Apify.VersionSourceType?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -148,14 +155,14 @@ namespace Apify
                     return new global::Apify.JsonConverters.ErrorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Apify.VersionSourceType))
+                if (typeToConvert == typeof(global::Apify.WritableVersionSourceType))
                 {
-                    return new global::Apify.JsonConverters.VersionSourceTypeJsonConverter();
+                    return new global::Apify.JsonConverters.WritableVersionSourceTypeJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Apify.VersionSourceType?))
+                if (typeToConvert == typeof(global::Apify.WritableVersionSourceType?))
                 {
-                    return new global::Apify.JsonConverters.VersionSourceTypeNullableJsonConverter();
+                    return new global::Apify.JsonConverters.WritableVersionSourceTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.SourceCodeFileFormat))
@@ -166,6 +173,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.SourceCodeFileFormat?))
                 {
                     return new global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.VersionSourceType))
+                {
+                    return new global::Apify.JsonConverters.VersionSourceTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.VersionSourceType?))
+                {
+                    return new global::Apify.JsonConverters.VersionSourceTypeNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

@@ -883,7 +883,9 @@ namespace Apify
         /// <param name="isPublic">
         /// Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.
         /// </param>
-        /// <param name="actorPermissionLevel"></param>
+        /// <param name="actorPermissionLevel">
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
+        /// </param>
         /// <param name="seoTitle">
         /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.
         /// </param>
@@ -928,7 +930,7 @@ namespace Apify
             string? seoTitle = default,
             string? seoDescription = default,
             string? title = default,
-            global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>? versions = default,
+            global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? versions = default,
             global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos = default,
             global::System.Collections.Generic.IList<string>? categories = default,
             global::Apify.DefaultRunOptions? defaultRunOptions = default,

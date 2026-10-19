@@ -19,13 +19,7 @@ internal static partial class ActorsActorVersionsActorVersionPutCommandApiComman
         Description = @"Actor version.",
     };
 
-    private static Option<global::Apify.VersionSourceType?> SourceType { get; } = new(
-        name: @"--source-type")
-    {
-        Description = @"Where the source code of the version lives.",
-    };
-
-    private static Option<global::System.Collections.Generic.IList<global::Apify.EnvVar>?> EnvVars { get; } = new(
+    private static Option<global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>?> EnvVars { get; } = new(
         name: @"--env-vars")
     {
         Description = @"Environment variables for the version.",
@@ -36,7 +30,7 @@ internal static partial class ActorsActorVersionsActorVersionPutCommandApiComman
     {
         Description = @"Applies when the `sourceType` is `SOURCE_FILES`. Represents the Actor's file structure as an array of files and folders.",
     };
-    private static readonly CreateOrUpdateVersionRequestOptionSet CreateOrUpdateVersionRequestOptionSetOptions = CreateOrUpdateVersionRequestOptionSet.Create();
+    private static readonly UpdateVersionRequestOptionSet UpdateVersionRequestOptionSetOptions = UpdateVersionRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -96,14 +90,14 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);
-                        command.Options.Add(SourceType);
                         command.Options.Add(EnvVars);
-                        command.Options.Add(SourceFiles);                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber);
-                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild);
-                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.BuildTag);
-                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl);
-                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl);
-                        command.Options.Add(CreateOrUpdateVersionRequestOptionSetOptions.GitHubGistUrl);
+                        command.Options.Add(SourceFiles);                        command.Options.Add(UpdateVersionRequestOptionSetOptions.VersionNumber);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.SourceType);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.BuildTag);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.GitRepoUrl);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.TarballUrl);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.GitHubGistUrl);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -122,7 +116,7 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.CreateOrUpdateVersionRequest>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Apify.UpdateVersionRequest>(
                             parseResult,
                             Input,
                             RequestJson,
@@ -131,24 +125,24 @@ returned by the [Get version](#/reference/actors/version-object/get-version) end
                             cancellationToken).ConfigureAwait(false);
                         var actorId = parseResult.GetRequiredValue(ActorId);
                         var versionNumber = parseResult.GetRequiredValue(VersionNumber);
-                        var sourceType = CliRuntime.WasSpecified(parseResult, SourceType) ? parseResult.GetValue(SourceType) : (__requestBase is { } __SourceTypeBaseValue ? __SourceTypeBaseValue.SourceType : default);
                         var envVars = CliRuntime.WasSpecified(parseResult, EnvVars) ? parseResult.GetValue(EnvVars) : (__requestBase is { } __EnvVarsBaseValue ? __EnvVarsBaseValue.EnvVars : default);
-                        var sourceFiles = CliRuntime.WasSpecified(parseResult, SourceFiles) ? parseResult.GetValue(SourceFiles) : (__requestBase is { } __SourceFilesBaseValue ? __SourceFilesBaseValue.SourceFiles : default);                        var requestVersionNumber = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.VersionNumber) : (__requestBase is { } __RequestVersionNumberBaseValue ? __RequestVersionNumberBaseValue.VersionNumber : default);
-                        var applyEnvVarsToBuild = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) : (__requestBase is { } __ApplyEnvVarsToBuildBaseValue ? __ApplyEnvVarsToBuildBaseValue.ApplyEnvVarsToBuild : default);
-                        var buildTag = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.BuildTag) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.BuildTag) : (__requestBase is { } __BuildTagBaseValue ? __BuildTagBaseValue.BuildTag : default);
-                        var gitRepoUrl = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.GitRepoUrl) : (__requestBase is { } __GitRepoUrlBaseValue ? __GitRepoUrlBaseValue.GitRepoUrl : default);
-                        var tarballUrl = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.TarballUrl) : (__requestBase is { } __TarballUrlBaseValue ? __TarballUrlBaseValue.TarballUrl : default);
-                        var gitHubGistUrl = CliRuntime.WasSpecified(parseResult, CreateOrUpdateVersionRequestOptionSetOptions.GitHubGistUrl) ? parseResult.GetValue(CreateOrUpdateVersionRequestOptionSetOptions.GitHubGistUrl) : (__requestBase is { } __GitHubGistUrlBaseValue ? __GitHubGistUrlBaseValue.GitHubGistUrl : default);
+                        var sourceFiles = CliRuntime.WasSpecified(parseResult, SourceFiles) ? parseResult.GetValue(SourceFiles) : (__requestBase is { } __SourceFilesBaseValue ? __SourceFilesBaseValue.SourceFiles : default);                        var requestVersionNumber = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.VersionNumber) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.VersionNumber) : (__requestBase is { } __RequestVersionNumberBaseValue ? __RequestVersionNumberBaseValue.VersionNumber : default);
+                        var sourceType = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.SourceType) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.SourceType) : (__requestBase is { } __SourceTypeBaseValue ? __SourceTypeBaseValue.SourceType : default);
+                        var applyEnvVarsToBuild = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.ApplyEnvVarsToBuild) : (__requestBase is { } __ApplyEnvVarsToBuildBaseValue ? __ApplyEnvVarsToBuildBaseValue.ApplyEnvVarsToBuild : default);
+                        var buildTag = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.BuildTag) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.BuildTag) : (__requestBase is { } __BuildTagBaseValue ? __BuildTagBaseValue.BuildTag : default);
+                        var gitRepoUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.GitRepoUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.GitRepoUrl) : (__requestBase is { } __GitRepoUrlBaseValue ? __GitRepoUrlBaseValue.GitRepoUrl : default);
+                        var tarballUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.TarballUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.TarballUrl) : (__requestBase is { } __TarballUrlBaseValue ? __TarballUrlBaseValue.TarballUrl : default);
+                        var gitHubGistUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.GitHubGistUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.GitHubGistUrl) : (__requestBase is { } __GitHubGistUrlBaseValue ? __GitHubGistUrlBaseValue.GitHubGistUrl : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.ActorsActorVersions.ActorVersionPutAsync(
                                     actorId: actorId,
                                     versionNumber: versionNumber,
-                                    sourceType: sourceType,
                                     envVars: envVars,
                                     sourceFiles: sourceFiles,
                                     requestVersionNumber: requestVersionNumber,
+                                    sourceType: sourceType,
                                     applyEnvVarsToBuild: applyEnvVarsToBuild,
                                     buildTag: buildTag,
                                     gitRepoUrl: gitRepoUrl,

@@ -27,7 +27,14 @@ internal static partial class ActorsActorsPostCommandApiCommand
 
     private static Option<bool?> IsPublic { get; } = CliRuntime.CreateNullableBoolOption(
         name: @"--is-public",
-        description: @"Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.");
+        description: @"Whether the Actor is available to users in Apify Store. A new Actor is always private. To publish it, build it first, then update it with `isPublic` set to `true`.");
+
+    private static Option<global::Apify.ActorPermissionLevel?> ActorPermissionLevel { get; } = new(
+        name: @"--actor-permission-level")
+    {
+        Description = @"Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
+",
+    };
 
     private static Option<string?> SeoTitle { get; } = new(
         name: @"--seo-title")
@@ -41,7 +48,7 @@ internal static partial class ActorsActorsPostCommandApiCommand
         Description = @"Description of the Actor to display by search engines such as Google. Recommended length is 140-156 characters.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Apify.Version>?> Versions { get; } = new(
+    private static Option<global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>?> Versions { get; } = new(
         name: @"--versions")
     {
         Description = @"An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.",
@@ -124,6 +131,7 @@ use the [Update Actor](/api/v2/actor-put) endpoint.
                         command.Options.Add(DescriptionOption);
                         command.Options.Add(Title);
                         command.Options.Add(IsPublic);
+                        command.Options.Add(ActorPermissionLevel);
                         command.Options.Add(SeoTitle);
                         command.Options.Add(SeoDescription);
                         command.Options.Add(Versions);
@@ -170,6 +178,7 @@ use the [Update Actor](/api/v2/actor-put) endpoint.
                         var description = CliRuntime.WasSpecified(parseResult, DescriptionOption) ? parseResult.GetValue(DescriptionOption) : (__requestBase is { } __DescriptionBaseValue ? __DescriptionBaseValue.Description : default);
                         var title = CliRuntime.WasSpecified(parseResult, Title) ? parseResult.GetValue(Title) : (__requestBase is { } __TitleBaseValue ? __TitleBaseValue.Title : default);
                         var isPublic = CliRuntime.WasSpecified(parseResult, IsPublic) ? parseResult.GetValue(IsPublic) : (__requestBase is { } __IsPublicBaseValue ? __IsPublicBaseValue.IsPublic : default);
+                        var actorPermissionLevel = CliRuntime.WasSpecified(parseResult, ActorPermissionLevel) ? parseResult.GetValue(ActorPermissionLevel) : (__requestBase is { } __ActorPermissionLevelBaseValue ? __ActorPermissionLevelBaseValue.ActorPermissionLevel : default);
                         var seoTitle = CliRuntime.WasSpecified(parseResult, SeoTitle) ? parseResult.GetValue(SeoTitle) : (__requestBase is { } __SeoTitleBaseValue ? __SeoTitleBaseValue.SeoTitle : default);
                         var seoDescription = CliRuntime.WasSpecified(parseResult, SeoDescription) ? parseResult.GetValue(SeoDescription) : (__requestBase is { } __SeoDescriptionBaseValue ? __SeoDescriptionBaseValue.SeoDescription : default);
                         var versions = CliRuntime.WasSpecified(parseResult, Versions) ? parseResult.GetValue(Versions) : (__requestBase is { } __VersionsBaseValue ? __VersionsBaseValue.Versions : default);
@@ -240,6 +249,7 @@ use the [Update Actor](/api/v2/actor-put) endpoint.
                                     description: description,
                                     title: title,
                                     isPublic: isPublic,
+                                    actorPermissionLevel: actorPermissionLevel,
                                     seoTitle: seoTitle,
                                     seoDescription: seoDescription,
                                     versions: versions,

@@ -29,13 +29,13 @@ namespace Apify
             global::System.Net.Http.HttpClient httpClient,
             ref string actorId,
             ref string versionNumber,
-            global::Apify.CreateOrUpdateVersionRequest request);
+            global::Apify.UpdateVersionRequest request);
         partial void PrepareActorVersionPutRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string actorId,
             string versionNumber,
-            global::Apify.CreateOrUpdateVersionRequest request);
+            global::Apify.UpdateVersionRequest request);
         partial void ProcessActorVersionPutResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -72,7 +72,7 @@ namespace Apify
             string actorId,
             string versionNumber,
 
-            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.UpdateVersionRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -114,7 +114,7 @@ namespace Apify
             string actorId,
             string versionNumber,
 
-            global::Apify.CreateOrUpdateVersionRequest request,
+            global::Apify.UpdateVersionRequest request,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -826,8 +826,8 @@ namespace Apify
             string actorId,
             string versionNumber,
             string? requestVersionNumber = default,
-            global::Apify.VersionSourceType? sourceType = default,
-            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars = default,
+            global::Apify.WritableVersionSourceType? sourceType = default,
+            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars = default,
             bool? applyEnvVarsToBuild = default,
             string? buildTag = default,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles = default,
@@ -837,7 +837,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Apify.CreateOrUpdateVersionRequest
+            var __request = new global::Apify.UpdateVersionRequest
             {
                 VersionNumber = requestVersionNumber,
                 SourceType = sourceType,

@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public sealed partial class CreateOrUpdateVersionRequest
+    public sealed partial class CreateVersionRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace Apify
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Apify.CreateOrUpdateVersionRequest? FromJson(
+        public static global::Apify.CreateVersionRequest? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Apify.CreateOrUpdateVersionRequest),
-                jsonSerializerContext) as global::Apify.CreateOrUpdateVersionRequest;
+                typeof(global::Apify.CreateVersionRequest),
+                jsonSerializerContext) as global::Apify.CreateVersionRequest;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Apify.CreateOrUpdateVersionRequest? FromJson(
+        public static global::Apify.CreateVersionRequest? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Apify.CreateOrUpdateVersionRequest? FromJson(
+        public static global::Apify.CreateVersionRequest? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Apify
                     global::Apify.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Apify.CreateOrUpdateVersionRequest>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Apify.CreateVersionRequest>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace Apify
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Apify.CreateOrUpdateVersionRequest?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Apify.CreateVersionRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Apify.CreateOrUpdateVersionRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.CreateOrUpdateVersionRequest;
+                typeof(global::Apify.CreateVersionRequest),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.CreateVersionRequest;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Apify.CreateOrUpdateVersionRequest?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Apify.CreateVersionRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace Apify
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Apify.CreateOrUpdateVersionRequest?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Apify.CreateVersionRequest?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace Apify
                     global::Apify.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Apify.CreateOrUpdateVersionRequest?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Apify.CreateVersionRequest?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

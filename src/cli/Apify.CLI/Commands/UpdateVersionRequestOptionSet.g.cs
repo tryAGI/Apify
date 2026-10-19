@@ -4,23 +4,28 @@ using System.CommandLine;
 
 namespace Apify.CLI.Commands;
 
-internal sealed record CreateOrUpdateVersionRequestOptionSet(
+internal sealed record UpdateVersionRequestOptionSet(
     Option<string?> VersionNumber,
+                     Option<global::Apify.WritableVersionSourceType?> SourceType,
                      Option<bool?> ApplyEnvVarsToBuild,
                      Option<string?> BuildTag,
                      Option<string?> GitRepoUrl,
                      Option<string?> TarballUrl,
                      Option<string?> GitHubGistUrl)
 {
-    public static CreateOrUpdateVersionRequestOptionSet Create(string? prefix = null)
+    public static UpdateVersionRequestOptionSet Create(string? prefix = null)
     {
         var normalizedPrefix = string.IsNullOrWhiteSpace(prefix)
             ? string.Empty
             : prefix.Trim().Trim('-') + "-";
-        return new CreateOrUpdateVersionRequestOptionSet(
+        return new UpdateVersionRequestOptionSet(
                         VersionNumber: new Option<string?>($"--{normalizedPrefix}version-number")
                 {
                     Description = @"The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.",
+                },
+                SourceType: new Option<global::Apify.WritableVersionSourceType?>($"--{normalizedPrefix}source-type")
+                {
+                    Description = @"Where the source code of the version lives.",
                 },
                 ApplyEnvVarsToBuild: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}apply-env-vars-to-build", description: @"Whether to inject the environment variables at build time."),
                 BuildTag: new Option<string?>($"--{normalizedPrefix}build-tag")
