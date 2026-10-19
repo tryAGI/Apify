@@ -29,9 +29,10 @@ namespace Apify
         public bool? IsPublic { get; set; }
 
         /// <summary>
-        ///
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorPermissionLevel")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorPermissionLevelJsonConverter))]
         public global::Apify.ActorPermissionLevel? ActorPermissionLevel { get; set; }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Apify
         /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
-        public global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>? Versions { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? Versions { get; set; }
 
         /// <summary>
         ///
@@ -127,7 +128,9 @@ namespace Apify
         /// <param name="isPublic">
         /// Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.
         /// </param>
-        /// <param name="actorPermissionLevel"></param>
+        /// <param name="actorPermissionLevel">
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
+        /// </param>
         /// <param name="seoTitle">
         /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.
         /// </param>
@@ -171,7 +174,7 @@ namespace Apify
             string? seoTitle,
             string? seoDescription,
             string? title,
-            global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>? versions,
+            global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? versions,
             global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? pricingInfos,
             global::System.Collections.Generic.IList<string>? categories,
             global::Apify.DefaultRunOptions? defaultRunOptions,

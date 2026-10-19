@@ -51,6 +51,12 @@ namespace Apify
         public string? Title { get; set; }
 
         /// <summary>
+        /// Notification settings for this schedule.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notifications")]
+        public global::Apify.ScheduleNotifications? Notifications { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
@@ -72,6 +78,9 @@ namespace Apify
         /// <param name="timezone"></param>
         /// <param name="description"></param>
         /// <param name="title"></param>
+        /// <param name="notifications">
+        /// Notification settings for this schedule.
+        /// </param>
         /// <param name="actions"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -84,6 +93,7 @@ namespace Apify
             string? timezone,
             string? description,
             string? title,
+            global::Apify.ScheduleNotifications? notifications,
             global::System.Collections.Generic.IList<global::Apify.ScheduleCreateAction>? actions)
         {
             this.Name = name;
@@ -93,6 +103,7 @@ namespace Apify
             this.Timezone = timezone;
             this.Description = description;
             this.Title = title;
+            this.Notifications = notifications;
             this.Actions = actions;
         }
 

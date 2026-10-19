@@ -6,7 +6,7 @@ namespace Apify
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class CreateOrUpdateVersionRequest
+    public sealed partial class UpdateVersionRequest
     {
         /// <summary>
         /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
@@ -18,13 +18,14 @@ namespace Apify
         /// Where the source code of the version lives.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sourceType")]
-        public global::Apify.VersionSourceType? SourceType { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.WritableVersionSourceTypeJsonConverter))]
+        public global::Apify.WritableVersionSourceType? SourceType { get; set; }
 
         /// <summary>
         /// Environment variables for the version.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("envVars")]
-        public global::System.Collections.Generic.IList<global::Apify.EnvVar>? EnvVars { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? EnvVars { get; set; }
 
         /// <summary>
         /// Whether to inject the environment variables at build time.
@@ -69,7 +70,7 @@ namespace Apify
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateOrUpdateVersionRequest" /> class.
+        /// Initializes a new instance of the <see cref="UpdateVersionRequest" /> class.
         /// </summary>
         /// <param name="versionNumber">
         /// The version number of the Actor. Two numbers separated by a dot, that represent the `MAJOR.MINOR` part of the semantic versioning.
@@ -101,10 +102,10 @@ namespace Apify
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public CreateOrUpdateVersionRequest(
+        public UpdateVersionRequest(
             string? versionNumber,
-            global::Apify.VersionSourceType? sourceType,
-            global::System.Collections.Generic.IList<global::Apify.EnvVar>? envVars,
+            global::Apify.WritableVersionSourceType? sourceType,
+            global::System.Collections.Generic.IList<global::Apify.EnvVarRequest>? envVars,
             bool? applyEnvVarsToBuild,
             string? buildTag,
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles,
@@ -124,9 +125,9 @@ namespace Apify
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateOrUpdateVersionRequest" /> class.
+        /// Initializes a new instance of the <see cref="UpdateVersionRequest" /> class.
         /// </summary>
-        public CreateOrUpdateVersionRequest()
+        public UpdateVersionRequest()
         {
         }
 

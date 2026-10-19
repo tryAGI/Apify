@@ -735,7 +735,10 @@ namespace Apify
         /// Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO.
         /// </param>
         /// <param name="isPublic">
-        /// Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.
+        /// Whether the Actor is available to users in Apify Store. A new Actor is always private. To publish it, build it first, then update it with `isPublic` set to `true`.
+        /// </param>
+        /// <param name="actorPermissionLevel">
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </param>
         /// <param name="seoTitle">
         /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.
@@ -769,9 +772,10 @@ namespace Apify
             string? description = default,
             string? title = default,
             bool? isPublic = default,
+            global::Apify.ActorPermissionLevel? actorPermissionLevel = default,
             string? seoTitle = default,
             string? seoDescription = default,
-            global::System.Collections.Generic.IList<global::Apify.Version>? versions = default,
+            global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? versions = default,
             global::System.Collections.Generic.IList<string>? categories = default,
             global::Apify.DefaultRunOptions? defaultRunOptions = default,
             global::Apify.ActorStandby? actorStandby = default,
@@ -786,6 +790,7 @@ namespace Apify
                 Description = description,
                 Title = title,
                 IsPublic = isPublic,
+                ActorPermissionLevel = actorPermissionLevel,
                 SeoTitle = seoTitle,
                 SeoDescription = seoDescription,
                 Versions = versions,

@@ -29,10 +29,17 @@ namespace Apify
         public string? Title { get; set; }
 
         /// <summary>
-        /// Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.
+        /// Whether the Actor is available to users in Apify Store. A new Actor is always private. To publish it, build it first, then update it with `isPublic` set to `true`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isPublic")]
         public bool? IsPublic { get; set; }
+
+        /// <summary>
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorPermissionLevel")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorPermissionLevelJsonConverter))]
+        public global::Apify.ActorPermissionLevel? ActorPermissionLevel { get; set; }
 
         /// <summary>
         /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.
@@ -57,7 +64,7 @@ namespace Apify
         /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("versions")]
-        public global::System.Collections.Generic.IList<global::Apify.Version>? Versions { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? Versions { get; set; }
 
         /// <summary>
         /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
@@ -108,7 +115,10 @@ namespace Apify
         /// Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO.
         /// </param>
         /// <param name="isPublic">
-        /// Whether the Actor is available to users in Apify Store. If `false`, the Actor is private and only visible to you.
+        /// Whether the Actor is available to users in Apify Store. A new Actor is always private. To publish it, build it first, then update it with `isPublic` set to `true`.
+        /// </param>
+        /// <param name="actorPermissionLevel">
+        /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </param>
         /// <param name="seoTitle">
         /// Name of the Actor to display by search engines such as Google. Can be different from the Actor's name displayed in Apify Store and Console. Recommended length is 40-50 characters.
@@ -142,9 +152,10 @@ namespace Apify
             string? description,
             string? title,
             bool? isPublic,
+            global::Apify.ActorPermissionLevel? actorPermissionLevel,
             string? seoTitle,
             string? seoDescription,
-            global::System.Collections.Generic.IList<global::Apify.Version>? versions,
+            global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? versions,
             global::System.Collections.Generic.IList<string>? categories,
             global::Apify.DefaultRunOptions? defaultRunOptions,
             global::Apify.ActorStandby? actorStandby,
@@ -155,6 +166,7 @@ namespace Apify
             this.Description = description;
             this.Title = title;
             this.IsPublic = isPublic;
+            this.ActorPermissionLevel = actorPermissionLevel;
             this.SeoTitle = seoTitle;
             this.SeoDescription = seoDescription;
             this.Versions = versions;

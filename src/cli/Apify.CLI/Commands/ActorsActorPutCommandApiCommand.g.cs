@@ -32,7 +32,8 @@ internal static partial class ActorsActorPutCommandApiCommand
     private static Option<global::Apify.ActorPermissionLevel?> ActorPermissionLevel { get; } = new(
         name: @"--actor-permission-level")
     {
-        Description = @"",
+        Description = @"Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
+",
     };
 
     private static Option<string?> SeoTitle { get; } = new(
@@ -53,7 +54,7 @@ internal static partial class ActorsActorPutCommandApiCommand
         Description = @"Human-readable name of the Actor, displayed in Apify Store and Console. Can contain spaces and capital letters. Recommended length is 40-50 characters. You can change this title without affecting the Actor's URL or SEO.",
     };
 
-    private static Option<global::System.Collections.Generic.IList<global::Apify.CreateOrUpdateVersionRequest>?> Versions { get; } = new(
+    private static Option<global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>?> Versions { get; } = new(
         name: @"--versions")
     {
         Description = @"An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.",

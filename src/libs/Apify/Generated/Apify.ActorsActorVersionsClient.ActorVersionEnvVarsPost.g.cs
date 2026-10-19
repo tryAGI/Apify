@@ -128,6 +128,8 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
             PrepareActorVersionEnvVarsPostArguments(
@@ -805,17 +807,32 @@ namespace Apify
         /// <param name="versionNumber">
         /// Example: 0.1
         /// </param>
+        /// <param name="name">
+        /// The name of the environment variable. Can't contain `=`.
+        /// </param>
+        /// <param name="value">
+        /// The value of the environment variable.
+        /// </param>
+        /// <param name="isSecret">
+        /// Whether the environment variable is encrypted. Secret values aren't returned by the API.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Apify.EnvVarResponse> ActorVersionEnvVarsPostAsync(
             string actorId,
             string versionNumber,
+            string name,
+            string value,
+            bool? isSecret = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Apify.EnvVarRequest
             {
+                Name = name,
+                Value = value,
+                IsSecret = isSecret,
             };
 
             return await ActorVersionEnvVarsPostAsync(

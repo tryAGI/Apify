@@ -24,7 +24,7 @@ namespace Apify
         /// Notification settings for this schedule.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("notifications")]
-        public global::Apify.ScheduleVariant2Notifications? Notifications { get; set; }
+        public global::Apify.ScheduleNotifications? Notifications { get; set; }
 
         /// <summary>
         ///
@@ -55,7 +55,7 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.ScheduleAction> actions,
             string? description,
             string? title,
-            global::Apify.ScheduleVariant2Notifications? notifications)
+            global::Apify.ScheduleNotifications? notifications)
         {
             this.Description = description;
             this.Title = title;

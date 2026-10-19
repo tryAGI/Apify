@@ -2,7 +2,7 @@
 
 namespace Apify
 {
-    public readonly partial struct EnvVarRequest
+    public sealed partial class EnvVarRequest
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace Apify
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::Apify.EnvVarRequest),
-                jsonSerializerContext) as global::Apify.EnvVarRequest?;
+                jsonSerializerContext) as global::Apify.EnvVarRequest;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Apify
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::Apify.EnvVarRequest),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.EnvVarRequest?;
+                jsonSerializerContext).ConfigureAwait(false)) as global::Apify.EnvVarRequest;
         }
 
         /// <summary>

@@ -820,6 +820,9 @@ namespace Apify
         /// <param name="timezone"></param>
         /// <param name="description"></param>
         /// <param name="title"></param>
+        /// <param name="notifications">
+        /// Notification settings for this schedule.
+        /// </param>
         /// <param name="actions"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -833,6 +836,7 @@ namespace Apify
             string? timezone = default,
             string? description = default,
             string? title = default,
+            global::Apify.ScheduleNotifications? notifications = default,
             global::System.Collections.Generic.IList<global::Apify.ScheduleCreateAction>? actions = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -846,6 +850,7 @@ namespace Apify
                 Timezone = timezone,
                 Description = description,
                 Title = title,
+                Notifications = notifications,
                 Actions = actions,
             };
 

@@ -23,10 +23,10 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType), TypeInfoPropertyName = "VersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat), TypeInfoPropertyName = "SourceCodeFileFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFile))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType), TypeInfoPropertyName = "VersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus), TypeInfoPropertyName = "ActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildMeta))]
@@ -50,9 +50,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType?), TypeInfoPropertyName = "NullableVersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat?), TypeInfoPropertyName = "NullableSourceCodeFileFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType?), TypeInfoPropertyName = "NullableVersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus?), TypeInfoPropertyName = "NullableActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin?), TypeInfoPropertyName = "NullableRunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfBuilds?), TypeInfoPropertyName = "NullableListOfBuilds2")]
@@ -135,13 +135,13 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.ErrorType?)
 
-                    || typeToConvert == typeof(global::Apify.VersionSourceType)
-
-                    || typeToConvert == typeof(global::Apify.VersionSourceType?)
-
                     || typeToConvert == typeof(global::Apify.SourceCodeFileFormat)
 
                     || typeToConvert == typeof(global::Apify.SourceCodeFileFormat?)
+
+                    || typeToConvert == typeof(global::Apify.VersionSourceType)
+
+                    || typeToConvert == typeof(global::Apify.VersionSourceType?)
 
                     || typeToConvert == typeof(global::Apify.ActorJobStatus)
 
@@ -166,16 +166,6 @@ namespace Apify
                     return new global::Apify.JsonConverters.ErrorTypeNullableJsonConverter();
                 }
 
-                if (typeToConvert == typeof(global::Apify.VersionSourceType))
-                {
-                    return new global::Apify.JsonConverters.VersionSourceTypeJsonConverter();
-                }
-
-                if (typeToConvert == typeof(global::Apify.VersionSourceType?))
-                {
-                    return new global::Apify.JsonConverters.VersionSourceTypeNullableJsonConverter();
-                }
-
                 if (typeToConvert == typeof(global::Apify.SourceCodeFileFormat))
                 {
                     return new global::Apify.JsonConverters.SourceCodeFileFormatJsonConverter();
@@ -184,6 +174,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.SourceCodeFileFormat?))
                 {
                     return new global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.VersionSourceType))
+                {
+                    return new global::Apify.JsonConverters.VersionSourceTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.VersionSourceType?))
+                {
+                    return new global::Apify.JsonConverters.VersionSourceTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.ActorJobStatus))
