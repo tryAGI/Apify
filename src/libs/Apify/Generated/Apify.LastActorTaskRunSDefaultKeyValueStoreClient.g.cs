@@ -39,14 +39,14 @@ namespace Apify
         /// <inheritdoc/>
         public global::System.Func<string> CreateIdempotencyKey { get; set; } = () => global::System.Guid.NewGuid().ToString("D");
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Apify.LastActorTaskRunSDefaultKeyValueStoreSourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext>? JsonSerializerContextProvider { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
-            get => JsonSerializerContextProvider.Value;
+            get => JsonSerializerContextProvider?.Value ?? global::Apify.LastActorTaskRunSDefaultKeyValueStoreSourceGenerationContext.Default;
             set => JsonSerializerContextProvider = new(() => value);
         }
 
