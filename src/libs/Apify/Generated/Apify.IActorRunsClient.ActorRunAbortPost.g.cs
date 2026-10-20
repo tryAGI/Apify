@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Abort run<br/>
+        /// Abort Actor run<br/>
         /// Aborts an Actor run and returns an object that contains all the details<br/>
         /// about the run.<br/>
         /// Only runs that are starting or running are aborted. For runs with status<br/>
@@ -26,7 +26,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Abort run<br/>
+        /// Abort Actor run<br/>
         /// Aborts an Actor run and returns an object that contains all the details<br/>
         /// about the run.<br/>
         /// Only runs that are starting or running are aborted. For runs with status<br/>

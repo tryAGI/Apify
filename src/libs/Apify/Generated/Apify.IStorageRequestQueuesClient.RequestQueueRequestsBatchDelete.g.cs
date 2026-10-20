@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesClient
     {
         /// <summary>
-        /// Delete requests<br/>
+        /// Batch delete requests from request queue<br/>
         /// Batch-deletes given requests from the queue. The number of requests in a<br/>
         /// batch is limited to 25. The response contains an array of unprocessed and<br/>
         /// processed requests.<br/>
@@ -38,7 +38,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete requests<br/>
+        /// Batch delete requests from request queue<br/>
         /// Batch-deletes given requests from the queue. The number of requests in a<br/>
         /// batch is limited to 25. The response contains an array of unprocessed and<br/>
         /// processed requests.<br/>

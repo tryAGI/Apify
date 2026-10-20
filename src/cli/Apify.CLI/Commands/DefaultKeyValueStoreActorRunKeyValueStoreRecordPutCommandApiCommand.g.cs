@@ -65,11 +65,11 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreRecordPut
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-key-value-store-record-put", @"Store record in default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-record-put", @"Set record in the default key-value store of an Actor run
 Stores a value under a specific key in the default key-value store of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the
-[Store record](/api/v2/key-value-store-record-put) endpoint.
+[Set key-value store record](/api/v2/key-value-store-record-put) endpoint.
 ");
                         command.Arguments.Add(RunId);
                         command.Arguments.Add(RecordKey);

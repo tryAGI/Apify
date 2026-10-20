@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Delete version<br/>
+        /// Delete Actor version<br/>
         /// Deletes a specific version of Actor's source code.
         /// </summary>
         /// <param name="actorId">
@@ -23,7 +23,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete version<br/>
+        /// Delete Actor version<br/>
         /// Deletes a specific version of Actor's source code.
         /// </summary>
         /// <param name="actorId">

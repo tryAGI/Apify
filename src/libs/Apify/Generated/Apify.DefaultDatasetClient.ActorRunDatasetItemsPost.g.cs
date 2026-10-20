@@ -46,10 +46,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Store items<br/>
+        /// Store items in the default dataset of an Actor run<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>
@@ -84,10 +84,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Store items<br/>
+        /// Store items in the default dataset of an Actor run<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>
@@ -766,10 +766,10 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Store items<br/>
+        /// Store items in the default dataset of an Actor run<br/>
         /// Appends an item or an array of items to the end of the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>

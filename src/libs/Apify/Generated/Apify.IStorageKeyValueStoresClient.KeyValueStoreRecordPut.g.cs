@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Store record<br/>
+        /// Set key-value store record<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// The value is passed as the PUT payload and it is stored with a MIME content<br/>
         /// type defined by the `Content-Type` header and with encoding defined by the<br/>
@@ -39,7 +39,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store record<br/>
+        /// Set key-value store record<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// The value is passed as the PUT payload and it is stored with a MIME content<br/>
         /// type defined by the `Content-Type` header and with encoding defined by the<br/>
@@ -73,7 +73,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store record<br/>
+        /// Set key-value store record<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// The value is passed as the PUT payload and it is stored with a MIME content<br/>
         /// type defined by the `Content-Type` header and with encoding defined by the<br/>

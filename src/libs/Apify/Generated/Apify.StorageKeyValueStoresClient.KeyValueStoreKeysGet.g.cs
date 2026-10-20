@@ -52,7 +52,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of keys<br/>
+        /// Get list of key-value store keys<br/>
         /// Returns a list of objects describing keys of a given key-value store, as<br/>
         /// well as some information about the values (e.g. size).<br/>
         /// This endpoint is paginated using `exclusiveStartKey` and `limit` parameters<br/>
@@ -104,7 +104,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of keys<br/>
+        /// Get list of key-value store keys<br/>
         /// Returns a list of objects describing keys of a given key-value store, as<br/>
         /// well as some information about the values (e.g. size).<br/>
         /// This endpoint is paginated using `exclusiveStartKey` and `limit` parameters<br/>

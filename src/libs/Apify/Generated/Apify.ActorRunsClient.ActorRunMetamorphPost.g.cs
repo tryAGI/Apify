@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Metamorph run<br/>
+        /// Metamorph Actor run<br/>
         /// Transforms an Actor run into a run of another Actor with a new input.<br/>
         /// This is useful if you want to use another Actor to finish the work<br/>
         /// of your current Actor run, without the need to create a completely new run<br/>
@@ -89,7 +89,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Metamorph run<br/>
+        /// Metamorph Actor run<br/>
         /// Transforms an Actor run into a run of another Actor with a new input.<br/>
         /// This is useful if you want to use another Actor to finish the work<br/>
         /// of your current Actor run, without the need to create a completely new run<br/>

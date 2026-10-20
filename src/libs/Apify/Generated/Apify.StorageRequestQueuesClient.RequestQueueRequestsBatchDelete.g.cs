@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Delete requests<br/>
+        /// Batch delete requests from request queue<br/>
         /// Batch-deletes given requests from the queue. The number of requests in a<br/>
         /// batch is limited to 25. The response contains an array of unprocessed and<br/>
         /// processed requests.<br/>
@@ -94,7 +94,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Delete requests<br/>
+        /// Batch delete requests from request queue<br/>
         /// Batch-deletes given requests from the queue. The number of requests in a<br/>
         /// batch is limited to 25. The response contains an array of unprocessed and<br/>
         /// processed requests.<br/>

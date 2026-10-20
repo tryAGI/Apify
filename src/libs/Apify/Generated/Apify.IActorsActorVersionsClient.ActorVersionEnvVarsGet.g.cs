@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Get list of environment variables<br/>
+        /// Get list of environment variables of Actor version<br/>
         /// Gets the list of environment variables for a specific version of an Actor.<br/>
         /// The response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get list of environment variables<br/>
+        /// Get list of environment variables of Actor version<br/>
         /// Gets the list of environment variables for a specific version of an Actor.<br/>
         /// The response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.
         /// </summary>

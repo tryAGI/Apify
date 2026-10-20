@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Get store<br/>
+        /// Get key-value store<br/>
         /// Gets an object that contains all the details about a specific key-value<br/>
         /// store.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get store<br/>
+        /// Get key-value store<br/>
         /// Gets an object that contains all the details about a specific key-value<br/>
         /// store.
         /// </summary>

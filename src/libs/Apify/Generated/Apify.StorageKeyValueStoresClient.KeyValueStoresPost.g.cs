@@ -44,7 +44,7 @@ namespace Apify
         /// <summary>
         /// Create key-value store<br/>
         /// Creates a key-value store and returns its object. The response is the same<br/>
-        /// object as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)<br/>
+        /// object as returned by the [Get key-value store](/api/v2/key-value-store-get)<br/>
         /// endpoint.<br/>
         /// Keep in mind that data stored under unnamed store follows [data retention<br/>
         /// period](https://docs.apify.com/platform/storage#data-retention).<br/>
@@ -74,7 +74,7 @@ namespace Apify
         /// <summary>
         /// Create key-value store<br/>
         /// Creates a key-value store and returns its object. The response is the same<br/>
-        /// object as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)<br/>
+        /// object as returned by the [Get key-value store](/api/v2/key-value-store-get)<br/>
         /// endpoint.<br/>
         /// Keep in mind that data stored under unnamed store follows [data retention<br/>
         /// period](https://docs.apify.com/platform/storage#data-retention).<br/>

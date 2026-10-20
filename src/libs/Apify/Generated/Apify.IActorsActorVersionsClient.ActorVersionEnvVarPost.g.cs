@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Update environment variable (POST)<br/>
+        /// Update environment variable in Actor version (POST)<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update environment variable (POST)<br/>
+        /// Update environment variable in Actor version (POST)<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>
@@ -61,7 +61,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update environment variable (POST)<br/>
+        /// Update environment variable in Actor version (POST)<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>

@@ -47,7 +47,7 @@ otherwise it will have a transitional status (e.g. `RUNNING`).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get", @"Get run
+        var command = new Command(commandName ?? @"get", @"Get Actor run
 This is not a single endpoint, but an entire group of endpoints that lets
 you retrieve the run or any of its default storages.
 

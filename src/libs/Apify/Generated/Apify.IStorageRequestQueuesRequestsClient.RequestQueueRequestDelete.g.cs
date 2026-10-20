@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsClient
     {
         /// <summary>
-        /// Delete request<br/>
+        /// Delete request from request queue<br/>
         /// Deletes given request from queue.
         /// </summary>
         /// <param name="queueId">
@@ -27,7 +27,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete request<br/>
+        /// Delete request from request queue<br/>
         /// Deletes given request from queue.
         /// </summary>
         /// <param name="queueId">

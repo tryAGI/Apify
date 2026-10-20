@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorRunSDefaultKeyValueStoreClient
     {
         /// <summary>
-        /// Delete last run's default store's record<br/>
+        /// Delete record from the default key-value store of an Actor's last run<br/>
         /// Removes a record specified by a key from the default key-value store of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Delete record](/api/v2/key-value-store-record-delete) endpoint.
+        /// [Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -31,10 +31,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete last run's default store's record<br/>
+        /// Delete record from the default key-value store of an Actor's last run<br/>
         /// Removes a record specified by a key from the default key-value store of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Delete record](/api/v2/key-value-store-record-delete) endpoint.
+        /// [Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

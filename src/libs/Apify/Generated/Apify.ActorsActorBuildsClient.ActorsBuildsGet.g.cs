@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of builds<br/>
+        /// Get list of Actor's builds<br/>
         /// Gets the list of builds of a specific Actor. The response is a JSON with the<br/>
         /// list of objects, where each object contains basic information about a single build.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -93,7 +93,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of builds<br/>
+        /// Get list of Actor's builds<br/>
         /// Gets the list of builds of a specific Actor. The response is a JSON with the<br/>
         /// list of objects, where each object contains basic information about a single build.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

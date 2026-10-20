@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
@@ -88,7 +88,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
@@ -774,7 +774,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>

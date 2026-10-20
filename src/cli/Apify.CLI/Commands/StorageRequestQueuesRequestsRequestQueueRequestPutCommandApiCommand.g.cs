@@ -130,7 +130,7 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"request-queue-request-put", @"Update request
+        var command = new Command(commandName ?? @"request-queue-request-put", @"Update request in request queue
 Updates a request in a queue. Mark request as handled by setting
 `request.handledAt = new Date()`.
 If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).

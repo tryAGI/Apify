@@ -39,7 +39,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Check if a record exists<br/>
+        /// Check if key-value store record exists<br/>
         /// Check if a value is stored in the key-value store under a specific key.
         /// </summary>
         /// <param name="storeId">
@@ -65,7 +65,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Check if a record exists<br/>
+        /// Check if key-value store record exists<br/>
         /// Check if a value is stored in the key-value store under a specific key.
         /// </summary>
         /// <param name="storeId">

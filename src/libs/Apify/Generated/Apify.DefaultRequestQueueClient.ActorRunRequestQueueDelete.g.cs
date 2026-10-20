@@ -37,7 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete default request queue<br/>
+        /// Delete the default request queue of an Actor run<br/>
         /// Deletes the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Delete request queue](/api/v2/request-queue-delete) endpoint.
@@ -60,7 +60,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete default request queue<br/>
+        /// Delete the default request queue of an Actor run<br/>
         /// Deletes the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Delete request queue](/api/v2/request-queue-delete) endpoint.

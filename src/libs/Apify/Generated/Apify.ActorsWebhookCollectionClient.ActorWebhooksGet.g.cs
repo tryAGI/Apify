@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of webhooks<br/>
+        /// Get list of Actor's webhooks<br/>
         /// Gets the list of webhooks of a specific Actor. The response is a JSON with<br/>
         /// the list of objects, where each object contains basic information about a single webhook.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -91,7 +91,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of webhooks<br/>
+        /// Get list of Actor's webhooks<br/>
         /// Gets the list of webhooks of a specific Actor. The response is a JSON with<br/>
         /// the list of objects, where each object contains basic information about a single webhook.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

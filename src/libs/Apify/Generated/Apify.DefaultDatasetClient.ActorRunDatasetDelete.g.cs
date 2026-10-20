@@ -37,7 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete default dataset<br/>
+        /// Delete the default dataset of an Actor run<br/>
         /// Deletes default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
         /// [ Delete dataset ](/api/v2/dataset-delete) endpoint.
@@ -60,7 +60,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete default dataset<br/>
+        /// Delete the default dataset of an Actor run<br/>
         /// Deletes default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
         /// [ Delete dataset ](/api/v2/dataset-delete) endpoint.

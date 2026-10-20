@@ -54,10 +54,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Prolong lock on request in last run's default request queue<br/>
+        /// Prolong lock on request in the default request queue of an Actor's last run<br/>
         /// Prolongs a request lock in the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.
+        /// [Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -107,10 +107,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Prolong lock on request in last run's default request queue<br/>
+        /// Prolong lock on request in the default request queue of an Actor's last run<br/>
         /// Prolongs a request lock in the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.
+        /// [Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

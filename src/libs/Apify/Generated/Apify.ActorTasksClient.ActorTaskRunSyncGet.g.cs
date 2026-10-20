@@ -56,7 +56,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run task synchronously<br/>
+        /// Run Actor task synchronously and get key-value store record (GET)<br/>
         /// Runs an Actor task and synchronously returns a key-value store record.<br/>
         /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
         /// default key-value store. This is a legacy approach that has been replaced by<br/>
@@ -131,7 +131,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run task synchronously<br/>
+        /// Run Actor task synchronously and get key-value store record (GET)<br/>
         /// Runs an Actor task and synchronously returns a key-value store record.<br/>
         /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
         /// default key-value store. This is a legacy approach that has been replaced by<br/>

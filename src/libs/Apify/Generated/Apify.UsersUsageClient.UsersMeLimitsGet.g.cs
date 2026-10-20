@@ -40,7 +40,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get limits<br/>
+        /// Get user's limits<br/>
         /// Returns a complete summary of your account's limits. It is the same<br/>
         /// information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data<br/>
         /// includes the current usage cycle, a summary of your limits, and your current usage.
@@ -60,7 +60,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get limits<br/>
+        /// Get user's limits<br/>
         /// Returns a complete summary of your account's limits. It is the same<br/>
         /// information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data<br/>
         /// includes the current usage cycle, a summary of your limits, and your current usage.

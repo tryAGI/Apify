@@ -37,7 +37,7 @@ internal static partial class DefaultRequestQueueActorRunRequestQueueGetCommandA
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-request-queue-get", @"Get default request queue
+        var command = new Command(commandName ?? @"actor-run-request-queue-get", @"Get the default request queue of an Actor run
 Returns the default request queue associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the

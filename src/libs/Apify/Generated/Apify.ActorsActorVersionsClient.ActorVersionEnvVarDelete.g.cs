@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Delete environment variable<br/>
+        /// Delete environment variable from Actor version<br/>
         /// Deletes a specific environment variable.
         /// </summary>
         /// <param name="actorId">
@@ -79,7 +79,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Delete environment variable<br/>
+        /// Delete environment variable from Actor version<br/>
         /// Deletes a specific environment variable.
         /// </summary>
         /// <param name="actorId">

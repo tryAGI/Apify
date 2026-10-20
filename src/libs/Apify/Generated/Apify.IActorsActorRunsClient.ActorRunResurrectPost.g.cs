@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorRunsClient
     {
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
@@ -49,7 +49,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>

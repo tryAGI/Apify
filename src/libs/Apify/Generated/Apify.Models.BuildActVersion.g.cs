@@ -16,7 +16,7 @@ namespace Apify
         public global::Apify.VersionSourceType? SourceType { get; set; }
 
         /// <summary>
-        ///
+        /// The build tag of the Actor version this build was created from. Can be `null` when the version has no build tag, in which case the build is tagged on success only if the `tag` parameter was passed when starting it.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildTag")]
         public string? BuildTag { get; set; }
@@ -49,7 +49,9 @@ namespace Apify
         /// Initializes a new instance of the <see cref="BuildActVersion" /> class.
         /// </summary>
         /// <param name="sourceType"></param>
-        /// <param name="buildTag"></param>
+        /// <param name="buildTag">
+        /// The build tag of the Actor version this build was created from. Can be `null` when the version has no build tag, in which case the build is tagged on success only if the `tag` parameter was passed when starting it.
+        /// </param>
         /// <param name="versionNumber"></param>
         /// <param name="gitRepoUrl">
         /// URL of the git repository, present when sourceType is GIT_REPO.

@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update task input<br/>
+        /// Update Actor task input<br/>
         /// Updates the input of a task using values specified by an object passed as<br/>
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
@@ -81,7 +81,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update task input<br/>
+        /// Update Actor task input<br/>
         /// Updates the input of a task using values specified by an object passed as<br/>
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
@@ -757,7 +757,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update task input<br/>
+        /// Update Actor task input<br/>
         /// Updates the input of a task using values specified by an object passed as<br/>
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>

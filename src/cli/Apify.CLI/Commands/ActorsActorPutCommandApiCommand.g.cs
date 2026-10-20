@@ -63,7 +63,7 @@ internal static partial class ActorsActorPutCommandApiCommand
     private static Option<global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>?> PricingInfos { get; } = new(
         name: @"--pricing-infos")
     {
-        Description = @"",
+        Description = @"The Actor's pricing records. You can't add the `FLAT_PRICE_PER_MONTH` or `PRICE_PER_DATASET_ITEM` records, because these pricing models are no longer supported.",
     };
 
     private static Option<global::System.Collections.Generic.IList<string>?> Categories { get; } = new(

@@ -102,7 +102,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run Actor synchronously without input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items (GET)<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
@@ -286,7 +286,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run Actor synchronously without input and get dataset items<br/>
+        /// Run Actor synchronously and get dataset items (GET)<br/>
         /// Runs a specific Actor and returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>

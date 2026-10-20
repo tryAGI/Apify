@@ -136,11 +136,11 @@ end. Default value is `false` (end of queue).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-post", @"Add request to last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-post", @"Add request to the default request queue of an Actor's last run
 Adds a request to the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Add request](/api/v2/request-queue-requests-post) endpoint.
+[Add request to request queue](/api/v2/request-queue-requests-post) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

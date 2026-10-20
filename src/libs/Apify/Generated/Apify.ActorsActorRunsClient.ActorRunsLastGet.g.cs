@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get last run<br/>
+        /// Get Actor's last run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets you to<br/>
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>
@@ -97,7 +97,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get last run<br/>
+        /// Get Actor's last run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets you to<br/>
         /// retrieve and manage the last run of given Actor or any of its default storages.<br/>
         /// All the endpoints require an authentication token.<br/>

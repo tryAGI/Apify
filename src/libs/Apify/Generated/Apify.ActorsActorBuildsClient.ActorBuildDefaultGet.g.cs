@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get default build<br/>
+        /// Get default Actor build<br/>
         /// Get the default build for an Actor.<br/>
         /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
         /// This avoids the need for periodic polling when waiting for the build to complete.<br/>
@@ -76,7 +76,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default build<br/>
+        /// Get default Actor build<br/>
         /// Get the default build for an Actor.<br/>
         /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
         /// This avoids the need for periodic polling when waiting for the build to complete.<br/>

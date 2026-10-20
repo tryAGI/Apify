@@ -48,11 +48,11 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get and lock default request queue head<br/>
+        /// Get and lock the default request queue head for an Actor run<br/>
         /// Returns the given number of first requests from the default request queue of the Actor run<br/>
         /// and locks them for the given time.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+        /// [Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -89,11 +89,11 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get and lock default request queue head<br/>
+        /// Get and lock the default request queue head for an Actor run<br/>
         /// Returns the given number of first requests from the default request queue of the Actor run<br/>
         /// and locks them for the given time.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+        /// [Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

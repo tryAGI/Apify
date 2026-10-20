@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsLocksClient
     {
         /// <summary>
-        /// Prolong request lock<br/>
+        /// Prolong lock on request in request queue<br/>
         /// Prolongs request lock. The request lock can be prolonged only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>
@@ -39,7 +39,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Prolong request lock<br/>
+        /// Prolong lock on request in request queue<br/>
         /// Prolongs request lock. The request lock can be prolonged only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>

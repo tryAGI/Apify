@@ -72,7 +72,7 @@ internal static partial class ActorsActorVersionsActorVersionPutCommandApiComman
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-version-put", @"Update version
+        var command = new Command(commandName ?? @"actor-version-put", @"Update Actor version
 Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.
 
 If the object does not define a specific property, its value will not be

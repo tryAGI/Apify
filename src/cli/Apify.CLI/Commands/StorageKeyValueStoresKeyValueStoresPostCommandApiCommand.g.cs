@@ -39,7 +39,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoresPostCommandApiC
     {
         var command = new Command(commandName ?? @"key-value-stores-post", @"Create key-value store
 Creates a key-value store and returns its object. The response is the same
-object as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)
+object as returned by the [Get key-value store](/api/v2/key-value-store-get)
 endpoint.
 
 Keep in mind that data stored under unnamed store follows [data retention

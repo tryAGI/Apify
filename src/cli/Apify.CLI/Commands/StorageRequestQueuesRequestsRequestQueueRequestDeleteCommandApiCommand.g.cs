@@ -36,7 +36,7 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"request-queue-request-delete", @"Delete request
+        var command = new Command(commandName ?? @"request-queue-request-delete", @"Delete request from request queue
 Deletes given request from queue.");
                         command.Arguments.Add(QueueId);
                         command.Arguments.Add(RequestId);

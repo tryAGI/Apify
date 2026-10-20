@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILastActorTaskRunSRebootClient
     {
         /// <summary>
-        /// Reboot Actor task's last run<br/>
+        /// Reboot last run of an Actor task<br/>
         /// Reboots the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the rebooted run.<br/>
         /// This endpoint is a shortcut for [Reboot run](#/reference/actor-runs/reboot-run/reboot-run)<br/>
@@ -30,7 +30,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Reboot Actor task's last run<br/>
+        /// Reboot last run of an Actor task<br/>
         /// Reboots the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the rebooted run.<br/>
         /// This endpoint is a shortcut for [Reboot run](#/reference/actor-runs/reboot-run/reboot-run)<br/>

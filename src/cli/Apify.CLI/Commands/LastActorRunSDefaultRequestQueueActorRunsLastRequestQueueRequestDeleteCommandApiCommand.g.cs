@@ -48,11 +48,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-delete", @"Delete request from last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-delete", @"Delete request from the default request queue of an Actor's last run
 Deletes a request from the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Delete request](/api/v2/request-queue-request-delete) endpoint.
+[Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RequestId);

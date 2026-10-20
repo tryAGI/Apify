@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get record<br/>
+        /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
         /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>
@@ -96,7 +96,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get record<br/>
+        /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
         /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>

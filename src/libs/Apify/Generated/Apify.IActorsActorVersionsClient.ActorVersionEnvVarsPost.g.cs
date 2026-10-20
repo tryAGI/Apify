@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>
@@ -40,7 +40,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>
@@ -75,7 +75,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>

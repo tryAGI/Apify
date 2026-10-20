@@ -60,7 +60,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>
@@ -144,7 +144,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>
@@ -926,7 +926,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>

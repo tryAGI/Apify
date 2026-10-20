@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorBuildsClient
     {
         /// <summary>
-        /// Get list of builds<br/>
+        /// Get list of Actor's builds<br/>
         /// Gets the list of builds of a specific Actor. The response is a JSON with the<br/>
         /// list of objects, where each object contains basic information about a single build.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -38,7 +38,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get list of builds<br/>
+        /// Get list of Actor's builds<br/>
         /// Gets the list of builds of a specific Actor. The response is a JSON with the<br/>
         /// list of objects, where each object contains basic information about a single build.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

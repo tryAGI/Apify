@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get request<br/>
+        /// Get request from request queue<br/>
         /// Returns request from queue.
         /// </summary>
         /// <param name="queueId">
@@ -72,7 +72,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get request<br/>
+        /// Get request from request queue<br/>
         /// Returns request from queue.
         /// </summary>
         /// <param name="queueId">

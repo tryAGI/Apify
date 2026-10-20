@@ -59,7 +59,7 @@ internal static partial class StorageDatasetsDatasetItemsPostCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"dataset-items-post", @"Store items
+        var command = new Command(commandName ?? @"dataset-items-post", @"Store items in dataset
 Appends an item or an array of items to the end of the dataset.
 The POST payload is a JSON object or a JSON array of objects to save into the dataset.
 

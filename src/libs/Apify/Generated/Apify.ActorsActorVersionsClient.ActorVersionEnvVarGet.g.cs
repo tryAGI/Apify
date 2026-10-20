@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get environment variable<br/>
+        /// Get environment variable of Actor version<br/>
         /// Gets a [EnvVar object](#/reference/actors/environment-variable-object) that<br/>
         /// contains all the details about a specific environment variable of an Actor.<br/>
         /// If `isSecret` is set to `true`, then `value` will never be returned.
@@ -81,7 +81,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get environment variable<br/>
+        /// Get environment variable of Actor version<br/>
         /// Gets a [EnvVar object](#/reference/actors/environment-variable-object) that<br/>
         /// contains all the details about a specific environment variable of an Actor.<br/>
         /// If `isSecret` is set to `true`, then `value` will never be returned.

@@ -59,11 +59,11 @@ internal static partial class DefaultDatasetActorRunDatasetItemsPostCommandApiCo
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-dataset-items-post", @"Store items
+        var command = new Command(commandName ?? @"actor-run-dataset-items-post", @"Store items in the default dataset of an Actor run
 Appends an item or an array of items to the end of the Actor run's default dataset.
 
 This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the
-[Store items](/api/v2/dataset-items-post) endpoint.
+[Store items in dataset](/api/v2/dataset-items-post) endpoint.
 
 To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.
 

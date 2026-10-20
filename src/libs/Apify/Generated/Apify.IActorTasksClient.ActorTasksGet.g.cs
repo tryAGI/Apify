@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Get list of tasks<br/>
+        /// Get list of Actor tasks<br/>
         /// Gets the complete list of tasks that a user has created or used.<br/>
         /// The response is a list of objects in which each object contains essential<br/>
         /// information about a single task.<br/>
@@ -35,7 +35,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get list of tasks<br/>
+        /// Get list of Actor tasks<br/>
         /// Gets the complete list of tasks that a user has created or used.<br/>
         /// The response is a list of objects in which each object contains essential<br/>
         /// information about a single task.<br/>

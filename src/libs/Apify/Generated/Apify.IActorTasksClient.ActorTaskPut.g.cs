@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Update task<br/>
+        /// Update Actor task<br/>
         /// Update settings of a task using values specified by an object passed as JSON<br/>
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
@@ -22,7 +22,7 @@ namespace Apify
         /// validates against the Actor's current build, so a new build can stop the page from being<br/>
         /// offered while the task stays published and copyable.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
@@ -42,7 +42,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update task<br/>
+        /// Update Actor task<br/>
         /// Update settings of a task using values specified by an object passed as JSON<br/>
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
@@ -59,7 +59,7 @@ namespace Apify
         /// validates against the Actor's current build, so a new build can stop the page from being<br/>
         /// offered while the task stays published and copyable.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
@@ -79,7 +79,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update task<br/>
+        /// Update Actor task<br/>
         /// Update settings of a task using values specified by an object passed as JSON<br/>
         /// in the POST payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
@@ -96,7 +96,7 @@ namespace Apify
         /// validates against the Actor's current build, so a new build can stop the page from being<br/>
         /// offered while the task stays published and copyable.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>

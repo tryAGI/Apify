@@ -49,11 +49,11 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-records-get", @"Download last task run's default store's records
+        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-records-get", @"Download records from the default key-value store of an Actor task's last run
 Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.
 
 This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the
-[Download records](/api/v2/key-value-store-records-get) endpoint.
+[Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);

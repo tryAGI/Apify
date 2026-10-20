@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Get version<br/>
+        /// Get Actor version<br/>
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
@@ -23,7 +23,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get version<br/>
+        /// Get Actor version<br/>
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">

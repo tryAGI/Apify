@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsLocksClient
     {
         /// <summary>
-        /// Get head<br/>
+        /// Get request queue head<br/>
         /// Returns given number of first requests from the queue.<br/>
         /// The response contains the `hadMultipleClients` boolean field which indicates<br/>
         /// that the queue was accessed by more than one client (with unique or empty<br/>
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get head<br/>
+        /// Get request queue head<br/>
         /// Returns given number of first requests from the queue.<br/>
         /// The response contains the `hadMultipleClients` boolean field which indicates<br/>
         /// that the queue was accessed by more than one client (with unique or empty<br/>

@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Add requests<br/>
+        /// Batch add requests to request queue<br/>
         /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
         /// to 25. The response contains an array of unprocessed and processed requests.<br/>
         /// If any add operation fails because the request queue rate limit is exceeded<br/>
@@ -95,7 +95,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Add requests<br/>
+        /// Batch add requests to request queue<br/>
         /// Adds requests to the queue in batch. The maximum requests in batch is limited<br/>
         /// to 25. The response contains an array of unprocessed and processed requests.<br/>
         /// If any add operation fails because the request queue rate limit is exceeded<br/>

@@ -17,11 +17,11 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreDeleteCom
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-key-value-store-delete", @"Delete default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-delete", @"Delete the default key-value store of an Actor run
 Delete the default key-value store.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the
-[Delete store](/api/v2/key-value-store-delete) endpoint.
+[Delete key-value store](/api/v2/key-value-store-delete) endpoint.
 ");
                         command.Arguments.Add(RunId);
 

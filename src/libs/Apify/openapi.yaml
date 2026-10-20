@@ -8,7 +8,7 @@
     },
     "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\nTo access the API, we recommend using one of our API clients:\n\nStable API clients:\n- For [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- For [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nExperimental API clients:\n- For [Java](https://www.java.com/), we recommend the `apify-client` [Maven central component](https://central.sonatype.com/artifact/com.apify/apify-client).\n- For [Rust](https://rust-lang.org/), we recommend the `apify-client` [crate](https://crates.io/crates/apify-client).\n- For [.NET](https://dotnet.microsoft.com/), we recommend the `apify-client` [Nuget package](https://www.nuget.org/packages/Apify.Client).\n- For [PHP](https://www.php.net/), we recommend the `apify-client` [Packagist package](https://packagist.org/packages/apify/apify-client).\n- For [Go](https://go.dev/), we recommend the `apify-client` [package](https://github.com/apify/apify-client-go/releases).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\n**You can find your API token on the\n[Integrations](https://console.apify.com/settings/integrations) page in the\nApify Console.**\n\nTo use your token in a request, either:\n\n- Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\n[More info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).\n(Recommended).\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Never share your API token or password with untrusted parties!**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n### Agentic payments\n\nAI agents can authenticate and pay for Actor runs without an Apify account\nusing agentic payments. Instead of an API token, the request carries a\npayment credential that both authorizes and pays for the call. Apify supports\nthe [x402 protocol](https://docs.apify.com/platform/integrations/x402)\n(`PAYMENT-SIGNATURE` header) and\n[Skyfire](https://docs.apify.com/platform/integrations/skyfire)\n(`skyfire-pay-id` header).\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run\nActor](#/reference/actors/run-collection/run-actor) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/actors/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run\nActor](#/reference/actors/run-collection/run-actor) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run\nActor](#/reference/actors/run-collection/run-actor) or [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get\nrun](#/reference/actor-runs/run-object-and-its-storages/get-run) API\nendpoint.\n3. Fetch the results from the [Get\nitems](#/reference/datasets/item-collection/get-items) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get record](#/reference/key-value-stores/record/get-record) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your\n[Actor](#/reference/actors/run-actor-synchronously) or\n[task](#/reference/actor-tasks/runs-collection/run-task-synchronously)\nsynchronously. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Legacy `/v2/acts/` URL prefix\n<span id=\"/introduction/legacy-acts-prefix\"></span>\n\nThe `/v2/acts/` prefix is deprecated but still fully functional, and \nsuch endpoint routes to the same handler as its `/v2/actors/...` counterpart. \nNew integrations should use the canonical /v2/actors/ prefix, \nbut existing clients keep working without changes.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](#/reference/datasets/item-collection/get-items) or\nKey-value store [Get record](#/reference/key-value-stores/record/get-record)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of\nActors](#/reference/actors/actor-collection/get-list-of-actors))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the [Get list of\nkeys](#/reference/key-value-stores/key-collection/get-list-of-keys)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: `2xx` range for success, `4xx`\nrange for errors caused by the caller\n(invalid requests) and `5xx` range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td><code>401</code></td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td><code>404</code></td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td><code>429</code></td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td><code>405</code></td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _35 requests per second per resource_:\n\n* Batch ([add](#/reference/request-queues/batch-request-operations/add-requests),\n  [delete](#/reference/request-queues/batch-request-operations/delete-requests))\n  operations on requests in request queues\n* [List and lock head](#/reference/request-queues/queue-head-with-locks/list-and-lock-head) of a request queue\n\nThese endpoints have a rate limit of _100 requests per second per resource_:\n\n* Download records from a key-value store as a ZIP archive\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* CRUD ([get](#/reference/key-value-stores/record/get-record),\n  [put](#/reference/key-value-stores/record/put-record),\n  [delete](#/reference/key-value-stores/record/delete-record))\n  operations on key-value store records\n* [Get list of keys](#/reference/key-value-stores/key-collection/get-list-of-keys) in a key-value store\n\nThese endpoints have a rate limit of _350 requests per second per resource_:\n\n* CRUD\n  ([add](#/reference/request-queues/request-collection/add-request),\n  [get](#/reference/request-queues/request-collection/get-request),\n  [update](#/reference/request-queues/request-collection/update-request),\n  [delete](#/reference/request-queues/request-collection/delete-request))\n  operations on requests in request queues\n* Request lock operations\n  ([prolong](#/reference/request-queues/request-lock/prolong-request-lock),\n  [delete](#/reference/request-queues/request-lock/delete-request-lock))\n  in request queues\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n\n* [Run Actor](#/reference/actors/run-collection/run-actor)\n* [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)\n* [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)\n* [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)\n* [Push items](#/reference/datasets/item-collection/put-items) to dataset\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to `429` then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
     "contact": {},
-    "version": "v2-2026-10-19T133704Z"
+    "version": "v2-2026-10-20T095308Z"
   },
   "servers": [
     {
@@ -389,17 +389,17 @@
     {
       "name": "Last Actor run's abort",
       "x-displayName": "Last Actor run's abort",
-      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.\n\nSame as of functionality described in: [Abort run](/api/v2/actor-run-abort-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.\n\nSame as of functionality described in: [Abort Actor run](/api/v2/actor-run-abort-post)\n"
     },
     {
       "name": "Last Actor run's metamorph",
       "x-displayName": "Last Actor run's metamorph",
-      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph Actor run](/api/v2/actor-run-metamorph-post)\n"
     },
     {
       "name": "Last Actor run's reboot",
       "x-displayName": "Last Actor run's reboot",
-      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.\n\nSame as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.\n\nSame as of functionality described in: [Reboot Actor run](/api/v2/actor-run-reboot-post)\n"
     },
     {
       "name": "Last Actor task run's log",
@@ -409,17 +409,17 @@
     {
       "name": "Last Actor task run's abort",
       "x-displayName": "Last Actor task run's abort",
-      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.\n\nSame as of functionality described in: [Abort run](/api/v2/actor-run-abort-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.\n\nSame as of functionality described in: [Abort Actor run](/api/v2/actor-run-abort-post)\n"
     },
     {
       "name": "Last Actor task run's metamorph",
       "x-displayName": "Last Actor task run's metamorph",
-      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.\n\nSame as of functionality described in: [Metamorph Actor run](/api/v2/actor-run-metamorph-post)\n"
     },
     {
       "name": "Last Actor task run's reboot",
       "x-displayName": "Last Actor task run's reboot",
-      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.\n\nSame as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post)\n"
+      "description": "The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.\n\nSame as of functionality described in: [Reboot Actor run](/api/v2/actor-run-reboot-post)\n"
     },
     {
       "name": "Last Actor task run's default dataset",
@@ -1189,7 +1189,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Get list of versions",
+        "summary": "Get list of Actor versions",
         "description": "Gets the list of versions of a specific Actor. The response is a JSON object\nwith the list of [Version objects](#/reference/actors/version-object), where each\ncontains basic information about a single version.\n",
         "operationId": "actor_versions_get",
         "parameters": [
@@ -1281,7 +1281,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Create version",
+        "summary": "Create Actor version",
         "description": "Creates a version of an Actor using values specified in a [Version\nobject](#/reference/actors/version-object) passed as JSON in the POST\npayload.\n\nThe request must specify `versionNumber` and `sourceType` parameters (as\nstrings) in the JSON payload and a `Content-Type: application/json` HTTP\nheader.\n\nEach `sourceType` requires its own additional properties to be passed to the\nJSON payload object. These are outlined in the [Version\nobject](#/reference/actors/version-object) table below and in more detail in\nthe [Apify\ndocumentation](https://docs.apify.com/platform/actors/development/deployment/source-types).\n\nFor example, if an Actor's source code is stored in a [GitHub\nrepository](https://docs.apify.com/platform/actors/development/deployment/source-types#git-repository),\nyou will set the `sourceType` to `GIT_REPO` and pass the repository's URL in\nthe `gitRepoUrl` property.\n\n```\n{\n    \"versionNumber\": \"0.1\",\n    \"sourceType\": \"GIT_REPO\",\n    \"gitRepoUrl\": \"https://github.com/my-github-account/actor-repo\"\n}\n```\n\nThe response is the [Version object](#/reference/actors/version-object) as\nreturned by the [Get version](#/reference/actors/version-object/get-version) endpoint.\n",
         "operationId": "actor_versions_post",
         "parameters": [
@@ -1369,7 +1369,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Get version",
+        "summary": "Get Actor version",
         "description": "Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.\n",
         "operationId": "actor_version_get",
         "parameters": [
@@ -1504,7 +1504,7 @@
         "x-py-parent": "ActorVersionClientAsync",
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorVersionClientAsync#update",
-        "summary": "Update version",
+        "summary": "Update Actor version",
         "description": "Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.\n\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL. ([More\ninfo](#/introduction/authentication)).\n\nThe response is the [Version object](#/reference/actors/version-object) as\nreturned by the [Get version](#/reference/actors/version-object/get-version) endpoint.\n",
         "operationId": "actor_version_put",
         "x-legacy-doc-urls": [
@@ -1596,7 +1596,7 @@
         "x-py-parent": "ActorVersionClientAsync",
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorVersionClientAsync#update",
-        "summary": "Update version (POST)",
+        "summary": "Update Actor version (POST)",
         "description": "Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.\nThis endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.\n",
         "operationId": "actor_version_post",
         "x-legacy-doc-urls": [
@@ -1609,7 +1609,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Delete version",
+        "summary": "Delete Actor version",
         "description": "Deletes a specific version of Actor's source code.\n",
         "operationId": "actor_version_delete",
         "parameters": [
@@ -1666,7 +1666,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Get list of environment variables",
+        "summary": "Get list of environment variables of Actor version",
         "description": "Gets the list of environment variables for a specific version of an Actor.\nThe response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.\n",
         "operationId": "actor_version_envVars_get",
         "parameters": [
@@ -1722,7 +1722,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Create environment variable",
+        "summary": "Create environment variable in Actor version",
         "description": "Creates an environment variable of an Actor using values specified in a\n[EnvVar object](#/reference/actors/environment-variable-object) passed as\nJSON in the POST payload.\n\nThe request must specify `name` and `value` parameters (as strings) in the\nJSON payload and a `Content-Type: application/json` HTTP header.\n\n```\n{\n    \"name\": \"ENV_VAR_NAME\",\n    \"value\": \"my-env-var\"\n}\n```\n\nThe response is the [EnvVar\nobject](#/reference/actors/environment-variable-object) as returned by the [Get environment\nvariable](#/reference/actors/environment-variable-object/get-environment-variable)\nendpoint.\n",
         "operationId": "actor_version_envVars_post",
         "parameters": [
@@ -1819,7 +1819,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Get environment variable",
+        "summary": "Get environment variable of Actor version",
         "description": "Gets a [EnvVar object](#/reference/actors/environment-variable-object) that\ncontains all the details about a specific environment variable of an Actor.\n\nIf `isSecret` is set to `true`, then `value` will never be returned.\n",
         "operationId": "actor_version_envVar_get",
         "parameters": [
@@ -1976,7 +1976,7 @@
         "x-py-parent": "ActorEnvVarClientAsync",
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorEnvVarClientAsync#update",
-        "summary": "Update environment variable",
+        "summary": "Update environment variable in Actor version",
         "description": "Updates Actor environment variable using values specified by a [EnvVar\nobject](#/reference/actors/environment-variable-object)\npassed as JSON in the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL. ([More\ninfo](#/introduction/authentication)).\n\nThe response is the [EnvVar object](#/reference/actors/environment-variable-object) as returned by the\n[Get environment variable](#/reference/actors/environment-variable-object/get-environment-variable)\nendpoint.\n",
         "operationId": "actor_version_envVar_put",
         "x-legacy-doc-urls": [
@@ -2072,7 +2072,7 @@
         "x-py-parent": "ActorEnvVarClientAsync",
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorEnvVarClientAsync#update",
-        "summary": "Update environment variable (POST)",
+        "summary": "Update environment variable in Actor version (POST)",
         "description": "Updates Actor environment variable using values specified by a [EnvVar\nobject](#/reference/actors/environment-variable-object)\npassed as JSON in the POST payload.\nThis endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.\n",
         "operationId": "actor_version_envVar_post",
         "x-legacy-doc-urls": [
@@ -2085,7 +2085,7 @@
         "tags": [
           "Actors/Actor versions"
         ],
-        "summary": "Delete environment variable",
+        "summary": "Delete environment variable from Actor version",
         "description": "Deletes a specific environment variable.",
         "operationId": "actor_version_envVar_delete",
         "parameters": [
@@ -2153,7 +2153,7 @@
         "tags": [
           "Actors/Webhook collection"
         ],
-        "summary": "Get list of webhooks",
+        "summary": "Get list of Actor's webhooks",
         "description": "Gets the list of webhooks of a specific Actor. The response is a JSON with\nthe list of objects, where each object contains basic information about a single webhook.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters\nand it will not return more than 1000 records.\n\nBy default, the records are sorted by the `createdAt` field in ascending\norder, to sort the records in descending order, use the `desc=1` parameter.\n",
         "operationId": "actor_webhooks_get",
         "parameters": [
@@ -2270,7 +2270,7 @@
         "tags": [
           "Actors/Actor builds"
         ],
-        "summary": "Get list of builds",
+        "summary": "Get list of Actor's builds",
         "description": "Gets the list of builds of a specific Actor. The response is a JSON with the\nlist of objects, where each object contains basic information about a single build.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters\nand it will not return more than 1000 records.\n\nBy default, the records are sorted by the `startedAt` field in ascending order,\ntherefore you can use pagination to incrementally fetch all builds while new\nones are still being started. To sort the records in descending order, use\nthe `desc=1` parameter.\n",
         "operationId": "actors_builds_get",
         "parameters": [
@@ -2515,7 +2515,7 @@
         "tags": [
           "Actors/Actor builds"
         ],
-        "summary": "Get default build",
+        "summary": "Get default Actor build",
         "description": "Get the default build for an Actor.\n\nUse the optional `waitForFinish` parameter to synchronously wait for the build to finish.\nThis avoids the need for periodic polling when waiting for the build to complete.\n\nThis endpoint does not require an authentication token. Instead, calls are authenticated using the Actor's unique ID.\nHowever, if you access the endpoint without a token, certain attributes (e.g., `usageUsd` and `usageTotalUsd`) will be hidden.\n",
         "operationId": "actor_build_default_get",
         "security": [],
@@ -2574,7 +2574,7 @@
         "tags": [
           "Actors/Actor builds"
         ],
-        "summary": "Get OpenAPI definition",
+        "summary": "Get OpenAPI definition of Actor build",
         "description": "Get the OpenAPI definition for Actor builds. Two similar endpoints are available:\n\n- [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.\n\n- [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.\n\nGet the OpenAPI definition for a specific Actor build.\n\nTo fetch the default Actor build, simply pass `default` as the `buildId`.\nAuthentication is based on the build's unique ID. No authentication token is required.\n\n:::note\n\nYou can also use the [`/api/v2/actor-build-openapi-json-get`](/api/v2/actor-build-openapi-json-get) endpoint to get the OpenAPI definition for a build.\n\n:::\n",
         "operationId": "actor_openapi_json_get",
         "security": [],
@@ -2602,6 +2602,9 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
@@ -2622,7 +2625,7 @@
         "tags": [
           "Actors/Actor builds"
         ],
-        "summary": "Get build",
+        "summary": "Get Actor build",
         "description": "By passing the optional `waitForFinish` parameter the API endpoint will\nsynchronously wait for the build to finish.\nThis is useful to avoid periodic polling when waiting for an Actor build to\nfinish.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the build. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actors_build_get",
         "security": [],
@@ -2679,7 +2682,7 @@
         "tags": [
           "Actors/Actor builds"
         ],
-        "summary": "Abort build",
+        "summary": "Abort Actor build",
         "description": "**[DEPRECATED]** API endpoints related to build of the Actor were moved\nunder new namespace [`actor-builds`](#/reference/actor-builds). Aborts an\nActor build and returns an object that contains all the details about the\nbuild.\n\nOnly builds that are starting or running are aborted. For builds with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
         "operationId": "actors_build_abort_post",
         "parameters": [
@@ -2766,7 +2769,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Get list of runs",
+        "summary": "Get list of Actor's runs",
         "description": "Gets the list of runs of a specific Actor. The response is a list of\nobjects, where each object contains basic information about a single Actor run.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters\nand it will not return more than 1000 array elements.\n\nBy default, the records are sorted by the `startedAt` field in ascending\norder, therefore you can use pagination to incrementally fetch all records while\nnew ones are still being created. To sort the records in descending order, use\n`desc=1` parameter. You can also filter runs by status ([available\nstatuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).\n",
         "operationId": "actors_runs_get",
         "parameters": [
@@ -3038,7 +3041,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Run Actor synchronously and return key-value store record",
+        "summary": "Run Actor synchronously and get key-value store record",
         "description": "Runs a specific Actor and returns a key-value store record.\n\nThe POST payload including its `Content-Type` header is passed as `INPUT` to\nthe Actor (usually <code>application/json</code>).\n\nThe response contains the record stored under the `OUTPUT` key in the run's\ndefault key-value store. This is a legacy approach that has been replaced by\nthe Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);\nActors aren't required to store a record under this key, so the response may\nnot contain any data. Use the `outputRecordKey` query parameter to return a\ndifferent record.\n\nThe Actor is started with the default options; you can override them using\nvarious URL query parameters.\nIf the Actor run exceeds 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds,\nthe HTTP response will have status 408 (Request Timeout).\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "actor_runSync_post",
         "parameters": [
@@ -3138,7 +3141,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Run Actor synchronously without input",
+        "summary": "Run Actor synchronously and get key-value store record (GET)",
         "description": "Runs a specific Actor and returns a key-value store record. The response contains the\nrecord stored under the `OUTPUT` key in the run's default key-value store.\nThis is a legacy approach that has been replaced by the Actor\n[output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);\nthe record may not exist, in which case the response contains no data. Use the\n`outputRecordKey` query parameter to return a different record.\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the API endpoint returns a timeout error.\nThe Actor is not passed any input.\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time,\ndue to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "actor_runSync_get",
         "parameters": [
@@ -3445,7 +3448,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Run Actor synchronously without input and get dataset items",
+        "summary": "Run Actor synchronously and get dataset items (GET)",
         "description": "Runs a specific Actor and returns its dataset items.\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the API endpoint returns a timeout error.\nThe Actor is not passed any input.\n\nIt allows to send all possible options in parameters from [Get Dataset\nItems](#/reference/datasets/item-collection/get-items) API endpoint.\n\nBeware that it might be impossible to maintain an idle HTTP connection for a\nlong period of time,\ndue to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Actor asynchronously, use the [Run\nActor](#/reference/actors/run-collection/run-actor) API endpoint instead.\n",
         "operationId": "actor_runSyncGetDatasetItems_get",
         "parameters": [
@@ -3782,7 +3785,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Resurrect run",
+        "summary": "Resurrect Actor run",
         "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished\nActor run and returns an object that contains all the details about the\nresurrected run.\n\nOnly finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED`\nand `TIMED-OUT` can be resurrected.\nRun status will be updated to RUNNING and its container will be restarted\nwith the same storages\n(the same behaviour as when the run gets migrated to the new server).\n\nFor more information, see the [Actor\ndocs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).\n",
         "operationId": "actor_run_resurrect_post",
         "parameters": [
@@ -3817,7 +3820,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Get last run",
+        "summary": "Get Actor's last run",
         "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given Actor or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last Actor run object is:\n\n`/v2/actors/{actorId}/runs/last{?token,status,origin}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means\nby which they were started (e.g. `origin=API`). The output of this endpoint and other query\nparameters are the same as in the [Run object](#/reference/actors/run-object) endpoint.\n\n##### Convenience endpoints for last Actor run\n\n* [Dataset](/api/v2/last-actor-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-runs-log)\n",
         "operationId": "actor_runs_last_get",
         "parameters": [
@@ -3923,7 +3926,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last run's default dataset",
+        "summary": "Get the default dataset of an Actor's last run",
         "description": "Returns the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
         "operationId": "actor_runs_last_dataset_get"
       },
@@ -3991,7 +3994,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last run's default dataset",
+        "summary": "Update the default dataset of an Actor's last run",
         "description": "Updates the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Update dataset](/api/v2/dataset-put) endpoint.\n",
         "operationId": "actor_runs_last_dataset_put"
       },
@@ -4034,7 +4037,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last run's default dataset",
+        "summary": "Delete the default dataset of an Actor's last run",
         "description": "Deletes the default dataset associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[Delete dataset](/api/v2/dataset-delete) endpoint.\n",
         "operationId": "actor_runs_last_dataset_delete"
       }
@@ -4181,7 +4184,7 @@
         "tags": [
           "Last Actor run's default dataset"
         ],
-        "summary": "Get last run's dataset items",
+        "summary": "Get the default dataset items from an Actor's last run",
         "description": "Returns data stored in the default dataset of the last Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
         "operationId": "actor_runs_last_dataset_items_get",
         "parameters": [
@@ -4359,8 +4362,8 @@
         "tags": [
           "Last Actor run's default dataset"
         ],
-        "summary": "Store items in last run's dataset",
-        "description": "Appends an item or an array of items to the end of the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
+        "summary": "Store items in the default dataset of an Actor's last run",
+        "description": "Appends an item or an array of items to the end of the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Store items in dataset](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
         "operationId": "actor_runs_last_dataset_items_post",
         "parameters": [
           {
@@ -4416,7 +4419,7 @@
         "tags": [
           "Last Actor run's default dataset"
         ],
-        "summary": "Get last run's dataset statistics",
+        "summary": "Get the default dataset statistics for an Actor's last run",
         "description": "Returns statistics for the last Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
         "operationId": "actor_runs_last_dataset_statistics_get",
         "parameters": [
@@ -4483,8 +4486,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last run's default store",
-        "description": "Gets an object that contains all the details about the default key-value store associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "summary": "Get the default key-value store of an Actor's last run",
+        "description": "Gets an object that contains all the details about the default key-value store associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get key-value store](/api/v2/key-value-store-get) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_get"
       },
       "put": {
@@ -4554,8 +4557,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last run's default store",
-        "description": "Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "summary": "Update the default key-value store of an Actor's last run",
+        "description": "Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update key-value store](/api/v2/key-value-store-put) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_put"
       },
       "delete": {
@@ -4597,8 +4600,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last run's default store",
-        "description": "Deletes the last Actor run key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "summary": "Delete the default key-value store of an Actor's last run",
+        "description": "Deletes the last Actor run key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store](/api/v2/key-value-store-delete) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_delete"
       }
     },
@@ -4642,8 +4645,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Get last run's default store's list of keys",
-        "description": "Returns a list of keys for the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "summary": "Get list of keys in the default key-value store of an Actor's last run",
+        "description": "Returns a list of keys for the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_keys_get",
         "parameters": [
           {
@@ -4711,8 +4714,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Download last run's default store's records",
-        "description": "Downloads all records from the default key-value store of the last Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "summary": "Download records from the default key-value store of an Actor's last run",
+        "description": "Downloads all records from the default key-value store of the last Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Download key-value store records](/api/v2/key-value-store-records-get) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_records_get",
         "parameters": [
           {
@@ -4795,8 +4798,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Get last run's default store's record",
-        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "summary": "Get record from the default key-value store of an Actor's last run",
+        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Get key-value store record](/api/v2/key-value-store-record-get) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_record_get",
         "parameters": [
           {
@@ -4887,8 +4890,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Store record in last run's default store",
-        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor's last run",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record](/api/v2/key-value-store-record-put) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_record_put",
         "parameters": [
           {
@@ -4976,8 +4979,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Store record in last run's default store (POST)",
-        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor's last run (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_record_post",
         "parameters": [
           {
@@ -5025,8 +5028,8 @@
         "tags": [
           "Last Actor run's default key-value store"
         ],
-        "summary": "Delete last run's default store's record",
-        "description": "Removes a record specified by a key from the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "summary": "Delete record from the default key-value store of an Actor's last run",
+        "description": "Removes a record specified by a key from the default key-value store of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.\n",
         "operationId": "actor_runs_last_keyValueStore_record_delete",
         "parameters": [
           {
@@ -5095,7 +5098,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last run's default request queue",
+        "summary": "Get the default request queue of an Actor's last run",
         "description": "Returns the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_get"
       },
@@ -5175,7 +5178,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last run's default request queue",
+        "summary": "Update the default request queue of an Actor's last run",
         "description": "Updates the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_put"
       },
@@ -5218,7 +5221,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last run's default request queue",
+        "summary": "Delete the default request queue of an Actor's last run",
         "description": "Deletes the default request queue associated with the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_delete"
       }
@@ -5263,8 +5266,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "List last run's default request queue's requests",
-        "description": "Returns a list of requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "summary": "List requests in the default request queue of an Actor's last run",
+        "description": "Returns a list of requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[List requests in request queue](/api/v2/request-queue-requests-get) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_requests_get",
         "parameters": [
           {
@@ -5346,8 +5349,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Add request to last run's default request queue",
-        "description": "Adds a request to the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "summary": "Add request to the default request queue of an Actor's last run",
+        "description": "Adds a request to the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Add request to request queue](/api/v2/request-queue-requests-post) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_requests_post",
         "parameters": [
           {
@@ -5426,8 +5429,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Batch add requests to last run's default request queue",
-        "description": "Adds requests to the default request queue of the last Actor run in batch.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "summary": "Batch add requests to the default request queue of an Actor's last run",
+        "description": "Adds requests to the default request queue of the last Actor run in batch.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_requests_batch_post",
         "parameters": [
           {
@@ -5503,8 +5506,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Batch delete requests from last run's default request queue",
-        "description": "Batch-deletes requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "summary": "Batch delete requests from the default request queue of an Actor's last run",
+        "description": "Batch-deletes requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_requests_batch_delete",
         "parameters": [
           {
@@ -5561,8 +5564,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Unlock requests in last run's default request queue",
-        "description": "Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "summary": "Unlock requests in the default request queue of an Actor's last run",
+        "description": "Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_requests_unlock_post",
         "parameters": [
           {
@@ -5620,8 +5623,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Get request from last run's default request queue",
-        "description": "Returns a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "summary": "Get request from the default request queue of an Actor's last run",
+        "description": "Returns a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request from request queue](/api/v2/request-queue-request-get) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_request_get",
         "parameters": [
           {
@@ -5691,8 +5694,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Update request in last run's default request queue",
-        "description": "Updates a request in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "summary": "Update request in the default request queue of an Actor's last run",
+        "description": "Updates a request in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Update request in request queue](/api/v2/request-queue-request-put) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_request_put",
         "parameters": [
           {
@@ -5743,8 +5746,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Delete request from last run's default request queue",
-        "description": "Deletes a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "summary": "Delete request from the default request queue of an Actor's last run",
+        "description": "Deletes a request from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_request_delete",
         "parameters": [
           {
@@ -5802,8 +5805,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Prolong lock on request in last run's default request queue",
-        "description": "Prolongs a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "summary": "Prolong lock on request in the default request queue of an Actor's last run",
+        "description": "Prolongs a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_request_lock_put",
         "parameters": [
           {
@@ -5857,8 +5860,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Delete lock on request in last run's default request queue",
-        "description": "Deletes a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "summary": "Delete lock on request in the default request queue of an Actor's last run",
+        "description": "Deletes a request lock in the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_request_lock_delete",
         "parameters": [
           {
@@ -5922,8 +5925,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Get last run's default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "summary": "Get the default request queue head for an Actor's last run",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get request queue head](/api/v2/request-queue-head-get) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_head_get",
         "parameters": [
           {
@@ -5981,8 +5984,8 @@
         "tags": [
           "Last Actor run's default request queue"
         ],
-        "summary": "Get and lock last run's default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the last Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "summary": "Get and lock the default request queue head for an Actor's last run",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the\n[Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.\n",
         "operationId": "actor_runs_last_requestQueue_head_lock_post",
         "parameters": [
           {
@@ -6044,8 +6047,8 @@
         "tags": [
           "Last Actor run's log"
         ],
-        "summary": "Get last Actor run's log",
-        "description": "Retrieves last Actor run's logs.\n\nThis endpoint is a shortcut for getting last Actor run's log. Same as [Get log](/api/v2/log-get) endpoint.\n",
+        "summary": "Get log of an Actor's last run",
+        "description": "Retrieves last Actor run's logs.\n\nThis endpoint is a shortcut for getting last Actor run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.\n",
         "operationId": "actor_runs_last_log_get",
         "parameters": [
           {
@@ -6340,7 +6343,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Get run",
+        "summary": "Get Actor run",
         "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs).\n\nGets an object that contains all the details about a specific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will\nsynchronously wait for the run to finish.\nThis is useful to avoid periodic polling when waiting for Actor run to\ncomplete.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actors_run_get",
         "parameters": [
@@ -6520,7 +6523,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Abort run",
+        "summary": "Abort Actor run",
         "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs). Aborts an Actor run and\nreturns an object that contains all the details about the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
         "operationId": "actors_run_abort_post",
         "parameters": [
@@ -6578,7 +6581,7 @@
         "tags": [
           "Actors/Actor runs"
         ],
-        "summary": "Metamorph run",
+        "summary": "Metamorph Actor run",
         "description": "**[DEPRECATED]** API endpoints related to run of the Actor were moved under\nnew namespace [`actor-runs`](#/reference/actor-runs). Transforms an Actor run\ninto a run of another Actor with a new input.\n\nThis is useful if you want to use another Actor to finish the work\nof your current Actor run, without the need to create a completely new run\nand waiting for its finish.\nFor the users of your Actors, the metamorph operation is transparent, they\nwill just see your Actor got the work done.\n\nThere is a limit on how many times you can metamorph a single run. You can\ncheck the limit in [the Actor runtime limits](https://docs.apify.com/platform/limits#actor-limits).\n\nInternally, the system stops the Docker container corresponding to the Actor\nrun and starts a new container using a different Docker image.\nAll the default storages are preserved and the new input is stored under the\n`INPUT-METAMORPH-1` key in the same default key-value store.\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/development/programming-interface/metamorph).\n",
         "operationId": "actors_run_metamorph_post",
         "parameters": [
@@ -6615,7 +6618,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get list of tasks",
+        "summary": "Get list of Actor tasks",
         "description": "Gets the complete list of tasks that a user has created or used.\n\nThe response is a list of objects in which each object contains essential\ninformation about a single task.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters,\nand it does not return more than a 1000 records.\n\nBy default, the records are sorted by the `createdAt` field in ascending\norder; therefore you can use pagination to incrementally fetch all tasks while new\nones are still being created. To sort the records in descending order, use\nthe `desc=1` parameter.\n",
         "operationId": "actorTasks_get",
         "parameters": [
@@ -6769,8 +6772,8 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Create task",
-        "description": "Create a new task with settings specified by the object passed as JSON in\nthe POST payload.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
+        "summary": "Create Actor task",
+        "description": "Create a new task with settings specified by the object passed as JSON in\nthe POST payload.\n\nThe response is the full task object as returned by the\n[Get Actor task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
         "operationId": "actorTasks_post",
         "requestBody": {
           "description": "",
@@ -6880,7 +6883,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get task",
+        "summary": "Get Actor task",
         "description": "Get an object that contains all the details about a task.",
         "operationId": "actorTask_get",
         "parameters": [
@@ -6944,8 +6947,8 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Update task",
-        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe `publicConfig` field carries the display configuration of the task's public\nlanding page, and `isPublic` publishes or unpublishes the task itself. Both require\nwrite permission to the task's Actor.\n\nTo publish a task, its Actor must be public and both `publicConfig.inputSchemaFields` and\n`publicConfig.datasetView` must be set. Note that an Actor can have up to 10 published tasks\nand your account up to 100.\nIf the task doesn't meet all these conditions, the request fails and no fields are updated,\nincluding those unrelated to publishing.\n\nPublishing lists the task among the Actor's examples and makes its input public, so anyone\ncan view and copy it. The landing page itself is shown only while `publicConfig` still\nvalidates against the Actor's current build, so a new build can stop the page from being\noffered while the task stays published and copyable.\n\nThe response is the full task object as returned by the\n[Get task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
+        "summary": "Update Actor task",
+        "description": "Update settings of a task using values specified by an object passed as JSON\nin the POST payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe `publicConfig` field carries the display configuration of the task's public\nlanding page, and `isPublic` publishes or unpublishes the task itself. Both require\nwrite permission to the task's Actor.\n\nTo publish a task, its Actor must be public and both `publicConfig.inputSchemaFields` and\n`publicConfig.datasetView` must be set. Note that an Actor can have up to 10 published tasks\nand your account up to 100.\nIf the task doesn't meet all these conditions, the request fails and no fields are updated,\nincluding those unrelated to publishing.\n\nPublishing lists the task among the Actor's examples and makes its input public, so anyone\ncan view and copy it. The landing page itself is shown only while `publicConfig` still\nvalidates against the Actor's current build, so a new build can stop the page from being\noffered while the task stays published and copyable.\n\nThe response is the full task object as returned by the\n[Get Actor task](/api/v2/actor-task-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\n",
         "operationId": "actorTask_put",
         "parameters": [
           {
@@ -7039,7 +7042,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Delete task",
+        "summary": "Delete Actor task",
         "description": "Delete the task specified through the `actorTaskId` parameter.",
         "operationId": "actorTask_delete",
         "parameters": [
@@ -7095,7 +7098,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get task input",
+        "summary": "Get Actor task input",
         "description": "Returns the input of a given task.",
         "operationId": "actorTask_input_get",
         "parameters": [
@@ -7156,7 +7159,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Update task input",
+        "summary": "Update Actor task input",
         "description": "Updates the input of a task using values specified by an object passed as\nJSON in the PUT payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task input as returned by the\n[Get task input](#/reference/tasks/task-input-object/get-task-input) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL. ([More\ninfo](#/introduction/authentication)).\n",
         "operationId": "actorTask_input_put",
         "parameters": [
@@ -7239,7 +7242,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get list of webhooks",
+        "summary": "Get list of Actor task's webhooks",
         "description": "Gets the list of webhooks of a specific Actor task. The response is a JSON\nwith the list of objects, where each object contains basic information about a single webhook.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters\nand it will not return more than 1000 records.\n\nBy default, the records are sorted by the `createdAt` field in ascending\norder, to sort the records in descending order, use the `desc=1` parameter.\n",
         "operationId": "actorTask_webhooks_get",
         "parameters": [
@@ -7451,7 +7454,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get list of task runs",
+        "summary": "Get list of Actor task's runs",
         "description": "Get a list of runs of a specific task. The response is a list of objects,\nwhere each object contains essential information about a single task run.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters,\nand it does not return more than a 1000 array elements.\n\nBy default, the records are sorted by the `startedAt` field in ascending\norder; therefore you can use pagination to incrementally fetch all records while\nnew ones are still being created. To sort the records in descending order, use\nthe `desc=1` parameter. You can also filter runs by status ([available\nstatuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).\n",
         "operationId": "actorTask_runs_get",
         "parameters": [
@@ -7595,7 +7598,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Run task",
+        "summary": "Run Actor task",
         "description": "Runs an Actor task and immediately returns without waiting for the run to\nfinish.\n\nOptionally, you can override the Actor input configuration by passing a JSON\nobject as the POST payload and setting the `Content-Type: application/json` HTTP header.\n\nNote that if the object in the POST payload does not define a particular\ninput property, the Actor run uses the default value defined by the task (or Actor's input\nschema if not defined by the task).\n\nThe response is the Actor Run object as returned by the [Get\nrun](#/reference/actor-runs/run-object-and-its-storages/get-run) endpoint.\n\nIf you want to wait for the run to finish and receive the actual output of\nthe Actor run as the response, use one of the [Run task\nsynchronously](#/reference/actor-tasks/run-task-synchronously) API endpoints\ninstead.\n\nTo fetch the Actor run results that are typically stored in the default\ndataset, you'll need to pass the ID received in the `defaultDatasetId` field\nreceived in the response JSON to the\n[Get dataset items](#/reference/datasets/item-collection/get-items) API endpoint.\n",
         "operationId": "actorTask_runs_post",
         "parameters": [
@@ -7722,7 +7725,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Run task synchronously",
+        "summary": "Run Actor task synchronously and get key-value store record (GET)",
         "description": "Runs an Actor task and synchronously returns a key-value store record.\n\nThe response contains the record stored under the `OUTPUT` key in the run's\ndefault key-value store. This is a legacy approach that has been replaced by\nthe Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);\nActors aren't required to store a record under this key, so the response may\nnot contain any data. Use the `outputRecordKey` query parameter to return a\ndifferent record.\n\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the HTTP request fails with a timeout error (this won't abort\nthe run itself).\n\nBeware that it might be impossible to maintain an idle HTTP connection for\nan extended period, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\n\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Task asynchronously, use the\n[Run task asynchronously](#/reference/actor-tasks/run-collection/run-task)\nendpoint instead.\n",
         "operationId": "actorTask_runSync_get",
         "parameters": [
@@ -7799,7 +7802,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Run task synchronously",
+        "summary": "Run Actor task synchronously and get key-value store record",
         "description": "Runs an Actor task and synchronously returns a key-value store record.\n\nThe response contains the record stored under the `OUTPUT` key in the run's\ndefault key-value store. This is a legacy approach that has been replaced by\nthe Actor [output object](https://docs.apify.com/platform/actors/development/actor-definition/output-schema#output-object-definition);\nActors aren't required to store a record under this key, so the response may\nnot contain any data. Use the `outputRecordKey` query parameter to return a\ndifferent record.\n\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the HTTP request fails with a timeout error (this won't abort\nthe run itself).\n\nOptionally, you can override the Actor input configuration by passing a JSON\nobject as the POST payload and setting the `Content-Type: application/json` HTTP header.\n\nNote that if the object in the POST payload does not define a particular\ninput property, the Actor run uses the default value defined by the task (or Actor's input\nschema if not defined by the task).\n\nBeware that it might be impossible to maintain an idle HTTP connection for\nan extended period, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\n\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nInput fields from Actor task configuration can be overloaded with values\npassed as the POST payload.\n\nJust make sure to specify `Content-Type` header to be `application/json` and\ninput to be an object.\n\nTo run the task asynchronously, use the [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.\n",
         "operationId": "actorTask_runSync_post",
         "parameters": [
@@ -7907,7 +7910,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Run task synchronously and get dataset items",
+        "summary": "Run Actor task synchronously and get dataset items (GET)",
         "description": "Run a specific task and return its dataset items.\n\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the HTTP request fails with a timeout error (this won't abort\nthe run itself).\n\nYou can send all the same options in parameters as the [Get Dataset\nItems](#/reference/datasets/item-collection/get-items) API endpoint.\n\nBeware that it might be impossible to maintain an idle HTTP connection for\nan extended period, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\n\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nTo run the Task asynchronously, use the [Run task\nasynchronously](#/reference/actor-tasks/run-collection/run-task) endpoint\ninstead.\n",
         "operationId": "actorTask_runSyncGetDatasetItems_get",
         "parameters": [
@@ -8106,7 +8109,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Run task synchronously and get dataset items",
+        "summary": "Run Actor task synchronously and get dataset items",
         "description": "Runs an Actor task and synchronously returns its dataset items.\n\nThe run must finish in 300<!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --> seconds\notherwise the HTTP request fails with a timeout error (this won't abort\nthe run itself).\n\nOptionally, you can override the Actor input configuration by passing a JSON\nobject as the POST payload and setting the `Content-Type: application/json` HTTP header.\n\nNote that if the object in the POST payload does not define a particular\ninput property, the Actor run uses the default value defined by the task (or the Actor's\ninput schema if not defined by the task).\n\nYou can send all the same options in parameters as the [Get Dataset\nItems](#/reference/datasets/item-collection/get-items) API endpoint.\n\nBeware that it might be impossible to maintain an idle HTTP connection for\nan extended period, due to client timeout or network conditions. Make sure your HTTP client is\nconfigured to have a long enough connection timeout.\n\nIf the connection breaks, you will not receive any information about the run\nand its status.\n\nInput fields from Actor task configuration can be overloaded with values\npassed as the POST payload.\n\nJust make sure to specify the `Content-Type` header as `application/json`\nand that the input is an object.\n\nTo run the task asynchronously, use the [Run\ntask](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.\n",
         "operationId": "actorTask_runSyncGetDatasetItems_post",
         "parameters": [
@@ -8333,7 +8336,7 @@
         "tags": [
           "Actor tasks"
         ],
-        "summary": "Get last run",
+        "summary": "Get last run of an Actor task",
         "description": "This is not a single endpoint, but an entire group of endpoints that lets you to\nretrieve and manage the last run of given actor task or any of its default storages.\nAll the endpoints require an authentication token.\n\nThe base path represents the last actor task run object is:\n\n`/v2/actor-tasks/{actorTaskId}/runs/last{?token,status,origin}`\n\nUsing the `status` query parameter you can ensure to only get a run with a certain status\n(e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means\nby which they were started (e.g. `origin=API`). The output of this endpoint and other query\nparameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.\n\n##### Convenience endpoints for last Actor task run\n\n* [Dataset](/api/v2/last-actor-task-runs-default-dataset)\n\n* [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)\n\n* [Request queue](/api/v2/last-actor-task-runs-default-request-queue)\n\n* [Log](/api/v2/last-actor-task-runs-log)\n",
         "operationId": "actorTask_runs_last_get",
         "parameters": [
@@ -8433,8 +8436,8 @@
         "tags": [
           "Last Actor task run's log"
         ],
-        "summary": "Get last Actor task run's log",
-        "description": "Retrieves last Actor task run's logs.\n\nThis endpoint is a shortcut for getting last Actor task run's log. Same as [Get log](/api/v2/log-get) endpoint.\n",
+        "summary": "Get log of an Actor task's last run",
+        "description": "Retrieves last Actor task run's logs.\n\nThis endpoint is a shortcut for getting last Actor task run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.\n",
         "operationId": "actorTask_last_log_get",
         "parameters": [
           {
@@ -8585,7 +8588,7 @@
         "tags": [
           "Last Actor task run's abort"
         ],
-        "summary": "Abort Actor task's last run",
+        "summary": "Abort last run of an Actor task",
         "description": "Aborts the last run of the specified Actor task and returns an object that\ncontains all the details about the run.\n\nThis endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)\non the Actor task's last run. Only runs that are starting or running are aborted.\nFor runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call\ndoes nothing.\n",
         "operationId": "actorTask_runs_last_abort_post",
         "parameters": [
@@ -8641,7 +8644,7 @@
         "tags": [
           "Last Actor task run's metamorph"
         ],
-        "summary": "Metamorph Actor task's last run",
+        "summary": "Metamorph last run of an Actor task",
         "description": "Transforms the last run of the specified Actor task into a run of another Actor with\na new input.\n\nThis endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)\non the Actor task's last run.\n",
         "operationId": "actorTask_runs_last_metamorph_post",
         "parameters": [
@@ -8708,7 +8711,7 @@
         "tags": [
           "Last Actor task run's reboot"
         ],
-        "summary": "Reboot Actor task's last run",
+        "summary": "Reboot last run of an Actor task",
         "description": "Reboots the last run of the specified Actor task and returns an object that\ncontains all the details about the rebooted run.\n\nThis endpoint is a shortcut for [Reboot run](#/reference/actor-runs/reboot-run/reboot-run)\non the Actor task's last run. Only runs with status `RUNNING` can be rebooted. The run's\ncontainer will be restarted, so any data not persisted in the key-value store, dataset,\nor request queue will be lost.\n",
         "operationId": "actorTask_runs_last_reboot_post",
         "parameters": [
@@ -8775,7 +8778,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last task run's default dataset",
+        "summary": "Get the default dataset of an Actor task's last run",
         "description": "Returns the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
         "operationId": "actorTask_runs_last_dataset_get"
       },
@@ -8843,7 +8846,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last task run's default dataset",
+        "summary": "Update the default dataset of an Actor task's last run",
         "description": "Updates the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Update dataset](/api/v2/dataset-put) endpoint.\n",
         "operationId": "actorTask_runs_last_dataset_put"
       },
@@ -8886,7 +8889,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last task run's default dataset",
+        "summary": "Delete the default dataset of an Actor task's last run",
         "description": "Deletes the default dataset associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the\n[Delete dataset](/api/v2/dataset-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_dataset_delete"
       }
@@ -9033,7 +9036,7 @@
         "tags": [
           "Last Actor task run's default dataset"
         ],
-        "summary": "Get last task run's dataset items",
+        "summary": "Get the default dataset items from an Actor task's last run",
         "description": "Returns data stored in the default dataset of the last Actor task run in the desired format.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
         "operationId": "actorTask_runs_last_dataset_items_get",
         "parameters": [
@@ -9211,8 +9214,8 @@
         "tags": [
           "Last Actor task run's default dataset"
         ],
-        "summary": "Store items in last task run's dataset",
-        "description": "Appends an item or an array of items to the end of the last Actor task run's default dataset.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
+        "summary": "Store items in the default dataset of an Actor task's last run",
+        "description": "Appends an item or an array of items to the end of the last Actor task run's default dataset.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Store items in dataset](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
         "operationId": "actorTask_runs_last_dataset_items_post",
         "parameters": [
           {
@@ -9268,7 +9271,7 @@
         "tags": [
           "Last Actor task run's default dataset"
         ],
-        "summary": "Get last task run's dataset statistics",
+        "summary": "Get the default dataset statistics for an Actor task's last run",
         "description": "Returns statistics for the last Actor task run's default dataset.\n\nThis endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
         "operationId": "actorTask_runs_last_dataset_statistics_get",
         "parameters": [
@@ -9335,8 +9338,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last task run's default store",
-        "description": "Gets an object that contains all the details about the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "summary": "Get the default key-value store of an Actor task's last run",
+        "description": "Gets an object that contains all the details about the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get key-value store](/api/v2/key-value-store-get) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_get"
       },
       "put": {
@@ -9406,8 +9409,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last task run's default store",
-        "description": "Updates the default key-value store associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "summary": "Update the default key-value store of an Actor task's last run",
+        "description": "Updates the default key-value store associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Update key-value store](/api/v2/key-value-store-put) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_put"
       },
       "delete": {
@@ -9449,8 +9452,8 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last task run's default store",
-        "description": "Deletes the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "summary": "Delete the default key-value store of an Actor task's last run",
+        "description": "Deletes the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store](/api/v2/key-value-store-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_delete"
       }
     },
@@ -9494,8 +9497,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Get last task run's default store's list of keys",
-        "description": "Returns a list of keys for the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "summary": "Get list of keys in the default key-value store of an Actor task's last run",
+        "description": "Returns a list of keys for the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_keys_get",
         "parameters": [
           {
@@ -9563,8 +9566,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Download last task run's default store's records",
-        "description": "Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "summary": "Download records from the default key-value store of an Actor task's last run",
+        "description": "Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Download key-value store records](/api/v2/key-value-store-records-get) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_records_get",
         "parameters": [
           {
@@ -9647,8 +9650,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Get last task run's default store's record",
-        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "summary": "Get record from the default key-value store of an Actor task's last run",
+        "description": "Gets a value stored under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Get key-value store record](/api/v2/key-value-store-record-get) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_record_get",
         "parameters": [
           {
@@ -9739,8 +9742,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Store record in last task run's default store",
-        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor task's last run",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record](/api/v2/key-value-store-record-put) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_record_put",
         "parameters": [
           {
@@ -9828,8 +9831,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Store record in last task run's default store (POST)",
-        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor task's last run (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_record_post",
         "parameters": [
           {
@@ -9877,8 +9880,8 @@
         "tags": [
           "Last Actor task run's default key-value store"
         ],
-        "summary": "Delete last task run's default store's record",
-        "description": "Removes a record specified by a key from the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "summary": "Delete record from the default key-value store of an Actor task's last run",
+        "description": "Removes a record specified by a key from the default key-value store of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_keyValueStore_record_delete",
         "parameters": [
           {
@@ -9947,7 +9950,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Get last task run's default request queue",
+        "summary": "Get the default request queue of an Actor task's last run",
         "description": "Returns the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_get"
       },
@@ -10027,7 +10030,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Update last task run's default request queue",
+        "summary": "Update the default request queue of an Actor task's last run",
         "description": "Updates the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_put"
       },
@@ -10070,7 +10073,7 @@
             "$ref": "#/components/parameters/origin"
           }
         ],
-        "summary": "Delete last task run's default request queue",
+        "summary": "Delete the default request queue of an Actor task's last run",
         "description": "Deletes the default request queue associated with the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_delete"
       }
@@ -10115,8 +10118,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Get last task run's default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "summary": "Get the default request queue head for an Actor task's last run",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request queue head](/api/v2/request-queue-head-get) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_head_get",
         "parameters": [
           {
@@ -10174,8 +10177,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Get and lock last task run's default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the last Actor task run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "summary": "Get and lock the default request queue head for an Actor task's last run",
+        "description": "Returns the given number of first requests from the default request queue of the last Actor task run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_head_lock_post",
         "parameters": [
           {
@@ -10239,8 +10242,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "List last task run's default request queue's requests",
-        "description": "Returns a list of requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "summary": "List requests in the default request queue of an Actor task's last run",
+        "description": "Returns a list of requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[List requests in request queue](/api/v2/request-queue-requests-get) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_requests_get",
         "parameters": [
           {
@@ -10322,8 +10325,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Add request to last task run's default request queue",
-        "description": "Adds a request to the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "summary": "Add request to the default request queue of an Actor task's last run",
+        "description": "Adds a request to the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Add request to request queue](/api/v2/request-queue-requests-post) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_requests_post",
         "parameters": [
           {
@@ -10402,8 +10405,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Batch add requests to last task run's default request queue",
-        "description": "Adds requests to the default request queue of the last Actor task run in batch.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "summary": "Batch add requests to the default request queue of an Actor task's last run",
+        "description": "Adds requests to the default request queue of the last Actor task run in batch.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_requests_batch_post",
         "parameters": [
           {
@@ -10479,8 +10482,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Batch delete requests from last task run's default request queue",
-        "description": "Batch-deletes requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "summary": "Batch delete requests from the default request queue of an Actor task's last run",
+        "description": "Batch-deletes requests from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_requests_batch_delete",
         "parameters": [
           {
@@ -10537,8 +10540,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Unlock requests in last task run's default request queue",
-        "description": "Unlocks requests in the default request queue of the last Actor task run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "summary": "Unlock requests in the default request queue of an Actor task's last run",
+        "description": "Unlocks requests in the default request queue of the last Actor task run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_requests_unlock_post",
         "parameters": [
           {
@@ -10596,8 +10599,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Get request from last task run's default request queue",
-        "description": "Returns a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "summary": "Get request from the default request queue of an Actor task's last run",
+        "description": "Returns a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Get request from request queue](/api/v2/request-queue-request-get) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_request_get",
         "parameters": [
           {
@@ -10667,8 +10670,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Update request in last task run's default request queue",
-        "description": "Updates a request in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "summary": "Update request in the default request queue of an Actor task's last run",
+        "description": "Updates a request in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Update request in request queue](/api/v2/request-queue-request-put) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_request_put",
         "parameters": [
           {
@@ -10719,8 +10722,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Delete request from last task run's default request queue",
-        "description": "Deletes a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "summary": "Delete request from the default request queue of an Actor task's last run",
+        "description": "Deletes a request from the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_request_delete",
         "parameters": [
           {
@@ -10778,8 +10781,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Prolong lock on request in last task run's default request queue",
-        "description": "Prolongs a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "summary": "Prolong lock on request in the default request queue of an Actor task's last run",
+        "description": "Prolongs a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_request_lock_put",
         "parameters": [
           {
@@ -10833,8 +10836,8 @@
         "tags": [
           "Last Actor task run's default request queue"
         ],
-        "summary": "Delete lock on request in last task run's default request queue",
-        "description": "Deletes a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "summary": "Delete lock on request in the default request queue of an Actor task's last run",
+        "description": "Deletes a request lock in the default request queue of the last Actor task run.\n\nThis endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the\n[Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete) endpoint.\n",
         "operationId": "actorTask_runs_last_requestQueue_request_lock_delete",
         "parameters": [
           {
@@ -10863,7 +10866,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Get user runs list",
+        "summary": "Get list of user's Actor runs",
         "description": "Gets a list of all runs for a user. The response is a list of objects, where\neach object contains basic information about a single Actor run.\n\nThe endpoint supports pagination using the `limit` and `offset` parameters\nand it will not return more than 1000 array elements.\n\nBy default, the records are sorted by the `startedAt` field in ascending\norder. Therefore, you can use pagination to incrementally fetch all records while\nnew ones are still being created. To sort the records in descending order, use\n`desc=1` parameter. You can also filter runs by `startedAt`` and `status`` fields ([available\nstatuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecycle)).\n",
         "operationId": "actorRuns_get",
         "parameters": [
@@ -10992,7 +10995,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Get run",
+        "summary": "Get Actor run",
         "description": "This is not a single endpoint, but an entire group of endpoints that lets\nyou retrieve the run or any of its default storages.\n\n##### Convenience endpoints for Actor run default storages\n\n* [Dataset](/api/v2/default-dataset)\n\n* [Key-value store](/api/v2/default-key-value-store)\n\n* [Request queue](/api/v2/default-request-queue)\n\nGets an object that contains all the details about a\nspecific run of an Actor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will synchronously wait\nfor the run to finish. This is useful to avoid periodic polling when waiting for Actor run to complete.\nNote that the first response after completion can still show preliminary `stats`, costs, and event counts.\nFor stable figures, wait about 10 seconds and call the endpoint again.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the run. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actorRun_get",
         "parameters": [
@@ -11052,7 +11055,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Update run",
+        "summary": "Update Actor run",
         "description": "This endpoint can be used to update both the run's status message and to configure its general resource access level.\n\n**Status message:**\n\nYou can set a single status message on your run that will be displayed in\nthe Apify Console UI. During an Actor run, you will typically do this in order\nto inform users of your Actor about the Actor's progress.\n\nThe request body must contain `runId` and `statusMessage` properties. The\n`isStatusMessageTerminal` property is optional and it indicates if the\nstatus message is the very last one. In the absence of a status message, the\nplatform will try to substitute sensible defaults.\n\n**General resource access:**\n\nYou can also update the run's general resource access setting, which determines who can view the run and its related data.\n\nAllowed values:\n\n* `FOLLOW_USER_SETTING` - The run inherits the general access setting from the account level.\n* `ANYONE_WITH_ID_CAN_READ` - The run can be viewed anonymously by anyone who has its ID.\n* `RESTRICTED` - Only users with explicit access to the resource can access the run.\n\nWhen a run is accessible anonymously, all of the run's default storages and logs also become accessible anonymously.\n",
         "operationId": "actorRun_put",
         "parameters": [
@@ -11135,7 +11138,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Delete run",
+        "summary": "Delete Actor run",
         "description": "Delete the run. Only finished runs can be deleted. Only the person or\norganization that initiated the run can delete it.\n",
         "operationId": "actorRun_delete",
         "parameters": [
@@ -11304,7 +11307,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Abort run",
+        "summary": "Abort Actor run",
         "description": "Aborts an Actor run and returns an object that contains all the details\nabout the run.\n\nOnly runs that are starting or running are aborted. For runs with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
         "operationId": "actorRun_abort_post",
         "parameters": [
@@ -11365,7 +11368,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Metamorph run",
+        "summary": "Metamorph Actor run",
         "description": "Transforms an Actor run into a run of another Actor with a new input.\n\nThis is useful if you want to use another Actor to finish the work\nof your current Actor run, without the need to create a completely new run\nand waiting for its finish.\n\nFor the users of your Actors, the metamorph operation is transparent, they\nwill just see your Actor got the work done.\n\nInternally, the system stops the Docker container corresponding to the Actor\nrun and starts a new container using a different Docker image.\n\nAll the default storages are preserved and the new input is stored under the\n`INPUT-METAMORPH-1` key in the same default key-value store.\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/development/programming-interface/metamorph).\n",
         "operationId": "actorRun_metamorph_post",
         "parameters": [
@@ -11437,7 +11440,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Reboot run",
+        "summary": "Reboot Actor run",
         "description": "Reboots an Actor run and returns an object that contains all the details\nabout the rebooted run.\n\nOnly runs that are running, i.e. runs with status `RUNNING` can be rebooted.\n\nThe run's container will be restarted, so any data not persisted in the\nkey-value store, dataset, or request queue will be lost.\n",
         "operationId": "actorRun_reboot_post",
         "parameters": [
@@ -11502,7 +11505,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Resurrect run",
+        "summary": "Resurrect Actor run",
         "description": "Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.\nOnly finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.\nRun status will be updated to RUNNING and its container will be restarted with the same storages\n(the same behaviour as when the run gets migrated to the new server).\n\nFor more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).\n",
         "operationId": "PostResurrectRun",
         "parameters": [
@@ -11546,7 +11549,7 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Charge events in run",
+        "summary": "Charge events in Actor run",
         "description": "Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).\nThe event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,\nthe endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.\n\n:::info Learn more about pay-per-event pricing\n\nFor more details about pay-per-event (PPE) pricing, refer to our [PPE documentation](/actors/publishing/monetize/pay-per-event).\n\n:::\n",
         "operationId": "PostChargeRun",
         "parameters": [
@@ -11674,7 +11677,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Get default dataset",
+        "summary": "Get the default dataset of an Actor run",
         "description": "Returns the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the\n[Get dataset](/api/v2/dataset-get) endpoint.\n",
         "operationId": "actorRun_dataset_get"
       },
@@ -11736,7 +11739,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Update default dataset",
+        "summary": "Update the default dataset of an Actor run",
         "description": "Updates the default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the\n[Put dataset](/api/v2/dataset-put) endpoint.\n",
         "operationId": "actorRun_dataset_put"
       },
@@ -11773,7 +11776,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Delete default dataset",
+        "summary": "Delete the default dataset of an Actor run",
         "description": "Deletes default dataset associated with an Actor run.\n\nThis endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the\n[ Delete dataset ](/api/v2/dataset-delete) endpoint.\n",
         "operationId": "actorRun_dataset_delete"
       }
@@ -11920,7 +11923,7 @@
         "tags": [
           "Default dataset"
         ],
-        "summary": "Get default dataset items",
+        "summary": "Get the default dataset items from an Actor run",
         "description": "Returns data stored in the default dataset of the Actor run in the desired format.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset items](/api/v2/dataset-items-get) endpoint.\n",
         "operationId": "actorRun_dataset_items_get",
         "parameters": [
@@ -12092,8 +12095,8 @@
         "tags": [
           "Default dataset"
         ],
-        "summary": "Store items",
-        "description": "Appends an item or an array of items to the end of the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Store items](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
+        "summary": "Store items in the default dataset of an Actor run",
+        "description": "Appends an item or an array of items to the end of the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Store items in dataset](/api/v2/dataset-items-post) endpoint.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
         "operationId": "actorRun_dataset_items_post",
         "parameters": [
           {
@@ -12143,7 +12146,7 @@
         "tags": [
           "Default dataset"
         ],
-        "summary": "Get default dataset statistics",
+        "summary": "Get the default dataset statistics for an Actor run",
         "description": "Returns statistics for the Actor run's default dataset.\n\nThis endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the\n[Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.\n",
         "operationId": "actorRun_dataset_statistics_get",
         "parameters": [
@@ -12198,8 +12201,8 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Get default store",
-        "description": "Gets an object that contains all the details about the default key-value\nstore.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get store](/api/v2/key-value-store-get) endpoint.\n",
+        "summary": "Get the default key-value store of an Actor run",
+        "description": "Gets an object that contains all the details about the default key-value\nstore.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get key-value store](/api/v2/key-value-store-get) endpoint.\n",
         "operationId": "actorRun_keyValueStore_get"
       },
       "put": {
@@ -12263,8 +12266,8 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Update default store",
-        "description": "Updates the default key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update store](/api/v2/key-value-store-put) endpoint.\n",
+        "summary": "Update the default key-value store of an Actor run",
+        "description": "Updates the default key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Update key-value store](/api/v2/key-value-store-put) endpoint.\n",
         "operationId": "actorRun_keyValueStore_put"
       },
       "delete": {
@@ -12300,8 +12303,8 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Delete default store",
-        "description": "Delete the default key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete store](/api/v2/key-value-store-delete) endpoint.\n",
+        "summary": "Delete the default key-value store of an Actor run",
+        "description": "Delete the default key-value store.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store](/api/v2/key-value-store-delete) endpoint.\n",
         "operationId": "actorRun_keyValueStore_delete"
       }
     },
@@ -12345,8 +12348,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Get default store's list of keys",
-        "description": "Returns a list of keys for the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.\n",
+        "summary": "Get list of keys in the default key-value store of an Actor run",
+        "description": "Returns a list of keys for the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.\n",
         "operationId": "actorRun_keyValueStore_keys_get",
         "parameters": [
           {
@@ -12408,8 +12411,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Download default store's records",
-        "description": "Downloads all records from the default key-value store of the Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Download records](/api/v2/key-value-store-records-get) endpoint.\n",
+        "summary": "Download records from the default key-value store of an Actor run",
+        "description": "Downloads all records from the default key-value store of the Actor run as a ZIP archive.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Download key-value store records](/api/v2/key-value-store-records-get) endpoint.\n",
         "operationId": "actorRun_keyValueStore_records_get",
         "parameters": [
           {
@@ -12486,8 +12489,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Get default store's record",
-        "description": "Gets a value stored under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get record](/api/v2/key-value-store-record-get) endpoint.\n",
+        "summary": "Get record from the default key-value store of an Actor run",
+        "description": "Gets a value stored under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Get key-value store record](/api/v2/key-value-store-record-get) endpoint.\n",
         "operationId": "actorRun_keyValueStore_record_get",
         "parameters": [
           {
@@ -12572,8 +12575,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Store record in default store",
-        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-put) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor run",
+        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record](/api/v2/key-value-store-record-put) endpoint.\n",
         "operationId": "actorRun_keyValueStore_record_put",
         "parameters": [
           {
@@ -12655,8 +12658,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Store record in default store (POST)",
-        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Store record](/api/v2/key-value-store-record-post) endpoint.\n",
+        "summary": "Set record in the default key-value store of an Actor run (POST)",
+        "description": "Stores a value under a specific key in the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.\n",
         "operationId": "actorRun_keyValueStore_record_post",
         "parameters": [
           {
@@ -12698,8 +12701,8 @@
         "tags": [
           "Default key-value store"
         ],
-        "summary": "Delete default store's record",
-        "description": "Removes a record specified by a key from the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete record](/api/v2/key-value-store-record-delete) endpoint.\n",
+        "summary": "Delete record from the default key-value store of an Actor run",
+        "description": "Removes a record specified by a key from the default key-value store of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the\n[Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.\n",
         "operationId": "actorRun_keyValueStore_record_delete",
         "parameters": [
           {
@@ -12756,7 +12759,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Get default request queue",
+        "summary": "Get the default request queue of an Actor run",
         "description": "Returns the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request queue](/api/v2/request-queue-get) endpoint.\n",
         "operationId": "actorRun_requestQueue_get"
       },
@@ -12830,7 +12833,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Update default request queue",
+        "summary": "Update the default request queue of an Actor run",
         "description": "Updates the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Update request queue](/api/v2/request-queue-put) endpoint.\n",
         "operationId": "actorRun_requestQueue_put"
       },
@@ -12867,7 +12870,7 @@
             "$ref": "#/components/parameters/runId"
           }
         ],
-        "summary": "Delete default request queue",
+        "summary": "Delete the default request queue of an Actor run",
         "description": "Deletes the default request queue associated with an Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request queue](/api/v2/request-queue-delete) endpoint.\n",
         "operationId": "actorRun_requestQueue_delete"
       }
@@ -12912,8 +12915,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "List default request queue's requests",
-        "description": "Returns a list of requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[List requests](/api/v2/request-queue-requests-get) endpoint.\n",
+        "summary": "List requests in the default request queue of an Actor run",
+        "description": "Returns a list of requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[List requests in request queue](/api/v2/request-queue-requests-get) endpoint.\n",
         "operationId": "actorRun_requestQueue_requests_get",
         "parameters": [
           {
@@ -12989,8 +12992,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Add request to default request queue",
-        "description": "Adds a request to the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Add request](/api/v2/request-queue-requests-post) endpoint.\n",
+        "summary": "Add request to the default request queue of an Actor run",
+        "description": "Adds a request to the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Add request to request queue](/api/v2/request-queue-requests-post) endpoint.\n",
         "operationId": "actorRun_requestQueue_requests_post",
         "parameters": [
           {
@@ -13063,8 +13066,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Batch add requests to default request queue",
-        "description": "Adds requests to the default request queue of the Actor run in batch.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Add requests](/api/v2/request-queue-requests-batch-post) endpoint.\n",
+        "summary": "Batch add requests to the default request queue of an Actor run",
+        "description": "Adds requests to the default request queue of the Actor run in batch.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.\n",
         "operationId": "actorRun_requestQueue_requests_batch_post",
         "parameters": [
           {
@@ -13134,8 +13137,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Batch delete requests from default request queue",
-        "description": "Batch-deletes requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
+        "summary": "Batch delete requests from the default request queue of an Actor run",
+        "description": "Batch-deletes requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.\n",
         "operationId": "actorRun_requestQueue_requests_batch_delete",
         "parameters": [
           {
@@ -13186,8 +13189,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Unlock requests in default request queue",
-        "description": "Unlocks requests in the default request queue of the Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
+        "summary": "Unlock requests in the default request queue of an Actor run",
+        "description": "Unlocks requests in the default request queue of the Actor run that are currently locked by the client.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.\n",
         "operationId": "actorRun_requestQueue_requests_unlock_post",
         "parameters": [
           {
@@ -13239,8 +13242,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Get request from default request queue",
-        "description": "Returns a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request](/api/v2/request-queue-request-get) endpoint.\n",
+        "summary": "Get request from the default request queue of an Actor run",
+        "description": "Returns a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request from request queue](/api/v2/request-queue-request-get) endpoint.\n",
         "operationId": "actorRun_requestQueue_request_get",
         "parameters": [
           {
@@ -13304,8 +13307,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Update request in default request queue",
-        "description": "Updates a request in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Update request](/api/v2/request-queue-request-put) endpoint.\n",
+        "summary": "Update request in the default request queue of an Actor run",
+        "description": "Updates a request in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Update request in request queue](/api/v2/request-queue-request-put) endpoint.\n",
         "operationId": "actorRun_requestQueue_request_put",
         "parameters": [
           {
@@ -13350,8 +13353,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Delete request from default request queue",
-        "description": "Deletes a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request](/api/v2/request-queue-request-delete) endpoint.\n",
+        "summary": "Delete request from the default request queue of an Actor run",
+        "description": "Deletes a request from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.\n",
         "operationId": "actorRun_requestQueue_request_delete",
         "parameters": [
           {
@@ -13403,8 +13406,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Prolong lock on request in default request queue",
-        "description": "Prolongs a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.\n",
+        "summary": "Prolong lock on request in the default request queue of an Actor run",
+        "description": "Prolongs a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.\n",
         "operationId": "actorRun_requestQueue_request_lock_put",
         "parameters": [
           {
@@ -13452,8 +13455,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Delete lock on request in default request queue",
-        "description": "Deletes a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.\n",
+        "summary": "Delete lock on request in the default request queue of an Actor run",
+        "description": "Deletes a request lock in the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete) endpoint.\n",
         "operationId": "actorRun_requestQueue_request_lock_delete",
         "parameters": [
           {
@@ -13511,8 +13514,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Get default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get head](/api/v2/request-queue-head-get) endpoint.\n",
+        "summary": "Get the default request queue head for an Actor run",
+        "description": "Returns the given number of first requests from the default request queue of the Actor run.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get request queue head](/api/v2/request-queue-head-get) endpoint.\n",
         "operationId": "actorRun_requestQueue_head_get",
         "parameters": [
           {
@@ -13564,8 +13567,8 @@
         "tags": [
           "Default request queue"
         ],
-        "summary": "Get and lock default request queue head",
-        "description": "Returns the given number of first requests from the default request queue of the Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.\n",
+        "summary": "Get and lock the default request queue head for an Actor run",
+        "description": "Returns the given number of first requests from the default request queue of the Actor run\nand locks them for the given time.\n\nThis endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the\n[Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.\n",
         "operationId": "actorRun_requestQueue_head_lock_post",
         "parameters": [
           {
@@ -13621,8 +13624,8 @@
         "tags": [
           "Actor runs"
         ],
-        "summary": "Get run's log",
-        "description": "Retrieves Actor run's logs.\n\nThis endpoint is a shortcut for getting the run's log. Same as [Get log](/api/v2/log-get) endpoint.\n",
+        "summary": "Get log of an Actor run",
+        "description": "Retrieves Actor run's logs.\n\nThis endpoint is a shortcut for getting the run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.\n",
         "operationId": "actorRun_log_get",
         "parameters": [
           {
@@ -13645,7 +13648,7 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Get user builds list",
+        "summary": "Get list of user's Actor builds",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actor-builds/build-collection/get-user-builds-list",
           "https://docs.apify.com/api/v2#/reference/actor-builds/get-user-builds-list",
@@ -13756,7 +13759,7 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Get build",
+        "summary": "Get Actor build",
         "description": "Gets an object that contains all the details about a specific build of an\nActor.\n\nBy passing the optional `waitForFinish` parameter the API endpoint will\nsynchronously wait for the build to finish. This is useful to avoid periodic\npolling when waiting for an Actor build to finish.\n\nThis endpoint does not require the authentication token. Instead, calls are authenticated using a hard-to-guess ID of the build. However,\nif you access the endpoint without the token, certain attributes, such as `usageUsd` and `usageTotalUsd`, will be hidden.\n",
         "operationId": "actorBuild_get",
         "security": [],
@@ -13823,7 +13826,7 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Delete build",
+        "summary": "Delete Actor build",
         "description": "Delete the build. The build that is the current default build for the Actor\ncannot be deleted.\n\nOnly users with build permissions for the Actor can delete builds.\n",
         "operationId": "actorBuild_delete",
         "parameters": [
@@ -13870,7 +13873,7 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Abort build",
+        "summary": "Abort Actor build",
         "description": "Aborts an Actor build and returns an object that contains all the details\nabout the build.\n\nOnly builds that are starting or running are aborted. For builds with status\n`FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call does nothing.\n",
         "operationId": "actorBuild_abort_post",
         "parameters": [
@@ -13965,8 +13968,8 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Get build's Log",
-        "description": "Retrieves Actor build's logs.\n\nThis endpoint is a shortcut for getting the build's log. Same as [Get log](/api/v2/log-get) endpoint.\n",
+        "summary": "Get Actor build's log",
+        "description": "Retrieves Actor build's logs.\n\nThis endpoint is a shortcut for getting the build's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.\n",
         "operationId": "actorBuild_log_get",
         "parameters": [
           {
@@ -13991,7 +13994,7 @@
         "tags": [
           "Actor builds"
         ],
-        "summary": "Get OpenAPI definition",
+        "summary": "Get OpenAPI definition of Actor build",
         "description": "Get the OpenAPI definition for Actor builds. Two similar endpoints are available:\n\n- [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.\n- [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.\n\nGet the OpenAPI definition for a specific Actor build.\nAuthentication is based on the build's unique ID. No authentication token is required.\n\n:::note\n\nYou can also use the [`/api/v2/actor-openapi-json-get`](/api/v2/actor-openapi-json-get) endpoint to get the OpenAPI definition for a build.\n\n:::\n",
         "operationId": "actorBuild_openapi_json_get",
         "security": [],
@@ -14168,7 +14171,7 @@
           "Storage/Key-value stores"
         ],
         "summary": "Create key-value store",
-        "description": "Creates a key-value store and returns its object. The response is the same\nobject as returned by the [Get store](#/reference/key-value-stores/store-object/get-store)\nendpoint.\n\nKeep in mind that data stored under unnamed store follows [data retention\nperiod](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a store with the given name if the parameter name is used.\nIf there is another store with the same name, the endpoint does not create a\nnew one and returns the existing object instead.\n",
+        "description": "Creates a key-value store and returns its object. The response is the same\nobject as returned by the [Get key-value store](/api/v2/key-value-store-get)\nendpoint.\n\nKeep in mind that data stored under unnamed store follows [data retention\nperiod](https://docs.apify.com/platform/storage#data-retention).\n\nIt creates a store with the given name if the parameter name is used.\nIf there is another store with the same name, the endpoint does not create a\nnew one and returns the existing object instead.\n",
         "operationId": "keyValueStores_post",
         "parameters": [
           {
@@ -14291,7 +14294,7 @@
             "$ref": "#/components/parameters/storeId"
           }
         ],
-        "summary": "Get store",
+        "summary": "Get key-value store",
         "description": "Gets an object that contains all the details about a specific key-value\nstore.\n",
         "operationId": "keyValueStore_get",
         "x-legacy-doc-urls": [
@@ -14367,7 +14370,7 @@
             "$ref": "#/components/parameters/storeId"
           }
         ],
-        "summary": "Update store",
+        "summary": "Update key-value store",
         "description": "Updates a key-value store's name and general resource access level using a value specified by a JSON object\npassed in the PUT payload.\n\nThe response is the updated key-value store object, as returned by the [Get\nstore](#/reference/key-value-stores/store-object/get-store) API endpoint.\n",
         "operationId": "keyValueStore_put",
         "x-legacy-doc-urls": [
@@ -14415,7 +14418,7 @@
             "$ref": "#/components/parameters/storeId"
           }
         ],
-        "summary": "Delete store",
+        "summary": "Delete key-value store",
         "description": "Deletes a key-value store.",
         "operationId": "keyValueStore_delete",
         "x-legacy-doc-urls": [
@@ -14468,7 +14471,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Get list of keys",
+        "summary": "Get list of key-value store keys",
         "description": "Returns a list of objects describing keys of a given key-value store, as\nwell as some information about the values (e.g. size).\n\nThis endpoint is paginated using `exclusiveStartKey` and `limit` parameters\n- see [Pagination](/api/v2#using-key) for more details.\n",
         "operationId": "keyValueStore_keys_get",
         "parameters": [
@@ -14542,7 +14545,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Download records",
+        "summary": "Download key-value store records",
         "description": "Downloads all records from the key-value store as a ZIP archive.\nEach record is stored as a separate file in the archive, with the filename equal to the record key.\n\nYou can optionally filter the records by `collection` or `prefix` to download only a subset of the store.\n",
         "operationId": "keyValueStore_records_get",
         "parameters": [
@@ -14620,7 +14623,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Get record",
+        "summary": "Get key-value store record",
         "description": "Gets a value stored in the key-value store under a specific key.\n\nThe response body has the same `Content-Encoding` header as it was set in\n[Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).\n\nIf the request does not define the `Accept-Encoding` HTTP header with the\nright encoding, the record will be decompressed.\n\nMost HTTP clients support decompression by default. After using the HTTP\nclient with decompression support, the `Accept-Encoding` header is set by\nthe client and body is decompressed automatically.\n\nPlease note that for security reasons, Apify API can perform small modifications\nto HTML documents before they are served via this endpoint. To fetch the raw HTML\ncontent without any modifications, use the `attachment` query parameter.\n",
         "operationId": "keyValueStore_record_get",
         "parameters": [
@@ -14653,7 +14656,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Check if a record exists",
+        "summary": "Check if key-value store record exists",
         "description": "Check if a value is stored in the key-value store under a specific key.\n",
         "operationId": "keyValueStore_record_head",
         "responses": {
@@ -14764,7 +14767,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Store record",
+        "summary": "Set key-value store record",
         "description": "Stores a value under a specific key to the key-value store.\n\nThe value is passed as the PUT payload and it is stored with a MIME content\ntype defined by the `Content-Type` header and with encoding defined by the\n`Content-Encoding` header.\n\nTo save bandwidth, storage, and speed up your upload, send the request\npayload compressed with Gzip compression and add the `Content-Encoding: gzip`\nheader. It is possible to set up another compression type with `Content-Encoding`\nrequest header.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli compression: `Content-Encoding: br`\n* Gzip compression: `Content-Encoding: gzip`\n* Deflate compression: `Content-Encoding: deflate`\n",
         "operationId": "keyValueStore_record_put",
         "parameters": [
@@ -14858,7 +14861,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Store record (POST)",
+        "summary": "Set key-value store record (POST)",
         "description": "Stores a value under a specific key to the key-value store.\n\nThis endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.\n",
         "operationId": "keyValueStore_record_post",
         "parameters": [
@@ -14906,7 +14909,7 @@
         "tags": [
           "Storage/Key-value stores"
         ],
-        "summary": "Delete record",
+        "summary": "Delete key-value store record",
         "description": "Removes a record specified by a key from the key-value store.",
         "operationId": "keyValueStore_record_delete",
         "parameters": [
@@ -15813,7 +15816,7 @@
         "tags": [
           "Storage/Datasets"
         ],
-        "summary": "Store items",
+        "summary": "Store items in dataset",
         "description": "Appends an item or an array of items to the end of the dataset.\nThe POST payload is a JSON object or a JSON array of objects to save into the dataset.\n\nIf the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.\nFor more information about dataset schema validation, see [Dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation).\n\n**IMPORTANT:** The limit of request payload size for the dataset is 5 MB. If the array exceeds the size, you'll need to split it into a number of smaller arrays.\n\nTo save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.\n\nBelow is a list of supported `Content-Encoding` types.\n\n* Brotli: `Content-Encoding: br`\n* Gzip: `Content-Encoding: gzip`\n* Deflate: `Content-Encoding: deflate`\n",
         "operationId": "dataset_items_post",
         "parameters": [
@@ -16347,7 +16350,7 @@
         "tags": [
           "Storage/Request queues"
         ],
-        "summary": "Add requests",
+        "summary": "Batch add requests to request queue",
         "description": "Adds requests to the queue in batch. The maximum requests in batch is limited\nto 25. The response contains an array of unprocessed and processed requests.\nIf any add operation fails because the request queue rate limit is exceeded\nor an internal failure occurs,\nthe failed request is returned in the unprocessedRequests response\nparameter.\nYou can resend these requests to add. It is recommended to use an\nexponential backoff algorithm for these retries.\nIf a request with the same `uniqueKey` was already present in the queue,\nthen it returns an ID of the existing request.\n",
         "operationId": "requestQueue_requests_batch_post",
         "parameters": [
@@ -16429,7 +16432,7 @@
         "tags": [
           "Storage/Request queues"
         ],
-        "summary": "Delete requests",
+        "summary": "Batch delete requests from request queue",
         "description": "Batch-deletes given requests from the queue. The number of requests in a\nbatch is limited to 25. The response contains an array of unprocessed and\nprocessed requests.\nIf any delete operation fails because the request queue rate limit is\nexceeded or an internal failure occurs,\nthe failed request is returned in the `unprocessedRequests` response\nparameter.\nYou can re-send these delete requests. It is recommended to use an\nexponential backoff algorithm for these retries.\nEach request is identified by its ID or uniqueKey parameter. You can use\neither of them to identify the request.\n",
         "operationId": "requestQueue_requests_batch_delete",
         "parameters": [
@@ -16492,7 +16495,7 @@
         "tags": [
           "Storage/Request queues/Requests locks"
         ],
-        "summary": "Unlock requests",
+        "summary": "Unlock requests in request queue",
         "description": "Unlocks requests in the queue that are currently locked by the client.\n\n* If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.\n* If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.\n",
         "operationId": "requestQueue_requests_unlock_post",
         "parameters": [
@@ -16551,7 +16554,7 @@
         "tags": [
           "Storage/Request queues/Requests"
         ],
-        "summary": "List requests",
+        "summary": "List requests in request queue",
         "description": "Returns a list of requests. This endpoint is paginated using\ncursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.\n",
         "operationId": "requestQueue_requests_get",
         "parameters": [
@@ -16639,7 +16642,7 @@
         "tags": [
           "Storage/Request queues/Requests"
         ],
-        "summary": "Add request",
+        "summary": "Add request to request queue",
         "description": "Adds request to the queue. Response contains ID of the request and info if\nrequest was already present in the queue or handled.\n\nIf request with same `uniqueKey` was already present in the queue then\nreturns an ID of existing request.\n",
         "operationId": "requestQueue_requests_post",
         "parameters": [
@@ -16706,7 +16709,7 @@
         "tags": [
           "Storage/Request queues/Requests"
         ],
-        "summary": "Get request",
+        "summary": "Get request from request queue",
         "description": "Returns request from queue.",
         "operationId": "requestQueue_request_get",
         "parameters": [
@@ -16782,7 +16785,7 @@
         "tags": [
           "Storage/Request queues/Requests"
         ],
-        "summary": "Update request",
+        "summary": "Update request in request queue",
         "description": "Updates a request in a queue. Mark request as handled by setting\n`request.handledAt = new Date()`.\nIf `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).\n",
         "operationId": "requestQueue_request_put",
         "parameters": [
@@ -16839,7 +16842,7 @@
         "tags": [
           "Storage/Request queues/Requests"
         ],
-        "summary": "Delete request",
+        "summary": "Delete request from request queue",
         "description": "Deletes given request from queue.",
         "operationId": "requestQueue_request_delete",
         "parameters": [
@@ -16903,7 +16906,7 @@
         "tags": [
           "Storage/Request queues/Requests locks"
         ],
-        "summary": "Get head",
+        "summary": "Get request queue head",
         "description": "Returns given number of first requests from the queue.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\nThis field is used by [Apify SDK](https://sdk.apify.com) to determine\nwhether the local cache is consistent with the request queue, and thus\noptimize performance of certain operations.\n",
         "operationId": "requestQueue_head_get",
         "parameters": [
@@ -16967,7 +16970,7 @@
         "tags": [
           "Storage/Request queues/Requests locks"
         ],
-        "summary": "Get head and lock",
+        "summary": "Get and lock request queue head",
         "description": "Returns the given number of first requests from the queue and locks them for\nthe given time.\n\nIf this endpoint locks the request, no other client or run will be able to get and\nlock these requests.\n\nThe response contains the `hadMultipleClients` boolean field which indicates\nthat the queue was accessed by more than one client (with unique or empty\n`clientKey`).\n",
         "operationId": "requestQueue_head_lock_post",
         "parameters": [
@@ -17034,7 +17037,7 @@
         "tags": [
           "Storage/Request queues/Requests locks"
         ],
-        "summary": "Prolong request lock",
+        "summary": "Prolong lock on request in request queue",
         "description": "Prolongs request lock. The request lock can be prolonged only by the client\nthat has locked it using [Get and lock head\noperation](#/request-queue-head-lock-post).\n\nThe clientKey identifier is used for locking and unlocking requests.\nYou can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.\n",
         "operationId": "requestQueue_request_lock_put",
         "parameters": [
@@ -17094,7 +17097,7 @@
         "tags": [
           "Storage/Request queues/Requests locks"
         ],
-        "summary": "Delete request lock",
+        "summary": "Delete lock on request in request queue",
         "description": "Deletes a request lock. The request lock can be deleted only by the client\nthat has locked it using [Get and lock head\noperation](#/request-queue-head-lock-post).\n\nThe clientKey identifier is used for locking and unlocking requests.\nYou can delete or prolong the lock only for requests that were locked by the same client key or from the same Actor run.\n",
         "operationId": "requestQueue_request_lock_delete",
         "parameters": [
@@ -17568,7 +17571,7 @@
         "tags": [
           "Webhooks/Webhooks"
         ],
-        "summary": "Get collection",
+        "summary": "Get list of webhook's dispatches",
         "description": "Gets a given webhook's list of dispatches.",
         "operationId": "webhook_webhookDispatches_get",
         "parameters": [
@@ -18395,7 +18398,6 @@
               "type": "string",
               "enum": [
                 "FREE",
-                "FLAT_PRICE_PER_MONTH",
                 "PRICE_PER_DATASET_ITEM",
                 "PAY_PER_EVENT"
               ],
@@ -18569,7 +18571,7 @@
         "tags": [
           "Logs"
         ],
-        "summary": "Get log",
+        "summary": "Get Actor build or run log",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/logs/log/get-log",
           "https://docs.apify.com/api/v2#/reference/logs/get-log",
@@ -18714,7 +18716,7 @@
         "tags": [
           "Users/Usage"
         ],
-        "summary": "Get monthly usage",
+        "summary": "Get user's monthly usage",
         "description": "Returns a complete summary of your usage for the current monthly usage cycle,\nan overall sum, as well as a daily breakdown of usage. It is the same\ninformation you will see on your account's [Billing > Historical usage page](https://console.apify.com/billing/historical-usage). The information\nincludes your use of Actors, compute, data transfer, and storage.\n\nUsing the `date` parameter will show your usage in the monthly usage cycle that\nincludes that date.\n",
         "operationId": "users_me_usage_monthly_get",
         "parameters": [
@@ -18771,7 +18773,7 @@
         "tags": [
           "Users/Usage"
         ],
-        "summary": "Get limits",
+        "summary": "Get user's limits",
         "description": "Returns a complete summary of your account's limits. It is the same\ninformation you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data\nincludes the current usage cycle, a summary of your limits, and your current usage.\n",
         "operationId": "users_me_limits_get",
         "responses": {
@@ -18813,7 +18815,7 @@
         "tags": [
           "Users/Usage"
         ],
-        "summary": "Update limits",
+        "summary": "Update user's limits",
         "description": "Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).\nSpecifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).\n",
         "operationId": "users_me_limits_put",
         "requestBody": {
@@ -18919,7 +18921,7 @@
         "tags": [
           "Tools"
         ],
-        "summary": "Get browser info",
+        "summary": "Get browser info (POST)",
         "description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.\n",
         "security": [],
         "parameters": [
@@ -18965,7 +18967,7 @@
         "tags": [
           "Tools"
         ],
-        "summary": "Get browser info",
+        "summary": "Get browser info (PUT)",
         "description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.\n",
         "security": [],
         "parameters": [
@@ -19011,7 +19013,7 @@
         "tags": [
           "Tools"
         ],
-        "summary": "Get browser info",
+        "summary": "Get browser info (DELETE)",
         "description": "Returns information about the HTTP request, including the client IP address,\ncountry code, request headers, and body length.\n\nThis endpoint is designed for proxy testing. It accepts any HTTP method so you\ncan verify that your proxy correctly forwards requests of any type and that\nclient IP addresses are anonymized.\n",
         "security": [],
         "parameters": [
@@ -20575,6 +20577,7 @@
           "final-invoice-negative",
           "full-permission-actor-blocked-for-admin",
           "full-permission-actor-not-approved",
+          "full-permissions-require-verified-owner",
           "github-branch-empty",
           "github-issue-already-exists",
           "github-public-key-not-found",
@@ -20591,6 +20594,7 @@
           "input-json-not-object",
           "input-json-too-long",
           "input-update-collision",
+          "input-validation-timed-out",
           "insufficient-permissions",
           "insufficient-permissions-to-change-field",
           "insufficient-security-measures",
@@ -20662,6 +20666,7 @@
           "max-metamorphs-exceeded",
           "max-total-charge-usd-below-minimum",
           "max-total-charge-usd-must-be-greater-than-zero",
+          "mcp-connector-actor-not-allowed",
           "method-not-allowed",
           "migration-disabled",
           "missing-actor-rights",
@@ -20676,6 +20681,7 @@
           "missing-settings",
           "missing-username",
           "monthly-usage-limit-too-low",
+          "more-public-actors-require-verified-owner",
           "more-than-one-update-not-allowed",
           "multiple-records-found",
           "must-be-admin",
@@ -20728,6 +20734,7 @@
           "query-timeout",
           "quoted-price-outdated",
           "rate-limit-exceeded",
+          "readme-required",
           "recaptcha-invalid",
           "recaptcha-required",
           "record-not-found",
@@ -20756,11 +20763,13 @@
           "schema-validation",
           "schema-validation-error",
           "schema-validation-failed",
+          "schemas-required",
           "service-worker-registration-not-allowed",
           "sign-up-method-not-allowed",
           "slack-integration-not-custom",
           "socket-closed",
           "socket-destroyed",
+          "standby-deployment-invalid",
           "store-schema-invalid",
           "store-terms-not-accepted",
           "stripe-enabled",
@@ -20782,6 +20791,8 @@
           "too-many-mcp-connectors",
           "too-many-o-auth-apps",
           "too-many-organizations",
+          "too-many-public-actor-tasks-per-account",
+          "too-many-public-actor-tasks-per-actor",
           "too-many-requests",
           "too-many-schedules",
           "too-many-ui-access-keys",
@@ -21094,7 +21105,10 @@
             "description": "In MB, the amount of memory allocated to the run."
           },
           "restartOnError": {
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "examples": [
               false
             ],
@@ -21569,7 +21583,10 @@
             "description": "Whether this event is the Actor's primary chargeable event."
           },
           "isOneTimeEvent": {
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "description": "Whether this event can only be charged once per Actor run."
           }
         }
@@ -21668,6 +21685,8 @@
       },
       "FlatPricePerMonthActorPricingInfo": {
         "title": "FlatPricePerMonthActorPricingInfo",
+        "description": "Rental pricing model, which is no longer supported.",
+        "deprecated": true,
         "allOf": [
           {
             "$ref": "#/components/schemas/CommonActorPricingInfo"
@@ -21686,11 +21705,11 @@
               },
               "trialMinutes": {
                 "type": "integer",
-                "description": "For how long this Actor can be used for free in trial period"
+                "description": "Number of minutes a user could run the Actor for free before having to rent it. Apify no longer offers rental pricing, so you can see this field only in pricing history and in runs started before rented Actors moved to other pricing models."
               },
               "pricePerUnitUsd": {
                 "type": "number",
-                "description": "Monthly flat price in USD"
+                "description": "Monthly flat price in USD. Apify no longer offers rental pricing, so you can see this field only in pricing history and in runs started before rented Actors moved to other pricing models."
               }
             }
           }
@@ -21884,7 +21903,10 @@
             "description": "Short description of the Actor, displayed in Apify Store and Console."
           },
           "restartOnError": {
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "examples": [
               false
             ],
@@ -21927,6 +21949,7 @@
             "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
           },
           "pricingInfos": {
+            "description": "The Actor's pricing records, including past ones.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ActorRunPricingInfo"
@@ -22190,6 +22213,7 @@
             "description": "An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration."
           },
           "pricingInfos": {
+            "description": "The Actor's pricing records. You can't add the `FLAT_PRICE_PER_MONTH` or `PRICE_PER_DATASET_ITEM` records, because these pricing models are no longer supported.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ActorRunPricingInfo"
@@ -23208,10 +23232,14 @@
                 "$ref": "#/components/schemas/VersionSourceType"
               },
               "buildTag": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "examples": [
                   "experimental"
-                ]
+                ],
+                "description": "The build tag of the Actor version this build was created from. Can be `null` when the version has no build tag, in which case the build is tagged on success only if the `tag` parameter was passed when starting it."
               },
               "versionNumber": {
                 "type": "string",
@@ -24366,10 +24394,10 @@
             "examples": [
               0.2654
             ],
-            "description": "Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for Pay-Per-Event Actors (event costs only). Requires authentication token to access."
+            "description": "Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for pay-per-event Actors (event costs only). Requires authentication token to access."
           },
           "usageUsd": {
-            "description": "Platform usage costs breakdown in USD. Only present if you own the run AND are paying for platform usage (Pay-Per-Usage, Rental, or Pay-Per-Event with usage costs like standby Actors). Not available for standard Pay-Per-Event Actors. Requires authentication token to access.",
+            "description": "Platform usage costs breakdown in USD. Only present if you own the run and are paying for platform usage (pay-per-usage or pay-per-event with usage costs like Standby Actors). Not available for standard pay-per-event Actors. Requires authentication token to access.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/RunUsageUsd"
@@ -26528,7 +26556,7 @@
             ],
             "format": "date-time",
             "readOnly": true,
-            "description": "Time when the task was published, or `null` if the task isn't published.\nThis field is server-controlled. To publish or unpublish a task, use the\n[Update task](/api/v2/actor-task-put) endpoint and set `isPublic`.\n",
+            "description": "Time when the task was published, or `null` if the task isn't published.\nThis field is server-controlled. To publish or unpublish a task, use the\n[Update Actor task](/api/v2/actor-task-put) endpoint and set `isPublic`.\n",
             "examples": [
               "2025-06-16T09:20:45.777Z"
             ]
@@ -28591,33 +28619,6 @@
           "reasonForChange": {
             "type": [
               "string",
-              "null"
-            ],
-            "examples": [
-              null
-            ]
-          },
-          "trialMinutes": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "examples": [
-              null
-            ]
-          },
-          "unitName": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              null
-            ]
-          },
-          "pricePerUnitUsd": {
-            "type": [
-              "number",
               "null"
             ],
             "examples": [

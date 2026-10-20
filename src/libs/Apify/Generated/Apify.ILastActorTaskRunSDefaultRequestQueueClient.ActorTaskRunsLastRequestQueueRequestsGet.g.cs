@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorTaskRunSDefaultRequestQueueClient
     {
         /// <summary>
-        /// List last task run's default request queue's requests<br/>
+        /// List requests in the default request queue of an Actor task's last run<br/>
         /// Returns a list of requests from the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [List requests](/api/v2/request-queue-requests-get) endpoint.
+        /// [List requests in request queue](/api/v2/request-queue-requests-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -47,10 +47,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List last task run's default request queue's requests<br/>
+        /// List requests in the default request queue of an Actor task's last run<br/>
         /// Returns a list of requests from the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [List requests](/api/v2/request-queue-requests-get) endpoint.
+        /// [List requests in request queue](/api/v2/request-queue-requests-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

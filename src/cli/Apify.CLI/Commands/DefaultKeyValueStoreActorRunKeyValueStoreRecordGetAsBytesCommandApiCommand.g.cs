@@ -35,11 +35,11 @@ causing web browsers to offer downloading HTML records instead of displaying the
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-key-value-store-record-get-as-bytes", @"Get default store's record
+        var command = new Command(commandName ?? @"actor-run-key-value-store-record-get-as-bytes", @"Get record from the default key-value store of an Actor run
 Gets a value stored under a specific key in the default key-value store of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the
-[Get record](/api/v2/key-value-store-record-get) endpoint.
+[Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
 ");
                         command.Arguments.Add(RunId);
                         command.Arguments.Add(RecordKey);

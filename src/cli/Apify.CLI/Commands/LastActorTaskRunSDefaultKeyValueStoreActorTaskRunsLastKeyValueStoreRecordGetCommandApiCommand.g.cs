@@ -67,11 +67,11 @@ causing web browsers to offer downloading HTML records instead of displaying the
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-record-get", @"Get last task run's default store's record
+        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-record-get", @"Get record from the default key-value store of an Actor task's last run
 Gets a value stored under a specific key in the default key-value store of the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the
-[Get record](/api/v2/key-value-store-record-get) endpoint.
+[Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Arguments.Add(RecordKey);

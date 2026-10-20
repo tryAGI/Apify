@@ -52,10 +52,10 @@ namespace Apify
             ref byte[] content);
 
         /// <summary>
-        /// Download last task run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor task's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -100,10 +100,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Download last task run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor task's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -676,10 +676,10 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Download last task run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor task's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor task run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

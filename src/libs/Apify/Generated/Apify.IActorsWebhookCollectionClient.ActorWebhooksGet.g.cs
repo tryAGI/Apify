@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsWebhookCollectionClient
     {
         /// <summary>
-        /// Get list of webhooks<br/>
+        /// Get list of Actor's webhooks<br/>
         /// Gets the list of webhooks of a specific Actor. The response is a JSON with<br/>
         /// the list of objects, where each object contains basic information about a single webhook.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -36,7 +36,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get list of webhooks<br/>
+        /// Get list of Actor's webhooks<br/>
         /// Gets the list of webhooks of a specific Actor. The response is a JSON with<br/>
         /// the list of objects, where each object contains basic information about a single webhook.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

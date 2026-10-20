@@ -47,7 +47,7 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get", @"Get build
+        var command = new Command(commandName ?? @"get", @"Get Actor build
 Gets an object that contains all the details about a specific build of an
 Actor.
 

@@ -62,11 +62,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-unlock-post", @"Unlock requests in last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-unlock-post", @"Unlock requests in the default request queue of an Actor's last run
 Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.
+[Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

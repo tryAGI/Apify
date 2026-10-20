@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>
@@ -95,7 +95,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>
@@ -789,7 +789,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>

@@ -17,7 +17,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreDeleteCommandApi
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"key-value-store-delete", @"Delete store
+        var command = new Command(commandName ?? @"key-value-store-delete", @"Delete key-value store
 Deletes a key-value store.");
                         command.Arguments.Add(StoreId);
 

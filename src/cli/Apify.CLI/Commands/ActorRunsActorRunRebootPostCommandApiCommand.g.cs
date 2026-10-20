@@ -37,7 +37,7 @@ internal static partial class ActorRunsActorRunRebootPostCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"reboot-post", @"Reboot run
+        var command = new Command(commandName ?? @"reboot-post", @"Reboot Actor run
 Reboots an Actor run and returns an object that contains all the details
 about the rebooted run.
 

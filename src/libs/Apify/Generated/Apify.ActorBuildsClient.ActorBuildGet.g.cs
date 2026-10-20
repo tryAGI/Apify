@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get build<br/>
+        /// Get Actor build<br/>
         /// Gets an object that contains all the details about a specific build of an<br/>
         /// Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will<br/>
@@ -78,7 +78,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get build<br/>
+        /// Get Actor build<br/>
         /// Gets an object that contains all the details about a specific build of an<br/>
         /// Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will<br/>

@@ -104,7 +104,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
@@ -301,7 +301,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
@@ -1273,7 +1273,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>

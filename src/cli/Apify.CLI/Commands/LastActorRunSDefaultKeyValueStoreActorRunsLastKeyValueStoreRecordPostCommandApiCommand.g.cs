@@ -77,11 +77,11 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-record-post", @"Store record in last run's default store (POST)
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-record-post", @"Set record in the default key-value store of an Actor's last run (POST)
 Stores a value under a specific key in the default key-value store of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the
-[Store record](/api/v2/key-value-store-record-post) endpoint.
+[Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RecordKey);

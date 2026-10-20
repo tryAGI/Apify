@@ -65,7 +65,7 @@ internal static partial class LastActorRunSDefaultRequestQueueActorRunsLastReque
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-put", @"Update last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-put", @"Update the default request queue of an Actor's last run
 Updates the default request queue associated with the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the

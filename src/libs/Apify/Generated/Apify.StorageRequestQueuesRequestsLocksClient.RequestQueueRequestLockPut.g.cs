@@ -50,7 +50,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Prolong request lock<br/>
+        /// Prolong lock on request in request queue<br/>
         /// Prolongs request lock. The request lock can be prolonged only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>
@@ -97,7 +97,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Prolong request lock<br/>
+        /// Prolong lock on request in request queue<br/>
         /// Prolongs request lock. The request lock can be prolonged only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>

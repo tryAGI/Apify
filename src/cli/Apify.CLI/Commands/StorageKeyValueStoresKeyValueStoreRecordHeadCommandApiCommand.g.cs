@@ -23,7 +23,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordHeadComman
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"key-value-store-record-head", @"Check if a record exists
+        var command = new Command(commandName ?? @"key-value-store-record-head", @"Check if key-value store record exists
 Check if a value is stored in the key-value store under a specific key.
 ");
                         command.Arguments.Add(StoreId);

@@ -50,7 +50,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of task runs<br/>
+        /// Get list of Actor task's runs<br/>
         /// Get a list of runs of a specific task. The response is a list of objects,<br/>
         /// where each object contains essential information about a single task run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters,<br/>
@@ -101,7 +101,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of task runs<br/>
+        /// Get list of Actor task's runs<br/>
         /// Get a list of runs of a specific task. The response is a list of objects,<br/>
         /// where each object contains essential information about a single task run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters,<br/>

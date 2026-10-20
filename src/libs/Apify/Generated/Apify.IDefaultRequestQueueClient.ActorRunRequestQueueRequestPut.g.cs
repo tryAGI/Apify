@@ -5,10 +5,10 @@ namespace Apify
     public partial interface IDefaultRequestQueueClient
     {
         /// <summary>
-        /// Update request in default request queue<br/>
+        /// Update request in the default request queue of an Actor run<br/>
         /// Updates a request in the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -36,10 +36,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request in default request queue<br/>
+        /// Update request in the default request queue of an Actor run<br/>
         /// Updates a request in the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -67,10 +67,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request in default request queue<br/>
+        /// Update request in the default request queue of an Actor run<br/>
         /// Updates a request in the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

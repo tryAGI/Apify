@@ -65,10 +65,10 @@ ANSI escape codes from the logs, keeping only printable characters.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-log-get", @"Get last Actor run's log
+        var command = new Command(commandName ?? @"actor-runs-last-log-get", @"Get log of an Actor's last run
 Retrieves last Actor run's logs.
 
-This endpoint is a shortcut for getting last Actor run's log. Same as [Get log](/api/v2/log-get) endpoint.
+This endpoint is a shortcut for getting last Actor run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

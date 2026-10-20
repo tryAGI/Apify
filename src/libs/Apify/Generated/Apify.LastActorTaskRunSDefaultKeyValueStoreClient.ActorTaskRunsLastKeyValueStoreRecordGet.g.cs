@@ -52,10 +52,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get last task run's default store's record<br/>
+        /// Get record from the default key-value store of an Actor task's last run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -100,10 +100,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get last task run's default store's record<br/>
+        /// Get record from the default key-value store of an Actor task's last run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

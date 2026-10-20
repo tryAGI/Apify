@@ -37,7 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete store<br/>
+        /// Delete key-value store<br/>
         /// Deletes a key-value store.
         /// </summary>
         /// <param name="storeId">
@@ -58,7 +58,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete store<br/>
+        /// Delete key-value store<br/>
         /// Deletes a key-value store.
         /// </summary>
         /// <param name="storeId">

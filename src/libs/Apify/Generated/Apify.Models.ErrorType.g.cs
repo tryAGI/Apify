@@ -523,6 +523,10 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        FullPermissionsRequireVerifiedOwner,
+        /// <summary>
+        ///
+        /// </summary>
         GithubBranchEmpty,
         /// <summary>
         ///
@@ -584,6 +588,10 @@ namespace Apify
         ///
         /// </summary>
         InputUpdateCollision,
+        /// <summary>
+        ///
+        /// </summary>
+        InputValidationTimedOut,
         /// <summary>
         ///
         /// </summary>
@@ -871,6 +879,10 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        McpConnectorActorNotAllowed,
+        /// <summary>
+        ///
+        /// </summary>
         MethodNotAllowed,
         /// <summary>
         ///
@@ -924,6 +936,10 @@ namespace Apify
         ///
         /// </summary>
         MonthlyUsageLimitTooLow,
+        /// <summary>
+        ///
+        /// </summary>
+        MorePublicActorsRequireVerifiedOwner,
         /// <summary>
         ///
         /// </summary>
@@ -1135,6 +1151,10 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        ReadmeRequired,
+        /// <summary>
+        ///
+        /// </summary>
         RecaptchaInvalid,
         /// <summary>
         ///
@@ -1247,6 +1267,10 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        SchemasRequired,
+        /// <summary>
+        ///
+        /// </summary>
         ServiceWorkerRegistrationNotAllowed,
         /// <summary>
         ///
@@ -1264,6 +1288,10 @@ namespace Apify
         ///
         /// </summary>
         SocketDestroyed,
+        /// <summary>
+        ///
+        /// </summary>
+        StandbyDeploymentInvalid,
         /// <summary>
         ///
         /// </summary>
@@ -1348,6 +1376,14 @@ namespace Apify
         ///
         /// </summary>
         TooManyOrganizations,
+        /// <summary>
+        ///
+        /// </summary>
+        TooManyPublicActorTasksPerAccount,
+        /// <summary>
+        ///
+        /// </summary>
+        TooManyPublicActorTasksPerActor,
         /// <summary>
         ///
         /// </summary>
@@ -1730,6 +1766,7 @@ namespace Apify
                 ErrorType.FinalInvoiceNegative => "final-invoice-negative",
                 ErrorType.FullPermissionActorBlockedForAdmin => "full-permission-actor-blocked-for-admin",
                 ErrorType.FullPermissionActorNotApproved => "full-permission-actor-not-approved",
+                ErrorType.FullPermissionsRequireVerifiedOwner => "full-permissions-require-verified-owner",
                 ErrorType.GithubBranchEmpty => "github-branch-empty",
                 ErrorType.GithubIssueAlreadyExists => "github-issue-already-exists",
                 ErrorType.GithubPublicKeyNotFound => "github-public-key-not-found",
@@ -1746,6 +1783,7 @@ namespace Apify
                 ErrorType.InputJsonNotObject => "input-json-not-object",
                 ErrorType.InputJsonTooLong => "input-json-too-long",
                 ErrorType.InputUpdateCollision => "input-update-collision",
+                ErrorType.InputValidationTimedOut => "input-validation-timed-out",
                 ErrorType.InsufficientPermissions => "insufficient-permissions",
                 ErrorType.InsufficientPermissionsToChangeField => "insufficient-permissions-to-change-field",
                 ErrorType.InsufficientSecurityMeasures => "insufficient-security-measures",
@@ -1817,6 +1855,7 @@ namespace Apify
                 ErrorType.MaxMetamorphsExceeded => "max-metamorphs-exceeded",
                 ErrorType.MaxTotalChargeUsdBelowMinimum => "max-total-charge-usd-below-minimum",
                 ErrorType.MaxTotalChargeUsdMustBeGreaterThanZero => "max-total-charge-usd-must-be-greater-than-zero",
+                ErrorType.McpConnectorActorNotAllowed => "mcp-connector-actor-not-allowed",
                 ErrorType.MethodNotAllowed => "method-not-allowed",
                 ErrorType.MigrationDisabled => "migration-disabled",
                 ErrorType.MissingActorRights => "missing-actor-rights",
@@ -1831,6 +1870,7 @@ namespace Apify
                 ErrorType.MissingSettings => "missing-settings",
                 ErrorType.MissingUsername => "missing-username",
                 ErrorType.MonthlyUsageLimitTooLow => "monthly-usage-limit-too-low",
+                ErrorType.MorePublicActorsRequireVerifiedOwner => "more-public-actors-require-verified-owner",
                 ErrorType.MoreThanOneUpdateNotAllowed => "more-than-one-update-not-allowed",
                 ErrorType.MultipleRecordsFound => "multiple-records-found",
                 ErrorType.MustBeAdmin => "must-be-admin",
@@ -1883,6 +1923,7 @@ namespace Apify
                 ErrorType.QueryTimeout => "query-timeout",
                 ErrorType.QuotedPriceOutdated => "quoted-price-outdated",
                 ErrorType.RateLimitExceeded => "rate-limit-exceeded",
+                ErrorType.ReadmeRequired => "readme-required",
                 ErrorType.RecaptchaInvalid => "recaptcha-invalid",
                 ErrorType.RecaptchaRequired => "recaptcha-required",
                 ErrorType.RecordNotFound => "record-not-found",
@@ -1911,11 +1952,13 @@ namespace Apify
                 ErrorType.SchemaValidation => "schema-validation",
                 ErrorType.SchemaValidationError => "schema-validation-error",
                 ErrorType.SchemaValidationFailed => "schema-validation-failed",
+                ErrorType.SchemasRequired => "schemas-required",
                 ErrorType.ServiceWorkerRegistrationNotAllowed => "service-worker-registration-not-allowed",
                 ErrorType.SignUpMethodNotAllowed => "sign-up-method-not-allowed",
                 ErrorType.SlackIntegrationNotCustom => "slack-integration-not-custom",
                 ErrorType.SocketClosed => "socket-closed",
                 ErrorType.SocketDestroyed => "socket-destroyed",
+                ErrorType.StandbyDeploymentInvalid => "standby-deployment-invalid",
                 ErrorType.StoreSchemaInvalid => "store-schema-invalid",
                 ErrorType.StoreTermsNotAccepted => "store-terms-not-accepted",
                 ErrorType.StripeEnabled => "stripe-enabled",
@@ -1937,6 +1980,8 @@ namespace Apify
                 ErrorType.TooManyMcpConnectors => "too-many-mcp-connectors",
                 ErrorType.TooManyOAuthApps => "too-many-o-auth-apps",
                 ErrorType.TooManyOrganizations => "too-many-organizations",
+                ErrorType.TooManyPublicActorTasksPerAccount => "too-many-public-actor-tasks-per-account",
+                ErrorType.TooManyPublicActorTasksPerActor => "too-many-public-actor-tasks-per-actor",
                 ErrorType.TooManyRequests => "too-many-requests",
                 ErrorType.TooManySchedules => "too-many-schedules",
                 ErrorType.TooManyUiAccessKeys => "too-many-ui-access-keys",
@@ -2135,6 +2180,7 @@ namespace Apify
                 "final-invoice-negative" => ErrorType.FinalInvoiceNegative,
                 "full-permission-actor-blocked-for-admin" => ErrorType.FullPermissionActorBlockedForAdmin,
                 "full-permission-actor-not-approved" => ErrorType.FullPermissionActorNotApproved,
+                "full-permissions-require-verified-owner" => ErrorType.FullPermissionsRequireVerifiedOwner,
                 "github-branch-empty" => ErrorType.GithubBranchEmpty,
                 "github-issue-already-exists" => ErrorType.GithubIssueAlreadyExists,
                 "github-public-key-not-found" => ErrorType.GithubPublicKeyNotFound,
@@ -2151,6 +2197,7 @@ namespace Apify
                 "input-json-not-object" => ErrorType.InputJsonNotObject,
                 "input-json-too-long" => ErrorType.InputJsonTooLong,
                 "input-update-collision" => ErrorType.InputUpdateCollision,
+                "input-validation-timed-out" => ErrorType.InputValidationTimedOut,
                 "insufficient-permissions" => ErrorType.InsufficientPermissions,
                 "insufficient-permissions-to-change-field" => ErrorType.InsufficientPermissionsToChangeField,
                 "insufficient-security-measures" => ErrorType.InsufficientSecurityMeasures,
@@ -2222,6 +2269,7 @@ namespace Apify
                 "max-metamorphs-exceeded" => ErrorType.MaxMetamorphsExceeded,
                 "max-total-charge-usd-below-minimum" => ErrorType.MaxTotalChargeUsdBelowMinimum,
                 "max-total-charge-usd-must-be-greater-than-zero" => ErrorType.MaxTotalChargeUsdMustBeGreaterThanZero,
+                "mcp-connector-actor-not-allowed" => ErrorType.McpConnectorActorNotAllowed,
                 "method-not-allowed" => ErrorType.MethodNotAllowed,
                 "migration-disabled" => ErrorType.MigrationDisabled,
                 "missing-actor-rights" => ErrorType.MissingActorRights,
@@ -2236,6 +2284,7 @@ namespace Apify
                 "missing-settings" => ErrorType.MissingSettings,
                 "missing-username" => ErrorType.MissingUsername,
                 "monthly-usage-limit-too-low" => ErrorType.MonthlyUsageLimitTooLow,
+                "more-public-actors-require-verified-owner" => ErrorType.MorePublicActorsRequireVerifiedOwner,
                 "more-than-one-update-not-allowed" => ErrorType.MoreThanOneUpdateNotAllowed,
                 "multiple-records-found" => ErrorType.MultipleRecordsFound,
                 "must-be-admin" => ErrorType.MustBeAdmin,
@@ -2288,6 +2337,7 @@ namespace Apify
                 "query-timeout" => ErrorType.QueryTimeout,
                 "quoted-price-outdated" => ErrorType.QuotedPriceOutdated,
                 "rate-limit-exceeded" => ErrorType.RateLimitExceeded,
+                "readme-required" => ErrorType.ReadmeRequired,
                 "recaptcha-invalid" => ErrorType.RecaptchaInvalid,
                 "recaptcha-required" => ErrorType.RecaptchaRequired,
                 "record-not-found" => ErrorType.RecordNotFound,
@@ -2316,11 +2366,13 @@ namespace Apify
                 "schema-validation" => ErrorType.SchemaValidation,
                 "schema-validation-error" => ErrorType.SchemaValidationError,
                 "schema-validation-failed" => ErrorType.SchemaValidationFailed,
+                "schemas-required" => ErrorType.SchemasRequired,
                 "service-worker-registration-not-allowed" => ErrorType.ServiceWorkerRegistrationNotAllowed,
                 "sign-up-method-not-allowed" => ErrorType.SignUpMethodNotAllowed,
                 "slack-integration-not-custom" => ErrorType.SlackIntegrationNotCustom,
                 "socket-closed" => ErrorType.SocketClosed,
                 "socket-destroyed" => ErrorType.SocketDestroyed,
+                "standby-deployment-invalid" => ErrorType.StandbyDeploymentInvalid,
                 "store-schema-invalid" => ErrorType.StoreSchemaInvalid,
                 "store-terms-not-accepted" => ErrorType.StoreTermsNotAccepted,
                 "stripe-enabled" => ErrorType.StripeEnabled,
@@ -2342,6 +2394,8 @@ namespace Apify
                 "too-many-mcp-connectors" => ErrorType.TooManyMcpConnectors,
                 "too-many-o-auth-apps" => ErrorType.TooManyOAuthApps,
                 "too-many-organizations" => ErrorType.TooManyOrganizations,
+                "too-many-public-actor-tasks-per-account" => ErrorType.TooManyPublicActorTasksPerAccount,
+                "too-many-public-actor-tasks-per-actor" => ErrorType.TooManyPublicActorTasksPerActor,
                 "too-many-requests" => ErrorType.TooManyRequests,
                 "too-many-schedules" => ErrorType.TooManySchedules,
                 "too-many-ui-access-keys" => ErrorType.TooManyUiAccessKeys,

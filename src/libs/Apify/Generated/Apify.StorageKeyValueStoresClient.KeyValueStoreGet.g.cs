@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get store<br/>
+        /// Get key-value store<br/>
         /// Gets an object that contains all the details about a specific key-value<br/>
         /// store.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get store<br/>
+        /// Get key-value store<br/>
         /// Gets an object that contains all the details about a specific key-value<br/>
         /// store.
         /// </summary>

@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get task<br/>
+        /// Get Actor task<br/>
         /// Get an object that contains all the details about a task.
         /// </summary>
         /// <param name="actorTaskId">
@@ -65,7 +65,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get task<br/>
+        /// Get Actor task<br/>
         /// Get an object that contains all the details about a task.
         /// </summary>
         /// <param name="actorTaskId">

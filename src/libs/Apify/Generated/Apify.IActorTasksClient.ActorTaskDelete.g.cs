@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Delete task<br/>
+        /// Delete Actor task<br/>
         /// Delete the task specified through the `actorTaskId` parameter.
         /// </summary>
         /// <param name="actorTaskId">
@@ -19,7 +19,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete task<br/>
+        /// Delete Actor task<br/>
         /// Delete the task specified through the `actorTaskId` parameter.
         /// </summary>
         /// <param name="actorTaskId">

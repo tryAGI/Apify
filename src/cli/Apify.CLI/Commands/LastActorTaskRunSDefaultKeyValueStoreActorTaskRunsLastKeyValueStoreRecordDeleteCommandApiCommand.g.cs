@@ -35,11 +35,11 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-record-delete", @"Delete last task run's default store's record
+        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-record-delete", @"Delete record from the default key-value store of an Actor task's last run
 Removes a record specified by a key from the default key-value store of the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the
-[Delete record](/api/v2/key-value-store-record-delete) endpoint.
+[Delete key-value store record](/api/v2/key-value-store-record-delete) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Arguments.Add(RecordKey);

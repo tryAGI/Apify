@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get last task run's dataset statistics<br/>
+        /// Get the default dataset statistics for an Actor task's last run<br/>
         /// Returns statistics for the last Actor task run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.
@@ -79,7 +79,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get last task run's dataset statistics<br/>
+        /// Get the default dataset statistics for an Actor task's last run<br/>
         /// Returns statistics for the last Actor task run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.

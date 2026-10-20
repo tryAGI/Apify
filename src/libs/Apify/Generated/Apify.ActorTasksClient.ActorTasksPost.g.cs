@@ -42,11 +42,11 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.
@@ -71,11 +71,11 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.
@@ -777,11 +777,11 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.

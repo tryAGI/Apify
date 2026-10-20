@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get head<br/>
+        /// Get request queue head<br/>
         /// Returns given number of first requests from the queue.<br/>
         /// The response contains the `hadMultipleClients` boolean field which indicates<br/>
         /// that the queue was accessed by more than one client (with unique or empty<br/>
@@ -85,7 +85,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get head<br/>
+        /// Get request queue head<br/>
         /// Returns given number of first requests from the queue.<br/>
         /// The response contains the `hadMultipleClients` boolean field which indicates<br/>
         /// that the queue was accessed by more than one client (with unique or empty<br/>

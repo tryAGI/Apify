@@ -11,10 +11,6 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        FlatPricePerMonth,
-        /// <summary>
-        ///
-        /// </summary>
         Free,
         /// <summary>
         ///
@@ -38,7 +34,6 @@ namespace Apify
         {
             return value switch
             {
-                StoreGetPricingModel.FlatPricePerMonth => "FLAT_PRICE_PER_MONTH",
                 StoreGetPricingModel.Free => "FREE",
                 StoreGetPricingModel.PayPerEvent => "PAY_PER_EVENT",
                 StoreGetPricingModel.PricePerDatasetItem => "PRICE_PER_DATASET_ITEM",
@@ -52,7 +47,6 @@ namespace Apify
         {
             return value switch
             {
-                "FLAT_PRICE_PER_MONTH" => StoreGetPricingModel.FlatPricePerMonth,
                 "FREE" => StoreGetPricingModel.Free,
                 "PAY_PER_EVENT" => StoreGetPricingModel.PayPerEvent,
                 "PRICE_PER_DATASET_ITEM" => StoreGetPricingModel.PricePerDatasetItem,

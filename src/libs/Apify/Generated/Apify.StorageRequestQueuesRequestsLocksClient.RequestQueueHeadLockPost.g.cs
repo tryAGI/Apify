@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get head and lock<br/>
+        /// Get and lock request queue head<br/>
         /// Returns the given number of first requests from the queue and locks them for<br/>
         /// the given time.<br/>
         /// If this endpoint locks the request, no other client or run will be able to get and<br/>
@@ -92,7 +92,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get head and lock<br/>
+        /// Get and lock request queue head<br/>
         /// Returns the given number of first requests from the queue and locks them for<br/>
         /// the given time.<br/>
         /// If this endpoint locks the request, no other client or run will be able to get and<br/>

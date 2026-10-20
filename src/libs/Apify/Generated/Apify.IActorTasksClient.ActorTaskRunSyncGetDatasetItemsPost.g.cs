@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
@@ -161,7 +161,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
@@ -317,7 +317,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task synchronously and get dataset items<br/>
+        /// Run Actor task synchronously and get dataset items<br/>
         /// Runs an Actor task and synchronously returns its dataset items.<br/>
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>

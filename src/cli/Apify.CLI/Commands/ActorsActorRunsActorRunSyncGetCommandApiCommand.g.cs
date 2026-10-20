@@ -106,7 +106,7 @@ the WebhookRepresentation schema. For more information, see
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-sync-get", @"Run Actor synchronously without input
+        var command = new Command(commandName ?? @"actor-run-sync-get", @"Run Actor synchronously and get key-value store record (GET)
 Runs a specific Actor and returns a key-value store record. The response contains the
 record stored under the `OUTPUT` key in the run's default key-value store.
 This is a legacy approach that has been replaced by the Actor

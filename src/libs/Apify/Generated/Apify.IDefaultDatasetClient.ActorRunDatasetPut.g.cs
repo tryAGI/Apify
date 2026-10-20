@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IDefaultDatasetClient
     {
         /// <summary>
-        /// Update default dataset<br/>
+        /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
         /// [Put dataset](/api/v2/dataset-put) endpoint.
@@ -24,7 +24,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update default dataset<br/>
+        /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
         /// [Put dataset](/api/v2/dataset-put) endpoint.
@@ -43,7 +43,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update default dataset<br/>
+        /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
         /// [Put dataset](/api/v2/dataset-put) endpoint.

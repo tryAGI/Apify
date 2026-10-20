@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update version (POST)<br/>
+        /// Update Actor version (POST)<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update version (POST)<br/>
+        /// Update Actor version (POST)<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
         /// </summary>
@@ -758,7 +758,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update version (POST)<br/>
+        /// Update Actor version (POST)<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
         /// </summary>

@@ -56,11 +56,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-request-queue-head-get", @"Get default request queue head
+        var command = new Command(commandName ?? @"actor-run-request-queue-head-get", @"Get the default request queue head for an Actor run
 Returns the given number of first requests from the default request queue of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the
-[Get head](/api/v2/request-queue-head-get) endpoint.
+[Get request queue head](/api/v2/request-queue-head-get) endpoint.
 ");
                         command.Arguments.Add(RunId);
                         command.Options.Add(Limit);

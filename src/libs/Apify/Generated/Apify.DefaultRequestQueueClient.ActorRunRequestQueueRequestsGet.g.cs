@@ -52,10 +52,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// List default request queue's requests<br/>
+        /// List requests in the default request queue of an Actor run<br/>
         /// Returns a list of requests from the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [List requests](/api/v2/request-queue-requests-get) endpoint.
+        /// [List requests in request queue](/api/v2/request-queue-requests-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -102,10 +102,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// List default request queue's requests<br/>
+        /// List requests in the default request queue of an Actor run<br/>
         /// Returns a list of requests from the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [List requests](/api/v2/request-queue-requests-get) endpoint.
+        /// [List requests in request queue](/api/v2/request-queue-requests-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

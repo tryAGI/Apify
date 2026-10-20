@@ -52,7 +52,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// List requests<br/>
+        /// List requests in request queue<br/>
         /// Returns a list of requests. This endpoint is paginated using<br/>
         /// cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// List requests<br/>
+        /// List requests in request queue<br/>
         /// Returns a list of requests. This endpoint is paginated using<br/>
         /// cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
         /// </summary>

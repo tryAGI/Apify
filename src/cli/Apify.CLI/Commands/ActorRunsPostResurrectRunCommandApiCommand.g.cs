@@ -92,7 +92,7 @@ By default, the resurrected run uses the same setting as before.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"post-resurrect-run", @"Resurrect run
+        var command = new Command(commandName ?? @"post-resurrect-run", @"Resurrect Actor run
 Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.
 Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.
 Run status will be updated to RUNNING and its container will be restarted with the same storages

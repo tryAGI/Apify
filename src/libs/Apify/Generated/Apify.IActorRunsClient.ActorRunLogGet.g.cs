@@ -5,9 +5,9 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Get run's log<br/>
+        /// Get log of an Actor run<br/>
         /// Retrieves Actor run's logs.<br/>
-        /// This endpoint is a shortcut for getting the run's log. Same as [Get log](/api/v2/log-get) endpoint.
+        /// This endpoint is a shortcut for getting the run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -32,9 +32,9 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get run's log<br/>
+        /// Get log of an Actor run<br/>
         /// Retrieves Actor run's logs.<br/>
-        /// This endpoint is a shortcut for getting the run's log. Same as [Get log](/api/v2/log-get) endpoint.
+        /// This endpoint is a shortcut for getting the run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

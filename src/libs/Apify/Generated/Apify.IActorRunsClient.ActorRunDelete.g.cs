@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Delete run<br/>
+        /// Delete Actor run<br/>
         /// Delete the run. Only finished runs can be deleted. Only the person or<br/>
         /// organization that initiated the run can delete it.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete run<br/>
+        /// Delete Actor run<br/>
         /// Delete the run. Only finished runs can be deleted. Only the person or<br/>
         /// organization that initiated the run can delete it.
         /// </summary>

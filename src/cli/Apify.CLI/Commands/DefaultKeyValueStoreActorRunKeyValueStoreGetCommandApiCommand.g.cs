@@ -37,12 +37,12 @@ internal static partial class DefaultKeyValueStoreActorRunKeyValueStoreGetComman
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-key-value-store-get", @"Get default store
+        var command = new Command(commandName ?? @"actor-run-key-value-store-get", @"Get the default key-value store of an Actor run
 Gets an object that contains all the details about the default key-value
 store.
 
 This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the
-[Get store](/api/v2/key-value-store-get) endpoint.
+[Get key-value store](/api/v2/key-value-store-get) endpoint.
 ");
                         command.Arguments.Add(RunId);
 

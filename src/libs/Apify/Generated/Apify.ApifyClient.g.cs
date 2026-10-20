@@ -629,7 +629,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor run's abort. The API endpoint described in this section is a convenience endpoint that aborts the Actor's last run.<br/>
-        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// Same as of functionality described in: [Abort Actor run](/api/v2/actor-run-abort-post).
         /// </summary>
         public LastActorRunSAbortClient LastActorRunSAbort => new LastActorRunSAbortClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -684,7 +684,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor run's metamorph. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor's last run into a run of another Actor.<br/>
-        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// Same as of functionality described in: [Metamorph Actor run](/api/v2/actor-run-metamorph-post).
         /// </summary>
         public LastActorRunSMetamorphClient LastActorRunSMetamorph => new LastActorRunSMetamorphClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -695,7 +695,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor run's reboot. The API endpoint described in this section is a convenience endpoint that reboots the Actor's last run.<br/>
-        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// Same as of functionality described in: [Reboot Actor run](/api/v2/actor-run-reboot-post).
         /// </summary>
         public LastActorRunSRebootClient LastActorRunSReboot => new LastActorRunSRebootClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -706,7 +706,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor task run's abort. The API endpoint described in this section is a convenience endpoint that aborts the Actor task's last run.<br/>
-        /// Same as of functionality described in: [Abort run](/api/v2/actor-run-abort-post).
+        /// Same as of functionality described in: [Abort Actor run](/api/v2/actor-run-abort-post).
         /// </summary>
         public LastActorTaskRunSAbortClient LastActorTaskRunSAbort => new LastActorTaskRunSAbortClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -761,7 +761,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor task run's metamorph. The API endpoint described in this section is a convenience endpoint that metamorphs the Actor task's last run into a run of another Actor.<br/>
-        /// Same as of functionality described in: [Metamorph run](/api/v2/actor-run-metamorph-post).
+        /// Same as of functionality described in: [Metamorph Actor run](/api/v2/actor-run-metamorph-post).
         /// </summary>
         public LastActorTaskRunSMetamorphClient LastActorTaskRunSMetamorph => new LastActorTaskRunSMetamorphClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -772,7 +772,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor task run's reboot. The API endpoint described in this section is a convenience endpoint that reboots the Actor task's last run.<br/>
-        /// Same as of functionality described in: [Reboot run](/api/v2/actor-run-reboot-post).
+        /// Same as of functionality described in: [Reboot Actor run](/api/v2/actor-run-reboot-post).
         /// </summary>
         public LastActorTaskRunSRebootClient LastActorTaskRunSReboot => new LastActorTaskRunSRebootClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

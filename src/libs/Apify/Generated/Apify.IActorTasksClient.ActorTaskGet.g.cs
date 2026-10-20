@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Get task<br/>
+        /// Get Actor task<br/>
         /// Get an object that contains all the details about a task.
         /// </summary>
         /// <param name="actorTaskId">
@@ -19,7 +19,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get task<br/>
+        /// Get Actor task<br/>
         /// Get an object that contains all the details about a task.
         /// </summary>
         /// <param name="actorTaskId">

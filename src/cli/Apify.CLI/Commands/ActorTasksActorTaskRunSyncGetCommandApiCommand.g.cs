@@ -101,7 +101,7 @@ the WebhookRepresentation schema. For more information, see
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"run-sync-get", @"Run task synchronously
+        var command = new Command(commandName ?? @"run-sync-get", @"Run Actor task synchronously and get key-value store record (GET)
 Runs an Actor task and synchronously returns a key-value store record.
 
 The response contains the record stored under the `OUTPUT` key in the run's

@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>
@@ -87,7 +87,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>
@@ -771,7 +771,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>

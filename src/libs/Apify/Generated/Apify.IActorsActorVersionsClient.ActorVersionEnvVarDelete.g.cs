@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Delete environment variable<br/>
+        /// Delete environment variable from Actor version<br/>
         /// Deletes a specific environment variable.
         /// </summary>
         /// <param name="actorId">
@@ -27,7 +27,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete environment variable<br/>
+        /// Delete environment variable from Actor version<br/>
         /// Deletes a specific environment variable.
         /// </summary>
         /// <param name="actorId">

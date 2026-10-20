@@ -48,10 +48,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Unlock requests in last run's default request queue<br/>
+        /// Unlock requests in the default request queue of an Actor's last run<br/>
         /// Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.
+        /// [Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -86,10 +86,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Unlock requests in last run's default request queue<br/>
+        /// Unlock requests in the default request queue of an Actor's last run<br/>
         /// Unlocks requests in the default request queue of the last Actor run that are currently locked by the client.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Unlock requests](/api/v2/request-queue-requests-unlock-post) endpoint.
+        /// [Unlock requests in request queue](/api/v2/request-queue-requests-unlock-post) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

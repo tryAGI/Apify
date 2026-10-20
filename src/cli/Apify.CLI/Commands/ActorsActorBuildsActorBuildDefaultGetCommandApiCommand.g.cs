@@ -47,7 +47,7 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-build-default-get", @"Get default build
+        var command = new Command(commandName ?? @"actor-build-default-get", @"Get default Actor build
 Get the default build for an Actor.
 
 Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorBuildsClient
     {
         /// <summary>
-        /// Delete build<br/>
+        /// Delete Actor build<br/>
         /// Delete the build. The build that is the current default build for the Actor<br/>
         /// cannot be deleted.<br/>
         /// Only users with build permissions for the Actor can delete builds.
@@ -21,7 +21,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete build<br/>
+        /// Delete Actor build<br/>
         /// Delete the build. The build that is the current default build for the Actor<br/>
         /// cannot be deleted.<br/>
         /// Only users with build permissions for the Actor can delete builds.

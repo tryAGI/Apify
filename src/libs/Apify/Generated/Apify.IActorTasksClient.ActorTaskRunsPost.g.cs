@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>
@@ -70,7 +70,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>
@@ -135,7 +135,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task<br/>
+        /// Run Actor task<br/>
         /// Runs an Actor task and immediately returns without waiting for the run to<br/>
         /// finish.<br/>
         /// Optionally, you can override the Actor input configuration by passing a JSON<br/>

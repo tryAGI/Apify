@@ -89,7 +89,7 @@ namespace Apify
             : throw new global::System.InvalidOperationException($"Expected union variant 'PricePerDatasetItem' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Rental pricing model, which is no longer supported.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Apify.FlatPricePerMonthActorPricingInfo? FlatPricePerMonth { get; init; }

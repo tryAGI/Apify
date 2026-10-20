@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IToolsClient
     {
         /// <summary>
-        /// Get browser info<br/>
+        /// Get browser info (DELETE)<br/>
         /// Returns information about the HTTP request, including the client IP address,<br/>
         /// country code, request headers, and body length.<br/>
         /// This endpoint is designed for proxy testing. It accepts any HTTP method so you<br/>
@@ -23,7 +23,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get browser info<br/>
+        /// Get browser info (DELETE)<br/>
         /// Returns information about the HTTP request, including the client IP address,<br/>
         /// country code, request headers, and body length.<br/>
         /// This endpoint is designed for proxy testing. It accepts any HTTP method so you<br/>

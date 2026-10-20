@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get default request queue<br/>
+        /// Get the default request queue of an Actor run<br/>
         /// Returns the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Get request queue](/api/v2/request-queue-get) endpoint.
@@ -67,7 +67,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default request queue<br/>
+        /// Get the default request queue of an Actor run<br/>
         /// Returns the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Get request queue](/api/v2/request-queue-get) endpoint.

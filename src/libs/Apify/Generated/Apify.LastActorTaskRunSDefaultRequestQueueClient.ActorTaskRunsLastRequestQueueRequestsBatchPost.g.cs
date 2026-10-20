@@ -52,10 +52,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Batch add requests to last task run's default request queue<br/>
+        /// Batch add requests to the default request queue of an Actor task's last run<br/>
         /// Adds requests to the default request queue of the last Actor task run in batch.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
+        /// [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -100,10 +100,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Batch add requests to last task run's default request queue<br/>
+        /// Batch add requests to the default request queue of an Actor task's last run<br/>
         /// Adds requests to the default request queue of the last Actor task run in batch.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
+        /// [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

@@ -13,7 +13,7 @@ namespace Apify
         /// <summary>
         /// Time when the task was published, or `null` if the task isn't published.<br/>
         /// This field is server-controlled. To publish or unpublish a task, use the<br/>
-        /// [Update task](/api/v2/actor-task-put) endpoint and set `isPublic`.<br/>
+        /// [Update Actor task](/api/v2/actor-task-put) endpoint and set `isPublic`.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publishedAt")]
@@ -66,7 +66,7 @@ namespace Apify
         /// <param name="publishedAt">
         /// Time when the task was published, or `null` if the task isn't published.<br/>
         /// This field is server-controlled. To publish or unpublish a task, use the<br/>
-        /// [Update task](/api/v2/actor-task-put) endpoint and set `isPublic`.<br/>
+        /// [Update Actor task](/api/v2/actor-task-put) endpoint and set `isPublic`.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="seoTitle">

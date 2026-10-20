@@ -43,11 +43,11 @@ internal static partial class DefaultRequestQueueActorRunRequestQueueRequestGetC
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-request-queue-request-get", @"Get request from default request queue
+        var command = new Command(commandName ?? @"actor-run-request-queue-request-get", @"Get request from the default request queue of an Actor run
 Returns a request from the default request queue of the Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the
-[Get request](/api/v2/request-queue-request-get) endpoint.
+[Get request from request queue](/api/v2/request-queue-request-get) endpoint.
 ");
                         command.Arguments.Add(RunId);
                         command.Arguments.Add(RequestId);
