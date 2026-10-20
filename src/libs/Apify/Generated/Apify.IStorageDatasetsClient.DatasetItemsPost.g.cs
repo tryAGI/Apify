@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageDatasetsClient
     {
         /// <summary>
-        /// Store items<br/>
+        /// Store items in dataset<br/>
         /// Appends an item or an array of items to the end of the dataset.<br/>
         /// The POST payload is a JSON object or a JSON array of objects to save into the dataset.<br/>
         /// If the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.<br/>
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store items<br/>
+        /// Store items in dataset<br/>
         /// Appends an item or an array of items to the end of the dataset.<br/>
         /// The POST payload is a JSON object or a JSON array of objects to save into the dataset.<br/>
         /// If the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.<br/>
@@ -61,7 +61,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store items<br/>
+        /// Store items in dataset<br/>
         /// Appends an item or an array of items to the end of the dataset.<br/>
         /// The POST payload is a JSON object or a JSON array of objects to save into the dataset.<br/>
         /// If the data you attempt to store in the dataset is invalid (meaning any of the items received by the API fails the validation), the whole request is discarded and the API will return a response with status code 400.<br/>

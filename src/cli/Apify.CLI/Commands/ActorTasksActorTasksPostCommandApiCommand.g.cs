@@ -49,12 +49,12 @@ internal static partial class ActorTasksActorTasksPostCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"post", @"Create task
+        var command = new Command(commandName ?? @"post", @"Create Actor task
 Create a new task with settings specified by the object passed as JSON in
 the POST payload.
 
 The response is the full task object as returned by the
-[Get task](/api/v2/actor-task-get) endpoint.
+[Get Actor task](/api/v2/actor-task-get) endpoint.
 
 The request needs to specify the `Content-Type: application/json` HTTP header!
 

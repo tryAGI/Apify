@@ -37,7 +37,7 @@ internal static partial class DefaultDatasetActorRunDatasetGetCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-dataset-get", @"Get default dataset
+        var command = new Command(commandName ?? @"actor-run-dataset-get", @"Get the default dataset of an Actor run
 Returns the default dataset associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the

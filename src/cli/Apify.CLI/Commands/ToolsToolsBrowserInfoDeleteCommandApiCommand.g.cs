@@ -39,7 +39,7 @@ internal static partial class ToolsToolsBrowserInfoDeleteCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"browser-info-delete", @"Get browser info
+        var command = new Command(commandName ?? @"browser-info-delete", @"Get browser info (DELETE)
 Returns information about the HTTP request, including the client IP address,
 country code, request headers, and body length.
 

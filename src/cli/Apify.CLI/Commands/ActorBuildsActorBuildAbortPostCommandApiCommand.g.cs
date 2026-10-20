@@ -37,7 +37,7 @@ internal static partial class ActorBuildsActorBuildAbortPostCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"abort-post", @"Abort build
+        var command = new Command(commandName ?? @"abort-post", @"Abort Actor build
 Aborts an Actor build and returns an object that contains all the details
 about the build.
 

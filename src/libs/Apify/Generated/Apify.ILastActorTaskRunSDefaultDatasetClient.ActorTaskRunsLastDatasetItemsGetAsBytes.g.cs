@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILastActorTaskRunSDefaultDatasetClient
     {
         /// <summary>
-        /// Get last task run's dataset items<br/>
+        /// Get the default dataset items from an Actor task's last run<br/>
         /// Returns data stored in the default dataset of the last Actor task run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
@@ -121,7 +121,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get last task run's dataset items<br/>
+        /// Get the default dataset items from an Actor task's last run<br/>
         /// Returns data stored in the default dataset of the last Actor task run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
@@ -237,7 +237,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get last task run's dataset items<br/>
+        /// Get the default dataset items from an Actor task's last run<br/>
         /// Returns data stored in the default dataset of the last Actor task run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.

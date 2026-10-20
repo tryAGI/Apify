@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorRunSDefaultDatasetClient
     {
         /// <summary>
-        /// Store items in last run's dataset<br/>
+        /// Store items in the default dataset of an Actor's last run<br/>
         /// Appends an item or an array of items to the end of the last Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>
@@ -37,10 +37,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store items in last run's dataset<br/>
+        /// Store items in the default dataset of an Actor's last run<br/>
         /// Appends an item or an array of items to the end of the last Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>
@@ -69,10 +69,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store items in last run's dataset<br/>
+        /// Store items in the default dataset of an Actor's last run<br/>
         /// Appends an item or an array of items to the end of the last Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the<br/>
-        /// [Store items](/api/v2/dataset-items-post) endpoint.<br/>
+        /// [Store items in dataset](/api/v2/dataset-items-post) endpoint.<br/>
         /// To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.<br/>
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli: `Content-Encoding: br`<br/>

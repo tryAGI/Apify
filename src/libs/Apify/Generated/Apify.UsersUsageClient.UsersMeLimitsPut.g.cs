@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
@@ -66,7 +66,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
@@ -691,7 +691,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Metamorph run<br/>
+        /// Metamorph Actor run<br/>
         /// Transforms an Actor run into a run of another Actor with a new input.<br/>
         /// This is useful if you want to use another Actor to finish the work<br/>
         /// of your current Actor run, without the need to create a completely new run<br/>
@@ -37,7 +37,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Metamorph run<br/>
+        /// Metamorph Actor run<br/>
         /// Transforms an Actor run into a run of another Actor with a new input.<br/>
         /// This is useful if you want to use another Actor to finish the work<br/>
         /// of your current Actor run, without the need to create a completely new run<br/>

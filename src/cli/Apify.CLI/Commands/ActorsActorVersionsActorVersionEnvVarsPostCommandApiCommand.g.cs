@@ -60,7 +60,7 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarsPostCommandA
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-version-env-vars-post", @"Create environment variable
+        var command = new Command(commandName ?? @"actor-version-env-vars-post", @"Create environment variable in Actor version
 Creates an environment variable of an Actor using values specified in a
 [EnvVar object](#/reference/actors/environment-variable-object) passed as
 JSON in the POST payload.

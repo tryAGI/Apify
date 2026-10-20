@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IUsersUsageClient
     {
         /// <summary>
-        /// Get limits<br/>
+        /// Get user's limits<br/>
         /// Returns a complete summary of your account's limits. It is the same<br/>
         /// information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data<br/>
         /// includes the current usage cycle, a summary of your limits, and your current usage.
@@ -17,7 +17,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get limits<br/>
+        /// Get user's limits<br/>
         /// Returns a complete summary of your account's limits. It is the same<br/>
         /// information you will see on your account's [Limits page](https://console.apify.com/billing#/limits). The returned data<br/>
         /// includes the current usage cycle, a summary of your limits, and your current usage.

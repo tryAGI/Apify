@@ -90,7 +90,7 @@ namespace Apify
             ref byte[] content);
 
         /// <summary>
-        /// Get default dataset items<br/>
+        /// Get the default dataset items from an Actor run<br/>
         /// Returns data stored in the default dataset of the Actor run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
@@ -233,7 +233,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default dataset items<br/>
+        /// Get the default dataset items from an Actor run<br/>
         /// Returns data stored in the default dataset of the Actor run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.
@@ -983,7 +983,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Get default dataset items<br/>
+        /// Get the default dataset items from an Actor run<br/>
         /// Returns data stored in the default dataset of the Actor run in the desired format.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset items](/api/v2/dataset-items-get) endpoint.

@@ -68,11 +68,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-head-get", @"Get last task run's default request queue head
+        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-head-get", @"Get the default request queue head for an Actor task's last run
 Returns the given number of first requests from the default request queue of the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the
-[Get head](/api/v2/request-queue-head-get) endpoint.
+[Get request queue head](/api/v2/request-queue-head-get) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);

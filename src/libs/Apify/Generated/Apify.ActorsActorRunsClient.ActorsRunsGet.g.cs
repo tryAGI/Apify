@@ -54,7 +54,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of runs<br/>
+        /// Get list of Actor's runs<br/>
         /// Gets the list of runs of a specific Actor. The response is a list of<br/>
         /// objects, where each object contains basic information about a single Actor run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -115,7 +115,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of runs<br/>
+        /// Get list of Actor's runs<br/>
         /// Gets the list of runs of a specific Actor. The response is a list of<br/>
         /// objects, where each object contains basic information about a single Actor run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

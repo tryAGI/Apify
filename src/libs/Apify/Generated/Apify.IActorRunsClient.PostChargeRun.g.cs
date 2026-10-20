@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Charge events in run<br/>
+        /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>
@@ -31,7 +31,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Charge events in run<br/>
+        /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>
@@ -57,7 +57,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Charge events in run<br/>
+        /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay per event Actor](https://docs.apify.com/platform/actors/running/actors-in-store#pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
         /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.<br/>

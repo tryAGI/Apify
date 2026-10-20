@@ -42,11 +42,11 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get default store<br/>
+        /// Get the default key-value store of an Actor run<br/>
         /// Gets an object that contains all the details about the default key-value<br/>
         /// store.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get store](/api/v2/key-value-store-get) endpoint.
+        /// [Get key-value store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -68,11 +68,11 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default store<br/>
+        /// Get the default key-value store of an Actor run<br/>
         /// Gets an object that contains all the details about the default key-value<br/>
         /// store.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get store](/api/v2/key-value-store-get) endpoint.
+        /// [Get key-value store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

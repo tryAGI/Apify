@@ -102,7 +102,7 @@ Sending the value the task already has does nothing.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"put", @"Update task
+        var command = new Command(commandName ?? @"put", @"Update Actor task
 Update settings of a task using values specified by an object passed as JSON
 in the POST payload.
 
@@ -124,7 +124,7 @@ validates against the Actor's current build, so a new build can stop the page fr
 offered while the task stays published and copyable.
 
 The response is the full task object as returned by the
-[Get task](/api/v2/actor-task-get) endpoint.
+[Get Actor task](/api/v2/actor-task-get) endpoint.
 
 The request needs to specify the `Content-Type: application/json` HTTP
 header!

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Run task synchronously<br/>
+        /// Run Actor task synchronously and get key-value store record<br/>
         /// Runs an Actor task and synchronously returns a key-value store record.<br/>
         /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
         /// default key-value store. This is a legacy approach that has been replaced by<br/>
@@ -79,7 +79,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task synchronously<br/>
+        /// Run Actor task synchronously and get key-value store record<br/>
         /// Runs an Actor task and synchronously returns a key-value store record.<br/>
         /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
         /// default key-value store. This is a legacy approach that has been replaced by<br/>
@@ -153,7 +153,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Run task synchronously<br/>
+        /// Run Actor task synchronously and get key-value store record<br/>
         /// Runs an Actor task and synchronously returns a key-value store record.<br/>
         /// The response contains the record stored under the `OUTPUT` key in the run's<br/>
         /// default key-value store. This is a legacy approach that has been replaced by<br/>

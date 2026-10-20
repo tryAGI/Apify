@@ -53,7 +53,7 @@ internal static partial class DefaultRequestQueueActorRunRequestQueuePutCommandA
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-request-queue-put", @"Update default request queue
+        var command = new Command(commandName ?? @"actor-run-request-queue-put", @"Update the default request queue of an Actor run
 Updates the default request queue associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the

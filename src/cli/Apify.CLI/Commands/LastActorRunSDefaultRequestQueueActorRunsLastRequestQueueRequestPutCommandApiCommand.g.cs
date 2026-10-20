@@ -142,11 +142,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-put", @"Update request in last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-put", @"Update request in the default request queue of an Actor's last run
 Updates a request in the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Update request](/api/v2/request-queue-request-put) endpoint.
+[Update request in request queue](/api/v2/request-queue-request-put) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RequestId);

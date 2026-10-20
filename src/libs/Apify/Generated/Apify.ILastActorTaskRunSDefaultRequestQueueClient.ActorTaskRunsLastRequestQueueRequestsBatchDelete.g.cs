@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorTaskRunSDefaultRequestQueueClient
     {
         /// <summary>
-        /// Batch delete requests from last task run's default request queue<br/>
+        /// Batch delete requests from the default request queue of an Actor task's last run<br/>
         /// Batch-deletes requests from the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
+        /// [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -36,10 +36,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Batch delete requests from last task run's default request queue<br/>
+        /// Batch delete requests from the default request queue of an Actor task's last run<br/>
         /// Batch-deletes requests from the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
+        /// [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

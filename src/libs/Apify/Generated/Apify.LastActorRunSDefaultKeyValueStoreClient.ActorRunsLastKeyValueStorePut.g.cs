@@ -48,11 +48,11 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update last run's default store<br/>
+        /// Update the default key-value store of an Actor's last run<br/>
         /// Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Update store](/api/v2/key-value-store-put) endpoint.
+        /// [Update key-value store](/api/v2/key-value-store-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -87,11 +87,11 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update last run's default store<br/>
+        /// Update the default key-value store of an Actor's last run<br/>
         /// Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Update store](/api/v2/key-value-store-put) endpoint.
+        /// [Update key-value store](/api/v2/key-value-store-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -775,11 +775,11 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update last run's default store<br/>
+        /// Update the default key-value store of an Actor's last run<br/>
         /// Updates the last Actor run key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Update store](/api/v2/key-value-store-put) endpoint.
+        /// [Update key-value store](/api/v2/key-value-store-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update last run's default dataset<br/>
+        /// Update the default dataset of an Actor's last run<br/>
         /// Updates the default dataset associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
         /// [Update dataset](/api/v2/dataset-put) endpoint.
@@ -86,7 +86,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update last run's default dataset<br/>
+        /// Update the default dataset of an Actor's last run<br/>
         /// Updates the default dataset associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
         /// [Update dataset](/api/v2/dataset-put) endpoint.
@@ -773,7 +773,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update last run's default dataset<br/>
+        /// Update the default dataset of an Actor's last run<br/>
         /// Updates the default dataset associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
         /// [Update dataset](/api/v2/dataset-put) endpoint.

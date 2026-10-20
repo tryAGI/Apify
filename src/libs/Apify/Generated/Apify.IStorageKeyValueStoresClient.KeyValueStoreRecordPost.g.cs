@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>

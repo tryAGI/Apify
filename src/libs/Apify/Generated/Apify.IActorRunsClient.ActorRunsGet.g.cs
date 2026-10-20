@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Get user runs list<br/>
+        /// Get list of user's Actor runs<br/>
         /// Gets a list of all runs for a user. The response is a list of objects, where<br/>
         /// each object contains basic information about a single Actor run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>
@@ -47,7 +47,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get user runs list<br/>
+        /// Get list of user's Actor runs<br/>
         /// Gets a list of all runs for a user. The response is a list of objects, where<br/>
         /// each object contains basic information about a single Actor run.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters<br/>

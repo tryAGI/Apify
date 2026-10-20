@@ -5,9 +5,9 @@ namespace Apify
     public partial interface ILastActorRunSLogClient
     {
         /// <summary>
-        /// Get last Actor run's log<br/>
+        /// Get log of an Actor's last run<br/>
         /// Retrieves last Actor run's logs.<br/>
-        /// This endpoint is a shortcut for getting last Actor run's log. Same as [Get log](/api/v2/log-get) endpoint.
+        /// This endpoint is a shortcut for getting last Actor run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -38,9 +38,9 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get last Actor run's log<br/>
+        /// Get log of an Actor's last run<br/>
         /// Retrieves last Actor run's logs.<br/>
-        /// This endpoint is a shortcut for getting last Actor run's log. Same as [Get log](/api/v2/log-get) endpoint.
+        /// This endpoint is a shortcut for getting last Actor run's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

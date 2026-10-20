@@ -49,7 +49,7 @@ internal static partial class LastActorRunSDefaultDatasetActorRunsLastDatasetGet
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-dataset-get", @"Get last run's default dataset
+        var command = new Command(commandName ?? @"actor-runs-last-dataset-get", @"Get the default dataset of an Actor's last run
 Returns the default dataset associated with the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the

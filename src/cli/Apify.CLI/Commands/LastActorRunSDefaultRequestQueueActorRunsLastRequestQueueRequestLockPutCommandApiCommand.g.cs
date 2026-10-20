@@ -83,11 +83,11 @@ end after lock expires.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-lock-put", @"Prolong lock on request in last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-request-lock-put", @"Prolong lock on request in the default request queue of an Actor's last run
 Prolongs a request lock in the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Prolong request lock](/api/v2/request-queue-request-lock-put) endpoint.
+[Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(RequestId);

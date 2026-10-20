@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorBuildsClient
     {
         /// <summary>
-        /// Get build<br/>
+        /// Get Actor build<br/>
         /// Gets an object that contains all the details about a specific build of an<br/>
         /// Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will<br/>
@@ -29,7 +29,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get build<br/>
+        /// Get Actor build<br/>
         /// Gets an object that contains all the details about a specific build of an<br/>
         /// Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will<br/>

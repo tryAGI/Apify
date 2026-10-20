@@ -44,7 +44,7 @@ end after lock was removed.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"request-queue-request-lock-delete", @"Delete request lock
+        var command = new Command(commandName ?? @"request-queue-request-lock-delete", @"Delete lock on request in request queue
 Deletes a request lock. The request lock can be deleted only by the client
 that has locked it using [Get and lock head
 operation](#/request-queue-head-lock-post).

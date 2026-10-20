@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get collection<br/>
+        /// Get list of webhook's dispatches<br/>
         /// Gets a given webhook's list of dispatches.
         /// </summary>
         /// <param name="webhookId">
@@ -86,7 +86,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get collection<br/>
+        /// Get list of webhook's dispatches<br/>
         /// Gets a given webhook's list of dispatches.
         /// </summary>
         /// <param name="webhookId">

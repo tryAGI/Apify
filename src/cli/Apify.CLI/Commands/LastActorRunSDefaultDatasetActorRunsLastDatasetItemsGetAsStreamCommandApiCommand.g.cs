@@ -208,7 +208,7 @@ Only used when `format=rss`. If not provided, the description defaults to `Items
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-dataset-items-get-as-stream", @"Get last run's dataset items
+        var command = new Command(commandName ?? @"actor-runs-last-dataset-items-get-as-stream", @"Get the default dataset items from an Actor's last run
 Returns data stored in the default dataset of the last Actor run in the desired format.
 
 This endpoint is a shortcut that resolves the last run's `defaultDatasetId` and proxies to the

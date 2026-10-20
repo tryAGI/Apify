@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get log<br/>
+        /// Get Actor build or run log<br/>
         /// Retrieves logs for a specific Actor build or run.
         /// </summary>
         /// <param name="buildOrRunId">
@@ -86,7 +86,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get log<br/>
+        /// Get Actor build or run log<br/>
         /// Retrieves logs for a specific Actor build or run.
         /// </summary>
         /// <param name="buildOrRunId">

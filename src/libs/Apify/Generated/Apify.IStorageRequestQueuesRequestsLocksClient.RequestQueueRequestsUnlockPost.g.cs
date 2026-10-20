@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsLocksClient
     {
         /// <summary>
-        /// Unlock requests<br/>
+        /// Unlock requests in request queue<br/>
         /// Unlocks requests in the queue that are currently locked by the client.<br/>
         /// * If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.<br/>
         /// * If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.
@@ -25,7 +25,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Unlock requests<br/>
+        /// Unlock requests in request queue<br/>
         /// Unlocks requests in the queue that are currently locked by the client.<br/>
         /// * If the client is within an Actor run, it unlocks all requests locked by that specific run plus all requests locked by the same clientKey.<br/>
         /// * If the client is outside of an Actor run, it unlocks all requests locked using the same clientKey.

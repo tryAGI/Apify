@@ -77,7 +77,7 @@ By default, the resurrected run uses the same setting as before.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-resurrect-post", @"Resurrect run
+        var command = new Command(commandName ?? @"actor-run-resurrect-post", @"Resurrect Actor run
 **[DEPRECATED]** API endpoints related to run of the Actor were moved under
 new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished
 Actor run and returns an object that contains all the details about the

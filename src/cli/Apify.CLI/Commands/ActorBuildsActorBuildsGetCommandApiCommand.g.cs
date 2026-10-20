@@ -51,7 +51,7 @@ descending order. By default, they are sorted in ascending order.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get-2", @"Get user builds list
+        var command = new Command(commandName ?? @"get-2", @"Get list of user's Actor builds
 Gets a list of all builds for a user. The response is a JSON array of
 objects, where each object contains basic information about a single build.
 

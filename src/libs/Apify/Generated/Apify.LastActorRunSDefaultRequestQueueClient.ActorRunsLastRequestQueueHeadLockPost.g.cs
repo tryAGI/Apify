@@ -52,11 +52,11 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get and lock last run's default request queue head<br/>
+        /// Get and lock the default request queue head for an Actor's last run<br/>
         /// Returns the given number of first requests from the default request queue of the last Actor run<br/>
         /// and locks them for the given time.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+        /// [Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -101,11 +101,11 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get and lock last run's default request queue head<br/>
+        /// Get and lock the default request queue head for an Actor's last run<br/>
         /// Returns the given number of first requests from the default request queue of the last Actor run<br/>
         /// and locks them for the given time.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+        /// [Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

@@ -46,7 +46,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>
@@ -93,7 +93,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>
@@ -784,7 +784,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Create environment variable<br/>
+        /// Create environment variable in Actor version<br/>
         /// Creates an environment variable of an Actor using values specified in a<br/>
         /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
         /// JSON in the POST payload.<br/>

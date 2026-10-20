@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Get run<br/>
+        /// Get Actor run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>
@@ -36,7 +36,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get run<br/>
+        /// Get Actor run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>

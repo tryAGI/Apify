@@ -59,7 +59,7 @@ otherwise it will have a transitional status (e.g. `RUNNING`).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-get", @"Get last run
+        var command = new Command(commandName ?? @"actor-runs-last-get", @"Get Actor's last run
 This is not a single endpoint, but an entire group of endpoints that lets you to
 retrieve and manage the last run of given Actor or any of its default storages.
 All the endpoints require an authentication token.

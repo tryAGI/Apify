@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get browser info<br/>
+        /// Get browser info (DELETE)<br/>
         /// Returns information about the HTTP request, including the client IP address,<br/>
         /// country code, request headers, and body length.<br/>
         /// This endpoint is designed for proxy testing. It accepts any HTTP method so you<br/>
@@ -72,7 +72,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get browser info<br/>
+        /// Get browser info (DELETE)<br/>
         /// Returns information about the HTTP request, including the client IP address,<br/>
         /// country code, request headers, and body length.<br/>
         /// This endpoint is designed for proxy testing. It accepts any HTTP method so you<br/>

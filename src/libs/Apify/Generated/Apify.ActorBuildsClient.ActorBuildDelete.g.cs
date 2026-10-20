@@ -37,7 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete build<br/>
+        /// Delete Actor build<br/>
         /// Delete the build. The build that is the current default build for the Actor<br/>
         /// cannot be deleted.<br/>
         /// Only users with build permissions for the Actor can delete builds.
@@ -60,7 +60,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete build<br/>
+        /// Delete Actor build<br/>
         /// Delete the build. The build that is the current default build for the Actor<br/>
         /// cannot be deleted.<br/>
         /// Only users with build permissions for the Actor can delete builds.

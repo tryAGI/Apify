@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>
@@ -89,7 +89,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>
@@ -777,7 +777,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>

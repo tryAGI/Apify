@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorBuildsClient
     {
         /// <summary>
-        /// Get OpenAPI definition<br/>
+        /// Get OpenAPI definition of Actor build<br/>
         /// Get the OpenAPI definition for Actor builds. Two similar endpoints are available:<br/>
         /// - [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
         /// - [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.<br/>
@@ -31,7 +31,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get OpenAPI definition<br/>
+        /// Get OpenAPI definition of Actor build<br/>
         /// Get the OpenAPI definition for Actor builds. Two similar endpoints are available:<br/>
         /// - [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
         /// - [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.<br/>

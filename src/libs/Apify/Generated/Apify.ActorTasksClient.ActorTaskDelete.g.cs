@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Delete task<br/>
+        /// Delete Actor task<br/>
         /// Delete the task specified through the `actorTaskId` parameter.
         /// </summary>
         /// <param name="actorTaskId">
@@ -65,7 +65,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Delete task<br/>
+        /// Delete Actor task<br/>
         /// Delete the task specified through the `actorTaskId` parameter.
         /// </summary>
         /// <param name="actorTaskId">

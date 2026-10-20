@@ -35,7 +35,7 @@ causing web browsers to offer downloading HTML records instead of displaying the
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"key-value-store-record-get-as-bytes", @"Get record
+        var command = new Command(commandName ?? @"key-value-store-record-get-as-bytes", @"Get key-value store record
 Gets a value stored in the key-value store under a specific key.
 
 The response body has the same `Content-Encoding` header as it was set in

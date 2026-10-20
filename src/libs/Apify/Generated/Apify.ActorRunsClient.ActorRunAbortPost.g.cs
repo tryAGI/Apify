@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Abort run<br/>
+        /// Abort Actor run<br/>
         /// Aborts an Actor run and returns an object that contains all the details<br/>
         /// about the run.<br/>
         /// Only runs that are starting or running are aborted. For runs with status<br/>
@@ -75,7 +75,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Abort run<br/>
+        /// Abort Actor run<br/>
         /// Aborts an Actor run and returns an object that contains all the details<br/>
         /// about the run.<br/>
         /// Only runs that are starting or running are aborted. For runs with status<br/>

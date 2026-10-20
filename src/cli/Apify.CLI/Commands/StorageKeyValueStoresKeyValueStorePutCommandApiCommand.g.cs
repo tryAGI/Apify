@@ -54,7 +54,7 @@ internal static partial class StorageKeyValueStoresKeyValueStorePutCommandApiCom
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"key-value-store-put", @"Update store
+        var command = new Command(commandName ?? @"key-value-store-put", @"Update key-value store
 Updates a key-value store's name and general resource access level using a value specified by a JSON object
 passed in the PUT payload.
 

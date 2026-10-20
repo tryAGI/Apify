@@ -55,11 +55,11 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-request-get", @"Get request from last task run's default request queue
+        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-request-get", @"Get request from the default request queue of an Actor task's last run
 Returns a request from the default request queue of the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the
-[Get request](/api/v2/request-queue-request-get) endpoint.
+[Get request from request queue](/api/v2/request-queue-request-get) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Arguments.Add(RequestId);

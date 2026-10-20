@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorRunSDefaultRequestQueueClient
     {
         /// <summary>
-        /// Update request in last run's default request queue<br/>
+        /// Update request in the default request queue of an Actor's last run<br/>
         /// Updates a request in the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -42,10 +42,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request in last run's default request queue<br/>
+        /// Update request in the default request queue of an Actor's last run<br/>
         /// Updates a request in the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -79,10 +79,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request in last run's default request queue<br/>
+        /// Update request in the default request queue of an Actor's last run<br/>
         /// Updates a request in the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Update request](/api/v2/request-queue-request-put) endpoint.
+        /// [Update request in request queue](/api/v2/request-queue-request-put) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILastActorRunSDefaultRequestQueueClient
     {
         /// <summary>
-        /// Update last run's default request queue<br/>
+        /// Update the default request queue of an Actor's last run<br/>
         /// Updates the default request queue associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
         /// [Update request queue](/api/v2/request-queue-put) endpoint.
@@ -30,7 +30,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update last run's default request queue<br/>
+        /// Update the default request queue of an Actor's last run<br/>
         /// Updates the default request queue associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
         /// [Update request queue](/api/v2/request-queue-put) endpoint.
@@ -55,7 +55,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update last run's default request queue<br/>
+        /// Update the default request queue of an Actor's last run<br/>
         /// Updates the default request queue associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
         /// [Update request queue](/api/v2/request-queue-put) endpoint.

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsClient
     {
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>
@@ -61,7 +61,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Add request<br/>
+        /// Add request to request queue<br/>
         /// Adds request to the queue. Response contains ID of the request and info if<br/>
         /// request was already present in the queue or handled.<br/>
         /// If request with same `uniqueKey` was already present in the queue then<br/>

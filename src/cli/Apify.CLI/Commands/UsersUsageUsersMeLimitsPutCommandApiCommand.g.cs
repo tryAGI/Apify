@@ -61,7 +61,7 @@ internal static partial class UsersUsageUsersMeLimitsPutCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"users-me-limits-put", @"Update limits
+        var command = new Command(commandName ?? @"users-me-limits-put", @"Update user's limits
 Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).
 Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
 ");

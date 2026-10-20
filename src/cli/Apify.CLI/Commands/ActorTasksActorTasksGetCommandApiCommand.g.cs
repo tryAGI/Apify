@@ -51,7 +51,7 @@ descending order. By default, they are sorted in ascending order.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get-2", @"Get list of tasks
+        var command = new Command(commandName ?? @"get-2", @"Get list of Actor tasks
 Gets the complete list of tasks that a user has created or used.
 
 The response is a list of objects in which each object contains essential

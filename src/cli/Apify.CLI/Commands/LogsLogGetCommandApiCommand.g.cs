@@ -53,7 +53,7 @@ ANSI escape codes from the logs, keeping only printable characters.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get", @"Get log
+        var command = new Command(commandName ?? @"get", @"Get Actor build or run log
 Retrieves logs for a specific Actor build or run.
 ");
                         command.Arguments.Add(BuildOrRunId);

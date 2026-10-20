@@ -37,10 +37,10 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete default store<br/>
+        /// Delete the default key-value store of an Actor run<br/>
         /// Delete the default key-value store.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Delete store](/api/v2/key-value-store-delete) endpoint.
+        /// [Delete key-value store](/api/v2/key-value-store-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -60,10 +60,10 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete default store<br/>
+        /// Delete the default key-value store of an Actor run<br/>
         /// Delete the default key-value store.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Delete store](/api/v2/key-value-store-delete) endpoint.
+        /// [Delete key-value store](/api/v2/key-value-store-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

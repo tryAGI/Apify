@@ -124,7 +124,7 @@ end. Default value is `false` (end of queue).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"request-queue-requests-post", @"Add request
+        var command = new Command(commandName ?? @"request-queue-requests-post", @"Add request to request queue
 Adds request to the queue. Response contains ID of the request and info if
 request was already present in the queue or handled.
 

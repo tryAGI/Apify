@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
@@ -35,7 +35,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
@@ -65,7 +65,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update version<br/>
+        /// Update Actor version<br/>
         /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>

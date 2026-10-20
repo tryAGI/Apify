@@ -85,11 +85,11 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-batch-delete", @"Batch delete requests from last run's default request queue
+        var command = new Command(commandName ?? @"actor-runs-last-request-queue-requests-batch-delete", @"Batch delete requests from the default request queue of an Actor's last run
 Batch-deletes requests from the default request queue of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the
-[Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
+[Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

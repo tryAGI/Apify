@@ -45,10 +45,10 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete request from last run's default request queue<br/>
+        /// Delete request from the default request queue of an Actor's last run<br/>
         /// Deletes a request from the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete request](/api/v2/request-queue-request-delete) endpoint.
+        /// [Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -86,10 +86,10 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete request from last run's default request queue<br/>
+        /// Delete request from the default request queue of an Actor's last run<br/>
         /// Deletes a request from the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete request](/api/v2/request-queue-request-delete) endpoint.
+        /// [Delete request from request queue](/api/v2/request-queue-request-delete) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

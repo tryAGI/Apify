@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Abort build<br/>
+        /// Abort Actor build<br/>
         /// Aborts an Actor build and returns an object that contains all the details<br/>
         /// about the build.<br/>
         /// Only builds that are starting or running are aborted. For builds with status<br/>
@@ -68,7 +68,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Abort build<br/>
+        /// Abort Actor build<br/>
         /// Aborts an Actor build and returns an object that contains all the details<br/>
         /// about the build.<br/>
         /// Only builds that are starting or running are aborted. For builds with status<br/>

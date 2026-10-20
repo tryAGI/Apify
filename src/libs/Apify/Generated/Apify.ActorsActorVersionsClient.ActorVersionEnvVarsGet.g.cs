@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of environment variables<br/>
+        /// Get list of environment variables of Actor version<br/>
         /// Gets the list of environment variables for a specific version of an Actor.<br/>
         /// The response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of environment variables<br/>
+        /// Get list of environment variables of Actor version<br/>
         /// Gets the list of environment variables for a specific version of an Actor.<br/>
         /// The response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.
         /// </summary>

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Get record<br/>
+        /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
         /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>
@@ -41,7 +41,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get record<br/>
+        /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
         /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>
@@ -77,7 +77,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get record<br/>
+        /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
         /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>

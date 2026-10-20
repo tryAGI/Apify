@@ -48,10 +48,10 @@ namespace Apify
             ref byte[] content);
 
         /// <summary>
-        /// Get default store's record<br/>
+        /// Get record from the default key-value store of an Actor run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -88,10 +88,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default store's record<br/>
+        /// Get record from the default key-value store of an Actor run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -724,10 +724,10 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Get default store's record<br/>
+        /// Get record from the default key-value store of an Actor run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

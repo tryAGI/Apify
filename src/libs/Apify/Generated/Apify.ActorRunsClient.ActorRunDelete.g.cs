@@ -37,7 +37,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete run<br/>
+        /// Delete Actor run<br/>
         /// Delete the run. Only finished runs can be deleted. Only the person or<br/>
         /// organization that initiated the run can delete it.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete run<br/>
+        /// Delete Actor run<br/>
         /// Delete the run. Only finished runs can be deleted. Only the person or<br/>
         /// organization that initiated the run can delete it.
         /// </summary>

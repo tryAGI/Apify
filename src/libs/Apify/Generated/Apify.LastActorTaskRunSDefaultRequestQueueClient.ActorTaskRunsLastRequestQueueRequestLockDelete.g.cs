@@ -47,10 +47,10 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete lock on request in last task run's default request queue<br/>
+        /// Delete lock on request in the default request queue of an Actor task's last run<br/>
         /// Deletes a request lock in the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.
+        /// [Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -93,10 +93,10 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete lock on request in last task run's default request queue<br/>
+        /// Delete lock on request in the default request queue of an Actor task's last run<br/>
         /// Deletes a request lock in the default request queue of the last Actor task run.<br/>
         /// This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete request lock](/api/v2/request-queue-request-lock-delete) endpoint.
+        /// [Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete) endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

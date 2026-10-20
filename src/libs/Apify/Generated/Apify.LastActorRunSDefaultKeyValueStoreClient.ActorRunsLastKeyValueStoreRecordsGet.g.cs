@@ -52,10 +52,10 @@ namespace Apify
             ref byte[] content);
 
         /// <summary>
-        /// Download last run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -100,10 +100,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Download last run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -676,10 +676,10 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Download last run's default store's records<br/>
+        /// Download records from the default key-value store of an Actor's last run<br/>
         /// Downloads all records from the default key-value store of the last Actor run as a ZIP archive.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Download records](/api/v2/key-value-store-records-get) endpoint.
+        /// [Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

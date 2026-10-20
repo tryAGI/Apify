@@ -5,10 +5,10 @@ namespace Apify
     public partial interface IDefaultKeyValueStoreClient
     {
         /// <summary>
-        /// Get default store's list of keys<br/>
+        /// Get list of keys in the default key-value store of an Actor run<br/>
         /// Returns a list of keys for the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get list of keys](/api/v2/key-value-store-keys-get) endpoint.
+        /// [Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -42,10 +42,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get default store's list of keys<br/>
+        /// Get list of keys in the default key-value store of an Actor run<br/>
         /// Returns a list of keys for the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get list of keys](/api/v2/key-value-store-keys-get) endpoint.
+        /// [Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

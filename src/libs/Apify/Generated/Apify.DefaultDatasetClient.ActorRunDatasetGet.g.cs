@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get default dataset<br/>
+        /// Get the default dataset of an Actor run<br/>
         /// Returns the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
         /// [Get dataset](/api/v2/dataset-get) endpoint.
@@ -67,7 +67,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get default dataset<br/>
+        /// Get the default dataset of an Actor run<br/>
         /// Returns the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
         /// [Get dataset](/api/v2/dataset-get) endpoint.

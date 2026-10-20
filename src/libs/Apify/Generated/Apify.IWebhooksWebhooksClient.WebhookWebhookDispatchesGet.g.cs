@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IWebhooksWebhooksClient
     {
         /// <summary>
-        /// Get collection<br/>
+        /// Get list of webhook's dispatches<br/>
         /// Gets a given webhook's list of dispatches.
         /// </summary>
         /// <param name="webhookId">
@@ -31,7 +31,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get collection<br/>
+        /// Get list of webhook's dispatches<br/>
         /// Gets a given webhook's list of dispatches.
         /// </summary>
         /// <param name="webhookId">

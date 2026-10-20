@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILastActorTaskRunSMetamorphClient
     {
         /// <summary>
-        /// Metamorph Actor task's last run<br/>
+        /// Metamorph last run of an Actor task<br/>
         /// Transforms the last run of the specified Actor task into a run of another Actor with<br/>
         /// a new input.<br/>
         /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>
@@ -36,7 +36,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Metamorph Actor task's last run<br/>
+        /// Metamorph last run of an Actor task<br/>
         /// Transforms the last run of the specified Actor task into a run of another Actor with<br/>
         /// a new input.<br/>
         /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>

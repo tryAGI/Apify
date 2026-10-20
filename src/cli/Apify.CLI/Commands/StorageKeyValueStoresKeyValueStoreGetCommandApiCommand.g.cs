@@ -37,7 +37,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreGetCommandApiCom
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"key-value-store-get", @"Get store
+        var command = new Command(commandName ?? @"key-value-store-get", @"Get key-value store
 Gets an object that contains all the details about a specific key-value
 store.
 ");

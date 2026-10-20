@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get list of versions<br/>
+        /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
         /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
         /// contains basic information about a single version.
@@ -67,7 +67,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get list of versions<br/>
+        /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
         /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
         /// contains basic information about a single version.

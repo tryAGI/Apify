@@ -79,11 +79,11 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-keys-get", @"Get last run's default store's list of keys
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-keys-get", @"Get list of keys in the default key-value store of an Actor's last run
 Returns a list of keys for the default key-value store of the last Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the
-[Get list of keys](/api/v2/key-value-store-keys-get) endpoint.
+[Get list of key-value store keys](/api/v2/key-value-store-keys-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IDefaultDatasetClient
     {
         /// <summary>
-        /// Get default dataset statistics<br/>
+        /// Get the default dataset statistics for an Actor run<br/>
         /// Returns statistics for the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.
@@ -21,7 +21,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get default dataset statistics<br/>
+        /// Get the default dataset statistics for an Actor run<br/>
         /// Returns statistics for the Actor run's default dataset.<br/>
         /// This endpoint is a shortcut that resolves the run's `defaultDatasetId` and proxies to the<br/>
         /// [Get dataset statistics](/api/v2/dataset-statistics-get) endpoint.

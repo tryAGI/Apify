@@ -29,7 +29,7 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-dataset-delete", @"Delete last task run's default dataset
+        var command = new Command(commandName ?? @"actor-task-runs-last-dataset-delete", @"Delete the default dataset of an Actor task's last run
 Deletes the default dataset associated with the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultDatasetId` and then using the

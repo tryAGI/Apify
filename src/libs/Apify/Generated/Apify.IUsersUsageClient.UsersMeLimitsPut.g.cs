@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IUsersUsageClient
     {
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
@@ -19,7 +19,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update limits<br/>
+        /// Update user's limits<br/>
         /// Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).<br/>
         /// Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
         /// </summary>

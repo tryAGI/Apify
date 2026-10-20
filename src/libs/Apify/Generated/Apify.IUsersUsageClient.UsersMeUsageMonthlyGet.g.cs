@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IUsersUsageClient
     {
         /// <summary>
-        /// Get monthly usage<br/>
+        /// Get user's monthly usage<br/>
         /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
         /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
         /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>
@@ -24,7 +24,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get monthly usage<br/>
+        /// Get user's monthly usage<br/>
         /// Returns a complete summary of your usage for the current monthly usage cycle,<br/>
         /// an overall sum, as well as a daily breakdown of usage. It is the same<br/>
         /// information you will see on your account's [Billing &gt; Historical usage page](https://console.apify.com/billing/historical-usage). The information<br/>

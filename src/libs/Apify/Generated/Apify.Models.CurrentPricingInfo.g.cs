@@ -72,24 +72,6 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("trialMinutes")]
-        public int? TrialMinutes { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("unitName")]
-        public string? UnitName { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("pricePerUnitUsd")]
-        public double? PricePerUnitUsd { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("minimalMaxTotalChargeUsd")]
         public double? MinimalMaxTotalChargeUsd { get; set; }
 
@@ -120,9 +102,6 @@ namespace Apify
         /// <param name="forceContainsSignificantPriceChange"></param>
         /// <param name="isPPEPlatformUsagePaidByUser"></param>
         /// <param name="reasonForChange"></param>
-        /// <param name="trialMinutes"></param>
-        /// <param name="unitName"></param>
-        /// <param name="pricePerUnitUsd"></param>
         /// <param name="minimalMaxTotalChargeUsd"></param>
         /// <param name="pricingPerEvent">
         /// Per-event pricing configuration for pay-per-event Actors.
@@ -141,9 +120,6 @@ namespace Apify
             bool? forceContainsSignificantPriceChange,
             bool? isPPEPlatformUsagePaidByUser,
             string? reasonForChange,
-            int? trialMinutes,
-            string? unitName,
-            double? pricePerUnitUsd,
             double? minimalMaxTotalChargeUsd,
             object? pricingPerEvent)
         {
@@ -157,9 +133,6 @@ namespace Apify
             this.ForceContainsSignificantPriceChange = forceContainsSignificantPriceChange;
             this.IsPPEPlatformUsagePaidByUser = isPPEPlatformUsagePaidByUser;
             this.ReasonForChange = reasonForChange;
-            this.TrialMinutes = trialMinutes;
-            this.UnitName = unitName;
-            this.PricePerUnitUsd = pricePerUnitUsd;
             this.MinimalMaxTotalChargeUsd = minimalMaxTotalChargeUsd;
             this.PricingPerEvent = pricingPerEvent;
         }

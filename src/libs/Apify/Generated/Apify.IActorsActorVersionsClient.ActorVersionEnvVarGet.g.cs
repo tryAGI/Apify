@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Get environment variable<br/>
+        /// Get environment variable of Actor version<br/>
         /// Gets a [EnvVar object](#/reference/actors/environment-variable-object) that<br/>
         /// contains all the details about a specific environment variable of an Actor.<br/>
         /// If `isSecret` is set to `true`, then `value` will never be returned.
@@ -29,7 +29,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get environment variable<br/>
+        /// Get environment variable of Actor version<br/>
         /// Gets a [EnvVar object](#/reference/actors/environment-variable-object) that<br/>
         /// contains all the details about a specific environment variable of an Actor.<br/>
         /// If `isSecret` is set to `true`, then `value` will never be returned.

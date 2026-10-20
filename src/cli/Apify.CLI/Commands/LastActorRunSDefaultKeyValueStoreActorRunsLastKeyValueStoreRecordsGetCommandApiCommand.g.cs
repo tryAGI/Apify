@@ -49,11 +49,11 @@ internal static partial class LastActorRunSDefaultKeyValueStoreActorRunsLastKeyV
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-records-get", @"Download last run's default store's records
+        var command = new Command(commandName ?? @"actor-runs-last-key-value-store-records-get", @"Download records from the default key-value store of an Actor's last run
 Downloads all records from the default key-value store of the last Actor run as a ZIP archive.
 
 This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the
-[Download records](/api/v2/key-value-store-records-get) endpoint.
+[Download key-value store records](/api/v2/key-value-store-records-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Status);

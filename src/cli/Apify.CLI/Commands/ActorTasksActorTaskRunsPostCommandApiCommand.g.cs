@@ -123,7 +123,7 @@ the WebhookRepresentation schema. For more information, see
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"runs-post", @"Run task
+        var command = new Command(commandName ?? @"runs-post", @"Run Actor task
 Runs an Actor task and immediately returns without waiting for the run to
 finish.
 

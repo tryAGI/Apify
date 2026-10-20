@@ -46,10 +46,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get last run's default store<br/>
+        /// Get the default key-value store of an Actor's last run<br/>
         /// Gets an object that contains all the details about the default key-value store associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get store](/api/v2/key-value-store-get) endpoint.
+        /// [Get key-value store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -79,10 +79,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get last run's default store<br/>
+        /// Get the default key-value store of an Actor's last run<br/>
         /// Gets an object that contains all the details about the default key-value store associated with the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get store](/api/v2/key-value-store-get) endpoint.
+        /// [Get key-value store](/api/v2/key-value-store-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

@@ -48,10 +48,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Batch add requests to default request queue<br/>
+        /// Batch add requests to the default request queue of an Actor run<br/>
         /// Adds requests to the default request queue of the Actor run in batch.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
+        /// [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -88,10 +88,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Batch add requests to default request queue<br/>
+        /// Batch add requests to the default request queue of an Actor run<br/>
         /// Adds requests to the default request queue of the Actor run in batch.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Add requests](/api/v2/request-queue-requests-batch-post) endpoint.
+        /// [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

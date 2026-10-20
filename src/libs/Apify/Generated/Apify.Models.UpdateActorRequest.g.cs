@@ -67,7 +67,7 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>? Versions { get; set; }
 
         /// <summary>
-        ///
+        /// The Actor's pricing records. You can't add the `FLAT_PRICE_PER_MONTH` or `PRICE_PER_DATASET_ITEM` records, because these pricing models are no longer supported.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingInfos")]
         public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }
@@ -143,7 +143,9 @@ namespace Apify
         /// <param name="versions">
         /// An array of `Version` objects. Each object represents a specific version of the Actor's source code: its location, builds, and environment configuration.
         /// </param>
-        /// <param name="pricingInfos"></param>
+        /// <param name="pricingInfos">
+        /// The Actor's pricing records. You can't add the `FLAT_PRICE_PER_MONTH` or `PRICE_PER_DATASET_ITEM` records, because these pricing models are no longer supported.
+        /// </param>
         /// <param name="categories">
         /// A list of categories that best define the Actor. Reflected in Apify Store's search and filtering options.
         /// </param>

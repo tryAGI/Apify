@@ -67,7 +67,7 @@ Actor (typically `latest`).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-metamorph-post", @"Metamorph Actor task's last run
+        var command = new Command(commandName ?? @"actor-task-runs-last-metamorph-post", @"Metamorph last run of an Actor task
 Transforms the last run of the specified Actor task into a run of another Actor with
 a new input.
 

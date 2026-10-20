@@ -58,7 +58,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run Actor synchronously without input<br/>
+        /// Run Actor synchronously and get key-value store record (GET)<br/>
         /// Runs a specific Actor and returns a key-value store record. The response contains the<br/>
         /// record stored under the `OUTPUT` key in the run's default key-value store.<br/>
         /// This is a legacy approach that has been replaced by the Actor<br/>
@@ -137,7 +137,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run Actor synchronously without input<br/>
+        /// Run Actor synchronously and get key-value store record (GET)<br/>
         /// Runs a specific Actor and returns a key-value store record. The response contains the<br/>
         /// record stored under the `OUTPUT` key in the run's default key-value store.<br/>
         /// This is a legacy approach that has been replaced by the Actor<br/>

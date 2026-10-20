@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorBuildsClient
     {
         /// <summary>
-        /// Abort build<br/>
+        /// Abort Actor build<br/>
         /// Aborts an Actor build and returns an object that contains all the details<br/>
         /// about the build.<br/>
         /// Only builds that are starting or running are aborted. For builds with status<br/>
@@ -22,7 +22,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Abort build<br/>
+        /// Abort Actor build<br/>
         /// Aborts an Actor build and returns an object that contains all the details<br/>
         /// about the build.<br/>
         /// Only builds that are starting or running are aborted. For builds with status<br/>

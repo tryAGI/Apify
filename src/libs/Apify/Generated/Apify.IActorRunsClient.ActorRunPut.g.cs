@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>
@@ -37,7 +37,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>
@@ -69,7 +69,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update run<br/>
+        /// Update Actor run<br/>
         /// This endpoint can be used to update both the run's status message and to configure its general resource access level.<br/>
         /// **Status message:**<br/>
         /// You can set a single status message on your run that will be displayed in<br/>

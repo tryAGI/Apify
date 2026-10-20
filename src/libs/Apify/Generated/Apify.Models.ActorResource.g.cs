@@ -94,7 +94,7 @@ namespace Apify
         public required global::System.Collections.Generic.IList<global::Apify.Version> Versions { get; set; }
 
         /// <summary>
-        ///
+        /// The Actor's pricing records, including past ones.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricingInfos")]
         public global::System.Collections.Generic.IList<global::Apify.ActorRunPricingInfo>? PricingInfos { get; set; }
@@ -256,7 +256,9 @@ namespace Apify
         /// <param name="actorPermissionLevel">
         /// Determines the permission level that the Actor requires to run. For details, see [Actor permissions](https://docs.apify.com/platform/actors/development/permissions).
         /// </param>
-        /// <param name="pricingInfos"></param>
+        /// <param name="pricingInfos">
+        /// The Actor's pricing records, including past ones.
+        /// </param>
         /// <param name="exampleRunInput"></param>
         /// <param name="isDeprecated">
         /// Whether the Actor is deprecated.

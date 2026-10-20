@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorRunsClient
     {
         /// <summary>
-        /// Reboot run<br/>
+        /// Reboot Actor run<br/>
         /// Reboots an Actor run and returns an object that contains all the details<br/>
         /// about the rebooted run.<br/>
         /// Only runs that are running, i.e. runs with status `RUNNING` can be rebooted.<br/>
@@ -23,7 +23,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Reboot run<br/>
+        /// Reboot Actor run<br/>
         /// Reboots an Actor run and returns an object that contains all the details<br/>
         /// about the rebooted run.<br/>
         /// Only runs that are running, i.e. runs with status `RUNNING` can be rebooted.<br/>

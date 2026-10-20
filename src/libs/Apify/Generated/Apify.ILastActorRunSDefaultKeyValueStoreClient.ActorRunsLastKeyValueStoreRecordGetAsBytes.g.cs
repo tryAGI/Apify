@@ -5,10 +5,10 @@ namespace Apify
     public partial interface ILastActorRunSDefaultKeyValueStoreClient
     {
         /// <summary>
-        /// Get last run's default store's record<br/>
+        /// Get record from the default key-value store of an Actor's last run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -39,10 +39,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get last run's default store's record<br/>
+        /// Get record from the default key-value store of an Actor's last run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -73,10 +73,10 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get last run's default store's record<br/>
+        /// Get record from the default key-value store of an Actor's last run<br/>
         /// Gets a value stored under a specific key in the default key-value store of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Get record](/api/v2/key-value-store-record-get) endpoint.
+        /// [Get key-value store record](/api/v2/key-value-store-record-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

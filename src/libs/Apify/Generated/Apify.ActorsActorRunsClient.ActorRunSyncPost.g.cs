@@ -60,7 +60,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Run Actor synchronously and return key-value store record<br/>
+        /// Run Actor synchronously and get key-value store record<br/>
         /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>
@@ -147,7 +147,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Run Actor synchronously and return key-value store record<br/>
+        /// Run Actor synchronously and get key-value store record<br/>
         /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>
@@ -891,7 +891,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Run Actor synchronously and return key-value store record<br/>
+        /// Run Actor synchronously and get key-value store record<br/>
         /// Runs a specific Actor and returns a key-value store record.<br/>
         /// The POST payload including its `Content-Type` header is passed as `INPUT` to<br/>
         /// the Actor (usually &lt;code&gt;application/json&lt;/code&gt;).<br/>

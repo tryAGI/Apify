@@ -43,7 +43,7 @@ internal static partial class ActorsActorVersionsActorVersionDeleteCommandApiCom
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-version-delete", @"Delete version
+        var command = new Command(commandName ?? @"actor-version-delete", @"Delete Actor version
 Deletes a specific version of Actor's source code.
 ");
                         command.Arguments.Add(ActorId);

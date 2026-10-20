@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get version<br/>
+        /// Get Actor version<br/>
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
@@ -72,7 +72,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get version<br/>
+        /// Get Actor version<br/>
         /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">

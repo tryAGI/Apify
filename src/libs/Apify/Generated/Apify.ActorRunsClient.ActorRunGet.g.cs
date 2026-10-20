@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get run<br/>
+        /// Get Actor run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>
@@ -85,7 +85,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get run<br/>
+        /// Get Actor run<br/>
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>

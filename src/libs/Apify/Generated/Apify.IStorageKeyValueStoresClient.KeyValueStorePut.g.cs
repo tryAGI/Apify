@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>
@@ -25,7 +25,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>
@@ -45,7 +45,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>

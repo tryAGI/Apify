@@ -71,11 +71,11 @@ internal static partial class LastActorTaskRunSDefaultDatasetActorTaskRunsLastDa
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-dataset-items-post", @"Store items in last task run's dataset
+        var command = new Command(commandName ?? @"actor-task-runs-last-dataset-items-post", @"Store items in the default dataset of an Actor task's last run
 Appends an item or an array of items to the end of the last Actor task run's default dataset.
 
 This endpoint is a shortcut that resolves the last task run's `defaultDatasetId` and proxies to the
-[Store items](/api/v2/dataset-items-post) endpoint.
+[Store items in dataset](/api/v2/dataset-items-post) endpoint.
 
 To save bandwidth and speed up your upload, you can send the request payload compressed and set the `Content-Encoding` header accordingly.
 

@@ -43,7 +43,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete request lock<br/>
+        /// Delete lock on request in request queue<br/>
         /// Deletes a request lock. The request lock can be deleted only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>
@@ -83,7 +83,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete request lock<br/>
+        /// Delete lock on request in request queue<br/>
         /// Deletes a request lock. The request lock can be deleted only by the client<br/>
         /// that has locked it using [Get and lock head<br/>
         /// operation](#/request-queue-head-lock-post).<br/>

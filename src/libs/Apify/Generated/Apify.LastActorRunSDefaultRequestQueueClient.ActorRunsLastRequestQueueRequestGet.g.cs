@@ -48,10 +48,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Get request from last run's default request queue<br/>
+        /// Get request from the default request queue of an Actor's last run<br/>
         /// Returns a request from the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get request](/api/v2/request-queue-request-get) endpoint.
+        /// [Get request from request queue](/api/v2/request-queue-request-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -86,10 +86,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Get request from last run's default request queue<br/>
+        /// Get request from the default request queue of an Actor's last run<br/>
         /// Returns a request from the default request queue of the last Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultRequestQueueId` and then using the<br/>
-        /// [Get request](/api/v2/request-queue-request-get) endpoint.
+        /// [Get request from request queue](/api/v2/request-queue-request-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

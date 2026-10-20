@@ -52,7 +52,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
@@ -110,7 +110,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>

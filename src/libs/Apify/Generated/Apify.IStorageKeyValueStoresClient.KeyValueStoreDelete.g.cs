@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Delete store<br/>
+        /// Delete key-value store<br/>
         /// Deletes a key-value store.
         /// </summary>
         /// <param name="storeId">
@@ -19,7 +19,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete store<br/>
+        /// Delete key-value store<br/>
         /// Deletes a key-value store.
         /// </summary>
         /// <param name="storeId">

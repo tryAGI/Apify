@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILastActorTaskRunSAbortClient
     {
         /// <summary>
-        /// Abort Actor task's last run<br/>
+        /// Abort last run of an Actor task<br/>
         /// Aborts the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the run.<br/>
         /// This endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)<br/>
@@ -34,7 +34,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Abort Actor task's last run<br/>
+        /// Abort last run of an Actor task<br/>
         /// Aborts the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the run.<br/>
         /// This endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)<br/>

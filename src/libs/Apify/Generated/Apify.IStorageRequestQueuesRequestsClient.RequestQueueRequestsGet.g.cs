@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsClient
     {
         /// <summary>
-        /// List requests<br/>
+        /// List requests in request queue<br/>
         /// Returns a list of requests. This endpoint is paginated using<br/>
         /// cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List requests<br/>
+        /// List requests in request queue<br/>
         /// Returns a list of requests. This endpoint is paginated using<br/>
         /// cursor (pagination by `exclusiveStartId` is deprecated) and limit parameters.
         /// </summary>

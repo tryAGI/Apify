@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>
@@ -85,7 +85,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>
@@ -769,7 +769,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Store record (POST)<br/>
+        /// Set key-value store record (POST)<br/>
         /// Stores a value under a specific key to the key-value store.<br/>
         /// This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
         /// </summary>

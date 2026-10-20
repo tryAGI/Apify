@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>
@@ -75,7 +75,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>
@@ -749,7 +749,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update store<br/>
+        /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated key-value store object, as returned by the [Get<br/>

@@ -75,7 +75,7 @@ The value must be a valid ISO 8601 datetime string (UTC).
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"get-2", @"Get user runs list
+        var command = new Command(commandName ?? @"get-2", @"Get list of user's Actor runs
 Gets a list of all runs for a user. The response is a list of objects, where
 each object contains basic information about a single Actor run.
 

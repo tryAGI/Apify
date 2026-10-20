@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>
@@ -45,7 +45,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>
@@ -85,7 +85,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create version<br/>
+        /// Create Actor version<br/>
         /// Creates a version of an Actor using values specified in a [Version<br/>
         /// object](#/reference/actors/version-object) passed as JSON in the POST<br/>
         /// payload.<br/>

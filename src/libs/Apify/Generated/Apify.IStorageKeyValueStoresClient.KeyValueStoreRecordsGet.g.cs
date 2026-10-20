@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageKeyValueStoresClient
     {
         /// <summary>
-        /// Download records<br/>
+        /// Download key-value store records<br/>
         /// Downloads all records from the key-value store as a ZIP archive.<br/>
         /// Each record is stored as a separate file in the archive, with the filename equal to the record key.<br/>
         /// You can optionally filter the records by `collection` or `prefix` to download only a subset of the store.
@@ -33,7 +33,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Download records<br/>
+        /// Download key-value store records<br/>
         /// Downloads all records from the key-value store as a ZIP archive.<br/>
         /// Each record is stored as a separate file in the archive, with the filename equal to the record key.<br/>
         /// You can optionally filter the records by `collection` or `prefix` to download only a subset of the store.
@@ -61,7 +61,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Download records<br/>
+        /// Download key-value store records<br/>
         /// Downloads all records from the key-value store as a ZIP archive.<br/>
         /// Each record is stored as a separate file in the archive, with the filename equal to the record key.<br/>
         /// You can optionally filter the records by `collection` or `prefix` to download only a subset of the store.

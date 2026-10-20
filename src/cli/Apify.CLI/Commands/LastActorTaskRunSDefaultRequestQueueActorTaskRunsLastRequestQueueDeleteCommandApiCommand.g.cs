@@ -29,7 +29,7 @@ internal static partial class LastActorTaskRunSDefaultRequestQueueActorTaskRunsL
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-delete", @"Delete last task run's default request queue
+        var command = new Command(commandName ?? @"actor-task-runs-last-request-queue-delete", @"Delete the default request queue of an Actor task's last run
 Deletes the default request queue associated with the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultRequestQueueId` and then using the

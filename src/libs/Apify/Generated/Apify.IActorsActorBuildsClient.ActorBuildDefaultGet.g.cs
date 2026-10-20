@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorBuildsClient
     {
         /// <summary>
-        /// Get default build<br/>
+        /// Get default Actor build<br/>
         /// Get the default build for an Actor.<br/>
         /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
         /// This avoids the need for periodic polling when waiting for the build to complete.<br/>
@@ -27,7 +27,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get default build<br/>
+        /// Get default Actor build<br/>
         /// Get the default build for an Actor.<br/>
         /// Use the optional `waitForFinish` parameter to synchronously wait for the build to finish.<br/>
         /// This avoids the need for periodic polling when waiting for the build to complete.<br/>

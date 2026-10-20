@@ -5,11 +5,11 @@ namespace Apify
     public partial interface IActorTasksClient
     {
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.
@@ -24,11 +24,11 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.
@@ -43,11 +43,11 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create task<br/>
+        /// Create Actor task<br/>
         /// Create a new task with settings specified by the object passed as JSON in<br/>
         /// the POST payload.<br/>
         /// The response is the full task object as returned by the<br/>
-        /// [Get task](/api/v2/actor-task-get) endpoint.<br/>
+        /// [Get Actor task](/api/v2/actor-task-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.

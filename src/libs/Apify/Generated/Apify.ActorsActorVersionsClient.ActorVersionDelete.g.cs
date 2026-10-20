@@ -44,7 +44,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Delete version<br/>
+        /// Delete Actor version<br/>
         /// Deletes a specific version of Actor's source code.
         /// </summary>
         /// <param name="actorId">
@@ -72,7 +72,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Delete version<br/>
+        /// Delete Actor version<br/>
         /// Deletes a specific version of Actor's source code.
         /// </summary>
         /// <param name="actorId">

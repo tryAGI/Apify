@@ -48,7 +48,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update environment variable<br/>
+        /// Update environment variable in Actor version<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>
@@ -98,7 +98,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update environment variable<br/>
+        /// Update environment variable in Actor version<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>
@@ -793,7 +793,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update environment variable<br/>
+        /// Update environment variable in Actor version<br/>
         /// Updates Actor environment variable using values specified by a [EnvVar<br/>
         /// object](#/reference/actors/environment-variable-object)<br/>
         /// passed as JSON in the POST payload.<br/>

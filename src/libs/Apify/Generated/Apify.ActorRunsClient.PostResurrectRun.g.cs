@@ -54,7 +54,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.<br/>
         /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted with the same storages<br/>
@@ -111,7 +111,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Resurrect run<br/>
+        /// Resurrect Actor run<br/>
         /// Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.<br/>
         /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted with the same storages<br/>

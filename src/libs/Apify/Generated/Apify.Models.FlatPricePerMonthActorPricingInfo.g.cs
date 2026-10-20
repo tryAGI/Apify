@@ -5,7 +5,7 @@
 namespace Apify
 {
     /// <summary>
-    ///
+    /// Rental pricing model, which is no longer supported.
     /// </summary>
     public readonly partial struct FlatPricePerMonthActorPricingInfo : global::System.IEquatable<FlatPricePerMonthActorPricingInfo>
     {

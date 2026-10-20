@@ -66,11 +66,11 @@ internal static partial class LastActorTaskRunSDefaultKeyValueStoreActorTaskRuns
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-put", @"Update last task run's default store
+        var command = new Command(commandName ?? @"actor-task-runs-last-key-value-store-put", @"Update the default key-value store of an Actor task's last run
 Updates the default key-value store associated with the last Actor task run.
 
 This endpoint is a shortcut for getting the last task run's `defaultKeyValueStoreId` and then using the
-[Update store](/api/v2/key-value-store-put) endpoint.
+[Update key-value store](/api/v2/key-value-store-put) endpoint.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);

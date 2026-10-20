@@ -42,7 +42,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Reboot run<br/>
+        /// Reboot Actor run<br/>
         /// Reboots an Actor run and returns an object that contains all the details<br/>
         /// about the rebooted run.<br/>
         /// Only runs that are running, i.e. runs with status `RUNNING` can be rebooted.<br/>
@@ -69,7 +69,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Reboot run<br/>
+        /// Reboot Actor run<br/>
         /// Reboots an Actor run and returns an object that contains all the details<br/>
         /// about the rebooted run.<br/>
         /// Only runs that are running, i.e. runs with status `RUNNING` can be rebooted.<br/>

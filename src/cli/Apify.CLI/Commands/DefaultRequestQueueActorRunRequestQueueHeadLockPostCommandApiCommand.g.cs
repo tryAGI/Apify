@@ -63,12 +63,12 @@ head](#/reference/request-queues/queue-head) operation.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-request-queue-head-lock-post", @"Get and lock default request queue head
+        var command = new Command(commandName ?? @"actor-run-request-queue-head-lock-post", @"Get and lock the default request queue head for an Actor run
 Returns the given number of first requests from the default request queue of the Actor run
 and locks them for the given time.
 
 This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the
-[Get head and lock](/api/v2/request-queue-head-lock-post) endpoint.
+[Get and lock request queue head](/api/v2/request-queue-head-lock-post) endpoint.
 ");
                         command.Arguments.Add(RunId);
                         command.Options.Add(LockSecs);

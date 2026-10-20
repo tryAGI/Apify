@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IActorsActorVersionsClient
     {
         /// <summary>
-        /// Get list of versions<br/>
+        /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
         /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
         /// contains basic information about a single version.
@@ -21,7 +21,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get list of versions<br/>
+        /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
         /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
         /// contains basic information about a single version.

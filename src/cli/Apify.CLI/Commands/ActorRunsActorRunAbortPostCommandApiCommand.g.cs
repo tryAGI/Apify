@@ -44,7 +44,7 @@ It is helpful in cases where you plan to resurrect the run later.
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"abort-post", @"Abort run
+        var command = new Command(commandName ?? @"abort-post", @"Abort Actor run
 Aborts an Actor run and returns an object that contains all the details
 about the run.
 

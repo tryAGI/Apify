@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IDefaultRequestQueueClient
     {
         /// <summary>
-        /// Get default request queue<br/>
+        /// Get the default request queue of an Actor run<br/>
         /// Returns the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Get request queue](/api/v2/request-queue-get) endpoint.
@@ -21,7 +21,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get default request queue<br/>
+        /// Get the default request queue of an Actor run<br/>
         /// Returns the default request queue associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
         /// [Get request queue](/api/v2/request-queue-get) endpoint.

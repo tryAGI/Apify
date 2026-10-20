@@ -48,10 +48,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Batch delete requests from default request queue<br/>
+        /// Batch delete requests from the default request queue of an Actor run<br/>
         /// Batch-deletes requests from the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
+        /// [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -86,10 +86,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Batch delete requests from default request queue<br/>
+        /// Batch delete requests from the default request queue of an Actor run<br/>
         /// Batch-deletes requests from the default request queue of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultRequestQueueId` and then using the<br/>
-        /// [Delete requests](/api/v2/request-queue-requests-batch-delete) endpoint.
+        /// [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

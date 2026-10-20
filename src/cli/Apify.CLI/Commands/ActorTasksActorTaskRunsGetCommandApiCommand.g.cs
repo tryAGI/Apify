@@ -65,7 +65,7 @@ statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecyc
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"runs-get", @"Get list of task runs
+        var command = new Command(commandName ?? @"runs-get", @"Get list of Actor task's runs
 Get a list of runs of a specific task. The response is a list of objects,
 where each object contains essential information about a single task run.
 

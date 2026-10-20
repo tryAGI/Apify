@@ -47,10 +47,10 @@ internal static partial class ActorBuildsActorBuildLogGetCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"log-get", @"Get build's Log
+        var command = new Command(commandName ?? @"log-get", @"Get Actor build's log
 Retrieves Actor build's logs.
 
-This endpoint is a shortcut for getting the build's log. Same as [Get log](/api/v2/log-get) endpoint.
+This endpoint is a shortcut for getting the build's log. Same as [Get Actor build or run log](/api/v2/log-get) endpoint.
 ");
                         command.Arguments.Add(BuildId);
                         command.Options.Add(Stream);

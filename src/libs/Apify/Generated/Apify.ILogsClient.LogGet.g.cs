@@ -5,7 +5,7 @@ namespace Apify
     public partial interface ILogsClient
     {
         /// <summary>
-        /// Get log<br/>
+        /// Get Actor build or run log<br/>
         /// Retrieves logs for a specific Actor build or run.
         /// </summary>
         /// <param name="buildOrRunId">
@@ -31,7 +31,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get log<br/>
+        /// Get Actor build or run log<br/>
         /// Retrieves logs for a specific Actor build or run.
         /// </summary>
         /// <param name="buildOrRunId">

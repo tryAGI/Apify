@@ -41,7 +41,7 @@ namespace Apify
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete request<br/>
+        /// Delete request from request queue<br/>
         /// Deletes given request from queue.
         /// </summary>
         /// <param name="queueId">
@@ -72,7 +72,7 @@ namespace Apify
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete request<br/>
+        /// Delete request from request queue<br/>
         /// Deletes given request from queue.
         /// </summary>
         /// <param name="queueId">

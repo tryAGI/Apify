@@ -50,7 +50,7 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).
@@ -95,7 +95,7 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).
@@ -788,7 +788,7 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).

@@ -5,7 +5,7 @@ namespace Apify
     public partial interface IStorageRequestQueuesRequestsClient
     {
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).
@@ -36,7 +36,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).
@@ -67,7 +67,7 @@ namespace Apify
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Update request<br/>
+        /// Update request in request queue<br/>
         /// Updates a request in a queue. Mark request as handled by setting<br/>
         /// `request.handledAt = new Date()`.<br/>
         /// If `handledAt` is set, the request will be removed from head of the queue (and unlocked, if applicable).

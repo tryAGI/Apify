@@ -48,10 +48,10 @@ namespace Apify
             ref string content);
 
         /// <summary>
-        /// Store record in default store (POST)<br/>
+        /// Set record in the default key-value store of an Actor run (POST)<br/>
         /// Stores a value under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Store record](/api/v2/key-value-store-record-post) endpoint.
+        /// [Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -86,10 +86,10 @@ namespace Apify
             return __response.Body;
         }
         /// <summary>
-        /// Store record in default store (POST)<br/>
+        /// Set record in the default key-value store of an Actor run (POST)<br/>
         /// Stores a value under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Store record](/api/v2/key-value-store-record-post) endpoint.
+        /// [Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -771,10 +771,10 @@ namespace Apify
             }
         }
         /// <summary>
-        /// Store record in default store (POST)<br/>
+        /// Set record in the default key-value store of an Actor run (POST)<br/>
         /// Stores a value under a specific key in the default key-value store of the Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultKeyValueStoreId` and then using the<br/>
-        /// [Store record](/api/v2/key-value-store-record-post) endpoint.
+        /// [Set key-value store record (POST)](/api/v2/key-value-store-record-post) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

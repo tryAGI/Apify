@@ -17,7 +17,7 @@ internal static partial class ActorBuildsActorBuildDeleteCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"delete", @"Delete build
+        var command = new Command(commandName ?? @"delete", @"Delete Actor build
 Delete the build. The build that is the current default build for the Actor
 cannot be deleted.
 

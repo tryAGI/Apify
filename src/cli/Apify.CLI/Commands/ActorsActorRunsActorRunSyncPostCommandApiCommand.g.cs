@@ -122,7 +122,7 @@ the WebhookRepresentation schema. For more information, see
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"actor-run-sync-post", @"Run Actor synchronously and return key-value store record
+        var command = new Command(commandName ?? @"actor-run-sync-post", @"Run Actor synchronously and get key-value store record
 Runs a specific Actor and returns a key-value store record.
 
 The POST payload including its `Content-Type` header is passed as `INPUT` to
