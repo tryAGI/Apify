@@ -788,6 +788,9 @@ namespace Apify
         /// </param>
         /// <param name="eventName"></param>
         /// <param name="count"></param>
+        /// <param name="requestId">
+        /// ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -796,6 +799,7 @@ namespace Apify
             string eventName,
             int count,
             string? idempotencyKey = default,
+            string? requestId = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -803,6 +807,7 @@ namespace Apify
             {
                 EventName = eventName,
                 Count = count,
+                RequestId = requestId,
             };
 
             return await PostChargeRunAsync(
