@@ -94,11 +94,11 @@ By default, the resurrected run uses the same setting as before.
     {
         var command = new Command(commandName ?? @"post-resurrect-run", @"Resurrect Actor run
 Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.
-Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.
+Only finished runs, that is, runs with status `SUCCEEDED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.
 Run status will be updated to RUNNING and its container will be restarted with the same storages
 (the same behaviour as when the run gets migrated to the new server).
 
-For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
+For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrect-a-finished-run).
 ");
                         command.Arguments.Add(RunId);
                         command.Options.Add(Build);

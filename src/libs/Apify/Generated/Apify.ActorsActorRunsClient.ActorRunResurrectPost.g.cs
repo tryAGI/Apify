@@ -57,13 +57,13 @@ namespace Apify
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
         /// resurrected run.<br/>
-        /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED`<br/>
+        /// Only finished runs, i.e. runs with status `SUCCEEDED`, `FAILED`, `ABORTED`<br/>
         /// and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted<br/>
         /// with the same storages<br/>
         /// (the same behaviour as when the run gets migrated to the new server).<br/>
         /// For more information, see the [Actor<br/>
-        /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
+        /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrect-a-finished-run).
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -115,13 +115,13 @@ namespace Apify
         /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
         /// resurrected run.<br/>
-        /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED`<br/>
+        /// Only finished runs, i.e. runs with status `SUCCEEDED`, `FAILED`, `ABORTED`<br/>
         /// and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted<br/>
         /// with the same storages<br/>
         /// (the same behaviour as when the run gets migrated to the new server).<br/>
         /// For more information, see the [Actor<br/>
-        /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
+        /// docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrect-a-finished-run).
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

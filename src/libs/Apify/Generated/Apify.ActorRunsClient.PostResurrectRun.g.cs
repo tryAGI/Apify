@@ -56,10 +56,10 @@ namespace Apify
         /// <summary>
         /// Resurrect Actor run<br/>
         /// Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.<br/>
-        /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
+        /// Only finished runs, that is, runs with status `SUCCEEDED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted with the same storages<br/>
         /// (the same behaviour as when the run gets migrated to the new server).<br/>
-        /// For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
+        /// For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrect-a-finished-run).
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -113,10 +113,10 @@ namespace Apify
         /// <summary>
         /// Resurrect Actor run<br/>
         /// Resurrects a finished Actor run and returns an object that contains all the details about the resurrected run.<br/>
-        /// Only finished runs, i.e. runs with status `FINISHED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
+        /// Only finished runs, that is, runs with status `SUCCEEDED`, `FAILED`, `ABORTED` and `TIMED-OUT` can be resurrected.<br/>
         /// Run status will be updated to RUNNING and its container will be restarted with the same storages<br/>
         /// (the same behaviour as when the run gets migrated to the new server).<br/>
-        /// For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrection-of-finished-run).
+        /// For more information, see the [Actor docs](https://docs.apify.com/platform/actors/running/runs-and-builds#resurrect-a-finished-run).
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
