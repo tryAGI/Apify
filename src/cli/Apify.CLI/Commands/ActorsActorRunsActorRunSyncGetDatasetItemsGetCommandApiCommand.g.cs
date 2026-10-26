@@ -276,8 +276,7 @@ The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds
 otherwise the API endpoint returns a timeout error.
 The Actor is not passed any input.
 
-It allows to send all possible options in parameters from [Get Dataset
-Items](#/reference/datasets/item-collection/get-items) API endpoint.
+It allows to send all possible options in parameters from [Get dataset items](/api/v2/dataset-items-get) API endpoint.
 
 Beware that it might be impossible to maintain an idle HTTP connection for a
 long period of time,
@@ -286,8 +285,7 @@ configured to have a long enough connection timeout.
 If the connection breaks, you will not receive any information about the run
 and its status.
 
-To run the Actor asynchronously, use the [Run
-Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Timeout);

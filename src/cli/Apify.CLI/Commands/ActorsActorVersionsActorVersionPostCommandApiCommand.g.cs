@@ -73,8 +73,8 @@ internal static partial class ActorsActorVersionsActorVersionPostCommandApiComma
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-post", @"Update Actor version (POST)
-Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.
-This endpoint is an alias for the [`PUT` update version](#tag/ActorsVersion-object/operation/act_version_put) method and behaves identically.
+Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.
+This endpoint is an alias for the [Update Actor version](/api/v2/actor-version-put) endpoint and behaves identically.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);

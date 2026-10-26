@@ -60,7 +60,7 @@ It is helpful in cases where you plan to resurrect the run later.
 Aborts the last run of the specified Actor and returns an object that
 contains all the details about the run.
 
-This endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)
+This endpoint is a shortcut for [Abort Actor run](/api/v2/actor-run-abort-post)
 on the Actor's last run. Only runs that are starting or running are aborted.
 For runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call
 does nothing.

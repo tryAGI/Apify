@@ -50,7 +50,7 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarGetCommandApi
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-env-var-get", @"Get environment variable of Actor version
-Gets a [EnvVar object](#/reference/actors/environment-variable-object) that
+Gets an `EnvVar` object that
 contains all the details about a specific environment variable of an Actor.
 
 If `isSecret` is set to `true`, then `value` will never be returned.

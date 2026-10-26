@@ -48,9 +48,9 @@ namespace Apify
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>
-        /// * [Dataset](/api/v2/default-dataset)<br/>
-        /// * [Key-value store](/api/v2/default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/default-request-queue)<br/>
+        /// * [Default dataset](/api/v2/default-dataset)<br/>
+        /// * [Default key-value store](/api/v2/default-key-value-store)<br/>
+        /// * [Default request queue](/api/v2/default-request-queue)<br/>
         /// Gets an object that contains all the details about a<br/>
         /// specific run of an Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will synchronously wait<br/>
@@ -89,9 +89,9 @@ namespace Apify
         /// This is not a single endpoint, but an entire group of endpoints that lets<br/>
         /// you retrieve the run or any of its default storages.<br/>
         /// ##### Convenience endpoints for Actor run default storages<br/>
-        /// * [Dataset](/api/v2/default-dataset)<br/>
-        /// * [Key-value store](/api/v2/default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/default-request-queue)<br/>
+        /// * [Default dataset](/api/v2/default-dataset)<br/>
+        /// * [Default key-value store](/api/v2/default-key-value-store)<br/>
+        /// * [Default request queue](/api/v2/default-request-queue)<br/>
         /// Gets an object that contains all the details about a<br/>
         /// specific run of an Actor.<br/>
         /// By passing the optional `waitForFinish` parameter the API endpoint will synchronously wait<br/>

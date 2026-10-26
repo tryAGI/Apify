@@ -49,12 +49,12 @@ namespace Apify
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task input as returned by the<br/>
-        /// [Get task input](#/reference/tasks/task-input-object/get-task-input) endpoint.<br/>
+        /// [Get Actor task input](/api/v2/actor-task-input-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -86,12 +86,12 @@ namespace Apify
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task input as returned by the<br/>
-        /// [Get task input](#/reference/tasks/task-input-object/get-task-input) endpoint.<br/>
+        /// [Get Actor task input](/api/v2/actor-task-input-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -762,12 +762,12 @@ namespace Apify
         /// JSON in the PUT payload.<br/>
         /// If the object does not define a specific property, its value is not updated.<br/>
         /// The response is the full task input as returned by the<br/>
-        /// [Get task input](#/reference/tasks/task-input-object/get-task-input) endpoint.<br/>
+        /// [Get Actor task input](/api/v2/actor-task-input-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

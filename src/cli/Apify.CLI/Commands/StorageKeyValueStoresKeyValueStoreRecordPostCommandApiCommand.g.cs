@@ -68,7 +68,7 @@ internal static partial class StorageKeyValueStoresKeyValueStoreRecordPostComman
         var command = new Command(commandName ?? @"key-value-store-record-post", @"Set key-value store record (POST)
 Stores a value under a specific key to the key-value store.
 
-This endpoint is an alias for the [`PUT` record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put) method and behaves identically.
+This endpoint is an alias for the [Set key-value store record](/api/v2/key-value-store-record-put) endpoint and behaves identically.
 ");
                         command.Arguments.Add(StoreId);
                         command.Arguments.Add(RecordKey);

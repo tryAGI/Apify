@@ -21,6 +21,18 @@ namespace Apify
         public string? Name { get; set; }
 
         /// <summary>
+        /// The human-readable display title of the Actor, shown in Apify Console and Apify Store.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// The description of the Actor.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// The version of the Actor, typically a dot-separated sequence of numbers (e.g., `0.1`, `1.0`, or `0.0.1`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
@@ -31,6 +43,12 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildTag")]
         public string? BuildTag { get; set; }
+
+        /// <summary>
+        /// Additional information about the Actor.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("meta")]
+        public global::Apify.ActorDefinitionMeta? Meta { get; set; }
 
         /// <summary>
         /// A map of environment variables to be used during local development and deployment.
@@ -61,6 +79,12 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input")]
         public object? Input { get; set; }
+
+        /// <summary>
+        /// The output schema object, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/output-schema)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public object? Output { get; set; }
 
         /// <summary>
         /// The path to the CHANGELOG file displayed in the Actor's information tab.
@@ -100,6 +124,18 @@ namespace Apify
         public bool? UsesStandbyMode { get; set; }
 
         /// <summary>
+        /// The OpenAPI v3 specification of the web server running in the Actor, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/web-server-schema)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webServerSchema")]
+        public object? WebServerSchema { get; set; }
+
+        /// <summary>
+        /// The HTTP path where the Actor's web server exposes its MCP (Model Context Protocol) server, for example `/mcp`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webServerMcpPath")]
+        public string? WebServerMcpPath { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -114,11 +150,20 @@ namespace Apify
         /// <param name="name">
         /// The name of the Actor.
         /// </param>
+        /// <param name="title">
+        /// The human-readable display title of the Actor, shown in Apify Console and Apify Store.
+        /// </param>
+        /// <param name="description">
+        /// The description of the Actor.
+        /// </param>
         /// <param name="version">
         /// The version of the Actor, typically a dot-separated sequence of numbers (e.g., `0.1`, `1.0`, or `0.0.1`).
         /// </param>
         /// <param name="buildTag">
         /// The tag name to be applied to a successful build of the Actor. Defaults to 'latest' if not specified.
+        /// </param>
+        /// <param name="meta">
+        /// Additional information about the Actor.
         /// </param>
         /// <param name="environmentVariables">
         /// A map of environment variables to be used during local development and deployment.
@@ -134,6 +179,9 @@ namespace Apify
         /// </param>
         /// <param name="input">
         /// The input schema object, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/input-schema)
+        /// </param>
+        /// <param name="output">
+        /// The output schema object, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/output-schema)
         /// </param>
         /// <param name="changelog">
         /// The path to the CHANGELOG file displayed in the Actor's information tab.
@@ -151,41 +199,59 @@ namespace Apify
         /// <param name="usesStandbyMode">
         /// Specifies whether Standby mode is enabled for the Actor.
         /// </param>
+        /// <param name="webServerSchema">
+        /// The OpenAPI v3 specification of the web server running in the Actor, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/web-server-schema)
+        /// </param>
+        /// <param name="webServerMcpPath">
+        /// The HTTP path where the Actor's web server exposes its MCP (Model Context Protocol) server, for example `/mcp`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ActorDefinition(
             int? actorSpecification,
             string? name,
+            string? title,
+            string? description,
             string? version,
             string? buildTag,
+            global::Apify.ActorDefinitionMeta? meta,
             global::System.Collections.Generic.Dictionary<string, string>? environmentVariables,
             string? dockerfile,
             string? dockerContextDir,
             string? readme,
             object? input,
+            object? output,
             string? changelog,
             global::Apify.ActorDefinitionStorages? storages,
             global::Apify.OneOf<string, long?>? defaultMemoryMbytes,
             long? minMemoryMbytes,
             long? maxMemoryMbytes,
-            bool? usesStandbyMode)
+            bool? usesStandbyMode,
+            object? webServerSchema,
+            string? webServerMcpPath)
         {
             this.ActorSpecification = actorSpecification;
             this.Name = name;
+            this.Title = title;
+            this.Description = description;
             this.Version = version;
             this.BuildTag = buildTag;
+            this.Meta = meta;
             this.EnvironmentVariables = environmentVariables;
             this.Dockerfile = dockerfile;
             this.DockerContextDir = dockerContextDir;
             this.Readme = readme;
             this.Input = input;
+            this.Output = output;
             this.Changelog = changelog;
             this.Storages = storages;
             this.DefaultMemoryMbytes = defaultMemoryMbytes;
             this.MinMemoryMbytes = minMemoryMbytes;
             this.MaxMemoryMbytes = maxMemoryMbytes;
             this.UsesStandbyMode = usesStandbyMode;
+            this.WebServerSchema = webServerSchema;
+            this.WebServerMcpPath = webServerMcpPath;
         }
 
         /// <summary>

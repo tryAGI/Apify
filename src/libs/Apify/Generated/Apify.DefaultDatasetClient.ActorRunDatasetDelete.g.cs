@@ -40,7 +40,7 @@ namespace Apify
         /// Delete the default dataset of an Actor run<br/>
         /// Deletes default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
-        /// [ Delete dataset ](/api/v2/dataset-delete) endpoint.
+        /// [Delete dataset](/api/v2/dataset-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -63,7 +63,7 @@ namespace Apify
         /// Delete the default dataset of an Actor run<br/>
         /// Deletes default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the<br/>
-        /// [ Delete dataset ](/api/v2/dataset-delete) endpoint.
+        /// [Delete dataset](/api/v2/dataset-delete) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

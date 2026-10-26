@@ -45,7 +45,7 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarsGetCommandAp
     {
         var command = new Command(commandName ?? @"actor-version-env-vars-get", @"Get list of environment variables of Actor version
 Gets the list of environment variables for a specific version of an Actor.
-The response is a JSON object with the list of [EnvVar objects](#/reference/actors/environment-variable-object), where each contains basic information about a single environment variable.
+The response is a JSON object with the list of `EnvVar` objects, where each contains basic information about a single environment variable.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);

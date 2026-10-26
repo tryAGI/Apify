@@ -73,7 +73,7 @@ internal static partial class ActorsActorVersionsActorVersionPutCommandApiComman
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-put", @"Update Actor version
-Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.
+Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.
 
 If the object does not define a specific property, its value will not be
 updated.
@@ -82,11 +82,11 @@ The request needs to specify the `Content-Type: application/json` HTTP
 header!
 
 When providing your API authentication token, we recommend using the
-request's `Authorization` header, rather than the URL. ([More
-info](#/introduction/authentication)).
+request's `Authorization` header, rather than the URL.
+For details, see [Authentication](/api/v2/getting-started#authentication).
 
-The response is the [Version object](#/reference/actors/version-object) as
-returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+The response is the `Version` object as
+returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);

@@ -58,8 +58,7 @@ internal static partial class StorageKeyValueStoresKeyValueStorePutCommandApiCom
 Updates a key-value store's name and general resource access level using a value specified by a JSON object
 passed in the PUT payload.
 
-The response is the updated key-value store object, as returned by the [Get
-store](#/reference/key-value-stores/store-object/get-store) API endpoint.
+The response is the updated key-value store object, as returned by the [Get key-value store](/api/v2/key-value-store-get) API endpoint.
 ");
                         command.Arguments.Add(StoreId);                        command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.NameOption);
                         command.Options.Add(UpdateKeyValueStoreRequestOptionSetOptions.GeneralAccess);

@@ -114,8 +114,7 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or the Actor's<br/>
         /// input schema if not defined by the task).<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for<br/>
         /// an extended period, due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
@@ -125,8 +124,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify the `Content-Type` header as `application/json`<br/>
         /// and that the input is an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -311,8 +309,7 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or the Actor's<br/>
         /// input schema if not defined by the task).<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for<br/>
         /// an extended period, due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
@@ -322,8 +319,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify the `Content-Type` header as `application/json`<br/>
         /// and that the input is an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -1283,8 +1279,7 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or the Actor's<br/>
         /// input schema if not defined by the task).<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for<br/>
         /// an extended period, due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
@@ -1294,8 +1289,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify the `Content-Type` header as `application/json`<br/>
         /// and that the input is an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

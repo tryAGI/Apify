@@ -49,18 +49,18 @@ namespace Apify
 
         /// <summary>
         /// Update environment variable in Actor version<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [EnvVar object](#/reference/actors/environment-variable-object) as returned by the<br/>
-        /// [Get environment variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `EnvVar` object as returned by the<br/>
+        /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
@@ -99,18 +99,18 @@ namespace Apify
         }
         /// <summary>
         /// Update environment variable in Actor version<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [EnvVar object](#/reference/actors/environment-variable-object) as returned by the<br/>
-        /// [Get environment variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `EnvVar` object as returned by the<br/>
+        /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
@@ -794,18 +794,18 @@ namespace Apify
         }
         /// <summary>
         /// Update environment variable in Actor version<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [EnvVar object](#/reference/actors/environment-variable-object) as returned by the<br/>
-        /// [Get environment variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `EnvVar` object as returned by the<br/>
+        /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">

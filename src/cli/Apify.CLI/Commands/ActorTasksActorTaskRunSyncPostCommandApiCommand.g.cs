@@ -156,8 +156,7 @@ passed as the POST payload.
 Just make sure to specify `Content-Type` header to be `application/json` and
 input to be an object.
 
-To run the task asynchronously, use the [Run
-task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Timeout);

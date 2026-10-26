@@ -7,7 +7,8 @@ namespace Apify
         /// <summary>
         /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
-        /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
+        /// new namespace `actor-runs`<br/>
+        /// ([Manage Actor runs](/api/v2/actor-runs)). Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
         /// resurrected run.<br/>
         /// Only finished runs, i.e. runs with status `SUCCEEDED`, `FAILED`, `ABORTED`<br/>
@@ -51,7 +52,8 @@ namespace Apify
         /// <summary>
         /// Resurrect Actor run<br/>
         /// **[DEPRECATED]** API endpoints related to run of the Actor were moved under<br/>
-        /// new namespace [`actor-runs`](#/reference/actor-runs).Resurrects a finished<br/>
+        /// new namespace `actor-runs`<br/>
+        /// ([Manage Actor runs](/api/v2/actor-runs)). Resurrects a finished<br/>
         /// Actor run and returns an object that contains all the details about the<br/>
         /// resurrected run.<br/>
         /// Only finished runs, i.e. runs with status `SUCCEEDED`, `FAILED`, `ABORTED`<br/>

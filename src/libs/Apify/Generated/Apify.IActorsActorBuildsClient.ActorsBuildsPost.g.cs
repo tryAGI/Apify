@@ -8,7 +8,7 @@ namespace Apify
         /// Build Actor<br/>
         /// Builds an Actor.<br/>
         /// The response is the build object as returned by the<br/>
-        /// [Get build](#/reference/actors/build-object/get-build) endpoint.
+        /// [Get Actor build](/api/v2/actor-build-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -45,7 +45,7 @@ namespace Apify
         /// Build Actor<br/>
         /// Builds an Actor.<br/>
         /// The response is the build object as returned by the<br/>
-        /// [Get build](#/reference/actors/build-object/get-build) endpoint.
+        /// [Get Actor build](/api/v2/actor-build-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

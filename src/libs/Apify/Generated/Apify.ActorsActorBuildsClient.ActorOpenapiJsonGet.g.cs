@@ -46,13 +46,13 @@ namespace Apify
         /// <summary>
         /// Get OpenAPI definition of Actor build<br/>
         /// Get the OpenAPI definition for Actor builds. Two similar endpoints are available:<br/>
-        /// - [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
-        /// - [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.<br/>
+        /// - [Get OpenAPI definition of Actor build](/api/v2/actor-openapi-json-get) (`/v2/actors/{actorId}/builds/{buildId}/openapi.json`): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
+        /// - [Get OpenAPI definition of Actor build](/api/v2/actor-build-openapi-json-get) (`/v2/actor-builds/{buildId}/openapi.json`): Requires only `buildId`.<br/>
         /// Get the OpenAPI definition for a specific Actor build.<br/>
         /// To fetch the default Actor build, simply pass `default` as the `buildId`.<br/>
         /// Authentication is based on the build's unique ID. No authentication token is required.<br/>
         /// :::note<br/>
-        /// You can also use the [`/api/v2/actor-build-openapi-json-get`](/api/v2/actor-build-openapi-json-get) endpoint to get the OpenAPI definition for a build.<br/>
+        /// You can also use the [Get OpenAPI definition of Actor build](/api/v2/actor-build-openapi-json-get) endpoint (`/v2/actor-builds/{buildId}/openapi.json`) to get the OpenAPI definition for a build.<br/>
         /// :::
         /// </summary>
         /// <param name="actorId">
@@ -82,13 +82,13 @@ namespace Apify
         /// <summary>
         /// Get OpenAPI definition of Actor build<br/>
         /// Get the OpenAPI definition for Actor builds. Two similar endpoints are available:<br/>
-        /// - [First endpoint](/api/v2/actor-openapi-json-get): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
-        /// - [Second endpoint](/api/v2/actor-build-openapi-json-get): Requires only `buildId`.<br/>
+        /// - [Get OpenAPI definition of Actor build](/api/v2/actor-openapi-json-get) (`/v2/actors/{actorId}/builds/{buildId}/openapi.json`): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.<br/>
+        /// - [Get OpenAPI definition of Actor build](/api/v2/actor-build-openapi-json-get) (`/v2/actor-builds/{buildId}/openapi.json`): Requires only `buildId`.<br/>
         /// Get the OpenAPI definition for a specific Actor build.<br/>
         /// To fetch the default Actor build, simply pass `default` as the `buildId`.<br/>
         /// Authentication is based on the build's unique ID. No authentication token is required.<br/>
         /// :::note<br/>
-        /// You can also use the [`/api/v2/actor-build-openapi-json-get`](/api/v2/actor-build-openapi-json-get) endpoint to get the OpenAPI definition for a build.<br/>
+        /// You can also use the [Get OpenAPI definition of Actor build](/api/v2/actor-build-openapi-json-get) endpoint (`/v2/actor-builds/{buildId}/openapi.json`) to get the OpenAPI definition for a build.<br/>
         /// :::
         /// </summary>
         /// <param name="actorId">

@@ -10,12 +10,12 @@ namespace Apify
         /// JSON in the POST payload. If the object does not define a specific property,<br/>
         /// its value will not be updated.<br/>
         /// The response is the full schedule object as returned by the<br/>
-        /// [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.<br/>
+        /// [Get schedule](/api/v2/schedule-get) endpoint.<br/>
         /// **The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!**<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="scheduleId">
         /// Example: asdLZtadYvn4mBZmm
@@ -36,12 +36,12 @@ namespace Apify
         /// JSON in the POST payload. If the object does not define a specific property,<br/>
         /// its value will not be updated.<br/>
         /// The response is the full schedule object as returned by the<br/>
-        /// [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.<br/>
+        /// [Get schedule](/api/v2/schedule-get) endpoint.<br/>
         /// **The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!**<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="scheduleId">
         /// Example: asdLZtadYvn4mBZmm
@@ -62,12 +62,12 @@ namespace Apify
         /// JSON in the POST payload. If the object does not define a specific property,<br/>
         /// its value will not be updated.<br/>
         /// The response is the full schedule object as returned by the<br/>
-        /// [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.<br/>
+        /// [Get schedule](/api/v2/schedule-get) endpoint.<br/>
         /// **The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!**<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="scheduleId">
         /// Example: asdLZtadYvn4mBZmm

@@ -272,8 +272,7 @@ The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds
 otherwise the HTTP request fails with a timeout error (this won't abort
 the run itself).
 
-You can send all the same options in parameters as the [Get Dataset
-Items](#/reference/datasets/item-collection/get-items) API endpoint.
+You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.
 
 Beware that it might be impossible to maintain an idle HTTP connection for
 an extended period, due to client timeout or network conditions. Make sure your HTTP client is
@@ -282,8 +281,7 @@ configured to have a long enough connection timeout.
 If the connection breaks, you will not receive any information about the run
 and its status.
 
-To run the Task asynchronously, use the [Run task
-asynchronously](#/reference/actor-tasks/run-collection/run-task) endpoint
+To run the Task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) endpoint
 instead.
 ");
                         command.Arguments.Add(ActorTaskId);

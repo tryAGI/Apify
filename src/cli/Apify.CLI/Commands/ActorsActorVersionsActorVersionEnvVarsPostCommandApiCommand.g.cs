@@ -61,8 +61,8 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarsPostCommandA
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-env-vars-post", @"Create environment variable in Actor version
-Creates an environment variable of an Actor using values specified in a
-[EnvVar object](#/reference/actors/environment-variable-object) passed as
+Creates an environment variable of an Actor using values specified in an
+`EnvVar` object passed as
 JSON in the POST payload.
 
 The request must specify `name` and `value` parameters (as strings) in the
@@ -75,9 +75,8 @@ JSON payload and a `Content-Type: application/json` HTTP header.
 }
 ```
 
-The response is the [EnvVar
-object](#/reference/actors/environment-variable-object) as returned by the [Get environment
-variable](#/reference/actors/environment-variable-object/get-environment-variable)
+The response is the `EnvVar`
+object as returned by the [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)
 endpoint.
 ");
                         command.Arguments.Add(ActorId);

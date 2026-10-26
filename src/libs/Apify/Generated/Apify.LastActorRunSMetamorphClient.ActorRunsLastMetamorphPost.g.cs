@@ -53,7 +53,7 @@ namespace Apify
         /// Metamorph Actor's last run<br/>
         /// Transforms the last run of the specified Actor into a run of another Actor with<br/>
         /// a new input.<br/>
-        /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>
+        /// This endpoint is a shortcut for [Metamorph Actor run](/api/v2/actor-run-metamorph-post)<br/>
         /// on the Actor's last run.
         /// </summary>
         /// <param name="actorId">
@@ -97,7 +97,7 @@ namespace Apify
         /// Metamorph Actor's last run<br/>
         /// Transforms the last run of the specified Actor into a run of another Actor with<br/>
         /// a new input.<br/>
-        /// This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)<br/>
+        /// This endpoint is a shortcut for [Metamorph Actor run](/api/v2/actor-run-metamorph-post)<br/>
         /// on the Actor's last run.
         /// </summary>
         /// <param name="actorId">

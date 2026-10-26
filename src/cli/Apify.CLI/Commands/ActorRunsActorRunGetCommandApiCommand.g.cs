@@ -53,11 +53,11 @@ you retrieve the run or any of its default storages.
 
 ##### Convenience endpoints for Actor run default storages
 
-* [Dataset](/api/v2/default-dataset)
+* [Default dataset](/api/v2/default-dataset)
 
-* [Key-value store](/api/v2/default-key-value-store)
+* [Default key-value store](/api/v2/default-key-value-store)
 
-* [Request queue](/api/v2/default-request-queue)
+* [Default request queue](/api/v2/default-request-queue)
 
 Gets an object that contains all the details about a
 specific run of an Actor.

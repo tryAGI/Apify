@@ -47,8 +47,8 @@ namespace Apify
 
         /// <summary>
         /// Create environment variable in Actor version<br/>
-        /// Creates an environment variable of an Actor using values specified in a<br/>
-        /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
+        /// Creates an environment variable of an Actor using values specified in an<br/>
+        /// `EnvVar` object passed as<br/>
         /// JSON in the POST payload.<br/>
         /// The request must specify `name` and `value` parameters (as strings) in the<br/>
         /// JSON payload and a `Content-Type: application/json` HTTP header.<br/>
@@ -58,9 +58,8 @@ namespace Apify
         ///     "value": "my-env-var"<br/>
         /// }<br/>
         /// ```<br/>
-        /// The response is the [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object) as returned by the [Get environment<br/>
-        /// variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// The response is the `EnvVar`<br/>
+        /// object as returned by the [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
@@ -94,8 +93,8 @@ namespace Apify
         }
         /// <summary>
         /// Create environment variable in Actor version<br/>
-        /// Creates an environment variable of an Actor using values specified in a<br/>
-        /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
+        /// Creates an environment variable of an Actor using values specified in an<br/>
+        /// `EnvVar` object passed as<br/>
         /// JSON in the POST payload.<br/>
         /// The request must specify `name` and `value` parameters (as strings) in the<br/>
         /// JSON payload and a `Content-Type: application/json` HTTP header.<br/>
@@ -105,9 +104,8 @@ namespace Apify
         ///     "value": "my-env-var"<br/>
         /// }<br/>
         /// ```<br/>
-        /// The response is the [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object) as returned by the [Get environment<br/>
-        /// variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// The response is the `EnvVar`<br/>
+        /// object as returned by the [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">
@@ -785,8 +783,8 @@ namespace Apify
         }
         /// <summary>
         /// Create environment variable in Actor version<br/>
-        /// Creates an environment variable of an Actor using values specified in a<br/>
-        /// [EnvVar object](#/reference/actors/environment-variable-object) passed as<br/>
+        /// Creates an environment variable of an Actor using values specified in an<br/>
+        /// `EnvVar` object passed as<br/>
         /// JSON in the POST payload.<br/>
         /// The request must specify `name` and `value` parameters (as strings) in the<br/>
         /// JSON payload and a `Content-Type: application/json` HTTP header.<br/>
@@ -796,9 +794,8 @@ namespace Apify
         ///     "value": "my-env-var"<br/>
         /// }<br/>
         /// ```<br/>
-        /// The response is the [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object) as returned by the [Get environment<br/>
-        /// variable](#/reference/actors/environment-variable-object/get-environment-variable)<br/>
+        /// The response is the `EnvVar`<br/>
+        /// object as returned by the [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
         /// </summary>
         /// <param name="actorId">

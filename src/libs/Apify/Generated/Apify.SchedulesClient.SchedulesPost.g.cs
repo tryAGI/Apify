@@ -47,8 +47,8 @@ namespace Apify
         /// as JSON in the payload. The response is the created schedule object.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -75,8 +75,8 @@ namespace Apify
         /// as JSON in the payload. The response is the created schedule object.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -782,8 +782,8 @@ namespace Apify
         /// as JSON in the payload. The response is the created schedule object.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="name"></param>
         /// <param name="isEnabled"></param>

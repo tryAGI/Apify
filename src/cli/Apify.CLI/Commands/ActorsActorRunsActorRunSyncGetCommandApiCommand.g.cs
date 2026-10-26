@@ -124,8 +124,7 @@ configured to have a long enough connection timeout.
 If the connection breaks, you will not receive any information about the run
 and its status.
 
-To run the Actor asynchronously, use the [Run
-Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(OutputRecordKey);

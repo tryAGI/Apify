@@ -10,15 +10,13 @@ namespace Apify
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
         /// the run itself).<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for<br/>
         /// an extended period, due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Task asynchronously, use the [Run task<br/>
-        /// asynchronously](#/reference/actor-tasks/run-collection/run-task) endpoint<br/>
+        /// To run the Task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) endpoint<br/>
         /// instead.
         /// </summary>
         /// <param name="actorTaskId">
@@ -151,15 +149,13 @@ namespace Apify
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the HTTP request fails with a timeout error (this won't abort<br/>
         /// the run itself).<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for<br/>
         /// an extended period, due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Task asynchronously, use the [Run task<br/>
-        /// asynchronously](#/reference/actor-tasks/run-collection/run-task) endpoint<br/>
+        /// To run the Task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) endpoint<br/>
         /// instead.
         /// </summary>
         /// <param name="actorTaskId">

@@ -37,10 +37,9 @@ namespace Apify
     /// [Integrations](https://console.apify.com/settings/integrations) page in the<br/>
     /// Apify Console.**<br/>
     /// To use your token in a request, either:<br/>
-    /// - Add the token to your request's `Authorization` header as `Bearer &lt;token&gt;`.<br/>
+    /// - _(Recommended)_ Add the token to your request's `Authorization` header as `Bearer &lt;token&gt;`.<br/>
     /// E.g., `Authorization: Bearer xxxxxxx`.<br/>
-    /// [More info](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization).<br/>
-    /// (Recommended).<br/>
+    /// For details, see the [`Authorization` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) on MDN.<br/>
     /// - Add it as the `token` parameter to your request URL. (Less secure).<br/>
     /// Using your token in the request header is more secure than using it as a URL<br/>
     /// parameter because URLs are often stored<br/>
@@ -59,8 +58,7 @@ namespace Apify
     /// (`skyfire-pay-id` header).<br/>
     /// ## Basic usage<br/>
     /// &lt;span id="/introduction/basic-usage"&gt;&lt;/span&gt;<br/>
-    /// To run an Actor, send a POST request to the [Run<br/>
-    /// Actor](#/reference/actors/run-collection/run-actor) endpoint using either the<br/>
+    /// To run an Actor, send a POST request to the [Run Actor](/api/v2/actors-runs-post) endpoint using either the<br/>
     /// Actor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.<br/>
     /// `janedoe~my-actor`):<br/>
     /// `https://api.apify.com/v2/actors/[actor_id]/runs`<br/>
@@ -70,8 +68,7 @@ namespace Apify
     /// token](https://console.apify.com/account#/integrations) to the request's<br/>
     /// `Authorization` header ([recommended](#/introduction/authentication)) or as a<br/>
     /// URL query parameter `?token=[your_token]` (less secure).<br/>
-    /// Optionally, you can include the query parameters described in the [Run<br/>
-    /// Actor](#/reference/actors/run-collection/run-actor) section to customize your<br/>
+    /// Optionally, you can include the query parameters described in the [Run Actor](/api/v2/actors-runs-post) section to customize your<br/>
     /// run.<br/>
     /// If you're using Node.js, the best way to run an Actor is using the<br/>
     /// `Apify.call()` method from the [Apify<br/>
@@ -82,22 +79,19 @@ namespace Apify
     /// object](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if<br/>
     /// any).<br/>
     /// A typical workflow is as follows:<br/>
-    /// 1. Run an Actor or task using the [Run<br/>
-    /// Actor](#/reference/actors/run-collection/run-actor) or [Run<br/>
-    /// task](#/reference/actor-tasks/run-collection/run-task) API endpoints.<br/>
-    /// 2. Monitor the Actor run by periodically polling its progress using the [Get<br/>
-    /// run](#/reference/actor-runs/run-object-and-its-storages/get-run) API<br/>
+    /// 1. Run an Actor or task using the [Run Actor](/api/v2/actors-runs-post) or<br/>
+    /// [Run Actor task](/api/v2/actor-task-runs-post) API endpoints.<br/>
+    /// 2. Monitor the Actor run by periodically polling its progress using the [Get Actor run](/api/v2/actor-run-get) API<br/>
     /// endpoint.<br/>
-    /// 3. Fetch the results from the [Get<br/>
-    /// items](#/reference/datasets/item-collection/get-items) API endpoint using the<br/>
+    /// 3. Fetch the results from the [Get dataset items](/api/v2/dataset-items-get) API endpoint using the<br/>
     /// `defaultDatasetId`, which you receive in the Run request response.<br/>
     /// Additional data may be stored in a key-value store. You can fetch them from<br/>
-    /// the [Get record](#/reference/key-value-stores/record/get-record) API endpoint<br/>
+    /// the [Get key-value store record](/api/v2/key-value-store-record-get) API endpoint<br/>
     /// using the `defaultKeyValueStoreId` and the store's `key`.<br/>
-    /// **Note**: Instead of periodic polling, you can also run your<br/>
-    /// [Actor](#/reference/actors/run-actor-synchronously) or<br/>
-    /// [task](#/reference/actor-tasks/runs-collection/run-task-synchronously)<br/>
-    /// synchronously. This will ensure that the request waits for 300 seconds (5<br/>
+    /// **Note**: Instead of periodic polling, you can also run your Actor or task synchronously with the<br/>
+    /// [Run Actor synchronously and get key-value store record](/api/v2/actor-run-sync-post) or<br/>
+    /// [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)<br/>
+    /// endpoint. This will ensure that the request waits for 300 seconds (5<br/>
     /// minutes) for the run to finish and returns its output. If the run takes<br/>
     /// longer, the request will time out and throw an error.<br/>
     /// ## Legacy `/v2/acts/` URL prefix<br/>
@@ -117,8 +111,8 @@ namespace Apify
     /// }<br/>
     /// ```<br/>
     /// However, there are a few explicitly described exceptions, such as<br/>
-    /// [Get dataset items](#/reference/datasets/item-collection/get-items) or<br/>
-    /// Key-value store [Get record](#/reference/key-value-stores/record/get-record)<br/>
+    /// [Get dataset items](/api/v2/dataset-items-get) or<br/>
+    /// [Get key-value store record](/api/v2/key-value-store-record-get)<br/>
     /// API endpoints, which return data in other formats.<br/>
     /// In case of an error, the response has the HTTP status code in the range of<br/>
     /// 4xx or 5xx and the `data` property is replaced with `error`. For example:<br/>
@@ -134,13 +128,12 @@ namespace Apify
     /// ## Pagination<br/>
     /// &lt;span id="/introduction/pagination"&gt;&lt;/span&gt;<br/>
     /// All API endpoints that return a list of records<br/>
-    /// (e.g. [Get list of<br/>
-    /// Actors](#/reference/actors/actor-collection/get-list-of-actors))<br/>
+    /// (e.g. [Get list of Actors](/api/v2/actors-get))<br/>
     /// enforce pagination in order to limit the size of their responses.<br/>
     /// Most of these API endpoints are paginated using the `offset` and `limit`<br/>
     /// query parameters.<br/>
-    /// The only exception is [Get list of<br/>
-    /// keys](#/reference/key-value-stores/key-collection/get-list-of-keys),<br/>
+    /// The only exception is<br/>
+    /// [Get list of key-value store keys](/api/v2/key-value-store-keys-get),<br/>
     /// which is paginated using the `exclusiveStartKey` query parameter.<br/>
     /// **IMPORTANT**: Each API endpoint that supports pagination enforces a certain<br/>
     /// maximum value for the `limit` parameter,<br/>
@@ -230,8 +223,8 @@ namespace Apify
     /// store](https://docs.apify.com/platform/storage/key-value-store)<br/>
     /// are not ordered based on numerical indexes,<br/>
     /// but rather by their keys in the UTF-8 binary order.<br/>
-    /// Therefore the [Get list of<br/>
-    /// keys](#/reference/key-value-stores/key-collection/get-list-of-keys)<br/>
+    /// Therefore the<br/>
+    /// [Get list of key-value store keys](/api/v2/key-value-store-keys-get)<br/>
     /// API endpoint only supports pagination using the following query parameters:<br/>
     /// &lt;table&gt;<br/>
     ///   &lt;tr&gt;<br/>
@@ -364,35 +357,30 @@ namespace Apify
     /// The default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.<br/>
     /// Each API endpoint returns its rate limit in `X-RateLimit-Limit` header.<br/>
     /// These endpoints have a rate limit of _35 requests per second per resource_:<br/>
-    /// * Batch ([add](#/reference/request-queues/batch-request-operations/add-requests),<br/>
-    ///   [delete](#/reference/request-queues/batch-request-operations/delete-requests))<br/>
-    ///   operations on requests in request queues<br/>
-    /// * [List and lock head](#/reference/request-queues/queue-head-with-locks/list-and-lock-head) of a request queue<br/>
+    /// * [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post)<br/>
+    /// * [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete)<br/>
+    /// * [Get and lock request queue head](/api/v2/request-queue-head-lock-post)<br/>
     /// These endpoints have a rate limit of _100 requests per second per resource_:<br/>
-    /// * Download records from a key-value store as a ZIP archive<br/>
+    /// * [Download key-value store records](/api/v2/key-value-store-records-get) (ZIP archive)<br/>
     /// These endpoints have a rate limit of _200 requests per second per resource_:<br/>
-    /// * CRUD ([get](#/reference/key-value-stores/record/get-record),<br/>
-    ///   [put](#/reference/key-value-stores/record/put-record),<br/>
-    ///   [delete](#/reference/key-value-stores/record/delete-record))<br/>
-    ///   operations on key-value store records<br/>
-    /// * [Get list of keys](#/reference/key-value-stores/key-collection/get-list-of-keys) in a key-value store<br/>
+    /// * [Get key-value store record](/api/v2/key-value-store-record-get)<br/>
+    /// * [Set key-value store record](/api/v2/key-value-store-record-put) and its [`POST` variant](/api/v2/key-value-store-record-post)<br/>
+    /// * [Delete key-value store record](/api/v2/key-value-store-record-delete)<br/>
+    /// * [Get list of key-value store keys](/api/v2/key-value-store-keys-get)<br/>
     /// These endpoints have a rate limit of _350 requests per second per resource_:<br/>
-    /// * CRUD<br/>
-    ///   ([add](#/reference/request-queues/request-collection/add-request),<br/>
-    ///   [get](#/reference/request-queues/request-collection/get-request),<br/>
-    ///   [update](#/reference/request-queues/request-collection/update-request),<br/>
-    ///   [delete](#/reference/request-queues/request-collection/delete-request))<br/>
-    ///   operations on requests in request queues<br/>
-    /// * Request lock operations<br/>
-    ///   ([prolong](#/reference/request-queues/request-lock/prolong-request-lock),<br/>
-    ///   [delete](#/reference/request-queues/request-lock/delete-request-lock))<br/>
-    ///   in request queues<br/>
+    /// * [Add request to request queue](/api/v2/request-queue-requests-post)<br/>
+    /// * [Get request from request queue](/api/v2/request-queue-request-get)<br/>
+    /// * [Update request in request queue](/api/v2/request-queue-request-put)<br/>
+    /// * [Delete request from request queue](/api/v2/request-queue-request-delete)<br/>
+    /// * [Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put)<br/>
+    /// * [Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete)<br/>
     /// These endpoints have a rate limit of _400 requests per second per resource_:<br/>
-    /// * [Run Actor](#/reference/actors/run-collection/run-actor)<br/>
-    /// * [Run Actor task asynchronously](#/reference/actor-tasks/runs-collection/run-task-asynchronously)<br/>
-    /// * [Run Actor task synchronously](#/reference/actor-tasks/runs-collection/run-task-synchronously)<br/>
-    /// * [Metamorph Actor run](#/reference/actors/metamorph-run/metamorph-run)<br/>
-    /// * [Push items](#/reference/datasets/item-collection/put-items) to dataset<br/>
+    /// * [Run Actor](/api/v2/actors-runs-post)<br/>
+    /// * [Run Actor task](/api/v2/actor-task-runs-post)<br/>
+    /// * [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get)<br/>
+    /// * [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get-dataset-items-get)<br/>
+    /// * [Metamorph Actor run](/api/v2/actor-run-metamorph-post)<br/>
+    /// * [Store items in dataset](/api/v2/dataset-items-post)<br/>
     /// ### Rate limit exceeded errors<br/>
     /// &lt;span id="/introduction/rate-limiting/rate-limit-exceeded-errors"&gt;&lt;/span&gt;<br/>
     /// If the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`<br/>
@@ -535,7 +523,7 @@ namespace Apify
         /// Actor versions. The API endpoints in this section allow you to manage your Apify Actors versions.<br/>
         /// - The version object contains the source code of a specific version of an Actor.<br/>
         /// - The `sourceType` property indicates where the source code is hosted, and based<br/>
-        /// on its value the Version object has the following additional property:<br/>
+        /// on its value the `Version` object has the following additional property:<br/>
         /// | **Value** | **Description**  |<br/>
         /// |---|---|<br/>
         /// | `"SOURCE_FILES"`   | Source code is comprised of multiple files specified in the `sourceFiles` array. Each item of the array is an object with the following fields:&lt;br/&gt; - `name`: File path and name&lt;br/&gt; - `format`: Format of the content, can be either `"TEXT"` or `"BASE64"`&lt;br/&gt; - `content`: File content&lt;br/&gt;&lt;br/&gt;Source files can be shown and edited in the Apify Console's Web IDE. |<br/>
@@ -596,7 +584,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor run's log. The API endpoint described in this section is convenience endpoint that provides access to last Actor run's log.<br/>
-        /// Same as of functionality described in: [Logs](/api/v2/logs).
+        /// Same as of functionality described in: [Get build and run logs](/api/v2/logs).
         /// </summary>
         public LastActorRunSLogClient LastActorRunSLog { get; }
 
@@ -638,7 +626,7 @@ namespace Apify
 
         /// <summary>
         /// Last Actor task run's log. The API endpoint described in this section is convenience endpoint that provides access to last Actor task run's log.<br/>
-        /// Same as of functionality described in: [Logs](/api/v2/logs).
+        /// Same as of functionality described in: [Get build and run logs](/api/v2/logs).
         /// </summary>
         public LastActorTaskRunSLogClient LastActorTaskRunSLog { get; }
 
@@ -674,7 +662,7 @@ namespace Apify
         /// For more information, see [Schedules documentation](https://docs.apify.com/platform/schedules).<br/>
         /// Each schedule is assigned actions for it to perform. Actions can be of two types<br/>
         /// - `RUN_ACTOR` and `RUN_ACTOR_TASK`.<br/>
-        /// For details, see the documentation of the [Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.
+        /// For details, see the documentation of the [Get schedule](/api/v2/schedule-get) endpoint.
         /// </summary>
         public SchedulesClient Schedules { get; }
 

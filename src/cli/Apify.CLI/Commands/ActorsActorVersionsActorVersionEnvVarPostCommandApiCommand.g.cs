@@ -67,10 +67,10 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarPostCommandAp
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-env-var-post", @"Update environment variable in Actor version (POST)
-Updates Actor environment variable using values specified by a [EnvVar
-object](#/reference/actors/environment-variable-object)
+Updates Actor environment variable using values specified by an `EnvVar`
+object
 passed as JSON in the POST payload.
-This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
+This endpoint is an alias for the [Update environment variable in Actor version](/api/v2/actor-version-env-var-put) endpoint and behaves identically.
 ");
                         command.Arguments.Add(ActorId);
                         command.Arguments.Add(VersionNumber);

@@ -68,14 +68,14 @@ JSON in the POST payload. If the object does not define a specific property,
 its value will not be updated.
 
 The response is the full schedule object as returned by the
-[Get schedule](#/reference/schedules/schedule-object/get-schedule) endpoint.
+[Get schedule](/api/v2/schedule-get) endpoint.
 
 **The request needs to specify the `Content-Type: application/json` HTTP
 header!**
 
 When providing your API authentication token, we recommend using the
-request's `Authorization` header, rather than the URL. ([More
-info](#/introduction/authentication)).
+request's `Authorization` header, rather than the URL.
+For details, see [Authentication](/api/v2/getting-started#authentication).
 ");
                         command.Arguments.Add(ScheduleId);
                         command.Options.Add(Actions);                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.NameOption);

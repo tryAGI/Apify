@@ -58,7 +58,7 @@ Updates a request queue's name and general resource access level using a value s
 passed in the PUT payload.
 
 The response is the updated request queue object, as returned by the
-[Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.
+[Get request queue](/api/v2/request-queue-get) API endpoint.
 ");
                         command.Arguments.Add(QueueId);
           command.Options.Add(Input);

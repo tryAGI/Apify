@@ -8,7 +8,7 @@ namespace Apify
         /// Abort last run of an Actor task<br/>
         /// Aborts the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the run.<br/>
-        /// This endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)<br/>
+        /// This endpoint is a shortcut for [Abort Actor run](/api/v2/actor-run-abort-post)<br/>
         /// on the Actor task's last run. Only runs that are starting or running are aborted.<br/>
         /// For runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call<br/>
         /// does nothing.
@@ -37,7 +37,7 @@ namespace Apify
         /// Abort last run of an Actor task<br/>
         /// Aborts the last run of the specified Actor task and returns an object that<br/>
         /// contains all the details about the run.<br/>
-        /// This endpoint is a shortcut for [Abort run](#/reference/actor-runs/abort-run/abort-run)<br/>
+        /// This endpoint is a shortcut for [Abort Actor run](/api/v2/actor-run-abort-post)<br/>
         /// on the Actor task's last run. Only runs that are starting or running are aborted.<br/>
         /// For runs with status `FINISHED`, `FAILED`, `ABORTING` and `TIMED-OUT` this call<br/>
         /// does nothing.
