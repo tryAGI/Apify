@@ -57,12 +57,12 @@ namespace Apify
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
         /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
-        /// parameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
+        /// parameters are the same as in the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor task run<br/>
-        /// * [Dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
-        /// * [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/last-actor-task-runs-default-request-queue)<br/>
-        /// * [Log](/api/v2/last-actor-task-runs-log)
+        /// * [Last Actor task run's default dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
+        /// * [Last Actor task run's default key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
+        /// * [Last Actor task run's default request queue](/api/v2/last-actor-task-runs-default-request-queue)<br/>
+        /// * [Last Actor task run's log](/api/v2/last-actor-task-runs-log)
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -106,12 +106,12 @@ namespace Apify
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
         /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
-        /// parameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.<br/>
+        /// parameters are the same as in the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor task run<br/>
-        /// * [Dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
-        /// * [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/last-actor-task-runs-default-request-queue)<br/>
-        /// * [Log](/api/v2/last-actor-task-runs-log)
+        /// * [Last Actor task run's default dataset](/api/v2/last-actor-task-runs-default-dataset)<br/>
+        /// * [Last Actor task run's default key-value store](/api/v2/last-actor-task-runs-default-key-value-store)<br/>
+        /// * [Last Actor task run's default request queue](/api/v2/last-actor-task-runs-default-request-queue)<br/>
+        /// * [Last Actor task run's log](/api/v2/last-actor-task-runs-log)
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

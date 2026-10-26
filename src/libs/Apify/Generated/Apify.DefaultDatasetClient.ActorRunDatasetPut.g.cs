@@ -47,7 +47,7 @@ namespace Apify
         /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
-        /// [Put dataset](/api/v2/dataset-put) endpoint.
+        /// [Update dataset](/api/v2/dataset-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -77,7 +77,7 @@ namespace Apify
         /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
-        /// [Put dataset](/api/v2/dataset-put) endpoint.
+        /// [Update dataset](/api/v2/dataset-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -750,7 +750,7 @@ namespace Apify
         /// Update the default dataset of an Actor run<br/>
         /// Updates the default dataset associated with an Actor run.<br/>
         /// This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the<br/>
-        /// [Put dataset](/api/v2/dataset-put) endpoint.
+        /// [Update dataset](/api/v2/dataset-put) endpoint.
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T

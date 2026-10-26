@@ -8,7 +8,7 @@ namespace Apify
         /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
-        /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>
+        /// [Set key-value store record](/api/v2/key-value-store-record-put).<br/>
         /// If the request does not define the `Accept-Encoding` HTTP header with the<br/>
         /// right encoding, the record will be decompressed.<br/>
         /// Most HTTP clients support decompression by default. After using the HTTP<br/>
@@ -44,7 +44,7 @@ namespace Apify
         /// Get key-value store record<br/>
         /// Gets a value stored in the key-value store under a specific key.<br/>
         /// The response body has the same `Content-Encoding` header as it was set in<br/>
-        /// [Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).<br/>
+        /// [Set key-value store record](/api/v2/key-value-store-record-put).<br/>
         /// If the request does not define the `Accept-Encoding` HTTP header with the<br/>
         /// right encoding, the record will be decompressed.<br/>
         /// Most HTTP clients support decompression by default. After using the HTTP<br/>

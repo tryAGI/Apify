@@ -30,8 +30,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify `Content-Type` header to be `application/json` and<br/>
         /// input to be an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -104,8 +103,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify `Content-Type` header to be `application/json` and<br/>
         /// input to be an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -178,8 +176,7 @@ namespace Apify
         /// passed as the POST payload.<br/>
         /// Just make sure to specify `Content-Type` header to be `application/json` and<br/>
         /// input to be an object.<br/>
-        /// To run the task asynchronously, use the [Run<br/>
-        /// task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+        /// To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

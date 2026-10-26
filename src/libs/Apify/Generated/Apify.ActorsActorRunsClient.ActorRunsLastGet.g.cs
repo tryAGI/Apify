@@ -57,12 +57,12 @@ namespace Apify
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
         /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
-        /// parameters are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>
+        /// parameters are the same as in the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor run<br/>
-        /// * [Dataset](/api/v2/last-actor-runs-default-dataset)<br/>
-        /// * [Key-value store](/api/v2/last-actor-runs-default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/last-actor-runs-default-request-queue)<br/>
-        /// * [Log](/api/v2/last-actor-runs-log)
+        /// * [Last Actor run's default dataset](/api/v2/last-actor-runs-default-dataset)<br/>
+        /// * [Last Actor run's default key-value store](/api/v2/last-actor-runs-default-key-value-store)<br/>
+        /// * [Last Actor run's default request queue](/api/v2/last-actor-runs-default-request-queue)<br/>
+        /// * [Last Actor run's log](/api/v2/last-actor-runs-log)
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -106,12 +106,12 @@ namespace Apify
         /// Using the `status` query parameter you can ensure to only get a run with a certain status<br/>
         /// (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means<br/>
         /// by which they were started (e.g. `origin=API`). The output of this endpoint and other query<br/>
-        /// parameters are the same as in the [Run object](#/reference/actors/run-object) endpoint.<br/>
+        /// parameters are the same as in the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// ##### Convenience endpoints for last Actor run<br/>
-        /// * [Dataset](/api/v2/last-actor-runs-default-dataset)<br/>
-        /// * [Key-value store](/api/v2/last-actor-runs-default-key-value-store)<br/>
-        /// * [Request queue](/api/v2/last-actor-runs-default-request-queue)<br/>
-        /// * [Log](/api/v2/last-actor-runs-log)
+        /// * [Last Actor run's default dataset](/api/v2/last-actor-runs-default-dataset)<br/>
+        /// * [Last Actor run's default key-value store](/api/v2/last-actor-runs-default-key-value-store)<br/>
+        /// * [Last Actor run's default request queue](/api/v2/last-actor-runs-default-request-queue)<br/>
+        /// * [Last Actor run's log](/api/v2/last-actor-runs-log)
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

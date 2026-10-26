@@ -108,8 +108,8 @@ internal static partial class ActorsActorVersionsActorVersionsPostCommandApiComm
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-versions-post", @"Create Actor version
-Creates a version of an Actor using values specified in a [Version
-object](#/reference/actors/version-object) passed as JSON in the POST
+Creates a version of an Actor using values specified in a `Version`
+object passed as JSON in the POST
 payload.
 
 The request must specify `versionNumber` and `sourceType` parameters (as
@@ -117,8 +117,8 @@ strings) in the JSON payload and a `Content-Type: application/json` HTTP
 header.
 
 Each `sourceType` requires its own additional properties to be passed to the
-JSON payload object. These are outlined in the [Version
-object](#/reference/actors/version-object) table below and in more detail in
+JSON payload object. These are outlined in the `Version`
+object table below and in more detail in
 the [Apify
 documentation](https://docs.apify.com/platform/actors/development/deployment/source-types).
 
@@ -135,8 +135,8 @@ the `gitRepoUrl` property.
 }
 ```
 
-The response is the [Version object](#/reference/actors/version-object) as
-returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+The response is the `Version` object as
+returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(VersionNumber);

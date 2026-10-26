@@ -294,8 +294,7 @@ the Actor (usually `application/json`).
 The HTTP response contains the Actors dataset items, while the format of
 items depends on specifying dataset items' `format` parameter.
 
-You can send all the same options in parameters as the [Get Dataset
-Items](#/reference/datasets/item-collection/get-items) API endpoint.
+You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.
 
 The Actor is started with the default options; you can override them using
 URL query parameters.
@@ -309,8 +308,7 @@ configured to have a long enough connection timeout.
 If the connection breaks, you will not receive any information about the run
 and its status.
 
-To run the Actor asynchronously, use the [Run
-Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Timeout);

@@ -13,16 +13,15 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or Actor's input<br/>
         /// schema if not defined by the task).<br/>
-        /// The response is the Actor Run object as returned by the [Get<br/>
-        /// run](#/reference/actor-runs/run-object-and-its-storages/get-run) endpoint.<br/>
+        /// The response is the Actor Run object as returned by the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// If you want to wait for the run to finish and receive the actual output of<br/>
-        /// the Actor run as the response, use one of the [Run task<br/>
-        /// synchronously](#/reference/actor-tasks/run-task-synchronously) API endpoints<br/>
-        /// instead.<br/>
+        /// the Actor run as the response, use the [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)<br/>
+        /// or [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post)<br/>
+        /// endpoint instead.<br/>
         /// To fetch the Actor run results that are typically stored in the default<br/>
         /// dataset, you'll need to pass the ID received in the `defaultDatasetId` field<br/>
         /// received in the response JSON to the<br/>
-        /// [Get dataset items](#/reference/datasets/item-collection/get-items) API endpoint.
+        /// [Get dataset items](/api/v2/dataset-items-get) API endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -78,16 +77,15 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or Actor's input<br/>
         /// schema if not defined by the task).<br/>
-        /// The response is the Actor Run object as returned by the [Get<br/>
-        /// run](#/reference/actor-runs/run-object-and-its-storages/get-run) endpoint.<br/>
+        /// The response is the Actor Run object as returned by the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// If you want to wait for the run to finish and receive the actual output of<br/>
-        /// the Actor run as the response, use one of the [Run task<br/>
-        /// synchronously](#/reference/actor-tasks/run-task-synchronously) API endpoints<br/>
-        /// instead.<br/>
+        /// the Actor run as the response, use the [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)<br/>
+        /// or [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post)<br/>
+        /// endpoint instead.<br/>
         /// To fetch the Actor run results that are typically stored in the default<br/>
         /// dataset, you'll need to pass the ID received in the `defaultDatasetId` field<br/>
         /// received in the response JSON to the<br/>
-        /// [Get dataset items](#/reference/datasets/item-collection/get-items) API endpoint.
+        /// [Get dataset items](/api/v2/dataset-items-get) API endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task
@@ -143,16 +141,15 @@ namespace Apify
         /// Note that if the object in the POST payload does not define a particular<br/>
         /// input property, the Actor run uses the default value defined by the task (or Actor's input<br/>
         /// schema if not defined by the task).<br/>
-        /// The response is the Actor Run object as returned by the [Get<br/>
-        /// run](#/reference/actor-runs/run-object-and-its-storages/get-run) endpoint.<br/>
+        /// The response is the Actor Run object as returned by the [Get Actor run](/api/v2/actor-run-get) endpoint.<br/>
         /// If you want to wait for the run to finish and receive the actual output of<br/>
-        /// the Actor run as the response, use one of the [Run task<br/>
-        /// synchronously](#/reference/actor-tasks/run-task-synchronously) API endpoints<br/>
-        /// instead.<br/>
+        /// the Actor run as the response, use the [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)<br/>
+        /// or [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post)<br/>
+        /// endpoint instead.<br/>
         /// To fetch the Actor run results that are typically stored in the default<br/>
         /// dataset, you'll need to pass the ID received in the `defaultDatasetId` field<br/>
         /// received in the response JSON to the<br/>
-        /// [Get dataset items](#/reference/datasets/item-collection/get-items) API endpoint.
+        /// [Get dataset items](/api/v2/dataset-items-get) API endpoint.
         /// </summary>
         /// <param name="actorTaskId">
         /// Example: janedoe~my-task

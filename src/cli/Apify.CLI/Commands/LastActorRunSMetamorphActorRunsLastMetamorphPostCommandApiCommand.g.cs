@@ -71,7 +71,7 @@ Actor (typically `latest`).
 Transforms the last run of the specified Actor into a run of another Actor with
 a new input.
 
-This endpoint is a shortcut for [Metamorph run](#/reference/actor-runs/metamorph-run/metamorph-run)
+This endpoint is a shortcut for [Metamorph Actor run](/api/v2/actor-run-metamorph-post)
 on the Actor's last run.
 ");
                         command.Arguments.Add(ActorId);

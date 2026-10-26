@@ -67,8 +67,8 @@ internal static partial class ActorsActorVersionsActorVersionEnvVarPutCommandApi
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"actor-version-env-var-put", @"Update environment variable in Actor version
-Updates Actor environment variable using values specified by a [EnvVar
-object](#/reference/actors/environment-variable-object)
+Updates Actor environment variable using values specified by an `EnvVar`
+object
 passed as JSON in the POST payload.
 If the object does not define a specific property, its value will not be
 updated.
@@ -77,11 +77,11 @@ The request needs to specify the `Content-Type: application/json` HTTP
 header!
 
 When providing your API authentication token, we recommend using the
-request's `Authorization` header, rather than the URL. ([More
-info](#/introduction/authentication)).
+request's `Authorization` header, rather than the URL.
+For details, see [Authentication](/api/v2/getting-started#authentication).
 
-The response is the [EnvVar object](#/reference/actors/environment-variable-object) as returned by the
-[Get environment variable](#/reference/actors/environment-variable-object/get-environment-variable)
+The response is the `EnvVar` object as returned by the
+[Get environment variable of Actor version](/api/v2/actor-version-env-var-get)
 endpoint.
 ");
                         command.Arguments.Add(ActorId);

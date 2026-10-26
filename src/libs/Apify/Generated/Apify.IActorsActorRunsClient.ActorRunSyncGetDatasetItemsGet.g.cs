@@ -10,16 +10,14 @@ namespace Apify
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
         /// The Actor is not passed any input.<br/>
-        /// It allows to send all possible options in parameters from [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// It allows to send all possible options in parameters from [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for a<br/>
         /// long period of time,<br/>
         /// due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Actor asynchronously, use the [Run<br/>
-        /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+        /// To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -155,16 +153,14 @@ namespace Apify
         /// The run must finish in 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds<br/>
         /// otherwise the API endpoint returns a timeout error.<br/>
         /// The Actor is not passed any input.<br/>
-        /// It allows to send all possible options in parameters from [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// It allows to send all possible options in parameters from [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// Beware that it might be impossible to maintain an idle HTTP connection for a<br/>
         /// long period of time,<br/>
         /// due to client timeout or network conditions. Make sure your HTTP client is<br/>
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Actor asynchronously, use the [Run<br/>
-        /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+        /// To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

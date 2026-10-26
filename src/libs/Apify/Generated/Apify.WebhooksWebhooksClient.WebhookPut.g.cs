@@ -50,12 +50,12 @@ namespace Apify
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The response is the full webhook object as returned by the<br/>
-        /// [Get webhook](#/reference/webhooks/webhook-object/get-webhook) endpoint.<br/>
+        /// [Get webhook](/api/v2/webhook-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
@@ -88,12 +88,12 @@ namespace Apify
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The response is the full webhook object as returned by the<br/>
-        /// [Get webhook](#/reference/webhooks/webhook-object/get-webhook) endpoint.<br/>
+        /// [Get webhook](/api/v2/webhook-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
@@ -769,12 +769,12 @@ namespace Apify
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The response is the full webhook object as returned by the<br/>
-        /// [Get webhook](#/reference/webhooks/webhook-object/get-webhook) endpoint.<br/>
+        /// [Get webhook](/api/v2/webhook-get) endpoint.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt

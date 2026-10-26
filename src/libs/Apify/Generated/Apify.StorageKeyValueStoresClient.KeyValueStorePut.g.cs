@@ -47,8 +47,7 @@ namespace Apify
         /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
-        /// The response is the updated key-value store object, as returned by the [Get<br/>
-        /// store](#/reference/key-value-stores/store-object/get-store) API endpoint.
+        /// The response is the updated key-value store object, as returned by the [Get key-value store](/api/v2/key-value-store-get) API endpoint.
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -78,8 +77,7 @@ namespace Apify
         /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
-        /// The response is the updated key-value store object, as returned by the [Get<br/>
-        /// store](#/reference/key-value-stores/store-object/get-store) API endpoint.
+        /// The response is the updated key-value store object, as returned by the [Get key-value store](/api/v2/key-value-store-get) API endpoint.
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -752,8 +750,7 @@ namespace Apify
         /// Update key-value store<br/>
         /// Updates a key-value store's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
-        /// The response is the updated key-value store object, as returned by the [Get<br/>
-        /// store](#/reference/key-value-stores/store-object/get-store) API endpoint.
+        /// The response is the updated key-value store object, as returned by the [Get key-value store](/api/v2/key-value-store-get) API endpoint.
         /// </summary>
         /// <param name="storeId">
         /// Example: WkzbQMuFYuamGv3YF

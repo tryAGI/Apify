@@ -11,8 +11,7 @@ namespace Apify
         /// the Actor (usually `application/json`).<br/>
         /// The HTTP response contains the Actors dataset items, while the format of<br/>
         /// items depends on specifying dataset items' `format` parameter.<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>
@@ -23,8 +22,7 @@ namespace Apify
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Actor asynchronously, use the [Run<br/>
-        /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+        /// To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -164,8 +162,7 @@ namespace Apify
         /// the Actor (usually `application/json`).<br/>
         /// The HTTP response contains the Actors dataset items, while the format of<br/>
         /// items depends on specifying dataset items' `format` parameter.<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>
@@ -176,8 +173,7 @@ namespace Apify
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Actor asynchronously, use the [Run<br/>
-        /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+        /// To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -317,8 +313,7 @@ namespace Apify
         /// the Actor (usually `application/json`).<br/>
         /// The HTTP response contains the Actors dataset items, while the format of<br/>
         /// items depends on specifying dataset items' `format` parameter.<br/>
-        /// You can send all the same options in parameters as the [Get Dataset<br/>
-        /// Items](#/reference/datasets/item-collection/get-items) API endpoint.<br/>
+        /// You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.<br/>
         /// The Actor is started with the default options; you can override them using<br/>
         /// URL query parameters.<br/>
         /// If the Actor run exceeds 300&lt;!-- MAX_ACTOR_JOB_SYNC_WAIT_SECS --&gt; seconds,<br/>
@@ -329,8 +324,7 @@ namespace Apify
         /// configured to have a long enough connection timeout.<br/>
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
-        /// To run the Actor asynchronously, use the [Run<br/>
-        /// Actor](#/reference/actors/run-collection/run-actor) API endpoint instead.
+        /// To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) API endpoint instead.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

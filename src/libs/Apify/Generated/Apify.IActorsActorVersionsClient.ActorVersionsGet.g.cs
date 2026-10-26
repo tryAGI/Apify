@@ -7,7 +7,7 @@ namespace Apify
         /// <summary>
         /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
-        /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
+        /// with the list of `Version` objects, where each<br/>
         /// contains basic information about a single version.
         /// </summary>
         /// <param name="actorId">
@@ -23,7 +23,7 @@ namespace Apify
         /// <summary>
         /// Get list of Actor versions<br/>
         /// Gets the list of versions of a specific Actor. The response is a JSON object<br/>
-        /// with the list of [Version objects](#/reference/actors/version-object), where each<br/>
+        /// with the list of `Version` objects, where each<br/>
         /// contains basic information about a single version.
         /// </summary>
         /// <param name="actorId">

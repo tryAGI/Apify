@@ -22,7 +22,7 @@ namespace Apify
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
         /// To run the Task asynchronously, use the<br/>
-        /// [Run task asynchronously](#/reference/actor-tasks/run-collection/run-task)<br/>
+        /// [Run Actor task](/api/v2/actor-task-runs-post)<br/>
         /// endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">
@@ -81,7 +81,7 @@ namespace Apify
         /// If the connection breaks, you will not receive any information about the run<br/>
         /// and its status.<br/>
         /// To run the Task asynchronously, use the<br/>
-        /// [Run task asynchronously](#/reference/actor-tasks/run-collection/run-task)<br/>
+        /// [Run Actor task](/api/v2/actor-task-runs-post)<br/>
         /// endpoint instead.
         /// </summary>
         /// <param name="actorTaskId">

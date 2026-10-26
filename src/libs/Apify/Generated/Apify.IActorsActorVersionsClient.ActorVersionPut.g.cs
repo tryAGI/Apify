@@ -6,16 +6,16 @@ namespace Apify
     {
         /// <summary>
         /// Update Actor version<br/>
-        /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
+        /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [Version object](#/reference/actors/version-object) as<br/>
-        /// returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `Version` object as<br/>
+        /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -36,16 +36,16 @@ namespace Apify
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update Actor version<br/>
-        /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
+        /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [Version object](#/reference/actors/version-object) as<br/>
-        /// returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `Version` object as<br/>
+        /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -66,16 +66,16 @@ namespace Apify
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update Actor version<br/>
-        /// Updates Actor version using values specified by a [Version object](#/reference/actors/version-object) passed as JSON in the POST payload.<br/>
+        /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
-        /// request's `Authorization` header, rather than the URL. ([More<br/>
-        /// info](#/introduction/authentication)).<br/>
-        /// The response is the [Version object](#/reference/actors/version-object) as<br/>
-        /// returned by the [Get version](#/reference/actors/version-object/get-version) endpoint.
+        /// request's `Authorization` header, rather than the URL.<br/>
+        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// The response is the `Version` object as<br/>
+        /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

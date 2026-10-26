@@ -58,7 +58,7 @@ internal static partial class DefaultDatasetActorRunDatasetPutCommandApiCommand
 Updates the default dataset associated with an Actor run.
 
 This endpoint is a shortcut for getting the run's `defaultDatasetId` and then using the
-[Put dataset](/api/v2/dataset-put) endpoint.
+[Update dataset](/api/v2/dataset-put) endpoint.
 ");
                         command.Arguments.Add(RunId);                        command.Options.Add(UpdateDatasetRequestOptionSetOptions.NameOption);
                         command.Options.Add(UpdateDatasetRequestOptionSetOptions.GeneralAccess);

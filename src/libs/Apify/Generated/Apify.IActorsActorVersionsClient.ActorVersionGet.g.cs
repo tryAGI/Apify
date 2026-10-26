@@ -6,7 +6,7 @@ namespace Apify
     {
         /// <summary>
         /// Get Actor version<br/>
-        /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
+        /// Gets a `Version` object that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -24,7 +24,7 @@ namespace Apify
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get Actor version<br/>
-        /// Gets a [Version object](#/reference/actors/version-object) that contains all the details about a specific version of an Actor.
+        /// Gets a `Version` object that contains all the details about a specific version of an Actor.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor

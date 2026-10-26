@@ -123,7 +123,7 @@ If the connection breaks, you will not receive any information about the run
 and its status.
 
 To run the Task asynchronously, use the
-[Run task asynchronously](#/reference/actor-tasks/run-collection/run-task)
+[Run Actor task](/api/v2/actor-task-runs-post)
 endpoint instead.
 ");
                         command.Arguments.Add(ActorTaskId);

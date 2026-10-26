@@ -48,7 +48,7 @@ namespace Apify
         /// Updates a request queue's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated request queue object, as returned by the<br/>
-        /// [Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.
+        /// [Get request queue](/api/v2/request-queue-get) API endpoint.
         /// </summary>
         /// <param name="queueId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -79,7 +79,7 @@ namespace Apify
         /// Updates a request queue's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated request queue object, as returned by the<br/>
-        /// [Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.
+        /// [Get request queue](/api/v2/request-queue-get) API endpoint.
         /// </summary>
         /// <param name="queueId">
         /// Example: WkzbQMuFYuamGv3YF
@@ -751,7 +751,7 @@ namespace Apify
         /// Updates a request queue's name and general resource access level using a value specified by a JSON object<br/>
         /// passed in the PUT payload.<br/>
         /// The response is the updated request queue object, as returned by the<br/>
-        /// [Get request queue](#/reference/request-queues/queue-collection/get-request-queue) API endpoint.
+        /// [Get request queue](/api/v2/request-queue-get) API endpoint.
         /// </summary>
         /// <param name="queueId">
         /// Example: WkzbQMuFYuamGv3YF

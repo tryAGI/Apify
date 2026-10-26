@@ -39,7 +39,7 @@ internal static partial class ActorsActorVersionsActorVersionsGetCommandApiComma
     {
         var command = new Command(commandName ?? @"actor-versions-get", @"Get list of Actor versions
 Gets the list of versions of a specific Actor. The response is a JSON object
-with the list of [Version objects](#/reference/actors/version-object), where each
+with the list of `Version` objects, where each
 contains basic information about a single version.
 ");
                         command.Arguments.Add(ActorId);

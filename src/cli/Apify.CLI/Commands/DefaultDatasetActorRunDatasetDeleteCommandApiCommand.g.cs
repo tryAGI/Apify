@@ -21,7 +21,7 @@ internal static partial class DefaultDatasetActorRunDatasetDeleteCommandApiComma
 Deletes default dataset associated with an Actor run.
 
 This endpoint is a shortcut for getting the last run's `defaultDatasetId` and then using the
-[ Delete dataset ](/api/v2/dataset-delete) endpoint.
+[Delete dataset](/api/v2/dataset-delete) endpoint.
 ");
                         command.Arguments.Add(RunId);
 

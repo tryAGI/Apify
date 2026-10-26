@@ -64,8 +64,7 @@ namespace Apify
         /// Gets the list of public Actors in Apify Store. You can use `search`<br/>
         /// parameter to search Actors by string in title, name, description, username<br/>
         /// and readme.<br/>
-        /// If you need detailed info about a specific Actor, use the [Get<br/>
-        /// Actor](#/reference/actors/actor-object/get-actor) endpoint.<br/>
+        /// If you need detailed info about a specific Actor, use the [Get Actor](/api/v2/actor-get) endpoint.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters.<br/>
         /// It will not return more than 1,000 records.
         /// </summary>
@@ -140,8 +139,7 @@ namespace Apify
         /// Gets the list of public Actors in Apify Store. You can use `search`<br/>
         /// parameter to search Actors by string in title, name, description, username<br/>
         /// and readme.<br/>
-        /// If you need detailed info about a specific Actor, use the [Get<br/>
-        /// Actor](#/reference/actors/actor-object/get-actor) endpoint.<br/>
+        /// If you need detailed info about a specific Actor, use the [Get Actor](/api/v2/actor-get) endpoint.<br/>
         /// The endpoint supports pagination using the `limit` and `offset` parameters.<br/>
         /// It will not return more than 1,000 records.
         /// </summary>

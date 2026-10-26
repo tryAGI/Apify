@@ -41,7 +41,7 @@ internal static partial class StorageDatasetsDatasetGetCommandApiCommand
 Returns dataset object for given dataset ID.
 
 This does not return dataset items, only information about the storage itself.
-To retrieve dataset items, use the [List dataset items](/api/v2/dataset-items-get) endpoint.
+To retrieve dataset items, use the [Get dataset items](/api/v2/dataset-items-get) endpoint.
 
 :::note
 

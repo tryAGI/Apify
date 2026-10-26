@@ -33,8 +33,7 @@ be a string between 1 and 32 characters long. This identifier is used to
 determine whether the queue was accessed by multiple clients. If
 `clientKey` is not provided,
 the system considers this API call to come from a new client. For
-details, see the `hadMultipleClients` field returned by the [Get
-head](#/reference/request-queues/queue-head) operation.
+details, see the `hadMultipleClients` field returned by the [Get request queue head](/api/v2/request-queue-head-get) endpoint.
 ",
     };
 

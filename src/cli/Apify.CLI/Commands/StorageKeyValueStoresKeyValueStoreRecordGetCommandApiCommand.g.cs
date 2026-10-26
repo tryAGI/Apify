@@ -59,7 +59,7 @@ causing web browsers to offer downloading HTML records instead of displaying the
 Gets a value stored in the key-value store under a specific key.
 
 The response body has the same `Content-Encoding` header as it was set in
-[Put record](#tag/Key-value-storesRecord/operation/keyValueStore_record_put).
+[Set key-value store record](/api/v2/key-value-store-record-put).
 
 If the request does not define the `Accept-Encoding` HTTP header with the
 right encoding, the record will be decompressed.

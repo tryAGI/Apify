@@ -300,8 +300,7 @@ Note that if the object in the POST payload does not define a particular
 input property, the Actor run uses the default value defined by the task (or the Actor's
 input schema if not defined by the task).
 
-You can send all the same options in parameters as the [Get Dataset
-Items](#/reference/datasets/item-collection/get-items) API endpoint.
+You can send all the same options in parameters as the [Get dataset items](/api/v2/dataset-items-get) API endpoint.
 
 Beware that it might be impossible to maintain an idle HTTP connection for
 an extended period, due to client timeout or network conditions. Make sure your HTTP client is
@@ -316,8 +315,7 @@ passed as the POST payload.
 Just make sure to specify the `Content-Type` header as `application/json`
 and that the input is an object.
 
-To run the task asynchronously, use the [Run
-task](#/reference/actor-tasks/run-collection/run-task) API endpoint instead.
+To run the task asynchronously, use the [Run Actor task](/api/v2/actor-task-runs-post) API endpoint instead.
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Timeout);

@@ -107,14 +107,14 @@ If the object does not define a specific property, its value will not be
 updated.
 
 The response is the full webhook object as returned by the
-[Get webhook](#/reference/webhooks/webhook-object/get-webhook) endpoint.
+[Get webhook](/api/v2/webhook-get) endpoint.
 
 The request needs to specify the `Content-Type: application/json` HTTP
 header!
 
 When providing your API authentication token, we recommend using the
-request's `Authorization` header, rather than the URL. ([More
-info](#/introduction/authentication)).
+request's `Authorization` header, rather than the URL.
+For details, see [Authentication](/api/v2/getting-started#authentication).
 ");
                         command.Arguments.Add(WebhookId);
                         command.Options.Add(IsAdHoc);

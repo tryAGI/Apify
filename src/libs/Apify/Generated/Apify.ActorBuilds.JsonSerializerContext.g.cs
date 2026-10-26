@@ -39,6 +39,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildUsage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorDefinitionMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorDefinition))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorDefinitionStorages))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, long?>), TypeInfoPropertyName = "OneOfStringInt642")]

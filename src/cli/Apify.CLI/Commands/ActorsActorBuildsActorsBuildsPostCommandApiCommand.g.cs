@@ -78,7 +78,7 @@ terminal status (e.g. `SUCCEEDED`), otherwise it will have a transitional status
         var command = new Command(commandName ?? @"actors-builds-post", @"Build Actor
 Builds an Actor.
 The response is the build object as returned by the
-[Get build](#/reference/actors/build-object/get-build) endpoint.
+[Get Actor build](/api/v2/actor-build-get) endpoint.
 ");
                         command.Arguments.Add(ActorId);
                         command.Options.Add(Version);

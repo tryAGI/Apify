@@ -71,17 +71,17 @@ The base path represents the last actor task run object is:
 Using the `status` query parameter you can ensure to only get a run with a certain status
 (e.g. `status=SUCCEEDED`). Similarly, the `origin` query parameter filters runs by the means
 by which they were started (e.g. `origin=API`). The output of this endpoint and other query
-parameters are the same as in the [Run object](/api/v2/actor-run-get) endpoint.
+parameters are the same as in the [Get Actor run](/api/v2/actor-run-get) endpoint.
 
 ##### Convenience endpoints for last Actor task run
 
-* [Dataset](/api/v2/last-actor-task-runs-default-dataset)
+* [Last Actor task run's default dataset](/api/v2/last-actor-task-runs-default-dataset)
 
-* [Key-value store](/api/v2/last-actor-task-runs-default-key-value-store)
+* [Last Actor task run's default key-value store](/api/v2/last-actor-task-runs-default-key-value-store)
 
-* [Request queue](/api/v2/last-actor-task-runs-default-request-queue)
+* [Last Actor task run's default request queue](/api/v2/last-actor-task-runs-default-request-queue)
 
-* [Log](/api/v2/last-actor-task-runs-log)
+* [Last Actor task run's log](/api/v2/last-actor-task-runs-log)
 ");
                         command.Arguments.Add(ActorTaskId);
                         command.Options.Add(Status);

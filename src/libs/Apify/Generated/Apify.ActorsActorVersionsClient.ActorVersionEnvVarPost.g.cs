@@ -49,10 +49,10 @@ namespace Apify
 
         /// <summary>
         /// Update environment variable in Actor version (POST)<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
-        /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
+        /// This endpoint is an alias for the [Update environment variable in Actor version](/api/v2/actor-version-env-var-put) endpoint and behaves identically.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -90,10 +90,10 @@ namespace Apify
         }
         /// <summary>
         /// Update environment variable in Actor version (POST)<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
-        /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
+        /// This endpoint is an alias for the [Update environment variable in Actor version](/api/v2/actor-version-env-var-put) endpoint and behaves identically.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
@@ -776,10 +776,10 @@ namespace Apify
         }
         /// <summary>
         /// Update environment variable in Actor version (POST)<br/>
-        /// Updates Actor environment variable using values specified by a [EnvVar<br/>
-        /// object](#/reference/actors/environment-variable-object)<br/>
+        /// Updates Actor environment variable using values specified by an `EnvVar`<br/>
+        /// object<br/>
         /// passed as JSON in the POST payload.<br/>
-        /// This endpoint is an alias for the [`PUT` update environment variable](#tag/ActorsEnvironment-variable-object/operation/act_version_envVar_put) method and behaves identically.
+        /// This endpoint is an alias for the [Update environment variable in Actor version](/api/v2/actor-version-env-var-put) endpoint and behaves identically.
         /// </summary>
         /// <param name="actorId">
         /// Example: compass~google-maps-extractor
