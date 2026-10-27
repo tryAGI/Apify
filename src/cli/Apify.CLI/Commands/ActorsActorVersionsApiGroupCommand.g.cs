@@ -11,6 +11,7 @@ internal static partial class ActorsActorVersionsApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"actors-actor-versions", @"Actors/Actor versions endpoint commands.");
+                         command.Subcommands.Add(ActorsActorVersionsActorVersionBuildOnPushPutCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorVersionsActorVersionDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorVersionsActorVersionEnvVarDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorVersionsActorVersionEnvVarGetCommandApiCommand.Create());

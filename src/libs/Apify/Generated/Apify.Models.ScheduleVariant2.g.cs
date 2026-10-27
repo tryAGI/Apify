@@ -27,6 +27,18 @@ namespace Apify
         public global::Apify.ScheduleNotifications? Notifications { get; set; }
 
         /// <summary>
+        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("uiState")]
+        public global::Apify.ScheduleUiState? UiState { get; set; }
+
+        /// <summary>
+        /// Present only when the schedule was created by a third-party integration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("integrationTracking")]
+        public global::Apify.IntegrationTracking? IntegrationTracking { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actions")]
@@ -48,6 +60,12 @@ namespace Apify
         /// <param name="notifications">
         /// Notification settings for this schedule.
         /// </param>
+        /// <param name="uiState">
+        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.
+        /// </param>
+        /// <param name="integrationTracking">
+        /// Present only when the schedule was created by a third-party integration.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -55,11 +73,15 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.ScheduleAction> actions,
             string? description,
             string? title,
-            global::Apify.ScheduleNotifications? notifications)
+            global::Apify.ScheduleNotifications? notifications,
+            global::Apify.ScheduleUiState? uiState,
+            global::Apify.IntegrationTracking? integrationTracking)
         {
             this.Description = description;
             this.Title = title;
             this.Notifications = notifications;
+            this.UiState = uiState;
+            this.IntegrationTracking = integrationTracking;
             this.Actions = actions ?? throw new global::System.ArgumentNullException(nameof(actions));
         }
 

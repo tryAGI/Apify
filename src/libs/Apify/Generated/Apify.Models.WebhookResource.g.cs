@@ -45,6 +45,24 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isEnabled")]
+        public bool? IsEnabled { get; set; }
+
+        /// <summary>
+        /// Type of action the webhook performs: `HTTP_REQUEST`, `SLACK_MESSAGE`, `GOOGLE_MAIL`, `GOOGLE_DRIVE` or `GITHUB_ISSUE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actionType")]
+        public string? ActionType { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isApifyIntegration")]
+        public bool? IsApifyIntegration { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("shouldInterpolateStrings")]
         public bool? ShouldInterpolateStrings { get; set; }
 
@@ -96,8 +114,38 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         public string? Description { get; set; }
+
+        /// <summary>
+        /// Slack message configuration. Present only when `actionType` is `SLACK_MESSAGE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("slackMessage")]
+        public global::Apify.WebhookSlackMessage? SlackMessage { get; set; }
+
+        /// <summary>
+        /// Gmail email configuration. Present only when `actionType` is `GOOGLE_MAIL`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleMail")]
+        public global::Apify.WebhookGoogleMail? GoogleMail { get; set; }
+
+        /// <summary>
+        /// Google Drive upload configuration. Present only when `actionType` is `GOOGLE_DRIVE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("googleDrive")]
+        public global::Apify.WebhookGoogleDrive? GoogleDrive { get; set; }
+
+        /// <summary>
+        /// GitHub issue configuration. Present only when `actionType` is `GITHUB_ISSUE`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("githubIssue")]
+        public global::Apify.WebhookGithubIssue? GithubIssue { get; set; }
 
         /// <summary>
         ///
@@ -128,6 +176,11 @@ namespace Apify
         /// <param name="condition"></param>
         /// <param name="ignoreSslErrors"></param>
         /// <param name="isAdHoc"></param>
+        /// <param name="isEnabled"></param>
+        /// <param name="actionType">
+        /// Type of action the webhook performs: `HTTP_REQUEST`, `SLACK_MESSAGE`, `GOOGLE_MAIL`, `GOOGLE_DRIVE` or `GITHUB_ISSUE`.
+        /// </param>
+        /// <param name="isApifyIntegration"></param>
         /// <param name="shouldInterpolateStrings"></param>
         /// <param name="doNotRetry"></param>
         /// <param name="requestUrl">
@@ -135,7 +188,20 @@ namespace Apify
         /// </param>
         /// <param name="payloadTemplate"></param>
         /// <param name="headersTemplate"></param>
+        /// <param name="title"></param>
         /// <param name="description"></param>
+        /// <param name="slackMessage">
+        /// Slack message configuration. Present only when `actionType` is `SLACK_MESSAGE`.
+        /// </param>
+        /// <param name="googleMail">
+        /// Gmail email configuration. Present only when `actionType` is `GOOGLE_MAIL`.
+        /// </param>
+        /// <param name="googleDrive">
+        /// Google Drive upload configuration. Present only when `actionType` is `GOOGLE_DRIVE`.
+        /// </param>
+        /// <param name="githubIssue">
+        /// GitHub issue configuration. Present only when `actionType` is `GITHUB_ISSUE`.
+        /// </param>
         /// <param name="lastDispatch"></param>
         /// <param name="stats"></param>
 #if NET7_0_OR_GREATER
@@ -150,12 +216,20 @@ namespace Apify
             global::Apify.WebhookCondition condition,
             bool ignoreSslErrors,
             bool? isAdHoc,
+            bool? isEnabled,
+            string? actionType,
+            bool? isApifyIntegration,
             bool? shouldInterpolateStrings,
             bool? doNotRetry,
             string? requestUrl,
             string? payloadTemplate,
             string? headersTemplate,
+            string? title,
             string? description,
+            global::Apify.WebhookSlackMessage? slackMessage,
+            global::Apify.WebhookGoogleMail? googleMail,
+            global::Apify.WebhookGoogleDrive? googleDrive,
+            global::Apify.WebhookGithubIssue? githubIssue,
             global::Apify.WebhookLastDispatch? lastDispatch,
             global::Apify.WebhookStats? stats)
         {
@@ -164,6 +238,9 @@ namespace Apify
             this.ModifiedAt = modifiedAt;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.IsAdHoc = isAdHoc;
+            this.IsEnabled = isEnabled;
+            this.ActionType = actionType;
+            this.IsApifyIntegration = isApifyIntegration;
             this.ShouldInterpolateStrings = shouldInterpolateStrings;
             this.EventTypes = eventTypes ?? throw new global::System.ArgumentNullException(nameof(eventTypes));
             this.Condition = condition ?? throw new global::System.ArgumentNullException(nameof(condition));
@@ -172,7 +249,12 @@ namespace Apify
             this.RequestUrl = requestUrl;
             this.PayloadTemplate = payloadTemplate;
             this.HeadersTemplate = headersTemplate;
+            this.Title = title;
             this.Description = description;
+            this.SlackMessage = slackMessage;
+            this.GoogleMail = googleMail;
+            this.GoogleDrive = googleDrive;
+            this.GithubIssue = githubIssue;
             this.LastDispatch = lastDispatch;
             this.Stats = stats;
         }

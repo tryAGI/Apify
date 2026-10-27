@@ -106,6 +106,37 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("changelog")]
+        [global::System.Obsolete("This property marked as deprecated.")]
+        public string? Changelog { get; set; }
+
+        /// <summary>
+        /// Exit code of the build process. Set when the build finishes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exitCode")]
+        public int? ExitCode { get; set; }
+
+        /// <summary>
+        /// ID of the Git commit the build was created from. Present only for builds from a Git repository.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gitCommitId")]
+        public string? GitCommitId { get; set; }
+
+        /// <summary>
+        /// Name of the Git branch the build was created from. Present only for builds from a Git repository.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gitBranchName")]
+        public string? GitBranchName { get; set; }
+
+        /// <summary>
+        /// ID of the organization member who started the build. Present only for builds started in an organization account.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createdByOrganizationMemberUserId")]
+        public string? CreatedByOrganizationMemberUserId { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("buildNumber")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string BuildNumber { get; set; }
@@ -156,6 +187,18 @@ namespace Apify
         /// <param name="usageUsd">
         /// Platform usage costs breakdown in USD for this build. Requires authentication token to access.
         /// </param>
+        /// <param name="exitCode">
+        /// Exit code of the build process. Set when the build finishes.
+        /// </param>
+        /// <param name="gitCommitId">
+        /// ID of the Git commit the build was created from. Present only for builds from a Git repository.
+        /// </param>
+        /// <param name="gitBranchName">
+        /// Name of the Git branch the build was created from. Present only for builds from a Git repository.
+        /// </param>
+        /// <param name="createdByOrganizationMemberUserId">
+        /// ID of the organization member who started the build. Present only for builds started in an organization account.
+        /// </param>
         /// <param name="imageDigest">
         /// Digest of the built Docker image manifest, without the `sha256:` prefix. Compare digests of two builds to find out whether their image contents differ. `null` if the digest is not available.
         /// </param>
@@ -180,6 +223,10 @@ namespace Apify
             global::Apify.BuildUsage? usage,
             double? usageTotalUsd,
             global::Apify.BuildUsage? usageUsd,
+            int? exitCode,
+            string? gitCommitId,
+            string? gitBranchName,
+            string? createdByOrganizationMemberUserId,
             string? imageDigest,
             global::Apify.BuildActVersion? actVersion,
             global::Apify.ActorDefinition? actorDefinition)
@@ -196,6 +243,10 @@ namespace Apify
             this.Usage = usage;
             this.UsageTotalUsd = usageTotalUsd;
             this.UsageUsd = usageUsd;
+            this.ExitCode = exitCode;
+            this.GitCommitId = gitCommitId;
+            this.GitBranchName = gitBranchName;
+            this.CreatedByOrganizationMemberUserId = createdByOrganizationMemberUserId;
             this.BuildNumber = buildNumber ?? throw new global::System.ArgumentNullException(nameof(buildNumber));
             this.ImageDigest = imageDigest;
             this.ActVersion = actVersion;

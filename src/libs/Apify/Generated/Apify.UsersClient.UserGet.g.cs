@@ -45,7 +45,10 @@ namespace Apify
         /// Get public user data<br/>
         /// Returns public information about a specific user account, similar to what<br/>
         /// can be seen on public profile pages (e.g. https://apify.com/apify).<br/>
-        /// This operation requires no authentication token.
+        /// This operation requires no authentication token.<br/>
+        /// When the request is authenticated with an API token of the requested user account, or with a token<br/>
+        /// that impersonates it, the response also contains the private information, the same as in<br/>
+        /// [Get private user data](/api/v2/users-me-get). Tokens with limited permissions never receive it.
         /// </summary>
         /// <param name="userId">
         /// Example: HGzIk8z78YcAPEB
@@ -53,7 +56,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.UserPublicInfoResponse> UserGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>> UserGetAsync(
             string userId,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -70,7 +73,10 @@ namespace Apify
         /// Get public user data<br/>
         /// Returns public information about a specific user account, similar to what<br/>
         /// can be seen on public profile pages (e.g. https://apify.com/apify).<br/>
-        /// This operation requires no authentication token.
+        /// This operation requires no authentication token.<br/>
+        /// When the request is authenticated with an API token of the requested user account, or with a token<br/>
+        /// that impersonates it, the response also contains the private information, the same as in<br/>
+        /// [Get private user data](/api/v2/users-me-get). Tokens with limited permissions never receive it.
         /// </summary>
         /// <param name="userId">
         /// Example: HGzIk8z78YcAPEB
@@ -78,7 +84,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.UserPublicInfoResponse>> UserGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>>> UserGetAsResponseAsync(
             string userId,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -541,9 +547,9 @@ namespace Apify
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Apify.UserPublicInfoResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.UserPublicInfoResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -573,9 +579,9 @@ namespace Apify
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Apify.UserPublicInfoResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.UserPublicInfoResponse>(
+                                    return new global::Apify.AutoSDKHttpResponse<global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Apify.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

@@ -140,7 +140,7 @@ In the HTTP request, set the `Content-Type` header to `application/json`.
 
 To provide the authentication token, we recommend using the request's
 `Authorization` header, rather than the URL. For details,
-see [Authentication](/api/v2/getting-started#authentication).
+see [Authentication](/api/v2#authentication).
 
 ### Make an Actor public
 
@@ -203,14 +203,19 @@ and removes `beta`, while preserving other existing tags:
                         command.Options.Add(DefaultRunOptionsOptions.TimeoutSecs);
                         command.Options.Add(DefaultRunOptionsOptions.MemoryMbytes);
                         command.Options.Add(DefaultRunOptionsOptions.RestartOnError);
-                        command.Options.Add(DefaultRunOptionsOptions.MaxItems);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
+                        command.Options.Add(DefaultRunOptionsOptions.MaxItems);
+                        command.Options.Add(DefaultRunOptionsOptions.MaxTotalChargeUsd);
+                        command.Options.Add(DefaultRunOptionsOptions.IsMaxTotalChargeUsdSetByUser);                        command.Options.Add(ActorStandbyOptions.IsEnabled);
                         command.Options.Add(ActorStandbyOptions.DesiredRequestsPerActorRun);
                         command.Options.Add(ActorStandbyOptions.MaxRequestsPerActorRun);
                         command.Options.Add(ActorStandbyOptions.IdleTimeoutSecs);
                         command.Options.Add(ActorStandbyOptions.Build);
                         command.Options.Add(ActorStandbyOptions.MemoryMbytes);
                         command.Options.Add(ActorStandbyOptions.DisableStandbyFieldsOverride);
-                        command.Options.Add(ActorStandbyOptions.ShouldPassActorInput);                        command.Options.Add(ExampleRunInputOptions.Body);
+                        command.Options.Add(ActorStandbyOptions.ShouldPassActorInput);
+                        command.Options.Add(ActorStandbyOptions.Tenancy);
+                        command.Options.Add(ActorStandbyOptions.IsConsoleAuthEnabled);
+                        command.Options.Add(ActorStandbyOptions.IsTokenlessEnabled);                        command.Options.Add(ExampleRunInputOptions.Body);
                         command.Options.Add(ExampleRunInputOptions.ContentType);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
@@ -256,7 +261,9 @@ and removes `beta`, while preserving other existing tags:
                         var defaultRunOptionsMemoryMbytes = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MemoryMbytes) ? parseResult.GetValue(DefaultRunOptionsOptions.MemoryMbytes) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsmemoryMbytesBaseValue ? __DefaultRunOptionsmemoryMbytesBaseValue.MemoryMbytes : default);
                         var defaultRunOptionsRestartOnError = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.RestartOnError) ? parseResult.GetValue(DefaultRunOptionsOptions.RestartOnError) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsrestartOnErrorBaseValue ? __DefaultRunOptionsrestartOnErrorBaseValue.RestartOnError : default);
                         var defaultRunOptionsMaxItems = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxItems) ? parseResult.GetValue(DefaultRunOptionsOptions.MaxItems) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsmaxItemsBaseValue ? __DefaultRunOptionsmaxItemsBaseValue.MaxItems : default);
-                        var __DefaultRunOptionsSpecified = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.Build) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.TimeoutSecs) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.RestartOnError) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxItems);
+                        var defaultRunOptionsMaxTotalChargeUsd = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxTotalChargeUsd) ? parseResult.GetValue(DefaultRunOptionsOptions.MaxTotalChargeUsd) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsmaxTotalChargeUsdBaseValue ? __DefaultRunOptionsmaxTotalChargeUsdBaseValue.MaxTotalChargeUsd : default);
+                        var defaultRunOptionsIsMaxTotalChargeUsdSetByUser = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.IsMaxTotalChargeUsdSetByUser) ? parseResult.GetValue(DefaultRunOptionsOptions.IsMaxTotalChargeUsdSetByUser) : (__DefaultRunOptionsBase is { } __DefaultRunOptionsisMaxTotalChargeUsdSetByUserBaseValue ? __DefaultRunOptionsisMaxTotalChargeUsdSetByUserBaseValue.IsMaxTotalChargeUsdSetByUser : default);
+                        var __DefaultRunOptionsSpecified = CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.Build) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.TimeoutSecs) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.RestartOnError) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxItems) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.MaxTotalChargeUsd) || CliRuntime.WasSpecified(parseResult, DefaultRunOptionsOptions.IsMaxTotalChargeUsdSetByUser);
                         var defaultRunOptions =
                             __DefaultRunOptionsSpecified || __DefaultRunOptionsBase is not null
                                 ? new global::Apify.DefaultRunOptions
@@ -266,6 +273,8 @@ and removes `beta`, while preserving other existing tags:
                                 MemoryMbytes = defaultRunOptionsMemoryMbytes,
                                 RestartOnError = defaultRunOptionsRestartOnError,
                                 MaxItems = defaultRunOptionsMaxItems,
+                                MaxTotalChargeUsd = defaultRunOptionsMaxTotalChargeUsd,
+                                IsMaxTotalChargeUsdSetByUser = defaultRunOptionsIsMaxTotalChargeUsdSetByUser,
 
                                 }
                                 : __DefaultRunOptionsBase;
@@ -278,7 +287,10 @@ and removes `beta`, while preserving other existing tags:
                         var actorStandbyMemoryMbytes = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) ? parseResult.GetValue(ActorStandbyOptions.MemoryMbytes) : (__ActorStandbyBase is { } __ActorStandbymemoryMbytesBaseValue ? __ActorStandbymemoryMbytesBaseValue.MemoryMbytes : default);
                         var actorStandbyDisableStandbyFieldsOverride = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) ? parseResult.GetValue(ActorStandbyOptions.DisableStandbyFieldsOverride) : (__ActorStandbyBase is { } __ActorStandbydisableStandbyFieldsOverrideBaseValue ? __ActorStandbydisableStandbyFieldsOverrideBaseValue.DisableStandbyFieldsOverride : default);
                         var actorStandbyShouldPassActorInput = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput) ? parseResult.GetValue(ActorStandbyOptions.ShouldPassActorInput) : (__ActorStandbyBase is { } __ActorStandbyshouldPassActorInputBaseValue ? __ActorStandbyshouldPassActorInputBaseValue.ShouldPassActorInput : default);
-                        var __ActorStandbySpecified = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput);
+                        var actorStandbyTenancy = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Tenancy) ? parseResult.GetValue(ActorStandbyOptions.Tenancy) : (__ActorStandbyBase is { } __ActorStandbytenancyBaseValue ? __ActorStandbytenancyBaseValue.Tenancy : default);
+                        var actorStandbyIsConsoleAuthEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsConsoleAuthEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsConsoleAuthEnabled) : (__ActorStandbyBase is { } __ActorStandbyisConsoleAuthEnabledBaseValue ? __ActorStandbyisConsoleAuthEnabledBaseValue.IsConsoleAuthEnabled : default);
+                        var actorStandbyIsTokenlessEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsTokenlessEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsTokenlessEnabled) : (__ActorStandbyBase is { } __ActorStandbyisTokenlessEnabledBaseValue ? __ActorStandbyisTokenlessEnabledBaseValue.IsTokenlessEnabled : default);
+                        var __ActorStandbySpecified = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Tenancy) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsConsoleAuthEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsTokenlessEnabled);
                         var actorStandby =
                             __ActorStandbySpecified || __ActorStandbyBase is not null
                                 ? new global::Apify.ActorStandby
@@ -291,6 +303,9 @@ and removes `beta`, while preserving other existing tags:
                                 MemoryMbytes = actorStandbyMemoryMbytes,
                                 DisableStandbyFieldsOverride = actorStandbyDisableStandbyFieldsOverride,
                                 ShouldPassActorInput = actorStandbyShouldPassActorInput,
+                                Tenancy = actorStandbyTenancy,
+                                IsConsoleAuthEnabled = actorStandbyIsConsoleAuthEnabled,
+                                IsTokenlessEnabled = actorStandbyIsTokenlessEnabled,
 
                                 }
                                 : __ActorStandbyBase;

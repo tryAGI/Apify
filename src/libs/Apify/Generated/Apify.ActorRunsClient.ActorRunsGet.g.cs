@@ -32,7 +32,8 @@ namespace Apify
             ref bool? desc,
             global::System.Collections.Generic.IList<string>? status,
             ref global::System.DateTime? startedAfter,
-            ref global::System.DateTime? startedBefore);
+            ref global::System.DateTime? startedBefore,
+            global::System.Collections.Generic.IList<string>? deployment);
         partial void PrepareActorRunsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -41,7 +42,8 @@ namespace Apify
             bool? desc,
             global::System.Collections.Generic.IList<string>? status,
             global::System.DateTime? startedAfter,
-            global::System.DateTime? startedBefore);
+            global::System.DateTime? startedBefore,
+            global::System.Collections.Generic.IList<string>? deployment);
         partial void ProcessActorRunsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -81,6 +83,9 @@ namespace Apify
         /// <param name="startedBefore">
         /// Example: 2025-09-17T23:59:59.000Z
         /// </param>
+        /// <param name="deployment">
+        /// Example: [SINGLE_TENANT]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -91,6 +96,7 @@ namespace Apify
             global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
+            global::System.Collections.Generic.IList<string>? deployment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -101,6 +107,7 @@ namespace Apify
                 status: status,
                 startedAfter: startedAfter,
                 startedBefore: startedBefore,
+                deployment: deployment,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -137,6 +144,9 @@ namespace Apify
         /// <param name="startedBefore">
         /// Example: 2025-09-17T23:59:59.000Z
         /// </param>
+        /// <param name="deployment">
+        /// Example: [SINGLE_TENANT]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -147,6 +157,7 @@ namespace Apify
             global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
+            global::System.Collections.Generic.IList<string>? deployment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -159,7 +170,8 @@ namespace Apify
                 desc: ref desc,
                 status: status,
                 startedAfter: ref startedAfter,
-                startedBefore: ref startedBefore);
+                startedBefore: ref startedBefore,
+                deployment: deployment);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -194,6 +206,7 @@ namespace Apify
                                 .AddOptionalParameter("status", status, delimiter: ",", explode: false)
                                 .AddOptionalParameter("startedAfter", startedAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("startedBefore", startedBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                                .AddOptionalParameter("deployment", deployment, delimiter: ",", explode: false)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -240,7 +253,8 @@ namespace Apify
                     desc: desc,
                     status: status,
                     startedAfter: startedAfter,
-                    startedBefore: startedBefore);
+                    startedBefore: startedBefore,
+                    deployment: deployment);
 
                 return __httpRequest;
             }

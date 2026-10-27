@@ -24,6 +24,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
         public string? UserId { get; set; }
 
@@ -122,6 +128,7 @@ namespace Apify
         /// <param name="modifiedAt"></param>
         /// <param name="accessedAt"></param>
         /// <param name="name"></param>
+        /// <param name="title"></param>
         /// <param name="userId"></param>
         /// <param name="username"></param>
         /// <param name="actId"></param>
@@ -150,6 +157,7 @@ namespace Apify
             global::System.DateTime modifiedAt,
             global::System.DateTime accessedAt,
             string? name,
+            string? title,
             string? userId,
             string? username,
             string? actId,
@@ -164,6 +172,7 @@ namespace Apify
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name;
+            this.Title = title;
             this.UserId = userId;
             this.Username = username;
             this.CreatedAt = createdAt;

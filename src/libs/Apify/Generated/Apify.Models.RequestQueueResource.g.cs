@@ -22,6 +22,12 @@ namespace Apify
         public string? Name { get; set; }
 
         /// <summary>
+        /// The title of the request queue.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
         /// The ID of the user who owns the request queue.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
@@ -150,6 +156,9 @@ namespace Apify
         /// <param name="name">
         /// The name of the request queue.
         /// </param>
+        /// <param name="title">
+        /// The title of the request queue.
+        /// </param>
         /// <param name="actId">
         /// The ID of the Actor that created this request queue.
         /// </param>
@@ -175,6 +184,7 @@ namespace Apify
             bool hadMultipleClients,
             string consoleUrl,
             string? name,
+            string? title,
             string? actId,
             string? actRunId,
             global::Apify.RequestQueueStats? stats,
@@ -182,6 +192,7 @@ namespace Apify
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name;
+            this.Title = title;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.ActId = actId;
             this.ActRunId = actRunId;

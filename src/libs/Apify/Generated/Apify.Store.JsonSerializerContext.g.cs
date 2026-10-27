@@ -29,7 +29,13 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice), TypeInfoPropertyName = "ActorNotice2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CurrentPricingInfo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.CurrentPricingInfoTieredPricing2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CurrentPricingInfoTieredPricing2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActor))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActorInputSchema))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.StoreActorInputSchemaProperties2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActorInputSchemaProperties2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, global::System.Collections.Generic.IList<string>>), TypeInfoPropertyName = "OneOfStringIListString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActors), TypeInfoPropertyName = "ListOfStoreActors2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActorsVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.StoreActor>))]
@@ -42,10 +48,12 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice?), TypeInfoPropertyName = "NullableActorNotice2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, global::System.Collections.Generic.IList<string>>?), TypeInfoPropertyName = "NullableOneOfStringIListString2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfStoreActors?), TypeInfoPropertyName = "NullableListOfStoreActors2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetPricingModel?), TypeInfoPropertyName = "NullableStoreGetPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreGetResponseFormat?), TypeInfoPropertyName = "NullableStoreGetResponseFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.OneOf<string, global::System.Collections.Generic.List<string>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.StoreActor>))]
     internal sealed partial class StoreSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -96,6 +104,7 @@ namespace Apify
         {
             options.Converters.Add(new global::Apify.JsonConverters.ListOfStoreActorsJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());

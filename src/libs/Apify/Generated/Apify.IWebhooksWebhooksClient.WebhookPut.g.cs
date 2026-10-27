@@ -16,7 +16,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).
+        /// For details, see [Authentication](/api/v2#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
@@ -43,7 +43,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).
+        /// For details, see [Authentication](/api/v2#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt
@@ -70,7 +70,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).
+        /// For details, see [Authentication](/api/v2#authentication).
         /// </summary>
         /// <param name="webhookId">
         /// Example: pVJtoTelgYUq4qJOt

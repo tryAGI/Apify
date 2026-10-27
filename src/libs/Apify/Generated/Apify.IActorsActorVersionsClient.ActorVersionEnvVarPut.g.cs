@@ -15,7 +15,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `EnvVar` object as returned by the<br/>
         /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
@@ -52,7 +52,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `EnvVar` object as returned by the<br/>
         /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.
@@ -89,7 +89,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `EnvVar` object as returned by the<br/>
         /// [Get environment variable of Actor version](/api/v2/actor-version-env-var-get)<br/>
         /// endpoint.

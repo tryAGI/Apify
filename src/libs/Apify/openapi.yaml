@@ -6,9 +6,9 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\nTo access the API, we recommend using one of our API clients:\n\nStable API clients:\n- For [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- For [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nExperimental API clients:\n- For [Java](https://www.java.com/), we recommend the `apify-client` [Maven central component](https://central.sonatype.com/artifact/com.apify/apify-client).\n- For [Rust](https://rust-lang.org/), we recommend the `apify-client` [crate](https://crates.io/crates/apify-client).\n- For [.NET](https://dotnet.microsoft.com/), we recommend the `apify-client` [Nuget package](https://www.nuget.org/packages/Apify.Client).\n- For [PHP](https://www.php.net/), we recommend the `apify-client` [Packagist package](https://packagist.org/packages/apify/apify-client).\n- For [Go](https://go.dev/), we recommend the `apify-client` [package](https://github.com/apify/apify-client-go/releases).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\n**You can find your API token on the\n[Integrations](https://console.apify.com/settings/integrations) page in the\nApify Console.**\n\nTo use your token in a request, either:\n\n- _(Recommended)_ Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\nFor details, see the [`Authorization` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) on MDN.\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Never share your API token or password with untrusted parties!**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n### Agentic payments\n\nAI agents can authenticate and pay for Actor runs without an Apify account\nusing agentic payments. Instead of an API token, the request carries a\npayment credential that both authorizes and pays for the call. Apify supports\nthe [x402 protocol](https://docs.apify.com/platform/integrations/x402)\n(`PAYMENT-SIGNATURE` header) and\n[Skyfire](https://docs.apify.com/platform/integrations/skyfire)\n(`skyfire-pay-id` header).\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run Actor](/api/v2/actors-runs-post) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/actors/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run Actor](/api/v2/actors-runs-post) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run Actor](/api/v2/actors-runs-post) or\n[Run Actor task](/api/v2/actor-task-runs-post) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get Actor run](/api/v2/actor-run-get) API\nendpoint.\n3. Fetch the results from the [Get dataset items](/api/v2/dataset-items-get) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get key-value store record](/api/v2/key-value-store-record-get) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your Actor or task synchronously with the\n[Run Actor synchronously and get key-value store record](/api/v2/actor-run-sync-post) or\n[Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)\nendpoint. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Legacy `/v2/acts/` URL prefix\n<span id=\"/introduction/legacy-acts-prefix\"></span>\n\nThe `/v2/acts/` prefix is deprecated but still fully functional, and \nsuch endpoint routes to the same handler as its `/v2/actors/...` counterpart. \nNew integrations should use the canonical /v2/actors/ prefix, \nbut existing clients keep working without changes.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](/api/v2/dataset-items-get) or\n[Get key-value store record](/api/v2/key-value-store-record-get)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of Actors](/api/v2/actors-get))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: `2xx` range for success, `4xx`\nrange for errors caused by the caller\n(invalid requests) and `5xx` range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td><code>400</code></td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td><code>401</code></td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td><code>404</code></td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td><code>429</code></td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td><code>405</code></td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _35 requests per second per resource_:\n\n* [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post)\n* [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete)\n* [Get and lock request queue head](/api/v2/request-queue-head-lock-post)\n\nThese endpoints have a rate limit of _100 requests per second per resource_:\n\n* [Download key-value store records](/api/v2/key-value-store-records-get) (ZIP archive)\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* [Get key-value store record](/api/v2/key-value-store-record-get)\n* [Set key-value store record](/api/v2/key-value-store-record-put) and its [`POST` variant](/api/v2/key-value-store-record-post)\n* [Delete key-value store record](/api/v2/key-value-store-record-delete)\n* [Get list of key-value store keys](/api/v2/key-value-store-keys-get)\n\nThese endpoints have a rate limit of _350 requests per second per resource_:\n\n* [Add request to request queue](/api/v2/request-queue-requests-post)\n* [Get request from request queue](/api/v2/request-queue-request-get)\n* [Update request in request queue](/api/v2/request-queue-request-put)\n* [Delete request from request queue](/api/v2/request-queue-request-delete)\n* [Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put)\n* [Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete)\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n\n* [Run Actor](/api/v2/actors-runs-post)\n* [Run Actor task](/api/v2/actor-task-runs-post)\n* [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get)\n* [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get-dataset-items-get)\n* [Metamorph Actor run](/api/v2/actor-run-metamorph-post)\n* [Store items in dataset](/api/v2/dataset-items-post)\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to `429` then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
+    "description": "\nThe Apify API (version 2) provides programmatic access to the [Apify\nplatform](https://docs.apify.com). The API is organized\naround [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer)\nHTTP endpoints.\n\nYou can download the complete OpenAPI schema of Apify API in the [YAML](http://docs.apify.com/api/openapi.yaml) or [JSON](http://docs.apify.com/api/openapi.json) formats. The source code is also available on [GitHub](https://github.com/apify/apify-docs/tree/master/apify-api/openapi).\n\nAll requests and responses (including errors) are encoded in\n[JSON](http://www.json.org/) format with UTF-8 encoding,\nwith a few exceptions that are explicitly described in the reference.\n\nTo access the API, we recommend using one of our API clients:\n\nStable API clients:\n- For [Node.js](https://nodejs.org/en/), we recommend the [`apify-client`](https://docs.apify.com/api/client/js) [NPM\npackage](https://www.npmjs.com/package/apify-client).\n- For [Python](https://www.python.org/), we recommend the [`apify-client`](https://docs.apify.com/api/client/python) [PyPI\npackage](https://pypi.org/project/apify-client/).\n\nExperimental API clients:\n- For [Java](https://www.java.com/), we recommend the `apify-client` [Maven central component](https://central.sonatype.com/artifact/com.apify/apify-client).\n- For [Rust](https://rust-lang.org/), we recommend the `apify-client` [crate](https://crates.io/crates/apify-client).\n- For [.NET](https://dotnet.microsoft.com/), we recommend the `apify-client` [Nuget package](https://www.nuget.org/packages/Apify.Client).\n- For [PHP](https://www.php.net/), we recommend the `apify-client` [Packagist package](https://packagist.org/packages/apify/apify-client).\n- For [Go](https://go.dev/), we recommend the `apify-client` [package](https://github.com/apify/apify-client-go/releases).\n\nThe clients' functions correspond to the API endpoints and have the same\nparameters. This simplifies development of apps that depend on the Apify\nplatform.\n\n:::note Important Request Details\n\n- `Content-Type` header: For requests with a JSON body, you must include the `Content-Type: application/json` header.\n\n- Method override: You can override the HTTP method using the `method` query parameter. This is useful for clients that can only send `GET` requests. For example, to call a `POST` endpoint, append `?method=POST` to the URL of your `GET` request.\n\n:::\n\n## Authentication\n<span id=\"/introduction/authentication\"></span>\n\n**You can find your API token on the\n[Integrations](https://console.apify.com/settings/integrations) page in the\nApify Console.**\n\nTo use your token in a request, either:\n\n- _(Recommended)_ Add the token to your request's `Authorization` header as `Bearer <token>`.\nE.g., `Authorization: Bearer xxxxxxx`.\nFor details, see the [`Authorization` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization) on MDN.\n- Add it as the `token` parameter to your request URL. (Less secure).\n\nUsing your token in the request header is more secure than using it as a URL\nparameter because URLs are often stored\nin browser history and server logs. This creates a chance for someone\nunauthorized to access your API token.\n\n**Never share your API token or password with untrusted parties!**\n\nFor more information, see our\n[integrations](https://docs.apify.com/platform/integrations) documentation.\n\n### Agentic payments\n\nAI agents can authenticate and pay for Actor runs without an Apify account\nusing agentic payments. Instead of an API token, the request carries a\npayment credential that both authorizes and pays for the call. Apify supports\nthe [x402 protocol](https://docs.apify.com/platform/integrations/x402)\n(`PAYMENT-SIGNATURE` header) and\n[Skyfire](https://docs.apify.com/platform/integrations/skyfire)\n(`skyfire-pay-id` header).\n\nAgents can also pay once with x402 or the\n[Machine Payments Protocol (MPP)](https://docs.apify.com/integrations/mpp)\nand receive a temporary API token with a fixed spend cap from the Apify\nAgent General Interface (AGI) at\n[https://agi.apify.com](https://agi.apify.com). Use that token as a regular\n`Bearer` token.\n\n## Basic usage\n<span id=\"/introduction/basic-usage\"></span>\n\nTo run an Actor, send a POST request to the [Run Actor](/api/v2/actors-runs-post) endpoint using either the\nActor ID code (e.g. `vKg4IjxZbEYTYeW8T`) or its name (e.g.\n`janedoe~my-actor`):\n\n`https://api.apify.com/v2/actors/[actor_id]/runs`\n\nIf the Actor is not runnable anonymously, you will receive a 401 or 403\n[response code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).\nThis means you need to add your [secret API\ntoken](https://console.apify.com/account#/integrations) to the request's\n`Authorization` header ([recommended](#/introduction/authentication)) or as a\nURL query parameter `?token=[your_token]` (less secure).\n\nOptionally, you can include the query parameters described in the [Run Actor](/api/v2/actors-runs-post) section to customize your\nrun.\n\nIf you're using Node.js, the best way to run an Actor is using the\n`Apify.call()` method from the [Apify\nSDK](https://sdk.apify.com/docs/api/apify#apifycallactid-input-options). It\nruns the Actor using the account you are currently logged into (determined\nby the [secret API token](https://console.apify.com/account#/integrations)).\nThe result is an [Actor run\nobject](https://sdk.apify.com/docs/typedefs/actor-run) and its output (if\nany).\n\nA typical workflow is as follows:\n\n1. Run an Actor or task using the [Run Actor](/api/v2/actors-runs-post) or\n[Run Actor task](/api/v2/actor-task-runs-post) API endpoints.\n2. Monitor the Actor run by periodically polling its progress using the [Get Actor run](/api/v2/actor-run-get) API\nendpoint.\n3. Fetch the results from the [Get dataset items](/api/v2/dataset-items-get) API endpoint using the\n`defaultDatasetId`, which you receive in the Run request response.\nAdditional data may be stored in a key-value store. You can fetch them from\nthe [Get key-value store record](/api/v2/key-value-store-record-get) API endpoint\nusing the `defaultKeyValueStoreId` and the store's `key`.\n\n**Note**: Instead of periodic polling, you can also run your Actor or task synchronously with the\n[Run Actor synchronously and get key-value store record](/api/v2/actor-run-sync-post) or\n[Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post)\nendpoint. This will ensure that the request waits for 300 seconds (5\nminutes) for the run to finish and returns its output. If the run takes\nlonger, the request will time out and throw an error.\n\n## Legacy `/v2/acts/` URL prefix\n<span id=\"/introduction/legacy-acts-prefix\"></span>\n\nThe `/v2/acts/` prefix is deprecated but still fully functional, and \nsuch endpoint routes to the same handler as its `/v2/actors/...` counterpart. \nNew integrations should use the canonical /v2/actors/ prefix, \nbut existing clients keep working without changes.\n\n## Response structure\n<span id=\"/introduction/response-structure\"></span>\n\nMost API endpoints return a JSON object with the `data` property:\n\n```\n{\n    \"data\": {\n        ...\n    }\n}\n```\n\nHowever, there are a few explicitly described exceptions, such as\n[Get dataset items](/api/v2/dataset-items-get) or\n[Get key-value store record](/api/v2/key-value-store-record-get)\nAPI endpoints, which return data in other formats.\nIn case of an error, the response has the HTTP status code in the range of\n4xx or 5xx and the `data` property is replaced with `error`. For example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nSee [Errors](#/introduction/errors) for more details.\n\n## Pagination\n<span id=\"/introduction/pagination\"></span>\n\nAll API endpoints that return a list of records\n(e.g. [Get list of Actors](/api/v2/actors-get))\nenforce pagination in order to limit the size of their responses.\n\nMost of these API endpoints are paginated using the `offset` and `limit`\nquery parameters.\nThe only exception is\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get),\nwhich is paginated using the `exclusiveStartKey` query parameter.\n\n**IMPORTANT**: Each API endpoint that supports pagination enforces a certain\nmaximum value for the `limit` parameter,\nin order to reduce the load on Apify servers.\nThe maximum limit could change in future so you should never\nrely on a specific value and check the responses of these API endpoints.\n\n### Using offset\n<span id=\"/introduction/pagination/using-offset\"></span>\n\nMost API endpoints that return a list of records enable pagination using the\nfollowing query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number of items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>Skips a number of items from the beginning of the list, e.g. <code>offset=100</code>.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td>\n    By default, items are sorted in the order in which they were created or added to the list.\n    This feature is useful when fetching all the items, because it ensures that items\n    created after the client started the pagination will not be skipped.\n    If you specify the <code>desc=1</code> parameter, the items will be returned in the reverse order,\n    i.e. from the newest to the oldest items.\n    </td>\n  </tr>\n</table>\n\nThe response of these API endpoints is always a JSON object with the\nfollowing structure:\n\n```\n{\n    \"data\": {\n        \"total\": 2560,\n        \"offset\": 250,\n        \"limit\": 1000,\n        \"count\": 1000,\n        \"desc\": false,\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>total</code></td>\n    <td>The total number of items available in the list.</td>\n  </tr>\n  <tr>\n    <td><code>offset</code></td>\n    <td>The number of items that were skipped at the start.\n    This is equal to the <code>offset</code> query parameter if it was provided, otherwise it is <code>0</code>.</td>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular API endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>count</code></td>\n    <td>The actual number of items returned in the HTTP response.</td>\n  </tr>\n  <tr>\n    <td><code>desc</code></td>\n    <td><code>true</code> if data were requested in descending order and <code>false</code> otherwise.</td>\n  </tr>\n  <tr>\n    <td><code>items</code></td>\n    <td>An array of requested items.</td>\n  </tr>\n</table>\n\n### Using key\n<span id=\"/introduction/pagination/using-key\"></span>\n\nThe records in the [key-value\nstore](https://docs.apify.com/platform/storage/key-value-store)\nare not ordered based on numerical indexes,\nbut rather by their keys in the UTF-8 binary order.\nTherefore the\n[Get list of key-value store keys](/api/v2/key-value-store-keys-get)\nAPI endpoint only supports pagination using the following query parameters:\n\n<table>\n  <tr>\n    <td><code>limit</code></td>\n    <td>Limits the response to contain a specific maximum number items, e.g. <code>limit=20</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>Skips all records with keys up to the given key including the given key,\n    in the UTF-8 binary order.</td>\n  </tr>\n</table>\n\nThe response of the API endpoint is always a JSON object with following\nstructure:\n\n```\n{\n    \"data\": {\n        \"limit\": 1000,\n        \"isTruncated\": true,\n        \"exclusiveStartKey\": \"my-key\",\n        \"nextExclusiveStartKey\": \"some-other-key\",\n        \"items\": [\n            { 1st object },\n            { 2nd object },\n            ...\n            { 1000th object }\n        ]\n    }\n}\n```\n\nThe following table describes the meaning of the response properties:\n\n<table>\n  <tr>\n    <th>Property</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td><code>limit</code></td>\n    <td>The maximum number of items that can be returned in the HTTP response.\n    It equals to the <code>limit</code> query parameter if it was provided or\n    the maximum limit enforced for the particular endpoint, whichever is smaller.</td>\n  </tr>\n  <tr>\n    <td><code>isTruncated</code></td>\n    <td><code>true</code> if there are more items left to be queried. Otherwise <code>false</code>.</td>\n  </tr>\n  <tr>\n    <td><code>exclusiveStartKey</code></td>\n    <td>The last key that was skipped at the start. Is `null` for the first page.</td>\n  </tr>\n  <tr>\n    <td><code>nextExclusiveStartKey</code></td>\n    <td>The value for the <code>exclusiveStartKey</code> parameter to query the next page of items.</td>\n  </tr>\n</table>\n\n## Errors\n<span id=\"/introduction/errors\"></span>\n\nThe Apify API uses common HTTP status codes: 2xx range for success, 4xx\nrange for errors caused by the caller\n(invalid requests) and 5xx range for server errors (these are rare).\nEach error response contains a JSON object defining the `error` property,\nwhich is an object with\nthe `type` and `message` properties that contain the error code and a\nhuman-readable error description, respectively.\n\nFor example:\n\n```\n{\n    \"error\": {\n        \"type\": \"record-not-found\",\n        \"message\": \"Store was not found.\"\n    }\n}\n```\n\nHere is the table of the most common errors that can occur for many API\nendpoints:\n\n<table>\n  <tr>\n    <th>status</th>\n    <th>type</th>\n    <th>message</th>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td><code>invalid-request</code></td>\n    <td>POST data must be a JSON object</td>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td><code>invalid-value</code></td>\n    <td>Invalid value provided: Comments required</td>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td><code>invalid-record-key</code></td>\n    <td>Record key contains invalid character</td>\n  </tr>\n  <tr>\n    <td>401</td>\n    <td><code>token-not-provided</code></td>\n    <td>Authentication token was not provided</td>\n  </tr>\n  <tr>\n    <td>404</td>\n    <td><code>record-not-found</code></td>\n    <td>Store was not found</td>\n  </tr>\n  <tr>\n    <td>429</td>\n    <td><code>rate-limit-exceeded</code></td>\n    <td>You have exceeded the rate limit of ... requests per second</td>\n  </tr>\n  <tr>\n    <td>405</td>\n    <td><code>method-not-allowed</code></td>\n    <td>This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST</td>\n  </tr>\n</table>\n\n## Rate limiting\n<span id=\"/introduction/rate-limiting\"></span>\n\nAll API endpoints limit the rate of requests in order to prevent overloading of Apify servers by misbehaving clients.\n\nThere are two kinds of rate limits - a global rate limit and a per-resource rate limit.\n\n### Global rate limit\n<span id=\"/introduction/rate-limiting/global-rate-limit\"></span>\n\nThe global rate limit is set to _250 000 requests per minute_.\nFor [authenticated](#/introduction/authentication) requests, it is counted per user,\nand for unauthenticated requests, it is counted per IP address.\n\n### Per-resource rate limit\n<span id=\"/introduction/rate-limiting/per-resource-rate-limit\"></span>\n\nThe default per-resource rate limit is _60 requests per second per resource_, which in this context means a single Actor, a single Actor run, a single dataset, single key-value store etc.\nThe default rate limit is applied to every API endpoint except a few select ones, which have higher rate limits.\nEach API endpoint returns its rate limit in `X-RateLimit-Limit` header.\n\nThese endpoints have a rate limit of _35 requests per second per resource_:\n\n* [Batch add requests to request queue](/api/v2/request-queue-requests-batch-post)\n* [Batch delete requests from request queue](/api/v2/request-queue-requests-batch-delete)\n* [Get and lock request queue head](/api/v2/request-queue-head-lock-post)\n\nThese endpoints have a rate limit of _100 requests per second per resource_:\n\n* [Download key-value store records](/api/v2/key-value-store-records-get) (ZIP archive)\n\nThese endpoints have a rate limit of _200 requests per second per resource_:\n\n* [Get key-value store record](/api/v2/key-value-store-record-get)\n* [Set key-value store record](/api/v2/key-value-store-record-put) and its [`POST` variant](/api/v2/key-value-store-record-post)\n* [Delete key-value store record](/api/v2/key-value-store-record-delete)\n* [Get list of key-value store keys](/api/v2/key-value-store-keys-get)\n\nThese endpoints have a rate limit of _350 requests per second per resource_:\n\n* [Add request to request queue](/api/v2/request-queue-requests-post)\n* [Get request from request queue](/api/v2/request-queue-request-get)\n* [Update request in request queue](/api/v2/request-queue-request-put)\n* [Delete request from request queue](/api/v2/request-queue-request-delete)\n* [Prolong lock on request in request queue](/api/v2/request-queue-request-lock-put)\n* [Delete lock on request in request queue](/api/v2/request-queue-request-lock-delete)\n\nThese endpoints have a rate limit of _400 requests per second per resource_:\n\n* [Run Actor](/api/v2/actors-runs-post)\n* [Run Actor task](/api/v2/actor-task-runs-post)\n* [Run Actor task synchronously and get key-value store record](/api/v2/actor-task-run-sync-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get)\n* [Run Actor task synchronously and get dataset items](/api/v2/actor-task-run-sync-get-dataset-items-post) and its [`GET` variant](/api/v2/actor-task-run-sync-get-dataset-items-get)\n* [Metamorph Actor run](/api/v2/actor-run-metamorph-post)\n* [Store items in dataset](/api/v2/dataset-items-post)\n\n### Rate limit exceeded errors\n<span id=\"/introduction/rate-limiting/rate-limit-exceeded-errors\"></span>\n\nIf the client is sending too many requests, the API endpoints respond with the HTTP status code `429 Too Many Requests`\nand the following body:\n\n```\n{\n    \"error\": {\n        \"type\": \"rate-limit-exceeded\",\n        \"message\": \"You have exceeded the rate limit of ... requests per second\"\n    }\n}\n```\n\n### Retrying rate-limited requests with exponential backoff\n<span id=\"/introduction/rate-limiting/retrying-rate-limited-requests-with-exponential-backoff\"></span>\n\nIf the client receives the rate limit error, it should wait a certain period of time and then retry the request.\nIf the error happens again, the client should double the wait period and retry the request,\nand so on. This algorithm is known as _exponential backoff_\nand it can be described using the following pseudo-code:\n\n1. Define a variable `DELAY=500`\n2. Send the HTTP request to the API endpoint\n3. If the response has status code not equal to 429 then you are done. Otherwise:\n   * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds\n   * Double the future wait period by setting `DELAY = 2*DELAY`\n   * Continue with step 2\n\nIf all requests sent by the client implement the above steps,\nthe client will automatically use the maximum available bandwidth for its requests.\n\nNote that the Apify API clients [for JavaScript](https://docs.apify.com/api/client/js)\nand [for Python](https://docs.apify.com/api/client/python)\nuse the exponential backoff algorithm transparently, so that you do not need to worry about it.\n\n## Referring to resources\n<span id=\"/introduction/referring-to-resources\"></span>\n\nThere are three main ways to refer to a resource you're accessing via API.\n\n- the resource ID (e.g. `iKkPcIgVvwmztduf8`)\n- `username~resourcename` - when using this access method, you will need to\nuse your API token, and access will only work if you have the correct\npermissions.\n- `~resourcename` - for this, you need to use an API token, and the\n`resourcename` refers to a resource in the API token owner's account.\n",
     "contact": {},
-    "version": "v2-2026-10-26T131003Z"
+    "version": "v2-2026-10-27T134926Z"
   },
   "servers": [
     {
@@ -906,7 +906,7 @@
           "Actors"
         ],
         "summary": "Update Actor",
-        "description": "Updates an Actor's settings with the values specified in an `Actor` object\npassed as JSON in the POST payload. Only the fields specified in the request body are updated.\n\nReturns the full `Actor` object, the same as the\n[Get Actor](/api/v2/actor-get) endpoint.\n\nIn the HTTP request, set the `Content-Type` header to `application/json`.\n\n### Authentication\n\nTo provide the authentication token, we recommend using the request's\n`Authorization` header, rather than the URL. For details,\nsee [Authentication](/api/v2/getting-started#authentication).\n\n### Make an Actor public\n\nTo make your Actor [public](https://docs.apify.com/platform/actors/publishing):\n- Set `isPublic` to `true`.\n- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`\npackage](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)\n\n### Update build tags\n\nTo change tags assigned to Actor builds, use the `taggedBuilds` object. It's a dictionary that maps tag names\nto specific builds, where:\n- the key is the tag name, for example `latest` or `beta`\n- the value is either `null` or an object with a build ID\n\nChanging tags is a patch operation. Only the tags that you provide in this object are updated.\n\nNote that you can assign multiple tags to a single build, but you can't assign the same tag to multiple builds.\n\n- To create or reassign a tag, provide the tag name with a build ID. For example, to assign\nthe `latest` tag to a build, use:\n\n```json\n{\n  \"latest\": { \"buildId\": \"z2EryhbfhgSyqj6Hn\" }\n}\n```\n\n- To remove a tag from a build, provide the tag name with a `null` value. For example, to remove the `beta` tag, use:\n\n```json\n{\n  \"beta\": null\n}\n```\n\n- You can perform multiple actions at once. The following example reassigns `latest`\nand removes `beta`, while preserving other existing tags:\n\n```json\n{\n  \"latest\": { \"buildId\": \"z2EryhbfhgSyqj6Hn\" },\n  \"beta\": null\n}\n```\n",
+        "description": "Updates an Actor's settings with the values specified in an `Actor` object\npassed as JSON in the POST payload. Only the fields specified in the request body are updated.\n\nReturns the full `Actor` object, the same as the\n[Get Actor](/api/v2/actor-get) endpoint.\n\nIn the HTTP request, set the `Content-Type` header to `application/json`.\n\n### Authentication\n\nTo provide the authentication token, we recommend using the request's\n`Authorization` header, rather than the URL. For details,\nsee [Authentication](/api/v2#authentication).\n\n### Make an Actor public\n\nTo make your Actor [public](https://docs.apify.com/platform/actors/publishing):\n- Set `isPublic` to `true`.\n- Provide `title` and `categories`. For reference, see [constants from the `apify-shared-js`\npackage](https://github.com/apify/apify-shared-js/blob/2d43ebc41ece9ad31cd6525bd523fb86939bf860/packages/consts/src/consts.ts#L452-L471)\n\n### Update build tags\n\nTo change tags assigned to Actor builds, use the `taggedBuilds` object. It's a dictionary that maps tag names\nto specific builds, where:\n- the key is the tag name, for example `latest` or `beta`\n- the value is either `null` or an object with a build ID\n\nChanging tags is a patch operation. Only the tags that you provide in this object are updated.\n\nNote that you can assign multiple tags to a single build, but you can't assign the same tag to multiple builds.\n\n- To create or reassign a tag, provide the tag name with a build ID. For example, to assign\nthe `latest` tag to a build, use:\n\n```json\n{\n  \"latest\": { \"buildId\": \"z2EryhbfhgSyqj6Hn\" }\n}\n```\n\n- To remove a tag from a build, provide the tag name with a `null` value. For example, to remove the `beta` tag, use:\n\n```json\n{\n  \"beta\": null\n}\n```\n\n- You can perform multiple actions at once. The following example reassigns `latest`\nand removes `beta`, while preserving other existing tags:\n\n```json\n{\n  \"latest\": { \"buildId\": \"z2EryhbfhgSyqj6Hn\" },\n  \"beta\": null\n}\n```\n",
         "operationId": "actor_put",
         "parameters": [
           {
@@ -1505,7 +1505,7 @@
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorVersionClientAsync#update",
         "summary": "Update Actor version",
-        "description": "Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.\n\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
+        "description": "Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.\n\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
         "operationId": "actor_version_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actors/version-object/update-version",
@@ -1659,6 +1659,65 @@
           "https://docs.apify.com/api/v2#/reference/actors/delete-version",
           "https://docs.apify.com/api/v2#tag/ActorsVersion-object/operation/act_version_delete"
         ]
+      }
+    },
+    "/v2/actors/{actorId}/versions/{versionNumber}/build-on-push": {
+      "put": {
+        "tags": [
+          "Actors/Actor versions"
+        ],
+        "summary": "Update Actor version build on push",
+        "description": "Turns automatic builds on push on or off for an Actor version whose source is a git repository.\n\nEnabling registers a push webhook on the repository through the connected git account given by `providerId`, so\nthat every push to the repository builds the version. Disabling turns the webhook off on GitHub, or removes it\non GitLab and Bitbucket.\n\nYou need write access to the Actor. The version must have its source type set to a git repository, and the\nconnected account must have permission to manage the repository's webhooks.\n",
+        "operationId": "actor_version_buildOnPush_put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          },
+          {
+            "$ref": "#/components/parameters/versionNumber"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBuildOnPushRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "$ref": "#/components/responses/NoContent"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/actors/{actorId}/versions/{versionNumber}/env-vars": {
@@ -1977,7 +2036,7 @@
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorEnvVarClientAsync#update",
         "summary": "Update environment variable in Actor version",
-        "description": "Updates Actor environment variable using values specified by an `EnvVar`\nobject\npassed as JSON in the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n\nThe response is the `EnvVar` object as returned by the\n[Get environment variable of Actor version](/api/v2/actor-version-env-var-get)\nendpoint.\n",
+        "description": "Updates Actor environment variable using values specified by an `EnvVar`\nobject\npassed as JSON in the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n\nThe response is the `EnvVar` object as returned by the\n[Get environment variable of Actor version](/api/v2/actor-version-env-var-get)\nendpoint.\n",
         "operationId": "actor_version_envVar_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actors/environment-variable-object/update-environment-variable",
@@ -2233,7 +2292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListOfWebhooksResponse"
+                  "$ref": "#/components/schemas/ListOfWebhookResourcesResponse"
                 }
               }
             }
@@ -2263,6 +2322,53 @@
           "https://docs.apify.com/api/v2#/reference/actors/get-list-of-webhooks",
           "https://docs.apify.com/api/v2#tag/ActorsWebhook-collection/operation/act_webhooks_get"
         ]
+      }
+    },
+    "/v2/actors/{actorId}/oauth-connections": {
+      "get": {
+        "tags": [
+          "Actors"
+        ],
+        "summary": "Get list of Actor OAuth connections",
+        "description": "Gets the OAuth connections configured on the Actor. Each connection defines an OAuth provider that users of the\nActor can connect their accounts through. Only public credential fields are returned, never the client secret.\n\nAn Actor has at most 5 connections, so the list is not paginated.\n\nYou need read access to the Actor.\n",
+        "operationId": "actor_oauthConnections_get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/actorId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfActorOAuthConnectionsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/actors/{actorId}/builds": {
@@ -2793,6 +2899,9 @@
           },
           {
             "$ref": "#/components/parameters/startedBefore"
+          },
+          {
+            "$ref": "#/components/parameters/deployment"
           }
         ],
         "responses": {
@@ -2936,19 +3045,7 @@
             "$ref": "#/components/parameters/webhooks"
           },
           {
-            "name": "forcePermissionLevel",
-            "in": "query",
-            "description": "Overrides the Actor's permission level for this specific run. Use to test restricted permissions\nbefore deploying changes to your Actor or to temporarily elevate or restrict access. If you don't specify this\nparameter, the Actor uses its configured default permission level. For more information on permissions, see the\n[documentation](https://docs.apify.com/platform/actors/development/permissions).\n",
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "LIMITED_PERMISSIONS",
-                "FULL_PERMISSIONS"
-              ],
-              "example": "LIMITED_PERMISSIONS"
-            }
+            "$ref": "#/components/parameters/forcePermissionLevel"
           }
         ],
         "requestBody": {
@@ -3071,6 +3168,9 @@
           },
           {
             "$ref": "#/components/parameters/webhooks"
+          },
+          {
+            "$ref": "#/components/parameters/forcePermissionLevel"
           }
         ],
         "requestBody": {
@@ -3171,6 +3271,9 @@
           },
           {
             "$ref": "#/components/parameters/webhooks"
+          },
+          {
+            "$ref": "#/components/parameters/forcePermissionLevel"
           }
         ],
         "responses": {
@@ -3250,6 +3353,9 @@
           },
           {
             "$ref": "#/components/parameters/webhooks"
+          },
+          {
+            "$ref": "#/components/parameters/forcePermissionLevel"
           },
           {
             "$ref": "#/components/parameters/format"
@@ -3475,6 +3581,9 @@
           },
           {
             "$ref": "#/components/parameters/webhooks"
+          },
+          {
+            "$ref": "#/components/parameters/forcePermissionLevel"
           },
           {
             "$ref": "#/components/parameters/format"
@@ -7160,7 +7269,7 @@
           "Actor tasks"
         ],
         "summary": "Update Actor task input",
-        "description": "Updates the input of a task using values specified by an object passed as\nJSON in the PUT payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task input as returned by the\n[Get Actor task input](/api/v2/actor-task-input-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n",
+        "description": "Updates the input of a task using values specified by an object passed as\nJSON in the PUT payload.\n\nIf the object does not define a specific property, its value is not updated.\n\nThe response is the full task input as returned by the\n[Get Actor task input](/api/v2/actor-task-input-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n",
         "operationId": "actorTask_input_put",
         "parameters": [
           {
@@ -7743,6 +7852,9 @@
           },
           {
             "$ref": "#/components/parameters/maxTotalChargeUsd"
+          },
+          {
+            "$ref": "#/components/parameters/restartOnError"
           },
           {
             "$ref": "#/components/parameters/build"
@@ -10887,6 +10999,9 @@
           },
           {
             "$ref": "#/components/parameters/startedBefore"
+          },
+          {
+            "$ref": "#/components/parameters/deployment"
           }
         ],
         "responses": {
@@ -14035,6 +14150,116 @@
         "x-py-parent": "BuildClient",
         "x-py-name": "get_open_api_definition",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/BuildClient#get_open_api_definition"
+      }
+    },
+    "/v2/actor-oauth-accounts/{connectionId}/accounts": {
+      "get": {
+        "tags": [
+          "Actors"
+        ],
+        "summary": "Get list of Actor OAuth accounts",
+        "description": "Gets the accounts you connected through the Actor OAuth connection, including their OAuth tokens. Only accounts\nthat finished authorization are returned.\n\nThere are at most 5 accounts per user and connection, so the list is not paginated.\n",
+        "operationId": "actorOAuthAccounts_get",
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "path",
+            "description": "Actor OAuth connection ID.",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "kD9fm2Xp4cJq7Lw8N"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfActorOAuthAccountsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/actor-oauth-accounts/{accountId}": {
+      "get": {
+        "tags": [
+          "Actors"
+        ],
+        "summary": "Get Actor OAuth account",
+        "description": "Gets an account connected through an Actor OAuth connection, including its OAuth tokens.\n\nThis endpoint only accepts the API token of an Actor run (the `APIFY_TOKEN` environment variable of the run).\nThe run must belong to the Actor that the account's OAuth connection is configured on, and the account must\nbelong to the user the run's token acts for. Any other token gets a `403` error.\n",
+        "operationId": "actorOAuthAccount_get",
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "Actor OAuth account ID.",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "Rk3mP8xQ2vN5tY7wZ"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActorOAuthAccountResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/key-value-stores": {
@@ -17385,7 +17610,7 @@
           "Webhooks/Webhooks"
         ],
         "summary": "Update webhook",
-        "description": "Updates a webhook using values specified by a webhook object passed as JSON\nin the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe response is the full webhook object as returned by the\n[Get webhook](/api/v2/webhook-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n",
+        "description": "Updates a webhook using values specified by a webhook object passed as JSON\nin the POST payload.\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe response is the full webhook object as returned by the\n[Get webhook](/api/v2/webhook-get) endpoint.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n",
         "operationId": "webhook_put",
         "parameters": [
           {
@@ -17990,7 +18215,7 @@
           "Schedules"
         ],
         "summary": "Create schedule",
-        "description": "Creates a new schedule with settings provided by the schedule object passed\nas JSON in the payload. The response is the created schedule object.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n",
+        "description": "Creates a new schedule with settings provided by the schedule object passed\nas JSON in the payload. The response is the created schedule object.\n\nThe request needs to specify the `Content-Type: application/json` HTTP header!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n",
         "operationId": "schedules_post",
         "requestBody": {
           "description": "",
@@ -18130,7 +18355,7 @@
           "Schedules"
         ],
         "summary": "Update schedule",
-        "description": "Updates a schedule using values specified by a schedule object passed as\nJSON in the POST payload. If the object does not define a specific property,\nits value will not be updated.\n\nThe response is the full schedule object as returned by the\n[Get schedule](/api/v2/schedule-get) endpoint.\n\n**The request needs to specify the `Content-Type: application/json` HTTP\nheader!**\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2/getting-started#authentication).\n",
+        "description": "Updates a schedule using values specified by a schedule object passed as\nJSON in the POST payload. If the object does not define a specific property,\nits value will not be updated.\n\nThe response is the full schedule object as returned by the\n[Get schedule](/api/v2/schedule-get) endpoint.\n\n**The request needs to specify the `Content-Type: application/json` HTTP\nheader!**\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n",
         "operationId": "schedule_put",
         "parameters": [
           {
@@ -18255,6 +18480,54 @@
         "x-js-parent": "ScheduleClient",
         "x-js-name": "delete",
         "x-js-doc-url": "https://docs.apify.com/api/client/js/reference/class/ScheduleClient#delete"
+      }
+    },
+    "/v2/schedules/{scheduleId}/invoke": {
+      "post": {
+        "tags": [
+          "Schedules"
+        ],
+        "summary": "Invoke schedule",
+        "description": "Immediately runs all actions of the schedule, the same way as the **Run now** button in Apify Console.\n\nThe invocation is recorded in the [schedule log](/api/v2/schedule-log-get). It doesn't change the schedule's\n`lastRunAt` or `nextRunAt`. The response doesn't contain the started runs.\n",
+        "operationId": "schedule_invoke_post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/scheduleId"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/schedules/{scheduleId}/log": {
@@ -18442,6 +18715,18 @@
               "default": false,
               "example": true
             }
+          },
+          {
+            "name": "includeInputSchema",
+            "in": "query",
+            "description": "If `true`, each Actor in the results includes an `inputSchema` field with a compact version of the input\nschema of its default build (property types and required properties only). With this parameter, `limit`\ndefaults to and can't exceed `10`.\n",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "example": true
+            }
           }
         ],
         "responses": {
@@ -18616,7 +18901,7 @@
           "Users"
         ],
         "summary": "Get public user data",
-        "description": "Returns public information about a specific user account, similar to what\ncan be seen on public profile pages (e.g. https://apify.com/apify).\n\nThis operation requires no authentication token.\n",
+        "description": "Returns public information about a specific user account, similar to what\ncan be seen on public profile pages (e.g. https://apify.com/apify).\n\nThis operation requires no authentication token.\n\nWhen the request is authenticated with an API token of the requested user account, or with a token\nthat impersonates it, the response also contains the private information, the same as in\n[Get private user data](/api/v2/users-me-get). Tokens with limited permissions never receive it.\n",
         "operationId": "user_get",
         "parameters": [
           {
@@ -18638,7 +18923,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserPublicInfoResponse"
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/UserPublicInfoResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/UserPrivateInfoResponse"
+                    }
+                  ]
                 }
               }
             }
@@ -18868,6 +19160,379 @@
           "https://docs.apify.com/api/v2#/reference/users/update-limits",
           "https://docs.apify.com/api/v2#tag/UsersAccount-and-usage-limits/operation/users_me_limits_put"
         ]
+      }
+    },
+    "/v2/users/{userId}/usage/monthly": {
+      "get": {
+        "tags": [
+          "Users/Usage"
+        ],
+        "summary": "Get user's monthly usage by ID",
+        "description": "Returns the same summary of monthly usage as [Get user's monthly usage](/api/v2/users-me-usage-monthly-get),\nfor an account given by its ID or username.\n\nYou can only access your own account, or the organization your API token belongs to. API tokens with\nlimited permissions can't use this endpoint.\n\nUsing the `date` parameter will show the usage in the monthly usage cycle that\nincludes that date.\n",
+        "operationId": "users_usage_monthly_get",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID or username of your account, or of the organization your API token belongs to.",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "HGzIk8z78YcAPEB"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Date in the YYYY-MM-DD format.",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string",
+              "example": "2020-06-14"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MonthlyUsageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/users/{userId}/limits": {
+      "get": {
+        "tags": [
+          "Users/Usage"
+        ],
+        "summary": "Get user's limits by ID",
+        "description": "Returns the same summary of limits as [Get user's limits](/api/v2/users-me-limits-get), for an account given by\nits ID or username.\n\nYou can only access your own account, or the organization your API token belongs to. API tokens with\nlimited permissions can't use this endpoint.\n",
+        "operationId": "users_limits_get",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID or username of your account, or of the organization your API token belongs to.",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "HGzIk8z78YcAPEB"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountLimitsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Users/Usage"
+        ],
+        "summary": "Update user's limits by ID",
+        "description": "Updates the same limits as [Update user's limits](/api/v2/users-me-limits-put), for an account given by its ID\nor username.\n\nYou can only access your own account, or the organization your API token belongs to. API tokens with\nlimited permissions can't use this endpoint.\nFor an organization, you also need the permission to manage the organization.\n",
+        "operationId": "users_limits_put",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User ID or username of your account, or of the organization your API token belongs to.",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "HGzIk8z78YcAPEB"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLimitsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/integrations/git": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get git provider integrations",
+        "description": "Gets your connected git provider accounts (GitHub App, GitLab and Bitbucket), each with the workspaces you can\ncreate a repository in. Only authorized accounts are returned, and accounts whose access was revoked are left\nout.\n\nUse the `id` of an integration as the `providerId` in the\n[Create git repository](/api/v2/integrations-git-create-repo-post) and\n[Register deployment key](/api/v2/integrations-git-register-deployment-key-post) endpoints.\n",
+        "operationId": "integrations_git_get",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListOfGitProviderIntegrationsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/integrations/git/{providerId}/create-repo": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create git repository",
+        "description": "Creates a repository through a connected git account and commits the initial files into it, either the given\n`files` or the files of an Actor template archive (`templateArchiveUrl`).\n",
+        "operationId": "integrations_git_createRepo_post",
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "The connected git account to use: `github-app` for the GitHub App, or the ID of a connected GitLab or\nBitbucket integration, as returned by [Get git provider integrations](/api/v2/integrations-git-get).\n",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "github-app"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGitRepoRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GitRepoResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v2/integrations/git/{providerId}/register-deployment-key": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Register deployment key",
+        "description": "Registers the Actor's deployment key (a read-only SSH key generated for every Actor) on a repository through a\nconnected git account, so that Apify can clone the repository when building the Actor.\n\nYou need write access to the Actor. The repository's host must match the provider of the connected account.\nIf the key is already registered on the repository, nothing changes. On GitHub, registering the key on another\nrepository removes it from the previously linked one.\n",
+        "operationId": "integrations_git_registerDeploymentKey_post",
+        "parameters": [
+          {
+            "name": "providerId",
+            "in": "path",
+            "description": "The connected git account to use: `github-app` for the GitHub App, or the ID of a connected GitLab or\nBitbucket integration, as returned by [Get git provider integrations](/api/v2/integrations-git-get).\n",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "github-app"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterDeploymentKeyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterDeploymentKeyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "405": {
+            "$ref": "#/components/responses/MethodNotAllowed"
+          },
+          "413": {
+            "$ref": "#/components/responses/PayloadTooLarge"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMediaType"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        },
+        "deprecated": false
       }
     },
     "/v2/browser-info": {
@@ -19324,6 +19989,22 @@
           "example": "2025-09-17T23:59:59.000Z"
         }
       },
+      "deployment": {
+        "name": "deployment",
+        "in": "query",
+        "description": "Single Actor Standby deployment or comma-separated list of deployments (`SINGLE_TENANT`, `MULTI_TENANT_FREE_USERS`,\n`MULTI_TENANT_PAYING_USERS` or `MULTI_TENANT_OWNER_PAID`). Used to filter Actor Standby runs by the pool that\nserves them. Requires the `status` parameter with only non-terminal statuses (`READY`, `RUNNING`, `TIMING-OUT` or\n`ABORTING`).\n",
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "SINGLE_TENANT"
+          ]
+        }
+      },
       "timeout": {
         "name": "timeout",
         "in": "query",
@@ -19425,6 +20106,21 @@
             }
           },
           "example": "dGhpcyBpcyBqdXN0IGV4YW1wbGUK..."
+        }
+      },
+      "forcePermissionLevel": {
+        "name": "forcePermissionLevel",
+        "in": "query",
+        "description": "Overrides the Actor's permission level for this specific run. Use to test restricted permissions\nbefore deploying changes to your Actor or to temporarily elevate or restrict access. If you don't specify this\nparameter, the Actor uses its configured default permission level. For more information on permissions, see the\n[documentation](https://docs.apify.com/platform/actors/development/permissions).\n",
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "LIMITED_PERMISSIONS",
+            "FULL_PERMISSIONS"
+          ],
+          "example": "LIMITED_PERMISSIONS"
         }
       },
       "outputRecordKey": {
@@ -20865,6 +21561,10 @@
           "message": {
             "type": "string",
             "description": "Human-readable error message describing what went wrong."
+          },
+          "data": {
+            "type": "object",
+            "description": "Additional machine-readable details about the error. Present only for some error types."
           }
         }
       },
@@ -21121,6 +21821,23 @@
             ],
             "description": "Maximum number of items the run might produce."
           },
+          "maxTotalChargeUsd": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "examples": [
+              5
+            ],
+            "description": "Maximum cost in USD that a pay-per-event run can charge to the user."
+          },
+          "isMaxTotalChargeUsdSetByUser": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether `maxTotalChargeUsd` was set explicitly by the user."
+          },
           "forcePermissionLevel": {
             "anyOf": [
               {
@@ -21192,6 +21909,30 @@
               "null"
             ],
             "description": "Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input."
+          },
+          "tenancy": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "SINGLE_TENANT"
+            ],
+            "description": "Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify."
+          },
+          "isConsoleAuthEnabled": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether standby requests can be authenticated with an Apify Console session. Set by Apify."
+          },
+          "isTokenlessEnabled": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether standby requests can be made without an API token. Set by Apify."
           }
         }
       },
@@ -21382,6 +22123,13 @@
               false
             ],
             "description": "Whether the environment variable is encrypted. Secret values aren't returned by the API."
+          },
+          "valueHash": {
+            "type": "string",
+            "examples": [
+              "a1b2c3"
+            ],
+            "description": "A short hash of the secret value, to detect value changes. Returned only for secret environment variables, in place of `value`."
           }
         }
       },
@@ -21470,6 +22218,27 @@
               "null"
             ],
             "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
+          },
+          "githubWebhookId": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "ID of the GitHub webhook that triggers a build on push. Present when build on push is enabled for a GitHub repository."
+          },
+          "gitlabWebhookId": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "ID of the GitLab webhook that triggers a build on push. Present when build on push is enabled for a GitLab repository."
+          },
+          "bitbucketWebhookId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ID of the Bitbucket webhook that triggers a build on push. Present when build on push is enabled for a Bitbucket repository."
           }
         }
       },
@@ -21508,6 +22277,14 @@
             "x-internal": true
           },
           "notifiedAboutChangeAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "x-internal": true
+          },
+          "notifiedAboutRentalToPpePriceChangeAt": {
             "type": [
               "string",
               "null"
@@ -21624,6 +22401,16 @@
                   "number",
                   "null"
                 ]
+              },
+              "isPPEPlatformUsagePaidByUser": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "examples": [
+                  false
+                ],
+                "description": "If `true`, the platform usage of the run is charged to the user running the Actor, in addition to the event prices."
               }
             }
           }
@@ -21983,7 +22770,7 @@
             "examples": [
               "ssh-rsa AAAA ..."
             ],
-            "description": "The Actor's public SSH key, used as a deployment key for private Git repositories."
+            "description": "The Actor's public SSH key, used as a deployment key for private Git repositories. Returned only by the get Actor endpoint."
           },
           "title": {
             "type": [
@@ -22400,6 +23187,30 @@
           }
         }
       },
+      "UpdateBuildOnPushRequest": {
+        "title": "UpdateBuildOnPushRequest",
+        "required": [
+          "providerId",
+          "enabled"
+        ],
+        "type": "object",
+        "properties": {
+          "providerId": {
+            "type": "string",
+            "description": "The connected git account to register the push webhook through: `github-app` for the GitHub App, or the ID\nof a connected GitLab or Bitbucket integration, as returned by the [Get git provider integrations](/api/v2/integrations-git-get) endpoint.\n",
+            "examples": [
+              "github-app"
+            ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "`true` registers the push webhook so that pushes to the repository build the version; `false` turns it off.",
+            "examples": [
+              true
+            ]
+          }
+        }
+      },
       "ListOfEnvVars": {
         "title": "ListOfEnvVars",
         "type": "object",
@@ -22499,6 +23310,168 @@
           }
         }
       },
+      "WebhookSlackMessage": {
+        "title": "WebhookSlackMessage",
+        "description": "Slack message configuration. Present only when `actionType` is `SLACK_MESSAGE`.",
+        "type": "object",
+        "properties": {
+          "userIntegrationId": {
+            "type": "string",
+            "examples": [
+              "kLcd8Z4dzXN1z3QzS"
+            ]
+          },
+          "channelId": {
+            "type": "string",
+            "examples": [
+              "C01234ABCDE"
+            ]
+          },
+          "messageTemplate": {
+            "type": "string",
+            "examples": [
+              "Actor run {{resource.id}} finished."
+            ]
+          }
+        }
+      },
+      "WebhookDatasetTransformation": {
+        "title": "WebhookDatasetTransformation",
+        "description": "Selects which dataset item fields are included in the output.",
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "title",
+                "url"
+              ]
+            ]
+          },
+          "omit": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "html"
+              ]
+            ]
+          }
+        }
+      },
+      "WebhookGoogleMail": {
+        "title": "WebhookGoogleMail",
+        "description": "Gmail email configuration. Present only when `actionType` is `GOOGLE_MAIL`.",
+        "type": "object",
+        "properties": {
+          "userIntegrationId": {
+            "type": "string",
+            "examples": [
+              "kLcd8Z4dzXN1z3QzS"
+            ]
+          },
+          "emailTo": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              [
+                "bob@example.com"
+              ]
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "examples": [
+              "Actor run finished"
+            ]
+          },
+          "body": {
+            "type": "string",
+            "examples": [
+              "Actor run {{resource.id}} finished."
+            ]
+          },
+          "attachmentFormat": {
+            "type": "string",
+            "examples": [
+              "csv"
+            ]
+          },
+          "attachmentTransformation": {
+            "$ref": "#/components/schemas/WebhookDatasetTransformation"
+          }
+        }
+      },
+      "WebhookGoogleDrive": {
+        "title": "WebhookGoogleDrive",
+        "description": "Google Drive upload configuration. Present only when `actionType` is `GOOGLE_DRIVE`.",
+        "type": "object",
+        "properties": {
+          "userIntegrationId": {
+            "type": "string",
+            "examples": [
+              "kLcd8Z4dzXN1z3QzS"
+            ]
+          },
+          "filename": {
+            "type": "string",
+            "examples": [
+              "results"
+            ]
+          },
+          "format": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "json"
+            ]
+          },
+          "transformation": {
+            "$ref": "#/components/schemas/WebhookDatasetTransformation"
+          }
+        }
+      },
+      "WebhookGithubIssue": {
+        "title": "WebhookGithubIssue",
+        "description": "GitHub issue configuration. Present only when `actionType` is `GITHUB_ISSUE`.",
+        "type": "object",
+        "properties": {
+          "userIntegrationId": {
+            "type": "string",
+            "examples": [
+              "kLcd8Z4dzXN1z3QzS"
+            ]
+          },
+          "repository": {
+            "type": "string",
+            "examples": [
+              "apify/apify-docs"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "examples": [
+              "Actor run failed"
+            ]
+          },
+          "body": {
+            "type": "string",
+            "examples": [
+              "Actor run {{resource.id}} failed."
+            ]
+          }
+        }
+      },
       "WebhookDispatchStatus": {
         "title": "WebhookDispatchStatus",
         "type": "string",
@@ -22553,8 +23526,8 @@
           }
         }
       },
-      "WebhookListItem": {
-        "title": "WebhookListItem",
+      "WebhookResource": {
+        "title": "WebhookResource",
         "required": [
           "id",
           "createdAt",
@@ -22562,9 +23535,7 @@
           "userId",
           "eventTypes",
           "condition",
-          "ignoreSslErrors",
-          "doNotRetry",
-          "requestUrl"
+          "ignoreSslErrors"
         ],
         "type": "object",
         "properties": {
@@ -22603,12 +23574,6 @@
               false
             ]
           },
-          "isApifyIntegration": {
-            "type": "boolean",
-            "examples": [
-              false
-            ]
-          },
           "isEnabled": {
             "type": "boolean",
             "examples": [
@@ -22617,8 +23582,18 @@
           },
           "actionType": {
             "type": "string",
+            "description": "Type of action the webhook performs: `HTTP_REQUEST`, `SLACK_MESSAGE`, `GOOGLE_MAIL`, `GOOGLE_DRIVE` or `GITHUB_ISSUE`.",
             "examples": [
               "HTTP_REQUEST"
+            ]
+          },
+          "isApifyIntegration": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
             ]
           },
           "shouldInterpolateStrings": {
@@ -22651,17 +23626,72 @@
             ]
           },
           "doNotRetry": {
-            "type": "boolean",
+            "type": [
+              "boolean",
+              "null"
+            ],
             "examples": [
               false
             ]
           },
           "requestUrl": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uri",
+            "description": "URL of the HTTP request sent by the webhook. It is omitted or `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).",
             "examples": [
               "http://example.com/"
             ]
+          },
+          "payloadTemplate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "{\\n \"userId\": {{userId}}..."
+            ]
+          },
+          "headersTemplate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "{\\n \"Authorization\": \"Bearer ...\"}"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Notify on failure"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "this is webhook description"
+            ]
+          },
+          "slackMessage": {
+            "$ref": "#/components/schemas/WebhookSlackMessage"
+          },
+          "googleMail": {
+            "$ref": "#/components/schemas/WebhookGoogleMail"
+          },
+          "googleDrive": {
+            "$ref": "#/components/schemas/WebhookGoogleDrive"
+          },
+          "githubIssue": {
+            "$ref": "#/components/schemas/WebhookGithubIssue"
           },
           "lastDispatch": {
             "anyOf": [
@@ -22685,8 +23715,9 @@
           }
         }
       },
-      "ListOfWebhooks": {
-        "title": "ListOfWebhooks",
+      "ListOfWebhookResources": {
+        "title": "ListOfWebhookResources",
+        "description": "Paginated list of webhooks with all their fields, including `payloadTemplate`.",
         "allOf": [
           {
             "$ref": "#/components/schemas/PaginationResponse"
@@ -22700,22 +23731,138 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/WebhookListItem"
+                  "$ref": "#/components/schemas/WebhookResource"
                 }
               }
             }
           }
         ]
       },
-      "ListOfWebhooksResponse": {
-        "title": "ListOfWebhooksResponse",
+      "ListOfWebhookResourcesResponse": {
+        "title": "ListOfWebhookResourcesResponse",
         "required": [
           "data"
         ],
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/ListOfWebhooks"
+            "$ref": "#/components/schemas/ListOfWebhookResources"
+          }
+        }
+      },
+      "ActorOAuthConnection": {
+        "title": "ActorOAuthConnection",
+        "description": "An OAuth connection configured on an Actor. Secret credentials are never returned.",
+        "required": [
+          "_id",
+          "actorId",
+          "oAuthProviderType",
+          "createdAt",
+          "modifiedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "examples": [
+              "kD9fm2Xp4cJq7Lw8N"
+            ]
+          },
+          "actorId": {
+            "type": "string",
+            "examples": [
+              "zdc3Pyhyz3m8vjDeM"
+            ]
+          },
+          "oAuthProviderType": {
+            "type": "string",
+            "enum": [
+              "CUSTOM",
+              "GOOGLE"
+            ],
+            "examples": [
+              "GOOGLE"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-01-28T10:00:00.000Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-01-28T10:00:00.000Z"
+            ]
+          },
+          "credentials": {
+            "type": "object",
+            "description": "The public part of the connection's OAuth client configuration.",
+            "properties": {
+              "clientId": {
+                "type": "string",
+                "examples": [
+                  "1234567890-abc.apps.googleusercontent.com"
+                ]
+              },
+              "scope": {
+                "type": "string",
+                "examples": [
+                  "https://www.googleapis.com/auth/drive.file"
+                ]
+              },
+              "label": {
+                "type": "string",
+                "description": "Display name of a `CUSTOM` provider.",
+                "examples": [
+                  "My OAuth app"
+                ]
+              },
+              "imageUrl": {
+                "type": "string",
+                "description": "Logo URL of a `CUSTOM` provider.",
+                "examples": [
+                  "https://example.com/logo.png"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "ListOfActorOAuthConnections": {
+        "title": "ListOfActorOAuthConnections",
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "examples": [
+              1
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActorOAuthConnection"
+            }
+          }
+        }
+      },
+      "ListOfActorOAuthConnectionsResponse": {
+        "title": "ListOfActorOAuthConnectionsResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListOfActorOAuthConnections"
           }
         }
       },
@@ -22774,9 +23921,30 @@
             "type": [
               "string"
             ],
-            "description": "User agent of the client that started the build.",
+            "description": "User agent of the client that started the build. Returned only to the Actor owner.",
             "examples": [
               "Mozilla/5.0 (iPad)"
+            ]
+          },
+          "githubActionsRunUrl": {
+            "type": "string",
+            "description": "URL of the GitHub Actions run that started the build. Present only for builds started from CI.",
+            "examples": [
+              "https://github.com/apify/my-actor/actions/runs/123456789"
+            ]
+          },
+          "actorRunId": {
+            "type": "string",
+            "description": "ID of the Actor run that started the build. Returned only to the Actor owner.",
+            "examples": [
+              "HG7ML7M8z78YcAPEB"
+            ]
+          },
+          "webhookDispatchId": {
+            "type": "string",
+            "description": "ID of the webhook dispatch that started the build. Returned only to the Actor owner.",
+            "examples": [
+              "Zib4xbZsmvZeK55ua"
             ]
           }
         }
@@ -22787,7 +23955,6 @@
           "id",
           "status",
           "startedAt",
-          "usageTotalUsd",
           "buildNumber"
         ],
         "type": "object",
@@ -22834,7 +24001,8 @@
             "type": "number",
             "examples": [
               0.02
-            ]
+            ],
+            "description": "Total cost in USD for this build. Requires authentication token to access."
           },
           "buildNumber": {
             "type": "string",
@@ -22960,6 +24128,23 @@
             "examples": [
               2048
             ]
+          },
+          "tag": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "latest"
+            ],
+            "description": "The tag passed when starting the build. Present only when the `tag` parameter was used."
+          },
+          "debug": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Whether this is a debug build. Present only on debug builds."
           }
         }
       },
@@ -23258,6 +24443,47 @@
               "# Magic Actor\\nThis Actor is magic."
             ]
           },
+          "changelog": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "deprecated": true,
+            "examples": [
+              "# Changelog\\n## 0.1.1\\n- Initial release"
+            ]
+          },
+          "exitCode": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "examples": [
+              0
+            ],
+            "description": "Exit code of the build process. Set when the build finishes."
+          },
+          "gitCommitId": {
+            "type": "string",
+            "examples": [
+              "5f1d2b3c4a5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a"
+            ],
+            "description": "ID of the Git commit the build was created from. Present only for builds from a Git repository."
+          },
+          "gitBranchName": {
+            "type": "string",
+            "examples": [
+              "main"
+            ],
+            "description": "Name of the Git branch the build was created from. Present only for builds from a Git repository."
+          },
+          "createdByOrganizationMemberUserId": {
+            "type": "string",
+            "examples": [
+              "klmdEpoiojmdEMlk3"
+            ],
+            "description": "ID of the organization member who started the build. Present only for builds started in an organization account."
+          },
           "buildNumber": {
             "type": "string",
             "pattern": "^([0-9]|[1-9][0-9])\\.([0-9]|[1-9][0-9])(\\.[1-9][0-9]{0,4})$",
@@ -23313,6 +24539,20 @@
                 "items": {
                   "$ref": "#/components/schemas/SourceCodeFile"
                 }
+              },
+              "gitHubGistUrl": {
+                "type": "string",
+                "description": "URL of the GitHub Gist, present when sourceType is GITHUB_GIST.",
+                "examples": [
+                  "https://gist.github.com/jancurn/2dd8fa0dd5bf9ea2b4d5a6e0f6a0e8c5"
+                ]
+              },
+              "tarballUrl": {
+                "type": "string",
+                "description": "URL of the tarball or ZIP file, present when sourceType is TARBALL. Returned only to the Actor owner.",
+                "examples": [
+                  "https://example.com/my-actor.zip"
+                ]
               }
             }
           },
@@ -23462,6 +24702,51 @@
             ],
             "format": "date-time",
             "description": "Time when the run was scheduled."
+          },
+          "actorRunId": {
+            "type": "string",
+            "examples": [
+              "HG7ML7M8z78YcAPEB"
+            ],
+            "description": "ID of the Actor run that started this run. Present only when the run was started from another run."
+          },
+          "webhookDispatchId": {
+            "type": "string",
+            "examples": [
+              "asdLZtadYvn4mBZmm"
+            ],
+            "description": "ID of the webhook dispatch that started the run. Present only when the run was started by a webhook."
+          },
+          "scheduledAct2Id": {
+            "type": "string",
+            "examples": [
+              "c6KfSgoQzFhMk3etc"
+            ],
+            "description": "ID of the schedule action that started the Actor. Present only on runs of Actors started by a schedule."
+          },
+          "scheduledActorTaskId": {
+            "type": "string",
+            "examples": [
+              "c6KfSgoQzFhMk3etc"
+            ],
+            "description": "ID of the schedule action that started the Actor task. Present only on runs of tasks started by a schedule."
+          }
+        }
+      },
+      "RunStandby": {
+        "title": "RunStandby",
+        "type": "object",
+        "description": "Standby configuration of the run. Present only on Actor Standby runs.",
+        "required": [
+          "deployment"
+        ],
+        "properties": {
+          "deployment": {
+            "type": "string",
+            "examples": [
+              "SINGLE_TENANT"
+            ],
+            "description": "How the Standby run is deployed: `SINGLE_TENANT`, `MULTI_TENANT_FREE_USERS`, `MULTI_TENANT_PAYING_USERS` or `MULTI_TENANT_OWNER_PAID`. `SINGLE_TENANT` is a private instance in the user's account.\nThe `MULTI_TENANT_*` values are runs in the Actor owner's account that serve requests from many users.\n"
           }
         }
       },
@@ -23573,6 +24858,17 @@
             "examples": [
               "so93g2shcDzK3pA85"
             ]
+          },
+          "standby": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunStandby"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Standby configuration of the run. `null` for runs that are not Actor Standby runs."
           }
         }
       },
@@ -23823,6 +25119,56 @@
           }
         }
       },
+      "RunEventUsage": {
+        "title": "RunEventUsage",
+        "type": "object",
+        "description": "Cost of a single pay-per-event event type charged during the run.",
+        "required": [
+          "eventTotalUsd",
+          "eventTitle"
+        ],
+        "properties": {
+          "eventTotalUsd": {
+            "type": "number",
+            "examples": [
+              0.15
+            ],
+            "description": "Total cost of all charges of this event in USD."
+          },
+          "eventTitle": {
+            "type": "string",
+            "examples": [
+              "Page crawled"
+            ],
+            "description": "Human-readable title of the event."
+          }
+        }
+      },
+      "IntegrationTracking": {
+        "title": "IntegrationTracking",
+        "type": "object",
+        "description": "Information about the third-party integration that created the resource.",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "examples": [
+              "zapier"
+            ],
+            "description": "Name of the integration platform."
+          },
+          "appId": {
+            "type": "string",
+            "description": "ID of the integration app."
+          },
+          "isAiTool": {
+            "type": "boolean",
+            "examples": [
+              false
+            ],
+            "description": "Whether the resource was created by an AI tool."
+          }
+        }
+      },
       "RunOptions": {
         "title": "RunOptions",
         "required": [
@@ -23861,6 +25207,16 @@
               2048
             ]
           },
+          "restartOnError": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ],
+            "description": "Whether to automatically restart the run if it fails."
+          },
           "maxItems": {
             "type": [
               "integer",
@@ -23880,6 +25236,13 @@
             "examples": [
               5
             ]
+          },
+          "isMaxTotalChargeUsdSetByUser": {
+            "type": "boolean",
+            "examples": [
+              true
+            ],
+            "description": "Whether the user explicitly set `maxTotalChargeUsd` when starting the run. Not present for pay-per-result Actors."
           }
         }
       },
@@ -24008,6 +25371,15 @@
             "examples": [
               3
             ]
+          },
+          "PROXY_UNBLOCKER_UNITS": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -24123,6 +25495,15 @@
             "examples": [
               0.003
             ]
+          },
+          "PROXY_UNBLOCKER_UNITS": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "examples": [
+              0
+            ]
           }
         }
       },
@@ -24166,6 +25547,18 @@
             "description": "Key of the input record in the key-value store.",
             "examples": [
               "INPUT-METAMORPH-1"
+            ]
+          },
+          "buildTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Build tags of the build used for the metamorphed Actor.",
+            "examples": [
+              [
+                "latest"
+              ]
             ]
           }
         }
@@ -24285,6 +25678,75 @@
               "actor-start": 1,
               "page-crawled": 150,
               "data-extracted": 75
+            }
+          },
+          "accountedChargedEventCounts": {
+            "description": "A map of charged event types to the number of their charges that have already been accounted for billing. Present only for pay-per-event Actors.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "example": {
+              "actor-start": 1,
+              "page-crawled": 150
+            }
+          },
+          "eventUsage": {
+            "description": "Cost breakdown of the pay-per-event charges in USD, keyed by event type. Present only for pay-per-event runs, and not when the run was started by the Actor's owner.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/RunEventUsage"
+            }
+          },
+          "externalChargedTotalUsd": {
+            "type": "number",
+            "examples": [
+              0.5
+            ],
+            "description": "Total price in USD of the pay-per-event charges made to other users. Present only on multi-tenant Standby runs."
+          },
+          "standby": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RunStandby"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Standby configuration of the run. `null` for runs that are not Actor Standby runs."
+          },
+          "integrationTracking": {
+            "description": "Present only when the run was started by a third-party integration.",
+            "$ref": "#/components/schemas/IntegrationTracking"
+          },
+          "createdByOrganizationMemberUserId": {
+            "type": "string",
+            "examples": [
+              "7sT5jcggjjA9fNcxF"
+            ],
+            "description": "ID of the organization member who started the run. Present only for runs started on behalf of an organization."
+          },
+          "consoleUrl": {
+            "type": "string",
+            "format": "uri",
+            "examples": [
+              "https://console.apify.com/view/runs/HG7ML7M8z78YcAPEB"
+            ],
+            "description": "URL of the run in Apify Console. Returned only by the [Get Actor run](/api/v2/actor-run-get) endpoint."
+          },
+          "output": {
+            "type": "object",
+            "description": "Output links of the run, generated from the output schema of the Actor build. Present only if the build defines an output schema.",
+            "additionalProperties": {
+              "type": "string",
+              "format": "uri"
+            },
+            "example": {
+              "results": "https://api.apify.com/v2/datasets/wmKPijuyDnPZAPRMk/items"
             }
           },
           "options": {
@@ -24512,14 +25974,14 @@
           },
           "storageBytes": {
             "type": "integer",
-            "description": "Total storage size in bytes. Only returned by the single-dataset endpoint.",
+            "description": "Total storage size in bytes.",
             "examples": [
               783
             ]
           },
           "inflatedBytes": {
             "type": "integer",
-            "description": "Uncompressed size in bytes. Only returned by the dataset list endpoint.",
+            "description": "Uncompressed size in bytes.",
             "examples": [
               0
             ]
@@ -24553,6 +26015,15 @@
             ],
             "examples": [
               "d7b9MDYsbtX5L7XAj"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "My Dataset"
             ]
           },
           "userId": {
@@ -24989,6 +26460,15 @@
               "d7b9MDYsbtX5L7XAj"
             ]
           },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "My Store"
+            ]
+          },
           "userId": {
             "type": [
               "string",
@@ -25409,6 +26889,16 @@
               "some-name"
             ]
           },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The title of the request queue.",
+            "examples": [
+              "My Queue"
+            ]
+          },
           "userId": {
             "$ref": "#/components/schemas/QueueUserId"
           },
@@ -25653,6 +27143,14 @@
           "sbJ7klsdf7ujN9l"
         ]
       },
+      "LockExpiresAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "The timestamp when the lock on this request expires.",
+        "examples": [
+          "2022-06-14T23:00:00.000Z"
+        ]
+      },
       "RequestResource": {
         "title": "RequestResource",
         "description": "A request stored in the request queue, including its metadata and processing state.",
@@ -25667,6 +27165,17 @@
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/RequestId"
+              },
+              "lockExpiresAt": {
+                "$ref": "#/components/schemas/LockExpiresAt",
+                "description": "The timestamp when the lock on this request expires. Only present while the request is locked."
+              },
+              "lockByClient": {
+                "type": "string",
+                "description": "Key of the client that last locked the request. It is set when the request is locked and removed only by\nan explicit unlock or by an update of the request, so it can still be present after the lock has expired.\n",
+                "examples": [
+                  "my-client-key"
+                ]
               }
             }
           }
@@ -26118,14 +27627,6 @@
           }
         }
       },
-      "LockExpiresAt": {
-        "type": "string",
-        "format": "date-time",
-        "description": "The timestamp when the lock on this request expires.",
-        "examples": [
-          "2022-06-14T23:00:00.000Z"
-        ]
-      },
       "RequestLockInfo": {
         "title": "RequestLockInfo",
         "description": "Information about a request lock.",
@@ -26396,6 +27897,17 @@
             "examples": [
               15
             ]
+          },
+          "lastRunStartedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              "2019-11-30T07:34:24.202Z"
+            ],
+            "description": "Time when the last run of the task started. In the task list, it's `null` if the task has no runs. In a single task, it's omitted if the task has no runs."
           }
         }
       },
@@ -26444,6 +27956,15 @@
               "my-task"
             ]
           },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "My task"
+            ]
+          },
           "username": {
             "type": [
               "string",
@@ -26484,6 +28005,13 @@
               {
                 "type": "null"
               }
+            ]
+          },
+          "isPublic": {
+            "type": "boolean",
+            "description": "Whether the task is published. Based on the `publicConfig.publishedAt` field.\n",
+            "examples": [
+              false
             ]
           }
         }
@@ -26579,6 +28107,27 @@
             "examples": [
               false
             ]
+          },
+          "isMaxTotalChargeUsdSetByUser": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              true
+            ],
+            "description": "Whether the user explicitly set `maxTotalChargeUsd`. Returned only in schedule action `runOptions`, and only if it was provided."
+          },
+          "forcePermissionLevel": {
+            "description": "Permission level to run the Actor with, overriding the Actor's own setting. Returned only in schedule action `runOptions`, and only if it was provided.",
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ActorPermissionLevel"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         }
       },
@@ -26655,6 +28204,45 @@
               "null"
             ],
             "description": "Key of the dataset view from the Actor's dataset schema used to display results. Must be\none of the views declared on the resolved dataset. You can't publish a task without it.\n"
+          },
+          "categorization": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ID of the use-case category of the task."
+          },
+          "highlightedFields": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Names of the dataset fields highlighted on the public task page.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "faq": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "description": "Frequently asked questions displayed on the public task page.",
+            "items": {
+              "type": "object",
+              "required": [
+                "question",
+                "answer"
+              ],
+              "properties": {
+                "question": {
+                  "type": "string"
+                },
+                "answer": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -26766,6 +28354,13 @@
             "examples": [
               "my-task"
             ]
+          },
+          "nameLowerCase": {
+            "type": "string",
+            "examples": [
+              "my-task"
+            ],
+            "description": "Task name in lowercase."
           },
           "username": {
             "type": [
@@ -26988,152 +28583,6 @@
           }
         }
       },
-      "WebhookResource": {
-        "title": "WebhookResource",
-        "required": [
-          "id",
-          "createdAt",
-          "modifiedAt",
-          "userId",
-          "eventTypes",
-          "condition",
-          "ignoreSslErrors"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "examples": [
-              "YiKoxjkaS9gjGTqhF"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-12T07:34:14.202Z"
-            ]
-          },
-          "modifiedAt": {
-            "type": "string",
-            "format": "date-time",
-            "examples": [
-              "2019-12-13T08:36:13.202Z"
-            ]
-          },
-          "userId": {
-            "type": "string",
-            "examples": [
-              "wRsJZtadYvn4mBZmm"
-            ]
-          },
-          "isAdHoc": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "examples": [
-              false
-            ]
-          },
-          "shouldInterpolateStrings": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "examples": [
-              false
-            ]
-          },
-          "eventTypes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WebhookEventType"
-            },
-            "examples": [
-              [
-                "ACTOR.RUN.SUCCEEDED"
-              ]
-            ]
-          },
-          "condition": {
-            "$ref": "#/components/schemas/WebhookCondition"
-          },
-          "ignoreSslErrors": {
-            "type": "boolean",
-            "examples": [
-              false
-            ]
-          },
-          "doNotRetry": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "examples": [
-              false
-            ]
-          },
-          "requestUrl": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uri",
-            "description": "URL of the HTTP request sent by the webhook. It is omitted or `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).",
-            "examples": [
-              "http://example.com/"
-            ]
-          },
-          "payloadTemplate": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "{\\n \"userId\": {{userId}}..."
-            ]
-          },
-          "headersTemplate": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "{\\n \"Authorization\": \"Bearer ...\"}"
-            ]
-          },
-          "description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "examples": [
-              "this is webhook description"
-            ]
-          },
-          "lastDispatch": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/WebhookLastDispatch"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "stats": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/WebhookStats"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        }
-      },
       "UpdateRunRequest": {
         "title": "UpdateRunRequest",
         "type": "object",
@@ -27190,6 +28639,124 @@
           }
         }
       },
+      "ActorOAuthAccount": {
+        "title": "ActorOAuthAccount",
+        "description": "An account a user connected through an Actor OAuth connection.",
+        "required": [
+          "_id",
+          "userId",
+          "connectionId",
+          "createdAt",
+          "modifiedAt",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "examples": [
+              "Rk3mP8xQ2vN5tY7wZ"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "examples": [
+              "wRsJZtadYvn4mBZmm"
+            ]
+          },
+          "connectionId": {
+            "type": "string",
+            "examples": [
+              "kD9fm2Xp4cJq7Lw8N"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-01-28T10:00:00.000Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2026-01-28T10:05:00.000Z"
+            ]
+          },
+          "authorizedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              "2026-01-28T10:05:00.000Z"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Label of the connected account, usually its email address.",
+            "examples": [
+              "jane.doe@example.com"
+            ]
+          },
+          "data": {
+            "type": "object",
+            "description": "The OAuth tokens of the account, such as `access_token`, `refresh_token`, `scope` and `expiry_date`. The exact\nfields depend on the OAuth provider.\n",
+            "additionalProperties": true
+          }
+        }
+      },
+      "ListOfActorOAuthAccounts": {
+        "title": "ListOfActorOAuthAccounts",
+        "required": [
+          "total",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "examples": [
+              1
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActorOAuthAccount"
+            }
+          }
+        }
+      },
+      "ListOfActorOAuthAccountsResponse": {
+        "title": "ListOfActorOAuthAccountsResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListOfActorOAuthAccounts"
+          }
+        }
+      },
+      "ActorOAuthAccountResponse": {
+        "title": "ActorOAuthAccountResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ActorOAuthAccount"
+          }
+        }
+      },
       "StorageOwnership": {
         "type": "string",
         "enum": [
@@ -27199,6 +28766,157 @@
         "examples": [
           "ownedByMe"
         ]
+      },
+      "KeyValueStoreListStats": {
+        "title": "KeyValueStoreListStats",
+        "type": "object",
+        "properties": {
+          "readCount": {
+            "type": "integer",
+            "examples": [
+              9
+            ]
+          },
+          "writeCount": {
+            "type": "integer",
+            "examples": [
+              3
+            ]
+          },
+          "deleteCount": {
+            "type": "integer",
+            "examples": [
+              6
+            ]
+          },
+          "listCount": {
+            "type": "integer",
+            "examples": [
+              2
+            ]
+          },
+          "s3StorageBytes": {
+            "type": "integer",
+            "description": "Storage size in bytes.",
+            "examples": [
+              18
+            ]
+          }
+        }
+      },
+      "KeyValueStoreListItem": {
+        "title": "KeyValueStoreListItem",
+        "required": [
+          "id",
+          "createdAt",
+          "modifiedAt",
+          "accessedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "WkzbQMuFYuamGv3YF"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "d7b9MDYsbtX5L7XAj"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "My Store"
+            ]
+          },
+          "userId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "BPWDBd7Z9c746JAnF"
+            ]
+          },
+          "username": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "janedoe"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-12T07:34:14.202Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-13T08:36:13.202Z"
+            ]
+          },
+          "accessedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-14T08:36:13.202Z"
+            ]
+          },
+          "actId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "actRunId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              null
+            ]
+          },
+          "schema": {
+            "type": [
+              "object",
+              "string",
+              "null"
+            ],
+            "description": "Optional JSON schema describing the keys stored in the key-value store. Older stores return it as a JSON string."
+          },
+          "generalAccess": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GeneralAccess"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stats": {
+            "$ref": "#/components/schemas/KeyValueStoreListStats"
+          }
+        }
       },
       "ListOfKeyValueStores": {
         "title": "ListOfKeyValueStores",
@@ -27222,7 +28940,7 @@
               "items": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/KeyValueStoreResource"
+                  "$ref": "#/components/schemas/KeyValueStoreListItem"
                 }
               }
             }
@@ -27245,7 +28963,6 @@
         "title": "DatasetListItem",
         "required": [
           "id",
-          "name",
           "userId",
           "createdAt",
           "modifiedAt",
@@ -27262,7 +28979,10 @@
             ]
           },
           "name": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "d7b9MDYsbtX5L7XAj"
             ]
@@ -27395,14 +29115,61 @@
           }
         }
       },
+      "RequestQueueListStats": {
+        "title": "RequestQueueListStats",
+        "description": "Statistics about request queue operations and storage, as returned in request queue lists.",
+        "type": "object",
+        "properties": {
+          "deleteCount": {
+            "type": "integer",
+            "description": "The number of delete operations performed on the request queue.",
+            "examples": [
+              0
+            ]
+          },
+          "headItemReadCount": {
+            "type": "integer",
+            "description": "The number of times requests from the head were read.",
+            "examples": [
+              5
+            ]
+          },
+          "readCount": {
+            "type": "integer",
+            "description": "The total number of read operations performed on the request queue.",
+            "examples": [
+              100
+            ]
+          },
+          "writeCount": {
+            "type": "integer",
+            "description": "The total number of write operations performed on the request queue.",
+            "examples": [
+              10
+            ]
+          },
+          "s3StorageBytes": {
+            "type": "integer",
+            "description": "The storage size in bytes of requests stored in S3.",
+            "examples": [
+              0
+            ]
+          },
+          "dynamodbStorageBytes": {
+            "type": "integer",
+            "description": "The storage size in bytes of requests stored in DynamoDB.",
+            "examples": [
+              1024
+            ]
+          }
+        }
+      },
       "RequestQueueListItem": {
         "title": "RequestQueueListItem",
         "description": "A shortened request queue object for list responses.",
         "required": [
           "id",
-          "name",
           "userId",
-          "username",
           "createdAt",
           "modifiedAt",
           "accessedAt",
@@ -27417,10 +29184,23 @@
             "$ref": "#/components/schemas/QueueId"
           },
           "name": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "The name of the request queue.",
             "examples": [
               "some-name"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The title of the request queue.",
+            "examples": [
+              "My Queue"
             ]
           },
           "userId": {
@@ -27487,7 +29267,7 @@
             ]
           },
           "stats": {
-            "$ref": "#/components/schemas/RequestQueueStats"
+            "$ref": "#/components/schemas/RequestQueueListStats"
           }
         }
       },
@@ -27532,6 +29312,214 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ListOfRequestQueues"
+          }
+        }
+      },
+      "WebhookListItem": {
+        "title": "WebhookListItem",
+        "required": [
+          "id",
+          "createdAt",
+          "modifiedAt",
+          "userId",
+          "eventTypes",
+          "condition",
+          "ignoreSslErrors",
+          "doNotRetry"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "YiKoxjkaS9gjGTqhF"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-12T07:34:14.202Z"
+            ]
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "examples": [
+              "2019-12-13T08:36:13.202Z"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "examples": [
+              "wRsJZtadYvn4mBZmm"
+            ]
+          },
+          "isAdHoc": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ]
+          },
+          "isApifyIntegration": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "isEnabled": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "actionType": {
+            "type": "string",
+            "examples": [
+              "HTTP_REQUEST"
+            ]
+          },
+          "shouldInterpolateStrings": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ]
+          },
+          "eventTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookEventType"
+            },
+            "examples": [
+              [
+                "ACTOR.RUN.SUCCEEDED"
+              ]
+            ]
+          },
+          "condition": {
+            "$ref": "#/components/schemas/WebhookCondition"
+          },
+          "ignoreSslErrors": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "doNotRetry": {
+            "type": "boolean",
+            "examples": [
+              false
+            ]
+          },
+          "requestUrl": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri",
+            "description": "URL of the HTTP request sent by the webhook. It is omitted or `null` for hook actions other than the conventional HTTP case (e.g. Slack or email notifications).",
+            "examples": [
+              "http://example.com/"
+            ]
+          },
+          "headersTemplate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "{\\n \"Authorization\": \"Bearer ...\"}"
+            ]
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "Notify on failure"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "examples": [
+              "this is webhook description"
+            ]
+          },
+          "slackMessage": {
+            "$ref": "#/components/schemas/WebhookSlackMessage"
+          },
+          "googleMail": {
+            "$ref": "#/components/schemas/WebhookGoogleMail"
+          },
+          "googleDrive": {
+            "$ref": "#/components/schemas/WebhookGoogleDrive"
+          },
+          "githubIssue": {
+            "$ref": "#/components/schemas/WebhookGithubIssue"
+          },
+          "lastDispatch": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebhookLastDispatch"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stats": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/WebhookStats"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "ListOfWebhooks": {
+        "title": "ListOfWebhooks",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PaginationResponse"
+          },
+          {
+            "type": "object",
+            "required": [
+              "items"
+            ],
+            "properties": {
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookListItem"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ListOfWebhooksResponse": {
+        "title": "ListOfWebhooksResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ListOfWebhooks"
           }
         }
       },
@@ -27760,6 +29748,13 @@
         "description": "A summary of the webhook that triggered this dispatch.",
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "description": "ID of the webhook. The API returns it under `_id`, not `id`.",
+            "examples": [
+              "YiKoxjkaS9gjGTqhF"
+            ]
+          },
           "actionType": {
             "type": "string",
             "examples": [
@@ -27785,6 +29780,27 @@
             "examples": [
               false
             ]
+          },
+          "isApifyIntegration": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "examples": [
+              false
+            ]
+          },
+          "slackMessage": {
+            "$ref": "#/components/schemas/WebhookSlackMessage"
+          },
+          "googleMail": {
+            "$ref": "#/components/schemas/WebhookGoogleMail"
+          },
+          "googleDrive": {
+            "$ref": "#/components/schemas/WebhookGoogleDrive"
+          },
+          "githubIssue": {
+            "$ref": "#/components/schemas/WebhookGithubIssue"
           }
         }
       },
@@ -27930,6 +29946,11 @@
                     "null"
                   ],
                   "example": "{\"foo\": \"bar\"}"
+                },
+                "debugPostMessage": {
+                  "type": "object",
+                  "description": "Response of the Slack `chat.postMessage` call. Present only for successful calls of `SLACK_MESSAGE` webhooks.",
+                  "additionalProperties": true
                 }
               }
             }
@@ -28075,6 +30096,19 @@
           }
         }
       },
+      "ScheduleNotifications": {
+        "title": "ScheduleNotifications",
+        "type": "object",
+        "description": "Notification settings for this schedule.",
+        "properties": {
+          "email": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          }
+        }
+      },
       "ScheduleListItemActionRunActor": {
         "title": "ScheduleListItemActionRunActor",
         "required": [
@@ -28157,6 +30191,19 @@
               "actions"
             ],
             "properties": {
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "notifications": {
+                "$ref": "#/components/schemas/ScheduleNotifications"
+              },
+              "integrationTracking": {
+                "description": "Present only when the schedule was created by a third-party integration.",
+                "$ref": "#/components/schemas/IntegrationTracking"
+              },
               "actions": {
                 "type": "array",
                 "items": {
@@ -28199,19 +30246,6 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/ListOfSchedules"
-          }
-        }
-      },
-      "ScheduleNotifications": {
-        "title": "ScheduleNotifications",
-        "type": "object",
-        "description": "Notification settings for this schedule.",
-        "properties": {
-          "email": {
-            "type": "boolean",
-            "examples": [
-              true
-            ]
           }
         }
       },
@@ -28404,6 +30438,39 @@
           }
         }
       },
+      "ScheduleUiState": {
+        "title": "ScheduleUiState",
+        "type": "object",
+        "description": "State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.",
+        "properties": {
+          "version": {
+            "type": "integer",
+            "examples": [
+              1
+            ],
+            "description": "Version of the editor state format."
+          },
+          "data": {
+            "type": "object",
+            "description": "Editor form values, such as the frequency settings the cron expression was built from.",
+            "additionalProperties": true,
+            "properties": {
+              "cronExpression": {
+                "type": "string",
+                "examples": [
+                  "0 8 * * *"
+                ]
+              },
+              "timezone": {
+                "type": "string",
+                "examples": [
+                  "UTC"
+                ]
+              }
+            }
+          }
+        }
+      },
       "ScheduleActionRunActor": {
         "title": "ScheduleActionRunActor",
         "required": [
@@ -28533,6 +30600,13 @@
               },
               "notifications": {
                 "$ref": "#/components/schemas/ScheduleNotifications"
+              },
+              "uiState": {
+                "$ref": "#/components/schemas/ScheduleUiState"
+              },
+              "integrationTracking": {
+                "description": "Present only when the schedule was created by a third-party integration.",
+                "$ref": "#/components/schemas/IntegrationTracking"
               },
               "actions": {
                 "type": "array",
@@ -28700,6 +30774,57 @@
             ],
             "description": "Per-event pricing configuration for pay-per-event Actors.",
             "additionalProperties": true
+          },
+          "pricePerUnitUsd": {
+            "type": "number",
+            "description": "Price per unit in USD. Present only for `FLAT_PRICE_PER_MONTH` and non-tiered `PRICE_PER_DATASET_ITEM` pricing.",
+            "examples": [
+              5
+            ]
+          },
+          "trialMinutes": {
+            "type": "integer",
+            "description": "Length of the free trial in minutes. Present only for `FLAT_PRICE_PER_MONTH` pricing.",
+            "examples": [
+              1440
+            ]
+          },
+          "unitName": {
+            "type": "string",
+            "description": "Name of the charged unit. Present only for `PRICE_PER_DATASET_ITEM` pricing.",
+            "examples": [
+              "result"
+            ]
+          },
+          "tieredPricing": {
+            "type": "object",
+            "description": "Price per unit for each pricing tier. Present only for tiered `PRICE_PER_DATASET_ITEM` pricing.",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "tieredPricePerUnitUsd": {
+                  "type": "number"
+                }
+              }
+            },
+            "examples": [
+              {
+                "FREE": {
+                  "tieredPricePerUnitUsd": 0.005
+                }
+              }
+            ]
+          },
+          "notifiedAboutRentalToPpePriceChangeAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "examples": [
+              null
+            ],
+            "x-internal": true
           }
         }
       },
@@ -28841,6 +30966,64 @@
           "readmeSummary": {
             "type": "string",
             "description": "A brief, LLM-generated readme summary"
+          },
+          "inputSchema": {
+            "type": "object",
+            "description": "Compact input schema of the Actor's default build, with only property types and required properties. Returned only when `includeInputSchema=true` and the default build succeeded and defines input properties.",
+            "required": [
+              "type",
+              "properties"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "examples": [
+                  "object"
+                ]
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": [
+                  {
+                    "startUrls": {
+                      "type": "array"
+                    },
+                    "maxItems": {
+                      "type": "integer"
+                    }
+                  }
+                ]
+              },
+              "required": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "examples": [
+                  [
+                    "startUrls"
+                  ]
+                ]
+              }
+            }
           }
         }
       },
@@ -29046,11 +31229,16 @@
         "title": "ProxyGroup",
         "required": [
           "name",
-          "description",
-          "availableCount"
+          "description"
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "examples": [
+              "Hsu2Sk8jPqxd3dNsB"
+            ]
+          },
           "name": {
             "type": "string",
             "examples": [
@@ -29076,14 +31264,17 @@
       },
       "ProxyResource": {
         "title": "ProxyResource",
+        "description": "Proxy access info. Omitted when the user has no access to Apify Proxy.",
         "required": [
-          "password",
           "groups"
         ],
         "type": "object",
         "properties": {
           "password": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "examples": [
               "ad78knd9Jkjd86"
             ]
@@ -29272,6 +31463,92 @@
             "type": "object",
             "description": "Pricing details for this plan.",
             "additionalProperties": true
+          },
+          "planVersion": {
+            "type": "number",
+            "description": "Version of the plan definition.",
+            "examples": [
+              2
+            ]
+          },
+          "legacyPlanId": {
+            "type": "string",
+            "description": "ID of the legacy plan this plan was migrated from.",
+            "examples": [
+              "STARTER"
+            ]
+          },
+          "planTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              []
+            ]
+          },
+          "overageThresholdUsd": {
+            "type": "number",
+            "description": "Mid-cycle overage threshold above which the user is billed for the current-cycle overage.",
+            "examples": [
+              500
+            ]
+          },
+          "maxMonthlyUnblockerUnits": {
+            "type": "integer",
+            "examples": [
+              1000000
+            ]
+          },
+          "maxPublicActorTaskCount": {
+            "type": "integer",
+            "examples": [
+              100
+            ]
+          },
+          "maxPublicActorTaskCountPerActor": {
+            "type": "integer",
+            "examples": [
+              10
+            ]
+          },
+          "forceBillingInterval": {
+            "type": "string",
+            "description": "If set, the plan can be subscribed only in this billing interval.",
+            "examples": [
+              "ANNUAL"
+            ]
+          },
+          "personalizedSupport": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Hours of personalized support with Apify engineers included in the plan, as `Nh/P`: `N` hours per period\n`P`, where `P` is `M` (monthly), `Q` (quarterly), `B` (every 6 months) or `A` (annually), for example `1h/M`.\n`null` or missing means the plan includes no personalized support.\n",
+            "examples": [
+              "4h/M"
+            ]
+          },
+          "monitoringLevel": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "STANDARD",
+              null
+            ],
+            "description": "Level of monitoring services included in the plan. `null` or missing means the plan includes no monitoring service.",
+            "examples": [
+              "STANDARD"
+            ]
+          },
+          "isPayingCustomer": {
+            "type": "boolean",
+            "description": "Marks the user as a paying customer even without a subscription.",
+            "examples": [
+              false
+            ]
           }
         }
       },
@@ -29399,8 +31676,12 @@
             "$ref": "#/components/schemas/UserProfile"
           },
           "email": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "email",
+            "description": "Primary email of the user. It is `null` when the email is not verified.",
             "examples": [
               "bob@example.com"
             ]
@@ -29425,6 +31706,16 @@
             "type": "boolean",
             "examples": [
               true
+            ]
+          },
+          "organizationOwnerUserId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "ID of the user who owns the organization. Present only for organization accounts.",
+            "examples": [
+              "wRsJZtadYvn4mBZmm"
             ]
           }
         }
@@ -29739,6 +32030,12 @@
             "examples": [
               100
             ]
+          },
+          "maxMonthlyUnblockerUnits": {
+            "type": "number",
+            "examples": [
+              1000000
+            ]
           }
         }
       },
@@ -29823,6 +32120,12 @@
             "examples": [
               77
             ]
+          },
+          "monthlyUnblockerUnits": {
+            "type": "number",
+            "examples": [
+              1520
+            ]
           }
         }
       },
@@ -29875,6 +32178,257 @@
               90
             ],
             "description": "Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/storage#data-retention).\n"
+          }
+        }
+      },
+      "GitProviderWorkspace": {
+        "title": "GitProviderWorkspace",
+        "description": "A place the user can create a repository in, such as their own account or an organization, group or workspace they can access.",
+        "required": [
+          "id",
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The workspace identifier to pass as `workspace` when creating a repository: the account or organization login\non GitHub, the numeric namespace ID on GitLab, or the workspace slug on Bitbucket.\n",
+            "examples": [
+              "janedoe"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "examples": [
+              "janedoe"
+            ]
+          }
+        }
+      },
+      "GitProviderIntegration": {
+        "title": "GitProviderIntegration",
+        "description": "A connected git provider account the user can create repositories through.",
+        "required": [
+          "id",
+          "provider",
+          "workspaces"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The provider ID to use in the `providerId` path parameter: `github-app` for the GitHub App, or the ID of a\nconnected GitLab or Bitbucket integration.\n",
+            "examples": [
+              "github-app"
+            ]
+          },
+          "provider": {
+            "type": "string",
+            "enum": [
+              "github",
+              "gitlab",
+              "bitbucket"
+            ],
+            "examples": [
+              "github"
+            ]
+          },
+          "workspaces": {
+            "type": "array",
+            "description": "The workspaces the account can create a repository in. Empty if listing them failed.",
+            "items": {
+              "$ref": "#/components/schemas/GitProviderWorkspace"
+            }
+          },
+          "addWorkspaceUrl": {
+            "type": "string",
+            "description": "URL where the user can install the GitHub App on another account or organization. Only for the GitHub App.",
+            "examples": [
+              "https://github.com/apps/apify/installations/new"
+            ]
+          }
+        }
+      },
+      "ListOfGitProviderIntegrationsResponse": {
+        "title": "ListOfGitProviderIntegrationsResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GitProviderIntegration"
+            }
+          }
+        }
+      },
+      "GitRepoFile": {
+        "title": "GitRepoFile",
+        "description": "A file to commit into the new repository.",
+        "required": [
+          "path",
+          "content",
+          "encoding"
+        ],
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "examples": [
+              "src/main.js"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "examples": [
+              "console.log('Hello');"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "enum": [
+              "utf-8",
+              "base64"
+            ],
+            "examples": [
+              "utf-8"
+            ]
+          }
+        }
+      },
+      "CreateGitRepoRequest": {
+        "title": "CreateGitRepoRequest",
+        "required": [
+          "workspace",
+          "repoName",
+          "isPrivate"
+        ],
+        "type": "object",
+        "properties": {
+          "workspace": {
+            "type": "string",
+            "description": "Where to create the repository, as the `id` of one of the provider's workspaces. On GitLab, this is the\nnumeric namespace ID.\n",
+            "examples": [
+              "janedoe"
+            ]
+          },
+          "repoName": {
+            "type": "string",
+            "examples": [
+              "my-actor"
+            ]
+          },
+          "isPrivate": {
+            "type": "boolean",
+            "examples": [
+              true
+            ]
+          },
+          "files": {
+            "type": "array",
+            "description": "Files to commit as the initial commit. Can't be combined with `templateArchiveUrl`.",
+            "items": {
+              "$ref": "#/components/schemas/GitRepoFile"
+            }
+          },
+          "templateArchiveUrl": {
+            "type": "string",
+            "description": "URL of an Actor template archive whose files are committed as the initial commit. Can't be combined with\n`files`.\n",
+            "examples": [
+              "https://github.com/apify/actor-templates/blob/master/dist/templates/js-start.zip?raw=true"
+            ]
+          }
+        }
+      },
+      "GitRepo": {
+        "title": "GitRepo",
+        "description": "URLs of a newly created repository.",
+        "required": [
+          "sshUrl",
+          "httpsUrl",
+          "htmlUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "sshUrl": {
+            "type": "string",
+            "examples": [
+              "git@github.com:janedoe/my-actor.git"
+            ]
+          },
+          "httpsUrl": {
+            "type": "string",
+            "examples": [
+              "https://github.com/janedoe/my-actor.git"
+            ]
+          },
+          "htmlUrl": {
+            "type": "string",
+            "examples": [
+              "https://github.com/janedoe/my-actor"
+            ]
+          }
+        }
+      },
+      "GitRepoResponse": {
+        "title": "GitRepoResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/GitRepo"
+          }
+        }
+      },
+      "RegisterDeploymentKeyRequest": {
+        "title": "RegisterDeploymentKeyRequest",
+        "required": [
+          "actorId",
+          "repoName"
+        ],
+        "type": "object",
+        "properties": {
+          "actorId": {
+            "type": "string",
+            "description": "ID or `username~name` of the Actor whose deployment key to register.",
+            "examples": [
+              "janedoe~my-actor"
+            ]
+          },
+          "repoName": {
+            "type": "string",
+            "description": "URL of the repository to register the key on. Its host must match the provider.",
+            "examples": [
+              "https://github.com/janedoe/my-actor"
+            ]
+          }
+        }
+      },
+      "RegisterDeploymentKeyResponse": {
+        "title": "RegisterDeploymentKeyResponse",
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "repoName"
+            ],
+            "properties": {
+              "repoName": {
+                "type": "string",
+                "description": "The normalized URL of the repository the key is registered on.",
+                "examples": [
+                  "https://github.com/janedoe/my-actor"
+                ]
+              }
+            }
           }
         }
       },
@@ -30152,6 +32706,9 @@
           }
         }
       },
+      "NoContent": {
+        "description": "No content"
+      },
       "PaymentRequired": {
         "description": "Payment required - the user has exceeded their usage limit, does not have enough credits, or the request lacks authentication and payment credentials.",
         "content": {
@@ -30183,9 +32740,6 @@
             }
           }
         }
-      },
-      "NoContent": {
-        "description": "No content"
       },
       "Conflict": {
         "description": "Conflict - the request could not be completed due to a conflict with the current state of the resource.",

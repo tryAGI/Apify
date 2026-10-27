@@ -28,6 +28,12 @@ namespace Apify
         public bool? IsSecret { get; set; }
 
         /// <summary>
+        /// A short hash of the secret value, to detect value changes. Returned only for secret environment variables, in place of `value`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("valueHash")]
+        public string? ValueHash { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,17 +51,22 @@ namespace Apify
         /// <param name="isSecret">
         /// Whether the environment variable is encrypted. Secret values aren't returned by the API.
         /// </param>
+        /// <param name="valueHash">
+        /// A short hash of the secret value, to detect value changes. Returned only for secret environment variables, in place of `value`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public EnvVar(
             string name,
             string? value,
-            bool? isSecret)
+            bool? isSecret,
+            string? valueHash)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Value = value;
             this.IsSecret = isSecret;
+            this.ValueHash = valueHash;
         }
 
         /// <summary>

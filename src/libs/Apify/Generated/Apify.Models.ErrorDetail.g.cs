@@ -22,6 +22,12 @@ namespace Apify
         public string? Message { get; set; }
 
         /// <summary>
+        /// Additional machine-readable details about the error. Present only for some error types.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data")]
+        public object? Data { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -36,15 +42,20 @@ namespace Apify
         /// <param name="message">
         /// Human-readable error message describing what went wrong.
         /// </param>
+        /// <param name="data">
+        /// Additional machine-readable details about the error. Present only for some error types.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ErrorDetail(
             global::Apify.ErrorType? type,
-            string? message)
+            string? message,
+            object? data)
         {
             this.Type = type;
             this.Message = message;
+            this.Data = data;
         }
 
         /// <summary>

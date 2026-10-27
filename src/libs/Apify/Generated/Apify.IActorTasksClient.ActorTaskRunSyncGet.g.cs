@@ -40,6 +40,9 @@ namespace Apify
         /// <param name="maxTotalChargeUsd">
         /// Example: 5
         /// </param>
+        /// <param name="restartOnError">
+        /// Example: false
+        /// </param>
         /// <param name="build">
         /// Example: 0.1.234
         /// </param>
@@ -58,6 +61,7 @@ namespace Apify
             double? memory = default,
             double? maxItems = default,
             double? maxTotalChargeUsd = default,
+            bool? restartOnError = default,
             string? build = default,
             string? outputRecordKey = default,
             byte[]? webhooks = default,
@@ -99,6 +103,9 @@ namespace Apify
         /// <param name="maxTotalChargeUsd">
         /// Example: 5
         /// </param>
+        /// <param name="restartOnError">
+        /// Example: false
+        /// </param>
         /// <param name="build">
         /// Example: 0.1.234
         /// </param>
@@ -117,6 +124,7 @@ namespace Apify
             double? memory = default,
             double? maxItems = default,
             double? maxTotalChargeUsd = default,
+            bool? restartOnError = default,
             string? build = default,
             string? outputRecordKey = default,
             byte[]? webhooks = default,

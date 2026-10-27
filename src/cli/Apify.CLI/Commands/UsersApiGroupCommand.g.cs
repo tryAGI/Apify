@@ -11,6 +11,9 @@ internal static partial class UsersApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"users", @"Users endpoint commands.");
+                         command.Subcommands.Add(UsersIntegrationsGitCreateRepoPostCommandApiCommand.Create());
+                         command.Subcommands.Add(UsersIntegrationsGitGetCommandApiCommand.Create());
+                         command.Subcommands.Add(UsersIntegrationsGitRegisterDeploymentKeyPostCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUserGetCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUsersMeGetCommandApiCommand.Create());
         CustomizeCommand(ref command);

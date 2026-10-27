@@ -11,9 +11,12 @@ internal static partial class UsersUsageApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"users-usage", @"Users/Usage endpoint commands.");
+                         command.Subcommands.Add(UsersUsageUsersLimitsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(UsersUsageUsersLimitsPutCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUsageUsersMeLimitsGetCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUsageUsersMeLimitsPutCommandApiCommand.Create());
                          command.Subcommands.Add(UsersUsageUsersMeUsageMonthlyGetCommandApiCommand.Create());
+                         command.Subcommands.Add(UsersUsageUsersUsageMonthlyGetCommandApiCommand.Create());
         CustomizeCommand(ref command);
         return command;
     }

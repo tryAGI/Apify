@@ -33,7 +33,7 @@ internal static partial class ActorsWebhookCollectionActorWebhooksGetCommandApiC
 descending order. By default, they are sorted in ascending order.
 ");
 
-                    private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfWebhooksResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfWebhookResourcesResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -49,7 +49,7 @@ descending order. By default, they are sorted in ascending order.
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.ListOfWebhooksResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.ListOfWebhookResourcesResponse value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 

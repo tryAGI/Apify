@@ -110,6 +110,12 @@ namespace Apify
         public required string DefaultRequestQueueId { get; set; }
 
         /// <summary>
+        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standby")]
+        public global::Apify.RunStandby? Standby { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -135,6 +141,9 @@ namespace Apify
         /// <param name="finishedAt"></param>
         /// <param name="buildNumber"></param>
         /// <param name="buildNumberInt"></param>
+        /// <param name="standby">
+        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -153,7 +162,8 @@ namespace Apify
             string? actorTaskId,
             global::System.DateTime? finishedAt,
             string? buildNumber,
-            int? buildNumberInt)
+            int? buildNumberInt,
+            global::Apify.RunStandby? standby)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
@@ -170,6 +180,7 @@ namespace Apify
             this.DefaultKeyValueStoreId = defaultKeyValueStoreId ?? throw new global::System.ArgumentNullException(nameof(defaultKeyValueStoreId));
             this.DefaultDatasetId = defaultDatasetId ?? throw new global::System.ArgumentNullException(nameof(defaultDatasetId));
             this.DefaultRequestQueueId = defaultRequestQueueId ?? throw new global::System.ArgumentNullException(nameof(defaultRequestQueueId));
+            this.Standby = standby;
         }
 
         /// <summary>

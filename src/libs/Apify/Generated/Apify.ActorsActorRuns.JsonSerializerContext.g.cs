@@ -52,12 +52,15 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus), TypeInfoPropertyName = "ActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandby))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns), TypeInfoPropertyName = "ListOfRuns2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRunsVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RunListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRunsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStats))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunEventUsage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.IntegrationTracking))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess), TypeInfoPropertyName = "GeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunUsage))]
@@ -65,6 +68,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMetamorphEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Run))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.RunEventUsage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIds))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsDatasets))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsKeyValueStores))]
@@ -73,6 +77,10 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsRunsPostForcePermissionLevel), TypeInfoPropertyName = "ActorsRunsPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncPostForcePermissionLevel), TypeInfoPropertyName = "ActorRunSyncPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetForcePermissionLevel), TypeInfoPropertyName = "ActorRunSyncGetForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel), TypeInfoPropertyName = "ActorRunSyncGetDatasetItemsPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel), TypeInfoPropertyName = "ActorRunSyncGetDatasetItemsGetForcePermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
@@ -93,6 +101,10 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns?), TypeInfoPropertyName = "NullableListOfRuns2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess?), TypeInfoPropertyName = "NullableGeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsRunsPostForcePermissionLevel?), TypeInfoPropertyName = "NullableActorsRunsPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncPostForcePermissionLevel?), TypeInfoPropertyName = "NullableActorRunSyncPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetForcePermissionLevel?), TypeInfoPropertyName = "NullableActorRunSyncGetForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel?), TypeInfoPropertyName = "NullableActorRunSyncGetDatasetItemsPostForcePermissionLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel?), TypeInfoPropertyName = "NullableActorRunSyncGetDatasetItemsGetForcePermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RunListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RunMetamorphEvent>))]
@@ -151,6 +163,7 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.ListOfRunsJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -195,7 +208,23 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.ActorsRunsPostForcePermissionLevel)
 
-                    || typeToConvert == typeof(global::Apify.ActorsRunsPostForcePermissionLevel?);
+                    || typeToConvert == typeof(global::Apify.ActorsRunsPostForcePermissionLevel?)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncPostForcePermissionLevel)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncPostForcePermissionLevel?)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetForcePermissionLevel)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetForcePermissionLevel?)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel?)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel)
+
+                    || typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -260,6 +289,46 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.ActorsRunsPostForcePermissionLevel?))
                 {
                     return new global::Apify.JsonConverters.ActorsRunsPostForcePermissionLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncPostForcePermissionLevel))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncPostForcePermissionLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncPostForcePermissionLevel?))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncPostForcePermissionLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetForcePermissionLevel))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetForcePermissionLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetForcePermissionLevel?))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetForcePermissionLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetDatasetItemsPostForcePermissionLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel?))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetDatasetItemsPostForcePermissionLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetDatasetItemsGetForcePermissionLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel?))
+                {
+                    return new global::Apify.JsonConverters.ActorRunSyncGetDatasetItemsGetForcePermissionLevelNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

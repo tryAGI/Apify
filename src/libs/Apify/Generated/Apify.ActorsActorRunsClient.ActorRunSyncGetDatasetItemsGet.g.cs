@@ -35,6 +35,7 @@ namespace Apify
             ref bool? restartOnError,
             ref string? build,
             byte[]? webhooks,
+            ref global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? forcePermissionLevel,
             ref string? format,
             ref bool? clean,
             ref double? offset,
@@ -69,6 +70,7 @@ namespace Apify
             bool? restartOnError,
             string? build,
             byte[]? webhooks,
+            global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? forcePermissionLevel,
             string? format,
             bool? clean,
             double? offset,
@@ -139,6 +141,9 @@ namespace Apify
         /// </param>
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
+        /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="format">
         /// Example: json
@@ -219,6 +224,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? forcePermissionLevel = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -254,6 +260,7 @@ namespace Apify
                 restartOnError: restartOnError,
                 build: build,
                 webhooks: webhooks,
+                forcePermissionLevel: forcePermissionLevel,
                 format: format,
                 clean: clean,
                 offset: offset,
@@ -321,6 +328,9 @@ namespace Apify
         /// </param>
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
+        /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="format">
         /// Example: json
@@ -401,6 +411,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? forcePermissionLevel = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -439,6 +450,7 @@ namespace Apify
                 restartOnError: ref restartOnError,
                 build: ref build,
                 webhooks: webhooks,
+                forcePermissionLevel: ref forcePermissionLevel,
                 format: ref format,
                 clean: ref clean,
                 offset: ref offset,
@@ -497,6 +509,7 @@ namespace Apify
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("webhooks", webhooks?.ToString())
+                                .AddOptionalParameter("forcePermissionLevel", forcePermissionLevel?.ToValueString())
                                 .AddOptionalParameter("format", format)
                                 .AddOptionalParameter("clean", clean?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("offset", offset?.ToString())
@@ -569,6 +582,7 @@ namespace Apify
                     restartOnError: restartOnError,
                     build: build,
                     webhooks: webhooks,
+                    forcePermissionLevel: forcePermissionLevel,
                     format: format,
                     clean: clean,
                     offset: offset,

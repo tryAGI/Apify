@@ -81,6 +81,16 @@ the WebhookRepresentation schema. For more information, see
 [Webhooks documentation](https://docs.apify.com/platform/integrations/webhooks).
 ",
     };
+
+    private static Option<global::Apify.ActorRunSyncPostForcePermissionLevel?> ForcePermissionLevel { get; } = new(
+        name: @"--force-permission-level")
+    {
+        Description = @"Overrides the Actor's permission level for this specific run. Use to test restricted permissions
+before deploying changes to your Actor or to temporarily elevate or restrict access. If you don't specify this
+parameter, the Actor uses its configured default permission level. For more information on permissions, see the
+[documentation](https://docs.apify.com/platform/actors/development/permissions).
+",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -157,6 +167,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         command.Options.Add(RestartOnError);
                         command.Options.Add(Build);
                         command.Options.Add(Webhooks);
+                        command.Options.Add(ForcePermissionLevel);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -184,6 +195,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         var restartOnError = parseResult.GetValue(RestartOnError);
                         var build = parseResult.GetValue(Build);
                         var webhooks = parseResult.GetValue(Webhooks);
+                        var forcePermissionLevel = parseResult.GetValue(ForcePermissionLevel);
                         var request = await CliRuntime.ReadRequestAsync<object>(
                             parseResult,
                             Input,
@@ -204,6 +216,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                                     restartOnError: restartOnError,
                                     build: build,
                                     webhooks: webhooks,
+                                    forcePermissionLevel: forcePermissionLevel,
                                     request: request,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 

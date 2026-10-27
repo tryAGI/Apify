@@ -36,6 +36,12 @@ namespace Apify
         public string? InputKey { get; set; }
 
         /// <summary>
+        /// Build tags of the build used for the metamorphed Actor.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("buildTags")]
+        public global::System.Collections.Generic.IList<string>? BuildTags { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,6 +62,9 @@ namespace Apify
         /// <param name="inputKey">
         /// Key of the input record in the key-value store.
         /// </param>
+        /// <param name="buildTags">
+        /// Build tags of the build used for the metamorphed Actor.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -63,12 +72,14 @@ namespace Apify
             global::System.DateTime createdAt,
             string actorId,
             string buildId,
-            string? inputKey)
+            string? inputKey,
+            global::System.Collections.Generic.IList<string>? buildTags)
         {
             this.CreatedAt = createdAt;
             this.ActorId = actorId ?? throw new global::System.ArgumentNullException(nameof(actorId));
             this.BuildId = buildId ?? throw new global::System.ArgumentNullException(nameof(buildId));
             this.InputKey = inputKey;
+            this.BuildTags = buildTags;
         }
 
         /// <summary>

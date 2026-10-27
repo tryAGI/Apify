@@ -165,6 +165,75 @@ namespace Apify
         public object? PlanPricing { get; set; }
 
         /// <summary>
+        /// Version of the plan definition.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("planVersion")]
+        public double? PlanVersion { get; set; }
+
+        /// <summary>
+        /// ID of the legacy plan this plan was migrated from.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("legacyPlanId")]
+        public string? LegacyPlanId { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("planTags")]
+        public global::System.Collections.Generic.IList<string>? PlanTags { get; set; }
+
+        /// <summary>
+        /// Mid-cycle overage threshold above which the user is billed for the current-cycle overage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("overageThresholdUsd")]
+        public double? OverageThresholdUsd { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyUnblockerUnits")]
+        public int? MaxMonthlyUnblockerUnits { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxPublicActorTaskCount")]
+        public int? MaxPublicActorTaskCount { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxPublicActorTaskCountPerActor")]
+        public int? MaxPublicActorTaskCountPerActor { get; set; }
+
+        /// <summary>
+        /// If set, the plan can be subscribed only in this billing interval.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("forceBillingInterval")]
+        public string? ForceBillingInterval { get; set; }
+
+        /// <summary>
+        /// Hours of personalized support with Apify engineers included in the plan, as `Nh/P`: `N` hours per period<br/>
+        /// `P`, where `P` is `M` (monthly), `Q` (quarterly), `B` (every 6 months) or `A` (annually), for example `1h/M`.<br/>
+        /// `null` or missing means the plan includes no personalized support.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("personalizedSupport")]
+        public string? PersonalizedSupport { get; set; }
+
+        /// <summary>
+        /// Level of monitoring services included in the plan. `null` or missing means the plan includes no monitoring service.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("monitoringLevel")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.UserPlanMonitoringLevelJsonConverter))]
+        public global::Apify.UserPlanMonitoringLevel? MonitoringLevel { get; set; }
+
+        /// <summary>
+        /// Marks the user as a paying customer even without a subscription.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isPayingCustomer")]
+        public bool? IsPayingCustomer { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -207,6 +276,33 @@ namespace Apify
         /// <param name="planPricing">
         /// Pricing details for this plan.
         /// </param>
+        /// <param name="planVersion">
+        /// Version of the plan definition.
+        /// </param>
+        /// <param name="legacyPlanId">
+        /// ID of the legacy plan this plan was migrated from.
+        /// </param>
+        /// <param name="planTags"></param>
+        /// <param name="overageThresholdUsd">
+        /// Mid-cycle overage threshold above which the user is billed for the current-cycle overage.
+        /// </param>
+        /// <param name="maxMonthlyUnblockerUnits"></param>
+        /// <param name="maxPublicActorTaskCount"></param>
+        /// <param name="maxPublicActorTaskCountPerActor"></param>
+        /// <param name="forceBillingInterval">
+        /// If set, the plan can be subscribed only in this billing interval.
+        /// </param>
+        /// <param name="personalizedSupport">
+        /// Hours of personalized support with Apify engineers included in the plan, as `Nh/P`: `N` hours per period<br/>
+        /// `P`, where `P` is `M` (monthly), `Q` (quarterly), `B` (every 6 months) or `A` (annually), for example `1h/M`.<br/>
+        /// `null` or missing means the plan includes no personalized support.
+        /// </param>
+        /// <param name="monitoringLevel">
+        /// Level of monitoring services included in the plan. `null` or missing means the plan includes no monitoring service.
+        /// </param>
+        /// <param name="isPayingCustomer">
+        /// Marks the user as a paying customer even without a subscription.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -235,7 +331,18 @@ namespace Apify
             int? apiRateLimitBoosts,
             int? maxScheduleCount,
             int? maxConcurrentActorRuns,
-            object? planPricing)
+            object? planPricing,
+            double? planVersion,
+            string? legacyPlanId,
+            global::System.Collections.Generic.IList<string>? planTags,
+            double? overageThresholdUsd,
+            int? maxMonthlyUnblockerUnits,
+            int? maxPublicActorTaskCount,
+            int? maxPublicActorTaskCountPerActor,
+            string? forceBillingInterval,
+            string? personalizedSupport,
+            global::Apify.UserPlanMonitoringLevel? monitoringLevel,
+            bool? isPayingCustomer)
         {
             this.Id = id;
             this.Description = description;
@@ -262,6 +369,17 @@ namespace Apify
             this.MaxScheduleCount = maxScheduleCount;
             this.MaxConcurrentActorRuns = maxConcurrentActorRuns;
             this.PlanPricing = planPricing;
+            this.PlanVersion = planVersion;
+            this.LegacyPlanId = legacyPlanId;
+            this.PlanTags = planTags;
+            this.OverageThresholdUsd = overageThresholdUsd;
+            this.MaxMonthlyUnblockerUnits = maxMonthlyUnblockerUnits;
+            this.MaxPublicActorTaskCount = maxPublicActorTaskCount;
+            this.MaxPublicActorTaskCountPerActor = maxPublicActorTaskCountPerActor;
+            this.ForceBillingInterval = forceBillingInterval;
+            this.PersonalizedSupport = personalizedSupport;
+            this.MonitoringLevel = monitoringLevel;
+            this.IsPayingCustomer = isPayingCustomer;
         }
 
         /// <summary>

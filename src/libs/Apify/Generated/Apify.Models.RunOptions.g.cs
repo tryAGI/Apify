@@ -37,6 +37,12 @@ namespace Apify
         public required long DiskMbytes { get; set; }
 
         /// <summary>
+        /// Whether to automatically restart the run if it fails.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("restartOnError")]
+        public bool? RestartOnError { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxItems")]
@@ -47,6 +53,12 @@ namespace Apify
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxTotalChargeUsd")]
         public double? MaxTotalChargeUsd { get; set; }
+
+        /// <summary>
+        /// Whether the user explicitly set `maxTotalChargeUsd` when starting the run. Not present for pay-per-result Actors.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isMaxTotalChargeUsdSetByUser")]
+        public bool? IsMaxTotalChargeUsdSetByUser { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -61,8 +73,14 @@ namespace Apify
         /// <param name="timeoutSecs"></param>
         /// <param name="memoryMbytes"></param>
         /// <param name="diskMbytes"></param>
+        /// <param name="restartOnError">
+        /// Whether to automatically restart the run if it fails.
+        /// </param>
         /// <param name="maxItems"></param>
         /// <param name="maxTotalChargeUsd"></param>
+        /// <param name="isMaxTotalChargeUsdSetByUser">
+        /// Whether the user explicitly set `maxTotalChargeUsd` when starting the run. Not present for pay-per-result Actors.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -71,15 +89,19 @@ namespace Apify
             int timeoutSecs,
             long memoryMbytes,
             long diskMbytes,
+            bool? restartOnError,
             int? maxItems,
-            double? maxTotalChargeUsd)
+            double? maxTotalChargeUsd,
+            bool? isMaxTotalChargeUsdSetByUser)
         {
             this.Build = build ?? throw new global::System.ArgumentNullException(nameof(build));
             this.TimeoutSecs = timeoutSecs;
             this.MemoryMbytes = memoryMbytes;
             this.DiskMbytes = diskMbytes;
+            this.RestartOnError = restartOnError;
             this.MaxItems = maxItems;
             this.MaxTotalChargeUsd = maxTotalChargeUsd;
+            this.IsMaxTotalChargeUsdSetByUser = isMaxTotalChargeUsdSetByUser;
         }
 
         /// <summary>

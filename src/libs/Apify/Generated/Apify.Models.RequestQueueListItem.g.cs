@@ -19,8 +19,13 @@ namespace Apify
         /// The name of the request queue.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The title of the request queue.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
 
         /// <summary>
         /// The ID of the user who owns the request queue.
@@ -33,8 +38,7 @@ namespace Apify
         /// The username of the user who owns the request queue.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Username { get; set; }
+        public string? Username { get; set; }
 
         /// <summary>
         /// The timestamp when the request queue was created.
@@ -110,10 +114,10 @@ namespace Apify
         public global::Apify.GeneralAccess? GeneralAccess { get; set; }
 
         /// <summary>
-        /// Statistics about request queue operations and storage.
+        /// Statistics about request queue operations and storage, as returned in request queue lists.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
-        public global::Apify.RequestQueueStats? Stats { get; set; }
+        public global::Apify.RequestQueueListStats? Stats { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -127,14 +131,8 @@ namespace Apify
         /// <param name="id">
         /// A unique identifier assigned to the request queue.
         /// </param>
-        /// <param name="name">
-        /// The name of the request queue.
-        /// </param>
         /// <param name="userId">
         /// The ID of the user who owns the request queue.
-        /// </param>
-        /// <param name="username">
-        /// The username of the user who owns the request queue.
         /// </param>
         /// <param name="createdAt">
         /// The timestamp when the request queue was created.
@@ -157,6 +155,15 @@ namespace Apify
         /// <param name="hadMultipleClients">
         /// Whether the request queue has been accessed by multiple different clients.
         /// </param>
+        /// <param name="name">
+        /// The name of the request queue.
+        /// </param>
+        /// <param name="title">
+        /// The title of the request queue.
+        /// </param>
+        /// <param name="username">
+        /// The username of the user who owns the request queue.
+        /// </param>
         /// <param name="expireAt">
         /// The timestamp when the request queue will expire and be deleted.
         /// </param>
@@ -168,16 +175,14 @@ namespace Apify
         /// </param>
         /// <param name="generalAccess"></param>
         /// <param name="stats">
-        /// Statistics about request queue operations and storage.
+        /// Statistics about request queue operations and storage, as returned in request queue lists.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RequestQueueListItem(
             string id,
-            string name,
             string userId,
-            string username,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
             global::System.DateTime accessedAt,
@@ -185,16 +190,20 @@ namespace Apify
             int handledRequestCount,
             int pendingRequestCount,
             bool hadMultipleClients,
+            string? name,
+            string? title,
+            string? username,
             global::System.DateTime? expireAt,
             string? actId,
             string? actRunId,
             global::Apify.GeneralAccess? generalAccess,
-            global::Apify.RequestQueueStats? stats)
+            global::Apify.RequestQueueListStats? stats)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Name = name;
+            this.Title = title;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
-            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
+            this.Username = username;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
             this.AccessedAt = accessedAt;

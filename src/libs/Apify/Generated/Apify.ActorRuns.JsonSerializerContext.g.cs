@@ -52,12 +52,15 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus), TypeInfoPropertyName = "ActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandby))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns), TypeInfoPropertyName = "ListOfRuns2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRunsVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.RunListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRunsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStats))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunEventUsage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.IntegrationTracking))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess), TypeInfoPropertyName = "GeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunUsage))]
@@ -65,6 +68,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMetamorphEvent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.Run))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, int>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.RunEventUsage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIds))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsDatasets))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStorageIdsKeyValueStores))]
@@ -151,6 +155,7 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.ActorRunPricingInfoJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.ListOfRunsJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.UpdateRunRequest, object>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());

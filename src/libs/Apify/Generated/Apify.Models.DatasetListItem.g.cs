@@ -19,8 +19,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///
@@ -110,13 +109,13 @@ namespace Apify
         /// Initializes a new instance of the <see cref="DatasetListItem" /> class.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="name"></param>
         /// <param name="userId"></param>
         /// <param name="createdAt"></param>
         /// <param name="modifiedAt"></param>
         /// <param name="accessedAt"></param>
         /// <param name="itemCount"></param>
         /// <param name="cleanItemCount"></param>
+        /// <param name="name"></param>
         /// <param name="actId"></param>
         /// <param name="actRunId"></param>
         /// <param name="title"></param>
@@ -128,13 +127,13 @@ namespace Apify
 #endif
         public DatasetListItem(
             string id,
-            string name,
             string userId,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
             global::System.DateTime accessedAt,
             int itemCount,
             int cleanItemCount,
+            string? name,
             string? actId,
             string? actRunId,
             string? title,
@@ -143,7 +142,7 @@ namespace Apify
             global::Apify.DatasetStats? stats)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Name = name;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;

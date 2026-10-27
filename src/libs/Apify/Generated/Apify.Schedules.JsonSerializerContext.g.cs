@@ -24,9 +24,12 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel), TypeInfoPropertyName = "ActorPermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.IntegrationTracking))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TaskOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleBase))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleNotifications))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleListItemActionRunActor))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleListItemActionRunActorTask))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleListItemAction), TypeInfoPropertyName = "ScheduleListItemAction2")]
@@ -39,7 +42,6 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfSchedulesVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ScheduleListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfSchedulesResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleNotifications))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleActionRunInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleCreateActionRunActor))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleCreateActionRunActorTask))]
@@ -48,6 +50,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleCreateActionDiscriminatorType), TypeInfoPropertyName = "ScheduleCreateActionDiscriminatorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateOrUpdateScheduleRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ScheduleCreateAction>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleUiState))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleUiStateData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleActionRunActor))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleActionRunActorTask))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleAction), TypeInfoPropertyName = "ScheduleAction2")]
@@ -65,6 +69,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel?), TypeInfoPropertyName = "NullableActorPermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleListItemAction?), TypeInfoPropertyName = "NullableScheduleListItemAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ScheduleListItemActionDiscriminatorType?), TypeInfoPropertyName = "NullableScheduleListItemActionDiscriminatorType2")]
@@ -135,6 +140,7 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.ScheduleJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -161,6 +167,10 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.ErrorType?)
 
+                    || typeToConvert == typeof(global::Apify.ActorPermissionLevel)
+
+                    || typeToConvert == typeof(global::Apify.ActorPermissionLevel?)
+
                     || typeToConvert == typeof(global::Apify.ScheduleListItemActionDiscriminatorType)
 
                     || typeToConvert == typeof(global::Apify.ScheduleListItemActionDiscriminatorType?)
@@ -186,6 +196,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.ErrorType?))
                 {
                     return new global::Apify.JsonConverters.ErrorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorPermissionLevel))
+                {
+                    return new global::Apify.JsonConverters.ActorPermissionLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorPermissionLevel?))
+                {
+                    return new global::Apify.JsonConverters.ActorPermissionLevelNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.ScheduleListItemActionDiscriminatorType))

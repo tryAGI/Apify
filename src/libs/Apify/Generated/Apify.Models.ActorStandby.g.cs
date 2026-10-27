@@ -57,6 +57,24 @@ namespace Apify
         public bool? ShouldPassActorInput { get; set; }
 
         /// <summary>
+        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tenancy")]
+        public string? Tenancy { get; set; }
+
+        /// <summary>
+        /// Whether standby requests can be authenticated with an Apify Console session. Set by Apify.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isConsoleAuthEnabled")]
+        public bool? IsConsoleAuthEnabled { get; set; }
+
+        /// <summary>
+        /// Whether standby requests can be made without an API token. Set by Apify.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isTokenlessEnabled")]
+        public bool? IsTokenlessEnabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -89,6 +107,15 @@ namespace Apify
         /// <param name="shouldPassActorInput">
         /// Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input.
         /// </param>
+        /// <param name="tenancy">
+        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.
+        /// </param>
+        /// <param name="isConsoleAuthEnabled">
+        /// Whether standby requests can be authenticated with an Apify Console session. Set by Apify.
+        /// </param>
+        /// <param name="isTokenlessEnabled">
+        /// Whether standby requests can be made without an API token. Set by Apify.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -100,7 +127,10 @@ namespace Apify
             string? build,
             long? memoryMbytes,
             bool? disableStandbyFieldsOverride,
-            bool? shouldPassActorInput)
+            bool? shouldPassActorInput,
+            string? tenancy,
+            bool? isConsoleAuthEnabled,
+            bool? isTokenlessEnabled)
         {
             this.IsEnabled = isEnabled;
             this.DesiredRequestsPerActorRun = desiredRequestsPerActorRun;
@@ -110,6 +140,9 @@ namespace Apify
             this.MemoryMbytes = memoryMbytes;
             this.DisableStandbyFieldsOverride = disableStandbyFieldsOverride;
             this.ShouldPassActorInput = shouldPassActorInput;
+            this.Tenancy = tenancy;
+            this.IsConsoleAuthEnabled = isConsoleAuthEnabled;
+            this.IsTokenlessEnabled = isTokenlessEnabled;
         }
 
         /// <summary>

@@ -114,7 +114,7 @@ header!
 
 When providing your API authentication token, we recommend using the
 request's `Authorization` header, rather than the URL.
-For details, see [Authentication](/api/v2/getting-started#authentication).
+For details, see [Authentication](/api/v2#authentication).
 ");
                         command.Arguments.Add(WebhookId);
                         command.Options.Add(IsAdHoc);

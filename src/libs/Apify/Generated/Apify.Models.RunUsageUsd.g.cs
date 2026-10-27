@@ -81,6 +81,12 @@ namespace Apify
         public double? ProxySerps { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("PROXY_UNBLOCKER_UNITS")]
+        public double? ProxyUnblockerUnits { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -101,6 +107,7 @@ namespace Apify
         /// <param name="dataTransferExternalGbytes"></param>
         /// <param name="proxyResidentialTransferGbytes"></param>
         /// <param name="proxySerps"></param>
+        /// <param name="proxyUnblockerUnits"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -116,7 +123,8 @@ namespace Apify
             double? dataTransferInternalGbytes,
             double? dataTransferExternalGbytes,
             double? proxyResidentialTransferGbytes,
-            double? proxySerps)
+            double? proxySerps,
+            double? proxyUnblockerUnits)
         {
             this.ActorComputeUnits = actorComputeUnits;
             this.DatasetReads = datasetReads;
@@ -130,6 +138,7 @@ namespace Apify
             this.DataTransferExternalGbytes = dataTransferExternalGbytes;
             this.ProxyResidentialTransferGbytes = proxyResidentialTransferGbytes;
             this.ProxySerps = proxySerps;
+            this.ProxyUnblockerUnits = proxyUnblockerUnits;
         }
 
         /// <summary>

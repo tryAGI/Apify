@@ -64,6 +64,24 @@ namespace Apify
         public string? GitHubGistUrl { get; set; }
 
         /// <summary>
+        /// ID of the GitHub webhook that triggers a build on push. Present when build on push is enabled for a GitHub repository.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("githubWebhookId")]
+        public int? GithubWebhookId { get; set; }
+
+        /// <summary>
+        /// ID of the GitLab webhook that triggers a build on push. Present when build on push is enabled for a GitLab repository.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gitlabWebhookId")]
+        public int? GitlabWebhookId { get; set; }
+
+        /// <summary>
+        /// ID of the Bitbucket webhook that triggers a build on push. Present when build on push is enabled for a Bitbucket repository.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("bitbucketWebhookId")]
+        public string? BitbucketWebhookId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -99,6 +117,15 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
+        /// <param name="githubWebhookId">
+        /// ID of the GitHub webhook that triggers a build on push. Present when build on push is enabled for a GitHub repository.
+        /// </param>
+        /// <param name="gitlabWebhookId">
+        /// ID of the GitLab webhook that triggers a build on push. Present when build on push is enabled for a GitLab repository.
+        /// </param>
+        /// <param name="bitbucketWebhookId">
+        /// ID of the Bitbucket webhook that triggers a build on push. Present when build on push is enabled for a Bitbucket repository.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -111,7 +138,10 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles,
             string? gitRepoUrl,
             string? tarballUrl,
-            string? gitHubGistUrl)
+            string? gitHubGistUrl,
+            int? githubWebhookId,
+            int? gitlabWebhookId,
+            string? bitbucketWebhookId)
         {
             this.VersionNumber = versionNumber ?? throw new global::System.ArgumentNullException(nameof(versionNumber));
             this.SourceType = sourceType;
@@ -122,6 +152,9 @@ namespace Apify
             this.GitRepoUrl = gitRepoUrl;
             this.TarballUrl = tarballUrl;
             this.GitHubGistUrl = gitHubGistUrl;
+            this.GithubWebhookId = githubWebhookId;
+            this.GitlabWebhookId = gitlabWebhookId;
+            this.BitbucketWebhookId = bitbucketWebhookId;
         }
 
         /// <summary>

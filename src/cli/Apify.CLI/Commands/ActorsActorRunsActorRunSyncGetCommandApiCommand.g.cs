@@ -82,6 +82,16 @@ the WebhookRepresentation schema. For more information, see
 ",
     };
 
+    private static Option<global::Apify.ActorRunSyncGetForcePermissionLevel?> ForcePermissionLevel { get; } = new(
+        name: @"--force-permission-level")
+    {
+        Description = @"Overrides the Actor's permission level for this specific run. Use to test restricted permissions
+before deploying changes to your Actor or to temporarily elevate or restrict access. If you don't specify this
+parameter, the Actor uses its configured default permission level. For more information on permissions, see the
+[documentation](https://docs.apify.com/platform/actors/development/permissions).
+",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, string value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -135,6 +145,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         command.Options.Add(RestartOnError);
                         command.Options.Add(Build);
                         command.Options.Add(Webhooks);
+                        command.Options.Add(ForcePermissionLevel);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -149,6 +160,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         var restartOnError = parseResult.GetValue(RestartOnError);
                         var build = parseResult.GetValue(Build);
                         var webhooks = parseResult.GetValue(Webhooks);
+                        var forcePermissionLevel = parseResult.GetValue(ForcePermissionLevel);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -162,6 +174,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                                     restartOnError: restartOnError,
                                     build: build,
                                     webhooks: webhooks,
+                                    forcePermissionLevel: forcePermissionLevel,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

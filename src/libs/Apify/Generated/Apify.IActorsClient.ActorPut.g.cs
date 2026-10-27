@@ -16,7 +16,7 @@ namespace Apify
         /// ### Authentication<br/>
         /// To provide the authentication token, we recommend using the request's<br/>
         /// `Authorization` header, rather than the URL. For details,<br/>
-        /// see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// see [Authentication](/api/v2#authentication).<br/>
         /// ### Make an Actor public<br/>
         /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
         /// - Set `isPublic` to `true`.<br/>
@@ -74,7 +74,7 @@ namespace Apify
         /// ### Authentication<br/>
         /// To provide the authentication token, we recommend using the request's<br/>
         /// `Authorization` header, rather than the URL. For details,<br/>
-        /// see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// see [Authentication](/api/v2#authentication).<br/>
         /// ### Make an Actor public<br/>
         /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
         /// - Set `isPublic` to `true`.<br/>
@@ -132,7 +132,7 @@ namespace Apify
         /// ### Authentication<br/>
         /// To provide the authentication token, we recommend using the request's<br/>
         /// `Authorization` header, rather than the URL. For details,<br/>
-        /// see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// see [Authentication](/api/v2#authentication).<br/>
         /// ### Make an Actor public<br/>
         /// To make your Actor [public](https://docs.apify.com/platform/actors/publishing):<br/>
         /// - Set `isPublic` to `true`.<br/>

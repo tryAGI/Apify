@@ -49,11 +49,10 @@ namespace Apify
         public global::System.DateTime? FinishedAt { get; set; }
 
         /// <summary>
-        ///
+        /// Total cost in USD for this build. Requires authentication token to access.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usageTotalUsd")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double UsageTotalUsd { get; set; }
+        public double? UsageTotalUsd { get; set; }
 
         /// <summary>
         ///
@@ -88,11 +87,13 @@ namespace Apify
         /// Status of an Actor job (run or build).
         /// </param>
         /// <param name="startedAt"></param>
-        /// <param name="usageTotalUsd"></param>
         /// <param name="buildNumber"></param>
         /// <param name="actId"></param>
         /// <param name="userId"></param>
         /// <param name="finishedAt"></param>
+        /// <param name="usageTotalUsd">
+        /// Total cost in USD for this build. Requires authentication token to access.
+        /// </param>
         /// <param name="buildNumberInt"></param>
         /// <param name="meta"></param>
 #if NET7_0_OR_GREATER
@@ -102,11 +103,11 @@ namespace Apify
             string id,
             global::Apify.ActorJobStatus status,
             global::System.DateTime startedAt,
-            double usageTotalUsd,
             string buildNumber,
             string? actId,
             string? userId,
             global::System.DateTime? finishedAt,
+            double? usageTotalUsd,
             int? buildNumberInt,
             global::Apify.BuildMeta? meta)
         {

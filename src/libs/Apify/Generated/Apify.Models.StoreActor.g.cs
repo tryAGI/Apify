@@ -130,6 +130,12 @@ namespace Apify
         public string? ReadmeSummary { get; set; }
 
         /// <summary>
+        /// Compact input schema of the Actor's default build, with only property types and required properties. Returned only when `includeInputSchema=true` and the default build succeeded and defines input properties.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inputSchema")]
+        public global::Apify.StoreActorInputSchema? InputSchema { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -167,6 +173,9 @@ namespace Apify
         /// <param name="readmeSummary">
         /// A brief, LLM-generated readme summary
         /// </param>
+        /// <param name="inputSchema">
+        /// Compact input schema of the Actor's default build, with only property types and required properties. Returned only when `includeInputSchema=true` and the default build succeeded and defines input properties.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -189,7 +198,8 @@ namespace Apify
             double? actorReviewRating,
             int? bookmarkCount,
             string? badge,
-            string? readmeSummary)
+            string? readmeSummary,
+            global::Apify.StoreActorInputSchema? inputSchema)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
@@ -210,6 +220,7 @@ namespace Apify
             this.BookmarkCount = bookmarkCount;
             this.Badge = badge;
             this.ReadmeSummary = readmeSummary;
+            this.InputSchema = inputSchema;
         }
 
         /// <summary>

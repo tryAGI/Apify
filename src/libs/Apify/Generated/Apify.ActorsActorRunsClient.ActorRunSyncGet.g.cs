@@ -35,7 +35,8 @@ namespace Apify
             ref double? maxTotalChargeUsd,
             ref bool? restartOnError,
             ref string? build,
-            byte[]? webhooks);
+            byte[]? webhooks,
+            ref global::Apify.ActorRunSyncGetForcePermissionLevel? forcePermissionLevel);
         partial void PrepareActorRunSyncGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -47,7 +48,8 @@ namespace Apify
             double? maxTotalChargeUsd,
             bool? restartOnError,
             string? build,
-            byte[]? webhooks);
+            byte[]? webhooks,
+            global::Apify.ActorRunSyncGetForcePermissionLevel? forcePermissionLevel);
         partial void ProcessActorRunSyncGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -103,6 +105,9 @@ namespace Apify
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
         /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -116,6 +121,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetForcePermissionLevel? forcePermissionLevel = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -129,6 +135,7 @@ namespace Apify
                 restartOnError: restartOnError,
                 build: build,
                 webhooks: webhooks,
+                forcePermissionLevel: forcePermissionLevel,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -181,6 +188,9 @@ namespace Apify
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
         /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -194,6 +204,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetForcePermissionLevel? forcePermissionLevel = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -209,7 +220,8 @@ namespace Apify
                 maxTotalChargeUsd: ref maxTotalChargeUsd,
                 restartOnError: ref restartOnError,
                 build: ref build,
-                webhooks: webhooks);
+                webhooks: webhooks,
+                forcePermissionLevel: ref forcePermissionLevel);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -246,6 +258,7 @@ namespace Apify
                                 .AddOptionalParameter("restartOnError", restartOnError?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("build", build)
                                 .AddOptionalParameter("webhooks", webhooks?.ToString())
+                                .AddOptionalParameter("forcePermissionLevel", forcePermissionLevel?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -295,7 +308,8 @@ namespace Apify
                     maxTotalChargeUsd: maxTotalChargeUsd,
                     restartOnError: restartOnError,
                     build: build,
-                    webhooks: webhooks);
+                    webhooks: webhooks,
+                    forcePermissionLevel: forcePermissionLevel);
 
                 return __httpRequest;
             }
