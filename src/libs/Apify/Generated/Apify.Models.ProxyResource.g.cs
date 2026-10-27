@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    ///
+    /// Proxy access info. Omitted when the user has no access to Apify Proxy.
     /// </summary>
     public sealed partial class ProxyResource
     {
@@ -12,8 +12,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("password")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Password { get; set; }
+        public string? Password { get; set; }
 
         /// <summary>
         ///
@@ -31,16 +30,16 @@ namespace Apify
         /// <summary>
         /// Initializes a new instance of the <see cref="ProxyResource" /> class.
         /// </summary>
-        /// <param name="password"></param>
         /// <param name="groups"></param>
+        /// <param name="password"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ProxyResource(
-            string password,
-            global::System.Collections.Generic.IList<global::Apify.ProxyGroup> groups)
+            global::System.Collections.Generic.IList<global::Apify.ProxyGroup> groups,
+            string? password)
         {
-            this.Password = password ?? throw new global::System.ArgumentNullException(nameof(password));
+            this.Password = password;
             this.Groups = groups ?? throw new global::System.ArgumentNullException(nameof(groups));
         }
 

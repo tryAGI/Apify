@@ -9,7 +9,9 @@ internal sealed record DefaultRunOptionsOptionSet(
                      Option<int?> TimeoutSecs,
                      Option<long?> MemoryMbytes,
                      Option<bool?> RestartOnError,
-                     Option<int?> MaxItems)
+                     Option<int?> MaxItems,
+                     Option<double?> MaxTotalChargeUsd,
+                     Option<bool?> IsMaxTotalChargeUsdSetByUser)
 {
     public static DefaultRunOptionsOptionSet Create(string? prefix = null)
     {
@@ -33,7 +35,12 @@ internal sealed record DefaultRunOptionsOptionSet(
                 MaxItems: new Option<int?>($"--{normalizedPrefix}max-items")
                 {
                     Description = @"Maximum number of items the run might produce.",
-                }
+                },
+                MaxTotalChargeUsd: new Option<double?>($"--{normalizedPrefix}max-total-charge-usd")
+                {
+                    Description = @"Maximum cost in USD that a pay-per-event run can charge to the user.",
+                },
+                IsMaxTotalChargeUsdSetByUser: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-max-total-charge-usd-set-by-user", description: @"Whether `maxTotalChargeUsd` was set explicitly by the user.")
         );
     }
 }

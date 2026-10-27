@@ -37,6 +37,12 @@ namespace Apify
         public required string Name { get; set; }
 
         /// <summary>
+        /// Task name in lowercase.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("nameLowerCase")]
+        public string? NameLowerCase { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
@@ -132,6 +138,9 @@ namespace Apify
         /// <param name="name"></param>
         /// <param name="createdAt"></param>
         /// <param name="modifiedAt"></param>
+        /// <param name="nameLowerCase">
+        /// Task name in lowercase.
+        /// </param>
         /// <param name="username"></param>
         /// <param name="removedAt"></param>
         /// <param name="stats"></param>
@@ -155,6 +164,7 @@ namespace Apify
             string name,
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
+            string? nameLowerCase,
             string? username,
             global::System.DateTime? removedAt,
             global::Apify.TaskStats? stats,
@@ -171,6 +181,7 @@ namespace Apify
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.NameLowerCase = nameLowerCase;
             this.Username = username;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;

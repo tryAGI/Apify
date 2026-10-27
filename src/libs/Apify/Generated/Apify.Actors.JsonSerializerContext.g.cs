@@ -85,6 +85,17 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdatedBuildProperty))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UpdateActorRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthConnection))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthConnectionOAuthProviderType), TypeInfoPropertyName = "ActorOAuthConnectionOAuthProviderType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthConnectionCredentials))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorOAuthConnections))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorOAuthConnection>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorOAuthConnectionsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthAccount))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorOAuthAccounts))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ActorOAuthAccount>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfActorOAuthAccountsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthAccountResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsGetSortBy), TypeInfoPropertyName = "ActorsGetSortBy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorValidateInputPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
@@ -108,6 +119,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfo?), TypeInfoPropertyName = "NullableActorRunPricingInfo2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel?), TypeInfoPropertyName = "NullableActorRunPricingInfoDiscriminatorPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorNotice?), TypeInfoPropertyName = "NullableActorNotice2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorOAuthConnectionOAuthProviderType?), TypeInfoPropertyName = "NullableActorOAuthConnectionOAuthProviderType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorsGetSortBy?), TypeInfoPropertyName = "NullableActorsGetSortBy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
@@ -117,6 +129,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVar>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.Version>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorRunPricingInfo>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorOAuthConnection>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorOAuthAccount>))]
     internal sealed partial class ActorsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -173,6 +187,7 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -222,6 +237,10 @@ namespace Apify
                     || typeToConvert == typeof(global::Apify.ActorNotice)
 
                     || typeToConvert == typeof(global::Apify.ActorNotice?)
+
+                    || typeToConvert == typeof(global::Apify.ActorOAuthConnectionOAuthProviderType)
+
+                    || typeToConvert == typeof(global::Apify.ActorOAuthConnectionOAuthProviderType?)
 
                     || typeToConvert == typeof(global::Apify.ActorsGetSortBy)
 
@@ -300,6 +319,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.ActorNotice?))
                 {
                     return new global::Apify.JsonConverters.ActorNoticeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorOAuthConnectionOAuthProviderType))
+                {
+                    return new global::Apify.JsonConverters.ActorOAuthConnectionOAuthProviderTypeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorOAuthConnectionOAuthProviderType?))
+                {
+                    return new global::Apify.JsonConverters.ActorOAuthConnectionOAuthProviderTypeNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.ActorsGetSortBy))

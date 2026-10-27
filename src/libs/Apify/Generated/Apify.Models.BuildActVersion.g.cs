@@ -40,6 +40,18 @@ namespace Apify
         public global::System.Collections.Generic.IList<global::Apify.SourceCodeFile>? SourceFiles { get; set; }
 
         /// <summary>
+        /// URL of the GitHub Gist, present when sourceType is GITHUB_GIST.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("gitHubGistUrl")]
+        public string? GitHubGistUrl { get; set; }
+
+        /// <summary>
+        /// URL of the tarball or ZIP file, present when sourceType is TARBALL. Returned only to the Actor owner.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tarballUrl")]
+        public string? TarballUrl { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +71,12 @@ namespace Apify
         /// <param name="sourceFiles">
         /// Inline source files, present when sourceType is SOURCE_FILES.
         /// </param>
+        /// <param name="gitHubGistUrl">
+        /// URL of the GitHub Gist, present when sourceType is GITHUB_GIST.
+        /// </param>
+        /// <param name="tarballUrl">
+        /// URL of the tarball or ZIP file, present when sourceType is TARBALL. Returned only to the Actor owner.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -67,13 +85,17 @@ namespace Apify
             string? buildTag,
             string? versionNumber,
             string? gitRepoUrl,
-            global::System.Collections.Generic.IList<global::Apify.SourceCodeFile>? sourceFiles)
+            global::System.Collections.Generic.IList<global::Apify.SourceCodeFile>? sourceFiles,
+            string? gitHubGistUrl,
+            string? tarballUrl)
         {
             this.SourceType = sourceType;
             this.BuildTag = buildTag;
             this.VersionNumber = versionNumber;
             this.GitRepoUrl = gitRepoUrl;
             this.SourceFiles = sourceFiles;
+            this.GitHubGistUrl = gitHubGistUrl;
+            this.TarballUrl = tarballUrl;
         }
 
         /// <summary>

@@ -45,6 +45,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
         public string? Username { get; set; }
 
@@ -75,6 +81,12 @@ namespace Apify
         public global::Apify.TaskStats? Stats { get; set; }
 
         /// <summary>
+        /// Whether the task is published. Based on the `publicConfig.publishedAt` field.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -90,9 +102,13 @@ namespace Apify
         /// <param name="createdAt"></param>
         /// <param name="modifiedAt"></param>
         /// <param name="actName"></param>
+        /// <param name="title"></param>
         /// <param name="username"></param>
         /// <param name="actUsername"></param>
         /// <param name="stats"></param>
+        /// <param name="isPublic">
+        /// Whether the task is published. Based on the `publicConfig.publishedAt` field.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -104,20 +120,24 @@ namespace Apify
             global::System.DateTime createdAt,
             global::System.DateTime modifiedAt,
             string? actName,
+            string? title,
             string? username,
             string? actUsername,
-            global::Apify.TaskStats? stats)
+            global::Apify.TaskStats? stats,
+            bool? isPublic)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.ActId = actId ?? throw new global::System.ArgumentNullException(nameof(actId));
             this.ActName = actName;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Title = title;
             this.Username = username;
             this.ActUsername = actUsername;
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;
             this.Stats = stats;
+            this.IsPublic = isPublic;
         }
 
         /// <summary>

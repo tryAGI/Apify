@@ -13,6 +13,9 @@ internal static partial class ActorsApiGroupCommand
         var command = new Command(@"actors", @"Actors endpoint commands.");
                          command.Subcommands.Add(ActorsActorDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorOAuthAccountGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorOAuthAccountsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(ActorsActorOauthConnectionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorPutCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorValidateInputPostCommandApiCommand.Create());
                          command.Subcommands.Add(ActorsActorsGetCommandApiCommand.Create());

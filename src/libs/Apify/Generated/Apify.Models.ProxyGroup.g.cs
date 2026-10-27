@@ -11,6 +11,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
@@ -25,8 +31,7 @@ namespace Apify
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("availableCount")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required int AvailableCount { get; set; }
+        public int? AvailableCount { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,16 +43,19 @@ namespace Apify
         /// Initializes a new instance of the <see cref="ProxyGroup" /> class.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="availableCount"></param>
+        /// <param name="id"></param>
         /// <param name="description"></param>
+        /// <param name="availableCount"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ProxyGroup(
             string name,
-            int availableCount,
-            string? description)
+            string? id,
+            string? description,
+            int? availableCount)
         {
+            this.Id = id;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.AvailableCount = availableCount;

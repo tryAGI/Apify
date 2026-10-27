@@ -24,8 +24,14 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType), TypeInfoPropertyName = "ErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorDetail))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookEventType), TypeInfoPropertyName = "WebhookEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookCondition))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookSlackMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDatasetTransformation))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookGoogleMail))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookGoogleDrive))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookGithubIssue))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchStatus), TypeInfoPropertyName = "WebhookDispatchStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchWebhookSummary))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatch))]
@@ -45,6 +51,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookEventType?), TypeInfoPropertyName = "NullableWebhookEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.WebhookDispatchStatus?), TypeInfoPropertyName = "NullableWebhookDispatchStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfWebhookDispatches?), TypeInfoPropertyName = "NullableListOfWebhookDispatches2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookDispatchCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.WebhookDispatch>))]
     internal sealed partial class WebhooksWebhookDispatchesSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
@@ -96,6 +103,7 @@ namespace Apify
         {
             options.Converters.Add(new global::Apify.JsonConverters.ListOfWebhookDispatchesJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());

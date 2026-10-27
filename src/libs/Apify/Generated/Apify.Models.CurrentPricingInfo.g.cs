@@ -82,6 +82,36 @@ namespace Apify
         public object? PricingPerEvent { get; set; }
 
         /// <summary>
+        /// Price per unit in USD. Present only for `FLAT_PRICE_PER_MONTH` and non-tiered `PRICE_PER_DATASET_ITEM` pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pricePerUnitUsd")]
+        public double? PricePerUnitUsd { get; set; }
+
+        /// <summary>
+        /// Length of the free trial in minutes. Present only for `FLAT_PRICE_PER_MONTH` pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("trialMinutes")]
+        public int? TrialMinutes { get; set; }
+
+        /// <summary>
+        /// Name of the charged unit. Present only for `PRICE_PER_DATASET_ITEM` pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("unitName")]
+        public string? UnitName { get; set; }
+
+        /// <summary>
+        /// Price per unit for each pricing tier. Present only for tiered `PRICE_PER_DATASET_ITEM` pricing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tieredPricing")]
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.CurrentPricingInfoTieredPricing2>? TieredPricing { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notifiedAboutRentalToPpePriceChangeAt")]
+        public global::System.DateTime? NotifiedAboutRentalToPpePriceChangeAt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -106,6 +136,19 @@ namespace Apify
         /// <param name="pricingPerEvent">
         /// Per-event pricing configuration for pay-per-event Actors.
         /// </param>
+        /// <param name="pricePerUnitUsd">
+        /// Price per unit in USD. Present only for `FLAT_PRICE_PER_MONTH` and non-tiered `PRICE_PER_DATASET_ITEM` pricing.
+        /// </param>
+        /// <param name="trialMinutes">
+        /// Length of the free trial in minutes. Present only for `FLAT_PRICE_PER_MONTH` pricing.
+        /// </param>
+        /// <param name="unitName">
+        /// Name of the charged unit. Present only for `PRICE_PER_DATASET_ITEM` pricing.
+        /// </param>
+        /// <param name="tieredPricing">
+        /// Price per unit for each pricing tier. Present only for tiered `PRICE_PER_DATASET_ITEM` pricing.
+        /// </param>
+        /// <param name="notifiedAboutRentalToPpePriceChangeAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -121,7 +164,12 @@ namespace Apify
             bool? isPPEPlatformUsagePaidByUser,
             string? reasonForChange,
             double? minimalMaxTotalChargeUsd,
-            object? pricingPerEvent)
+            object? pricingPerEvent,
+            double? pricePerUnitUsd,
+            int? trialMinutes,
+            string? unitName,
+            global::System.Collections.Generic.Dictionary<string, global::Apify.CurrentPricingInfoTieredPricing2>? tieredPricing,
+            global::System.DateTime? notifiedAboutRentalToPpePriceChangeAt)
         {
             this.PricingModel = pricingModel ?? throw new global::System.ArgumentNullException(nameof(pricingModel));
             this.ApifyMarginPercentage = apifyMarginPercentage;
@@ -135,6 +183,11 @@ namespace Apify
             this.ReasonForChange = reasonForChange;
             this.MinimalMaxTotalChargeUsd = minimalMaxTotalChargeUsd;
             this.PricingPerEvent = pricingPerEvent;
+            this.PricePerUnitUsd = pricePerUnitUsd;
+            this.TrialMinutes = trialMinutes;
+            this.UnitName = unitName;
+            this.TieredPricing = tieredPricing;
+            this.NotifiedAboutRentalToPpePriceChangeAt = notifiedAboutRentalToPpePriceChangeAt;
         }
 
         /// <summary>

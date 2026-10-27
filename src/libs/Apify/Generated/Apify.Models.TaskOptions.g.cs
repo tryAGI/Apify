@@ -45,6 +45,18 @@ namespace Apify
         public bool? RestartOnError { get; set; }
 
         /// <summary>
+        /// Whether the user explicitly set `maxTotalChargeUsd`. Returned only in schedule action `runOptions`, and only if it was provided.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isMaxTotalChargeUsdSetByUser")]
+        public bool? IsMaxTotalChargeUsdSetByUser { get; set; }
+
+        /// <summary>
+        /// Permission level to run the Actor with, overriding the Actor's own setting. Returned only in schedule action `runOptions`, and only if it was provided.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("forcePermissionLevel")]
+        public global::Apify.ActorPermissionLevel? ForcePermissionLevel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +71,12 @@ namespace Apify
         /// <param name="maxItems"></param>
         /// <param name="maxTotalChargeUsd"></param>
         /// <param name="restartOnError"></param>
+        /// <param name="isMaxTotalChargeUsdSetByUser">
+        /// Whether the user explicitly set `maxTotalChargeUsd`. Returned only in schedule action `runOptions`, and only if it was provided.
+        /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Permission level to run the Actor with, overriding the Actor's own setting. Returned only in schedule action `runOptions`, and only if it was provided.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -68,7 +86,9 @@ namespace Apify
             long? memoryMbytes,
             int? maxItems,
             double? maxTotalChargeUsd,
-            bool? restartOnError)
+            bool? restartOnError,
+            bool? isMaxTotalChargeUsdSetByUser,
+            global::Apify.ActorPermissionLevel? forcePermissionLevel)
         {
             this.Build = build;
             this.TimeoutSecs = timeoutSecs;
@@ -76,6 +96,8 @@ namespace Apify
             this.MaxItems = maxItems;
             this.MaxTotalChargeUsd = maxTotalChargeUsd;
             this.RestartOnError = restartOnError;
+            this.IsMaxTotalChargeUsdSetByUser = isMaxTotalChargeUsdSetByUser;
+            this.ForcePermissionLevel = forcePermissionLevel;
         }
 
         /// <summary>

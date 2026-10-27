@@ -64,7 +64,7 @@ The request needs to specify the `Content-Type: application/json` HTTP header!
 
 When providing your API authentication token, we recommend using the
 request's `Authorization` header, rather than the URL.
-For details, see [Authentication](/api/v2/getting-started#authentication).
+For details, see [Authentication](/api/v2#authentication).
 ");
                         command.Options.Add(Actions);                        command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.NameOption);
                         command.Options.Add(CreateOrUpdateScheduleRequestOptionSetOptions.IsEnabled);

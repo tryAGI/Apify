@@ -41,6 +41,30 @@ namespace Apify
         public global::System.DateTime? ScheduledAt { get; set; }
 
         /// <summary>
+        /// ID of the Actor run that started this run. Present only when the run was started from another run.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorRunId")]
+        public string? ActorRunId { get; set; }
+
+        /// <summary>
+        /// ID of the webhook dispatch that started the run. Present only when the run was started by a webhook.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webhookDispatchId")]
+        public string? WebhookDispatchId { get; set; }
+
+        /// <summary>
+        /// ID of the schedule action that started the Actor. Present only on runs of Actors started by a schedule.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduledAct2Id")]
+        public string? ScheduledAct2Id { get; set; }
+
+        /// <summary>
+        /// ID of the schedule action that started the Actor task. Present only on runs of tasks started by a schedule.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scheduledActorTaskId")]
+        public string? ScheduledActorTaskId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -62,6 +86,18 @@ namespace Apify
         /// <param name="scheduledAt">
         /// Time when the run was scheduled.
         /// </param>
+        /// <param name="actorRunId">
+        /// ID of the Actor run that started this run. Present only when the run was started from another run.
+        /// </param>
+        /// <param name="webhookDispatchId">
+        /// ID of the webhook dispatch that started the run. Present only when the run was started by a webhook.
+        /// </param>
+        /// <param name="scheduledAct2Id">
+        /// ID of the schedule action that started the Actor. Present only on runs of Actors started by a schedule.
+        /// </param>
+        /// <param name="scheduledActorTaskId">
+        /// ID of the schedule action that started the Actor task. Present only on runs of tasks started by a schedule.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -70,13 +106,21 @@ namespace Apify
             string? clientIp,
             string? userAgent,
             string? scheduleId,
-            global::System.DateTime? scheduledAt)
+            global::System.DateTime? scheduledAt,
+            string? actorRunId,
+            string? webhookDispatchId,
+            string? scheduledAct2Id,
+            string? scheduledActorTaskId)
         {
             this.Origin = origin;
             this.ClientIp = clientIp;
             this.UserAgent = userAgent;
             this.ScheduleId = scheduleId;
             this.ScheduledAt = scheduledAt;
+            this.ActorRunId = actorRunId;
+            this.WebhookDispatchId = webhookDispatchId;
+            this.ScheduledAct2Id = scheduledAct2Id;
+            this.ScheduledActorTaskId = scheduledActorTaskId;
         }
 
         /// <summary>

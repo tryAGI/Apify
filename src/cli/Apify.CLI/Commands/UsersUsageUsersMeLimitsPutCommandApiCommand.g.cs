@@ -7,19 +7,7 @@ namespace Apify.CLI.Commands;
 
 internal static partial class UsersUsageUsersMeLimitsPutCommandApiCommand
 {
-    private static Option<double?> MaxMonthlyUsageUsd { get; } = new(
-        name: @"--max-monthly-usage-usd")
-    {
-        Description = @"If your platform usage in the billing period exceeds the prepaid usage, you will be charged extra. Setting this property you can update your hard limit on monthly platform usage to prevent accidental overage or to limit the extra charges.
-",
-    };
-
-    private static Option<int?> DataRetentionDays { get; } = new(
-        name: @"--data-retention-days")
-    {
-        Description = @"Apify securely stores your ten most recent Actor runs indefinitely, ensuring they are always accessible. Unnamed storages and other Actor runs are automatically deleted after the retention period. If you're subscribed, you can change it to keep data for longer or to limit your usage. [Lear more](https://docs.apify.com/storage#data-retention).
-",
-    };
+    private static readonly UpdateLimitsRequestOptionSet UpdateLimitsRequestOptionSetOptions = UpdateLimitsRequestOptionSet.Create();
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -65,8 +53,8 @@ internal static partial class UsersUsageUsersMeLimitsPutCommandApiCommand
 Updates the account's limits manageable on your account's [Limits page](https://console.apify.com/billing#/limits).
 Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see request body schema for more details).
 ");
-                        command.Options.Add(MaxMonthlyUsageUsd);
-                        command.Options.Add(DataRetentionDays);
+                        command.Options.Add(UpdateLimitsRequestOptionSetOptions.MaxMonthlyUsageUsd);
+                        command.Options.Add(UpdateLimitsRequestOptionSetOptions.DataRetentionDays);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -91,9 +79,8 @@ Specifically the: `maxMonthlyUsageUsd` and `dataRetentionDays` limits (see reque
                             RequestJson,
                             RequestFile,
                             global::Apify.SourceGenerationContext.Default,
-                            cancellationToken).ConfigureAwait(false);
-                        var maxMonthlyUsageUsd = CliRuntime.WasSpecified(parseResult, MaxMonthlyUsageUsd) ? parseResult.GetValue(MaxMonthlyUsageUsd) : (__requestBase is { } __MaxMonthlyUsageUsdBaseValue ? __MaxMonthlyUsageUsdBaseValue.MaxMonthlyUsageUsd : default);
-                        var dataRetentionDays = CliRuntime.WasSpecified(parseResult, DataRetentionDays) ? parseResult.GetValue(DataRetentionDays) : (__requestBase is { } __DataRetentionDaysBaseValue ? __DataRetentionDaysBaseValue.DataRetentionDays : default);
+                            cancellationToken).ConfigureAwait(false);                        var maxMonthlyUsageUsd = CliRuntime.WasSpecified(parseResult, UpdateLimitsRequestOptionSetOptions.MaxMonthlyUsageUsd) ? parseResult.GetValue(UpdateLimitsRequestOptionSetOptions.MaxMonthlyUsageUsd) : (__requestBase is { } __MaxMonthlyUsageUsdBaseValue ? __MaxMonthlyUsageUsdBaseValue.MaxMonthlyUsageUsd : default);
+                        var dataRetentionDays = CliRuntime.WasSpecified(parseResult, UpdateLimitsRequestOptionSetOptions.DataRetentionDays) ? parseResult.GetValue(UpdateLimitsRequestOptionSetOptions.DataRetentionDays) : (__requestBase is { } __DataRetentionDaysBaseValue ? __DataRetentionDaysBaseValue.DataRetentionDays : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 

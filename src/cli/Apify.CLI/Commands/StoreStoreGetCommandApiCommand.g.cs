@@ -81,6 +81,13 @@ full-permission Actors without a large user base). Set to `true` to
 bypass this safety filtering and include all Actors in the results.
 ");
 
+    private static Option<bool?> IncludeInputSchema { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--include-input-schema",
+        description: @"If `true`, each Actor in the results includes an `inputSchema` field with a compact version of the input
+schema of its default build (property types and required properties only). With this parameter, `limit`
+defaults to and can't exceed `10`.
+");
+
                     private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfStoreActorsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -124,6 +131,7 @@ It will not return more than 1,000 records.
                         command.Options.Add(AllowsAgenticUsers);
                         command.Options.Add(ResponseFormat);
                         command.Options.Add(IncludeUnrunnableActors);
+                        command.Options.Add(IncludeInputSchema);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -139,6 +147,7 @@ It will not return more than 1,000 records.
                         var allowsAgenticUsers = parseResult.GetValue(AllowsAgenticUsers);
                         var responseFormat = parseResult.GetValue(ResponseFormat);
                         var includeUnrunnableActors = parseResult.GetValue(IncludeUnrunnableActors);
+                        var includeInputSchema = parseResult.GetValue(IncludeInputSchema);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -153,6 +162,7 @@ It will not return more than 1,000 records.
                                     allowsAgenticUsers: allowsAgenticUsers,
                                     responseFormat: responseFormat,
                                     includeUnrunnableActors: includeUnrunnableActors,
+                                    includeInputSchema: includeInputSchema,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

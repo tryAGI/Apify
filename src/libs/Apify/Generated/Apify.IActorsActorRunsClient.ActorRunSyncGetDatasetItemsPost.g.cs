@@ -48,6 +48,9 @@ namespace Apify
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
         /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
+        /// </param>
         /// <param name="format">
         /// Example: json
         /// </param>
@@ -130,6 +133,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel? forcePermissionLevel = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -198,6 +202,9 @@ namespace Apify
         /// </param>
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
+        /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="format">
         /// Example: json
@@ -281,6 +288,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel? forcePermissionLevel = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,
@@ -349,6 +357,9 @@ namespace Apify
         /// </param>
         /// <param name="webhooks">
         /// Example: dGhpcyBpcyBqdXN0IGV4YW1wbGUK...
+        /// </param>
+        /// <param name="forcePermissionLevel">
+        /// Example: LIMITED_PERMISSIONS
         /// </param>
         /// <param name="format">
         /// Example: json
@@ -429,6 +440,7 @@ namespace Apify
             bool? restartOnError = default,
             string? build = default,
             byte[]? webhooks = default,
+            global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel? forcePermissionLevel = default,
             string? format = default,
             bool? clean = default,
             double? offset = default,

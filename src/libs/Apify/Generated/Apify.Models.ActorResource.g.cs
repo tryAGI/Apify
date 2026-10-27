@@ -119,7 +119,7 @@ namespace Apify
         public bool? IsDeprecated { get; set; }
 
         /// <summary>
-        /// The Actor's public SSH key, used as a deployment key for private Git repositories.
+        /// The Actor's public SSH key, used as a deployment key for private Git repositories. Returned only by the get Actor endpoint.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deploymentKey")]
         public string? DeploymentKey { get; set; }
@@ -264,7 +264,7 @@ namespace Apify
         /// Whether the Actor is deprecated.
         /// </param>
         /// <param name="deploymentKey">
-        /// The Actor's public SSH key, used as a deployment key for private Git repositories.
+        /// The Actor's public SSH key, used as a deployment key for private Git repositories. Returned only by the get Actor endpoint.
         /// </param>
         /// <param name="title">
         /// Human-readable name of the Actor, displayed in Apify Store and Console.

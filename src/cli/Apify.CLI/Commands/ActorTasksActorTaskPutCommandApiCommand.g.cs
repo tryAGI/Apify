@@ -147,6 +147,9 @@ request's `Authorization` header, rather than the URL.
                         command.Options.Add(ActorStandbyOptions.MemoryMbytes);
                         command.Options.Add(ActorStandbyOptions.DisableStandbyFieldsOverride);
                         command.Options.Add(ActorStandbyOptions.ShouldPassActorInput);
+                        command.Options.Add(ActorStandbyOptions.Tenancy);
+                        command.Options.Add(ActorStandbyOptions.IsConsoleAuthEnabled);
+                        command.Options.Add(ActorStandbyOptions.IsTokenlessEnabled);
           command.Options.Add(RequestInput);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -189,7 +192,10 @@ request's `Authorization` header, rather than the URL.
                         var actorStandbyMemoryMbytes = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) ? parseResult.GetValue(ActorStandbyOptions.MemoryMbytes) : (__ActorStandbyBase is { } __ActorStandbymemoryMbytesBaseValue ? __ActorStandbymemoryMbytesBaseValue.MemoryMbytes : default);
                         var actorStandbyDisableStandbyFieldsOverride = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) ? parseResult.GetValue(ActorStandbyOptions.DisableStandbyFieldsOverride) : (__ActorStandbyBase is { } __ActorStandbydisableStandbyFieldsOverrideBaseValue ? __ActorStandbydisableStandbyFieldsOverrideBaseValue.DisableStandbyFieldsOverride : default);
                         var actorStandbyShouldPassActorInput = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput) ? parseResult.GetValue(ActorStandbyOptions.ShouldPassActorInput) : (__ActorStandbyBase is { } __ActorStandbyshouldPassActorInputBaseValue ? __ActorStandbyshouldPassActorInputBaseValue.ShouldPassActorInput : default);
-                        var __ActorStandbySpecified = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput);
+                        var actorStandbyTenancy = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Tenancy) ? parseResult.GetValue(ActorStandbyOptions.Tenancy) : (__ActorStandbyBase is { } __ActorStandbytenancyBaseValue ? __ActorStandbytenancyBaseValue.Tenancy : default);
+                        var actorStandbyIsConsoleAuthEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsConsoleAuthEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsConsoleAuthEnabled) : (__ActorStandbyBase is { } __ActorStandbyisConsoleAuthEnabledBaseValue ? __ActorStandbyisConsoleAuthEnabledBaseValue.IsConsoleAuthEnabled : default);
+                        var actorStandbyIsTokenlessEnabled = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsTokenlessEnabled) ? parseResult.GetValue(ActorStandbyOptions.IsTokenlessEnabled) : (__ActorStandbyBase is { } __ActorStandbyisTokenlessEnabledBaseValue ? __ActorStandbyisTokenlessEnabledBaseValue.IsTokenlessEnabled : default);
+                        var __ActorStandbySpecified = CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DesiredRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MaxRequestsPerActorRun) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IdleTimeoutSecs) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Build) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.MemoryMbytes) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.DisableStandbyFieldsOverride) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.ShouldPassActorInput) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.Tenancy) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsConsoleAuthEnabled) || CliRuntime.WasSpecified(parseResult, ActorStandbyOptions.IsTokenlessEnabled);
                         var actorStandby =
                             __ActorStandbySpecified || __ActorStandbyBase is not null
                                 ? new global::Apify.ActorStandby
@@ -202,6 +208,9 @@ request's `Authorization` header, rather than the URL.
                                 MemoryMbytes = actorStandbyMemoryMbytes,
                                 DisableStandbyFieldsOverride = actorStandbyDisableStandbyFieldsOverride,
                                 ShouldPassActorInput = actorStandbyShouldPassActorInput,
+                                Tenancy = actorStandbyTenancy,
+                                IsConsoleAuthEnabled = actorStandbyIsConsoleAuthEnabled,
+                                IsTokenlessEnabled = actorStandbyIsTokenlessEnabled,
 
                                 }
                                 : __ActorStandbyBase;

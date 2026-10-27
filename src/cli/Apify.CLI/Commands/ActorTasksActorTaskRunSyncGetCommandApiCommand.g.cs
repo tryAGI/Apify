@@ -50,6 +50,11 @@ by using the `ACTOR_MAX_TOTAL_CHARGE_USD` environment variable.
 ",
     };
 
+    private static Option<bool?> RestartOnError { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--restart-on-error",
+        description: @"Determines whether the run will be restarted if it fails.
+");
+
     private static Option<string?> Build { get; } = new(
         name: @"--build")
     {
@@ -131,6 +136,7 @@ endpoint instead.
                         command.Options.Add(Memory);
                         command.Options.Add(MaxItems);
                         command.Options.Add(MaxTotalChargeUsd);
+                        command.Options.Add(RestartOnError);
                         command.Options.Add(Build);
                         command.Options.Add(OutputRecordKey);
                         command.Options.Add(Webhooks);
@@ -144,6 +150,7 @@ endpoint instead.
                         var memory = parseResult.GetValue(Memory);
                         var maxItems = parseResult.GetValue(MaxItems);
                         var maxTotalChargeUsd = parseResult.GetValue(MaxTotalChargeUsd);
+                        var restartOnError = parseResult.GetValue(RestartOnError);
                         var build = parseResult.GetValue(Build);
                         var outputRecordKey = parseResult.GetValue(OutputRecordKey);
                         var webhooks = parseResult.GetValue(Webhooks);
@@ -156,6 +163,7 @@ endpoint instead.
                                     memory: memory,
                                     maxItems: maxItems,
                                     maxTotalChargeUsd: maxTotalChargeUsd,
+                                    restartOnError: restartOnError,
                                     build: build,
                                     outputRecordKey: outputRecordKey,
                                     webhooks: webhooks,

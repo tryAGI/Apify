@@ -55,6 +55,24 @@ namespace Apify
         public string? DatasetView { get; set; }
 
         /// <summary>
+        /// ID of the use-case category of the task.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("categorization")]
+        public string? Categorization { get; set; }
+
+        /// <summary>
+        /// Names of the dataset fields highlighted on the public task page.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("highlightedFields")]
+        public global::System.Collections.Generic.IList<string>? HighlightedFields { get; set; }
+
+        /// <summary>
+        /// Frequently asked questions displayed on the public task page.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("faq")]
+        public global::System.Collections.Generic.IList<global::Apify.TaskPublicConfigFaqItem>? Faq { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -89,6 +107,15 @@ namespace Apify
         /// Key of the dataset view from the Actor's dataset schema used to display results. Must be<br/>
         /// one of the views declared on the resolved dataset. You can't publish a task without it.
         /// </param>
+        /// <param name="categorization">
+        /// ID of the use-case category of the task.
+        /// </param>
+        /// <param name="highlightedFields">
+        /// Names of the dataset fields highlighted on the public task page.
+        /// </param>
+        /// <param name="faq">
+        /// Frequently asked questions displayed on the public task page.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -98,7 +125,10 @@ namespace Apify
             string? seoDescription,
             global::System.Collections.Generic.IList<string>? inputSchemaFields,
             string? datasetName,
-            string? datasetView)
+            string? datasetView,
+            string? categorization,
+            global::System.Collections.Generic.IList<string>? highlightedFields,
+            global::System.Collections.Generic.IList<global::Apify.TaskPublicConfigFaqItem>? faq)
         {
             this.PublishedAt = publishedAt;
             this.SeoTitle = seoTitle;
@@ -106,6 +136,9 @@ namespace Apify
             this.InputSchemaFields = inputSchemaFields;
             this.DatasetName = datasetName;
             this.DatasetView = datasetView;
+            this.Categorization = categorization;
+            this.HighlightedFields = highlightedFields;
+            this.Faq = faq;
         }
 
         /// <summary>

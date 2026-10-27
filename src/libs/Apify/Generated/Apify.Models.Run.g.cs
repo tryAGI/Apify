@@ -100,6 +100,58 @@ namespace Apify
         public global::System.Collections.Generic.Dictionary<string, int>? ChargedEventCounts { get; set; }
 
         /// <summary>
+        /// A map of charged event types to the number of their charges that have already been accounted for billing. Present only for pay-per-event Actors.<br/>
+        /// Example: {"actor-start":1,"page-crawled":150}
+        /// </summary>
+        /// <example>{"actor-start":1,"page-crawled":150}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accountedChargedEventCounts")]
+        public global::System.Collections.Generic.Dictionary<string, int>? AccountedChargedEventCounts { get; set; }
+
+        /// <summary>
+        /// Cost breakdown of the pay-per-event charges in USD, keyed by event type. Present only for pay-per-event runs, and not when the run was started by the Actor's owner.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("eventUsage")]
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.RunEventUsage>? EventUsage { get; set; }
+
+        /// <summary>
+        /// Total price in USD of the pay-per-event charges made to other users. Present only on multi-tenant Standby runs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("externalChargedTotalUsd")]
+        public double? ExternalChargedTotalUsd { get; set; }
+
+        /// <summary>
+        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("standby")]
+        public global::Apify.RunStandby? Standby { get; set; }
+
+        /// <summary>
+        /// Present only when the run was started by a third-party integration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("integrationTracking")]
+        public global::Apify.IntegrationTracking? IntegrationTracking { get; set; }
+
+        /// <summary>
+        /// ID of the organization member who started the run. Present only for runs started on behalf of an organization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("createdByOrganizationMemberUserId")]
+        public string? CreatedByOrganizationMemberUserId { get; set; }
+
+        /// <summary>
+        /// URL of the run in Apify Console. Returned only by the [Get Actor run](/api/v2/actor-run-get) endpoint.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("consoleUrl")]
+        public string? ConsoleUrl { get; set; }
+
+        /// <summary>
+        /// Output links of the run, generated from the output schema of the Actor build. Present only if the build defines an output schema.<br/>
+        /// Example: {"results":"https://api.apify.com/v2/datasets/wmKPijuyDnPZAPRMk/items"}
+        /// </summary>
+        /// <example>{"results":"https://api.apify.com/v2/datasets/wmKPijuyDnPZAPRMk/items"}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("output")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Output { get; set; }
+
+        /// <summary>
         /// Configuration options for the Actor run.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("options")]
@@ -270,6 +322,32 @@ namespace Apify
         /// A map of charged event types to their counts. The keys are event type identifiers defined by the Actor's pricing model (pay-per-event), and the values are the number of times each event was charged during this run.<br/>
         /// Example: {"actor-start":1,"page-crawled":150,"data-extracted":75}
         /// </param>
+        /// <param name="accountedChargedEventCounts">
+        /// A map of charged event types to the number of their charges that have already been accounted for billing. Present only for pay-per-event Actors.<br/>
+        /// Example: {"actor-start":1,"page-crawled":150}
+        /// </param>
+        /// <param name="eventUsage">
+        /// Cost breakdown of the pay-per-event charges in USD, keyed by event type. Present only for pay-per-event runs, and not when the run was started by the Actor's owner.
+        /// </param>
+        /// <param name="externalChargedTotalUsd">
+        /// Total price in USD of the pay-per-event charges made to other users. Present only on multi-tenant Standby runs.
+        /// </param>
+        /// <param name="standby">
+        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// </param>
+        /// <param name="integrationTracking">
+        /// Present only when the run was started by a third-party integration.
+        /// </param>
+        /// <param name="createdByOrganizationMemberUserId">
+        /// ID of the organization member who started the run. Present only for runs started on behalf of an organization.
+        /// </param>
+        /// <param name="consoleUrl">
+        /// URL of the run in Apify Console. Returned only by the [Get Actor run](/api/v2/actor-run-get) endpoint.
+        /// </param>
+        /// <param name="output">
+        /// Output links of the run, generated from the output schema of the Actor build. Present only if the build defines an output schema.<br/>
+        /// Example: {"results":"https://api.apify.com/v2/datasets/wmKPijuyDnPZAPRMk/items"}
+        /// </param>
         /// <param name="exitCode">
         /// Exit code of the Actor run process.
         /// </param>
@@ -328,6 +406,14 @@ namespace Apify
             bool? isStatusMessageTerminal,
             global::Apify.ActorRunPricingInfo? pricingInfo,
             global::System.Collections.Generic.Dictionary<string, int>? chargedEventCounts,
+            global::System.Collections.Generic.Dictionary<string, int>? accountedChargedEventCounts,
+            global::System.Collections.Generic.Dictionary<string, global::Apify.RunEventUsage>? eventUsage,
+            double? externalChargedTotalUsd,
+            global::Apify.RunStandby? standby,
+            global::Apify.IntegrationTracking? integrationTracking,
+            string? createdByOrganizationMemberUserId,
+            string? consoleUrl,
+            global::System.Collections.Generic.Dictionary<string, string>? output,
             int? exitCode,
             global::Apify.GeneralAccess? generalAccess,
             global::Apify.RunStorageIds? storageIds,
@@ -354,6 +440,14 @@ namespace Apify
             this.PricingInfo = pricingInfo;
             this.Stats = stats ?? throw new global::System.ArgumentNullException(nameof(stats));
             this.ChargedEventCounts = chargedEventCounts;
+            this.AccountedChargedEventCounts = accountedChargedEventCounts;
+            this.EventUsage = eventUsage;
+            this.ExternalChargedTotalUsd = externalChargedTotalUsd;
+            this.Standby = standby;
+            this.IntegrationTracking = integrationTracking;
+            this.CreatedByOrganizationMemberUserId = createdByOrganizationMemberUserId;
+            this.ConsoleUrl = consoleUrl;
+            this.Output = output;
             this.Options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             this.BuildId = buildId ?? throw new global::System.ArgumentNullException(nameof(buildId));
             this.ExitCode = exitCode;

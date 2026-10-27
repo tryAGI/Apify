@@ -32,17 +32,41 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ProxyResource))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.ProxyGroup>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPlan))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPlanMonitoringLevel), TypeInfoPropertyName = "UserPlanMonitoringLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EffectivePlatformFeature))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EffectivePlatformFeatures))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderWorkspace))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegration))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegrationProvider), TypeInfoPropertyName = "GitProviderIntegrationProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.GitProviderWorkspace>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfGitProviderIntegrationsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.GitProviderIntegration>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepoFile))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepoFileEncoding), TypeInfoPropertyName = "GitRepoFileEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateGitRepoRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.GitRepoFile>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyResponseData))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>), TypeInfoPropertyName = "AnyOfUserPublicInfoResponseUserPrivateInfoResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPlanMonitoringLevel?), TypeInfoPropertyName = "NullableUserPlanMonitoringLevel2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegrationProvider?), TypeInfoPropertyName = "NullableGitProviderIntegrationProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepoFileEncoding?), TypeInfoPropertyName = "NullableGitRepoFileEncoding2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>?), TypeInfoPropertyName = "NullableAnyOfUserPublicInfoResponseUserPrivateInfoResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ProxyGroup>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.GitProviderWorkspace>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.GitProviderIntegration>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.GitRepoFile>))]
     internal sealed partial class UsersSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -92,6 +116,8 @@ namespace Apify
         {
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -116,7 +142,19 @@ namespace Apify
                 return
                     typeToConvert == typeof(global::Apify.ErrorType)
 
-                    || typeToConvert == typeof(global::Apify.ErrorType?);
+                    || typeToConvert == typeof(global::Apify.ErrorType?)
+
+                    || typeToConvert == typeof(global::Apify.UserPlanMonitoringLevel)
+
+                    || typeToConvert == typeof(global::Apify.UserPlanMonitoringLevel?)
+
+                    || typeToConvert == typeof(global::Apify.GitProviderIntegrationProvider)
+
+                    || typeToConvert == typeof(global::Apify.GitProviderIntegrationProvider?)
+
+                    || typeToConvert == typeof(global::Apify.GitRepoFileEncoding)
+
+                    || typeToConvert == typeof(global::Apify.GitRepoFileEncoding?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -131,6 +169,36 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.ErrorType?))
                 {
                     return new global::Apify.JsonConverters.ErrorTypeNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.UserPlanMonitoringLevel))
+                {
+                    return new global::Apify.JsonConverters.UserPlanMonitoringLevelJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.UserPlanMonitoringLevel?))
+                {
+                    return new global::Apify.JsonConverters.UserPlanMonitoringLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.GitProviderIntegrationProvider))
+                {
+                    return new global::Apify.JsonConverters.GitProviderIntegrationProviderJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.GitProviderIntegrationProvider?))
+                {
+                    return new global::Apify.JsonConverters.GitProviderIntegrationProviderNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.GitRepoFileEncoding))
+                {
+                    return new global::Apify.JsonConverters.GitRepoFileEncodingJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.GitRepoFileEncoding?))
+                {
+                    return new global::Apify.JsonConverters.GitRepoFileEncodingNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

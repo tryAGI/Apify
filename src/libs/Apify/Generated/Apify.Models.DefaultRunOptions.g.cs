@@ -39,6 +39,18 @@ namespace Apify
         public int? MaxItems { get; set; }
 
         /// <summary>
+        /// Maximum cost in USD that a pay-per-event run can charge to the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxTotalChargeUsd")]
+        public double? MaxTotalChargeUsd { get; set; }
+
+        /// <summary>
+        /// Whether `maxTotalChargeUsd` was set explicitly by the user.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isMaxTotalChargeUsdSetByUser")]
+        public bool? IsMaxTotalChargeUsdSetByUser { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("forcePermissionLevel")]
@@ -68,6 +80,12 @@ namespace Apify
         /// <param name="maxItems">
         /// Maximum number of items the run might produce.
         /// </param>
+        /// <param name="maxTotalChargeUsd">
+        /// Maximum cost in USD that a pay-per-event run can charge to the user.
+        /// </param>
+        /// <param name="isMaxTotalChargeUsdSetByUser">
+        /// Whether `maxTotalChargeUsd` was set explicitly by the user.
+        /// </param>
         /// <param name="forcePermissionLevel"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -78,6 +96,8 @@ namespace Apify
             long? memoryMbytes,
             bool? restartOnError,
             int? maxItems,
+            double? maxTotalChargeUsd,
+            bool? isMaxTotalChargeUsdSetByUser,
             global::Apify.ActorPermissionLevel? forcePermissionLevel)
         {
             this.Build = build;
@@ -85,6 +105,8 @@ namespace Apify
             this.MemoryMbytes = memoryMbytes;
             this.RestartOnError = restartOnError;
             this.MaxItems = maxItems;
+            this.MaxTotalChargeUsd = maxTotalChargeUsd;
+            this.IsMaxTotalChargeUsdSetByUser = isMaxTotalChargeUsdSetByUser;
             this.ForcePermissionLevel = forcePermissionLevel;
         }
 

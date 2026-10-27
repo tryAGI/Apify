@@ -34,6 +34,9 @@ namespace Apify
         /// <param name="startedBefore">
         /// Example: 2025-09-17T23:59:59.000Z
         /// </param>
+        /// <param name="deployment">
+        /// Example: [SINGLE_TENANT]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -44,6 +47,7 @@ namespace Apify
             global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
+            global::System.Collections.Generic.IList<string>? deployment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -76,6 +80,9 @@ namespace Apify
         /// <param name="startedBefore">
         /// Example: 2025-09-17T23:59:59.000Z
         /// </param>
+        /// <param name="deployment">
+        /// Example: [SINGLE_TENANT]
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -86,6 +93,7 @@ namespace Apify
             global::System.Collections.Generic.IList<string>? status = default,
             global::System.DateTime? startedAfter = default,
             global::System.DateTime? startedBefore = default,
+            global::System.Collections.Generic.IList<string>? deployment = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

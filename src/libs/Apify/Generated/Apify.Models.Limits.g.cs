@@ -92,6 +92,12 @@ namespace Apify
         public int? MaxScheduleCount { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxMonthlyUnblockerUnits")]
+        public double? MaxMonthlyUnblockerUnits { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -112,6 +118,7 @@ namespace Apify
         /// <param name="maxTeamAccountSeatCount"></param>
         /// <param name="dataRetentionDays"></param>
         /// <param name="maxScheduleCount"></param>
+        /// <param name="maxMonthlyUnblockerUnits"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -127,7 +134,8 @@ namespace Apify
             int maxConcurrentActorJobs,
             int maxTeamAccountSeatCount,
             int dataRetentionDays,
-            int? maxScheduleCount)
+            int? maxScheduleCount,
+            double? maxMonthlyUnblockerUnits)
         {
             this.MaxMonthlyUsageUsd = maxMonthlyUsageUsd;
             this.MaxMonthlyActorComputeUnits = maxMonthlyActorComputeUnits;
@@ -141,6 +149,7 @@ namespace Apify
             this.MaxTeamAccountSeatCount = maxTeamAccountSeatCount;
             this.DataRetentionDays = dataRetentionDays;
             this.MaxScheduleCount = maxScheduleCount;
+            this.MaxMonthlyUnblockerUnits = maxMonthlyUnblockerUnits;
         }
 
         /// <summary>

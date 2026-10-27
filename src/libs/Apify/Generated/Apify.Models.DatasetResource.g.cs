@@ -24,6 +24,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userId")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string UserId { get; set; }
@@ -138,6 +144,7 @@ namespace Apify
         /// <param name="cleanItemCount"></param>
         /// <param name="consoleUrl"></param>
         /// <param name="name"></param>
+        /// <param name="title"></param>
         /// <param name="actId"></param>
         /// <param name="actRunId"></param>
         /// <param name="fields"></param>
@@ -166,6 +173,7 @@ namespace Apify
             int cleanItemCount,
             string consoleUrl,
             string? name,
+            string? title,
             string? actId,
             string? actRunId,
             global::System.Collections.Generic.IList<string>? fields,
@@ -177,6 +185,7 @@ namespace Apify
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Name = name;
+            this.Title = title;
             this.UserId = userId ?? throw new global::System.ArgumentNullException(nameof(userId));
             this.CreatedAt = createdAt;
             this.ModifiedAt = modifiedAt;

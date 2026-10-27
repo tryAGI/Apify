@@ -29,6 +29,12 @@ namespace Apify
         public double? MinimalMaxTotalChargeUsd { get; set; }
 
         /// <summary>
+        /// If `true`, the platform usage of the run is charged to the user running the Actor, in addition to the event prices.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("isPPEPlatformUsagePaidByUser")]
+        public bool? IsPPEPlatformUsagePaidByUser { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -39,6 +45,9 @@ namespace Apify
         /// </summary>
         /// <param name="pricingPerEvent"></param>
         /// <param name="minimalMaxTotalChargeUsd"></param>
+        /// <param name="isPPEPlatformUsagePaidByUser">
+        /// If `true`, the platform usage of the run is charged to the user running the Actor, in addition to the event prices.
+        /// </param>
         /// <param name="pricingModel"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -46,11 +55,13 @@ namespace Apify
         public PayPerEventActorPricingInfoVariant2(
             global::Apify.PayPerEventActorPricingInfoVariant2PricingPerEvent pricingPerEvent,
             double? minimalMaxTotalChargeUsd,
+            bool? isPPEPlatformUsagePaidByUser,
             string pricingModel = "PAY_PER_EVENT")
         {
             this.PricingModel = pricingModel;
             this.PricingPerEvent = pricingPerEvent ?? throw new global::System.ArgumentNullException(nameof(pricingPerEvent));
             this.MinimalMaxTotalChargeUsd = minimalMaxTotalChargeUsd;
+            this.IsPPEPlatformUsagePaidByUser = isPPEPlatformUsagePaidByUser;
         }
 
         /// <summary>

@@ -51,6 +51,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.DeletedRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BatchDeleteResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StorageOwnership), TypeInfoPropertyName = "StorageOwnership2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueListStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RequestQueueListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequestQueues), TypeInfoPropertyName = "ListOfRequestQueues2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRequestQueuesVariant2))]
@@ -132,6 +133,7 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.DeletedRequestJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.ListOfRequestQueuesJsonConverter());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
+            options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.UpdateRequestQueueRequest, object>());
             options.Converters.Add(new global::Apify.JsonConverters.AllOfJsonConverter<global::Apify.UpdateRequestQueueRequest, object>());

@@ -85,6 +85,12 @@ namespace Apify
         public int? ScheduleCount { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("monthlyUnblockerUnits")]
+        public double? MonthlyUnblockerUnits { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -104,6 +110,7 @@ namespace Apify
         /// <param name="activeActorJobCount"></param>
         /// <param name="teamAccountSeatCount"></param>
         /// <param name="scheduleCount"></param>
+        /// <param name="monthlyUnblockerUnits"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -118,7 +125,8 @@ namespace Apify
             int actorTaskCount,
             int activeActorJobCount,
             int teamAccountSeatCount,
-            int? scheduleCount)
+            int? scheduleCount,
+            double? monthlyUnblockerUnits)
         {
             this.MonthlyUsageUsd = monthlyUsageUsd;
             this.MonthlyActorComputeUnits = monthlyActorComputeUnits;
@@ -131,6 +139,7 @@ namespace Apify
             this.ActiveActorJobCount = activeActorJobCount;
             this.TeamAccountSeatCount = teamAccountSeatCount;
             this.ScheduleCount = scheduleCount;
+            this.MonthlyUnblockerUnits = monthlyUnblockerUnits;
         }
 
         /// <summary>

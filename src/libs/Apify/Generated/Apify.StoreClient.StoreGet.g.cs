@@ -36,7 +36,8 @@ namespace Apify
             ref global::Apify.StoreGetPricingModel? pricingModel,
             ref bool? allowsAgenticUsers,
             ref global::Apify.StoreGetResponseFormat? responseFormat,
-            ref bool? includeUnrunnableActors);
+            ref bool? includeUnrunnableActors,
+            ref bool? includeInputSchema);
         partial void PrepareStoreGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -49,7 +50,8 @@ namespace Apify
             global::Apify.StoreGetPricingModel? pricingModel,
             bool? allowsAgenticUsers,
             global::Apify.StoreGetResponseFormat? responseFormat,
-            bool? includeUnrunnableActors);
+            bool? includeUnrunnableActors,
+            bool? includeInputSchema);
         partial void ProcessStoreGetResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -100,6 +102,10 @@ namespace Apify
         /// Default Value: false<br/>
         /// Example: true
         /// </param>
+        /// <param name="includeInputSchema">
+        /// Default Value: false<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -114,6 +120,7 @@ namespace Apify
             bool? allowsAgenticUsers = default,
             global::Apify.StoreGetResponseFormat? responseFormat = default,
             bool? includeUnrunnableActors = default,
+            bool? includeInputSchema = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -128,6 +135,7 @@ namespace Apify
                 allowsAgenticUsers: allowsAgenticUsers,
                 responseFormat: responseFormat,
                 includeUnrunnableActors: includeUnrunnableActors,
+                includeInputSchema: includeInputSchema,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -175,6 +183,10 @@ namespace Apify
         /// Default Value: false<br/>
         /// Example: true
         /// </param>
+        /// <param name="includeInputSchema">
+        /// Default Value: false<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
@@ -189,6 +201,7 @@ namespace Apify
             bool? allowsAgenticUsers = default,
             global::Apify.StoreGetResponseFormat? responseFormat = default,
             bool? includeUnrunnableActors = default,
+            bool? includeInputSchema = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -205,7 +218,8 @@ namespace Apify
                 pricingModel: ref pricingModel,
                 allowsAgenticUsers: ref allowsAgenticUsers,
                 responseFormat: ref responseFormat,
-                includeUnrunnableActors: ref includeUnrunnableActors);
+                includeUnrunnableActors: ref includeUnrunnableActors,
+                includeInputSchema: ref includeInputSchema);
 
 
             var __authorizations = global::Apify.EndPointSecurityResolver.ResolveAuthorizations(
@@ -244,6 +258,7 @@ namespace Apify
                                 .AddOptionalParameter("allowsAgenticUsers", allowsAgenticUsers?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("responseFormat", responseFormat?.ToValueString())
                                 .AddOptionalParameter("includeUnrunnableActors", includeUnrunnableActors?.ToString().ToLowerInvariant())
+                                .AddOptionalParameter("includeInputSchema", includeInputSchema?.ToString().ToLowerInvariant())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Apify.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -294,7 +309,8 @@ namespace Apify
                     pricingModel: pricingModel,
                     allowsAgenticUsers: allowsAgenticUsers,
                     responseFormat: responseFormat,
-                    includeUnrunnableActors: includeUnrunnableActors);
+                    includeUnrunnableActors: includeUnrunnableActors,
+                    includeInputSchema: includeInputSchema);
 
                 return __httpRequest;
             }

@@ -56,6 +56,12 @@ namespace Apify
     /// (`PAYMENT-SIGNATURE` header) and<br/>
     /// [Skyfire](https://docs.apify.com/platform/integrations/skyfire)<br/>
     /// (`skyfire-pay-id` header).<br/>
+    /// Agents can also pay once with x402 or the<br/>
+    /// [Machine Payments Protocol (MPP)](https://docs.apify.com/integrations/mpp)<br/>
+    /// and receive a temporary API token with a fixed spend cap from the Apify<br/>
+    /// Agent General Interface (AGI) at<br/>
+    /// [https://agi.apify.com](https://agi.apify.com). Use that token as a regular<br/>
+    /// `Bearer` token.<br/>
     /// ## Basic usage<br/>
     /// &lt;span id="/introduction/basic-usage"&gt;&lt;/span&gt;<br/>
     /// To run an Actor, send a POST request to the [Run Actor](/api/v2/actors-runs-post) endpoint using either the<br/>
@@ -282,9 +288,9 @@ namespace Apify
     /// &lt;/table&gt;<br/>
     /// ## Errors<br/>
     /// &lt;span id="/introduction/errors"&gt;&lt;/span&gt;<br/>
-    /// The Apify API uses common HTTP status codes: `2xx` range for success, `4xx`<br/>
+    /// The Apify API uses common HTTP status codes: 2xx range for success, 4xx<br/>
     /// range for errors caused by the caller<br/>
-    /// (invalid requests) and `5xx` range for server errors (these are rare).<br/>
+    /// (invalid requests) and 5xx range for server errors (these are rare).<br/>
     /// Each error response contains a JSON object defining the `error` property,<br/>
     /// which is an object with<br/>
     /// the `type` and `message` properties that contain the error code and a<br/>
@@ -307,37 +313,37 @@ namespace Apify
     ///     &lt;th&gt;message&lt;/th&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;400&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;400&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;invalid-request&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;POST data must be a JSON object&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;400&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;400&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;invalid-value&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;Invalid value provided: Comments required&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;400&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;400&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;invalid-record-key&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;Record key contains invalid character&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;401&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;401&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;token-not-provided&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;Authentication token was not provided&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;404&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;404&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;record-not-found&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;Store was not found&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;429&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;429&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;rate-limit-exceeded&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;You have exceeded the rate limit of ... requests per second&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
     ///   &lt;tr&gt;<br/>
-    ///     &lt;td&gt;&lt;code&gt;405&lt;/code&gt;&lt;/td&gt;<br/>
+    ///     &lt;td&gt;405&lt;/td&gt;<br/>
     ///     &lt;td&gt;&lt;code&gt;method-not-allowed&lt;/code&gt;&lt;/td&gt;<br/>
     ///     &lt;td&gt;This API endpoint can only be accessed using the following HTTP methods: OPTIONS, POST&lt;/td&gt;<br/>
     ///   &lt;/tr&gt;<br/>
@@ -401,7 +407,7 @@ namespace Apify
     /// and it can be described using the following pseudo-code:<br/>
     /// 1. Define a variable `DELAY=500`<br/>
     /// 2. Send the HTTP request to the API endpoint<br/>
-    /// 3. If the response has status code not equal to `429` then you are done. Otherwise:<br/>
+    /// 3. If the response has status code not equal to 429 then you are done. Otherwise:<br/>
     ///    * Wait for a period of time chosen randomly from the interval `DELAY` to `2*DELAY` milliseconds<br/>
     ///    * Double the future wait period by setting `DELAY = 2*DELAY`<br/>
     ///    * Continue with step 2<br/>

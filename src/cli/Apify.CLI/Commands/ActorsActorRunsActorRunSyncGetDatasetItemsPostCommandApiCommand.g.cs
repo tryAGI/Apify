@@ -73,6 +73,16 @@ the WebhookRepresentation schema. For more information, see
 ",
     };
 
+    private static Option<global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel?> ForcePermissionLevel { get; } = new(
+        name: @"--force-permission-level")
+    {
+        Description = @"Overrides the Actor's permission level for this specific run. Use to test restricted permissions
+before deploying changes to your Actor or to temporarily elevate or restrict access. If you don't specify this
+parameter, the Actor uses its configured default permission level. For more information on permissions, see the
+[documentation](https://docs.apify.com/platform/actors/development/permissions).
+",
+    };
+
     private static Option<string?> Format { get; } = new(
         name: @"--format")
     {
@@ -318,6 +328,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         command.Options.Add(RestartOnError);
                         command.Options.Add(Build);
                         command.Options.Add(Webhooks);
+                        command.Options.Add(ForcePermissionLevel);
                         command.Options.Add(Format);
                         command.Options.Add(Clean);
                         command.Options.Add(Offset);
@@ -367,6 +378,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                         var restartOnError = parseResult.GetValue(RestartOnError);
                         var build = parseResult.GetValue(Build);
                         var webhooks = parseResult.GetValue(Webhooks);
+                        var forcePermissionLevel = parseResult.GetValue(ForcePermissionLevel);
                         var format = parseResult.GetValue(Format);
                         var clean = parseResult.GetValue(Clean);
                         var offset = parseResult.GetValue(Offset);
@@ -409,6 +421,7 @@ To run the Actor asynchronously, use the [Run Actor](/api/v2/actors-runs-post) A
                                     restartOnError: restartOnError,
                                     build: build,
                                     webhooks: webhooks,
+                                    forcePermissionLevel: forcePermissionLevel,
                                     format: format,
                                     clean: clean,
                                     offset: offset,

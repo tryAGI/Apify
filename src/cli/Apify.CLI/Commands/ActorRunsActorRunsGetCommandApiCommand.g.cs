@@ -51,6 +51,16 @@ The value must be a valid ISO 8601 datetime string (UTC).
 ",
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>?> Deployment { get; } = new(
+        name: @"--deployment")
+    {
+        Description = @"Single Actor Standby deployment or comma-separated list of deployments (`SINGLE_TENANT`, `MULTI_TENANT_FREE_USERS`,
+`MULTI_TENANT_PAYING_USERS` or `MULTI_TENANT_OWNER_PAID`). Used to filter Actor Standby runs by the pool that
+serves them. Requires the `status` parameter with only non-terminal statuses (`READY`, `RUNNING`, `TIMING-OUT` or
+`ABORTING`).
+",
+    };
+
                     private static string FormatResponse(ParseResult parseResult, global::Apify.ListOfRunsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -94,6 +104,7 @@ statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecyc
                         command.Options.Add(Status);
                         command.Options.Add(StartedAfter);
                         command.Options.Add(StartedBefore);
+                        command.Options.Add(Deployment);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
@@ -105,6 +116,7 @@ statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecyc
                         var status = parseResult.GetValue(Status);
                         var startedAfter = parseResult.GetValue(StartedAfter);
                         var startedBefore = parseResult.GetValue(StartedBefore);
+                        var deployment = parseResult.GetValue(Deployment);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -115,6 +127,7 @@ statuses](https://docs.apify.com/platform/actors/running/runs-and-builds#lifecyc
                                     status: status,
                                     startedAfter: startedAfter,
                                     startedBefore: startedBefore,
+                                    deployment: deployment,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

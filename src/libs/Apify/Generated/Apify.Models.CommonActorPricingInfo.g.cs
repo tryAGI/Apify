@@ -44,6 +44,12 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notifiedAboutRentalToPpePriceChangeAt")]
+        public global::System.DateTime? NotifiedAboutRentalToPpePriceChangeAt { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("reasonForChange")]
         public string? ReasonForChange { get; set; }
 
@@ -79,6 +85,7 @@ namespace Apify
         /// </param>
         /// <param name="notifiedAboutFutureChangeAt"></param>
         /// <param name="notifiedAboutChangeAt"></param>
+        /// <param name="notifiedAboutRentalToPpePriceChangeAt"></param>
         /// <param name="reasonForChange"></param>
         /// <param name="isPriceChangeNotificationSuppressed"></param>
         /// <param name="forceContainsSignificantPriceChange"></param>
@@ -91,6 +98,7 @@ namespace Apify
             global::System.DateTime startedAt,
             global::System.DateTime? notifiedAboutFutureChangeAt,
             global::System.DateTime? notifiedAboutChangeAt,
+            global::System.DateTime? notifiedAboutRentalToPpePriceChangeAt,
             string? reasonForChange,
             bool? isPriceChangeNotificationSuppressed,
             bool? forceContainsSignificantPriceChange)
@@ -100,6 +108,7 @@ namespace Apify
             this.StartedAt = startedAt;
             this.NotifiedAboutFutureChangeAt = notifiedAboutFutureChangeAt;
             this.NotifiedAboutChangeAt = notifiedAboutChangeAt;
+            this.NotifiedAboutRentalToPpePriceChangeAt = notifiedAboutRentalToPpePriceChangeAt;
             this.ReasonForChange = reasonForChange;
             this.IsPriceChangeNotificationSuppressed = isPriceChangeNotificationSuppressed;
             this.ForceContainsSignificantPriceChange = forceContainsSignificantPriceChange;

@@ -23,10 +23,28 @@ namespace Apify
         public string? ClientIp { get; set; }
 
         /// <summary>
-        /// User agent of the client that started the build.
+        /// User agent of the client that started the build. Returned only to the Actor owner.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userAgent")]
         public string? UserAgent { get; set; }
+
+        /// <summary>
+        /// URL of the GitHub Actions run that started the build. Present only for builds started from CI.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("githubActionsRunUrl")]
+        public string? GithubActionsRunUrl { get; set; }
+
+        /// <summary>
+        /// ID of the Actor run that started the build. Returned only to the Actor owner.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorRunId")]
+        public string? ActorRunId { get; set; }
+
+        /// <summary>
+        /// ID of the webhook dispatch that started the build. Returned only to the Actor owner.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("webhookDispatchId")]
+        public string? WebhookDispatchId { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,7 +60,16 @@ namespace Apify
         /// IP address of the client that started the build.
         /// </param>
         /// <param name="userAgent">
-        /// User agent of the client that started the build.
+        /// User agent of the client that started the build. Returned only to the Actor owner.
+        /// </param>
+        /// <param name="githubActionsRunUrl">
+        /// URL of the GitHub Actions run that started the build. Present only for builds started from CI.
+        /// </param>
+        /// <param name="actorRunId">
+        /// ID of the Actor run that started the build. Returned only to the Actor owner.
+        /// </param>
+        /// <param name="webhookDispatchId">
+        /// ID of the webhook dispatch that started the build. Returned only to the Actor owner.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -50,11 +77,17 @@ namespace Apify
         public BuildMeta(
             global::Apify.RunOrigin origin,
             string? clientIp,
-            string? userAgent)
+            string? userAgent,
+            string? githubActionsRunUrl,
+            string? actorRunId,
+            string? webhookDispatchId)
         {
             this.Origin = origin;
             this.ClientIp = clientIp;
             this.UserAgent = userAgent;
+            this.GithubActionsRunUrl = githubActionsRunUrl;
+            this.ActorRunId = actorRunId;
+            this.WebhookDispatchId = webhookDispatchId;
         }
 
         /// <summary>

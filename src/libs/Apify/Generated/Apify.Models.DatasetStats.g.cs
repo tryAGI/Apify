@@ -21,13 +21,13 @@ namespace Apify
         public int? WriteCount { get; set; }
 
         /// <summary>
-        /// Total storage size in bytes. Only returned by the single-dataset endpoint.
+        /// Total storage size in bytes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("storageBytes")]
         public long? StorageBytes { get; set; }
 
         /// <summary>
-        /// Uncompressed size in bytes. Only returned by the dataset list endpoint.
+        /// Uncompressed size in bytes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inflatedBytes")]
         public long? InflatedBytes { get; set; }
@@ -44,10 +44,10 @@ namespace Apify
         /// <param name="readCount"></param>
         /// <param name="writeCount"></param>
         /// <param name="storageBytes">
-        /// Total storage size in bytes. Only returned by the single-dataset endpoint.
+        /// Total storage size in bytes.
         /// </param>
         /// <param name="inflatedBytes">
-        /// Uncompressed size in bytes. Only returned by the dataset list endpoint.
+        /// Uncompressed size in bytes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

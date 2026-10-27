@@ -12,7 +12,10 @@ internal sealed record ActorStandbyOptionSet(
                      Option<string?> Build,
                      Option<long?> MemoryMbytes,
                      Option<bool?> DisableStandbyFieldsOverride,
-                     Option<bool?> ShouldPassActorInput)
+                     Option<bool?> ShouldPassActorInput,
+                     Option<string?> Tenancy,
+                     Option<bool?> IsConsoleAuthEnabled,
+                     Option<bool?> IsTokenlessEnabled)
 {
     public static ActorStandbyOptionSet Create(string? prefix = null)
     {
@@ -42,7 +45,13 @@ internal sealed record ActorStandbyOptionSet(
                     Description = @"In MB, the amount of memory allocated to the run.",
                 },
                 DisableStandbyFieldsOverride: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}disable-standby-fields-override", description: @"If `true`, prevents the standby mode configuration from being overridden elsewhere."),
-                ShouldPassActorInput: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}should-pass-actor-input", description: @"Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input.")
+                ShouldPassActorInput: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}should-pass-actor-input", description: @"Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input."),
+                Tenancy: new Option<string?>($"--{normalizedPrefix}tenancy")
+                {
+                    Description = @"Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.",
+                },
+                IsConsoleAuthEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-console-auth-enabled", description: @"Whether standby requests can be authenticated with an Apify Console session. Set by Apify."),
+                IsTokenlessEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-tokenless-enabled", description: @"Whether standby requests can be made without an API token. Set by Apify.")
         );
     }
 }

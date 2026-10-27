@@ -28,7 +28,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.ListOfWebhooksResponse> ActorWebhooksGetAsync(
+        global::System.Threading.Tasks.Task<global::Apify.ListOfWebhookResourcesResponse> ActorWebhooksGetAsync(
             string actorId,
             double? offset = default,
             double? limit = default,
@@ -59,7 +59,7 @@ namespace Apify
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Apify.ApiException"></exception>
-        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfWebhooksResponse>> ActorWebhooksGetAsResponseAsync(
+        global::System.Threading.Tasks.Task<global::Apify.AutoSDKHttpResponse<global::Apify.ListOfWebhookResourcesResponse>> ActorWebhooksGetAsResponseAsync(
             string actorId,
             double? offset = default,
             double? limit = default,

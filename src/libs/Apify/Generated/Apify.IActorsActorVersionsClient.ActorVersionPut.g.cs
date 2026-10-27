@@ -13,7 +13,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Apify
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
         /// request's `Authorization` header, rather than the URL.<br/>
-        /// For details, see [Authentication](/api/v2/getting-started#authentication).<br/>
+        /// For details, see [Authentication](/api/v2#authentication).<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>

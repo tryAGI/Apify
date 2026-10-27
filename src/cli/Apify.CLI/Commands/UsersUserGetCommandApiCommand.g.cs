@@ -13,7 +13,7 @@ internal static partial class UsersUserGetCommandApiCommand
         Description = @"User ID or username.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Apify.UserPublicInfoResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse> value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -29,7 +29,7 @@ internal static partial class UsersUserGetCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.UserPublicInfoResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse> value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
@@ -42,6 +42,10 @@ Returns public information about a specific user account, similar to what
 can be seen on public profile pages (e.g. https://apify.com/apify).
 
 This operation requires no authentication token.
+
+When the request is authenticated with an API token of the requested user account, or with a token
+that impersonates it, the response also contains the private information, the same as in
+[Get private user data](/api/v2/users-me-get). Tokens with limited permissions never receive it.
 ");
                         command.Arguments.Add(UserId);
 

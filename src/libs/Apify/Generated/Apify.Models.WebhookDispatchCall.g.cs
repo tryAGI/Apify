@@ -40,6 +40,12 @@ namespace Apify
         public string? ResponseBody { get; set; }
 
         /// <summary>
+        /// Response of the Slack `chat.postMessage` call. Present only for successful calls of `SLACK_MESSAGE` webhooks.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("debugPostMessage")]
+        public object? DebugPostMessage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +61,9 @@ namespace Apify
         /// <param name="responseBody">
         /// Example: {"foo": "bar"}
         /// </param>
+        /// <param name="debugPostMessage">
+        /// Response of the Slack `chat.postMessage` call. Present only for successful calls of `SLACK_MESSAGE` webhooks.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -63,13 +72,15 @@ namespace Apify
             global::System.DateTime? finishedAt,
             string? errorMessage,
             int? responseStatus,
-            string? responseBody)
+            string? responseBody,
+            object? debugPostMessage)
         {
             this.StartedAt = startedAt;
             this.FinishedAt = finishedAt;
             this.ErrorMessage = errorMessage;
             this.ResponseStatus = responseStatus;
             this.ResponseBody = responseBody;
+            this.DebugPostMessage = debugPostMessage;
         }
 
         /// <summary>
