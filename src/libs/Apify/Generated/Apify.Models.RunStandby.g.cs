@@ -9,12 +9,14 @@ namespace Apify
     public sealed partial class RunStandby
     {
         /// <summary>
-        /// How the Standby run is deployed: `SINGLE_TENANT`, `MULTI_TENANT_FREE_USERS`, `MULTI_TENANT_PAYING_USERS` or `MULTI_TENANT_OWNER_PAID`. `SINGLE_TENANT` is a private instance in the user's account.<br/>
-        /// The `MULTI_TENANT_*` values are runs in the Actor owner's account that serve requests from many users.
+        /// Which pool the Server Actor run serves. `SINGLE_TENANT` is a private instance in the caller's account.<br/>
+        /// The `MULTI_TENANT_*` pools run in the Actor owner's account and serve many callers;<br/>
+        /// charges in them require a `requestId` (see the charge endpoint).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deployment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.RunStandbyDeploymentJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Deployment { get; set; }
+        public required global::Apify.RunStandbyDeployment Deployment { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -26,16 +28,17 @@ namespace Apify
         /// Initializes a new instance of the <see cref="RunStandby" /> class.
         /// </summary>
         /// <param name="deployment">
-        /// How the Standby run is deployed: `SINGLE_TENANT`, `MULTI_TENANT_FREE_USERS`, `MULTI_TENANT_PAYING_USERS` or `MULTI_TENANT_OWNER_PAID`. `SINGLE_TENANT` is a private instance in the user's account.<br/>
-        /// The `MULTI_TENANT_*` values are runs in the Actor owner's account that serve requests from many users.
+        /// Which pool the Server Actor run serves. `SINGLE_TENANT` is a private instance in the caller's account.<br/>
+        /// The `MULTI_TENANT_*` pools run in the Actor owner's account and serve many callers;<br/>
+        /// charges in them require a `requestId` (see the charge endpoint).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RunStandby(
-            string deployment)
+            global::Apify.RunStandbyDeployment deployment)
         {
-            this.Deployment = deployment ?? throw new global::System.ArgumentNullException(nameof(deployment));
+            this.Deployment = deployment;
         }
 
         /// <summary>

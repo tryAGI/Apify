@@ -120,7 +120,7 @@ namespace Apify
         public double? ExternalChargedTotalUsd { get; set; }
 
         /// <summary>
-        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// Server Actor deployment of this run, `null` for runs not started by a Server Actor request.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("standby")]
         public global::Apify.RunStandby? Standby { get; set; }
@@ -333,7 +333,7 @@ namespace Apify
         /// Total price in USD of the pay-per-event charges made to other users. Present only on multi-tenant Standby runs.
         /// </param>
         /// <param name="standby">
-        /// Standby configuration of the run. `null` for runs that are not Actor Standby runs.
+        /// Server Actor deployment of this run, `null` for runs not started by a Server Actor request.
         /// </param>
         /// <param name="integrationTracking">
         /// Present only when the run was started by a third-party integration.
