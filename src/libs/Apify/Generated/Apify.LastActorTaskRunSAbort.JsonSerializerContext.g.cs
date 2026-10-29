@@ -52,6 +52,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin), TypeInfoPropertyName = "RunOrigin2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandbyDeployment), TypeInfoPropertyName = "RunStandbyDeployment2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunEventUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.IntegrationTracking))]
@@ -85,6 +86,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel?), TypeInfoPropertyName = "NullableActorRunPricingInfoDiscriminatorPricingModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorJobStatus?), TypeInfoPropertyName = "NullableActorJobStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunOrigin?), TypeInfoPropertyName = "NullableRunOrigin2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandbyDeployment?), TypeInfoPropertyName = "NullableRunStandbyDeployment2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GeneralAccess?), TypeInfoPropertyName = "NullableGeneralAccess2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.RunMetamorphEvent>))]
@@ -181,6 +183,10 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.RunOrigin?)
 
+                    || typeToConvert == typeof(global::Apify.RunStandbyDeployment)
+
+                    || typeToConvert == typeof(global::Apify.RunStandbyDeployment?)
+
                     || typeToConvert == typeof(global::Apify.GeneralAccess)
 
                     || typeToConvert == typeof(global::Apify.GeneralAccess?);
@@ -228,6 +234,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.RunOrigin?))
                 {
                     return new global::Apify.JsonConverters.RunOriginNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.RunStandbyDeployment))
+                {
+                    return new global::Apify.JsonConverters.RunStandbyDeploymentJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.RunStandbyDeployment?))
+                {
+                    return new global::Apify.JsonConverters.RunStandbyDeploymentNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.GeneralAccess))

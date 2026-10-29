@@ -59,6 +59,10 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.RunOriginNullableJsonConverter),
 
+            typeof(global::Apify.JsonConverters.RunStandbyDeploymentJsonConverter),
+
+            typeof(global::Apify.JsonConverters.RunStandbyDeploymentNullableJsonConverter),
+
             typeof(global::Apify.JsonConverters.GeneralAccessJsonConverter),
 
             typeof(global::Apify.JsonConverters.GeneralAccessNullableJsonConverter),
@@ -421,6 +425,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.BuildResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunMeta))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunStandbyDeployment), TypeInfoPropertyName = "RunStandbyDeployment2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RunListItem))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRuns), TypeInfoPropertyName = "ListOfRuns2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ListOfRunsVariant2))]
