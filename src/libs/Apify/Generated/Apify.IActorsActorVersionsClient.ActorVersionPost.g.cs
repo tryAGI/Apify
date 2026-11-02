@@ -81,7 +81,7 @@ namespace Apify
         /// URL of the Git repository to clone the source code from. Applies when the `sourceType` is `GIT_REPO`.
         /// </param>
         /// <param name="tarballUrl">
-        /// URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.
+        /// URL of the zip archive to download the source code from. Applies when the `sourceType` is `TARBALL`.
         /// </param>
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.

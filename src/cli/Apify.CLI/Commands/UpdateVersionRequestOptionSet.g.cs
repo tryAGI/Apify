@@ -38,7 +38,7 @@ internal sealed record UpdateVersionRequestOptionSet(
                 },
                 TarballUrl: new Option<string?>($"--{normalizedPrefix}tarball-url")
                 {
-                    Description = @"URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.",
+                    Description = @"URL of the zip archive to download the source code from. Applies when the `sourceType` is `TARBALL`.",
                 },
                 GitHubGistUrl: new Option<string?>($"--{normalizedPrefix}git-hub-gist-url")
                 {
