@@ -53,7 +53,7 @@
         "#tag/ActorsEnvironment-variable-object"
       ],
       "x-trait": "true",
-      "description": "The API endpoints in this section allow you to manage your Apify Actors versions.\n\n- The version object contains the source code of a specific version of an Actor.\n- The `sourceType` property indicates where the source code is hosted, and based\non its value the `Version` object has the following additional property:\n\n| **Value** | **Description**  |\n|---|---|\n| `\"SOURCE_FILES\"`   | Source code is comprised of multiple files specified in the `sourceFiles` array. Each item of the array is an object with the following fields:<br/> - `name`: File path and name<br/> - `format`: Format of the content, can be either `\"TEXT\"` or `\"BASE64\"`<br/> - `content`: File content<br/><br/>Source files can be shown and edited in the Apify Console's Web IDE. |\n| `\"GIT_REPO\"` | Source code is cloned from a Git repository, whose URL is specified in the `gitRepoUrl` field. |\n| `\"TARBALL\"` | Source code is downloaded using a tarball or Zip file from a URL specified in the `tarballUrl` field.  |\n|`\"GITHUB_GIST\"`| Source code is taken from a GitHub Gist, whose URL is specified in the `gitHubGistUrl` field. |\n\nFor more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code)\nin Actors documentation.\n"
+      "description": "The API endpoints in this section allow you to manage your Apify Actors versions.\n\n- The version object contains the source code of a specific version of an Actor.\n- The `sourceType` property indicates where the source code is hosted, and based\non its value the `Version` object has the following additional property:\n\n| **Value** | **Description**  |\n|---|---|\n| `\"SOURCE_FILES\"`   | Source code is comprised of multiple files specified in the `sourceFiles` array. Each item of the array is an object with the following fields:<br/> - `name`: File path and name<br/> - `format`: Format of the content, can be either `\"TEXT\"` or `\"BASE64\"`<br/> - `content`: File content<br/><br/>Source files can be shown and edited in the Apify Console's Web IDE. |\n| `\"GIT_REPO\"` | Source code is cloned from a Git repository, whose URL is specified in the `gitRepoUrl` field. |\n| `\"TARBALL\"` | Source code is downloaded as a zip archive from a URL specified in the `tarballUrl` field. |\n|`\"GITHUB_GIST\"`| Source code is taken from a GitHub Gist, whose URL is specified in the `gitHubGistUrl` field. |\n\nFor more information about source code and Actor versions, check out [Source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code)\nin Actors documentation.\n"
     },
     {
       "name": "Actors/Actor builds",
@@ -21770,7 +21770,7 @@
           },
           "tarballUrl": {
             "type": "string",
-            "description": "URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`."
+            "description": "URL of the zip archive to download the source code from. Applies when the `sourceType` is `TARBALL`."
           },
           "gitHubGistUrl": {
             "type": "string",
@@ -22210,7 +22210,7 @@
               "string",
               "null"
             ],
-            "description": "URL to download the source code from as a tarball or ZIP file. Applies when the `sourceType` is `TARBALL`."
+            "description": "URL to download the source code from as a zip archive. Applies when the `sourceType` is `TARBALL`."
           },
           "gitHubGistUrl": {
             "type": [
@@ -23179,7 +23179,7 @@
           },
           "tarballUrl": {
             "type": "string",
-            "description": "URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`."
+            "description": "URL of the zip archive to download the source code from. Applies when the `sourceType` is `TARBALL`."
           },
           "gitHubGistUrl": {
             "type": "string",
@@ -24221,18 +24221,18 @@
           },
           "dockerfile": {
             "type": "string",
-            "description": "The path to the Dockerfile used for building the Actor on the platform."
+            "description": "The path to the Dockerfile used for building the Actor on the platform, relative to the `.actor/` directory."
           },
           "dockerContextDir": {
             "type": "string",
-            "description": "The path to the directory used as the Docker context when building the Actor."
+            "description": "The path to the directory used as the Docker context when building the Actor, relative to the `.actor/` directory."
           },
           "readme": {
             "type": [
               "string",
               "null"
             ],
-            "description": "The path to the README file for the Actor."
+            "description": "The path to the README file for the Actor, relative to the `.actor/` directory."
           },
           "input": {
             "type": [
@@ -24253,7 +24253,7 @@
               "string",
               "null"
             ],
-            "description": "The path to the CHANGELOG file displayed in the Actor's information tab."
+            "description": "The path to the CHANGELOG file displayed in the Actor's information tab, relative to the `.actor/` directory."
           },
           "storages": {
             "type": "object",

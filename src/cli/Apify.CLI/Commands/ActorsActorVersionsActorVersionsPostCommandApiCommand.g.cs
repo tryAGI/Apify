@@ -58,7 +58,7 @@ internal static partial class ActorsActorVersionsActorVersionsPostCommandApiComm
     private static Option<string?> TarballUrl { get; } = new(
         name: @"--tarball-url")
     {
-        Description = @"URL of the tarball to download the source code from. Applies when the `sourceType` is `TARBALL`.",
+        Description = @"URL of the zip archive to download the source code from. Applies when the `sourceType` is `TARBALL`.",
     };
 
     private static Option<string?> GitHubGistUrl { get; } = new(

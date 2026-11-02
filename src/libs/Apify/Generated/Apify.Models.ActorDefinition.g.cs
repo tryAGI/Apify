@@ -57,19 +57,19 @@ namespace Apify
         public global::System.Collections.Generic.Dictionary<string, string>? EnvironmentVariables { get; set; }
 
         /// <summary>
-        /// The path to the Dockerfile used for building the Actor on the platform.
+        /// The path to the Dockerfile used for building the Actor on the platform, relative to the `.actor/` directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dockerfile")]
         public string? Dockerfile { get; set; }
 
         /// <summary>
-        /// The path to the directory used as the Docker context when building the Actor.
+        /// The path to the directory used as the Docker context when building the Actor, relative to the `.actor/` directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dockerContextDir")]
         public string? DockerContextDir { get; set; }
 
         /// <summary>
-        /// The path to the README file for the Actor.
+        /// The path to the README file for the Actor, relative to the `.actor/` directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("readme")]
         public string? Readme { get; set; }
@@ -87,7 +87,7 @@ namespace Apify
         public object? Output { get; set; }
 
         /// <summary>
-        /// The path to the CHANGELOG file displayed in the Actor's information tab.
+        /// The path to the CHANGELOG file displayed in the Actor's information tab, relative to the `.actor/` directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("changelog")]
         public string? Changelog { get; set; }
@@ -169,13 +169,13 @@ namespace Apify
         /// A map of environment variables to be used during local development and deployment.
         /// </param>
         /// <param name="dockerfile">
-        /// The path to the Dockerfile used for building the Actor on the platform.
+        /// The path to the Dockerfile used for building the Actor on the platform, relative to the `.actor/` directory.
         /// </param>
         /// <param name="dockerContextDir">
-        /// The path to the directory used as the Docker context when building the Actor.
+        /// The path to the directory used as the Docker context when building the Actor, relative to the `.actor/` directory.
         /// </param>
         /// <param name="readme">
-        /// The path to the README file for the Actor.
+        /// The path to the README file for the Actor, relative to the `.actor/` directory.
         /// </param>
         /// <param name="input">
         /// The input schema object, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/input-schema)
@@ -184,7 +184,7 @@ namespace Apify
         /// The output schema object, the full specification can be found in [Apify docs](https://docs.apify.com/platform/actors/development/actor-definition/output-schema)
         /// </param>
         /// <param name="changelog">
-        /// The path to the CHANGELOG file displayed in the Actor's information tab.
+        /// The path to the CHANGELOG file displayed in the Actor's information tab, relative to the `.actor/` directory.
         /// </param>
         /// <param name="storages"></param>
         /// <param name="defaultMemoryMbytes">
