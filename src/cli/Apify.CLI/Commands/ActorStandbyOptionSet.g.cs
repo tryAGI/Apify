@@ -13,7 +13,7 @@ internal sealed record ActorStandbyOptionSet(
                      Option<long?> MemoryMbytes,
                      Option<bool?> DisableStandbyFieldsOverride,
                      Option<bool?> ShouldPassActorInput,
-                     Option<string?> Tenancy,
+                     Option<global::Apify.ActorStandbyTenancy?> Tenancy,
                      Option<bool?> IsConsoleAuthEnabled,
                      Option<bool?> IsTokenlessEnabled)
 {
@@ -46,12 +46,16 @@ internal sealed record ActorStandbyOptionSet(
                 },
                 DisableStandbyFieldsOverride: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}disable-standby-fields-override", description: @"If `true`, prevents the standby mode configuration from being overridden elsewhere."),
                 ShouldPassActorInput: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}should-pass-actor-input", description: @"Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input."),
-                Tenancy: new Option<string?>($"--{normalizedPrefix}tenancy")
+                Tenancy: new Option<global::Apify.ActorStandbyTenancy?>($"--{normalizedPrefix}tenancy")
                 {
-                    Description = @"Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.",
+                    Description = @"Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`).",
                 },
-                IsConsoleAuthEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-console-auth-enabled", description: @"Whether standby requests can be authenticated with an Apify Console session. Set by Apify."),
-                IsTokenlessEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-tokenless-enabled", description: @"Whether standby requests can be made without an API token. Set by Apify.")
+                IsConsoleAuthEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-console-auth-enabled", description: @"Whether standby requests can be authenticated with an Apify Console session.
+When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
+"),
+                IsTokenlessEnabled: CliRuntime.CreateNullableBoolOption(name: $"--{normalizedPrefix}is-tokenless-enabled", description: @"Whether standby requests can be made without an API token.
+When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
+")
         );
     }
 }

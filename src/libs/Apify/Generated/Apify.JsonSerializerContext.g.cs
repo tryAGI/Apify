@@ -27,6 +27,10 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter),
 
+            typeof(global::Apify.JsonConverters.ActorStandbyTenancyJsonConverter),
+
+            typeof(global::Apify.JsonConverters.ActorStandbyTenancyNullableJsonConverter),
+
             typeof(global::Apify.JsonConverters.VersionSourceTypeJsonConverter),
 
             typeof(global::Apify.JsonConverters.VersionSourceTypeNullableJsonConverter),
@@ -331,6 +335,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DefaultRunOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandbyTenancy), TypeInfoPropertyName = "ActorStandbyTenancy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ExampleRunInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateActorRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>))]
