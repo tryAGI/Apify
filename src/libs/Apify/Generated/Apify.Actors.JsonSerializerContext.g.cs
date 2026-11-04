@@ -44,6 +44,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.DefaultRunOptions))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandbyTenancy), TypeInfoPropertyName = "ActorStandbyTenancy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ExampleRunInput))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CreateActorRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Apify.CreateVersionRequest>))]
@@ -109,6 +110,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.SourceCodeFileFormat?), TypeInfoPropertyName = "NullableSourceCodeFileFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>?), TypeInfoPropertyName = "NullableAnyOfSourceCodeFileSourceCodeFolder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandbyTenancy?), TypeInfoPropertyName = "NullableActorStandbyTenancy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.VersionSourceType?), TypeInfoPropertyName = "NullableVersionSourceType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PayPerEventActorPricingInfo?), TypeInfoPropertyName = "NullablePayPerEventActorPricingInfo2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PricePerDatasetItemActorPricingInfo?), TypeInfoPropertyName = "NullablePricePerDatasetItemActorPricingInfo2")]
@@ -226,6 +228,10 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.SourceCodeFileFormat?)
 
+                    || typeToConvert == typeof(global::Apify.ActorStandbyTenancy)
+
+                    || typeToConvert == typeof(global::Apify.ActorStandbyTenancy?)
+
                     || typeToConvert == typeof(global::Apify.VersionSourceType)
 
                     || typeToConvert == typeof(global::Apify.VersionSourceType?)
@@ -289,6 +295,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.SourceCodeFileFormat?))
                 {
                     return new global::Apify.JsonConverters.SourceCodeFileFormatNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorStandbyTenancy))
+                {
+                    return new global::Apify.JsonConverters.ActorStandbyTenancyJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorStandbyTenancy?))
+                {
+                    return new global::Apify.JsonConverters.ActorStandbyTenancyNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.VersionSourceType))

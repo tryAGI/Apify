@@ -57,19 +57,22 @@ namespace Apify
         public bool? ShouldPassActorInput { get; set; }
 
         /// <summary>
-        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.
+        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tenancy")]
-        public string? Tenancy { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Apify.JsonConverters.ActorStandbyTenancyJsonConverter))]
+        public global::Apify.ActorStandbyTenancy? Tenancy { get; set; }
 
         /// <summary>
-        /// Whether standby requests can be authenticated with an Apify Console session. Set by Apify.
+        /// Whether standby requests can be authenticated with an Apify Console session.<br/>
+        /// When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isConsoleAuthEnabled")]
         public bool? IsConsoleAuthEnabled { get; set; }
 
         /// <summary>
-        /// Whether standby requests can be made without an API token. Set by Apify.
+        /// Whether standby requests can be made without an API token.<br/>
+        /// When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("isTokenlessEnabled")]
         public bool? IsTokenlessEnabled { get; set; }
@@ -108,13 +111,15 @@ namespace Apify
         /// Whether to pass the Actor's input to the standby run. If `false`, the standby runs start with no input.
         /// </param>
         /// <param name="tenancy">
-        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`). Set by Apify.
+        /// Whether each user gets their own standby runs (`SINGLE_TENANT`) or runs are shared across users (`MULTI_TENANT`).
         /// </param>
         /// <param name="isConsoleAuthEnabled">
-        /// Whether standby requests can be authenticated with an Apify Console session. Set by Apify.
+        /// Whether standby requests can be authenticated with an Apify Console session.<br/>
+        /// When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
         /// </param>
         /// <param name="isTokenlessEnabled">
-        /// Whether standby requests can be made without an API token. Set by Apify.
+        /// Whether standby requests can be made without an API token.<br/>
+        /// When creating an Actor, omit this field or set it to `false`. When updating an Actor, only Apify administrators can change it; other users can only send the current value, or `false` if it's not set yet.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -128,7 +133,7 @@ namespace Apify
             long? memoryMbytes,
             bool? disableStandbyFieldsOverride,
             bool? shouldPassActorInput,
-            string? tenancy,
+            global::Apify.ActorStandbyTenancy? tenancy,
             bool? isConsoleAuthEnabled,
             bool? isTokenlessEnabled)
         {

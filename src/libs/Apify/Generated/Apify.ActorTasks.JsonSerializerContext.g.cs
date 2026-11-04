@@ -27,6 +27,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel), TypeInfoPropertyName = "ActorPermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandby))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandbyTenancy), TypeInfoPropertyName = "ActorStandbyTenancy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CommonActorPricingInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.TieredPricingPerEventEntry))]
@@ -123,6 +124,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ErrorType?), TypeInfoPropertyName = "NullableErrorType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorPermissionLevel?), TypeInfoPropertyName = "NullableActorPermissionLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorStandbyTenancy?), TypeInfoPropertyName = "NullableActorStandbyTenancy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PayPerEventActorPricingInfo?), TypeInfoPropertyName = "NullablePayPerEventActorPricingInfo2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PricePerDatasetItemActorPricingInfo?), TypeInfoPropertyName = "NullablePricePerDatasetItemActorPricingInfo2")]
     #pragma warning disable CS0618 // This registration names a deprecated API model.
@@ -243,6 +245,10 @@ namespace Apify
 
                     || typeToConvert == typeof(global::Apify.ActorPermissionLevel?)
 
+                    || typeToConvert == typeof(global::Apify.ActorStandbyTenancy)
+
+                    || typeToConvert == typeof(global::Apify.ActorStandbyTenancy?)
+
                     || typeToConvert == typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel)
 
                     || typeToConvert == typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel?)
@@ -294,6 +300,16 @@ namespace Apify
                 if (typeToConvert == typeof(global::Apify.ActorPermissionLevel?))
                 {
                     return new global::Apify.JsonConverters.ActorPermissionLevelNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorStandbyTenancy))
+                {
+                    return new global::Apify.JsonConverters.ActorStandbyTenancyJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Apify.ActorStandbyTenancy?))
+                {
+                    return new global::Apify.JsonConverters.ActorStandbyTenancyNullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::Apify.ActorRunPricingInfoDiscriminatorPricingModel))
