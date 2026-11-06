@@ -11,7 +11,8 @@ internal sealed record UpdateVersionRequestOptionSet(
                      Option<string?> BuildTag,
                      Option<string?> GitRepoUrl,
                      Option<string?> TarballUrl,
-                     Option<string?> GitHubGistUrl)
+                     Option<string?> GitHubGistUrl,
+                     Option<string?> ActorPath)
 {
     public static UpdateVersionRequestOptionSet Create(string? prefix = null)
     {
@@ -43,6 +44,10 @@ internal sealed record UpdateVersionRequestOptionSet(
                 GitHubGistUrl: new Option<string?>($"--{normalizedPrefix}git-hub-gist-url")
                 {
                     Description = @"URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.",
+                },
+                ActorPath: new Option<string?>($"--{normalizedPrefix}actor-path")
+                {
+                    Description = @"The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects it when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. On an update without `sourceType`, the API checks it against the version's stored source type. When the version has no `actorPath`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments. An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without `actorPath` removes the stored `actorPath`, so send it again with every upload. An update of other fields, such as `envVars` or `buildTag`, keeps it. Send `null` to remove it.",
                 }
         );
     }

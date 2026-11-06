@@ -66,6 +66,12 @@ internal static partial class ActorsActorVersionsActorVersionsPostCommandApiComm
     {
         Description = @"URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.",
     };
+
+    private static Option<string?> ActorPath { get; } = new(
+        name: @"--actor-path")
+    {
+        Description = @"The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects a path when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. When omitted or `null`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -135,6 +141,10 @@ the `gitRepoUrl` property.
 }
 ```
 
+If the Actor is in a subdirectory of the uploaded `SOURCE_FILES` or
+`TARBALL` source, such as in a monorepo, set `actorPath` to that
+directory, for example `""actorPath"": ""actors/typescript-actor""`.
+
 The response is the `Version` object as
 returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
 ");
@@ -148,6 +158,7 @@ returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
                         command.Options.Add(GitRepoUrl);
                         command.Options.Add(TarballUrl);
                         command.Options.Add(GitHubGistUrl);
+                        command.Options.Add(ActorPath);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -183,6 +194,7 @@ returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
                         var gitRepoUrl = CliRuntime.WasSpecified(parseResult, GitRepoUrl) ? parseResult.GetValue(GitRepoUrl) : (__requestBase is { } __GitRepoUrlBaseValue ? __GitRepoUrlBaseValue.GitRepoUrl : default);
                         var tarballUrl = CliRuntime.WasSpecified(parseResult, TarballUrl) ? parseResult.GetValue(TarballUrl) : (__requestBase is { } __TarballUrlBaseValue ? __TarballUrlBaseValue.TarballUrl : default);
                         var gitHubGistUrl = CliRuntime.WasSpecified(parseResult, GitHubGistUrl) ? parseResult.GetValue(GitHubGistUrl) : (__requestBase is { } __GitHubGistUrlBaseValue ? __GitHubGistUrlBaseValue.GitHubGistUrl : default);
+                        var actorPath = CliRuntime.WasSpecified(parseResult, ActorPath) ? parseResult.GetValue(ActorPath) : (__requestBase is { } __ActorPathBaseValue ? __ActorPathBaseValue.ActorPath : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -197,6 +209,7 @@ returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
                                     gitRepoUrl: gitRepoUrl,
                                     tarballUrl: tarballUrl,
                                     gitHubGistUrl: gitHubGistUrl,
+                                    actorPath: actorPath,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

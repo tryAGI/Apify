@@ -9,6 +9,9 @@ namespace Apify
         /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
+        /// An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without<br/>
+        /// `actorPath` removes the version's stored `actorPath`. For a monorepo<br/>
+        /// version, send `actorPath` again with every upload.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
@@ -39,6 +42,9 @@ namespace Apify
         /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
+        /// An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without<br/>
+        /// `actorPath` removes the version's stored `actorPath`. For a monorepo<br/>
+        /// version, send `actorPath` again with every upload.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
@@ -69,6 +75,9 @@ namespace Apify
         /// Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.<br/>
         /// If the object does not define a specific property, its value will not be<br/>
         /// updated.<br/>
+        /// An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without<br/>
+        /// `actorPath` removes the version's stored `actorPath`. For a monorepo<br/>
+        /// version, send `actorPath` again with every upload.<br/>
         /// The request needs to specify the `Content-Type: application/json` HTTP<br/>
         /// header!<br/>
         /// When providing your API authentication token, we recommend using the<br/>
@@ -110,6 +119,9 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
+        /// <param name="actorPath">
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects it when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. On an update without `sourceType`, the API checks it against the version's stored source type. When the version has no `actorPath`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments. An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without `actorPath` removes the stored `actorPath`, so send it again with every upload. An update of other fields, such as `envVars` or `buildTag`, keeps it. Send `null` to remove it.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -125,6 +137,7 @@ namespace Apify
             string? gitRepoUrl = default,
             string? tarballUrl = default,
             string? gitHubGistUrl = default,
+            string? actorPath = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

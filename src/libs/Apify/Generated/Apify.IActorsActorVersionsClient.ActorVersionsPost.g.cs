@@ -28,6 +28,9 @@ namespace Apify
         ///     "gitRepoUrl": "https://github.com/my-github-account/actor-repo"<br/>
         /// }<br/>
         /// ```<br/>
+        /// If the Actor is in a subdirectory of the uploaded `SOURCE_FILES` or<br/>
+        /// `TARBALL` source, such as in a monorepo, set `actorPath` to that<br/>
+        /// directory, for example `"actorPath": "actors/typescript-actor"`.<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
@@ -68,6 +71,9 @@ namespace Apify
         ///     "gitRepoUrl": "https://github.com/my-github-account/actor-repo"<br/>
         /// }<br/>
         /// ```<br/>
+        /// If the Actor is in a subdirectory of the uploaded `SOURCE_FILES` or<br/>
+        /// `TARBALL` source, such as in a monorepo, set `actorPath` to that<br/>
+        /// directory, for example `"actorPath": "actors/typescript-actor"`.<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
@@ -108,6 +114,9 @@ namespace Apify
         ///     "gitRepoUrl": "https://github.com/my-github-account/actor-repo"<br/>
         /// }<br/>
         /// ```<br/>
+        /// If the Actor is in a subdirectory of the uploaded `SOURCE_FILES` or<br/>
+        /// `TARBALL` source, such as in a monorepo, set `actorPath` to that<br/>
+        /// directory, for example `"actorPath": "actors/typescript-actor"`.<br/>
         /// The response is the `Version` object as<br/>
         /// returned by the [Get Actor version](/api/v2/actor-version-get) endpoint.
         /// </summary>
@@ -141,6 +150,9 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
+        /// <param name="actorPath">
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects a path when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. When omitted or `null`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -155,6 +167,7 @@ namespace Apify
             string? gitRepoUrl = default,
             string? tarballUrl = default,
             string? gitHubGistUrl = default,
+            string? actorPath = default,
             global::Apify.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

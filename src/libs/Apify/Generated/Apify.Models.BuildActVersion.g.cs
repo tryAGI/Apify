@@ -52,6 +52,12 @@ namespace Apify
         public string? TarballUrl { get; set; }
 
         /// <summary>
+        /// The Actor's directory inside the uploaded source, present when the version sets it. Applies when sourceType is SOURCE_FILES or TARBALL. On a TARBALL version, only users with write access to the Actor get it.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorPath")]
+        public string? ActorPath { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -77,6 +83,9 @@ namespace Apify
         /// <param name="tarballUrl">
         /// URL of the tarball or ZIP file, present when sourceType is TARBALL. Returned only to the Actor owner.
         /// </param>
+        /// <param name="actorPath">
+        /// The Actor's directory inside the uploaded source, present when the version sets it. Applies when sourceType is SOURCE_FILES or TARBALL. On a TARBALL version, only users with write access to the Actor get it.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -87,7 +96,8 @@ namespace Apify
             string? gitRepoUrl,
             global::System.Collections.Generic.IList<global::Apify.SourceCodeFile>? sourceFiles,
             string? gitHubGistUrl,
-            string? tarballUrl)
+            string? tarballUrl,
+            string? actorPath)
         {
             this.SourceType = sourceType;
             this.BuildTag = buildTag;
@@ -96,6 +106,7 @@ namespace Apify
             this.SourceFiles = sourceFiles;
             this.GitHubGistUrl = gitHubGistUrl;
             this.TarballUrl = tarballUrl;
+            this.ActorPath = actorPath;
         }
 
         /// <summary>
