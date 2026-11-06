@@ -1282,7 +1282,7 @@
           "Actors/Actor versions"
         ],
         "summary": "Create Actor version",
-        "description": "Creates a version of an Actor using values specified in a `Version`\nobject passed as JSON in the POST\npayload.\n\nThe request must specify `versionNumber` and `sourceType` parameters (as\nstrings) in the JSON payload and a `Content-Type: application/json` HTTP\nheader.\n\nEach `sourceType` requires its own additional properties to be passed to the\nJSON payload object. These are outlined in the `Version`\nobject table below and in more detail in\nthe [Apify\ndocumentation](https://docs.apify.com/platform/actors/development/deployment/source-types).\n\nFor example, if an Actor's source code is stored in a [GitHub\nrepository](https://docs.apify.com/platform/actors/development/deployment/source-types#git-repository),\nyou will set the `sourceType` to `GIT_REPO` and pass the repository's URL in\nthe `gitRepoUrl` property.\n\n```\n{\n    \"versionNumber\": \"0.1\",\n    \"sourceType\": \"GIT_REPO\",\n    \"gitRepoUrl\": \"https://github.com/my-github-account/actor-repo\"\n}\n```\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
+        "description": "Creates a version of an Actor using values specified in a `Version`\nobject passed as JSON in the POST\npayload.\n\nThe request must specify `versionNumber` and `sourceType` parameters (as\nstrings) in the JSON payload and a `Content-Type: application/json` HTTP\nheader.\n\nEach `sourceType` requires its own additional properties to be passed to the\nJSON payload object. These are outlined in the `Version`\nobject table below and in more detail in\nthe [Apify\ndocumentation](https://docs.apify.com/platform/actors/development/deployment/source-types).\n\nFor example, if an Actor's source code is stored in a [GitHub\nrepository](https://docs.apify.com/platform/actors/development/deployment/source-types#git-repository),\nyou will set the `sourceType` to `GIT_REPO` and pass the repository's URL in\nthe `gitRepoUrl` property.\n\n```\n{\n    \"versionNumber\": \"0.1\",\n    \"sourceType\": \"GIT_REPO\",\n    \"gitRepoUrl\": \"https://github.com/my-github-account/actor-repo\"\n}\n```\n\nIf the Actor is in a subdirectory of the uploaded `SOURCE_FILES` or\n`TARBALL` source, such as in a monorepo, set `actorPath` to that\ndirectory, for example `\"actorPath\": \"actors/typescript-actor\"`.\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
         "operationId": "actor_versions_post",
         "parameters": [
           {
@@ -1505,7 +1505,7 @@
         "x-py-name": "update",
         "x-py-doc-url": "https://docs.apify.com/api/client/python/reference/class/ActorVersionClientAsync#update",
         "summary": "Update Actor version",
-        "description": "Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.\n\nIf the object does not define a specific property, its value will not be\nupdated.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
+        "description": "Updates Actor version using values specified by a `Version` object passed as JSON in the POST payload.\n\nIf the object does not define a specific property, its value will not be\nupdated.\n\nAn update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without\n`actorPath` removes the version's stored `actorPath`. For a monorepo\nversion, send `actorPath` again with every upload.\n\nThe request needs to specify the `Content-Type: application/json` HTTP\nheader!\n\nWhen providing your API authentication token, we recommend using the\nrequest's `Authorization` header, rather than the URL.\nFor details, see [Authentication](/api/v2#authentication).\n\nThe response is the `Version` object as\nreturned by the [Get Actor version](/api/v2/actor-version-get) endpoint.\n",
         "operationId": "actor_version_put",
         "x-legacy-doc-urls": [
           "https://docs.apify.com/api/v2#/reference/actors/version-object/update-version",
@@ -21775,6 +21775,18 @@
           "gitHubGistUrl": {
             "type": "string",
             "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
+          },
+          "actorPath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255,
+            "examples": [
+              "actors/typescript-actor"
+            ],
+            "description": "The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects a path when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. When omitted or `null`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments."
           }
         }
       },
@@ -22223,6 +22235,18 @@
               "null"
             ],
             "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
+          },
+          "actorPath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255,
+            "examples": [
+              "actors/typescript-actor"
+            ],
+            "description": "The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. When absent or `null`, the upload root is the Actor's directory. On a `TARBALL` version, only users with write access to the Actor get it. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments."
           },
           "githubWebhookId": {
             "type": [
@@ -23189,6 +23213,18 @@
           "gitHubGistUrl": {
             "type": "string",
             "description": "URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`."
+          },
+          "actorPath": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 255,
+            "examples": [
+              "actors/typescript-actor"
+            ],
+            "description": "The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects it when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. On an update without `sourceType`, the API checks it against the version's stored source type. When the version has no `actorPath`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments. An update that sends `sourceType`, `sourceFiles`, or `tarballUrl` without `actorPath` removes the stored `actorPath`, so send it again with every upload. An update of other fields, such as `envVars` or `buildTag`, keeps it. Send `null` to remove it."
           }
         }
       },
@@ -24557,6 +24593,16 @@
                 "description": "URL of the tarball or ZIP file, present when sourceType is TARBALL. Returned only to the Actor owner.",
                 "examples": [
                   "https://example.com/my-actor.zip"
+                ]
+              },
+              "actorPath": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The Actor's directory inside the uploaded source, present when the version sets it. Applies when sourceType is SOURCE_FILES or TARBALL. On a TARBALL version, only users with write access to the Actor get it.",
+                "examples": [
+                  "actors/typescript-actor"
                 ]
               }
             }

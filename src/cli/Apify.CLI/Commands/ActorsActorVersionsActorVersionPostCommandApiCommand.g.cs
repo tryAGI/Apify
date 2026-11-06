@@ -86,6 +86,7 @@ This endpoint is an alias for the [Update Actor version](/api/v2/actor-version-p
                         command.Options.Add(UpdateVersionRequestOptionSetOptions.GitRepoUrl);
                         command.Options.Add(UpdateVersionRequestOptionSetOptions.TarballUrl);
                         command.Options.Add(UpdateVersionRequestOptionSetOptions.GitHubGistUrl);
+                        command.Options.Add(UpdateVersionRequestOptionSetOptions.ActorPath);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -121,6 +122,7 @@ This endpoint is an alias for the [Update Actor version](/api/v2/actor-version-p
                         var gitRepoUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.GitRepoUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.GitRepoUrl) : (__requestBase is { } __GitRepoUrlBaseValue ? __GitRepoUrlBaseValue.GitRepoUrl : default);
                         var tarballUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.TarballUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.TarballUrl) : (__requestBase is { } __TarballUrlBaseValue ? __TarballUrlBaseValue.TarballUrl : default);
                         var gitHubGistUrl = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.GitHubGistUrl) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.GitHubGistUrl) : (__requestBase is { } __GitHubGistUrlBaseValue ? __GitHubGistUrlBaseValue.GitHubGistUrl : default);
+                        var actorPath = CliRuntime.WasSpecified(parseResult, UpdateVersionRequestOptionSetOptions.ActorPath) ? parseResult.GetValue(UpdateVersionRequestOptionSetOptions.ActorPath) : (__requestBase is { } __ActorPathBaseValue ? __ActorPathBaseValue.ActorPath : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -136,6 +138,7 @@ This endpoint is an alias for the [Update Actor version](/api/v2/actor-version-p
                                     gitRepoUrl: gitRepoUrl,
                                     tarballUrl: tarballUrl,
                                     gitHubGistUrl: gitHubGistUrl,
+                                    actorPath: actorPath,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -64,6 +64,12 @@ namespace Apify
         public string? GitHubGistUrl { get; set; }
 
         /// <summary>
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. When absent or `null`, the upload root is the Actor's directory. On a `TARBALL` version, only users with write access to the Actor get it. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorPath")]
+        public string? ActorPath { get; set; }
+
+        /// <summary>
         /// ID of the GitHub webhook that triggers a build on push. Present when build on push is enabled for a GitHub repository.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("githubWebhookId")]
@@ -117,6 +123,9 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
+        /// <param name="actorPath">
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. When absent or `null`, the upload root is the Actor's directory. On a `TARBALL` version, only users with write access to the Actor get it. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.
+        /// </param>
         /// <param name="githubWebhookId">
         /// ID of the GitHub webhook that triggers a build on push. Present when build on push is enabled for a GitHub repository.
         /// </param>
@@ -139,6 +148,7 @@ namespace Apify
             string? gitRepoUrl,
             string? tarballUrl,
             string? gitHubGistUrl,
+            string? actorPath,
             int? githubWebhookId,
             int? gitlabWebhookId,
             string? bitbucketWebhookId)
@@ -152,6 +162,7 @@ namespace Apify
             this.GitRepoUrl = gitRepoUrl;
             this.TarballUrl = tarballUrl;
             this.GitHubGistUrl = gitHubGistUrl;
+            this.ActorPath = actorPath;
             this.GithubWebhookId = githubWebhookId;
             this.GitlabWebhookId = gitlabWebhookId;
             this.BitbucketWebhookId = bitbucketWebhookId;

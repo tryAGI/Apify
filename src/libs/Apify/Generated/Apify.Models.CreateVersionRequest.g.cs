@@ -66,6 +66,12 @@ namespace Apify
         public string? GitHubGistUrl { get; set; }
 
         /// <summary>
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects a path when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. When omitted or `null`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("actorPath")]
+        public string? ActorPath { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -101,6 +107,9 @@ namespace Apify
         /// <param name="gitHubGistUrl">
         /// URL of the GitHub Gist to clone the source code from. Applies when the `sourceType` is `GITHUB_GIST`.
         /// </param>
+        /// <param name="actorPath">
+        /// The Actor's directory inside the uploaded source, as a path relative to the upload root with `/` separators, for example `actors/typescript-actor`. Applies when the `sourceType` is `SOURCE_FILES` or `TARBALL`. The API rejects a path when the `sourceType` is `GIT_REPO` or `GITHUB_GIST`. When omitted or `null`, the upload root is the Actor's directory. It has 1 to 255 characters, with no leading, trailing, or repeated `/` and no `.` or `..` segments.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -113,7 +122,8 @@ namespace Apify
             global::System.Collections.Generic.IList<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>? sourceFiles,
             string? gitRepoUrl,
             string? tarballUrl,
-            string? gitHubGistUrl)
+            string? gitHubGistUrl,
+            string? actorPath)
         {
             this.VersionNumber = versionNumber ?? throw new global::System.ArgumentNullException(nameof(versionNumber));
             this.SourceType = sourceType;
@@ -124,6 +134,7 @@ namespace Apify
             this.GitRepoUrl = gitRepoUrl;
             this.TarballUrl = tarballUrl;
             this.GitHubGistUrl = gitHubGistUrl;
+            this.ActorPath = actorPath;
         }
 
         /// <summary>
