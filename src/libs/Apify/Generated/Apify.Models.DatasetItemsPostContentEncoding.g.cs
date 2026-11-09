@@ -24,6 +24,10 @@ namespace Apify
         ///
         /// </summary>
         Identity,
+        /// <summary>
+        ///
+        /// </summary>
+        Zstd,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Apify
                 DatasetItemsPostContentEncoding.Deflate => "deflate",
                 DatasetItemsPostContentEncoding.Gzip => "gzip",
                 DatasetItemsPostContentEncoding.Identity => "identity",
+                DatasetItemsPostContentEncoding.Zstd => "zstd",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Apify
                 "deflate" => DatasetItemsPostContentEncoding.Deflate,
                 "gzip" => DatasetItemsPostContentEncoding.Gzip,
                 "identity" => DatasetItemsPostContentEncoding.Identity,
+                "zstd" => DatasetItemsPostContentEncoding.Zstd,
                 _ => null,
             };
         }

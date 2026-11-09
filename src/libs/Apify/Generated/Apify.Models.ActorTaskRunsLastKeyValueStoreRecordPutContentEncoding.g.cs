@@ -24,6 +24,10 @@ namespace Apify
         ///
         /// </summary>
         Identity,
+        /// <summary>
+        ///
+        /// </summary>
+        Zstd,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace Apify
                 ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Deflate => "deflate",
                 ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Gzip => "gzip",
                 ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Identity => "identity",
+                ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Zstd => "zstd",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace Apify
                 "deflate" => ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Deflate,
                 "gzip" => ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Gzip,
                 "identity" => ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Identity,
+                "zstd" => ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding.Zstd,
                 _ => null,
             };
         }

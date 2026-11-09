@@ -60,6 +60,7 @@ namespace Apify
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
+        /// * Zstandard compression: `Content-Encoding: zstd`<br/>
         /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
@@ -107,6 +108,7 @@ namespace Apify
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
+        /// * Zstandard compression: `Content-Encoding: zstd`<br/>
         /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
@@ -801,6 +803,7 @@ namespace Apify
         /// Below is a list of supported `Content-Encoding` types.<br/>
         /// * Brotli compression: `Content-Encoding: br`<br/>
         /// * Gzip compression: `Content-Encoding: gzip`<br/>
+        /// * Zstandard compression: `Content-Encoding: zstd`<br/>
         /// * Deflate compression: `Content-Encoding: deflate`
         /// </summary>
         /// <param name="storeId">
