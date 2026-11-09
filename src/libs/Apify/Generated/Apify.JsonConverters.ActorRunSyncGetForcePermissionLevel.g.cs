@@ -18,7 +18,7 @@ namespace Apify.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Apify.ActorRunSyncGetForcePermissionLevelExtensions.ToEnum(stringValue) ?? default;
+                        return global::Apify.ActorRunSyncGetForcePermissionLevelExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Apify.ActorRunSyncGetForcePermissionLevel.");
                     }
 
                     break;

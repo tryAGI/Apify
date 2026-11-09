@@ -18,7 +18,7 @@ namespace Apify.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncodingExtensions.ToEnum(stringValue) ?? default;
+                        return global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncodingExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding.");
                     }
 
                     break;

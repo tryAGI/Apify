@@ -18,7 +18,7 @@ namespace Apify.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Apify.ScheduleCreateActionDiscriminatorTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Apify.ScheduleCreateActionDiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Apify.ScheduleCreateActionDiscriminatorType.");
                     }
 
                     break;

@@ -18,7 +18,7 @@ namespace Apify.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Apify.StoreGetResponseFormatExtensions.ToEnum(stringValue) ?? default;
+                        return global::Apify.StoreGetResponseFormatExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Apify.StoreGetResponseFormat.");
                     }
 
                     break;
