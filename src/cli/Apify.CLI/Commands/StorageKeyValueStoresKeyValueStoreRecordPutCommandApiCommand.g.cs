@@ -81,6 +81,7 @@ Below is a list of supported `Content-Encoding` types.
 
 * Brotli compression: `Content-Encoding: br`
 * Gzip compression: `Content-Encoding: gzip`
+* Zstandard compression: `Content-Encoding: zstd`
 * Deflate compression: `Content-Encoding: deflate`
 ");
                         command.Arguments.Add(StoreId);
