@@ -93,7 +93,7 @@ namespace Apify
         public global::System.Collections.Generic.Dictionary<string, global::Apify.UpdatedBuildProperty?>? TaggedBuilds { get; set; }
 
         /// <summary>
-        /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
+        /// The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorStandby")]
         public global::Apify.ActorStandby? ActorStandby { get; set; }
@@ -157,7 +157,7 @@ namespace Apify
         /// Example: {"latest":{"buildId":"z2EryhbfhgSyqj6Hn"},"beta":null}
         /// </param>
         /// <param name="actorStandby">
-        /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
+        /// The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors).
         /// </param>
         /// <param name="exampleRunInput">
         /// Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided.

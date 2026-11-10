@@ -79,7 +79,7 @@ namespace Apify
         public global::Apify.DefaultRunOptions? DefaultRunOptions { get; set; }
 
         /// <summary>
-        /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
+        /// The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("actorStandby")]
         public global::Apify.ActorStandby? ActorStandby { get; set; }
@@ -136,7 +136,7 @@ namespace Apify
         /// The default settings applied to an Actor run. Can be overridden elsewhere.
         /// </param>
         /// <param name="actorStandby">
-        /// The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby).
+        /// The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors).
         /// </param>
         /// <param name="exampleRunInput">
         /// Sample input payload that demonstrates what a typical run input for an Actor looks like. Used when no explicit input for a run is provided.
