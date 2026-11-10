@@ -8,7 +8,9 @@ namespace Apify
         /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
-        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.
+        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the API token provided to the run at startup in the `APIFY_TOKEN` environment variable.<br/>
+        /// To charge a request to a multi-tenant Server Actor, set `requestId` to the request's `X-Actor-Request-ID` header value.<br/>
+        /// See [Charge for a request](/actors/monetize/server-actors#charge-for-a-request).
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -31,7 +33,9 @@ namespace Apify
         /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
-        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.
+        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the API token provided to the run at startup in the `APIFY_TOKEN` environment variable.<br/>
+        /// To charge a request to a multi-tenant Server Actor, set `requestId` to the request's `X-Actor-Request-ID` header value.<br/>
+        /// See [Charge for a request](/actors/monetize/server-actors#charge-for-a-request).
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -54,7 +58,9 @@ namespace Apify
         /// Charge events in Actor run<br/>
         /// Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).<br/>
         /// The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,<br/>
-        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.
+        /// the endpoint will return an error. The endpoint must be called from the Actor run itself, with the API token provided to the run at startup in the `APIFY_TOKEN` environment variable.<br/>
+        /// To charge a request to a multi-tenant Server Actor, set `requestId` to the request's `X-Actor-Request-ID` header value.<br/>
+        /// See [Charge for a request](/actors/monetize/server-actors#charge-for-a-request).
         /// </summary>
         /// <param name="runId">
         /// Example: 3KH8gEpp4d8uQSe8T
@@ -65,7 +71,7 @@ namespace Apify
         /// <param name="eventName"></param>
         /// <param name="count"></param>
         /// <param name="requestId">
-        /// ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to.
+        /// ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to. Runs of single-tenant Server Actors ignore it.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

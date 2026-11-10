@@ -36,7 +36,7 @@ internal static partial class ActorRunsPostChargeRunCommandApiCommand
     private static Option<string?> RequestId { get; } = new(
         name: @"--request-id")
     {
-        Description = @"ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to.",
+        Description = @"ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to. Runs of single-tenant Server Actors ignore it.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -82,7 +82,10 @@ internal static partial class ActorRunsPostChargeRunCommandApiCommand
         var command = new Command(commandName ?? @"post-charge-run", @"Charge events in Actor run
 Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).
 The event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,
-the endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.
+the endpoint will return an error. The endpoint must be called from the Actor run itself, with the API token provided to the run at startup in the `APIFY_TOKEN` environment variable.
+
+To charge a request to a multi-tenant Server Actor, set `requestId` to the request's `X-Actor-Request-ID` header value.
+See [Charge for a request](/actors/monetize/server-actors#charge-for-a-request).
 ");
                         command.Arguments.Add(RunId);
                         command.Options.Add(IdempotencyKey);

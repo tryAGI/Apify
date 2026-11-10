@@ -11665,7 +11665,7 @@
           "Actor runs"
         ],
         "summary": "Charge events in Actor run",
-        "description": "Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).\nThe event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,\nthe endpoint will return an error. The endpoint must be called from the Actor run itself, with the same API token that the run was started with.\n",
+        "description": "Charge for events in the run of your [pay-per-event Actor](/actors/monetize/pay-per-event).\nThe event you are charging for must be one of the configured events in your Actor. If the Actor is not set up as pay per event, or if the event is not configured,\nthe endpoint will return an error. The endpoint must be called from the Actor run itself, with the API token provided to the run at startup in the `APIFY_TOKEN` environment variable.\n\nTo charge a request to a multi-tenant Server Actor, set `requestId` to the request's `X-Actor-Request-ID` header value.\nSee [Charge for a request](/actors/monetize/server-actors#charge-for-a-request).\n",
         "operationId": "PostChargeRun",
         "parameters": [
           {
@@ -22078,7 +22078,7 @@
                 "type": "null"
               }
             ],
-            "description": "The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby)."
+            "description": "The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors)."
           },
           "exampleRunInput": {
             "anyOf": [
@@ -23087,7 +23087,7 @@
                 "type": "null"
               }
             ],
-            "description": "The configuration of the Actor's standby mode. For details, see [Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby)."
+            "description": "The configuration of the Actor's standby mode. For details, see [Develop Server Actors](https://docs.apify.com/platform/actors/development/programming-interface/server-actors)."
           },
           "exampleRunInput": {
             "anyOf": [
@@ -25969,7 +25969,7 @@
             "description": "Total cost in USD for this run. Represents what you actually pay. For run owners: includes platform usage (compute units) and/or event costs depending on the Actor's pricing model. For run non-owners: only available for pay-per-event Actors (event costs only). Requires authentication token to access."
           },
           "usageUsd": {
-            "description": "Platform usage costs breakdown in USD. Only present if you own the run and are paying for platform usage (pay-per-usage or pay-per-event with usage costs like Standby Actors). Not available for standard pay-per-event Actors. Requires authentication token to access.",
+            "description": "Platform usage costs breakdown in USD. Only present if you own the run and are paying for platform usage (pay per usage, or pay per event with usage costs, such as runs of single-tenant Server Actors). Not available for standard pay-per-event Actors. Requires authentication token to access.",
             "anyOf": [
               {
                 "$ref": "#/components/schemas/RunUsageUsd"
@@ -28690,7 +28690,7 @@
           },
           "requestId": {
             "type": "string",
-            "description": "ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to.",
+            "description": "ID of the Server Actor request being charged, from the `X-Actor-Request-ID` header of the incoming request. Required for multi-tenant Server Actor runs, where it identifies the request the charge belongs to. Runs of single-tenant Server Actors ignore it.",
             "examples": [
               "7Hs2kQw9LxP4mN1vB"
             ]
