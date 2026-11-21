@@ -1378,347 +1378,363 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.UsageCycle? Type335 { get; set; }
+        public global::Apify.UserProxyInfo? Type335 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PriceTier? Type336 { get; set; }
+        public global::Apify.UserProxyInfoPlan? Type336 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.UsageItem? Type337 { get; set; }
+        public global::Apify.UserProxyInfoResponse? Type337 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.PriceTier>? Type338 { get; set; }
+        public global::Apify.UsageCycle? Type338 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Apify.UsageItem>? Type339 { get; set; }
+        public global::Apify.PriceTier? Type339 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.DailyServiceUsage? Type340 { get; set; }
+        public global::Apify.UsageItem? Type340 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.MonthlyUsage? Type341 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.PriceTier>? Type341 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.DailyServiceUsage>? Type342 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Apify.UsageItem>? Type342 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.MonthlyUsageResponse? Type343 { get; set; }
+        public global::Apify.DailyServiceUsage? Type343 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.Limits? Type344 { get; set; }
+        public global::Apify.MonthlyUsage? Type344 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.CurrentUsage? Type345 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.DailyServiceUsage>? Type345 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AccountLimits? Type346 { get; set; }
+        public global::Apify.MonthlyUsageResponse? Type346 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AccountLimitsResponse? Type347 { get; set; }
+        public global::Apify.Limits? Type347 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.UpdateLimitsRequest? Type348 { get; set; }
+        public global::Apify.CurrentUsage? Type348 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitProviderWorkspace? Type349 { get; set; }
+        public global::Apify.AccountLimits? Type349 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitProviderIntegration? Type350 { get; set; }
+        public global::Apify.AccountLimitsResponse? Type350 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitProviderIntegrationProvider? Type351 { get; set; }
+        public global::Apify.UpdateLimitsRequest? Type351 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.GitProviderWorkspace>? Type352 { get; set; }
+        public global::Apify.GitProviderWorkspace? Type352 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ListOfGitProviderIntegrationsResponse? Type353 { get; set; }
+        public global::Apify.GitProviderIntegration? Type353 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.GitProviderIntegration>? Type354 { get; set; }
+        public global::Apify.GitProviderIntegrationProvider? Type354 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitRepoFile? Type355 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.GitProviderWorkspace>? Type355 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitRepoFileEncoding? Type356 { get; set; }
+        public global::Apify.ListOfGitProviderIntegrationsResponse? Type356 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.CreateGitRepoRequest? Type357 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.GitProviderIntegration>? Type357 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.GitRepoFile>? Type358 { get; set; }
+        public global::Apify.GitRepoFile? Type358 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitRepo? Type359 { get; set; }
+        public global::Apify.GitRepoFileEncoding? Type359 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.GitRepoResponse? Type360 { get; set; }
+        public global::Apify.CreateGitRepoRequest? Type360 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RegisterDeploymentKeyRequest? Type361 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.GitRepoFile>? Type361 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RegisterDeploymentKeyResponse? Type362 { get; set; }
+        public global::Apify.GitRepo? Type362 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RegisterDeploymentKeyResponseData? Type363 { get; set; }
+        public global::Apify.GitRepoResponse? Type363 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.BrowserInfoResponse? Type364 { get; set; }
+        public global::Apify.RegisterDeploymentKeyRequest? Type364 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.EncodeAndSignResult? Type365 { get; set; }
+        public global::Apify.RegisterDeploymentKeyResponse? Type365 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.EncodeAndSignResponse? Type366 { get; set; }
+        public global::Apify.RegisterDeploymentKeyResponseData? Type366 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.DecodeAndVerifyRequest? Type367 { get; set; }
+        public global::Apify.BrowserInfoResponse? Type367 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.DecodeAndVerifyResult? Type368 { get; set; }
+        public global::Apify.EncodeAndSignResult? Type368 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.DecodeAndVerifyResponse? Type369 { get; set; }
+        public global::Apify.EncodeAndSignResponse? Type369 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>? Type370 { get; set; }
+        public global::Apify.DecodeAndVerifyRequest? Type370 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>? Type371 { get; set; }
+        public global::Apify.DecodeAndVerifyResult? Type371 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AllOf<global::Apify.UpdateRequestQueueRequest, object>? Type372 { get; set; }
+        public global::Apify.DecodeAndVerifyResponse? Type372 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.RequestWithoutId>? Type373 { get; set; }
+        public global::Apify.OneOf<global::Apify.PutItemsRequest, global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>>? Type373 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.RequestToDelete>? Type374 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.PutItemsRequest>? Type374 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AllOf<global::Apify.CreateTaskRequest, object>? Type375 { get; set; }
+        public global::Apify.AllOf<global::Apify.UpdateRequestQueueRequest, object>? Type375 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AllOf<global::Apify.UpdateRunRequest, object>? Type376 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.RequestWithoutId>? Type376 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorsGetSortBy? Type377 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.RequestToDelete>? Type377 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public byte[]? Type378 { get; set; }
+        public global::Apify.AllOf<global::Apify.CreateTaskRequest, object>? Type378 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorsRunsPostForcePermissionLevel? Type379 { get; set; }
+        public global::Apify.AllOf<global::Apify.UpdateRunRequest, object>? Type379 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunSyncPostForcePermissionLevel? Type380 { get; set; }
+        public global::Apify.ActorsGetSortBy? Type380 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunSyncGetForcePermissionLevel? Type381 { get; set; }
+        public byte[]? Type381 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel? Type382 { get; set; }
+        public global::Apify.ActorsRunsPostForcePermissionLevel? Type382 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? Type383 { get; set; }
+        public global::Apify.ActorRunSyncPostForcePermissionLevel? Type383 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunsLastDatasetItemsPostContentEncoding? Type384 { get; set; }
+        public global::Apify.ActorRunSyncGetForcePermissionLevel? Type384 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunsLastKeyValueStoreRecordPutContentEncoding? Type385 { get; set; }
+        public global::Apify.ActorRunSyncGetDatasetItemsPostForcePermissionLevel? Type385 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunsLastKeyValueStoreRecordPostContentEncoding? Type386 { get; set; }
+        public global::Apify.ActorRunSyncGetDatasetItemsGetForcePermissionLevel? Type386 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>? Type387 { get; set; }
+        public global::Apify.ActorRunsLastDatasetItemsPostContentEncoding? Type387 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem? Type388 { get; set; }
+        public global::Apify.ActorRunsLastKeyValueStoreRecordPutContentEncoding? Type388 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsLastDatasetItemsPostContentEncoding? Type389 { get; set; }
+        public global::Apify.ActorRunsLastKeyValueStoreRecordPostContentEncoding? Type389 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding? Type390 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem>? Type390 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding? Type391 { get; set; }
+        public global::Apify.ActorRunsLastRequestQueueRequestsGetFilterItem? Type391 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem>? Type392 { get; set; }
+        public global::Apify.ActorTaskRunsLastDatasetItemsPostContentEncoding? Type392 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem? Type393 { get; set; }
+        public global::Apify.ActorTaskRunsLastKeyValueStoreRecordPutContentEncoding? Type393 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunDatasetItemsPostContentEncoding? Type394 { get; set; }
+        public global::Apify.ActorTaskRunsLastKeyValueStoreRecordPostContentEncoding? Type394 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunKeyValueStoreRecordPutContentEncoding? Type395 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem>? Type395 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunKeyValueStoreRecordPostContentEncoding? Type396 { get; set; }
+        public global::Apify.ActorTaskRunsLastRequestQueueRequestsGetFilterItem? Type396 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.ActorRunRequestQueueRequestsGetFilterItem>? Type397 { get; set; }
+        public global::Apify.ActorRunDatasetItemsPostContentEncoding? Type397 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorRunRequestQueueRequestsGetFilterItem? Type398 { get; set; }
+        public global::Apify.ActorRunKeyValueStoreRecordPutContentEncoding? Type398 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.KeyValueStoreRecordPutContentEncoding? Type399 { get; set; }
+        public global::Apify.ActorRunKeyValueStoreRecordPostContentEncoding? Type399 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.KeyValueStoreRecordPostContentEncoding? Type400 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.ActorRunRequestQueueRequestsGetFilterItem>? Type400 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.DatasetItemsPostContentEncoding? Type401 { get; set; }
+        public global::Apify.ActorRunRequestQueueRequestsGetFilterItem? Type401 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? Type402 { get; set; }
+        public global::Apify.KeyValueStoreRecordPutContentEncoding? Type402 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.RequestQueueRequestsGetFilterItem? Type403 { get; set; }
+        public global::Apify.KeyValueStoreRecordPostContentEncoding? Type403 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.StoreGetPricingModel? Type404 { get; set; }
+        public global::Apify.DatasetItemsPostContentEncoding? Type404 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.StoreGetResponseFormat? Type405 { get; set; }
+        public global::System.Collections.Generic.IList<global::Apify.RequestQueueRequestsGetFilterItem>? Type405 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<object>? Type406 { get; set; }
+        public global::Apify.RequestQueueRequestsGetFilterItem? Type406 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorValidateInputPostResponse? Type407 { get; set; }
+        public global::Apify.StoreGetPricingModel? Type407 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>? Type408 { get; set; }
+        public global::Apify.StoreGetResponseFormat? Type408 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskGetResponse? Type409 { get; set; }
+        public global::System.Collections.Generic.IList<object>? Type409 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskPutResponse? Type410 { get; set; }
+        public global::Apify.ActorValidateInputPostResponse? Type410 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskWebhooksGetResponse? Type411 { get; set; }
+        public global::Apify.AnyOf<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>? Type411 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskWebhooksGetResponseData>? Type412 { get; set; }
+        public global::Apify.ActorTaskGetResponse? Type412 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskWebhooksGetResponseData? Type413 { get; set; }
+        public global::Apify.ActorTaskPutResponse? Type413 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsGetResponse? Type414 { get; set; }
+        public global::Apify.ActorTaskWebhooksGetResponse? Type414 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskRunsGetResponseData>? Type415 { get; set; }
+        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskWebhooksGetResponseData>? Type415 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsGetResponseData? Type416 { get; set; }
+        public global::Apify.ActorTaskWebhooksGetResponseData? Type416 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsPostResponse? Type417 { get; set; }
+        public global::Apify.ActorTaskRunsGetResponse? Type417 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.ActorTaskRunsLastGetResponse? Type418 { get; set; }
+        public global::Apify.AllOf<global::Apify.PaginationResponse, global::Apify.ActorTaskRunsGetResponseData>? Type418 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.PostChargeRunResponse? Type419 { get; set; }
+        public global::Apify.ActorTaskRunsGetResponseData? Type419 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>? Type420 { get; set; }
+        public global::Apify.ActorTaskRunsPostResponse? Type420 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Apify.ActorTaskRunsLastGetResponse? Type421 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Apify.PostChargeRunResponse? Type422 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>? Type423 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::Apify.AnyOf<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>? Type424 { get; set; }
 
         /// <summary>
         ///
