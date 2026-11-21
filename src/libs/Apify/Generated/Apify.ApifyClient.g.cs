@@ -33,9 +33,11 @@ namespace Apify
     /// :::<br/>
     /// ## Authentication<br/>
     /// &lt;span id="/introduction/authentication"&gt;&lt;/span&gt;<br/>
-    /// **You can find your API token on the<br/>
+    /// **You can create an API token on the<br/>
     /// [Integrations](https://console.apify.com/settings/integrations) page in the<br/>
-    /// Apify Console.**<br/>
+    /// Apify Console.** The Console shows the token only once, right after you create<br/>
+    /// or rotate it, so copy it and store it somewhere safe. For details, see<br/>
+    /// [API token](https://docs.apify.com/integrations/api#api-token).<br/>
     /// To use your token in a request, either:<br/>
     /// - _(Recommended)_ Add the token to your request's `Authorization` header as `Bearer &lt;token&gt;`.<br/>
     /// E.g., `Authorization: Bearer xxxxxxx`.<br/>

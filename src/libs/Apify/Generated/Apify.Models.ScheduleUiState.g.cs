@@ -4,7 +4,7 @@
 namespace Apify
 {
     /// <summary>
-    /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.
+    /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`, after which it is `null`.
     /// </summary>
     public sealed partial class ScheduleUiState
     {
