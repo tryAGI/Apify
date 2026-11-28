@@ -27,7 +27,7 @@ namespace Apify
         public global::Apify.ScheduleNotifications? Notifications { get; set; }
 
         /// <summary>
-        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.
+        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`, after which it is `null`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("uiState")]
         public global::Apify.ScheduleUiState? UiState { get; set; }
@@ -61,7 +61,7 @@ namespace Apify
         /// Notification settings for this schedule.
         /// </param>
         /// <param name="uiState">
-        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`.
+        /// State of the schedule editor in Apify Console. It's removed when an API update changes `cronExpression` or `timezone`, after which it is `null`.
         /// </param>
         /// <param name="integrationTracking">
         /// Present only when the schedule was created by a third-party integration.

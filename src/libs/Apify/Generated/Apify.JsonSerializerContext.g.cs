@@ -297,7 +297,9 @@ namespace Apify
 
             typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.PutItemsErrorResponse, global::Apify.ErrorResponse>),
 
-            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>),
+            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>),
+
+            typeof(global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>),
 
             typeof(global::Apify.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -624,6 +626,7 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.CurrentPricingInfoTieredPricing2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.CurrentPricingInfoTieredPricing2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActor))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActorStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActorInputSchema))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Apify.StoreActorInputSchemaProperties2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.StoreActorInputSchemaProperties2))]
@@ -644,6 +647,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EffectivePlatformFeatures))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfoPlan))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfoResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UsageCycle))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PriceTier))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UsageItem))]
@@ -729,7 +735,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsPostResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.ActorTaskRunsLastGetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.PostChargeRunResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>), TypeInfoPropertyName = "AnyOfUserPublicInfoResponseUserPrivateInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>), TypeInfoPropertyName = "AnyOfUserPublicInfoResponseUserPrivateInfoResponseUserProxyInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>), TypeInfoPropertyName = "AnyOfUserPrivateInfoResponseUserProxyInfoResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ActorListItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.AnyOf<global::Apify.SourceCodeFile, global::Apify.SourceCodeFolder>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.EnvVarRequest>))]

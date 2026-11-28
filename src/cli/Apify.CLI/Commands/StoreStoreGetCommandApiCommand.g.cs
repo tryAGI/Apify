@@ -10,37 +10,48 @@ internal static partial class StoreStoreGetCommandApiCommand
     private static Option<double?> Limit { get; } = new(
         name: @"--limit")
     {
-        Description = @"Maximum number of items to return. The default value as well as the maximum is `1000`.
+        Description = @"Maximum number of items to return. The default value as well as the
+maximum is `1000`. When `search` is used, the default and maximum are
+`100`, and larger values are reduced to `100`.
 ",
     };
 
     private static Option<double?> Offset { get; } = new(
         name: @"--offset")
     {
-        Description = @"Number of items that should be skipped at the start. The default value is `0`.
+        Description = @"Number of items that should be skipped at the start. The default value
+is `0`. Ignored when `search` is used.
 ",
     };
 
     private static Option<string?> Search { get; } = new(
         name: @"--search")
     {
-        Description = @"String to search by. The search runs on the following fields: `title`,
-`name`, `description`, `username`, `readme`.
+        Description = @"String to search by. Results are ranked by relevance and returned as a
+single page of at most 100 items.
 ",
     };
 
     private static Option<string?> SortBy { get; } = new(
         name: @"--sort-by")
     {
-        Description = @"Specifies the field by which to sort the results. The supported values
-are `relevance` (default), `popularity`, `newest` and `lastUpdate`.
+        Description = @"Deprecated and ignored. The value is accepted for backward
+compatibility but has no effect. Results are ordered by relevance when
+`search` is used, and by Store position otherwise. Sort the results
+on the client if you need a different order.
 ",
     };
 
     private static Option<string?> Category { get; } = new(
         name: @"--category")
     {
-        Description = @"Filters the results by the specified category.",
+        Description = @"Filters the results by category. Accepts one or more category IDs,
+separated by commas and case-insensitive. An Actor must match all of
+the listed categories. See the
+[list of category IDs](https://github.com/apify/apify-shared-js/blob/master/packages/actor-categories/src/actor_categories.ts).
+Legacy keys such as `social_media` are still accepted. An unknown
+category returns a `400` error.
+",
     };
 
     private static Option<string?> Username { get; } = new(
@@ -118,8 +129,13 @@ parameter to search Actors by string in title, name, description, username
 and readme.
 If you need detailed info about a specific Actor, use the [Get Actor](/api/v2/actor-get) endpoint.
 
-The endpoint supports pagination using the `limit` and `offset` parameters.
-It will not return more than 1,000 records.
+Without `search`, the endpoint supports pagination using the `limit` and
+`offset` parameters. It will not return more than 1,000 records per page.
+
+With `search`, results are ranked by relevance and returned as a single
+page of at most 100 records. `offset` is ignored and there is no second
+page. `total` and `count` equal the number of returned items. To narrow
+the results, use `category`, `username` or `pricingModel`.
 ");
                         command.Options.Add(Limit);
                         command.Options.Add(Offset);

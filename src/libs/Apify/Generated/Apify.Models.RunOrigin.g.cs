@@ -19,6 +19,10 @@ namespace Apify
         /// <summary>
         ///
         /// </summary>
+        ApifyAi,
+        /// <summary>
+        ///
+        /// </summary>
         Ci,
         /// <summary>
         ///
@@ -68,6 +72,7 @@ namespace Apify
             {
                 RunOrigin.Actor => "ACTOR",
                 RunOrigin.Api => "API",
+                RunOrigin.ApifyAi => "APIFY_AI",
                 RunOrigin.Ci => "CI",
                 RunOrigin.Cli => "CLI",
                 RunOrigin.Development => "DEVELOPMENT",
@@ -89,6 +94,7 @@ namespace Apify
             {
                 "ACTOR" => RunOrigin.Actor,
                 "API" => RunOrigin.Api,
+                "APIFY_AI" => RunOrigin.ApifyAi,
                 "CI" => RunOrigin.Ci,
                 "CLI" => RunOrigin.Cli,
                 "DEVELOPMENT" => RunOrigin.Development,
