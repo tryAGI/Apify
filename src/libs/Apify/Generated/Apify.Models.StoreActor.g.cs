@@ -49,9 +49,9 @@ namespace Apify
         public string? Description { get; set; }
 
         /// <summary>
-        /// Example: [MARKETING, LEAD_GENERATION]
+        /// Example: [AI_AND_ML, GENERATE_LEADS]
         /// </summary>
-        /// <example>[MARKETING, LEAD_GENERATION]</example>
+        /// <example>[AI_AND_ML, GENERATE_LEADS]</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
         public global::System.Collections.Generic.IList<string>? Categories { get; set; }
 
@@ -81,11 +81,11 @@ namespace Apify
         public string? Url { get; set; }
 
         /// <summary>
-        /// Usage statistics and Apify Store metrics for the Actor.
+        /// Actor usage statistics and Apify Store metrics returned by the Store endpoint.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("stats")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Apify.ActorStats Stats { get; set; }
+        public required global::Apify.StoreActorStats Stats { get; set; }
 
         /// <summary>
         ///
@@ -100,22 +100,10 @@ namespace Apify
         public bool? IsWhiteListedForAgenticPayments { get; set; }
 
         /// <summary>
-        ///
+        /// Whether the Actor's developer has a verified identity.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewCount")]
-        public int? ActorReviewCount { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("actorReviewRating")]
-        public double? ActorReviewRating { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("bookmarkCount")]
-        public int? BookmarkCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("isVerified")]
+        public bool? IsVerified { get; set; }
 
         /// <summary>
         ///
@@ -149,12 +137,12 @@ namespace Apify
         /// <param name="name"></param>
         /// <param name="username"></param>
         /// <param name="stats">
-        /// Usage statistics and Apify Store metrics for the Actor.
+        /// Actor usage statistics and Apify Store metrics returned by the Store endpoint.
         /// </param>
         /// <param name="userFullName"></param>
         /// <param name="description"></param>
         /// <param name="categories">
-        /// Example: [MARKETING, LEAD_GENERATION]
+        /// Example: [AI_AND_ML, GENERATE_LEADS]
         /// </param>
         /// <param name="notice">
         /// A warning displayed on the Actor's page in Apify Store and Console. Can be set by the Actor's developer or automatically by Apify's quality checks.
@@ -166,9 +154,9 @@ namespace Apify
         /// <param name="isWhiteListedForAgenticPayments">
         /// Whether the Actor is whitelisted for agentic payment processing.
         /// </param>
-        /// <param name="actorReviewCount"></param>
-        /// <param name="actorReviewRating"></param>
-        /// <param name="bookmarkCount"></param>
+        /// <param name="isVerified">
+        /// Whether the Actor's developer has a verified identity.
+        /// </param>
         /// <param name="badge"></param>
         /// <param name="readmeSummary">
         /// A brief, LLM-generated readme summary
@@ -184,7 +172,7 @@ namespace Apify
             string title,
             string name,
             string username,
-            global::Apify.ActorStats stats,
+            global::Apify.StoreActorStats stats,
             string? userFullName,
             string? description,
             global::System.Collections.Generic.IList<string>? categories,
@@ -194,9 +182,7 @@ namespace Apify
             string? url,
             global::Apify.CurrentPricingInfo? currentPricingInfo,
             bool? isWhiteListedForAgenticPayments,
-            int? actorReviewCount,
-            double? actorReviewRating,
-            int? bookmarkCount,
+            bool? isVerified,
             string? badge,
             string? readmeSummary,
             global::Apify.StoreActorInputSchema? inputSchema)
@@ -215,9 +201,7 @@ namespace Apify
             this.Stats = stats ?? throw new global::System.ArgumentNullException(nameof(stats));
             this.CurrentPricingInfo = currentPricingInfo;
             this.IsWhiteListedForAgenticPayments = isWhiteListedForAgenticPayments;
-            this.ActorReviewCount = actorReviewCount;
-            this.ActorReviewRating = actorReviewRating;
-            this.BookmarkCount = bookmarkCount;
+            this.IsVerified = isVerified;
             this.Badge = badge;
             this.ReadmeSummary = readmeSummary;
             this.InputSchema = inputSchema;

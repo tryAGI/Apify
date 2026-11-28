@@ -37,6 +37,9 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.EffectivePlatformFeatures))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfo))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPrivateInfoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfo))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfoPlan))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserProxyInfoResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderWorkspace))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegration))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegrationProvider), TypeInfoPropertyName = "GitProviderIntegrationProvider2")]
@@ -52,7 +55,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.RegisterDeploymentKeyResponseData))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>), TypeInfoPropertyName = "AnyOfUserPublicInfoResponseUserPrivateInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>), TypeInfoPropertyName = "AnyOfUserPublicInfoResponseUserPrivateInfoResponseUserProxyInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>), TypeInfoPropertyName = "AnyOfUserPrivateInfoResponseUserProxyInfoResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime?))]
@@ -61,7 +65,8 @@ namespace Apify
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.UserPlanMonitoringLevel?), TypeInfoPropertyName = "NullableUserPlanMonitoringLevel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitProviderIntegrationProvider?), TypeInfoPropertyName = "NullableGitProviderIntegrationProvider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.GitRepoFileEncoding?), TypeInfoPropertyName = "NullableGitRepoFileEncoding2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>?), TypeInfoPropertyName = "NullableAnyOfUserPublicInfoResponseUserPrivateInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>?), TypeInfoPropertyName = "NullableAnyOfUserPublicInfoResponseUserPrivateInfoResponseUserProxyInfoResponse2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Apify.AnyOf<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>?), TypeInfoPropertyName = "NullableAnyOfUserPrivateInfoResponseUserProxyInfoResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.ProxyGroup>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Apify.GitProviderWorkspace>))]
@@ -117,7 +122,8 @@ namespace Apify
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, long?>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
             options.Converters.Add(new global::Apify.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<string>>());
-            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPublicInfoResponse, global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>());
+            options.Converters.Add(new global::Apify.JsonConverters.AnyOfJsonConverter<global::Apify.UserPrivateInfoResponse, global::Apify.UserProxyInfoResponse>());
             options.Converters.Add(new global::Apify.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }

@@ -10,11 +10,15 @@ namespace Apify
         /// parameter to search Actors by string in title, name, description, username<br/>
         /// and readme.<br/>
         /// If you need detailed info about a specific Actor, use the [Get Actor](/api/v2/actor-get) endpoint.<br/>
-        /// The endpoint supports pagination using the `limit` and `offset` parameters.<br/>
-        /// It will not return more than 1,000 records.
+        /// Without `search`, the endpoint supports pagination using the `limit` and<br/>
+        /// `offset` parameters. It will not return more than 1,000 records per page.<br/>
+        /// With `search`, results are ranked by relevance and returned as a single<br/>
+        /// page of at most 100 records. `offset` is ignored and there is no second<br/>
+        /// page. `total` and `count` equal the number of returned items. To narrow<br/>
+        /// the results, use `category`, `username` or `pricingModel`.
         /// </summary>
         /// <param name="limit">
-        /// Example: 1000
+        /// Example: 100
         /// </param>
         /// <param name="offset">
         /// Example: 0
@@ -23,13 +27,13 @@ namespace Apify
         /// Example: web scraper
         /// </param>
         /// <param name="sortBy">
-        /// Example: 'popularity'
+        /// Example: popularity
         /// </param>
         /// <param name="category">
-        /// Example: 'AI'
+        /// Example: AI_AND_ML
         /// </param>
         /// <param name="username">
-        /// Example: 'apify'
+        /// Example: apify
         /// </param>
         /// <param name="pricingModel">
         /// Example: FREE
@@ -72,11 +76,15 @@ namespace Apify
         /// parameter to search Actors by string in title, name, description, username<br/>
         /// and readme.<br/>
         /// If you need detailed info about a specific Actor, use the [Get Actor](/api/v2/actor-get) endpoint.<br/>
-        /// The endpoint supports pagination using the `limit` and `offset` parameters.<br/>
-        /// It will not return more than 1,000 records.
+        /// Without `search`, the endpoint supports pagination using the `limit` and<br/>
+        /// `offset` parameters. It will not return more than 1,000 records per page.<br/>
+        /// With `search`, results are ranked by relevance and returned as a single<br/>
+        /// page of at most 100 records. `offset` is ignored and there is no second<br/>
+        /// page. `total` and `count` equal the number of returned items. To narrow<br/>
+        /// the results, use `category`, `username` or `pricingModel`.
         /// </summary>
         /// <param name="limit">
-        /// Example: 1000
+        /// Example: 100
         /// </param>
         /// <param name="offset">
         /// Example: 0
@@ -85,13 +93,13 @@ namespace Apify
         /// Example: web scraper
         /// </param>
         /// <param name="sortBy">
-        /// Example: 'popularity'
+        /// Example: popularity
         /// </param>
         /// <param name="category">
-        /// Example: 'AI'
+        /// Example: AI_AND_ML
         /// </param>
         /// <param name="username">
-        /// Example: 'apify'
+        /// Example: apify
         /// </param>
         /// <param name="pricingModel">
         /// Example: FREE
